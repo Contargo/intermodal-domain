@@ -3,11 +3,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.contargo</groupId>
-    <artifactId>cola</artifactId>
+    <artifactId>domain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>cola</name>
+    <name>Contargo Business Domain</name>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>        
+    </properties>
 
     <repositories>
         <repository>
@@ -19,8 +24,8 @@
     </repositories>
 
     <scm>
-        <connection>scm:git:ssh://git@contargo/cola</connection>
-        <developerConnection>scm:git:ssh://git@contargo/cola</developerConnection>
+        <connection>scm:git:ssh://git@contargo/domain</connection>
+        <developerConnection>scm:git:ssh://git@contargo/domain</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
