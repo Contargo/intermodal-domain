@@ -4,7 +4,8 @@ Contargo Business Domain
 This is a small project aimed at defining the Contargo and COLA business
 domain, in a structured way. The goal is to provide a business language
 (primarily to use for writing/speaking) in a format that is both
-familiar and useful to Java developers. 
+familiar and useful to Java developers - **a Java library, with a `jar`
+artifact**.
 
 ## This is not...
 
@@ -18,3 +19,15 @@ familiar and useful to Java developers.
 * Referencing actual Java-types and documentation
 
 And more. It's up to you, so join in on the fun!
+
+
+## Getting started
+
+For now you may build and read the Javadoc documentation, using:
+
+    mvn javadoc:javadoc
+    
+You should be able to locally view the `target/site/apidocs/index.html`
+document in any web browser.
+
+Happy hacking!
