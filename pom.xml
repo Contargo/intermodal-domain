@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.contargo</groupId>
-    <artifactId>domain</artifactId>
+    <artifactId>contargo-domain</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -24,8 +24,8 @@
     </repositories>
 
     <scm>
-        <connection>scm:git:ssh://git@contargo/domain</connection>
-        <developerConnection>scm:git:ssh://git@contargo/domain</developerConnection>
+        <connection>scm:git:ssh://git@contargo/lib/contargo-domain</connection>
+        <developerConnection>scm:git:ssh://git@contargo/lib/contargo-domain</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
