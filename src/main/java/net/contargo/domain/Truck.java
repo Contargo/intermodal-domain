@@ -15,5 +15,9 @@ package net.contargo.domain;
 public interface Truck {
 }
 
+/**
+ * Der {@link LKW} bedient als flexibler, schneller Partner die Fläche im Nahverkehr. Dabei wird er vor allem für die
+ * "erste" bzw. "letzte Meile" bei einem Transport verwendet.
+ */
 interface LKW {
 }
