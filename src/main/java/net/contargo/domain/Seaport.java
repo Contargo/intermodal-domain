@@ -14,5 +14,9 @@ package net.contargo.domain;
 public interface Seaport {
 }
 
+/**
+ * An einem Seehafen werden Container auf ein Seeschiff zum Transport auf den Seeweg verladen oder von einem Seeschiff
+ * entladen.
+ */
 interface Seehafen {
 }

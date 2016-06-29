@@ -17,5 +17,11 @@ package net.contargo.domain;
 public interface Terminal {
 }
 
+/**
+ * Ein Hinterlandterminal wird auch nur Terminal genannt. An einem Terminal werden Container zwischen Transportmitteln
+ * umgeschlagen, d.h. zum Beispiel gelangt ein Container von einem Schiff auf einen LKW.
+ *
+ * <p>Weiterführende Information: <a href="http://www.contargo.net/de/terminals/">Terminals der Contargo</a></p>
+ */
 interface Hinterlandterminal {
 }

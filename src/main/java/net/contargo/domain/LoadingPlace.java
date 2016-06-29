@@ -14,5 +14,8 @@ package net.contargo.domain;
 public interface LoadingPlace {
 }
 
+/**
+ * An einer Ladestelle werden Container mit Gütern befüllt.
+ */
 interface Ladestelle {
 }

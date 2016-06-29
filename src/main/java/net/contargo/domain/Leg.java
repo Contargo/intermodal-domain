@@ -16,5 +16,14 @@ package net.contargo.domain;
 public interface Leg {
 }
 
+/**
+ * Eine Teilstrecke ist die Strecke, die ein Verkehrsmittel von einem fest definierten Startpunkt zu einem fest
+ * definierten Endpunkt zurücklegt. Eine Teilstrecke ist in dem Sinne minimal, als dass es keine Haltepunkte zwischen
+ * Startpunkt und Endpunkt gibt. Zu einer Teilstrecke gehören unter anderem Informationen über die beteiligten Standorte
+ * (Start, Ziel), den transportierten Container und das transportierende Verkehrsmittel. Jede Teilstrecke kann eindeutig
+ * einer Position eines Auftrags zugeordnet werden. Im zeitlichen Verlauf existiert eine Teilstrecke in den
+ * verschiedenen Phasen der Auftragsdurchführung in verschiedenen Zuständen, je nachdem ob sie in Planung ist, oder sich
+ * in oder nach der Durchführung befindet.
+ */
 interface Teilstrecke {
 }
