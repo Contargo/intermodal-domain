@@ -5,7 +5,7 @@ package net.contargo.domain;
  *
  * <p>Example: High Cube General Purpose Container 40'</p>
  *
- * <p>Also in german: {@link ContainerTyp}.</p>
+ * <p>Also in german: {@link Containertyp}.</p>
  *
  * <p>Further information: <a href="http://www.contargo.net/de/goodtoknow/container/">container types</a></p>
  *
@@ -21,5 +21,5 @@ public interface ContainerType {
  *
  * <p>Weiterführende Information: <a href="http://www.contargo.net/de/goodtoknow/container/">Containertypen</a></p>
  */
-interface ContainerTyp {
+interface Containertyp {
 }
