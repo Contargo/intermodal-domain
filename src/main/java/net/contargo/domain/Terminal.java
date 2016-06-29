@@ -12,6 +12,8 @@ package net.contargo.domain;
  *
  * <p>In german {@link Hinterlandterminal}, but also simply {@link Terminal}.</p>
  *
+ * <p>Further information: <a href="http://www.contargo.net/de/terminals/">Contargo terminals</a></p>
+ *
  * @author  Olle Törnström - toernstroem@synyx.de
  */
 public interface Terminal {
