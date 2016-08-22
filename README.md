@@ -27,11 +27,13 @@ And more. It's up to you, so join in on the fun!
 Using the `contargo-domain` as a library in your project, means
 simply including it as a Maven dependency:
 
-    <dependency>
-      <groupId>net.contargo</groupId>
-      <artifactId>contargo-domain</artifactId>
-      <version>LATEST</version>
-    </dependency>
+```xml
+<dependency>
+  <groupId>net.contargo</groupId>
+  <artifactId>contargo-domain</artifactId>
+  <version>LATEST</version>
+</dependency>
+```
 
 Now you should be good to go for tagging types or linking to the
 domain definitions (interfaces) from your source code.
@@ -41,7 +43,9 @@ domain definitions (interfaces) from your source code.
 You may also build and read the Javadoc documentation locally,
 using:
 
-    mvn javadoc:javadoc
+```bash
+mvn javadoc:javadoc
+```
 
 You should be able to locally view the `target/site/apidocs/index.html`
 document in any web browser.
