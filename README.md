@@ -50,4 +50,9 @@ mvn javadoc:javadoc
 You should be able to locally view the `target/site/apidocs/index.html`
 document in any web browser.
 
+## License
+
+This project is distributed under the Apache 2.0 License. The full set of
+terms and conditions can be seen in the [LICENSE](LICENSE) file.
+
 Happy hacking!
