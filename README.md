@@ -1,6 +1,8 @@
 Contargo Business Domain
 ========================
 
+[![Build Status](https://travis-ci.org/Contargo/contargo-domain.svg?branch=master)](https://travis-ci.org/Contargo/contargo-domain)
+
 This is a small project aimed at defining the Contargo and COLA business
 domain, in a structured way. The goal is to provide a business language
 (primarily to use for writing/speaking) in a format that is both
