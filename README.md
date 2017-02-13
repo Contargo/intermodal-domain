@@ -3,6 +3,8 @@ Contargo Business Domain
 
 [![Build Status](https://travis-ci.org/Contargo/contargo-domain.svg?branch=master)](https://travis-ci.org/Contargo/contargo-domain)
 
+**WIP: We're currently working on deploying to the Sonatype OSS repository. In the mean time, please consider building and deploying the project locally (`mvn install`).**
+
 This is a small project aimed at defining the Contargo and COLA business
 domain, in a structured way. The goal is to provide a business language
 (primarily to use for writing/speaking) in a format that is both
