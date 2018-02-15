@@ -8,11 +8,13 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 
 import java.nio.charset.Charset;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -30,6 +32,9 @@ public class Parser {
             put("MeansOfTransportationStatus", "MoT");
         }
     };
+
+    private List<String> DOUBLE_FORMATS = Arrays.asList("[kg]", "[m]", "[t]", "[Fuß]", "kg", "Fuß", "m");
+    private List<String> BOOLEAN_FORMATS = Arrays.asList("{ja; nein}", "ja / nein");
 
     public List<Entry> entries = new ArrayList<Entry>();
 
@@ -72,6 +77,8 @@ public class Parser {
             e.printStackTrace();
         }
 
+        entries.forEach(this::createFile);
+
         return entries;
     }
 
@@ -82,6 +89,57 @@ public class Parser {
             entries.get(entries.size() - 1).addSubEntry(entry);
         } else {
             entries.add(entry);
+        }
+    }
+
+
+    public void createFile(Entry entry) {
+
+        try {
+            File tmp = new File(String.format("out/%s.java", entry.getNameEnglish()));
+            tmp.getParentFile().mkdirs();
+
+            tmp.createNewFile();
+
+            FileWriter fileWriter = new FileWriter(tmp);
+            fileWriter.write(createFileContent(entry));
+            fileWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private String createFileContent(Entry entry) {
+
+        String content = String.format("public class %s {\n\n", entry.getNameEnglish());
+
+        for (Attribute attribute : entry.getAttributes()) {
+            String type = tryToGetType(attribute.getType());
+
+            if (type.equals("Object")) {
+                content += String.format("// TODO - type: %s\n", attribute.getType());
+            }
+
+            content += String.format("private %s %s;\n\n", type, attribute.getNameEnglish());
+        }
+
+        content += "}";
+
+        return content;
+    }
+
+
+    private String tryToGetType(String type) {
+
+        if (DOUBLE_FORMATS.contains(type)) {
+            return "double";
+        } else if (BOOLEAN_FORMATS.contains(type)) {
+            return "boolean";
+        } else if (type.equals("String")) {
+            return "String";
+        } else {
+            return "Object";
         }
     }
 }

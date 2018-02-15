@@ -1,4 +1,8 @@
+import model.Entry;
+
 import parse.Parser;
+
+import java.util.List;
 
 
 /**
@@ -8,6 +12,6 @@ public class Main {
 
     public static void main(String[] args) {
 
-        new Parser().parse();
+        List<Entry> entries = new Parser().parse();
     }
 }
