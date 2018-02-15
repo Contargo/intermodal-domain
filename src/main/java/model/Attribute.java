@@ -1,32 +1,20 @@
-package Model;
-
-import java.util.ArrayList;
-import java.util.List;
-
+package model;
 
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Entry {
+public class Attribute {
 
     private String nameEnglish;
     private String nameGerman;
     private String type;
 
-    private List<Attribute> attributes = new ArrayList<Attribute>();
-
-    public Entry(String nameEnglish, String nameGerman, String type) {
+    public Attribute(String nameEnglish, String nameGerman, String type) {
 
         this.nameEnglish = nameEnglish;
         this.nameGerman = nameGerman;
         this.type = type;
     }
-
-    public void addAttribute(Attribute attribute) {
-
-        attributes.add(attribute);
-    }
-
 
     public String getNameEnglish() {
 
@@ -43,11 +31,5 @@ public class Entry {
     public String getType() {
 
         return type;
-    }
-
-
-    public List<Attribute> getAttributes() {
-
-        return attributes;
     }
 }
