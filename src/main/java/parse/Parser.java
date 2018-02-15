@@ -33,10 +33,13 @@ public class Parser {
         }
     };
 
-    private List<String> DOUBLE_FORMATS = Arrays.asList("[kg]", "[m]", "[t]", "[Fuß]", "kg", "Fuß", "m");
+    private List<String> DOUBLE_FORMATS = Arrays.asList("[kg]", "[m]", "[t]", "[Fuß]", "kg", "Fuß", "m", "t", "[TEU]",
+            "TEU");
     private List<String> BOOLEAN_FORMATS = Arrays.asList("{ja; nein}", "ja / nein");
 
-    public List<Entry> entries = new ArrayList<Entry>();
+    private List<String> CALCULATED_TYPES = Arrays.asList("String", "boolean", "int", "double");
+
+    private List<Entry> entries = new ArrayList<Entry>();
 
     public List<Entry> parse() {
 
@@ -58,7 +61,9 @@ public class Parser {
                     } else if (csvRecord.get(0).startsWith(lastEntry.getNameEnglish())
                             || (shortForms.get(lastEntry.getNameEnglish()) != null
                                 && csvRecord.get(0).startsWith(shortForms.get(lastEntry.getNameEnglish())))) {
-                        lastEntry.addAttribute(new Attribute(csvRecord.get(0), csvRecord.get(1), csvRecord.get(2)));
+                        int i = csvRecord.get(0).indexOf(".");
+                        lastEntry.addAttribute(new Attribute(csvRecord.get(0).substring(i + 1), csvRecord.get(1),
+                                csvRecord.get(2)));
                     } else if (csvRecord.get(0).startsWith("_")) {
                         addEntry(lastEntry, isSubEntry);
                         lastEntry = new Entry(csvRecord.get(0).substring(1).replace(" ", ""),
@@ -117,7 +122,7 @@ public class Parser {
         for (Attribute attribute : entry.getAttributes()) {
             String type = tryToGetType(attribute.getType());
 
-            if (type.equals("Object")) {
+            if (!CALCULATED_TYPES.contains(type)) {
                 content += String.format("// TODO - type: %s\n", attribute.getType());
             }
 
@@ -138,6 +143,16 @@ public class Parser {
             return "boolean";
         } else if (type.equals("String")) {
             return "String";
+        } else if (type.equals("#")) {
+            return "int";
+        } else if (type.contains("@")) {
+            String typeTemp = type.substring(type.indexOf("@") + 1);
+
+            if (typeTemp.indexOf(" ") > 0) {
+                return typeTemp.substring(0, typeTemp.indexOf(" "));
+            } else {
+                return typeTemp;
+            }
         } else {
             return "Object";
         }
