@@ -1,7 +1,9 @@
 package api.loadingUnit;
 
 import api.transport.Customs;
+import api.transport.DangerousGoods;
 import api.transport.Operator;
+import api.transport.Waste;
 
 
 /**
@@ -33,11 +35,11 @@ public class Order {
      */
     private double weightTara;
 
-    // TODO - type: ja / nein --> Aktion bei ja
-    private boolean dangerousGoodsIndication;
+    // TODO - type: ja / nein --> ja details @DangerousGoods
+    private DangerousGoods dangerousGoodsIndication;
 
-    // TODO - type: ja / nein --> Aktion bei ja
-    private boolean wasteIndication;
+    // TODO - type: ja / nein --> ja details @Waste
+    private Waste wasteIndication;
 
     /**
      * For refrigerated containers in °C.
@@ -50,6 +52,7 @@ public class Order {
 
     private Direction direction;
 
+    // TODO - type: ja / nein --> ja details @Customs
     private Customs customs;
 
     // TODO - type: ?
