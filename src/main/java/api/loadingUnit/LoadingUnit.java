@@ -1,5 +1,12 @@
 package api.loadingUnit;
 
+/**
+ * Physical transport unit which can include wares and goods.
+ *
+ * <p>In german Ladeeinheit</p>
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public abstract class LoadingUnit {
 
     // TODO - type: BIC;ILU;SOC;Sonstiges
@@ -10,10 +17,19 @@ public abstract class LoadingUnit {
 
     private LoadingUnitCategory category;
 
+    /**
+     * in kg.
+     */
     private double weightBruttoMax;
 
+    /**
+     * in kg.
+     */
     private double weightNettoMax;
 
+    /**
+     * in kg.
+     */
     private double weightTara;
 
     // TODO - type: i.O., schadhaft,…
