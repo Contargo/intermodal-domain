@@ -3,23 +3,38 @@ package api.vehicle;
 import api.transport.Operator;
 
 
+/**
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Barge {
 
     private String name;
 
-// TODO - type: 9 Ziffern
-    private Object mmsi;
+    /**
+     * Maritime Mobile Service Identity.
+     */
+    private String mmsi;
 
-// TODO - type: „Europanummer“
-    private Object eni;
+    /**
+     * European Number of Identification.
+     */
+    private String eni;
 
-// TODO - type: siehe Daten zu @Operator (Key: Ust.-ID)
     private Operator operatorMd;
 
+    /**
+     * in meters.
+     */
     private double length;
 
+    /**
+     * in meters.
+     */
     private double width;
 
+    /**
+     * in meters.
+     */
     private double draught;
 
     private int bays;
@@ -32,5 +47,8 @@ public class Barge {
 
     private double capacityTeu;
 
+    /**
+     * in tons.
+     */
     private double capacityTons;
 }

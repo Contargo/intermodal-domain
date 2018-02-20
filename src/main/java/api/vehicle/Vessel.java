@@ -3,16 +3,22 @@ package api.vehicle;
 import api.transport.Operator;
 
 
+/**
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Vessel {
 
     private String name;
 
-    // TODO - type: 9 Ziffern
-    private Object mmsi;
+    /**
+     * Maritime Mobile Service Identity.
+     */
+    private String mmsi;
 
-    // TODO - type: IMO gefolgt von 7 Ziffern (IMO XXXXXXX)
-    private Object imo;
+    /**
+     * International Maritime Organization.
+     */
+    private String imo;
 
-    // TODO - type: siehe Daten zu @Operator (Key: Ust.-ID)
-    private Operator operatorMd;
+    private Operator operator;
 }
