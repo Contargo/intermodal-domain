@@ -157,12 +157,32 @@ public class Parser {
                 content += String.format("// TODO - type: %s\n", attribute.getType());
             }
 
-            content += String.format("private %s %s;\n\n", type, attribute.getNameEnglish());
+            content += String.format("private %s %s;\n\n", type, formatAttribute(attribute.getNameEnglish()));
         }
 
         content += "}";
 
         return content;
+    }
+
+
+    private String formatAttribute(String attribute) {
+
+        String formattedAttribute = Character.toLowerCase(attribute.charAt(0)) + attribute.substring(1);
+        formattedAttribute = formattedAttribute.replaceAll("[^a-zA-Z0-9-]+", "");
+
+        String[] attributeParts = formattedAttribute.split("-");
+
+        if (attributeParts.length > 1) {
+            formattedAttribute = attributeParts[0];
+
+            for (int i = 1; i < attributeParts.length; i++) {
+                formattedAttribute += Character.toUpperCase(attributeParts[i].charAt(0))
+                    + attributeParts[i].substring(1);
+            }
+        }
+
+        return formattedAttribute;
     }
 
 
