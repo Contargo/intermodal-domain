@@ -1,4 +1,4 @@
-package api;
+package api.miscellaneous;
 
 public class Address {
 

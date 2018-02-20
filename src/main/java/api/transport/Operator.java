@@ -1,4 +1,4 @@
-package api;
+package api.transport;
 
 public class Operator {
 
@@ -7,7 +7,7 @@ public class Operator {
     private String legalForm;
 
     // TODO - type: siehe Details bei @Anschrift
-    private Anschrift adressMD;
+    private Anschrift adressMd;
 
     // TODO - type: String maxlength 12
     private Object vatId;

@@ -1,4 +1,4 @@
-package api;
+package api.person;
 
 public abstract class Person {
 

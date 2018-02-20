@@ -1,4 +1,4 @@
-package api;
+package api.transport;
 
 public class Waste {
 

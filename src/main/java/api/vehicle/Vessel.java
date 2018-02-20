@@ -1,4 +1,7 @@
-package api;
+package api.vehicle;
+
+import api.transport.Operator;
+
 
 public class Vessel {
 

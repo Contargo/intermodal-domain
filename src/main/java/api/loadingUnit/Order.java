@@ -1,4 +1,4 @@
-package api.lu;
+package api.loadingUnit;
 
 public class Order {
 

@@ -1,4 +1,4 @@
-package api;
+package api.loadingUnit;
 
 public class SwapBody extends LoadingUnit {
 

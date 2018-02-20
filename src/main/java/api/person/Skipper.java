@@ -1,5 +1,4 @@
-import api.Person;
-
+package api.person;
 
 public class Skipper extends Person {
 

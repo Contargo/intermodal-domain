@@ -1,4 +1,4 @@
-package api;
+package api.person;
 
 public class Driver extends Person {
 
