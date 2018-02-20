@@ -2,18 +2,18 @@ package api;
 
 public class Waste {
 
-// TODO - type:
+    // TODO - type:
     private Object position;
 
-// TODO - type:
+    // TODO - type:
     private Object keyID;
 
-// TODO - type:
+    // TODO - type:
     private Object wasteRegulationNumber;
 
-// TODO - type:
+    // TODO - type:
     private Object receiptNumber;
 
-// TODO - type: kg pro Position
+    // TODO - type: kg pro Position
     private Object weightNetto;
 }

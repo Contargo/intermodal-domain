@@ -2,6 +2,7 @@ package api;
 
 public class Container extends LoadingUnit {
 
+    private Object sizeType;
 // TODO - type: High Cube, Tank, Open Top, Bulk, Flat Rack
     private Object type;
 

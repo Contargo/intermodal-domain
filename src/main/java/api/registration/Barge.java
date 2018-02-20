@@ -2,15 +2,21 @@ package api.registration;
 
 public class Barge {
 
-// TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object eTA;
+    // TODO
+    private Object bargeMd;
 
-// TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object eTD;
+    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
+    private Object eta;
 
-// TODO - type: LE
+    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
+    private Object etd;
+
+    // TODO
+    private Object dangerousGoodsIndication;
+
+    // TODO - type: LE
     private Object volumeToDischarge;
 
-// TODO - type: LE
+    // TODO - type: LE
     private Object volumeToLoad;
 }

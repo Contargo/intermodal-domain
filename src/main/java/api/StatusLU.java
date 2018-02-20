@@ -2,21 +2,27 @@ package api;
 
 public class StatusLU {
 
-// TODO - type: LE frei
-    private Object free;
+    // TODO
+    private Object readyForLoading;
 
-// TODO - type: LE out
+    // TODO
+    private Object loaded;
+
+    // TODO
+    private Object inspectionOut;
+
+    // TODO - type: LE out
     private Object out;
 
-// TODO - type: LE Eingang bestätigt
+    // TODO - type: LE Eingang bestätigt
     private Object inspectionIn;
 
-// TODO - type: Zustand --> Aktion?
-    private Object condition;
-
-// TODO - type: LE In
+    // TODO - type: LE In
     private Object in;
 
-// TODO - type: LE Ausgang bestätigt
-    private Object inspectionOut;
+    // TODO
+    private Object readyForUnloading;
+
+    // TODO - type: Zustand --> Aktion?
+    private Object unloaded;
 }

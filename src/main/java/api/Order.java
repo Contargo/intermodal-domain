@@ -2,112 +2,120 @@ package api;
 
 public class Order {
 
-// TODO - type: 
-private Object reference;
+    // TODO - type:
+    private Object reference;
 
-// TODO - type: siehe Daten zu @Operator
-private Operator auftraggeberMD;
+    // TODO - type: siehe Daten zu @Operator
+    private Operator clientMd;
 
-// TODO - type: siehe Daten zu @Operator
-private Operator rechnungsempfngerMD;
+    // TODO - type: siehe Daten zu @Operator
+    private Operator billRecipient;
 
-// TODO - type: {1}, siehe Daten zu @Container-Order
-private Container-Order unitContainerOrderPD;
+    // TODO
+    private Object luOrderPd;
 
-// TODO - type: 
-private Object unitWare;
+    // TODO
+    private Object transportDirection;
 
-// TODO - type: Import, Export
-private Object transportDirection;
+    // TODO
+    private Object transportPickUpLocationCity;
 
-// TODO - type: {1}
-private Object transportPickUpLocationName;
+    // TODO
+    private Object transportPickUpLocationDesignation;
 
-// TODO - type: Loading Place, Sea-Terminal, Hinterland-Terminal 
-private Object transportPickUpLocationType;
+    // TODO
+    private Object transportPickUpLocationType;
 
-// TODO - type: Ja / nein
-private Object transportPickUpUnitEmpty;
+    // TODO
+    private boolean transportPickUpLuEmpty;
 
-// TODO - type: 
-private Object transportPickUpUnitReference;
+    // TODO - type:
+    private Object transportPickUpUnitReference;
 
-// TODO - type: siehe Daten zu @Operator
-private Operator transportPickUpUnitOperatorMD;
+    // TODO
+    private Object transportPickUpBillingReference;
 
-// TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX.
-Beispiel: 2017-06-13T13:00:00.000Z)
-private Object transportPickUpEarliest;
+    // TODO - type: siehe Daten zu @Operator
+    private Operator transportPickUpUnitOperatorMd;
 
-// TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX.
-Beispiel: 2017-06-13T13:00:00.000Z)
-private Object transportPickUpLatest;
+    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
+    private Object transportPickUpEarliest;
 
-// TODO - type: Means of Transport
-private Object transportPickUpmot;
+    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
+    private Object transportPickUpLatest;
 
-// TODO - type: Loading Place, Sea-Terminal, Hinterland-Terminal 
-private Object transportDropOffLocationType;
+    // TODO - type: Means of Transport
+    private Object transportPickUpMot;
 
-// TODO - type: {1}
-private Object transportDropOffLocationName;
+    // TODO - type: Loading Place, Sea-Terminal, Hinterland-Terminal
+    private Object transportDropOffLocationCity;
 
-// TODO - type: Ja / nein
-private Object transportDropOffUnitEmpty;
+    // TODO - type: {1}
+    private Object transportDropOffLocationDesignation;
 
-// TODO - type: 
-private Object transportDropOffUnitReference;
+    // TODO
+    private Object transportDropOffLocationType;
 
-// TODO - type: siehe Daten zu @Operator
-private Operator transportDropOffUnitOperatorMD;
+    // TODO - type: Ja / nein
+    private Object transportDropOffUnitEmpty;
 
-// TODO - type: ug+
-private Object transportDropOffEarliest;
+    // TODO - type:
+    private Object transportDropOffUnitReference;
 
-// TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX.
-Beispiel: 2017-06-13T13:00:00.000Z)
-Ggf. synonym zu „Closing“
-private Object transportDropOffLatest;
+    // TODO - type:
+    private Object transportDropOffBillingReference;
 
-// TODO - type: Means of Transport
-private Object transportDropOffmot;
+    // TODO - type: siehe Daten zu @Operator
+    private Operator transportDropOffUnitOperatorMd;
 
-// TODO - type: {1-n} (auch Multistops etc.)
-private Object transportStopLocationName;
+    // TODO - type: ug+
+    private Object transportDropOffEarliest;
 
-// TODO - type: Loading Place, Sea-Terminal, Hinterland-Terminal, Zollstop, Verwiegung etc.
-private Object transportStopLocationType;
+    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z) Ggf.synonym zu „Closing“
+    private Object transportDropOffLatest;
 
-// TODO - type: 
-private Object transportStopSequence;
+    // TODO - type: Means of Transport
+    private Object transportDropOffMot;
 
-// TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX.
-Beispiel: 2017-06-13T13:00:00.000Z)
-private Object transportStopEarliest;
+    // TODO - type: {1-n} (auch Multistops etc.)
+    private Object transportStopLocation;
 
-// TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX.
-Beispiel: 2017-06-13T13:00:00.000Z)
-private Object transportStopLatest;
+    // TODO - type: {1-n} (auch Multistops etc.)
+    private Object transportStopLocationCity;
 
-// TODO - type: 
-private Object transportStopReference;
+    // TODO - type: {1-n} (auch Multistops etc.)
+    private Object transportStopLocationDesignation;
 
-// TODO - type: Means of Transport
-private Object transportStopmot;
+    // TODO - type: Loading Place, Sea-Terminal, Hinterland-Terminal, Zollstop, Verwiegung etc.
+    private Object transportStopLocationType;
 
-// TODO - type: 
-private Object destinationVessel;
+    // TODO - type:
+    private Object transportStopSequence;
 
-// TODO - type: 
-private Object destinationSeaportName;
+    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
+    private Object transportStopEarliest;
 
-// TODO - type: 
-private Object destinationLocationName;
+    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
+    private Object transportStopLatest;
 
-// TODO - type: 
-private Object destinationLocationCountry;
+    // TODO - type:
+    private Object transportStopReference;
 
-// TODO - type: 
-private Object destinationLocationCity;
+    // TODO - type: Means of Transport
+    private Object transportStopMot;
 
+    // TODO - type:
+    private Object destinationVessel;
+
+    // TODO - type:
+    private Object destinationSeaportName;
+
+    // TODO - type:
+    private Object destinationLocationDesignation;
+
+    // TODO - type:
+    private Object destinationCountryCode;
+
+    // TODO - type:
+    private Object destinationLocationCity;
 }

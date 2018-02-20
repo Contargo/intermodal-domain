@@ -6,7 +6,7 @@ public class Chassis {
     private Object numberPlate;
 
 // TODO - type: Gültigkeit
-    private Object mOT;
+    private Object mot;
 
 // TODO - type: Multichassis etc.
     private Object type;
@@ -17,10 +17,10 @@ public class Chassis {
 
     private double height;
 
-    private boolean eUAuthorization;
+    private boolean euAuthorization;
 
 // TODO - type: Sicherheitsprüfung
-    private Object sP;
+    private Object st;
 
     private boolean suitabilityDangerousGoods;
 

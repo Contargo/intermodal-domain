@@ -4,7 +4,7 @@ public class Address {
 
     private String street;
 
-    private String zIP;
+    private String postalCode;
 
     private String city;
 

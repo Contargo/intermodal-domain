@@ -1,51 +1,34 @@
-package api.processing;
-
 public class Train {
 
-// TODO - type: 
-private Object trainNumber;
+    // TODO - type:
+    private Object trainTitel;
 
-// TODO - type: {1-n}  (SGNRS etc.), siehe Daten zu @LE.Auftrag
-private LE.Auftrag waggonListType;
+    // TODO
+    private Object loadingListWaggon;
 
-// TODO - type: 
-private Object waggonListSize;
+    // TODO - type: {1-n}  (SGNRS etc.), siehe Daten zu @LE.Auftrag
+    private Object loadingListWaggonType;
 
-private double waggonListWeightBrutto;
+    // TODO
+    private Object loadingListWaggonId;
 
-// TODO - type: 
-private Object waggonListWaggonID;
+    // TODO
+    private Object loadingListWaggonRanking;
 
-// TODO - type: Sequenz in Fahrtrichtung
-private Object waggonListWaggonRanking;
+    // TODO
+    private Object loadingListWaggonLoadingPositionLuOrderPd;
 
-// TODO - type: siehe Daten zu @LE.Auftrag; Welche Units auf welchem Waggon…
-private LE.Auftrag; waggonListLEOrderPD;
+    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
+    private Object terminalEta;
 
-// TODO - type: ...auf welchem Platz
-private Object waggonListStoragePosition;
+    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
+    private Object terminalEtd;
 
-// TODO - type: 
-private Object dangerousGoodsIndication;
+    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
+    private Object shuntingYardEta;
 
-// TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-private Object terminalETA;
+    private String shunter;
 
-// TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-private Object terminalETD;
-
-// TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-private Object shuntingYardETA;
-
-private String shunter;
-
-// TODO - type: 
-private Object waggonTechnicalInspection;
-
-// TODO - type: 
-private Object trainPaths;
-
-// TODO - type: (inkl. Zolldokumente, Reefer, Gefahrgut)
-private Object manifest;
-
+    // TODO - type:
+    private Object trainPaths;
 }

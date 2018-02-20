@@ -5,13 +5,13 @@ public class Barge {
     private String name;
 
 // TODO - type: 9 Ziffern
-    private Object mMSI;
+    private Object mmsi;
 
 // TODO - type: „Europanummer“
-    private Object eNI;
+    private Object eni;
 
 // TODO - type: siehe Daten zu @Operator (Key: Ust.-ID)
-    private Operator operatorMD;
+    private Operator operatorMd;
 
     private double length;
 
@@ -27,7 +27,7 @@ public class Barge {
 
     private boolean suitabilityDangerousGoods;
 
-    private double capacityTEU;
+    private double capacityTeu;
 
     private double capacityTons;
 }

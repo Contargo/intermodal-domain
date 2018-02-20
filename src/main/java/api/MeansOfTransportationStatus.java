@@ -2,18 +2,21 @@ package api;
 
 public class MeansOfTransportationStatus {
 
-// TODO - type: VM ATD
-    private Object aTD;
+    // TODO - type: VM ATD
+    private Object atd;
 
-// TODO - type: VM ETA
-    private Object eTA;
+    // TODO - type: VM ETA
+    private Object eta;
 
-// TODO - type: bspw. Zugeingang Krangleis
-    private Object aTA;
+    // TODO - type: bspw. Zugeingang Krangleis
+    private Object ata;
 
-// TODO - type: Bereitstellung / Bearbeitungsstart
+    // TODO - type: Bereitstellung / Bearbeitungsstart
     private Object handlingStart;
 
-// TODO - type: Ladeschluss
+    // TODO - type: Ladeschluss
     private Object handlingEnd;
+
+    // TODO
+    private Object waggongTechnicalInspection;
 }

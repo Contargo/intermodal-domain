@@ -6,14 +6,14 @@ public class Operator {
 
     private String legalForm;
 
-// TODO - type: siehe Details bei @Anschrift
+    // TODO - type: siehe Details bei @Anschrift
     private Anschrift adressMD;
 
-// TODO - type: String maxlength 12
-    private Object vATID;
+    // TODO - type: String maxlength 12
+    private Object vatId;
 
-// TODO - type: String maxlength 13
-    private Object tIN;
+    // TODO - type: String maxlength 13
+    private Object tin;
 
     private String insurance;
 }
