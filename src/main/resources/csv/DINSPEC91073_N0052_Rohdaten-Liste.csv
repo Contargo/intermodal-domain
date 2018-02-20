@@ -160,7 +160,7 @@ Registration.Barge.ETD,Anmeldung.Binnenschiff.Abfahrt,yyyy-MM-dd'T'HH:mm:ss.SSSX
 Registration.Barge.VolumeToDischarge,Anmeldung.Binnenschiff.UmschlagsmengeZuEntladen,LE,,,
 Registration.Barge.VolumeToLoad,Anmeldung.Binnenschiff.UmschlagsmengeZuBeladen,LE,,,
 Processing.Barge,Abfertigung.Binnenschiff,PD,,,
-Processing.Barge($MD),Abfertigung.Binnenschiff($MD),"siehe Daten zu @Binnenschiff (Key: MMSI, ENI)",,,
+Processing.Barge.Barge($MD),Abfertigung.Binnenschiff($MD),"siehe Daten zu @Binnenschiff (Key: MMSI, ENI)",,,
 Processing.Barge.ETA,Abfertigung.Binnenschiff.Ankunft,yyyy-MM-dd'T'HH:mm:ss.SSSX,,,
 Processing.Barge.ETD,Abfertigung.Binnenschiff.Abfahrt,yyyy-MM-dd'T'HH:mm:ss.SSSX,,,
 Processing.Barge.Skipper($MD),Abfertigung.Binnenschiff.Schiffsführer($MD),{1} siehe Daten zu @Schiffsführer,,,

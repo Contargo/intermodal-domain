@@ -71,10 +71,31 @@ public class Parser {
                         lastEntry = new Entry(csvRecord.get(0).substring(1).replace(" ", ""),
                                 csvRecord.get(1).replace(" ", ""), csvRecord.get(2));
                         isSubEntry = true;
+                    } else if (!lastEntry.getDirectory().isEmpty()
+                            && StringUtils.splitString(csvRecord.get(0), ".").length >= 3
+                            && csvRecord.get(0)
+                            .substring(csvRecord.get(0).indexOf(".") + 1, csvRecord.get(0).length())
+                            .startsWith(lastEntry.getNameEnglish())) {
+                        int i = csvRecord.get(0).indexOf(".");
+                        String record = csvRecord.get(0).substring(i + 1, csvRecord.get(0).length());
+                        lastEntry.addAttribute(new Attribute(record.substring(record.indexOf(".") + 1),
+                                csvRecord.get(1), csvRecord.get(2)));
                     } else {
                         addEntry(lastEntry, isSubEntry);
                         isSubEntry = false;
-                        lastEntry = new Entry(csvRecord.get(0), csvRecord.get(1), csvRecord.get(2));
+
+                        if (csvRecord.get(0).contains(".")) {
+                            int indexForSplit = csvRecord.get(0).indexOf(".");
+
+                            String className = csvRecord.get(0)
+                                    .substring(indexForSplit + 1, csvRecord.get(0).length());
+                            lastEntry = new Entry(className, csvRecord.get(1), csvRecord.get(2));
+
+                            String directoryName = csvRecord.get(0).substring(0, indexForSplit).toLowerCase();
+                            lastEntry.setDirectory(directoryName);
+                        } else {
+                            lastEntry = new Entry(csvRecord.get(0), csvRecord.get(1), csvRecord.get(2));
+                        }
                     }
                 }
             }
@@ -100,10 +121,18 @@ public class Parser {
     }
 
 
-    public void createFile(Entry entry) {
+    private void createFile(Entry entry) {
 
         try {
-            File tmp = new File(String.format("out/%s.java", entry.getNameEnglish()));
+            File tmp;
+
+            if (entry.getDirectory().isEmpty()) {
+                tmp = new File(String.format("src/main/java/api/%s.java", entry.getNameEnglish()));
+            } else {
+                tmp = new File(String.format("src/main/java/api/%s/%s.java", entry.getDirectory(),
+                            entry.getNameEnglish()));
+            }
+
             tmp.getParentFile().mkdirs();
 
             tmp.createNewFile();

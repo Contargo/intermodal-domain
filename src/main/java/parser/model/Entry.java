@@ -16,6 +16,8 @@ public class Entry {
     private List<Attribute> attributes = new ArrayList<Attribute>();
     private List<Entry> subEntries = new ArrayList<Entry>();
 
+    private String directory = "";
+
     public Entry(String nameEnglish, String nameGerman, String type) {
 
         this.nameEnglish = nameEnglish;
@@ -62,5 +64,17 @@ public class Entry {
     public List<Entry> getSubEntris() {
 
         return subEntries;
+    }
+
+
+    public String getDirectory() {
+
+        return directory;
+    }
+
+
+    public void setDirectory(String directory) {
+
+        this.directory = directory;
     }
 }
