@@ -2,14 +2,13 @@ package api.loadingUnit;
 
 public abstract class LoadingUnit {
 
-    // TODO
-    private Object identification;
+    // TODO - type: BIC;ILU;SOC;Sonstiges
+    private String identification;
 
     // TODO - type: BIC, ILU - vier Buchstaben sieben arabische Ziffern
-    private Object number;
+    private String number;
 
-    // TODO - type: Container, Wechselbrücke, Sattelauflieger
-    private Object category;
+    private LoadingUnitCategory category;
 
     private double weightBruttoMax;
 
@@ -18,10 +17,9 @@ public abstract class LoadingUnit {
     private double weightTara;
 
     // TODO - type: i.O., schadhaft,…
-    private Object condition;
+    private String condition;
 
     private boolean reefer;
 
-    // TODO - type: Name
-    private Object operator;
+    private String operator;
 }

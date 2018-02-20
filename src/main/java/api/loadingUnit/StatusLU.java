@@ -2,27 +2,13 @@ package api.loadingUnit;
 
 public class StatusLU {
 
-    // TODO
-    private Object readyForLoading;
+    private boolean readyForLoading;
+    private boolean loaded;
+    private boolean inspectionOut;
+    private boolean out;
+    private boolean inspectionIn;
+    private boolean in;
+    private boolean readyForUnloading;
 
-    // TODO
-    private Object loaded;
-
-    // TODO
-    private Object inspectionOut;
-
-    // TODO - type: LE out
-    private Object out;
-
-    // TODO - type: LE Eingang bestätigt
-    private Object inspectionIn;
-
-    // TODO - type: LE In
-    private Object in;
-
-    // TODO
-    private Object readyForUnloading;
-
-    // TODO - type: Zustand --> Aktion?
-    private Object unloaded;
+    private boolean unloaded;
 }

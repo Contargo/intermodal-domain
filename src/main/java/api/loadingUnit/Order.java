@@ -2,11 +2,10 @@ package api.loadingUnit;
 
 public class Order {
 
-    // TODO - type:
+    // TODO - type: ?
     private Object reference;
 
-    // TODO - type: siehe Daten zu @Ladeeinheit (Key: LU.Number)
-    private Ladeeinheit lUMd;
+    private LoadingUnit loadingUnit;
 
     private double weightBrutto;
 
@@ -15,38 +14,33 @@ public class Order {
     private double weightTara;
 
     // TODO - type: ja / nein --> Aktion bei ja
-    private Object dangerousGoodsIndication;
+    private boolean dangerousGoodsIndication;
 
     // TODO - type: ja / nein --> Aktion bei ja
-    private Object wasteIndication;
+    private boolean wasteIndication;
 
-    // TODO - type: °C
-    private Object setTemperature;
+    private int setTemperature;
 
-    // TODO - type: siehe Daten zu @Operator (Key: Ust.-ID)
-    private Operator operatorMd;
+    private Operator operator;
 
-    // TODO - type: siehe Daten zu @Operator (Key: Ust.-ID)
-    private Operator clientMd;
+    private Operator client;
 
-    // TODO - type: anliefern / abholen
-    private Object direction;
+    private Direction direction;
 
-    // TODO
-    private Object customs;
+    private Customs customs;
 
-    // TODO
+    // TODO - type: ?
     private Object goods;
 
-    // TODO
-    private Object empty;
+    // TODO- type: ?
+    private boolean empty;
 
-    // TODO - type: {1-n}
+    // TODO - type: {1-n}?
     private Object seal;
 
-    // TODO - type:
+    // TODO - type: ?
     private Object sealType;
 
-    // TODO - type:
+    // TODO - type: ?
     private Object sealNumber;
 }

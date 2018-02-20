@@ -2,9 +2,10 @@ package api.loadingUnit;
 
 public class Container extends LoadingUnit {
 
-    private Object sizeType;
-// TODO - type: High Cube, Tank, Open Top, Bulk, Flat Rack
-    private Object type;
+    // TODO - type: ISO Conatiner Size Type nach ISO 6346
+    private String sizeType;
 
+    // TODO - type: High Cube, Tank, Open Top, Bulk, Flat Rack
+    private String type;
     private double size;
 }
