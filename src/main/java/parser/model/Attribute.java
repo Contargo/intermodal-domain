@@ -1,4 +1,4 @@
-package model;
+package parser.model;
 
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de

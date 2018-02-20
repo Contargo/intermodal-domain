@@ -1,11 +1,13 @@
-package parse;
+package parser.parse;
 
-import model.Attribute;
-import model.Entry;
+import com.sun.deploy.util.StringUtils;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+
+import parser.model.Attribute;
+import parser.model.Entry;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -153,6 +155,8 @@ public class Parser {
             } else {
                 return typeTemp;
             }
+        } else if (type.contains("yyyy-mm-dd")) {
+            return "Date";
         } else {
             return "Object";
         }

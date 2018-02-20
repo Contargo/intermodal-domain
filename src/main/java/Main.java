@@ -1,6 +1,6 @@
-import model.Entry;
+import parser.model.Entry;
 
-import parse.Parser;
+import parser.parse.Parser;
 
 import java.util.List;
 
