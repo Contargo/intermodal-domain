@@ -1,5 +1,8 @@
 package api.miscellaneous;
 
+/**
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Address {
 
     private String street;
@@ -10,6 +13,8 @@ public class Address {
 
     private String countryName;
 
-// TODO - type: 2 Zeichen (UN/LOCODE)
-    private Object countryCode;
+    /**
+     * 2 characters (UN/LOCODE).
+     */
+    private String countryCode;
 }
