@@ -43,6 +43,46 @@ public class Parser {
 
     private List<Entry> entries = new ArrayList<Entry>();
 
+    private String getAttributesString(List<Attribute> attributes) {
+
+        String attributeString = "";
+
+        for (Attribute attribute : attributes) {
+            String type = tryToGetType(attribute.getType());
+
+            if (!CALCULATED_TYPES.contains(type)) {
+                attributeString += String.format("// TODO - type: %s\n", attribute.getType());
+            }
+
+            attributeString += String.format("private %s %s;\n\n", type, formatAttribute(attribute.getNameEnglish()));
+        }
+
+        return attributeString;
+    }
+
+
+    private File createFile(String name, String directory) {
+
+        File file = null;
+
+        try {
+            if (directory.isEmpty()) {
+                file = new File(String.format("src/main/java/api/%s.java", name));
+            } else {
+                file = new File(String.format("src/main/java/api/%s/%s.java", directory, name));
+            }
+
+            file.getParentFile().mkdirs();
+
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return file;
+    }
+
+
     public List<Entry> parse() {
 
         File file = new File("src/main/resources/csv/DINSPEC91073_N0052_Rohdaten-Liste.csv");
@@ -105,7 +145,13 @@ public class Parser {
             e.printStackTrace();
         }
 
-        entries.forEach(this::createFile);
+        entries.forEach(entry -> {
+            createClass(entry);
+
+            if (!entry.getSubEntris().isEmpty()) {
+                createSubClasses(entry);
+            }
+        });
 
         return entries;
     }
@@ -121,23 +167,12 @@ public class Parser {
     }
 
 
-    private void createFile(Entry entry) {
+    private void createClass(Entry entry) {
 
         try {
-            File tmp;
+            File file = createFile(entry.getNameEnglish(), entry.getDirectory());
 
-            if (entry.getDirectory().isEmpty()) {
-                tmp = new File(String.format("src/main/java/api/%s.java", entry.getNameEnglish()));
-            } else {
-                tmp = new File(String.format("src/main/java/api/%s/%s.java", entry.getDirectory(),
-                            entry.getNameEnglish()));
-            }
-
-            tmp.getParentFile().mkdirs();
-
-            tmp.createNewFile();
-
-            FileWriter fileWriter = new FileWriter(tmp);
+            FileWriter fileWriter = new FileWriter(file);
             fileWriter.write(createFileContent(entry));
             fileWriter.close();
         } catch (IOException e) {
@@ -148,18 +183,42 @@ public class Parser {
 
     private String createFileContent(Entry entry) {
 
-        String content = String.format("public class %s {\n\n", entry.getNameEnglish());
+        String content;
 
-        for (Attribute attribute : entry.getAttributes()) {
-            String type = tryToGetType(attribute.getType());
-
-            if (!CALCULATED_TYPES.contains(type)) {
-                content += String.format("// TODO - type: %s\n", attribute.getType());
-            }
-
-            content += String.format("private %s %s;\n\n", type, formatAttribute(attribute.getNameEnglish()));
+        if (entry.getSubEntris().isEmpty()) {
+            content = String.format("public class %s {\n\n", entry.getNameEnglish());
+        } else {
+            content = String.format("public abstract class %s {\n\n", entry.getNameEnglish());
         }
 
+        content += getAttributesString(entry.getAttributes());
+
+        content += "}";
+
+        return content;
+    }
+
+
+    private void createSubClasses(Entry entry) {
+
+        entry.getSubEntris().stream().forEach(se -> {
+            File file = createFile(se.getNameEnglish(), entry.getDirectory());
+
+            try {
+                FileWriter fileWriter = new FileWriter(file);
+                fileWriter.write(createFileContentForSubClass(se, entry.getNameEnglish()));
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+    }
+
+
+    private String createFileContentForSubClass(Entry entry, String inheritedClass) {
+
+        String content = String.format("public class %s extends %s {\n\n", entry.getNameEnglish(), inheritedClass);
+        content += getAttributesString(entry.getAttributes());
         content += "}";
 
         return content;
