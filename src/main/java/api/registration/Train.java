@@ -1,37 +1,51 @@
 package api.registration;
 
+import api.transport.Operator;
+
+import java.util.Date;
+
+
+/**
+ * Contains information necessary for the registration of a train.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Train {
 
-    // TODO - type:
-    private Object trainTitle;
+    private String trainTitle;
 
-    // TODO
-    private Object railwayOperatorMd;
+    private Operator railwayOperator;
 
-    // TODO
-    private Object operatorMd;
+    private Operator operator;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object terminalEta;
+    /**
+     * format: ISO 8601 incl. UTC
+     */
+    private Date terminalEta;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object terminalEtd;
+    /**
+     * format: ISO 8601 incl. UTC
+     */
+    private Date terminalEtd;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object shuntingYardEta;
+    /**
+     * format: ISO 8601 incl. UTC
+     */
+    private Date shuntingYardEta;
 
     private String shunter;
 
+    /**
+     * in meters.
+     */
     private double totalLength;
 
     private int waggonQuantity;
 
-    // TODO - type: LE
-    private Object volumeToDischarge;
+    private int volumeToDischarge;
 
-    // TODO - type: LE
-    private Object volumeToLoad;
+    private int volumeToLoad;
 
-    // TODO - type: A, B, C etc. (Beladungsplanung)
-    private Object trainPaths;
+    // TODO - type: A, B, C etc. (Beladungsplanung)?
+    private String trainPaths;
 }

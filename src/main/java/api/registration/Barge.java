@@ -1,22 +1,33 @@
 package api.registration;
 
+import api.transport.DangerousGoods;
+
+import java.util.Date;
+
+
+/**
+ * Contains information necessary for the registration of a barge.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Barge {
 
-    // TODO
-    private Object bargeMd;
+    private api.vehicle.Barge barge;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object eta;
+    /**
+     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     */
+    private Date eta;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object etd;
+    /**
+     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     */
+    private Date etd;
 
-    // TODO
-    private Object dangerousGoodsIndication;
+    // TODO - ja; nein -> DangerousGoods
+    private DangerousGoods dangerousGoodsIndication;
 
-    // TODO - type: LE
-    private Object volumeToDischarge;
+    private int volumeToDischarge;
 
-    // TODO - type: LE
-    private Object volumeToLoad;
+    private int volumeToLoad;
 }

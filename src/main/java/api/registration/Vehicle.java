@@ -1,15 +1,27 @@
 package api.registration;
 
+import api.loadingUnit.Order;
+
+import api.person.Driver;
+
+import api.vehicle.Chassis;
+import api.vehicle.Truck;
+
+import java.util.Date;
+
+
+/**
+ * Contains information necessary for the registration of a vehicle.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Vehicle {
 
-    // TODO - type: siehe Daten zu @Truck (Key: Kennzeichen)
-    private Truck truckMd;
+    private Truck truck;
 
-    // TODO - type: siehe Daten zu @Chassis (Key: Kennzeichen)
-    private Chassis chassisMd;
+    private Chassis chassis;
 
-    // TODO - type: siehe Daten zu @Fahrer (Key: Führerscheinnummer)
-    private Fahrer driverMd;
+    private Driver driver;
 
     // TODO - type: (vgl. §7 c GüKG) („Sofa“)
     private Object haulierClient;
@@ -17,10 +29,10 @@ public class Vehicle {
     // TODO - type: (vgl. §7 c GüKG) („Sub“)
     private Object haulierRealizing;
 
-    // TODO - type: (request)
-    private Object deliverytime;
+    /**
+     * format: ISO 8601 incl. UTC
+     */
+    private Date deliveryTime;
 
-// TODO - type: siehe Daten zu @LE-Order
-    private LE-Order luOrderPd;
-
+    private Order luOrderPd;
 }
