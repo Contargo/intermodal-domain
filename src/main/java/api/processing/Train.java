@@ -1,34 +1,51 @@
+package api.processing;
+
+import api.loadingUnit.Order;
+
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * Contains information necessary for loading and discharging of trains like properties of the train, timetables,
+ * information about its load etc.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Train {
 
-    // TODO - type:
-    private Object trainTitel;
+    private String trainTitel;
 
-    // TODO
-    private Object loadingListWaggon;
+    // TODO - type: type for waggon?
+    private List<Object> loadingListWaggon;
 
-    // TODO - type: {1-n}  (SGNRS etc.), siehe Daten zu @LE.Auftrag
-    private Object loadingListWaggonType;
+    private String loadingListWaggonType;
 
-    // TODO
-    private Object loadingListWaggonId;
+    private String loadingListWaggonId;
 
-    // TODO
+    // TODO - type: Sequenz Fahrtrichtung?
     private Object loadingListWaggonRanking;
 
     // TODO
-    private Object loadingListWaggonLoadingPositionLuOrderPd;
+    private Order loadingListWaggonLoadingPositionLuOrder;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object terminalEta;
+    /**
+     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     */
+    private Date terminalEta;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object terminalEtd;
+    /**
+     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     */
+    private Date terminalEtd;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object shuntingYardEta;
+    /**
+     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     */
+    private Date shuntingYardEta;
 
     private String shunter;
 
-    // TODO - type:
-    private Object trainPaths;
+    // TODO - type: ?
+    private String trainPaths;
 }

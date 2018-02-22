@@ -1,33 +1,46 @@
 package api.processing;
 
+import api.loadingUnit.Order;
+
+import api.person.Person;
+import api.person.Skipper;
+
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * Contains information necessary for loading and discharging of barges like properties of the barge, relevant persons
+ * and timetables as well as information about its load and necessary documents.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Barge {
 
-    // TODO - type: siehe Daten zu @Binnenschiff (Key: MMSI, ENI)
-    private Binnenschiff bargeMD;
+    private api.vehicle.Barge barge;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
+    /**
+     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     */
     private Object eta;
 
-    // TODO - type: yyyy-MM-dd'T'HH:mm:ss.SSSX
-    private Object etd;
+    /**
+     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     */
+    private Date etd;
 
-    // TODO - type: {1} siehe Daten zu @Schiffsführer
-    private Schiffsführer skipperMd;
+    private Skipper skipper;
 
-    // TODO - type: {1-n} siehe Daten zu @Person
-    private Person passengerMd;
+    private List<Person> passenger;
 
     private int reeferConnections;
 
-    // TODO - type:
-    private Object cone;
+    private ConeNumber cone;
 
-    // TODO - type: Eignung, falls [Abfertigung.Barge.Kegel] > 0
+    // TODO - type: Eignung, falls [Abfertigung.Barge.Kegel] > 0?
     private Object adnr;
 
-    // TODO - type: {1-n}, siehe Daten zu @LE.Auftrag
-    private LE.Auftrag loadingListLUOrderPd;
+    private List<Order> loadingListLUOrder;
 
-    // TODO - type: Bay/Row/Tier
-    private Object loadingListStoragePosition;
+    private StoragePosition loadingListStoragePosition;
 }
