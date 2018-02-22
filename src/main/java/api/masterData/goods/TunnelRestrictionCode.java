@@ -1,7 +1,9 @@
-package api.processData;
+package api.masterData.goods;
 
 /**
  * Tunnel restriction codes for dangerous goods.
+ *
+ * <p>In german Tunnelbeschränkungscode</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
