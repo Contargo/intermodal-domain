@@ -1,13 +1,15 @@
 package api.transport;
 
+/**
+ * Necessary data for customs.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Customs {
 
-    // TODO - type: T1, EX, GW etc.
-    private Object customProcess;
+    private String customProcess;
 
-    // TODO - type: MRN etc.
-    private Object customDocumentNumber;
+    private String customDocumentNumber;
 
-    // TODO - type:
-    private Object seal;
+    private String seal;
 }

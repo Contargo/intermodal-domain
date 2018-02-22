@@ -1,7 +1,7 @@
 package api.loadingUnit;
 
 /**
- * Describes the status of a {@link /src/main/java/api/loadingUnit/LoadingUnit.java}.
+ * Describes the status of a {@link /src/main/java/api/loadingUnit/LoadingUnit.java} for communication between agents.
  *
  * <p>In german Ladeeinheitenstatus</p>
  *

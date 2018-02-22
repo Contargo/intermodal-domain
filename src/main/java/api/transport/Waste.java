@@ -1,19 +1,22 @@
 package api.transport;
 
+/**
+ * Master data for waste.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Waste {
 
-    // TODO - type:
-    private Object position;
+    private String position;
 
-    // TODO - type:
-    private Object keyID;
+    private String keyID;
 
-    // TODO - type:
-    private Object wasteRegulationNumber;
+    private String wasteRegulationNumber;
 
-    // TODO - type:
-    private Object receiptNumber;
+    private String receiptNumber;
 
-    // TODO - type: kg pro Position
-    private Object weightNetto;
+    /**
+     * in kg.
+     */
+    private double weightNetto;
 }

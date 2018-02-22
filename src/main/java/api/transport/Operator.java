@@ -1,19 +1,24 @@
 package api.transport;
 
+import api.miscellaneous.Address;
+
+
+/**
+ * Unit for organization of multiple actors in trimodal transport.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Operator {
 
     private String name;
 
     private String legalForm;
 
-    // TODO - type: siehe Details bei @Anschrift
-    private Anschrift adressMd;
+    private Address adress;
 
-    // TODO - type: String maxlength 12
-    private Object vatId;
+    private String vatId;
 
-    // TODO - type: String maxlength 13
-    private Object tin;
+    private String tin;
 
     private String insurance;
 }

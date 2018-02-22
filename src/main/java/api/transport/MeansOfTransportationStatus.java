@@ -1,22 +1,24 @@
 package api.transport;
 
+/**
+ * Status of mean of transport for communication between agents.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class MeansOfTransportationStatus {
 
-    // TODO - type: VM ATD
-    private Object atd;
+    private String atd;
 
-    // TODO - type: VM ETA
-    private Object eta;
+    private String eta;
 
-    // TODO - type: bspw. Zugeingang Krangleis
-    private Object ata;
+    private String ata;
 
     // TODO - type: Bereitstellung / Bearbeitungsstart
-    private Object handlingStart;
+    private String handlingStart;
 
     // TODO - type: Ladeschluss
-    private Object handlingEnd;
+    private String handlingEnd;
 
     // TODO
-    private Object waggongTechnicalInspection;
+    private String waggongTechnicalInspection;
 }

@@ -1,121 +1,120 @@
 package api.transport;
 
+import api.loadingUnit.Direction;
+
+import api.vehicle.Vessel;
+
+import java.util.Date;
+import java.util.List;
+
+
+/**
+ * Contains all data of an order.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class Order {
 
-    // TODO - type:
-    private Object reference;
+    private String reference;
 
-    // TODO - type: siehe Daten zu @Operator
-    private Operator clientMd;
+    private Operator client;
 
-    // TODO - type: siehe Daten zu @Operator
     private Operator billRecipient;
 
-    // TODO
-    private Object luOrderPd;
+    private api.loadingUnit.Order luOrder;
 
-    // TODO
-    private Object transportDirection;
+    private Direction transportDirection;
 
-    // TODO
-    private Object transportPickUpLocationCity;
+    private String transportPickUpLocationCity;
 
-    // TODO
-    private Object transportPickUpLocationDesignation;
+    private String transportPickUpLocationDesignation;
 
-    // TODO
-    private Object transportPickUpLocationType;
+    private String transportPickUpLocationType;
 
-    // TODO
     private boolean transportPickUpLuEmpty;
 
-    // TODO - type:
-    private Object transportPickUpUnitReference;
+    private String transportPickUpUnitReference;
 
-    // TODO
-    private Object transportPickUpBillingReference;
+    private String transportPickUpBillingReference;
 
-    // TODO - type: siehe Daten zu @Operator
-    private Operator transportPickUpUnitOperatorMd;
+    private Operator transportPickUpUnitOperator;
 
-    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
-    private Object transportPickUpEarliest;
+    /**
+     * DateTime ISO 8601 incl. UTC.
+     */
+    private Date transportPickUpEarliest;
 
-    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
-    private Object transportPickUpLatest;
+    /**
+     * DateTime ISO 8601 incl. UTC.
+     */
+    private Date transportPickUpLatest;
 
-    // TODO - type: Means of Transport
-    private Object transportPickUpMot;
+    // TODO : type?
+    private String transportPickUpMot;
 
-    // TODO - type: Loading Place, Sea-Terminal, Hinterland-Terminal
-    private Object transportDropOffLocationCity;
+    private String transportDropOffLocationCity;
 
-    // TODO - type: {1}
-    private Object transportDropOffLocationDesignation;
+    private String transportDropOffLocationDesignation;
 
-    // TODO
-    private Object transportDropOffLocationType;
+    private String transportDropOffLocationType;
 
-    // TODO - type: Ja / nein
-    private Object transportDropOffUnitEmpty;
+    private boolean transportDropOffUnitEmpty;
 
-    // TODO - type:
-    private Object transportDropOffUnitReference;
+    private String transportDropOffUnitReference;
 
-    // TODO - type:
-    private Object transportDropOffBillingReference;
+    private String transportDropOffBillingReference;
 
-    // TODO - type: siehe Daten zu @Operator
-    private Operator transportDropOffUnitOperatorMd;
+    private Operator transportDropOffUnitOperator;
 
-    // TODO - type: ug+
-    private Object transportDropOffEarliest;
+    /**
+     * DateTime ISO 8601 incl. UTC.
+     */
+    private Date transportDropOffEarliest;
 
-    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z) Ggf.synonym zu „Closing“
-    private Object transportDropOffLatest;
+    /**
+     * DateTime ISO 8601 incl. UTC.
+     */
+    private Date transportDropOffLatest;
 
-    // TODO - type: Means of Transport
-    private Object transportDropOffMot;
+    // TODO : type?
+    private String transportDropOffMot;
 
-    // TODO - type: {1-n} (auch Multistops etc.)
-    private Object transportStopLocation;
+    private List<String> transportStopLocation;
 
-    // TODO - type: {1-n} (auch Multistops etc.)
-    private Object transportStopLocationCity;
+    private List<String> transportStopLocationCity;
 
-    // TODO - type: {1-n} (auch Multistops etc.)
-    private Object transportStopLocationDesignation;
+    private List<String> transportStopLocationDesignation;
 
-    // TODO - type: Loading Place, Sea-Terminal, Hinterland-Terminal, Zollstop, Verwiegung etc.
-    private Object transportStopLocationType;
+    private String transportStopLocationType;
 
-    // TODO - type:
-    private Object transportStopSequence;
+    // TODO - type: ?
+    private String transportStopSequence;
 
-    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
-    private Object transportStopEarliest;
+    /**
+     * DateTime ISO 8601 incl. UTC.
+     */
+    private Date transportStopEarliest;
 
-    // TODO - type: DateTime ISO 8601 inkl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX. Beispiel:2017-06-13T13:00:00.000Z)
-    private Object transportStopLatest;
+    /**
+     * DateTime ISO 8601 incl. UTC.
+     */
+    private Date transportStopLatest;
 
-    // TODO - type:
-    private Object transportStopReference;
+    private String transportStopReference;
 
     // TODO - type: Means of Transport
-    private Object transportStopMot;
+    private String transportStopMot;
 
-    // TODO - type:
-    private Object destinationVessel;
+    private Vessel destinationVessel;
 
-    // TODO - type:
-    private Object destinationSeaportName;
+    private String destinationSeaportName;
 
-    // TODO - type:
-    private Object destinationLocationDesignation;
+    private String destinationLocationDesignation;
 
-    // TODO - type:
-    private Object destinationCountryCode;
+    /**
+     * 2 characters (UN/LOCODE).
+     */
+    private String destinationCountryCode;
 
-    // TODO - type:
-    private Object destinationLocationCity;
+    private String destinationLocationCity;
 }

@@ -1,9 +1,16 @@
 package api.transport;
 
+/**
+ * Information about dangerous goods.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
 public class DangerousGoods {
 
-    // TODO - type: vier Ziffern
-    private Object unNumber;
+    /**
+     * 4 characters.
+     */
+    private String unNumber;
 
     private String material;
 
@@ -13,14 +20,12 @@ public class DangerousGoods {
 
     private int packages;
 
-    // TODO - type:
-    private Object totalQuantity;
+    // TODO - type: double/int?
+    private double totalQuantity;
 
-    // TODO - type: B, B1000C, B/D, B/E, C, C50000D, C/D, C/E, D, D/E, E, -
-    private Object tunnelRestrictionCode;
+    private TunnelRestrictionCode tunnelRestrictionCode;
 
-    // TODO - type:
-    private Object mandatoryRouting;
+    private String mandatoryRouting;
 
     private boolean limitedQuantity;
 
