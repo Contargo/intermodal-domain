@@ -1,7 +1,7 @@
 package api.processData;
 
 /**
- * Direction of an {@Link api.processData.loadingUnit.Order} of a loading Unit.
+ * Direction of an {@link api.processData.loadingUnit.Order} or {@link api.processData.Order}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */

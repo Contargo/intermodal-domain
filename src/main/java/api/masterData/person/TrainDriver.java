@@ -4,11 +4,12 @@ import java.util.Date;
 
 
 /**
+ * <p>In german Lokführer</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class TrainDriver extends Person {
 
-    // TODO DateTime ISO 8601 inkl. UTC
     /**
      * DateTime ISO 8601 incl. UTC.
      */

@@ -23,11 +23,9 @@ public class Vehicle {
 
     private Driver driver;
 
-    // TODO - type: (vgl. §7 c GüKG) („Sofa“)
-    private Object haulierClient;
+    private String haulierClient;
 
-    // TODO - type: (vgl. §7 c GüKG) („Sub“)
-    private Object haulierRealizing;
+    private String haulierRealizing;
 
     /**
      * format: ISO 8601 incl. UTC

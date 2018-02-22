@@ -9,8 +9,7 @@ package api.masterData.loadingUnit;
  */
 public class Trailer extends LoadingUnit {
 
-    // TODO - type: XL, …
-    private Object type;
+    private String type;
 
     /**
      * in meters.

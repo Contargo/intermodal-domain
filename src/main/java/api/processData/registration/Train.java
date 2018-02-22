@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 /**
- * Contains information necessary for the registration of a train.
+ * Contains information necessary for the registration of a Train.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
@@ -46,6 +46,5 @@ public class Train {
 
     private int volumeToLoad;
 
-    // TODO - type: A, B, C etc. (Beladungsplanung)?
     private String trainPaths;
 }

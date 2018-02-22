@@ -1,6 +1,8 @@
 package api.masterData;
 
 /**
+ * <p>In german Adresse</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Address {

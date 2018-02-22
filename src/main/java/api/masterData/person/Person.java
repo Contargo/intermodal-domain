@@ -18,7 +18,9 @@ public abstract class Person {
 
     private String cellphone;
 
-    // TODO - type: yyyy-mm-dd
+    /**
+     * format: yyyy-mm-dd
+     */
     private Date dateOfBirth;
 
     private String locationCity;

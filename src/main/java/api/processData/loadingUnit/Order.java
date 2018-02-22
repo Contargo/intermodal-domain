@@ -10,6 +10,8 @@ import api.masterData.loadingUnit.LoadingUnit;
 
 import api.processData.Direction;
 
+import java.util.List;
+
 
 /**
  * Describes the process data of an order for a {@link LoadingUnit}.
@@ -20,8 +22,7 @@ import api.processData.Direction;
  */
 public class Order {
 
-    // TODO - type: ?
-    private Object reference;
+    private String reference;
 
     private LoadingUnit loadingUnit;
 
@@ -40,10 +41,8 @@ public class Order {
      */
     private double weightTara;
 
-    // TODO - type: ja / nein --> ja details @DangerousGoods
     private DangerousGoods dangerousGoodsIndication;
 
-    // TODO - type: ja / nein --> ja details @Waste
     private Waste wasteIndication;
 
     /**
@@ -57,21 +56,15 @@ public class Order {
 
     private Direction direction;
 
-    // TODO - type: ja / nein --> ja details @Customs
     private Customs customs;
 
-    // TODO - type: ?
-    private Object goods;
+    private String goods;
 
-    // TODO- type: ?
     private boolean empty;
 
-    // TODO - type: {1-n}?
-    private Object seal;
+    private List<String> seal;
 
-    // TODO - type: ?
-    private Object sealType;
+    private String sealType;
 
-    // TODO - type: ?
-    private Object sealNumber;
+    private String sealNumber;
 }

@@ -9,10 +9,8 @@ package api.masterData.loadingUnit;
  */
 public abstract class LoadingUnit {
 
-    // TODO - type: BIC;ILU;SOC;Sonstiges
     private String identification;
 
-    // TODO - type: BIC, ILU - vier Buchstaben sieben arabische Ziffern
     private String number;
 
     private LoadingUnitCategory category;
@@ -32,7 +30,6 @@ public abstract class LoadingUnit {
      */
     private double weightTara;
 
-    // TODO - type: i.O., schadhaft,…
     private String condition;
 
     private boolean reefer;

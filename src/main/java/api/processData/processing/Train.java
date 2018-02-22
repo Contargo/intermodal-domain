@@ -7,7 +7,7 @@ import java.util.List;
 
 
 /**
- * Contains information necessary for loading and discharging of trains like properties of the train, timetables,
+ * Contains information necessary for loading and discharging of a train like properties of the train, timetables,
  * information about its load etc.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
@@ -17,16 +17,15 @@ public class Train {
     private String trainTitel;
 
     // TODO - type: type for waggon?
-    private List<Object> loadingListWaggon;
+    private List<String> loadingListWaggon;
 
     private String loadingListWaggonType;
 
     private String loadingListWaggonId;
 
     // TODO - type: Sequenz Fahrtrichtung?
-    private Object loadingListWaggonRanking;
+    private String loadingListWaggonRanking;
 
-    // TODO
     private Order loadingListWaggonLoadingPositionLuOrder;
 
     /**
@@ -46,6 +45,5 @@ public class Train {
 
     private String shunter;
 
-    // TODO - type: ?
     private String trainPaths;
 }

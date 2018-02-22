@@ -11,6 +11,8 @@ import java.util.List;
 /**
  * Contains all data of an order.
  *
+ * <p>In german Auftrag</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Order {
@@ -102,7 +104,7 @@ public class Order {
 
     private String transportStopReference;
 
-    // TODO - type: Means of Transport
+    // TODO - type: type?
     private String transportStopMot;
 
     private Vessel destinationVessel;

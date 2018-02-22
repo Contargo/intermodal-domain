@@ -1,10 +1,9 @@
 package api.masterData.goods;
 
-import api.processData.TunnelRestrictionCode;
-
-
 /**
  * Information about dangerous goods.
+ *
+ * <p>In german Gefahrgut</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
@@ -23,7 +22,7 @@ public class DangerousGoods {
 
     private int packages;
 
-    // TODO - type: double/int?
+    // TODO - type: double/int? kg?
     private double totalQuantity;
 
     private TunnelRestrictionCode tunnelRestrictionCode;

@@ -3,6 +3,8 @@ package api.masterData.goods;
 /**
  * Master data for waste.
  *
+ * <p>In german Abfall</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Waste {

@@ -4,6 +4,8 @@ import api.masterData.Operator;
 
 
 /**
+ * <p>In german Seeschiff</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Vessel {

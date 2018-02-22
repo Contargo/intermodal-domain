@@ -4,6 +4,8 @@ import java.util.Date;
 
 
 /**
+ * <p>In german Fahrgestell</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Chassis {
@@ -15,7 +17,6 @@ public class Chassis {
      */
     private Date mot;
 
-    // TODO - type: Multichassis etc.
     private String type;
 
     private int axles;
@@ -33,7 +34,7 @@ public class Chassis {
     private boolean euAuthorization;
 
     // TODO - type: Sicherheitsprüfung ?
-    private Object st;
+    private boolean st;
 
     private boolean suitabilityDangerousGoods;
 

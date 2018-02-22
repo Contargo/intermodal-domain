@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 /**
- * Contains information necessary for the registration of a barge.
+ * Contains information necessary for the registration of a {@link api.masterData.vehicle.Barge}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
@@ -24,7 +24,6 @@ public class Barge {
      */
     private Date etd;
 
-    // TODO - ja; nein -> DangerousGoods
     private DangerousGoods dangerousGoodsIndication;
 
     private int volumeToDischarge;

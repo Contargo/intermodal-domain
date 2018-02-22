@@ -4,6 +4,8 @@ import java.util.Date;
 
 
 /**
+ * <p>In german Zugmaschine</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Truck {
@@ -27,7 +29,7 @@ public class Truck {
     private boolean euAuthorization;
 
     // TODO - type: Sicherheitsprüfung?
-    private Object st;
+    private boolean st;
 
     private boolean suitabilityDangerousGoods;
 
