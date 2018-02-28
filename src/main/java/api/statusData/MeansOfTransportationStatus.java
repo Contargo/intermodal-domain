@@ -22,5 +22,5 @@ public class MeansOfTransportationStatus {
     private String handlingEnd;
 
     // TODO
-    private String waggongTechnicalInspection;
+    private String waggonTechnicalInspection;
 }
