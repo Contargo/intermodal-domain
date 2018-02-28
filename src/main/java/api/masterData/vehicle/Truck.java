@@ -20,6 +20,7 @@ public class Truck {
     /**
      * DateTime ISO 8601 incl. UTC.
      */
+    // TODO - Ministry of Transport? Länderspezifisch?
     private Date mot;
 
     private EnvironmentBadge environmentBadge;

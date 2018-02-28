@@ -20,12 +20,12 @@ public class Barge {
     private api.masterData.vehicle.Barge barge;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
      */
     private Date eta;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Departure (Format: ISO 8601 incl. UTC)
      */
     private Date etd;
 
@@ -37,6 +37,11 @@ public class Barge {
 
     private ConeNumber cone;
 
+    /**
+     * ADNR (fr: Accord europèen relatif au transport international des marchandises dangereuses par voie de navigation
+     * intérieure sur le Rhin): european treaty for transport of dangerous goods on the Rhine. (Format: DateTime ISO
+     * 8601 incl.) UTC.
+     */
     private boolean adnr;
 
     private List<Order> loadingListLUOrder;

@@ -15,19 +15,23 @@ public class Chassis {
     /**
      * DateTime ISO 8601 incl. UTC.
      */
+    // TODO - Ministry of Transport? Länderspezifisch?
     private Date mot;
 
+    /**
+     * e.g. Multichassis
+     */
     private String type;
 
     private int axles;
 
     /**
-     * in meters.
+     * in meter.
      */
     private double size;
 
     /**
-     * in meters.
+     * in meter.
      */
     private double height;
 

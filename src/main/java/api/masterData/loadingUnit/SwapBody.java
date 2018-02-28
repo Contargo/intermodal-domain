@@ -13,7 +13,7 @@ public class SwapBody extends LoadingUnit {
     private String type;
 
     /**
-     * in feet.
+     * in foot.
      */
     private double size;
 

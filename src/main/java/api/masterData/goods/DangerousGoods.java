@@ -1,8 +1,6 @@
 package api.masterData.goods;
 
 /**
- * Information about dangerous goods.
- *
  * <p>In german Gefahrgut</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de

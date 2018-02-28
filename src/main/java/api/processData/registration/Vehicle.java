@@ -28,9 +28,9 @@ public class Vehicle {
     private String haulierRealizing;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Format: ISO 8601 incl. UTC
      */
     private Date deliveryTime;
 
-    private Order luOrderPd;
+    private Order luOrder;
 }

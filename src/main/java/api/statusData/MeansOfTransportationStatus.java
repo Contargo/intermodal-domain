@@ -13,16 +13,19 @@ import java.util.Date;
 public class MeansOfTransportationStatus {
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Actual Time of Departure (Format: ISO 8601 incl. UTC)
      */
     private Date atd;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
      */
     private Date eta;
 
-    private String ata;
+    /**
+     * Actual Time of Arrival (Format: ISO 8601 incl. UTC)
+     */
+    private Date ata;
 
     // TODO - type: Bereitstellung / Bearbeitungsstart Date?
     private String handlingStart;

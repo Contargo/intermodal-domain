@@ -13,7 +13,7 @@ public class Vessel {
     private String name;
 
     /**
-     * Maritime Mobile Service Identity.
+     * Maritime Mobile Service Identity (9 Characters).
      */
     private String mmsi;
 

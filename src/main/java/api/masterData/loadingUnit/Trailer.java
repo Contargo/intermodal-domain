@@ -12,7 +12,7 @@ public class Trailer extends LoadingUnit {
     private String type;
 
     /**
-     * in meters.
+     * in meter.
      */
     private double size;
 

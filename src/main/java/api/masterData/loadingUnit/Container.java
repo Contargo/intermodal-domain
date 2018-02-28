@@ -7,12 +7,16 @@ package api.masterData.loadingUnit;
  */
 public class Container extends LoadingUnit {
 
+    /**
+     * ISO 6346 Container Size Type e.g. 20G0 for GENERAL PURPOSE CONTAINERS
+     */
     private String sizeType;
 
+    // TODO - textuelle beschreibung zu size type?
     private String type;
 
     /**
-     * in feet.
+     * in foot.
      */
     private double size;
 }

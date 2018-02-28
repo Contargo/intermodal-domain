@@ -17,6 +17,9 @@ public class Operator {
 
     private String vatId;
 
+    /**
+     * Tax Identification Number.
+     */
     private String tin;
 
     private String insurance;

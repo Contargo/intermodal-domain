@@ -4,6 +4,8 @@ import java.util.Date;
 
 
 /**
+ * A {@link api.masterData.person.Person} driving a vehicle.
+ *
  * <p>In german Fahrer</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
@@ -20,7 +22,8 @@ public class Driver extends Person {
     private String id;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * ADR (fr: Accord européen relatif au transport international des marchandises dangereuses par route): european
+     * treaty for international transport of dangerous goods. (Format: DateTime ISO 8601 incl. UTC.)
      */
     private Date adr;
 

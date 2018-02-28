@@ -13,29 +13,29 @@ public class Barge {
     private String name;
 
     /**
-     * Maritime Mobile Service Identity.
+     * Maritime Mobile Service Identity (9 Characters).
      */
     private String mmsi;
 
     /**
-     * European Number of Identification.
+     * European Number of Identification e.g. 040-059 for Germany.
      */
     private String eni;
 
     private Operator operator;
 
     /**
-     * in meters.
+     * in meter.
      */
     private double length;
 
     /**
-     * in meters.
+     * in meter.
      */
     private double width;
 
     /**
-     * in meters.
+     * in meter.
      */
     private double draught;
 

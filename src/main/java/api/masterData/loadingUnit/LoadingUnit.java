@@ -32,6 +32,9 @@ public abstract class LoadingUnit {
 
     private String condition;
 
+    /**
+     * Is Loading Unit refrigerated?
+     */
     private boolean reefer;
 
     private String operator;

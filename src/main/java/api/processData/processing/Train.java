@@ -16,7 +16,6 @@ public class Train {
 
     private String trainTitel;
 
-    // TODO - type: type for waggon?
     private List<String> loadingListWaggon;
 
     private String loadingListWaggonType;
@@ -29,17 +28,17 @@ public class Train {
     private Order loadingListWaggonLoadingPositionLuOrder;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
      */
     private Date terminalEta;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Departure (Format: ISO 8601 incl. UTC)
      */
     private Date terminalEtd;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
      */
     private Date shuntingYardEta;
 

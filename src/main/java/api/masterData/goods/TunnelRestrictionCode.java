@@ -1,7 +1,7 @@
 package api.masterData.goods;
 
 /**
- * Tunnel restriction codes for dangerous goods.
+ * Tunnel restriction codes for {@link api.masterData.goods.DangerousGoods}.
  *
  * <p>In german Tunnelbeschränkungscode</p>
  *

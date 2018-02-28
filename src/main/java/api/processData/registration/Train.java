@@ -19,24 +19,24 @@ public class Train {
     private Operator operator;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
      */
     private Date terminalEta;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Departure (Format: ISO 8601 incl. UTC)
      */
     private Date terminalEtd;
 
     /**
-     * format: ISO 8601 incl. UTC
+     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
      */
     private Date shuntingYardEta;
 
     private String shunter;
 
     /**
-     * in meters.
+     * in meter.
      */
     private double totalLength;
 

@@ -89,7 +89,6 @@ public class Order {
 
     private String transportStopLocationType;
 
-    // TODO - type: ?
     private String transportStopSequence;
 
     /**

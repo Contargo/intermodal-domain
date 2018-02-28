@@ -1,7 +1,7 @@
 package api.statusData;
 
 /**
- * Describes the status of a {@link /src/main/java/api/loadingUnit/LoadingUnit.java} for communication between agents.
+ * Describes the status of a {@link api.masterData.loadingUnit.LoadingUnit} for communication between agents.
  *
  * <p>In german Ladeeinheitenstatus</p>
  *
@@ -44,5 +44,8 @@ public class StatusLU {
      */
     private boolean readyForUnloading;
 
+    /**
+     * LU in.
+     */
     private boolean unloaded;
 }

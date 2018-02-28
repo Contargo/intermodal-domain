@@ -14,7 +14,7 @@ import java.util.List;
 
 
 /**
- * Describes the process data of an order for a {@link LoadingUnit}.
+ * Describes the process data of an order for a {@link api.masterData.loadingUnit.LoadingUnit}.
  *
  * <p>In german Auftrag</p>
  *
@@ -46,7 +46,7 @@ public class Order {
     private Waste wasteIndication;
 
     /**
-     * For refrigerated containers in °C.
+     * For refrigerated containers (in °C).
      */
     private int setTemperature;
 

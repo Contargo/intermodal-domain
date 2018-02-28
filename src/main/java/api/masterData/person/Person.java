@@ -19,11 +19,14 @@ public abstract class Person {
     private String cellphone;
 
     /**
-     * format: yyyy-mm-dd
+     * format: ISO 8601 yyyy-mm-dd e.g. 1994-02-25
      */
     private Date dateOfBirth;
 
     private String locationCity;
 
+    /**
+     * 2 characters (UN/LOCODE).
+     */
     private String countryCode;
 }
