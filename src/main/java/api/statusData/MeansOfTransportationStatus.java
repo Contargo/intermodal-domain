@@ -1,5 +1,8 @@
 package api.statusData;
 
+import java.util.Date;
+
+
 /**
  * Status of mean of transport for communication between agents.
  *
@@ -9,9 +12,15 @@ package api.statusData;
  */
 public class MeansOfTransportationStatus {
 
-    private String atd;
+    /**
+     * format: ISO 8601 incl. UTC
+     */
+    private Date atd;
 
-    private String eta;
+    /**
+     * format: ISO 8601 incl. UTC
+     */
+    private Date eta;
 
     private String ata;
 
