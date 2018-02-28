@@ -29,17 +29,17 @@ public class Train {
     private Order loadingListWaggonLoadingPositionLuOrder;
 
     /**
-     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     * format: ISO 8601 incl. UTC
      */
     private Date terminalEta;
 
     /**
-     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     * format: ISO 8601 incl. UTC
      */
     private Date terminalEtd;
 
     /**
-     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     * format: ISO 8601 incl. UTC
      */
     private Date shuntingYardEta;
 

@@ -15,12 +15,12 @@ public class Barge {
     private api.masterData.vehicle.Barge barge;
 
     /**
-     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     * format: ISO 8601 incl. UTC
      */
     private Date eta;
 
     /**
-     * format: yyyy-MM-dd'T'HH:mm:ss.SSSX
+     * format: ISO 8601 incl. UTC
      */
     private Date etd;
 
