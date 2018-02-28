@@ -148,7 +148,7 @@ public class Parser {
         entries.forEach(entry -> {
             createClass(entry);
 
-            if (!entry.getSubEntris().isEmpty()) {
+            if (!entry.getSubEntries().isEmpty()) {
                 createSubClasses(entry);
             }
         });
@@ -185,7 +185,7 @@ public class Parser {
 
         String content;
 
-        if (entry.getSubEntris().isEmpty()) {
+        if (entry.getSubEntries().isEmpty()) {
             content = String.format("public class %s {\n\n", entry.getNameEnglish());
         } else {
             content = String.format("public abstract class %s {\n\n", entry.getNameEnglish());
@@ -201,7 +201,7 @@ public class Parser {
 
     private void createSubClasses(Entry entry) {
 
-        entry.getSubEntris().stream().forEach(se -> {
+        entry.getSubEntries().stream().forEach(se -> {
             File file = createFile(se.getNameEnglish(), entry.getDirectory());
 
             try {

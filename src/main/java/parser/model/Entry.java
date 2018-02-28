@@ -61,7 +61,7 @@ public class Entry {
     }
 
 
-    public List<Entry> getSubEntris() {
+    public List<Entry> getSubEntries() {
 
         return subEntries;
     }
