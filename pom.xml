@@ -15,8 +15,8 @@
     </properties>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/contargo/contargo-domain.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/contargo/contargo-domain.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/Contargo/contargo-domain.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Contargo/contargo-domain.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
