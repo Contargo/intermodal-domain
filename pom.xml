@@ -14,31 +14,30 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>        
     </properties>
 
+    <scm>
+        <connection>scm:git:ssh://git@github.com:Contargo/contargo-domain.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:Contargo/contargo-domain.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
     <repositories>
         <repository>
             <!-- Repository for all internal stuff -->
             <id>internal.nexus.contargo.de</id>
             <name>Internal Contargo</name>
-            <url>https://nexus-contargo.synyx.de/content/groups/internal</url>
+            <url>https://nexus.contargo.net/content/groups/internal</url>
         </repository>
     </repositories>
-
-    <scm>
-        <connection>scm:git:ssh://git@gitlab-contargo.synyx.de/lib/contargo-domain.git</connection>
-        <developerConnection>scm:git:ssh://git@gitlab-contargo.synyx.de/lib/contargo-domain.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-
     <distributionManagement>
         <repository>
             <id>releases.nexus.contargo.de</id>
             <name>synyx Contargo Nexus: Releases</name>
-            <url>https://nexus-contargo.synyx.de/content/repositories/releases</url>
+            <url>https://nexus.contargo.net/content/repositories/releases</url>
         </repository>
         <snapshotRepository>
             <id>snapshots.nexus.contargo.de</id>
             <name>synyx Contargo Nexus: Snapshots</name>
-            <url>https://nexus-contargo.synyx.de/content/repositories/snapshots</url>
+            <url>https://nexus.contargo.net/content/repositories/snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
