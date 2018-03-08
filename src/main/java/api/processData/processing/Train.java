@@ -22,8 +22,7 @@ public class Train {
 
     private String loadingListWaggonId;
 
-    // TODO - type: Sequenz Fahrtrichtung?
-    private String loadingListWaggonRanking;
+    private int loadingListWaggonRanking;
 
     private Order loadingListWaggonLoadingPositionLuOrder;
 

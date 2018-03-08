@@ -27,12 +27,15 @@ public class MeansOfTransportationStatus {
      */
     private Date ata;
 
-    // TODO - type: Bereitstellung / Bearbeitungsstart Date?
-    private String handlingStart;
+    /**
+     * Actual Time of Arrival (Format: ISO 8601 incl. UTC)
+     */
+    private Date handlingStart;
 
-    // TODO - type: Ladeschluss Date?
-    private String handlingEnd;
+    /**
+     * Actual Time of Arrival (Format: ISO 8601 incl. UTC)
+     */
+    private Date handlingEnd;
 
-    // TODO
-    private String waggonTechnicalInspection;
+    private int waggonTechnicalInspection;
 }
