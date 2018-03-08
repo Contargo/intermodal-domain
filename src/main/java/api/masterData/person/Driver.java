@@ -13,7 +13,7 @@ import java.util.Date;
 public class Driver extends Person {
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date licenseValidity;
 
@@ -23,12 +23,13 @@ public class Driver extends Person {
 
     /**
      * ADR (fr: Accord européen relatif au transport international des marchandises dangereuses par route): european
-     * treaty for international transport of dangerous goods. (Format: DateTime ISO 8601 incl. UTC.)
+     * treaty for international transport of dangerous goods. (Format: DateTime ISO 8601 incl. UTC
+     * (yyyy-MM-dd'T'HH:mm:ss.SSSX).)
      */
     private Date adr;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date moduleEntry95;
 }

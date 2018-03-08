@@ -43,12 +43,12 @@ public class Order {
     private Operator transportPickUpUnitOperator;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportPickUpEarliest;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportPickUpLatest;
 
@@ -69,12 +69,12 @@ public class Order {
     private Operator transportDropOffUnitOperator;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportDropOffEarliest;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportDropOffLatest;
 
