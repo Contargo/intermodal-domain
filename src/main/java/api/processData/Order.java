@@ -34,13 +34,13 @@ public class Order {
 
     private String transportPickUpLocationType;
 
-    private boolean transportPickUpLuEmpty;
+    private boolean transportPickUpLUEmpty;
 
-    private String transportPickUpUnitReference;
+    private String transportPickUpLUReference;
 
     private String transportPickUpBillingReference;
 
-    private Operator transportPickUpUnitOperator;
+    private Operator transportPickUpLUOperator;
 
     /**
      * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
