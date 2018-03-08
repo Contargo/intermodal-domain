@@ -1,4 +1,4 @@
-package api.masterData.vehicle;
+package api.masterData.meansOfTransport;
 
 import api.masterData.Operator;
 
@@ -8,7 +8,7 @@ import api.masterData.Operator;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Barge {
+public class Barge extends MeansOfTransport {
 
     private String name;
 

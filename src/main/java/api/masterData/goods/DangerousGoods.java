@@ -20,11 +20,11 @@ public class DangerousGoods {
 
     private int packages;
 
-    // TODO - type: double/int? kg?
-    private double totalQuantity;
+    private int totalQuantity;
 
     private TunnelRestrictionCode tunnelRestrictionCode;
 
+    // TODO
     private String mandatoryRouting;
 
     private boolean limitedQuantity;

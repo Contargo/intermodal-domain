@@ -1,4 +1,4 @@
-package api.masterData.vehicle;
+package api.masterData.meansOfTransport;
 
 /**
  * Badge which indicates the particulate matter emission of a motor vehicle. Depending on this badge the vehicle might

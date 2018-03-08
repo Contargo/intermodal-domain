@@ -1,4 +1,4 @@
-package api.masterData.vehicle;
+package api.masterData.meansOfTransport;
 
 import java.util.Date;
 
@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Truck {
+public class Truck extends MeansOfTransport {
 
     private String numberPlate;
 
@@ -18,9 +18,10 @@ public class Truck {
     private String countryCode;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * Ministry of Transport test. (In german Hauptuntersuchung (TÜV))
+     *
+     * <p>Format: DateTime ISO 8601 incl. UTC.</p>
      */
-    // TODO - Ministry of Transport? Länderspezifisch?
     private Date mot;
 
     private EnvironmentBadge environmentBadge;
@@ -29,7 +30,9 @@ public class Truck {
 
     private boolean euAuthorization;
 
-    // TODO - type: Sicherheitsprüfung?
+    /**
+     * Security test.
+     */
     private boolean st;
 
     private boolean suitabilityDangerousGoods;

@@ -2,7 +2,8 @@ package api.processData;
 
 import api.masterData.Operator;
 
-import api.masterData.vehicle.Vessel;
+import api.masterData.meansOfTransport.MeansOfTransport;
+import api.masterData.meansOfTransport.Vessel;
 
 import java.util.Date;
 import java.util.List;
@@ -51,8 +52,7 @@ public class Order {
      */
     private Date transportPickUpLatest;
 
-    // TODO : type?
-    private String transportPickUpMot;
+    private MeansOfTransport transportPickUpMot;
 
     private String transportDropOffLocationCity;
 
@@ -78,8 +78,7 @@ public class Order {
      */
     private Date transportDropOffLatest;
 
-    // TODO : type?
-    private String transportDropOffMot;
+    private MeansOfTransport transportDropOffMot;
 
     private List<String> transportStopLocation;
 
@@ -92,19 +91,18 @@ public class Order {
     private String transportStopSequence;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * Format: ISO 8601 incl. UTC.
      */
     private Date transportStopEarliest;
 
     /**
-     * DateTime ISO 8601 incl. UTC.
+     * Format: ISO 8601 incl. UTC.
      */
     private Date transportStopLatest;
 
     private String transportStopReference;
 
-    // TODO - type: type?
-    private String transportStopMot;
+    private MeansOfTransport transportStopMot;
 
     private Vessel destinationVessel;
 
