@@ -7,10 +7,10 @@
     <packaging>jar</packaging>
 
     <name>Contargo Business Domain</name>
-    
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>        
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <scm>
@@ -19,29 +19,9 @@
         <tag>v0.2.0</tag>
     </scm>
 
-    <repositories>
-        <repository>
-            <!-- Repository for all internal stuff -->
-            <id>internal.nexus.contargo.de</id>
-            <name>Internal Contargo</name>
-            <url>https://nexus.contargo.net/content/groups/internal</url>
-        </repository>
-    </repositories>
-    <distributionManagement>
-        <repository>
-            <id>releases.nexus.contargo.de</id>
-            <name>synyx Contargo Nexus: Releases</name>
-            <url>https://nexus.contargo.net/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots.nexus.contargo.de</id>
-            <name>synyx Contargo Nexus: Snapshots</name>
-            <url>https://nexus.contargo.net/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <build>
         <plugins>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
