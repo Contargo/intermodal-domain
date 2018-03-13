@@ -6,5 +6,5 @@ package net.contargo.domain;
  *
  * @author  Olle Törnström - toernstroem@synyx.de
  */
-public class Company {
+public interface Company {
 }
