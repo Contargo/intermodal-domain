@@ -3,8 +3,6 @@ Contargo Business Domain
 
 [![Build Status](https://travis-ci.org/Contargo/contargo-domain.svg?branch=master)](https://travis-ci.org/Contargo/contargo-domain)
 
-**WIP: We're currently working on deploying to the Sonatype OSS repository. In the mean time, please consider building and deploying the project locally (`mvn install`).**
-
 This is a small project aimed at defining the Contargo and COLA business
 domain, in a structured way. The goal is to provide a business language
 (primarily to use for writing/speaking) in a format that is both
@@ -29,13 +27,15 @@ And more. It's up to you, so join in on the fun!
 ## Getting started
 
 Using the `contargo-domain` as a library in your project, means
-simply including it as a Maven dependency:
+simply including it as a Maven dependency. We recommend using
+[Jitpack](https://jitpack.io) to resolve the dependency:
 
 ```xml
 <dependency>
-  <groupId>net.contargo</groupId>
+  <!-- From Jitpack-repo -->
+  <groupId>com.github.Contargo</groupId>
   <artifactId>contargo-domain</artifactId>
-  <version>LATEST</version>
+  <version>${SOME-TAG}</version>
 </dependency>
 ```
 
