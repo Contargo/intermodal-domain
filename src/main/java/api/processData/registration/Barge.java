@@ -26,7 +26,13 @@ public class Barge {
 
     private DangerousGoods dangerousGoodsIndication;
 
+    /**
+     * Number of LUs.
+     */
     private int volumeToDischarge;
 
+    /**
+     * Number of LUs.
+     */
     private int volumeToLoad;
 }

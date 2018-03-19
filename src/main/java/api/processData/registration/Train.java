@@ -42,8 +42,14 @@ public class Train {
 
     private int waggonQuantity;
 
+    /**
+     * Number of LUs.
+     */
     private int volumeToDischarge;
 
+    /**
+     * Number of LUs.
+     */
     private int volumeToLoad;
 
     private String trainPaths;
