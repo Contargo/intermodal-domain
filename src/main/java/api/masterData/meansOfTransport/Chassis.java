@@ -39,7 +39,7 @@ public class Chassis extends MeansOfTransport {
     private boolean euAuthorization;
 
     /**
-     * Security test.
+     * Safety test (in german Sicherheitsprüfung).
      */
     private boolean st;
 

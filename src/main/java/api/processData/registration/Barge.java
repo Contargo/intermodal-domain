@@ -1,6 +1,6 @@
 package api.processData.registration;
 
-import api.masterData.goods.DangerousGoods;
+import api.masterData.DangerousGoods;
 
 import java.util.Date;
 
@@ -24,6 +24,9 @@ public class Barge {
      */
     private Date etd;
 
+    /**
+     * Value is optional and can be null.
+     */
     private DangerousGoods dangerousGoodsIndication;
 
     /**

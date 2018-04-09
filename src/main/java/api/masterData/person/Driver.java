@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 /**
- * A {@link api.masterData.person.Person} driving a vehicle.
+ * A {@link api.masterData.person.Person} driving a motor vehicle.
  *
  * <p>In german Fahrer</p>
  *
@@ -24,7 +24,9 @@ public class Driver extends Person {
     /**
      * ADR (fr: Accord européen relatif au transport international des marchandises dangereuses par route): european
      * treaty for international transport of dangerous goods. (Format: DateTime ISO 8601 incl. UTC
-     * (yyyy-MM-dd'T'HH:mm:ss.SSSX).)
+     * (yyyy-MM-dd'T'HH:mm:ss.SSSX).)*
+     *
+     * <p>Value is optional and can be null.</p>
      */
     private Date adr;
 

@@ -4,7 +4,7 @@ import java.util.Date;
 
 
 /**
- * Status of mean of transport for communication between agents.
+ * Status of means of transport for communication between agents.
  *
  * <p>In german Verkehrsmittelstatus</p>
  *

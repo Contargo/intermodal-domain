@@ -1,4 +1,4 @@
-package api.masterData.goods;
+package api.masterData;
 
 /**
  * <p>In german Abfall</p>
@@ -16,7 +16,7 @@ public class Waste {
     private String receiptNumber;
 
     /**
-     * in kg.
+     * in kg per position.
      */
     private double weightNetto;
 }

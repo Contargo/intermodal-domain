@@ -13,12 +13,12 @@ public class Vessel extends MeansOfTransport {
     private String name;
 
     /**
-     * Maritime Mobile Service Identity (9 Characters).
+     * Maritime Mobile Service Identity (9 digits).
      */
-    private String mmsi;
+    private int mmsi;
 
     /**
-     * International Maritime Organization.
+     * International Maritime Organization (IMO plus 7 digits).
      */
     private String imo;
 

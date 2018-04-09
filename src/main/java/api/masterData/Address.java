@@ -9,9 +9,9 @@ public class Address {
 
     private String street;
 
-    private String postalCode;
+    private String locationPostalCode;
 
-    private String city;
+    private String locationCity;
 
     private String countryName;
 

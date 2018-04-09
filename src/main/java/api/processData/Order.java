@@ -52,7 +52,7 @@ public class Order {
      */
     private Date transportPickUpLatest;
 
-    private MeansOfTransport transportPickUpMot;
+    private MeansOfTransport transportPickUpMoT;
 
     private String transportDropOffLocationCity;
 
@@ -101,6 +101,8 @@ public class Order {
     private Date transportStopLatest;
 
     private String transportStopReference;
+
+    private String transportStopBillingReference;
 
     private MeansOfTransport transportStopMot;
 

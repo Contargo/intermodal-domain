@@ -1,10 +1,9 @@
 package api.processData.loadingUnit;
 
 import api.masterData.Customs;
+import api.masterData.DangerousGoods;
 import api.masterData.Operator;
-
-import api.masterData.goods.DangerousGoods;
-import api.masterData.goods.Waste;
+import api.masterData.Waste;
 
 import api.masterData.loadingUnit.LoadingUnit;
 
@@ -41,6 +40,9 @@ public class Order {
      */
     private double weightTara;
 
+    /**
+     * Value is optional and can be null.
+     */
     private DangerousGoods dangerousGoodsIndication;
 
     private Waste wasteIndication;
@@ -56,6 +58,9 @@ public class Order {
 
     private Direction direction;
 
+    /**
+     * Value is optional and can be null.
+     */
     private Customs customs;
 
     private String goods;

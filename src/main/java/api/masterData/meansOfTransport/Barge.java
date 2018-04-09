@@ -13,9 +13,9 @@ public class Barge extends MeansOfTransport {
     private String name;
 
     /**
-     * Maritime Mobile Service Identity (9 Characters).
+     * Maritime Mobile Service Identity (9 digits).
      */
-    private String mmsi;
+    private int mmsi;
 
     /**
      * European Number of Identification e.g. 040-059 for Germany.
@@ -47,6 +47,9 @@ public class Barge extends MeansOfTransport {
 
     private boolean suitabilityDangerousGoods;
 
+    /**
+     * in TEU.
+     */
     private double capacityTeu;
 
     /**

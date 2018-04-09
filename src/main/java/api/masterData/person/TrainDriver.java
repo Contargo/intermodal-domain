@@ -15,7 +15,9 @@ public class TrainDriver extends Person {
     /**
      * RID (fr: Règlement concernant le transport international ferroviaire de marchandises dangereuses): treaty for
      * regulation of international transport of dangerous goods in rail transport. (Format: DateTime ISO 8601 incl.
-     * UTC.)
+     * UTC.)*
+     *
+     * <p>Value is optional and can be null.</p>
      */
     private Date rid;
 }

@@ -1,4 +1,4 @@
-package api.masterData.goods;
+package api.masterData;
 
 /**
  * <p>In german Gefahrgut</p>
@@ -8,7 +8,7 @@ package api.masterData.goods;
 public class DangerousGoods {
 
     /**
-     * 4 characters.
+     * 4 digits.
      */
     private String unNumber;
 
