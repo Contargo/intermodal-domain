@@ -3,7 +3,9 @@ package api.masterData;
 /**
  * Tunnel restriction codes for {@link DangerousGoods}.
  *
- * <p>In german Tunnelbeschränkungscode</p>
+ * <p>DIGIT_name: Tunnelbeschränkungscode</p>
+ *
+ * <p>DIGIT_english: tunnel restriction code</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */

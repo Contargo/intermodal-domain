@@ -6,6 +6,10 @@ import java.util.Date;
 
 
 /**
+ * <p>DIGIT_name: Person</p>
+ *
+ * <p>DIGIT_english: person</p>
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public abstract class Person {
@@ -23,6 +27,9 @@ public abstract class Person {
      */
     private Date dateOfBirth;
 
+    /**
+     * City of birth.
+     */
     private String locationCity;
 
     /**

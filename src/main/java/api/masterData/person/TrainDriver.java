@@ -6,7 +6,9 @@ import java.util.Date;
 /**
  * A {@link api.masterData.person.Person} driving a train.
  *
- * <p>In german Lokführer</p>
+ * <p>DIGIT_name: Lokführer</p>
+ *
+ * <p>DIGIT_english: train driver</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */

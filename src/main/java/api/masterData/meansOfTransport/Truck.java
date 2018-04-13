@@ -4,12 +4,25 @@ import java.util.Date;
 
 
 /**
- * <p>In german Zugmaschine</p>
+ * Commercial vehicle which is mostly or exclusively used for carrying trailed vehicles.
+ *
+ * <p>DIGIT_name: Zugmaschine</p>
+ *
+ * <p>DIGIT_english: truck</p>
+ *
+ * <p>DIGIT_definition: Nutzkraftwagen, der ausschließlich oder überwiegend zum Mitführen von Anhängerfahrzeugen
+ * bestimmt ist. (@see DIN 70010:2001-04, 1.2.2.3)</p>
+ *
+ * <p>DIGIT_definition_english: Commercial vehicle which is mostly or exclusively used for carrying trailed vehicles.
+ * (@see DIN 70010:2001-04, 1.2.2.3)</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Truck extends MeansOfTransport {
 
+    /**
+     * Format: spaces included.
+     */
     private String numberPlate;
 
     /**

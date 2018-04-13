@@ -4,12 +4,23 @@ import java.util.Date;
 
 
 /**
- * <p>In german Fahrgestell</p>
+ * Trailer to transport loading units.
+ *
+ * <p>DIGIT_name: Fahrgestell</p>
+ *
+ * <p>DIGIT_english: chassis</p>
+ *
+ * <p>DIGIT_definition: Anhänger zur Beförderung von Ladeeinheiten.</p>
+ *
+ * <p>DIGIT_definition_english: Trailer to transport loading units.</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Chassis extends MeansOfTransport {
 
+    /**
+     * Format: spaces included.
+     */
     private String numberPlate;
 
     /**
@@ -20,7 +31,7 @@ public class Chassis extends MeansOfTransport {
     private Date mot;
 
     /**
-     * e.g. Multichassis
+     * e.g. Multichassis.
      */
     private String type;
 

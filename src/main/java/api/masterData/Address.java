@@ -1,7 +1,9 @@
 package api.masterData;
 
 /**
- * <p>In german Adresse</p>
+ * <p>DIGIT_name: Adresse</p>
+ *
+ * <p>DIGIT_english: address</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
