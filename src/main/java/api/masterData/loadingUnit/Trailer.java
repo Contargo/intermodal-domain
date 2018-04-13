@@ -1,7 +1,7 @@
 package api.masterData.loadingUnit;
 
 /**
- * Trailer vehicle which has no front axle, so a substantial part of its total weight is transferred to a tractor unit.
+ * Trailer vehicle which has no front axle so a substantial part of its total weight is transferred to a tractor unit.
  *
  * <p>DIGIT_name: Sattelanhänger</p>
  *
@@ -14,7 +14,7 @@ package api.masterData.loadingUnit;
  * übertragen wird. (@see DIN 70010:2001, 2.3 — modifiziert, „(siehe 1.2.2.3.2) (auch Deichselachse (Dolly))“
  * gestrichen, Anmerkung 1 hinzugefügt)</p>
  *
- * <p>DIGIT_definition_english: Trailer vehicle which has no front axle, so a substantial part of its total weight is
+ * <p>DIGIT_definition_english: Trailer vehicle which has no front axle so a substantial part of its total weight is
  * transferred to a tractor unit.</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de

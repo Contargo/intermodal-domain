@@ -1,9 +1,12 @@
-package api.processData;
-
-import api.masterData.Operator;
+package api.processData.order;
 
 import api.masterData.meansOfTransport.MeansOfTransport;
-import api.masterData.meansOfTransport.Vessel;
+
+import api.masterData.operator.Operator;
+
+import api.masterData.vessel.Vessel;
+
+import api.processData.loadingUnit.Direction;
 
 import java.util.Date;
 import java.util.List;

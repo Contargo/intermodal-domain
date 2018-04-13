@@ -1,4 +1,4 @@
-package api.masterData;
+package api.masterData.dangerousGoods;
 
 /**
  * Substances or objects that are dangerous in context of public safety and order because of their nature, properties

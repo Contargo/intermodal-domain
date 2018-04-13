@@ -1,6 +1,8 @@
-package api.masterData.meansOfTransport;
+package api.masterData.vessel;
 
-import api.masterData.Operator;
+import api.masterData.meansOfTransport.MeansOfTransport;
+
+import api.masterData.operator.Operator;
 
 
 /**

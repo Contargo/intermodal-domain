@@ -1,4 +1,6 @@
-package api.masterData.meansOfTransport;
+package api.masterData.chassis;
+
+import api.masterData.meansOfTransport.MeansOfTransport;
 
 import java.util.Date;
 
@@ -24,7 +26,7 @@ public class Chassis extends MeansOfTransport {
     private String numberPlate;
 
     /**
-     * Ministry of Transport test. (In german Hauptuntersuchung (TÜV))
+     * Ministry of Transport test (In german Hauptuntersuchung/TÜV).
      *
      * <p>Format: DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).</p>
      */

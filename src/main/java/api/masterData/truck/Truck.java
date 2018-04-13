@@ -1,4 +1,7 @@
-package api.masterData.meansOfTransport;
+package api.masterData.truck;
+
+import api.masterData.meansOfTransport.EnvironmentBadge;
+import api.masterData.meansOfTransport.MeansOfTransport;
 
 import java.util.Date;
 

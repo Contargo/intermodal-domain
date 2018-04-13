@@ -1,9 +1,10 @@
 package api.processData.registration;
 
-import api.masterData.meansOfTransport.Chassis;
-import api.masterData.meansOfTransport.Truck;
+import api.masterData.chassis.Chassis;
 
 import api.masterData.person.Driver;
+
+import api.masterData.truck.Truck;
 
 import api.processData.loadingUnit.Order;
 

@@ -1,4 +1,7 @@
-package api.masterData;
+package api.masterData.operator;
+
+import api.masterData.address.Address;
+
 
 /**
  * Unit for organization of multiple actors in trimodal transport.

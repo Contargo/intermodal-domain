@@ -1,4 +1,4 @@
-package api.masterData;
+package api.masterData.waste;
 
 /**
  * Substances or objects that their owner disposes of, wants to dispose of or has to dispose of.

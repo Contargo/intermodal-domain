@@ -1,18 +1,18 @@
 package api.processData.registration;
 
-import api.masterData.DangerousGoods;
+import api.masterData.dangerousGoods.DangerousGoods;
 
 import java.util.Date;
 
 
 /**
- * Contains information necessary for the registration of a {@link api.masterData.meansOfTransport.Barge}.
+ * Contains information necessary for the registration of a {@link api.masterData.barge.Barge}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public class Barge {
 
-    private api.masterData.meansOfTransport.Barge barge;
+    private api.masterData.barge.Barge barge;
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)

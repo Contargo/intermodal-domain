@@ -1,6 +1,6 @@
 package api.processData.registration;
 
-import api.masterData.Operator;
+import api.masterData.operator.Operator;
 
 import java.util.Date;
 

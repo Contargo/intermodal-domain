@@ -1,6 +1,6 @@
 package api.masterData.person;
 
-import api.masterData.Address;
+import api.masterData.address.Address;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package api.masterData;
+package api.masterData.dangerousGoods;
 
 /**
  * Tunnel restriction codes for {@link DangerousGoods}.

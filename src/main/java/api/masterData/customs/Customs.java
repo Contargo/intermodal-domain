@@ -1,13 +1,7 @@
-package api.masterData;
+package api.masterData.customs;
 
 /**
  * Group of data necessary for customs proceedings.
- *
- * <p>DIGIT_name: Zolldaten</p>
- *
- * <p>DIGIT_english: customs</p>
- *
- * <p>/** Necessary data for customs.</p>
  *
  * <p>DIGIT_name: Zolldaten</p>
  *

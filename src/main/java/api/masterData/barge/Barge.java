@@ -1,6 +1,10 @@
-package api.masterData.meansOfTransport;
+package api.masterData.barge;
 
-import api.masterData.Operator;
+import api.masterData.meansOfTransport.MeansOfTransport;
+
+import api.masterData.operator.Operator;
+
+import api.masterData.vessel.Vessel;
 
 
 /**
@@ -14,15 +18,15 @@ import api.masterData.Operator;
  *
  * <p>DIGIT_definition_english: A ship build to drive on inland waters and inland waterways.</p>
  *
- * <p>DIGIT_annotation: Im Vergleich zum {@link api.masterData.meansOfTransport.Vessel Seeschiff} bestehen weniger
- * Anforderungen an Stabilität, Navigation und Rettungsgerät, wohingegen spezielle Konstruktionen für die
- * Brückendurchfahrt o. ä. notwendig sein können. Es gibt diverse Schiffstypen dieser Art, die für den Kombinierten
- * Verkehr relevant sind, z. B. Containerschiffe, Lastkähne, Leichter bzw. Schubverbände, Koppelverbände.</p>
+ * <p>DIGIT_annotation: Im Vergleich zum {@link Vessel Seeschiff} bestehen weniger Anforderungen an Stabilität,
+ * Navigation und Rettungsgerät, wohingegen spezielle Konstruktionen für die Brückendurchfahrt o. ä. notwendig sein
+ * können. Es gibt diverse Schiffstypen dieser Art, die für den Kombinierten Verkehr relevant sind, z. B.
+ * Containerschiffe, Lastkähne, Leichter bzw. Schubverbände, Koppelverbände.</p>
  *
- * <p>DIGIT_annotation_english: In comparison to a {@link api.masterData.meansOfTransport.Vessel} there are less
- * requirements in means of stability, navigation and rescue devices but special constructions for navigating under
- * bridges or or the like might be necessary. There are different types of barges that are relevant in combined traffic
- * e.g. container ships, lighter and tug barges.</p>
+ * <p>DIGIT_annotation_english: In comparison to a {@link Vessel} there are less requirements in means of stability,
+ * navigation and rescue devices but special constructions for navigating under bridges or or the like might be
+ * necessary. There are different types of barges that are relevant in combined traffic e.g. container ships, lighter
+ * and tug barges.</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */

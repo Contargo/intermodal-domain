@@ -1,4 +1,4 @@
-package api.masterData;
+package api.masterData.address;
 
 /**
  * <p>DIGIT_name: Adresse</p>

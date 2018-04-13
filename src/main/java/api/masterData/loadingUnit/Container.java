@@ -1,7 +1,7 @@
 package api.masterData.loadingUnit;
 
 /**
- * Case for the transport of goods for the change of another mean of transport.
+ * Case for the transport of goods for the change to another mean of transport.
  *
  * <p>DIGIT_name: Container</p>
  *
@@ -27,7 +27,7 @@ public class Container extends LoadingUnit {
     private String sizeType;
 
     /**
-     * Container types can be flat, open top, high cube, bulk, ISO, reefer- or tank containers.
+     * e.g. flat, open top, high cube, bulk, ISO, reefer- or tank containers.
      */
     private String type;
 

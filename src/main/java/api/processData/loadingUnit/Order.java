@@ -1,13 +1,14 @@
 package api.processData.loadingUnit;
 
-import api.masterData.Customs;
-import api.masterData.DangerousGoods;
-import api.masterData.Operator;
-import api.masterData.Waste;
+import api.masterData.customs.Customs;
+
+import api.masterData.dangerousGoods.DangerousGoods;
 
 import api.masterData.loadingUnit.LoadingUnit;
 
-import api.processData.Direction;
+import api.masterData.operator.Operator;
+
+import api.masterData.waste.Waste;
 
 import java.util.List;
 

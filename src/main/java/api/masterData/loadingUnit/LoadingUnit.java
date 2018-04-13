@@ -1,5 +1,8 @@
 package api.masterData.loadingUnit;
 
+import api.masterData.operator.Operator;
+
+
 /**
  * Physical transport unit which can include wares and goods.
  *
@@ -64,7 +67,7 @@ public abstract class LoadingUnit {
     private boolean reefer;
 
     /**
-     * Name of {@link api.masterData.Operator}.
+     * Name of {@link Operator}.
      */
     private String operator;
 }
