@@ -14,9 +14,26 @@ import java.util.List;
 
 
 /**
- * Describes the process data of an order for a {@link api.masterData.loadingUnit.LoadingUnit}.
+ * The description of the process data of an {@link api.processData.order.Order} for a
+ * {@link api.masterData.loadingUnit.LoadingUnit}.
  *
- * <p>In german Auftrag</p>
+ * <p>DIGIT_name: Ladeeinheit Auftrag</p>
+ *
+ * <p>DIGIT_english: loading unit order</p>
+ *
+ * <p>DIGIT_synonym: LE Auftrag</p>
+ *
+ * <p>DIGIT_synonym: lu order</p>
+ *
+ * <p>DIGIT_definition: Die Beschreibung der Prozessdaten zu einem {@link api.processData.order.Order Auftrag} für eine
+ * Ladeeinheit erfolgt in dieser Gruppe durch die Verknüpfung von Auftragsdaten mit Daten zur Ladeeinheit. Insbesondere
+ * Informationen zu Eigenheiten der Ladeeinheit inklusive dem transportierten Gut und zu Operateuren sowie
+ * Transportrichtung sind hier gesammelt.</p>
+ *
+ * <p>DIGIT_definition_english: The description of the process data of an {@link api.processData.order.Order} for a
+ * loading unit is made in this class with the connection between order data and loading unit data. Especially
+ * information about peculiarities of the loading unit including the transported goods and operators as well as the
+ * direction of transport are collected here.</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
@@ -46,6 +63,9 @@ public class Order {
      */
     private DangerousGoods dangerousGoodsIndication;
 
+    /**
+     * Value is optional and can be null.
+     */
     private Waste wasteIndication;
 
     /**

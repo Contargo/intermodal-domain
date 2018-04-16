@@ -10,8 +10,22 @@ import java.util.List;
 
 
 /**
- * Contains information necessary for loading and discharging of a {@link api.masterData.barge.Barge} like properties
- * of the barge, relevant persons and timetables as well as information about its load and necessary documents.
+ * Contains data the data necessary for processing of loading and discharging {@link api.masterData.barge.Barge barges}.
+ *
+ * <p>DIGIT_name: Abfertigung Binnenschiff</p>
+ *
+ * <p>DIGIT_english: processing barge</p>
+ *
+ * <p>DIGIT_definition: Nach erfolgreicher Anmeldung kommt es zur Abfertigung der Verkehrsmittel im Umschlagpunkt. In
+ * dieser Gruppe werden die Daten, die für die Abwicklung der Be- und Entladungsvorgänge am Binnenschiff notwendig
+ * sind, zusammengefasst. Die Prozesse werden durch die Verknüpfung von Eigenschaften des
+ * {@link api.masterData.barge.Barge Binnenschiffs}, relevanten {@link api.masterData.person.Person Personen},
+ * Fahrplänen sowie Beladungen und nötigen Dokumenteninformationen dargestellt.</p>
+ *
+ * <p>DIGIT_definition_english: After successful registration the means of transport is processed on the handling
+ * point. In this class the data necessary for processing of loading and discharging barges is summarized. The
+ * processes are described by connecting properties of the {@link api.masterData.barge.Barge}, relevant
+ * {@link api.masterData.person.Person Persons} and schedules as well as loads and necessary document information.</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
@@ -35,7 +49,7 @@ public class Barge {
 
     private int reeferConnections;
 
-    private ConeNumber cone;
+    private Cone cone;
 
     /**
      * ADNR (fr: Accord europèen relatif au transport international des marchandises dangereuses par voie de navigation
