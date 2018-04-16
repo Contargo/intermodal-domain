@@ -21,7 +21,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Truck extends MeansOfTransport {
+public class Truck implements MeansOfTransport {
 
     /**
      * Format: spaces included.

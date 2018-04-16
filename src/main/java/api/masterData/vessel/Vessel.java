@@ -24,7 +24,7 @@ import api.masterData.operator.Operator;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Vessel extends MeansOfTransport {
+public class Vessel implements MeansOfTransport {
 
     private String name;
 

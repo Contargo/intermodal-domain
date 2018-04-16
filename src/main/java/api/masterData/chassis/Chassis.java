@@ -18,7 +18,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Chassis extends MeansOfTransport {
+public class Chassis implements MeansOfTransport {
 
     /**
      * Format: spaces included.

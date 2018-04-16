@@ -30,7 +30,7 @@ import api.masterData.vessel.Vessel;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Barge extends MeansOfTransport {
+public class Barge implements MeansOfTransport {
 
     private String name;
 
