@@ -12,12 +12,12 @@ package api.masterData.customs;
 public class Customs {
 
     /**
-     * e.g. T1, EX, GW.
+     * e.g&#046; T1, EX, GW.
      */
     private String customProcess;
 
     /**
-     * e.g. MNR.
+     * e.g&#046; MNR.
      */
     private String customDocumentNumber;
 

@@ -24,7 +24,7 @@ import api.masterData.operator.Operator;
 public abstract class LoadingUnit {
 
     /**
-     * e.g. BIC, ILU, SOC.
+     * e.g&#046; BIC, ILU, SOC.
      */
     private String identification;
 

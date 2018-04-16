@@ -29,7 +29,7 @@ public class Chassis implements MeansOfTransport {
     private Date mot;
 
     /**
-     * e.g. Multichassis.
+     * e.g&#046; Multichassis.
      */
     private String type;
 
@@ -50,7 +50,7 @@ public class Chassis implements MeansOfTransport {
     /**
      * Safety test.
      *
-     * @DIGIT_name  Sicherheitsprüfung.
+     * @DIGIT_name  Sicherheitsprüfung
      */
     private boolean st;
 

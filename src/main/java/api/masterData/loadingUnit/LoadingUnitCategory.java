@@ -1,7 +1,7 @@
 package api.masterData.loadingUnit;
 
 /**
- * Type of a {@link api.masterData.loadingUnit.LoadingUnit}.*
+ * Type of a {@link api.masterData.loadingUnit.LoadingUnit}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Ladeeinheitart

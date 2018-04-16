@@ -20,7 +20,7 @@ public class Driver extends Person {
     private String licenseNumber;
 
     /**
-     * in german Fahrerkartennummer.
+     * @DIGIT_name  Fahrerkartennummer
      */
     private String id;
 

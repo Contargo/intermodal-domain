@@ -12,12 +12,13 @@ package api.masterData.loadingUnit;
  *                    Sattelzugmaschine übertragen wird. (@see DIN 70010:2001, 2.3 — modifiziert, „(siehe 1.2.2.3.2)
  *                    (auch Deichselachse (Dolly))“ gestrichen, Anmerkung 1 hinzugefügt)
  * @DIGIT_definition_english  Trailer vehicle which has no front axle so a substantial part of its total weight is
- *                            transferred to a tractor unit.
+ *                            transferred to a tractor unit. (@see DIN 70010:2001, 2.3 — modified, „(see 1.2.2.3.2)
+ *                            (auch Deichselachse (Dolly))“ gestrichen, Anmerkung 1 hinzugefügt)
  */
 public class Trailer extends LoadingUnit {
 
     /**
-     * e.g. XL, ...
+     * e.g&#046; XL, ...
      */
     private String type;
 
