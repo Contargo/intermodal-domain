@@ -27,41 +27,73 @@ public class StatusLU {
 
     /**
      * LU free and MoT present.
+     *
+     * <p>DIGIT_name: Verladebereit</p>
+     *
+     * <p>DIGIT_definition: Ladeeinheit ist bereit für den Umschlag/ die Kranung.</p>
      */
     private boolean readyForLoading;
 
     /**
-     * loaded on MoT.
+     * Loaded on MoT.
+     *
+     * <p>DIGIT_name: Verladen</p>
+     *
+     * <p>DIGIT_definition: Ladeeinheit ist umgeschlagen & befindet sich auf dem VM.</p>
      */
     private boolean loaded;
 
     /**
-     * ready for going out.
+     * Ready for going out.
+     *
+     * <p>DIGIT_name: Ausgangskontrolle</p>
+     *
+     * <p>DIGIT_definition: Ladeeinheit ist gesichtet und befindet sich auf dem VM.</p>
      */
     private boolean inspectionOut;
 
     /**
      * LU out confirmed.
+     *
+     * <p>DIGIT_name: Ausgegangen</p>
+     *
+     * <p>DIGIT_definition: Ladeeinheit ist verladen & hat Umschlagpunkt verlassen.</p>
      */
     private boolean out;
 
     /**
      * Ready for going in.
+     *
+     * <p>DIGIT_name: Eingangskontrolle</p>
+     *
+     * <p>DIGIT_definition: LE gesichtet, auf VM mit dem Umschlagpunkt erreicht wurde.</p>
      */
     private boolean inspectionIn;
 
     /**
      * LU in confirmed.
+     *
+     * <p>DIGIT_name: Eingegangen</p>
+     *
+     * <p>DIGIT_definition: Ladeeinheit ist auf VM im Umschlagbereich.</p>
      */
     private boolean in;
 
     /**
      * LU free and MoT present.
+     *
+     * <p>DIGIT_name: Entladebereit</p>
+     *
+     * <p>DIGIT_definition: LE auf VM und im Umschlagbereich bereit zum Entladen.</p>
      */
     private boolean readyForUnloading;
 
     /**
      * LU in.
+     *
+     * <p>DIGIT_name: Entladen</p>
+     *
+     * <p>DIGIT_definition: LE vom VM heruntergenommen, befindet sich im Umschlagpunkt.</p>
      */
     private boolean unloaded;
 }

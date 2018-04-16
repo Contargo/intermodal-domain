@@ -29,29 +29,66 @@ import java.util.Date;
 public class MeansOfTransportationStatus {
 
     /**
-     * Actual Time of Departure (Format: ISO 8601 incl. UTC)
+     * Actual Time of Departure (Format: ISO 8601 inclusive UTC).
+     *
+     * <p>DIGIT_name: Abfahrt</p>
+     *
+     * <p>DIGIT_definition: Tatsächliche Abfahrt des VM beim Verlassen des Umschlagpunktes.</p>
      */
     private Date atd;
 
     /**
-     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
+     * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC).
+     *
+     * <p>DIGIT_name: Avisiert</p>
+     *
+     * <p>DIGIT_definition: Geplante Ankunft des VM am Umschlagpunkt.</p>
      */
     private Date eta;
 
     /**
-     * Actual Time of Arrival (Format: ISO 8601 incl. UTC)
+     * Actual Time of Arrival (Format: ISO 8601 inclusive UTC).
+     *
+     * <p>DIGIT_name: Ankunft</p>
+     *
+     * <p>DIGIT_definition: Tatsächliche Ankunft des VM am Umschlagpunkt.</p>
      */
     private Date ata;
 
     /**
-     * Actual Time of Arrival (Format: ISO 8601 incl. UTC)
+     * MoT is ready for handling of the LU (Format: ISO 8601 inclusive UTC).
+     *
+     * <p>DIGIT_name: Bereitstellung</p>
+     *
+     * <p>DIGIT_synonym: Bearbeitungsstart</p>
+     *
+     * <p>DIGIT_abbreviation: BS</p>
+     *
+     * <p>DIGIT_definition: VM ist bereit für den Umschlag der LE („erste Kranung“).</p>
      */
     private Date handlingStart;
 
     /**
-     * Actual Time of Arrival (Format: ISO 8601 incl. UTC)
+     * MoT is loaded, end of loading process (Format: ISO 8601 inclusive UTC).
+     *
+     * <p>DIGIT_name: Bearbeitungsende</p>
+     *
+     * <p>DIGIT_synonym: Ladeschluss</p>
+     *
+     * <p>DIGIT_abbreviation: BE</p>
+     *
+     * <p>DIGIT_definition: VM beladen, Ende Verladung erreicht („letzte Kranung“).</p>
      */
     private Date handlingEnd;
 
+    /**
+     * Safety control of the loaded waggons.
+     *
+     * <p>DIGIT_name: Wagentechnische Untersuchung</p>
+     *
+     * <p>DIGIT_abbreviation: WTU</p>
+     *
+     * <p>DIGIT_definition: Kontrolle der Betriebssicherheit der Waggons mit Ladung.</p>
+     */
     private int waggonTechnicalInspection;
 }
