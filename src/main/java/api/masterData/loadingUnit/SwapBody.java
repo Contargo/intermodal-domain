@@ -15,8 +15,9 @@ package api.masterData.loadingUnit;
  * Straßenfahrzeugen optimiert wurde und mit Greifkanten für den Umschlag zwischen den Verkehrsmitteln, in der Regel
  * der Verkehrsträger Straße-Schiene, ausgestattet ist.</p>
  *
- * <p>Loading unit intended for the transport of goods, optimized with regard to the dimensions of road vehicles and
- * equipped with gripping edges for the transfer between means of transport, usually between road/rail transport.</p>
+ * <p>DIGIT_definition_english: Loading unit intended for the transport of goods, optimized with regard to the
+ * dimensions of road vehicles and equipped with gripping edges for the transfer between means of transport, usually
+ * between road and rail transport.</p>
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
