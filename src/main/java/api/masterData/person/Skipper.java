@@ -17,7 +17,7 @@ public class Skipper extends Person {
     /**
      * ADNR (fr: Accord européen relatif au transport international des marchandises dangereuses par voie de navigation
      * intérieure sur le Rhin): european treaty for transport of dangerous goods on the Rhine. (Format: DateTime ISO
-     * 8601 incl.) UTC.
+     * 8601 inclusive) UTC.
      *
      * <p>Value is optional and can be null.</p>
      */

@@ -26,9 +26,9 @@ public class Chassis implements MeansOfTransport {
     private String numberPlate;
 
     /**
-     * Ministry of Transport test (In german Hauptuntersuchung/TÜV).
+     * Ministry of Transport Test (Format: DateTime ISO 8601 inclusive UTC).
      *
-     * <p>Format: DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).</p>
+     * <p>DIGIT_name: Hauptuntersuchung</p>
      */
     private Date mot;
 

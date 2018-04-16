@@ -40,17 +40,17 @@ public class Train {
     private Order loadingListWaggonLoadingPositionLuOrder;
 
     /**
-     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
+     * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
     private Date terminalEta;
 
     /**
-     * Estimated Time of Departure (Format: ISO 8601 incl. UTC)
+     * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
     private Date terminalEtd;
 
     /**
-     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
+     * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
     private Date shuntingYardEta;
 

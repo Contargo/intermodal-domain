@@ -72,12 +72,12 @@ public class Order {
     private Operator transportPickUpLUOperator;
 
     /**
-     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportPickUpEarliest;
 
     /**
-     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportPickUpLatest;
 
@@ -98,12 +98,12 @@ public class Order {
     private Operator transportDropOffUnitOperator;
 
     /**
-     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportDropOffEarliest;
 
     /**
-     * DateTime ISO 8601 incl. UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     private Date transportDropOffLatest;
 
@@ -120,12 +120,12 @@ public class Order {
     private String transportStopSequence;
 
     /**
-     * Format: ISO 8601 incl. UTC.
+     * Format: ISO 8601 inclusive UTC.
      */
     private Date transportStopEarliest;
 
     /**
-     * Format: ISO 8601 incl. UTC.
+     * Format: ISO 8601 inclusive UTC.
      */
     private Date transportStopLatest;
 

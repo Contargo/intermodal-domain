@@ -39,7 +39,7 @@ public class StatusLU {
      *
      * <p>DIGIT_name: Verladen</p>
      *
-     * <p>DIGIT_definition: Ladeeinheit ist umgeschlagen & befindet sich auf dem VM.</p>
+     * <p>DIGIT_definition: Ladeeinheit ist umgeschlagen und befindet sich auf dem VM.</p>
      */
     private boolean loaded;
 
@@ -57,7 +57,7 @@ public class StatusLU {
      *
      * <p>DIGIT_name: Ausgegangen</p>
      *
-     * <p>DIGIT_definition: Ladeeinheit ist verladen & hat Umschlagpunkt verlassen.</p>
+     * <p>DIGIT_definition: Ladeeinheit ist verladen und hat Umschlagpunkt verlassen.</p>
      */
     private boolean out;
 

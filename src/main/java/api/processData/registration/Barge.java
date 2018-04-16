@@ -26,12 +26,12 @@ public class Barge {
     private api.masterData.barge.Barge barge;
 
     /**
-     * Estimated Time of Arrival (Format: ISO 8601 incl. UTC)
+     * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
     private Date eta;
 
     /**
-     * Estimated Time of Departure (Format: ISO 8601 incl. UTC)
+     * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
     private Date etd;
 

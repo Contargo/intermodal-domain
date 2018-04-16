@@ -42,7 +42,7 @@ public class Vehicle {
     private String haulierRealizing;
 
     /**
-     * Format: ISO 8601 incl. UTC
+     * Format: ISO 8601 inclusive UTC
      */
     private Date deliveryTime;
 
