@@ -6,16 +6,12 @@ import api.masterData.address.Address;
 /**
  * Unit for organization of multiple actors in trimodal transport.
  *
- * <p>DIGIT_name: Operateur</p>
- *
- * <p>DIGIT_english: operator</p>
- *
- * <p>DIGIT_definition: Funktionseinheit, die bei der Güterbeförderung im Kombinierten Verkehr die akteurübergreifende
- * Organisation durchführt.</p>
- *
- * <p>DIGIT_definition_english: Unit for organization of multiple actors in trimodal transport.</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Operateur
+ * @DIGIT_english  operator
+ * @DIGIT_definition  Funktionseinheit, die bei der Güterbeförderung im Kombinierten Verkehr die akteurübergreifende
+ *                    Organisation durchführt.
+ * @DIGIT_definition_english  Unit for organization of multiple actors in trimodal transport.
  */
 public class Operator {
 

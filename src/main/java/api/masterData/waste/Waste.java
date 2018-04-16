@@ -3,19 +3,15 @@ package api.masterData.waste;
 /**
  * Substances or objects that their owner disposes of, wants to dispose of or has to dispose of.
  *
- * <p>DIGIT_name: Abfall</p>
- *
- * <p>DIGIT_english: waste</p>
- *
- * <p>DIGIT_definition: Stoffe oder Gegenstände, die ihr Besitzer entsorgt, entsorgen will oder entsorgen muss. (@see
- * Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der Kreislaufwirtschaft und Sicherung der
- * umweltverträglichen Bewirtschaftung von Abfällen)</p>
- *
- * <p>DIGIT_definition_english: Substances or objects that their owner disposes of, wants to dispose of or has to
- * dispose of. (@see Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der Kreislaufwirtschaft
- * und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Abfall
+ * @DIGIT_english  waste
+ * @DIGIT_definition  Stoffe oder Gegenstände, die ihr Besitzer entsorgt, entsorgen will oder entsorgen muss. (@see
+ *                    Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der
+ *                    Kreislaufwirtschaft und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)
+ * @DIGIT_definition_english  Substances or objects that their owner disposes of, wants to dispose of or has to dispose
+ *                            of. (@see Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der
+ *                            Kreislaufwirtschaft und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)
  */
 public class Waste {
 

@@ -27,6 +27,66 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <show>private</show>
+                    <tags>
+                        <tag>
+                            <name>DIGIT_definition_english</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT definition english</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_english</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT name english</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_name</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT name</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_definition</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT definition</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_annotation</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT annotation</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_annotation_english</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT annotation english</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_synonym</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT synonym</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_synonym_english</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT synonym english</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_abbreviation</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT abbreviation</head>
+                        </tag>
+                        <tag>
+                            <name>DIGIT_abbreviation_english</name>
+                            <placement>tmf</placement>
+                            <head>DIGIT abbreviation english</head>
+                        </tag>
+                    </tags>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

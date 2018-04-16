@@ -1,11 +1,9 @@
 package api.masterData.address;
 
 /**
- * <p>DIGIT_name: Adresse</p>
- *
- * <p>DIGIT_english: address</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Adresse
+ * @DIGIT_english  address
  */
 public class Address {
 

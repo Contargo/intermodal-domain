@@ -15,26 +15,24 @@ import java.util.List;
 /**
  * Contains all data of an order.
  *
- * <p>DIGIT_name: Auftrag</p>
- *
- * <p>DIGIT_english: Order</p>
- *
- * <p>DIGIT_definition: Die komplex verknüpfte Klasse der Auftragsdaten bringt alle Daten zusammen, die zum Auftrag
- * gehören. Sie bildet somit eine wichtige Grundlage für die Planung und Durchführung intermodaler Ketten nach der
- * vorliegenden Spezifikation. Die Auftragsreferenz dient hierbei der eindeutigen Identifizierung. Die vorliegende
- * Gruppe unterscheidet sich deutlich zu ihren Vorgängern und ist als komplexe Datenverknüpfung zu interpretieren. Sie
- * kann in der Gesamtheit der relevanten Transporteckdaten eine komplette Transportkette abbilden und bedient sich
- * hierfür bei den zuvor beschriebenen Datengruppen. Zunächst werden übergeordnete Auftragsdaten herangezogen.
- * Anschließend sind alle transportrelevanten Daten gesammelt und nach Informationen zu Abholung, Anlieferung, Halt und
- * Ziel geordnet.</p>
- *
- * <p>DIGIT_definition_english: This class combines all data of an Order. Therefore it is an important foundation for
- * planning and execution of intermodal chains in this specification. The order reference is used for clear
- * identification. This class differs much from the others and should be interpreted as complex connection of data. It
- * can be used to map a complete chain of transport with all of its relevant data. It includes high level order data as
- * well as data relevant for transport organized by pick up, drop off, stop and destination.</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Auftrag
+ * @DIGIT_english  Order
+ * @DIGIT_definition  Die komplex verknüpfte Klasse der Auftragsdaten bringt alle Daten zusammen, die zum Auftrag
+ *                    gehören. Sie bildet somit eine wichtige Grundlage für die Planung und Durchführung intermodaler
+ *                    Ketten nach der vorliegenden Spezifikation. Die Auftragsreferenz dient hierbei der eindeutigen
+ *                    Identifizierung. Die vorliegende Gruppe unterscheidet sich deutlich zu ihren Vorgängern und ist
+ *                    als komplexe Datenverknüpfung zu interpretieren. Sie kann in der Gesamtheit der relevanten
+ *                    Transporteckdaten eine komplette Transportkette abbilden und bedient sich hierfür bei den zuvor
+ *                    beschriebenen Datengruppen. Zunächst werden übergeordnete Auftragsdaten herangezogen.
+ *                    Anschließend sind alle transportrelevanten Daten gesammelt und nach Informationen zu Abholung,
+ *                    Anlieferung, Halt und Ziel geordnet.
+ * @DIGIT_definition_english  This class combines all data of an Order. Therefore it is an important foundation for
+ *                            planning and execution of intermodal chains in this specification. The order reference is
+ *                            used for clear identification. This class differs much from the others and should be
+ *                            interpreted as complex connection of data. It can be used to map a complete chain of
+ *                            transport with all of its relevant data. It includes high level order data as well as
+ *                            data relevant for transport organized by pick up, drop off, stop and destination.
  */
 public class Order {
 

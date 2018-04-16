@@ -3,11 +3,9 @@ package api.masterData.dangerousGoods;
 /**
  * Tunnel restriction codes for {@link DangerousGoods}.
  *
- * <p>DIGIT_name: Tunnelbeschränkungscode</p>
- *
- * <p>DIGIT_english: tunnel restriction code</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Tunnelbeschränkungscode
+ * @DIGIT_english  tunnel restriction code
  */
 public enum TunnelRestrictionCode {
 

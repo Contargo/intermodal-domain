@@ -9,17 +9,13 @@ import java.util.Date;
  * Contains data for registration of {@link api.masterData.barge.Barge barges} on handling points by connecting barge,
  * schedule and quantity information.
  *
- * <p>DIGIT_name: Anmeldung Binnenschiff</p>
- *
- * <p>DIGIT_english: registration barge</p>
- *
- * <p>DIGIT_definition: Enthält Daten für die Anmeldung von {@link api.masterData.barge.Barge Binnenschiffen} an
- * Umschlagpunkten durch die Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.</p>
- *
- * <p>DIGIT_definition_english: Contains data for registration of {@link api.masterData.barge.Barge barges} on handling
- * points by connecting barge, schedule and quantity information.</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Anmeldung Binnenschiff
+ * @DIGIT_english  registration barge
+ * @DIGIT_definition  Enthält Daten für die Anmeldung von {@link api.masterData.barge.Barge Binnenschiffen} an
+ *                    Umschlagpunkten durch die Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.
+ * @DIGIT_definition_english  Contains data for registration of {@link api.masterData.barge.Barge barges} on handling
+ *                            points by connecting barge, schedule and quantity information.
  */
 public class Barge {
 

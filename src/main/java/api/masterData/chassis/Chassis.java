@@ -8,15 +8,11 @@ import java.util.Date;
 /**
  * Trailer to transport loading units.
  *
- * <p>DIGIT_name: Fahrgestell</p>
- *
- * <p>DIGIT_english: chassis</p>
- *
- * <p>DIGIT_definition: Anhänger zur Beförderung von Ladeeinheiten.</p>
- *
- * <p>DIGIT_definition_english: Trailer to transport loading units.</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Fahrgestell
+ * @DIGIT_english  chassis
+ * @DIGIT_definition  Anhänger zur Beförderung von Ladeeinheiten.
+ * @DIGIT_definition_english  Trailer to transport loading units.
  */
 public class Chassis implements MeansOfTransport {
 
@@ -28,7 +24,7 @@ public class Chassis implements MeansOfTransport {
     /**
      * Ministry of Transport Test (Format: DateTime ISO 8601 inclusive UTC).
      *
-     * <p>DIGIT_name: Hauptuntersuchung</p>
+     * @DIGIT_name  Hauptuntersuchung
      */
     private Date mot;
 
@@ -52,7 +48,9 @@ public class Chassis implements MeansOfTransport {
     private boolean euAuthorization;
 
     /**
-     * Safety test (in german Sicherheitsprüfung).
+     * Safety test.
+     *
+     * @DIGIT_name  Sicherheitsprüfung.
      */
     private boolean st;
 

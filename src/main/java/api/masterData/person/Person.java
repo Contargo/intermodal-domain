@@ -6,11 +6,9 @@ import java.util.Date;
 
 
 /**
- * <p>DIGIT_name: Person</p>
- *
- * <p>DIGIT_english: person</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Person
+ * @DIGIT_english  person
  */
 public abstract class Person {
 

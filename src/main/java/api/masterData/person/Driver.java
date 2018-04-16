@@ -6,11 +6,9 @@ import java.util.Date;
 /**
  * A {@link api.masterData.person.Person} driving a motor vehicle.
  *
- * <p>DIGIT_name: Fahrer</p>
- *
- * <p>DIGIT_english: driver</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Fahrer
+ * @DIGIT_english  driver
  */
 public class Driver extends Person {
 
@@ -22,7 +20,7 @@ public class Driver extends Person {
     private String licenseNumber;
 
     /**
-     * <p>in german Fahrerkartennummer</p>
+     * in german Fahrerkartennummer.
      */
     private String id;
 

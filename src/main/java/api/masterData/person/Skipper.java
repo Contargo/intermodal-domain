@@ -6,11 +6,9 @@ import java.util.Date;
 /**
  * A {@link api.masterData.person.Person} driving a ship.
  *
- * <p>DIGIT_name: Schiffsführer</p>
- *
- * <p>DIGIT_english: skipper</p>
- *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @DIGIT_name  Schiffsführer
+ * @DIGIT_english  skipper
  */
 public class Skipper extends Person {
 
