@@ -26,18 +26,21 @@ package api.statusData;
 public class StatusLU {
 
     /**
-     * LU free and MoT present.
+     * {@link api.masterData.loadingUnit.LoadingUnit LU} free and
+     * {@link api.masterData.meansOfTransport.MeansOfTransport MoT} present.
      *
      * @DIGIT_name  Verladebereit
-     * @DIGIT_definition  Ladeeinheit ist bereit für den Umschlag/ die Kranung.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} ist bereit für den Umschlag/ die
+     *                    Kranung.
      */
     private boolean readyForLoading;
 
     /**
-     * Loaded on MoT.
+     * Loaded on {@link api.masterData.meansOfTransport.MeansOfTransport MoT}.
      *
      * @DIGIT_name  Verladen
-     * @DIGIT_definition  Ladeeinheit ist umgeschlagen und befindet sich auf dem VM.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} ist umgeschlagen und befindet sich
+     *                    auf dem {@link api.masterData.meansOfTransport.MeansOfTransport VM}.
      */
     private boolean loaded;
 
@@ -45,15 +48,17 @@ public class StatusLU {
      * Ready for going out.
      *
      * @DIGIT_name  Ausgangskontrolle
-     * @DIGIT_definition  Ladeeinheit ist gesichtet und befindet sich auf dem VM.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} ist gesichtet und befindet sich
+     *                    auf dem {@link api.masterData.meansOfTransport.MeansOfTransport VM}.
      */
     private boolean inspectionOut;
 
     /**
-     * LU out confirmed.
+     * {@link api.masterData.loadingUnit.LoadingUnit LU} out confirmed.
      *
      * @DIGIT_name  Ausgegangen
-     * @DIGIT_definition  Ladeeinheit ist verladen und hat Umschlagpunkt verlassen.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} ist verladen und hat Umschlagpunkt
+     *                    verlassen.
      */
     private boolean out;
 
@@ -61,31 +66,39 @@ public class StatusLU {
      * Ready for going in.
      *
      * @DIGIT_name  Eingangskontrolle
-     * @DIGIT_definition  LE gesichtet, auf VM mit dem Umschlagpunkt erreicht wurde.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} gesichtet, auf
+     *                    {@link api.masterData.meansOfTransport.MeansOfTransport VM} mit dem Umschlagpunkt erreicht
+     *                    wurde.
      */
     private boolean inspectionIn;
 
     /**
-     * LU in confirmed.
+     * {@link api.masterData.loadingUnit.LoadingUnit LU} in confirmed.
      *
      * @DIGIT_name  Eingegangen
-     * @DIGIT_definition  Ladeeinheit ist auf VM im Umschlagbereich.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} ist auf
+     *                    {@link api.masterData.meansOfTransport.MeansOfTransport VM} im Umschlagbereich.
      */
     private boolean in;
 
     /**
-     * LU free and MoT present.
+     * {@link api.masterData.loadingUnit.LoadingUnit LU} free and
+     * {@link api.masterData.meansOfTransport.MeansOfTransport MoT} present.
      *
      * @DIGIT_name  Entladebereit
-     * @DIGIT_definition  LE auf VM und im Umschlagbereich bereit zum Entladen.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} auf
+     *                    {@link api.masterData.meansOfTransport.MeansOfTransport VM} und im Umschlagbereich bereit zum
+     *                    Entladen.
      */
     private boolean readyForUnloading;
 
     /**
-     * LU in.
+     * {@link api.masterData.loadingUnit.LoadingUnit LU} in.
      *
      * @DIGIT_name  Entladen
-     * @DIGIT_definition  LE vom VM heruntergenommen, befindet sich im Umschlagpunkt.
+     * @DIGIT_definition  {@link api.masterData.loadingUnit.LoadingUnit Ladeeinheit} vom
+     *                    {@link api.masterData.meansOfTransport.MeansOfTransport VM} heruntergenommen, befindet sich
+     *                    im Umschlagpunkt.
      */
     private boolean unloaded;
 }

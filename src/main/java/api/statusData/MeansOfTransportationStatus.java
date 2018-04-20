@@ -27,46 +27,56 @@ import java.util.Date;
 public class MeansOfTransportationStatus {
 
     /**
-     * Actual Time of Departure (Format: ISO 8601 inclusive UTC).
+     * Actual Time of Departure of the {@link api.masterData.meansOfTransport.MeansOfTransport MoT} at the handling
+     * point (Format: ISO 8601 inclusive UTC).
      *
      * @DIGIT_name  Abfahrt
-     * @DIGIT_definition  Tatsächliche Abfahrt des VM beim Verlassen des Umschlagpunktes.
+     * @DIGIT_definition  Tatsächliche Abfahrt des {@link api.masterData.meansOfTransport.MeansOfTransport VM} beim
+     *                    Verlassen des Umschlagpunktes.
      */
     private Date atd;
 
     /**
-     * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC).
+     * Estimated Time of Arrival of the {@link api.masterData.meansOfTransport.MeansOfTransport MoT} at the handling
+     * point (Format: ISO 8601 inclusive UTC).
      *
      * @DIGIT_name  Avisiert
-     * @DIGIT_definition  Geplante Ankunft des VM am Umschlagpunkt.
+     * @DIGIT_definition  Geplante Ankunft des {@link api.masterData.meansOfTransport.MeansOfTransport VM} am
+     *                    Umschlagpunkt.
      */
     private Date eta;
 
     /**
-     * Actual Time of Arrival (Format: ISO 8601 inclusive UTC).
+     * Actual Time of Arrival of the {@link api.masterData.meansOfTransport.MeansOfTransport MoT} at the handling point
+     * (Format: ISO 8601 inclusive UTC).
      *
      * @DIGIT_name  Ankunft
-     * @DIGIT_definition  Tatsächliche Ankunft des VM am Umschlagpunkt.
+     * @DIGIT_definition  Tatsächliche Ankunft des {@link api.masterData.meansOfTransport.MeansOfTransport VM} am
+     *                    Umschlagpunkt.
      */
     private Date ata;
 
     /**
-     * MoT is ready for handling of the LU (Format: ISO 8601 inclusive UTC).
+     * {@link api.masterData.meansOfTransport.MeansOfTransport MoT} is ready for handling of the
+     * {@link api.masterData.loadingUnit.LoadingUnit LU} (Format: ISO 8601 inclusive UTC).
      *
      * @DIGIT_name  Bereitstellung
      * @DIGIT_synonym  Bearbeitungsstart
      * @DIGIT_abbreviation  BS
-     * @DIGIT_definition  VM ist bereit für den Umschlag der LE („erste Kranung“).
+     * @DIGIT_definition  {@link api.masterData.meansOfTransport.MeansOfTransport VM} ist bereit für den Umschlag der
+     *                    {@link api.masterData.loadingUnit.LoadingUnit LE} („erste Kranung“).
      */
     private Date handlingStart;
 
     /**
-     * MoT is loaded, end of loading process (Format: ISO 8601 inclusive UTC).
+     * {@link api.masterData.meansOfTransport.MeansOfTransport MoT} is loaded, end of loading process (Format: ISO 8601
+     * inclusive UTC).
      *
      * @DIGIT_name  Bearbeitungsende
      * @DIGIT_synonym  Ladeschluss
      * @DIGIT_abbreviation  BE
-     * @DIGIT_definition  VM beladen, Ende Verladung erreicht („letzte Kranung“).
+     * @DIGIT_definition  {@link api.masterData.meansOfTransport.MeansOfTransport VM} beladen, Ende Verladung erreicht
+     *                    („letzte Kranung“).
      */
     private Date handlingEnd;
 
