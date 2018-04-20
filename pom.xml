@@ -75,52 +75,52 @@
                         <tag>
                             <name>DIGIT_definition_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT definition english</head>
+                            <head>DIGIT definition english:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT name english</head>
+                            <head>DIGIT name english:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_name</name>
                             <placement>tmf</placement>
-                            <head>DIGIT name</head>
+                            <head>DIGIT name:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_definition</name>
                             <placement>tmf</placement>
-                            <head>DIGIT definition</head>
+                            <head>DIGIT definition:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_annotation</name>
                             <placement>tmf</placement>
-                            <head>DIGIT annotation</head>
+                            <head>DIGIT annotation:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_annotation_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT annotation english</head>
+                            <head>DIGIT annotation english:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_synonym</name>
                             <placement>tmf</placement>
-                            <head>DIGIT synonym</head>
+                            <head>DIGIT synonym:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_synonym_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT synonym english</head>
+                            <head>DIGIT synonym english:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_abbreviation</name>
                             <placement>tmf</placement>
-                            <head>DIGIT abbreviation</head>
+                            <head>DIGIT abbreviation:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_abbreviation_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT abbreviation english</head>
+                            <head>DIGIT abbreviation english:</head>
                         </tag>
                     </tags>
                 </configuration>
