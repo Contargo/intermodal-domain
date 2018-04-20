@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Person
- * @DIGIT_english  person
+ * @DIGIT_name_english  person
  */
 public abstract class Person {
 

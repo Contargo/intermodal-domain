@@ -5,7 +5,7 @@ package digit.domain.processData.processing;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Lagerposition
- * @DIGIT_english  storage position
+ * @DIGIT_name_english  storage position
  */
 public enum StoragePosition {
 

@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Auftrag
- * @DIGIT_english  Order
+ * @DIGIT_name_english  Order
  * @DIGIT_definition  Die komplex verknüpfte Klasse der Auftragsdaten bringt alle Daten zusammen, die zum Auftrag
  *                    gehören. Sie bildet somit eine wichtige Grundlage für die Planung und Durchführung intermodaler
  *                    Ketten nach der vorliegenden Spezifikation. Die Auftragsreferenz dient hierbei der eindeutigen

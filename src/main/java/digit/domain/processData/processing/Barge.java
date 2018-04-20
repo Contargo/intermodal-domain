@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Abfertigung Binnenschiff
- * @DIGIT_english  processing barge
+ * @DIGIT_name_english  processing barge
  * @DIGIT_definition  Nach erfolgreicher Anmeldung kommt es zur Abfertigung der Verkehrsmittel im Umschlagpunkt. In
  *                    dieser Gruppe werden die Daten, die für die Abwicklung der Be- und Entladungsvorgänge am
  *                    Binnenschiff notwendig sind, zusammengefasst. Die Prozesse werden durch die Verknüpfung von

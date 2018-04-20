@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Verkehrsmittelstatus
- * @DIGIT_english  means of transportation status
+ * @DIGIT_name_english  means of transportation status
  * @DIGIT_definition  Verkehrsmittelstatus für den Informationsfluss in der intermodalen Kette. Über den
  *                    Verkehrsmittelstatus und den {@link digit.domain.statusData.StatusLU Ladeeinheitenstatus} kann
  *                    ein reibungsloser Austausch zwischen den Akteuren sichergestellt werden. Prinzipiell sollten die

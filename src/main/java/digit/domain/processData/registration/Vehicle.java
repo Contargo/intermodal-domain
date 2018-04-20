@@ -15,7 +15,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Anmeldung Fahrzeug
- * @DIGIT_english  registration vehicle
+ * @DIGIT_name_english  registration vehicle
  * @DIGIT_definition  Die Beschreibung der Anmeldung von Straßenfahrzeugen an Umschlagpunkten durch die Verknüpfungen
  *                    von Fahrzeug, Person und Auftrag wird hier dargestellt. Die Gruppe hat sowohl für die Anlieferung
  *                    von LE Gültigkeit als auch für die Abholung von LE an einem Umschlagknoten.

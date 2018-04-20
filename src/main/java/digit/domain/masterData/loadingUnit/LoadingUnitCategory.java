@@ -5,7 +5,7 @@ package digit.domain.masterData.loadingUnit;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Ladeeinheitart
- * @DIGIT_english  loading unit category
+ * @DIGIT_name_english  loading unit category
  */
 public enum LoadingUnitCategory {
 

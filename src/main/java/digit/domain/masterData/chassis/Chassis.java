@@ -10,7 +10,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Fahrgestell
- * @DIGIT_english  chassis
+ * @DIGIT_name_english  chassis
  * @DIGIT_definition  Anhänger zur Beförderung von Ladeeinheiten.
  * @DIGIT_definition_english  Trailer to transport loading units.
  */

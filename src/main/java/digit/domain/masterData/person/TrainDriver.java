@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Lokführer
- * @DIGIT_english  train driver
+ * @DIGIT_name_english  train driver
  */
 public class TrainDriver extends Person {
 

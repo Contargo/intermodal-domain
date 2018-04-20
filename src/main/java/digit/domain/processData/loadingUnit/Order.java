@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Ladeeinheit Auftrag
- * @DIGIT_english  loading unit order
+ * @DIGIT_name_english  loading unit order
  * @DIGIT_synonym  LE Auftrag
  * @DIGIT_synonym  lu order
  * @DIGIT_definition  Die Beschreibung der Prozessdaten zu einem {@link digit.domain.processData.order.Order Auftrag}

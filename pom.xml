@@ -78,7 +78,7 @@
                             <head>DIGIT definition english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_english</name>
+                            <name>DIGIT_name_english</name>
                             <placement>tmf</placement>
                             <head>DIGIT name english:</head>
                         </tag>
@@ -93,14 +93,14 @@
                             <head>DIGIT definition:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_annotation</name>
+                            <name>DIGIT_note</name>
                             <placement>tmf</placement>
-                            <head>DIGIT annotation:</head>
+                            <head>DIGIT note:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_annotation_english</name>
+                            <name>DIGIT_note_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT annotation english:</head>
+                            <head>DIGIT note english:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_synonym</name>

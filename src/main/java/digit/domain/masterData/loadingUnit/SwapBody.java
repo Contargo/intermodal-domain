@@ -7,7 +7,7 @@ package digit.domain.masterData.loadingUnit;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Wechselbrücke
- * @DIGIT_english  swap body
+ * @DIGIT_name_english  swap body
  * @DIGIT_synonym  Wechselbehälter, Wechselaufbau
  * @DIGIT_definition  Für den Gütertransport bestimmter Behälter, der im Hinblick auf die Abmessungen von
  *                    Straßenfahrzeugen optimiert wurde und mit Greifkanten für den Umschlag zwischen den

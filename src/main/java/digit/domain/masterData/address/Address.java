@@ -3,7 +3,7 @@ package digit.domain.masterData.address;
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Adresse
- * @DIGIT_english  address
+ * @DIGIT_name_english  address
  */
 public class Address {
 

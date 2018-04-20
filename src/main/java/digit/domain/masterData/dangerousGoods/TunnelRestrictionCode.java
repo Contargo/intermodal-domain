@@ -5,7 +5,7 @@ package digit.domain.masterData.dangerousGoods;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Tunnelbeschränkungscode
- * @DIGIT_english  tunnel restriction code
+ * @DIGIT_name_english  tunnel restriction code
  */
 public enum TunnelRestrictionCode {
 

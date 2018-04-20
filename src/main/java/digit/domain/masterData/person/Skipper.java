@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Schiffsführer
- * @DIGIT_english  skipper
+ * @DIGIT_name_english  skipper
  */
 public class Skipper extends Person {
 

@@ -6,7 +6,7 @@ package digit.domain.masterData.meansOfTransport;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Umweltplakette
- * @DIGIT_english  environment badge
+ * @DIGIT_name_english  environment badge
  */
 public enum EnvironmentBadge {
 

@@ -10,17 +10,17 @@ import digit.domain.masterData.vessel.Vessel;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Binnenschiff
- * @DIGIT_english  barge
+ * @DIGIT_name_english  barge
  * @DIGIT_definition  Schiff, das zur Fahrt auf Binnengewässern und Binnenwasserstraßen konstruiert ist.
  * @DIGIT_definition_english  A ship build to drive on inland waters and inland waterways.
- * @DIGIT_annotation  Im Vergleich zum {@link Vessel Seeschiff} bestehen weniger Anforderungen an Stabilität,
- *                    Navigation und Rettungsgerät, wohingegen spezielle Konstruktionen für die Brückendurchfahrt o. ä.
- *                    notwendig sein können. Es gibt diverse Schiffstypen dieser Art, die für den Kombinierten Verkehr
- *                    relevant sind, z. B. Containerschiffe, Lastkähne, Leichter bzw. Schubverbände, Koppelverbände.
- * @DIGIT_annotation_english  In comparison to a {@link Vessel} there are less requirements in means of stability,
- *                            navigation and rescue devices but special constructions for navigating under bridges or
- *                            or the like might be necessary. There are different types of barges that are relevant in
- *                            combined traffic e.g. container ships, lighter and tug barges.
+ * @DIGIT_note  Im Vergleich zum {@link Vessel Seeschiff} bestehen weniger Anforderungen an Stabilität, Navigation und
+ *              Rettungsgerät, wohingegen spezielle Konstruktionen für die Brückendurchfahrt o. ä. notwendig sein
+ *              können. Es gibt diverse Schiffstypen dieser Art, die für den Kombinierten Verkehr relevant sind, z. B.
+ *              Containerschiffe, Lastkähne, Leichter bzw. Schubverbände, Koppelverbände.
+ * @DIGIT_note_english  In comparison to a {@link Vessel} there are less requirements in means of stability, navigation
+ *                      and rescue devices but special constructions for navigating under bridges or or the like might
+ *                      be necessary. There are different types of barges that are relevant in combined traffic e.g.
+ *                      container ships, lighter and tug barges.
  */
 public class Barge implements MeansOfTransport {
 

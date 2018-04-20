@@ -8,7 +8,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Fahrer
- * @DIGIT_english  driver
+ * @DIGIT_name_english  driver
  */
 public class Driver extends Person {
 

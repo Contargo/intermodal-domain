@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Anmeldung Zug
- * @DIGIT_english  registration train
+ * @DIGIT_name_english  registration train
  * @DIGIT_definition  Enthält Daten für die Anmeldung von Zügen durch die Verknüpfung aller Zugeigenschaften und
  *                    Beladungen sowie Zeitplänen und Rangierdaten. Die Zugbezeichnung ermöglicht zusammen mit der
  *                    Trassennummer eine eindeutige Identifizierung des Verkehrsmittels.

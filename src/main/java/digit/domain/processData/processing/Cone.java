@@ -5,7 +5,7 @@ package digit.domain.processData.processing;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Kegel
- * @DIGIT_english  cone
+ * @DIGIT_name_english  cone
  * @DIGIT_definition  Das Datenfeld, welches Informationen zu Kegeln beinhaltet, wird insbesondere für die
  *                    Rheinschifffahrt benötigt. Grund dafür sind gesetzliche Vorschriften, die durch blaue Kegel eine
  *                    besondere Kennzeichnung von gefährlichen Ladungen erfordern. Je nach Kegelanzahl gibt es

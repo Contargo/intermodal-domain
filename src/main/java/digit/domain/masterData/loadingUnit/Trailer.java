@@ -5,7 +5,7 @@ package digit.domain.masterData.loadingUnit;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Sattelanhänger
- * @DIGIT_english  semi trailer
+ * @DIGIT_name_english  semi trailer
  * @DIGIT_synonym  Sattelauflieger, Trailer
  * @DIGIT_definition  Anhängerfahrzeug, bei dem anstelle der bei Gelenk-Deichselanhägern vorhandenen ersten Achse eine
  *                    Sattelvorrichtung angeordnet ist und ein wesentlicher Teil seines Gesamtgewichts auf eine

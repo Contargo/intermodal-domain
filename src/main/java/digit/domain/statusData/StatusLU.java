@@ -5,7 +5,7 @@ package digit.domain.statusData;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @DIGIT_name  Ladeeinheitenstatus
- * @DIGIT_english  loading unit status
+ * @DIGIT_name_english  loading unit status
  * @DIGIT_definition  Ladeeinheitenstatus für den Informationsfluss in der intermodalen Kette. Über den
  *                    Ladeeinheitenstatus und den
  *                    {@link digit.domain.statusData.MeansOfTransportationStatus Verkehrsmittelstatus} kann ein
