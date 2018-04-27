@@ -10,10 +10,11 @@ import java.util.Date;
  * connecting barge, schedule and quantity information.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Anmeldung Binnenschiff
+ * @DIGIT_name_german  Anmeldung Binnenschiff
  * @DIGIT_name_english  registration barge
- * @DIGIT_definition  Enthält Daten für die Anmeldung von {@link digit.domain.masterData.barge.Barge Binnenschiffen} an
- *                    Umschlagpunkten durch die Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.
+ * @DIGIT_definition_german  Enthält Daten für die Anmeldung von
+ *                           {@link digit.domain.masterData.barge.Barge Binnenschiffen} an Umschlagpunkten durch die
+ *                           Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.
  * @DIGIT_definition_english  Contains data for registration of {@link digit.domain.masterData.barge.Barge barges} on
  *                            handling points by connecting barge, schedule and quantity information.
  */

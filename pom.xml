@@ -83,19 +83,19 @@
                             <head>DIGIT name english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_name</name>
+                            <name>DIGIT_name_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT name:</head>
+                            <head>DIGIT name german:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_definition</name>
+                            <name>DIGIT_definition_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT definition:</head>
+                            <head>DIGIT definition german:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_note</name>
+                            <name>DIGIT_note_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT note:</head>
+                            <head>DIGIT note german:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_note_english</name>
@@ -103,9 +103,9 @@
                             <head>DIGIT note english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_synonym</name>
+                            <name>DIGIT_synonym_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT synonym:</head>
+                            <head>DIGIT synonym german:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_synonym_english</name>
@@ -113,9 +113,9 @@
                             <head>DIGIT synonym english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_abbreviation</name>
+                            <name>DIGIT_abbreviation_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT abbreviation:</head>
+                            <head>DIGIT abbreviation german:</head>
                         </tag>
                         <tag>
                             <name>DIGIT_abbreviation_english</name>

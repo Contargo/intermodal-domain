@@ -7,7 +7,7 @@ import java.util.Date;
  * A {@link digit.domain.masterData.person.Person} driving a ship.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Schiffsführer
+ * @DIGIT_name_german  Schiffsführer
  * @DIGIT_name_english  skipper
  */
 public class Skipper extends Person {

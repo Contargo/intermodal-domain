@@ -7,7 +7,7 @@ import java.util.Date;
  * A {@link digit.domain.masterData.person.Person} driving a motor vehicle.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Fahrer
+ * @DIGIT_name_german  Fahrer
  * @DIGIT_name_english  driver
  */
 public class Driver extends Person {
@@ -20,7 +20,7 @@ public class Driver extends Person {
     private String licenseNumber;
 
     /**
-     * @DIGIT_name  Fahrerkartennummer
+     * @DIGIT_name_german  Fahrerkartennummer
      */
     private String id;
 

@@ -4,11 +4,11 @@ package digit.domain.masterData.waste;
  * Substances or objects that their owner disposes of, wants to dispose of or has to dispose of.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Abfall
+ * @DIGIT_name_german  Abfall
  * @DIGIT_name_english  waste
- * @DIGIT_definition  Stoffe oder Gegenstände, die ihr Besitzer entsorgt, entsorgen will oder entsorgen muss. (@see
- *                    Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der
- *                    Kreislaufwirtschaft und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)
+ * @DIGIT_definition_german  Stoffe oder Gegenstände, die ihr Besitzer entsorgt, entsorgen will oder entsorgen muss.
+ *                           (@see Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der
+ *                           Kreislaufwirtschaft und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)
  * @DIGIT_definition_english  Substances or objects that their owner disposes of, wants to dispose of or has to dispose
  *                            of. (@see Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der
  *                            Kreislaufwirtschaft und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)

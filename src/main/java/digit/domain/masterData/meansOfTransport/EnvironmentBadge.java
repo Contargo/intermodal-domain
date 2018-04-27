@@ -5,7 +5,7 @@ package digit.domain.masterData.meansOfTransport;
  * not be allowed to enter specific zones.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Umweltplakette
+ * @DIGIT_name_german  Umweltplakette
  * @DIGIT_name_english  environment badge
  */
 public enum EnvironmentBadge {

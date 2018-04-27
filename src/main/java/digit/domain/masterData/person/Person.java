@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Person
+ * @DIGIT_name_german  Person
  * @DIGIT_name_english  person
  */
 public abstract class Person {

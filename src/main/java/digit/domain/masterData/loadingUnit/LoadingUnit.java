@@ -7,16 +7,16 @@ import digit.domain.masterData.operator.Operator;
  * Physical transport unit which can include wares and goods.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Ladeeinheit
+ * @DIGIT_name_german  Ladeeinheit
  * @DIGIT_name_english  loading unit
- * @DIGIT_abbreviation  LE
+ * @DIGIT_abbreviation_german  LE
  * @DIGIT_abbreviation_english  LU
- * @DIGIT_definition  Physische Transporteinheit, die Waren und Güter umschließen kann.
+ * @DIGIT_definition_german  Physische Transporteinheit, die Waren und Güter umschließen kann.
  * @DIGIT_definition_english  Physical transport unit which can include wares and goods.
- * @DIGIT_note  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind
- *              {@link digit.domain.masterData.loadingUnit.Container},
- *              {@link digit.domain.masterData.loadingUnit.SwapBody Wechselbehälter},
- *              {@link digit.domain.masterData.loadingUnit.Trailer Sattelauflieger}.
+ * @DIGIT_note_german  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind
+ *                     {@link digit.domain.masterData.loadingUnit.Container},
+ *                     {@link digit.domain.masterData.loadingUnit.SwapBody Wechselbehälter},
+ *                     {@link digit.domain.masterData.loadingUnit.Trailer Sattelauflieger}.
  * @DIGIT_note_english  Loading units in combined traffic are {@link digit.domain.masterData.loadingUnit.Container},
  *                      {@link digit.domain.masterData.loadingUnit.SwapBody} and
  *                      {@link digit.domain.masterData.loadingUnit.Trailer}.

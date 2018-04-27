@@ -7,7 +7,7 @@ import java.util.Date;
  * A {@link digit.domain.masterData.person.Person} driving a train.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Lokführer
+ * @DIGIT_name_german  Lokführer
  * @DIGIT_name_english  train driver
  */
 public class TrainDriver extends Person {

@@ -14,11 +14,12 @@ import java.util.Date;
  * {@link digit.domain.masterData.person.Driver Person} and {@link digit.domain.processData.loadingUnit.Order}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Anmeldung Fahrzeug
+ * @DIGIT_name_german  Anmeldung Fahrzeug
  * @DIGIT_name_english  registration vehicle
- * @DIGIT_definition  Die Beschreibung der Anmeldung von Straßenfahrzeugen an Umschlagpunkten durch die Verknüpfungen
- *                    von Fahrzeug, Person und Auftrag wird hier dargestellt. Die Gruppe hat sowohl für die Anlieferung
- *                    von LE Gültigkeit als auch für die Abholung von LE an einem Umschlagknoten.
+ * @DIGIT_definition_german  Die Beschreibung der Anmeldung von Straßenfahrzeugen an Umschlagpunkten durch die
+ *                           Verknüpfungen von Fahrzeug, Person und Auftrag wird hier dargestellt. Die Gruppe hat
+ *                           sowohl für die Anlieferung von LE Gültigkeit als auch für die Abholung von LE an einem
+ *                           Umschlagknoten.
  * @DIGIT_definition_english  Describes the registration of road vehicles on a handling point by connecting vehicle,
  *                            {@link digit.domain.masterData.person.Driver Person} and
  *                            {@link digit.domain.processData.loadingUnit.Order}. It is valid for the delivery of

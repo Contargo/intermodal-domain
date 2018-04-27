@@ -14,14 +14,14 @@ import java.util.List;
  * {@link digit.domain.masterData.barge.Barge barges}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Abfertigung Binnenschiff
+ * @DIGIT_name_german  Abfertigung Binnenschiff
  * @DIGIT_name_english  processing barge
- * @DIGIT_definition  Nach erfolgreicher Anmeldung kommt es zur Abfertigung der Verkehrsmittel im Umschlagpunkt. In
- *                    dieser Gruppe werden die Daten, die für die Abwicklung der Be- und Entladungsvorgänge am
- *                    Binnenschiff notwendig sind, zusammengefasst. Die Prozesse werden durch die Verknüpfung von
- *                    Eigenschaften des {@link digit.domain.masterData.barge.Barge Binnenschiffs}, relevanten
- *                    {@link digit.domain.masterData.person.Person Personen}, Fahrplänen sowie Beladungen und nötigen
- *                    Dokumenteninformationen dargestellt.
+ * @DIGIT_definition_german  Nach erfolgreicher Anmeldung kommt es zur Abfertigung der Verkehrsmittel im Umschlagpunkt.
+ *                           In dieser Gruppe werden die Daten, die für die Abwicklung der Be- und Entladungsvorgänge
+ *                           am Binnenschiff notwendig sind, zusammengefasst. Die Prozesse werden durch die Verknüpfung
+ *                           von Eigenschaften des {@link digit.domain.masterData.barge.Barge Binnenschiffs},
+ *                           relevanten {@link digit.domain.masterData.person.Person Personen}, Fahrplänen sowie
+ *                           Beladungen und nötigen Dokumenteninformationen dargestellt.
  * @DIGIT_definition_english  After successful registration the means of transport is processed on the handling point.
  *                            In this class the data necessary for processing of loading and discharging barges is
  *                            summarized. The processes are described by connecting properties of the

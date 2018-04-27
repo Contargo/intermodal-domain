@@ -14,14 +14,15 @@ import java.util.List;
  * {@link digit.domain.masterData.loadingUnit.LoadingUnit}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @DIGIT_name  Ladeeinheit Auftrag
+ * @DIGIT_name_german  Ladeeinheit Auftrag
  * @DIGIT_name_english  loading unit order
- * @DIGIT_synonym  LE Auftrag
- * @DIGIT_synonym  lu order
- * @DIGIT_definition  Die Beschreibung der Prozessdaten zu einem {@link digit.domain.processData.order.Order Auftrag}
- *                    für eine Ladeeinheit erfolgt in dieser Gruppe durch die Verknüpfung von Auftragsdaten mit Daten
- *                    zur Ladeeinheit. Insbesondere Informationen zu Eigenheiten der Ladeeinheit inklusive dem
- *                    transportierten Gut und zu Operateuren sowie Transportrichtung sind hier gesammelt.
+ * @DIGIT_synonym_german  LE Auftrag
+ * @DIGIT_synonym_german  lu order
+ * @DIGIT_definition_german  Die Beschreibung der Prozessdaten zu einem
+ *                           {@link digit.domain.processData.order.Order Auftrag} für eine Ladeeinheit erfolgt in
+ *                           dieser Gruppe durch die Verknüpfung von Auftragsdaten mit Daten zur Ladeeinheit.
+ *                           Insbesondere Informationen zu Eigenheiten der Ladeeinheit inklusive dem transportierten
+ *                           Gut und zu Operateuren sowie Transportrichtung sind hier gesammelt.
  * @DIGIT_definition_english  The description of the process data of an {@link digit.domain.processData.order.Order}
  *                            for a loading unit is made in this class with the connection between order data and
  *                            loading unit data. Especially information about peculiarities of the loading unit
