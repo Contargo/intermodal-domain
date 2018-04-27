@@ -5,8 +5,8 @@ package digit.domain.masterData.dangerousGoods;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Tunnelbeschränkungscode
- * @DIGIT_name_english  tunnel restriction code
+ * @name_german  Tunnelbeschränkungscode
+ * @name_english  tunnel restriction code
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

@@ -10,10 +10,10 @@ import java.util.Date;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Fahrgestell
- * @DIGIT_name_english  chassis
- * @DIGIT_definition_german  Anhänger zur Beförderung von Ladeeinheiten.
- * @DIGIT_definition_english  Trailer to transport loading units.
+ * @name_german  Fahrgestell
+ * @name_english  chassis
+ * @definition_german  Anhänger zur Beförderung von Ladeeinheiten.
+ * @definition_english  Trailer to transport loading units.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -27,7 +27,7 @@ public class Chassis implements MeansOfTransport {
     /**
      * Ministry of Transport Test (Format: DateTime ISO 8601 inclusive UTC).
      *
-     * @DIGIT_name_german  Hauptuntersuchung
+     * @name_german  Hauptuntersuchung
      */
     private Date mot;
 
@@ -53,7 +53,7 @@ public class Chassis implements MeansOfTransport {
     /**
      * Safety test.
      *
-     * @DIGIT_name_german  Sicherheitsprüfung
+     * @name_german  Sicherheitsprüfung
      */
     private boolean st;
 

@@ -15,24 +15,23 @@ import java.util.List;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Auftrag
- * @DIGIT_name_english  Order
- * @DIGIT_definition_german  Die komplex verknüpfte Klasse der Auftragsdaten bringt alle Daten zusammen, die zum
- *                           Auftrag gehören. Sie bildet somit eine wichtige Grundlage für die Planung und Durchführung
- *                           intermodaler Ketten nach der vorliegenden Spezifikation. Die Auftragsreferenz dient
- *                           hierbei der eindeutigen Identifizierung. Die vorliegende Gruppe unterscheidet sich
- *                           deutlich zu ihren Vorgängern und ist als komplexe Datenverknüpfung zu interpretieren. Sie
- *                           kann in der Gesamtheit der relevanten Transporteckdaten eine komplette Transportkette
- *                           abbilden und bedient sich hierfür bei den zuvor beschriebenen Datengruppen. Zunächst
- *                           werden übergeordnete Auftragsdaten herangezogen. Anschließend sind alle
- *                           transportrelevanten Daten gesammelt und nach Informationen zu Abholung, Anlieferung, Halt
- *                           und Ziel geordnet.
- * @DIGIT_definition_english  This class combines all data of an Order. Therefore it is an important foundation for
- *                            planning and execution of intermodal chains in this specification. The order reference is
- *                            used for clear identification. This class differs much from the others and should be
- *                            interpreted as complex connection of data. It can be used to map a complete chain of
- *                            transport with all of its relevant data. It includes high level order data as well as
- *                            data relevant for transport organized by pick up, drop off, stop and destination.
+ * @name_german  Auftrag
+ * @name_english  Order
+ * @definition_german  Die komplex verknüpfte Klasse der Auftragsdaten bringt alle Daten zusammen, die zum Auftrag
+ *                     gehören. Sie bildet somit eine wichtige Grundlage für die Planung und Durchführung intermodaler
+ *                     Ketten nach der vorliegenden Spezifikation. Die Auftragsreferenz dient hierbei der eindeutigen
+ *                     Identifizierung. Die vorliegende Gruppe unterscheidet sich deutlich zu ihren Vorgängern und ist
+ *                     als komplexe Datenverknüpfung zu interpretieren. Sie kann in der Gesamtheit der relevanten
+ *                     Transporteckdaten eine komplette Transportkette abbilden und bedient sich hierfür bei den zuvor
+ *                     beschriebenen Datengruppen. Zunächst werden übergeordnete Auftragsdaten herangezogen.
+ *                     Anschließend sind alle transportrelevanten Daten gesammelt und nach Informationen zu Abholung,
+ *                     Anlieferung, Halt und Ziel geordnet.
+ * @definition_english  This class combines all data of an Order. Therefore it is an important foundation for planning
+ *                      and execution of intermodal chains in this specification. The order reference is used for clear
+ *                      identification. This class differs much from the others and should be interpreted as complex
+ *                      connection of data. It can be used to map a complete chain of transport with all of its
+ *                      relevant data. It includes high level order data as well as data relevant for transport
+ *                      organized by pick up, drop off, stop and destination.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

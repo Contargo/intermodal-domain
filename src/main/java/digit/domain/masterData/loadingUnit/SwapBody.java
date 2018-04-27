@@ -7,15 +7,15 @@ package digit.domain.masterData.loadingUnit;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Wechselbrücke
- * @DIGIT_name_english  swap body
- * @DIGIT_synonym_german  Wechselbehälter, Wechselaufbau
- * @DIGIT_definition_german  Für den Gütertransport bestimmter Behälter, der im Hinblick auf die Abmessungen von
- *                           Straßenfahrzeugen optimiert wurde und mit Greifkanten für den Umschlag zwischen den
- *                           Verkehrsmitteln, in der Regel der Verkehrsträger Straße-Schiene, ausgestattet ist.
- * @DIGIT_definition_english  Loading unit intended for the transport of goods, optimized with regard to the dimensions
- *                            of road vehicles and equipped with gripping edges for the transfer between means of
- *                            transport, usually between road and rail transport.
+ * @name_german  Wechselbrücke
+ * @name_english  swap body
+ * @synonym_german  Wechselbehälter, Wechselaufbau
+ * @definition_german  Für den Gütertransport bestimmter Behälter, der im Hinblick auf die Abmessungen von
+ *                     Straßenfahrzeugen optimiert wurde und mit Greifkanten für den Umschlag zwischen den
+ *                     Verkehrsmitteln, in der Regel der Verkehrsträger Straße-Schiene, ausgestattet ist.
+ * @definition_english  Loading unit intended for the transport of goods, optimized with regard to the dimensions of
+ *                      road vehicles and equipped with gripping edges for the transfer between means of transport,
+ *                      usually between road and rail transport.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

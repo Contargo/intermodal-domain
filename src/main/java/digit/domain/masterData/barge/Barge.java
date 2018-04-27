@@ -10,19 +10,18 @@ import digit.domain.masterData.vessel.Vessel;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Binnenschiff
- * @DIGIT_name_english  barge
- * @DIGIT_definition_german  Schiff, das zur Fahrt auf Binnengewässern und Binnenwasserstraßen konstruiert ist.
- * @DIGIT_definition_english  A ship build to drive on inland waters and inland waterways.
- * @DIGIT_note_german  Im Vergleich zum {@link Vessel Seeschiff} bestehen weniger Anforderungen an Stabilität,
- *                     Navigation und Rettungsgerät, wohingegen spezielle Konstruktionen für die Brückendurchfahrt o.
- *                     ä. notwendig sein können. Es gibt diverse Schiffstypen dieser Art, die für den Kombinierten
- *                     Verkehr relevant sind, z. B. Containerschiffe, Lastkähne, Leichter bzw. Schubverbände,
- *                     Koppelverbände.
- * @DIGIT_note_english  In comparison to a {@link Vessel} there are less requirements in means of stability, navigation
- *                      and rescue devices but special constructions for navigating under bridges or or the like might
- *                      be necessary. There are different types of barges that are relevant in combined traffic e.g.
- *                      container ships, lighter and tug barges.
+ * @name_german  Binnenschiff
+ * @name_english  barge
+ * @definition_german  Schiff, das zur Fahrt auf Binnengewässern und Binnenwasserstraßen konstruiert ist.
+ * @definition_english  A ship build to drive on inland waters and inland waterways.
+ * @note_german  Im Vergleich zum {@link Vessel Seeschiff} bestehen weniger Anforderungen an Stabilität, Navigation und
+ *               Rettungsgerät, wohingegen spezielle Konstruktionen für die Brückendurchfahrt o. ä. notwendig sein
+ *               können. Es gibt diverse Schiffstypen dieser Art, die für den Kombinierten Verkehr relevant sind, z. B.
+ *               Containerschiffe, Lastkähne, Leichter bzw. Schubverbände, Koppelverbände.
+ * @note_english  In comparison to a {@link Vessel} there are less requirements in means of stability, navigation and
+ *                rescue devices but special constructions for navigating under bridges or or the like might be
+ *                necessary. There are different types of barges that are relevant in combined traffic e.g. container
+ *                ships, lighter and tug barges.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

@@ -73,54 +73,54 @@
                     <show>private</show>
                     <tags>
                         <tag>
-                            <name>DIGIT_definition_english</name>
+                            <name>definition_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT definition english:</head>
+                            <head>definition english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_name_english</name>
+                            <name>name_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT name english:</head>
+                            <head>name english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_name_german</name>
+                            <name>name_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT name german:</head>
+                            <head>name german:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_definition_german</name>
+                            <name>definition_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT definition german:</head>
+                            <head>definition german:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_note_german</name>
+                            <name>note_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT note german:</head>
+                            <head>note german:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_note_english</name>
+                            <name>note_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT note english:</head>
+                            <head>note english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_synonym_german</name>
+                            <name>synonym_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT synonym german:</head>
+                            <head>synonym german:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_synonym_english</name>
+                            <name>synonym_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT synonym english:</head>
+                            <head>synonym english:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_abbreviation_german</name>
+                            <name>abbreviation_german</name>
                             <placement>tmf</placement>
-                            <head>DIGIT abbreviation german:</head>
+                            <head>abbreviation german:</head>
                         </tag>
                         <tag>
-                            <name>DIGIT_abbreviation_english</name>
+                            <name>abbreviation_english</name>
                             <placement>tmf</placement>
-                            <head>DIGIT abbreviation english:</head>
+                            <head>abbreviation english:</head>
                         </tag>
                         <tag>
                             <name>source</name>

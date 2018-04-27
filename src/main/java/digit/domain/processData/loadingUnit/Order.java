@@ -15,20 +15,18 @@ import java.util.List;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Ladeeinheit Auftrag
- * @DIGIT_name_english  loading unit order
- * @DIGIT_synonym_german  LE Auftrag
- * @DIGIT_synonym_german  lu order
- * @DIGIT_definition_german  Die Beschreibung der Prozessdaten zu einem
- *                           {@link digit.domain.processData.order.Order Auftrag} für eine Ladeeinheit erfolgt in
- *                           dieser Gruppe durch die Verknüpfung von Auftragsdaten mit Daten zur Ladeeinheit.
- *                           Insbesondere Informationen zu Eigenheiten der Ladeeinheit inklusive dem transportierten
- *                           Gut und zu Operateuren sowie Transportrichtung sind hier gesammelt.
- * @DIGIT_definition_english  The description of the process data of an {@link digit.domain.processData.order.Order}
- *                            for a loading unit is made in this class with the connection between order data and
- *                            loading unit data. Especially information about peculiarities of the loading unit
- *                            including the transported goods and operators as well as the direction of transport are
- *                            collected here.
+ * @name_german  Ladeeinheit Auftrag
+ * @name_english  loading unit order
+ * @synonym_german  LE Auftrag
+ * @synonym_german  lu order
+ * @definition_german  Die Beschreibung der Prozessdaten zu einem {@link digit.domain.processData.order.Order Auftrag}
+ *                     für eine Ladeeinheit erfolgt in dieser Gruppe durch die Verknüpfung von Auftragsdaten mit Daten
+ *                     zur Ladeeinheit. Insbesondere Informationen zu Eigenheiten der Ladeeinheit inklusive dem
+ *                     transportierten Gut und zu Operateuren sowie Transportrichtung sind hier gesammelt.
+ * @definition_english  The description of the process data of an {@link digit.domain.processData.order.Order} for a
+ *                      loading unit is made in this class with the connection between order data and loading unit
+ *                      data. Especially information about peculiarities of the loading unit including the transported
+ *                      goods and operators as well as the direction of transport are collected here.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

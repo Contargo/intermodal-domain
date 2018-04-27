@@ -15,20 +15,20 @@ import java.util.List;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Abfertigung Binnenschiff
- * @DIGIT_name_english  processing barge
- * @DIGIT_definition_german  Nach erfolgreicher Anmeldung kommt es zur Abfertigung der Verkehrsmittel im Umschlagpunkt.
- *                           In dieser Gruppe werden die Daten, die für die Abwicklung der Be- und Entladungsvorgänge
- *                           am Binnenschiff notwendig sind, zusammengefasst. Die Prozesse werden durch die Verknüpfung
- *                           von Eigenschaften des {@link digit.domain.masterData.barge.Barge Binnenschiffs},
- *                           relevanten {@link digit.domain.masterData.person.Person Personen}, Fahrplänen sowie
- *                           Beladungen und nötigen Dokumenteninformationen dargestellt.
- * @DIGIT_definition_english  After successful registration the means of transport is processed on the handling point.
- *                            In this class the data necessary for processing of loading and discharging barges is
- *                            summarized. The processes are described by connecting properties of the
- *                            {@link digit.domain.masterData.barge.Barge}, relevant
- *                            {@link digit.domain.masterData.person.Person Persons} and schedules as well as loads and
- *                            necessary document information.
+ * @name_german  Abfertigung Binnenschiff
+ * @name_english  processing barge
+ * @definition_german  Nach erfolgreicher Anmeldung kommt es zur Abfertigung der Verkehrsmittel im Umschlagpunkt. In
+ *                     dieser Gruppe werden die Daten, die für die Abwicklung der Be- und Entladungsvorgänge am
+ *                     Binnenschiff notwendig sind, zusammengefasst. Die Prozesse werden durch die Verknüpfung von
+ *                     Eigenschaften des {@link digit.domain.masterData.barge.Barge Binnenschiffs}, relevanten
+ *                     {@link digit.domain.masterData.person.Person Personen}, Fahrplänen sowie Beladungen und nötigen
+ *                     Dokumenteninformationen dargestellt.
+ * @definition_english  After successful registration the means of transport is processed on the handling point. In
+ *                      this class the data necessary for processing of loading and discharging barges is summarized.
+ *                      The processes are described by connecting properties of the
+ *                      {@link digit.domain.masterData.barge.Barge}, relevant
+ *                      {@link digit.domain.masterData.person.Person Persons} and schedules as well as loads and
+ *                      necessary document information.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

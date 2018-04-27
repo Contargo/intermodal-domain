@@ -8,19 +8,19 @@ import digit.domain.masterData.operator.Operator;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
- * @DIGIT_name_german  Ladeeinheit
- * @DIGIT_name_english  loading unit
- * @DIGIT_abbreviation_german  LE
- * @DIGIT_abbreviation_english  LU
- * @DIGIT_definition_german  Physische Transporteinheit, die Waren und Güter umschließen kann.
- * @DIGIT_definition_english  Physical transport unit which can include wares and goods.
- * @DIGIT_note_german  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind
- *                     {@link digit.domain.masterData.loadingUnit.Container},
- *                     {@link digit.domain.masterData.loadingUnit.SwapBody Wechselbehälter},
- *                     {@link digit.domain.masterData.loadingUnit.Trailer Sattelauflieger}.
- * @DIGIT_note_english  Loading units in combined traffic are {@link digit.domain.masterData.loadingUnit.Container},
- *                      {@link digit.domain.masterData.loadingUnit.SwapBody} and
- *                      {@link digit.domain.masterData.loadingUnit.Trailer}.
+ * @name_german  Ladeeinheit
+ * @name_english  loading unit
+ * @abbreviation_german  LE
+ * @abbreviation_english  LU
+ * @definition_german  Physische Transporteinheit, die Waren und Güter umschließen kann.
+ * @definition_english  Physical transport unit which can include wares and goods.
+ * @note_german  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind
+ *               {@link digit.domain.masterData.loadingUnit.Container},
+ *               {@link digit.domain.masterData.loadingUnit.SwapBody Wechselbehälter},
+ *               {@link digit.domain.masterData.loadingUnit.Trailer Sattelauflieger}.
+ * @note_english  Loading units in combined traffic are {@link digit.domain.masterData.loadingUnit.Container},
+ *                {@link digit.domain.masterData.loadingUnit.SwapBody} and
+ *                {@link digit.domain.masterData.loadingUnit.Trailer}.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
