@@ -1,9 +1,9 @@
 package example;
 
-import net.contargo.domain.Container;
-import net.contargo.domain.Location;
-import net.contargo.domain.Site;
-import net.contargo.domain.Terminal;
+import net.contargo.intermodal.domain.Container;
+import net.contargo.intermodal.domain.Location;
+import net.contargo.intermodal.domain.Site;
+import net.contargo.intermodal.domain.Terminal;
 
 
 /**
@@ -22,8 +22,8 @@ public class Example {
      * Optionally, the tagging interfaces may be used as actual markers on types that adhere to the classification - or
      * perhaps directly implement the type.
      *
-     * <p>This would also yield the benefit of a more generalized reasoning across applications and solutions, about how
-     * they map to the core domain aspects.</p>
+     * <p>This would also yield the benefit of a more generalized reasoning across applications and solutions, about
+     * how they map to the core domain aspects.</p>
      *
      * @author  Olle Törnström - toernstroem@synyx.de
      * @since  0.0.1
