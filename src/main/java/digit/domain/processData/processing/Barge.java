@@ -14,6 +14,7 @@ import java.util.List;
  * {@link digit.domain.masterData.barge.Barge barges}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Abfertigung Binnenschiff
  * @DIGIT_name_english  processing barge
  * @DIGIT_definition_german  Nach erfolgreicher Anmeldung kommt es zur Abfertigung der Verkehrsmittel im Umschlagpunkt.
@@ -28,6 +29,8 @@ import java.util.List;
  *                            {@link digit.domain.masterData.barge.Barge}, relevant
  *                            {@link digit.domain.masterData.person.Person Persons} and schedules as well as loads and
  *                            necessary document information.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Barge {
 

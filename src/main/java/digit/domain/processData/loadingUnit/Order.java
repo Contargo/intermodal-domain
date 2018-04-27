@@ -14,6 +14,7 @@ import java.util.List;
  * {@link digit.domain.masterData.loadingUnit.LoadingUnit}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Ladeeinheit Auftrag
  * @DIGIT_name_english  loading unit order
  * @DIGIT_synonym_german  LE Auftrag
@@ -28,6 +29,8 @@ import java.util.List;
  *                            loading unit data. Especially information about peculiarities of the loading unit
  *                            including the transported goods and operators as well as the direction of transport are
  *                            collected here.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Order {
 

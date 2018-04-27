@@ -14,6 +14,7 @@ import java.util.Date;
  * {@link digit.domain.masterData.person.Driver Person} and {@link digit.domain.processData.loadingUnit.Order}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Anmeldung Fahrzeug
  * @DIGIT_name_english  registration vehicle
  * @DIGIT_definition_german  Die Beschreibung der Anmeldung von Straßenfahrzeugen an Umschlagpunkten durch die
@@ -24,6 +25,8 @@ import java.util.Date;
  *                            {@link digit.domain.masterData.person.Driver Person} and
  *                            {@link digit.domain.processData.loadingUnit.Order}. It is valid for the delivery of
  *                            loading units as well as for the pick up of an loading unit on a handling point.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Vehicle {
 

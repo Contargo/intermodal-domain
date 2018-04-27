@@ -7,8 +7,11 @@ import java.util.Date;
 
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Person
  * @DIGIT_name_english  person
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public abstract class Person {
 

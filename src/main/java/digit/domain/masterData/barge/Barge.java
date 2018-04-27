@@ -9,6 +9,7 @@ import digit.domain.masterData.vessel.Vessel;
  * A ship build to drive on inland waters and inland waterways.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Binnenschiff
  * @DIGIT_name_english  barge
  * @DIGIT_definition_german  Schiff, das zur Fahrt auf Binnengewässern und Binnenwasserstraßen konstruiert ist.
@@ -22,6 +23,8 @@ import digit.domain.masterData.vessel.Vessel;
  *                      and rescue devices but special constructions for navigating under bridges or or the like might
  *                      be necessary. There are different types of barges that are relevant in combined traffic e.g.
  *                      container ships, lighter and tug barges.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Barge implements MeansOfTransport {
 

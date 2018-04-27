@@ -5,6 +5,7 @@ package digit.domain.masterData.loadingUnit;
  * {@link digit.domain.masterData.meansOfTransport.MeansOfTransport means of transport}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Container
  * @DIGIT_name_english  Container
  * @DIGIT_definition_german  Behälter für den Gütertransport für den Wechsel von einer zur anderen
@@ -15,6 +16,8 @@ package digit.domain.masterData.loadingUnit;
  *                     sein. (@see DIN EN ISO 17261:2012-12, 3.14 — modifiziert, Änderung der Anmerkung)
  * @DIGIT_note_english  Container types can be flat, open top, high cube, bulk, ISO, reefer- or tank containers. (@see
  *                      DIN EN ISO 17261:2012-12, 3.14 — modifiziert, Änderung der Anmerkung)
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Container extends LoadingUnit {
 

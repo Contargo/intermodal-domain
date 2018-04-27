@@ -7,6 +7,7 @@ import digit.domain.masterData.operator.Operator;
  * Physical transport unit which can include wares and goods.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Ladeeinheit
  * @DIGIT_name_english  loading unit
  * @DIGIT_abbreviation_german  LE
@@ -20,6 +21,8 @@ import digit.domain.masterData.operator.Operator;
  * @DIGIT_note_english  Loading units in combined traffic are {@link digit.domain.masterData.loadingUnit.Container},
  *                      {@link digit.domain.masterData.loadingUnit.SwapBody} and
  *                      {@link digit.domain.masterData.loadingUnit.Trailer}.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public abstract class LoadingUnit {
 

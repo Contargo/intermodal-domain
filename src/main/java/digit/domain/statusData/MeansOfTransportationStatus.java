@@ -7,6 +7,7 @@ import java.util.Date;
  * Status of means of transport for communication flow of intermodal freight transport.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Verkehrsmittelstatus
  * @DIGIT_name_english  means of transportation status
  * @DIGIT_definition_german  Verkehrsmittelstatus für den Informationsfluss in der intermodalen Kette. Über den
@@ -24,6 +25,8 @@ import java.util.Date;
  *                            is concretized by their status. There are two blocks per status package. On one hand the
  *                            identification of the doer on the other hand the schedule of the different operational
  *                            steps.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class MeansOfTransportationStatus {
 

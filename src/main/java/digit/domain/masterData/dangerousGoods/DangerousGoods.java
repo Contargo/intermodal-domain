@@ -5,6 +5,7 @@ package digit.domain.masterData.dangerousGoods;
  * or state.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Gefahrgut
  * @DIGIT_name_english  dangerous goods
  * @DIGIT_definition_german  Stoffe und Gegenstände, von denen auf Grund ihrer Natur, ihrer Eigenschaften oder ihres
@@ -15,6 +16,8 @@ package digit.domain.masterData.dangerousGoods;
  *                            their nature, properties or state.
  * @DIGIT_note_german  Bei verschiedenen Verkehrsträgern kommt das entsprechende Regelwerk zum Tragen.
  * @DIGIT_note_english  There are different rules for different modes of transport.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class DangerousGoods {
 

@@ -122,6 +122,11 @@
                             <placement>tmf</placement>
                             <head>DIGIT abbreviation english:</head>
                         </tag>
+                        <tag>
+                            <name>source</name>
+                            <placement>tmf</placement>
+                            <head>source:</head>
+                        </tag>
                     </tags>
                 </configuration>
             </plugin>

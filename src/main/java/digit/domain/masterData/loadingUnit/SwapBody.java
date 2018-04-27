@@ -6,6 +6,7 @@ package digit.domain.masterData.loadingUnit;
  * usually between road/rail transport.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Wechselbrücke
  * @DIGIT_name_english  swap body
  * @DIGIT_synonym_german  Wechselbehälter, Wechselaufbau
@@ -15,6 +16,8 @@ package digit.domain.masterData.loadingUnit;
  * @DIGIT_definition_english  Loading unit intended for the transport of goods, optimized with regard to the dimensions
  *                            of road vehicles and equipped with gripping edges for the transfer between means of
  *                            transport, usually between road and rail transport.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class SwapBody extends LoadingUnit {
 

@@ -10,12 +10,15 @@ import java.util.Date;
  * Commercial vehicle which is mostly or exclusively used for carrying trailed vehicles.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Zugmaschine
  * @DIGIT_name_english  truck
  * @DIGIT_definition_german  Nutzkraftwagen, der ausschließlich oder überwiegend zum Mitführen von Anhängerfahrzeugen
  *                           bestimmt ist. (@see DIN 70010:2001-04, 1.2.2.3)
  * @DIGIT_definition_english  Commercial vehicle which is mostly or exclusively used for carrying trailed vehicles.
  *                            (@see DIN 70010:2001-04, 1.2.2.3)
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Truck implements MeansOfTransport {
 

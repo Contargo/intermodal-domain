@@ -4,6 +4,7 @@ package digit.domain.statusData;
  * Status of loading unit for communication flow of intermodal freight transport.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Ladeeinheitenstatus
  * @DIGIT_name_english  loading unit status
  * @DIGIT_definition_german  Ladeeinheitenstatus für den Informationsfluss in der intermodalen Kette. Über den
@@ -22,6 +23,8 @@ package digit.domain.statusData;
  *                            core data is similar and is concretized by their status. There are two blocks per status
  *                            package. On one hand the identification of the doer on the other hand the schedule of the
  *                            different operational steps.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class StatusLU {
 

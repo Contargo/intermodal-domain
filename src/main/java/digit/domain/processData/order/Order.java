@@ -14,6 +14,7 @@ import java.util.List;
  * Contains all data of an order.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Auftrag
  * @DIGIT_name_english  Order
  * @DIGIT_definition_german  Die komplex verknüpfte Klasse der Auftragsdaten bringt alle Daten zusammen, die zum
@@ -32,6 +33,8 @@ import java.util.List;
  *                            interpreted as complex connection of data. It can be used to map a complete chain of
  *                            transport with all of its relevant data. It includes high level order data as well as
  *                            data relevant for transport organized by pick up, drop off, stop and destination.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Order {
 

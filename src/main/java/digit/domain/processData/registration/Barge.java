@@ -10,6 +10,7 @@ import java.util.Date;
  * connecting barge, schedule and quantity information.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Anmeldung Binnenschiff
  * @DIGIT_name_english  registration barge
  * @DIGIT_definition_german  Enthält Daten für die Anmeldung von
@@ -17,6 +18,8 @@ import java.util.Date;
  *                           Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.
  * @DIGIT_definition_english  Contains data for registration of {@link digit.domain.masterData.barge.Barge barges} on
  *                            handling points by connecting barge, schedule and quantity information.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Barge {
 

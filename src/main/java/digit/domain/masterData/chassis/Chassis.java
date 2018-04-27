@@ -9,10 +9,13 @@ import java.util.Date;
  * Trailer to transport loading units.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
  * @DIGIT_name_german  Fahrgestell
  * @DIGIT_name_english  chassis
  * @DIGIT_definition_german  Anhänger zur Beförderung von Ladeeinheiten.
  * @DIGIT_definition_english  Trailer to transport loading units.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Chassis implements MeansOfTransport {
 
