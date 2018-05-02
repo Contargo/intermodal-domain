@@ -131,4 +131,22 @@ public class Trailer extends LoadingUnit {
 
         return this;
     }
+
+
+    public String getType() {
+
+        return type;
+    }
+
+
+    public double getSize() {
+
+        return size;
+    }
+
+
+    public boolean isCraneable() {
+
+        return craneable;
+    }
 }

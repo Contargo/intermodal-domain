@@ -1,8 +1,5 @@
 package net.contargo.intermodal.domain.loadingUnit;
 
-import net.contargo.intermodal.domain.Operator;
-
-
 /**
  * Case for the transport of goods for the change to another
  * {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport means of transport}.
@@ -137,5 +134,24 @@ public class Container extends LoadingUnit {
         super.withOperator(operator);
 
         return this;
+    }
+
+
+
+    public String getSizeType() {
+
+        return sizeType;
+    }
+
+
+    public String getType() {
+
+        return type;
+    }
+
+
+    public int getSize() {
+
+        return size;
     }
 }

@@ -133,4 +133,22 @@ public class SwapBody extends LoadingUnit {
 
         return this;
     }
+
+
+    public String getType() {
+
+        return type;
+    }
+
+
+    public double getSize() {
+
+        return size;
+    }
+
+
+    public boolean isStackable() {
+
+        return stackable;
+    }
 }

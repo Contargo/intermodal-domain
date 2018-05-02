@@ -138,4 +138,58 @@ public abstract class LoadingUnit {
 
         return this;
     }
+
+
+    public String getIdentification() {
+
+        return identification;
+    }
+
+
+    public String getNumber() {
+
+        return number;
+    }
+
+
+    public LoadingUnitCategory getCategory() {
+
+        return category;
+    }
+
+
+    public double getWeightBruttoMax() {
+
+        return weightBruttoMax;
+    }
+
+
+    public double getWeightNettoMax() {
+
+        return weightNettoMax;
+    }
+
+
+    public double getWeightTara() {
+
+        return weightTara;
+    }
+
+
+    public String getCondition() {
+
+        return condition;
+    }
+
+
+    public boolean isReefer() {
+
+        return reefer;
+    }
+
+
+    public String getOperator() {
+
+        return operator;
+    }
 }
