@@ -67,4 +67,75 @@ public abstract class LoadingUnit {
      * Name of {@link Operator}.
      */
     private String operator;
+
+    LoadingUnit withCategory(LoadingUnitCategory loadingUnitCategory) {
+
+        this.category = loadingUnitCategory;
+
+        return this;
+    }
+
+
+    LoadingUnit withIdentification(String identification) {
+
+        this.identification = identification;
+
+        return this;
+    }
+
+
+    LoadingUnit withNumber(String number) {
+
+        this.number = number;
+
+        return this;
+    }
+
+
+    LoadingUnit withWeightBruttoMax(double weightBruttoMax) {
+
+        this.weightBruttoMax = weightBruttoMax;
+
+        return this;
+    }
+
+
+    LoadingUnit withWeightNettoMax(double weightNettoMax) {
+
+        this.weightNettoMax = weightNettoMax;
+
+        return this;
+    }
+
+
+    LoadingUnit withWeightTara(double weightTara) {
+
+        this.weightTara = weightTara;
+
+        return this;
+    }
+
+
+    LoadingUnit withCondition(String condition) {
+
+        this.condition = condition;
+
+        return this;
+    }
+
+
+    LoadingUnit isReefer(boolean reefer) {
+
+        this.reefer = reefer;
+
+        return this;
+    }
+
+
+    LoadingUnit withOperator(String operator) {
+
+        this.operator = operator;
+
+        return this;
+    }
 }

@@ -31,4 +31,104 @@ public class Trailer extends LoadingUnit {
     private double size;
 
     private boolean craneable;
+
+    public Trailer() {
+
+        super.withCategory(LoadingUnitCategory.TRAILER);
+    }
+
+    public Trailer withType(String type) {
+
+        this.type = type;
+
+        return this;
+    }
+
+
+    public Trailer withSize(double size) {
+
+        this.size = size;
+
+        return this;
+    }
+
+
+    public Trailer isCraneable(boolean craneable) {
+
+        this.craneable = craneable;
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer withIdentification(String identification) {
+
+        super.withIdentification(identification);
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer withNumber(String number) {
+
+        super.withNumber(number);
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer withWeightBruttoMax(double weightBruttoMax) {
+
+        super.withWeightBruttoMax(weightBruttoMax);
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer withWeightNettoMax(double weightNettoMax) {
+
+        super.withWeightNettoMax(weightNettoMax);
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer withWeightTara(double weightTara) {
+
+        super.withWeightTara(weightTara);
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer withCondition(String condition) {
+
+        super.withCondition(condition);
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer isReefer(boolean reefer) {
+
+        super.isReefer(reefer);
+
+        return this;
+    }
+
+
+    @Override
+    public Trailer withOperator(String operator) {
+
+        super.withOperator(operator);
+
+        return this;
+    }
 }
