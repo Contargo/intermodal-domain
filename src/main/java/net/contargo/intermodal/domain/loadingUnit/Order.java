@@ -51,12 +51,12 @@ public class Order {
     private double weightTara;
 
     /**
-     * Value is optional and can be null.
+     * Value can be null.
      */
     private DangerousGoods dangerousGoodsIndication;
 
     /**
-     * Value is optional and can be null.
+     * Value can be null.
      */
     private Waste wasteIndication;
 
@@ -113,6 +113,108 @@ public class Order {
         return new OrderBuilder();
     }
 
+
+    public String getReference() {
+
+        return reference;
+    }
+
+
+    public LoadingUnit getLoadingUnit() {
+
+        return loadingUnit;
+    }
+
+
+    public double getWeightBrutto() {
+
+        return weightBrutto;
+    }
+
+
+    public double getWeightNetto() {
+
+        return weightNetto;
+    }
+
+
+    public double getWeightTara() {
+
+        return weightTara;
+    }
+
+
+    public DangerousGoods getDangerousGoodsIndication() {
+
+        return dangerousGoodsIndication;
+    }
+
+
+    public Waste getWasteIndication() {
+
+        return wasteIndication;
+    }
+
+
+    public int getSetTemperature() {
+
+        return setTemperature;
+    }
+
+
+    public Operator getOperator() {
+
+        return operator;
+    }
+
+
+    public Operator getClient() {
+
+        return client;
+    }
+
+
+    public Direction getDirection() {
+
+        return direction;
+    }
+
+
+    public Customs getCustoms() {
+
+        return customs;
+    }
+
+
+    public String getGoods() {
+
+        return goods;
+    }
+
+
+    public boolean isEmpty() {
+
+        return empty;
+    }
+
+
+    public List<String> getSeal() {
+
+        return seal;
+    }
+
+
+    public String getSealType() {
+
+        return sealType;
+    }
+
+
+    public String getSealNumber() {
+
+        return sealNumber;
+    }
+
     public static class OrderBuilder {
 
         private String reference;
@@ -135,12 +237,12 @@ public class Order {
         private double weightTara;
 
         /**
-         * Value is optional and can be null.
+         * Value can be null.
          */
         private DangerousGoods dangerousGoodsIndication;
 
         /**
-         * Value is optional and can be null.
+         * Value can be null.
          */
         private Waste wasteIndication;
 
