@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain.person;
 
-import java.util.Date;
+import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
 
 
 /**
@@ -16,9 +17,9 @@ import java.util.Date;
 public class Driver extends Person {
 
     /**
-     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     * /** DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
-    private Date licenseValidity;
+    private String licenseValidity;
 
     private String licenseNumber;
 
@@ -34,10 +35,133 @@ public class Driver extends Person {
      *
      * <p>Value is optional and can be null.</p>
      */
-    private Date adr;
+    private String adr;
 
     /**
      * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
-    private Date moduleEntry95;
+    private String moduleEntry95;
+
+    public Driver withLicenseValidity(int year, int month, int day) {
+
+        this.licenseValidity = ISO8601DateFormatter.format(year, month, day);
+
+        return this;
+    }
+
+
+    public Driver withLicenseNumber(String licenseNumber) {
+
+        this.licenseNumber = licenseNumber;
+
+        return this;
+    }
+
+
+    public Driver withId(String id) {
+
+        this.id = id;
+
+        return this;
+    }
+
+
+    public Driver withAdr(int year, int month, int day) {
+
+        this.adr = ISO8601DateFormatter.format(year, month, day);
+
+        return this;
+    }
+
+
+    public Driver withModuleEntry95(int year, int month, int day) {
+
+        this.moduleEntry95 = ISO8601DateFormatter.format(year, month, day);
+
+        return this;
+    }
+
+
+    @Override
+    public Driver withName(String firstName, String lastName) {
+
+        super.withName(firstName, lastName);
+
+        return this;
+    }
+
+
+    @Override
+    public Driver withAddress(Address address) {
+
+        super.withAddress(address);
+
+        return this;
+    }
+
+
+    @Override
+    public Driver withCellphone(String cellphone) {
+
+        super.withCellphone(cellphone);
+
+        return this;
+    }
+
+
+    @Override
+    public Driver withDateOfBirth(int year, int month, int day) {
+
+        super.withDateOfBirth(year, month, day);
+
+        return this;
+    }
+
+
+    @Override
+    public Driver withCityOfBirth(String locationCity) {
+
+        super.withCityOfBirth(locationCity);
+
+        return this;
+    }
+
+
+    @Override
+    public Driver withCountryCode(String countryCode) {
+
+        super.withCountryCode(countryCode);
+
+        return this;
+    }
+
+
+    public String getLicenseValidity() {
+
+        return licenseValidity;
+    }
+
+
+    public String getLicenseNumber() {
+
+        return licenseNumber;
+    }
+
+
+    public String getId() {
+
+        return id;
+    }
+
+
+    public String getAdr() {
+
+        return adr;
+    }
+
+
+    public String getModuleEntry95() {
+
+        return moduleEntry95;
+    }
 }

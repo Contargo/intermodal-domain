@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain.person;
 
-import java.util.Date;
+import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
 
 
 /**
@@ -22,5 +23,72 @@ public class Skipper extends Person {
      *
      * <p>Value is optional and can be null.</p>
      */
-    private Date adnr;
+    private String adnr;
+
+    public Skipper withAdnr(int year, int month, int day) {
+
+        this.adnr = ISO8601DateFormatter.format(year, month, day);
+
+        return this;
+    }
+
+
+    @Override
+    public Skipper withName(String firstName, String lastName) {
+
+        super.withName(firstName, lastName);
+
+        return this;
+    }
+
+
+    @Override
+    public Skipper withAddress(Address address) {
+
+        super.withAddress(address);
+
+        return this;
+    }
+
+
+    @Override
+    public Skipper withCellphone(String cellphone) {
+
+        super.withCellphone(cellphone);
+
+        return this;
+    }
+
+
+    @Override
+    public Skipper withDateOfBirth(int year, int month, int day) {
+
+        super.withDateOfBirth(year, month, day);
+
+        return this;
+    }
+
+
+    @Override
+    public Skipper withCityOfBirth(String locationCity) {
+
+        super.withCityOfBirth(locationCity);
+
+        return this;
+    }
+
+
+    @Override
+    public Skipper withCountryCode(String countryCode) {
+
+        super.withCountryCode(countryCode);
+
+        return this;
+    }
+
+
+    public String getAdnr() {
+
+        return adnr;
+    }
 }
