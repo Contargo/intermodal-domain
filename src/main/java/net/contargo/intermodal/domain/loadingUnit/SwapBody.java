@@ -20,7 +20,7 @@ package net.contargo.intermodal.domain.loadingUnit;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
-public class SwapBody extends LoadingUnit {
+public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufbau, Wechselbehälter {
 
     /**
      * e.g. Klasse A, Klasse C (C715, C745, C765, C782), Open Top
@@ -151,4 +151,13 @@ public class SwapBody extends LoadingUnit {
 
         return stackable;
     }
+}
+
+interface Wechselbrücke {
+}
+
+interface Wechselbehälter {
+}
+
+interface Wechselaufbau {
 }
