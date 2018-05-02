@@ -71,7 +71,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container withIdentification(String identification) {
 
-        this.withIdentification(identification);
+        super.withIdentification(identification);
 
         return this;
     }
@@ -80,7 +80,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container withNumber(String number) {
 
-        this.withNumber(number);
+        super.withNumber(number);
 
         return this;
     }
@@ -89,7 +89,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container withWeightBruttoMax(double weightBruttoMax) {
 
-        this.withWeightBruttoMax(weightBruttoMax);
+        super.withWeightBruttoMax(weightBruttoMax);
 
         return this;
     }
@@ -98,7 +98,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container withWeightNettoMax(double weightNettoMax) {
 
-        this.withWeightNettoMax(weightNettoMax);
+        super.withWeightNettoMax(weightNettoMax);
 
         return this;
     }
@@ -107,7 +107,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container withWeightTara(double weightTara) {
 
-        this.withWeightTara(weightTara);
+        super.withWeightTara(weightTara);
 
         return this;
     }
@@ -116,7 +116,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container withCondition(String condition) {
 
-        this.withCondition(condition);
+        super.withCondition(condition);
 
         return this;
     }
@@ -125,7 +125,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container isReefer(boolean reefer) {
 
-        this.isReefer(reefer);
+        super.isReefer(reefer);
 
         return this;
     }
@@ -134,7 +134,7 @@ public class Container extends LoadingUnit {
     @Override
     public Container withOperator(String operator) {
 
-        this.withOperator(operator);
+        super.withOperator(operator);
 
         return this;
     }
