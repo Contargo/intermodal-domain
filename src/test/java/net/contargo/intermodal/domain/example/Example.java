@@ -1,4 +1,4 @@
-package example;
+package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.Container;
 import net.contargo.intermodal.domain.Location;
