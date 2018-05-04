@@ -157,6 +157,21 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
 
         return stackable;
     }
+
+
+    @Override
+    public String toString() {
+
+        return "SwapBody {" + String.format("identification='%s', ", super.getIdentification())
+            + String.format("number='%s', ", super.getNumber()) + String.format("category='%s', ", super.getCategory())
+            + String.format("weightBruttoMax='%s', ", super.getWeightBruttoMax())
+            + String.format("weightNettoMax='%s', ", super.getWeightNettoMax())
+            + String.format("weightTara='%s', ", super.getWeightTara())
+            + String.format("condition='%s', ", super.getCondition())
+            + String.format("reefer='%s', ", super.isReefer()) + String.format("operator='%s', ", super.getOperator())
+            + String.format("type='%s', ", this.type) + String.format("size='%s', ", this.size)
+            + String.format("stackable='%s'", this.stackable) + "}";
+    }
 }
 
 interface Wechselbrücke {

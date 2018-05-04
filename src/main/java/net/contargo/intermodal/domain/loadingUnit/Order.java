@@ -105,8 +105,29 @@ public class Order {
         this.seal = orderBuilder.seal;
         this.sealType = orderBuilder.sealType;
         this.sealNumber = orderBuilder.sealNumber;
-        this.reference = orderBuilder.reference;
     }
+
+    @Override
+    public String toString() {
+
+        return "Order {"
+            + String.format("reference='%s', ", this.reference)
+            + String.format("loadingUnit='%s', ", this.loadingUnit.toString())
+            + String.format("weightBrutto='%s' ,", this.weightBrutto)
+            + String.format("weightNetto='%s' ,", this.weightNetto)
+            + String.format("weightTara='%s',", this.weightTara)
+            + String.format("dangerousGoodsIndication='%s' ,", this.dangerousGoodsIndication.toString())
+            + String.format("wasteIndication='%s' ,", this.wasteIndication.toString())
+            + String.format("setTemperature='%s' ,", this.setTemperature)
+            + String.format("operator='%s' ,", this.operator.toString())
+            + String.format("client='%s' ,", this.client.toString())
+            + String.format("direction='%s' ,", this.direction)
+            + String.format("customs='%s' ,", this.customs.toString()) + String.format("goods='%s' ,", this.goods)
+            + String.format("empty='%s' ,", this.empty) + String.format("seal='%s' ,", this.seal)
+            + String.format("sealType='%s' ,", this.sealType) + String.format("sealNumber='%s'", this.sealNumber)
+            + "}";
+    }
+
 
     public static OrderBuilder newBuilder() {
 
