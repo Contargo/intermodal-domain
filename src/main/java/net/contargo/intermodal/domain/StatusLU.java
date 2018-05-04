@@ -34,7 +34,7 @@ public class StatusLU {
      * @definition_german  {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit Ladeeinheit} ist bereit für
      *                     den Umschlag/ die Kranung.
      */
-    private boolean readyForLoading;
+    private Boolean readyForLoading;
 
     /**
      * Loaded on {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport MoT}.
@@ -44,7 +44,7 @@ public class StatusLU {
      *                     und befindet sich auf dem
      *                     {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport VM}.
      */
-    private boolean loaded;
+    private Boolean loaded;
 
     /**
      * Ready for going out.
@@ -54,7 +54,7 @@ public class StatusLU {
      *                     befindet sich auf dem
      *                     {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport VM}.
      */
-    private boolean inspectionOut;
+    private Boolean inspectionOut;
 
     /**
      * {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit LU} out confirmed.
@@ -63,7 +63,7 @@ public class StatusLU {
      * @definition_german  {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit Ladeeinheit} ist verladen und
      *                     hat Umschlagpunkt verlassen.
      */
-    private boolean out;
+    private Boolean out;
 
     /**
      * Ready for going in.
@@ -73,7 +73,7 @@ public class StatusLU {
      *                     {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport VM} mit dem
      *                     Umschlagpunkt erreicht wurde.
      */
-    private boolean inspectionIn;
+    private Boolean inspectionIn;
 
     /**
      * {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit LU} in confirmed.
@@ -83,7 +83,7 @@ public class StatusLU {
      *                     {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport VM} im
      *                     Umschlagbereich.
      */
-    private boolean in;
+    private Boolean in;
 
     /**
      * {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit LU} free and
@@ -94,7 +94,7 @@ public class StatusLU {
      *                     {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport VM} und im
      *                     Umschlagbereich bereit zum Entladen.
      */
-    private boolean readyForUnloading;
+    private Boolean readyForUnloading;
 
     /**
      * {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit LU} in.
@@ -104,5 +104,5 @@ public class StatusLU {
      *                     {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport VM}
      *                     heruntergenommen, befindet sich im Umschlagpunkt.
      */
-    private boolean unloaded;
+    private Boolean unloaded;
 }

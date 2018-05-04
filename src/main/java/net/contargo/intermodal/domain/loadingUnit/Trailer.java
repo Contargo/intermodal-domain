@@ -28,9 +28,9 @@ public class Trailer extends LoadingUnit {
     /**
      * in meter.
      */
-    private double size;
+    private Double size;
 
-    private boolean craneable;
+    private Boolean craneable;
 
     public Trailer() {
 
@@ -53,7 +53,7 @@ public class Trailer extends LoadingUnit {
     }
 
 
-    public Trailer isCraneable(boolean craneable) {
+    public Trailer isCraneable(Boolean craneable) {
 
         this.craneable = craneable;
 
@@ -116,7 +116,7 @@ public class Trailer extends LoadingUnit {
 
 
     @Override
-    public Trailer isReefer(boolean reefer) {
+    public Trailer isReefer(Boolean reefer) {
 
         super.isReefer(reefer);
 
@@ -139,14 +139,21 @@ public class Trailer extends LoadingUnit {
     }
 
 
-    public double getSize() {
+    public Double getSize() {
 
         return size;
     }
 
 
-    public boolean isCraneable() {
+    public Boolean isCraneable() {
 
         return craneable;
+    }
+
+
+    public Boolean checkValidity() {
+
+        return super.getNumber() != null && super.getCategory() != null && this.getType() != null
+            && this.getSize() != null && this.craneable != null;
     }
 }

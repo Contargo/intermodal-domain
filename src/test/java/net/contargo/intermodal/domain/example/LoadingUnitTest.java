@@ -29,15 +29,17 @@ class LoadingUnitTest {
         Assertions.assertEquals("CSQU3054383", swapBody.getIdentification());
         Assertions.assertEquals("CSQU3054383", swapBody.getNumber());
         Assertions.assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
-        Assertions.assertEquals(70, swapBody.getWeightBruttoMax());
-        Assertions.assertEquals(65, swapBody.getWeightNettoMax());
-        Assertions.assertEquals(70, swapBody.getWeightTara());
+        Assertions.assertEquals(70, swapBody.getWeightBruttoMax().doubleValue());
+        Assertions.assertEquals(65, swapBody.getWeightNettoMax().doubleValue());
+        Assertions.assertEquals(70, swapBody.getWeightTara().doubleValue());
         Assertions.assertEquals("i.O.", swapBody.getCondition());
         Assertions.assertFalse(swapBody.isReefer());
         Assertions.assertEquals("Contargo", swapBody.getOperator());
         Assertions.assertEquals("Open Top", swapBody.getType());
-        Assertions.assertEquals(6.5, swapBody.getSize());
+        Assertions.assertEquals(6.5, swapBody.getSize().doubleValue());
         Assertions.assertTrue(swapBody.isStackable());
+
+        Assertions.assertTrue(swapBody.checkValidity());
     }
 
 
@@ -59,15 +61,17 @@ class LoadingUnitTest {
         Assertions.assertEquals("CSQU3054383", container.getIdentification());
         Assertions.assertEquals("CSQU3054383", container.getNumber());
         Assertions.assertEquals(LoadingUnitCategory.CONTAINER, container.getCategory());
-        Assertions.assertEquals(70, container.getWeightBruttoMax());
-        Assertions.assertEquals(65, container.getWeightNettoMax());
-        Assertions.assertEquals(70, container.getWeightTara());
+        Assertions.assertEquals(70, container.getWeightBruttoMax().doubleValue());
+        Assertions.assertEquals(65, container.getWeightNettoMax().doubleValue());
+        Assertions.assertEquals(70, container.getWeightTara().doubleValue());
         Assertions.assertEquals("i.O.", container.getCondition());
         Assertions.assertFalse(container.isReefer());
         Assertions.assertEquals("Contargo", container.getOperator());
         Assertions.assertEquals("20G0", container.getSizeType());
         Assertions.assertEquals("Open Top", container.getType());
-        Assertions.assertEquals(6, container.getSize());
+        Assertions.assertEquals(6, container.getSize().doubleValue());
+
+        Assertions.assertTrue(container.checkValidity());
     }
 
 
@@ -89,14 +93,16 @@ class LoadingUnitTest {
         Assertions.assertEquals("CSQU3054383", trailer.getIdentification());
         Assertions.assertEquals("CSQU3054383", trailer.getNumber());
         Assertions.assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
-        Assertions.assertEquals(70, trailer.getWeightBruttoMax());
-        Assertions.assertEquals(65, trailer.getWeightNettoMax());
-        Assertions.assertEquals(70, trailer.getWeightTara());
+        Assertions.assertEquals(70, trailer.getWeightBruttoMax().doubleValue());
+        Assertions.assertEquals(65, trailer.getWeightNettoMax().doubleValue());
+        Assertions.assertEquals(70, trailer.getWeightTara().doubleValue());
         Assertions.assertEquals("i.O.", trailer.getCondition());
         Assertions.assertFalse(trailer.isReefer());
         Assertions.assertEquals("Contargo", trailer.getOperator());
         Assertions.assertEquals("XL", trailer.getType());
-        Assertions.assertEquals(6, trailer.getSize());
+        Assertions.assertEquals(6, trailer.getSize().doubleValue());
         Assertions.assertTrue(trailer.isCraneable());
+
+        Assertions.assertTrue(trailer.checkValidity());
     }
 }

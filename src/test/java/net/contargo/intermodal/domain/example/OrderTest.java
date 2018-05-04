@@ -46,12 +46,12 @@ class OrderTest {
 
         Assertions.assertNotNull(loadingUnitOrder.getLoadingUnit());
         Assertions.assertEquals("1658583", loadingUnitOrder.getReference());
-        Assertions.assertEquals(16, loadingUnitOrder.getWeightBrutto());
-        Assertions.assertEquals(14, loadingUnitOrder.getWeightNetto());
-        Assertions.assertEquals(16, loadingUnitOrder.getWeightTara());
+        Assertions.assertEquals(16, loadingUnitOrder.getWeightBrutto().doubleValue());
+        Assertions.assertEquals(14, loadingUnitOrder.getWeightNetto().doubleValue());
+        Assertions.assertEquals(16, loadingUnitOrder.getWeightTara().doubleValue());
         Assertions.assertNotNull(loadingUnitOrder.getDangerousGoodsIndication());
         Assertions.assertNotNull(loadingUnitOrder.getWasteIndication());
-        Assertions.assertEquals(32, loadingUnitOrder.getSetTemperature());
+        Assertions.assertEquals(32, loadingUnitOrder.getSetTemperature().doubleValue());
         Assertions.assertNotNull(loadingUnitOrder.getOperator());
         Assertions.assertNotNull(loadingUnitOrder.getClient());
         Assertions.assertEquals(Direction.EXPORT, loadingUnitOrder.getDirection());

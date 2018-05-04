@@ -43,19 +43,19 @@ public class Truck implements MeansOfTransport {
 
     private String type;
 
-    private boolean euAuthorization;
+    private Boolean euAuthorization;
 
     /**
      * Security test.
      */
-    private boolean st;
+    private Boolean st;
 
-    private boolean suitabilityDangerousGoods;
+    private Boolean suitabilityDangerousGoods;
 
-    private boolean suitabilityWaste;
+    private Boolean suitabilityWaste;
 
     /**
      * in kg.
      */
-    private double weightTara;
+    private Double weightTara;
 }

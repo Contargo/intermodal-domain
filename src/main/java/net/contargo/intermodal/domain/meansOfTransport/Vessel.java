@@ -26,7 +26,7 @@ public class Vessel implements MeansOfTransport {
     /**
      * Maritime Mobile Service Identity (9 digits).
      */
-    private int mmsi;
+    private Integer mmsi;
 
     /**
      * International Maritime Organization (IMO plus 7 digits).

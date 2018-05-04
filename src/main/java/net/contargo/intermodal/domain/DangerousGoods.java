@@ -32,15 +32,15 @@ public class DangerousGoods {
 
     private String packagingGroup;
 
-    private int packages;
+    private Integer packages;
 
-    private int totalQuantity;
+    private Integer totalQuantity;
 
     private TunnelRestrictionCode tunnelRestrictionCode;
 
     private String mandatoryRouting;
 
-    private boolean limitedQuantity;
+    private Boolean limitedQuantity;
 
-    private boolean marinePollutants;
+    private Boolean marinePollutants;
 }

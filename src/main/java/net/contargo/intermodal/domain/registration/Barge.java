@@ -44,10 +44,10 @@ public class Barge {
     /**
      * Number of LUs.
      */
-    private int volumeToDischarge;
+    private Integer volumeToDischarge;
 
     /**
      * Number of LUs.
      */
-    private int volumeToLoad;
+    private Integer volumeToLoad;
 }

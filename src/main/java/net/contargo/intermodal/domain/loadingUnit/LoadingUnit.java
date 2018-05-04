@@ -41,17 +41,17 @@ public abstract class LoadingUnit {
     /**
      * in kg.
      */
-    private double weightBruttoMax;
+    private Double weightBruttoMax;
 
     /**
      * in kg.
      */
-    private double weightNettoMax;
+    private Double weightNettoMax;
 
     /**
      * in kg.
      */
-    private double weightTara;
+    private Double weightTara;
 
     /**
      * german examples in Ordnung (i.O.), schadhaft.
@@ -61,7 +61,7 @@ public abstract class LoadingUnit {
     /**
      * Is Loading Unit refrigerated?
      */
-    private boolean reefer;
+    private Boolean reefer;
 
     /**
      * Name of {@link Operator}.
@@ -124,7 +124,7 @@ public abstract class LoadingUnit {
     }
 
 
-    LoadingUnit isReefer(boolean reefer) {
+    LoadingUnit isReefer(Boolean reefer) {
 
         this.reefer = reefer;
 
@@ -158,19 +158,19 @@ public abstract class LoadingUnit {
     }
 
 
-    public double getWeightBruttoMax() {
+    public Double getWeightBruttoMax() {
 
         return weightBruttoMax;
     }
 
 
-    public double getWeightNettoMax() {
+    public Double getWeightNettoMax() {
 
         return weightNettoMax;
     }
 
 
-    public double getWeightTara() {
+    public Double getWeightTara() {
 
         return weightTara;
     }
@@ -182,7 +182,7 @@ public abstract class LoadingUnit {
     }
 
 
-    public boolean isReefer() {
+    public Boolean isReefer() {
 
         return reefer;
     }

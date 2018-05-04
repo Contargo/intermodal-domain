@@ -38,17 +38,17 @@ public class Order {
     /**
      * in kg.
      */
-    private double weightBrutto;
+    private Double weightBrutto;
 
     /**
      * in kg.
      */
-    private double weightNetto;
+    private Double weightNetto;
 
     /**
      * in kg.
      */
-    private double weightTara;
+    private Double weightTara;
 
     /**
      * Value can be null.
@@ -63,7 +63,7 @@ public class Order {
     /**
      * For refrigerated containers (in °C).
      */
-    private int setTemperature;
+    private Integer setTemperature;
 
     private Operator operator;
 
@@ -78,7 +78,7 @@ public class Order {
 
     private String goods;
 
-    private boolean empty;
+    private Boolean empty;
 
     private List<String> seal;
 
@@ -126,19 +126,19 @@ public class Order {
     }
 
 
-    public double getWeightBrutto() {
+    public Double getWeightBrutto() {
 
         return weightBrutto;
     }
 
 
-    public double getWeightNetto() {
+    public Double getWeightNetto() {
 
         return weightNetto;
     }
 
 
-    public double getWeightTara() {
+    public Double getWeightTara() {
 
         return weightTara;
     }
@@ -156,7 +156,7 @@ public class Order {
     }
 
 
-    public int getSetTemperature() {
+    public Integer getSetTemperature() {
 
         return setTemperature;
     }
@@ -192,7 +192,7 @@ public class Order {
     }
 
 
-    public boolean isEmpty() {
+    public Boolean isEmpty() {
 
         return empty;
     }
@@ -224,17 +224,17 @@ public class Order {
         /**
          * in kg.
          */
-        private double weightBrutto;
+        private Double weightBrutto;
 
         /**
          * in kg.
          */
-        private double weightNetto;
+        private Double weightNetto;
 
         /**
          * in kg.
          */
-        private double weightTara;
+        private Double weightTara;
 
         /**
          * Value can be null.
@@ -249,7 +249,7 @@ public class Order {
         /**
          * For refrigerated containers (in °C).
          */
-        private int setTemperature;
+        private Integer setTemperature;
 
         private Operator operator;
 
@@ -264,7 +264,7 @@ public class Order {
 
         private String goods;
 
-        private boolean empty;
+        private Boolean empty;
 
         private List<String> seal;
 
@@ -328,7 +328,7 @@ public class Order {
         }
 
 
-        public OrderBuilder withSetTemperature(int setTemperature) {
+        public OrderBuilder withSetTemperature(Integer setTemperature) {
 
             this.setTemperature = setTemperature;
 
@@ -376,7 +376,7 @@ public class Order {
         }
 
 
-        public OrderBuilder isEmpty(boolean empty) {
+        public OrderBuilder isEmpty(Boolean empty) {
 
             this.empty = empty;
 
@@ -420,11 +420,11 @@ public class Order {
 
             if (this.loadingUnit == null) {
                 throw new IllegalStateException("Loading unit has to be set to create an order for a loading unit.");
-            } else if (this.weightBrutto <= 0) {
+            } else if (this.weightBrutto == null) {
                 throw new IllegalStateException("Weight brutto has to be set to create an order for a loading unit.");
-            } else if (this.weightNetto <= 0) {
+            } else if (this.weightNetto == null) {
                 throw new IllegalStateException("Weight netto has to be set to create an order for a loading unit.");
-            } else if (this.weightTara <= 0) {
+            } else if (this.weightTara == null) {
                 throw new IllegalStateException("Weight tara has to be set to create an order for a loading unit.");
             } else if (this.dangerousGoodsIndication == null) {
                 throw new IllegalStateException(

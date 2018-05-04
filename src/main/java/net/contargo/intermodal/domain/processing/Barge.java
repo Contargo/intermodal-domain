@@ -49,7 +49,7 @@ public class Barge {
 
     private List<Person> passenger;
 
-    private int reeferConnections;
+    private Integer reeferConnections;
 
     private Cone cone;
 
@@ -58,7 +58,7 @@ public class Barge {
      * intérieure sur le Rhin): european treaty for transport of dangerous goods on the Rhine. (Format: DateTime ISO
      * 8601 inclusive) UTC.
      */
-    private boolean adnr;
+    private Boolean adnr;
 
     private List<Order> loadingListLUOrder;
 

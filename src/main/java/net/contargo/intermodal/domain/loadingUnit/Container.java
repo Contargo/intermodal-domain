@@ -34,7 +34,7 @@ public class Container extends LoadingUnit {
     /**
      * in foot.
      */
-    private int size;
+    private Integer size;
 
     public Container() {
 
@@ -57,7 +57,7 @@ public class Container extends LoadingUnit {
     }
 
 
-    public Container withSize(int size) {
+    public Container withSize(Integer size) {
 
         this.size = size;
 
@@ -120,7 +120,7 @@ public class Container extends LoadingUnit {
 
 
     @Override
-    public Container isReefer(boolean reefer) {
+    public Container isReefer(Boolean reefer) {
 
         super.isReefer(reefer);
 
@@ -137,7 +137,6 @@ public class Container extends LoadingUnit {
     }
 
 
-
     public String getSizeType() {
 
         return sizeType;
@@ -150,8 +149,15 @@ public class Container extends LoadingUnit {
     }
 
 
-    public int getSize() {
+    public Integer getSize() {
 
         return size;
+    }
+
+
+    public Boolean checkValidity() {
+
+        return super.getNumber() != null && super.getCategory() != null && this.getSizeType() != null
+            && this.getType() != null && this.getSize() != null;
     }
 }

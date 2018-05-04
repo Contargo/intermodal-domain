@@ -30,9 +30,9 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     /**
      * in foot.
      */
-    private double size;
+    private Double size;
 
-    private boolean stackable;
+    private Boolean stackable;
 
     public SwapBody() {
 
@@ -47,7 +47,7 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     }
 
 
-    public SwapBody withSize(double size) {
+    public SwapBody withSize(Double size) {
 
         this.size = size;
 
@@ -55,7 +55,7 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     }
 
 
-    public SwapBody isStackable(boolean stackable) {
+    public SwapBody isStackable(Boolean stackable) {
 
         this.stackable = stackable;
 
@@ -118,7 +118,7 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
 
 
     @Override
-    public SwapBody isReefer(boolean reefer) {
+    public SwapBody isReefer(Boolean reefer) {
 
         super.isReefer(reefer);
 
@@ -141,15 +141,22 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     }
 
 
-    public double getSize() {
+    public Double getSize() {
 
         return size;
     }
 
 
-    public boolean isStackable() {
+    public Boolean isStackable() {
 
         return stackable;
+    }
+
+
+    public Boolean checkValidity() {
+
+        return super.getNumber() != null && super.getCategory() != null && this.getType() != null
+            && this.getSize() != null && this.stackable != null;
     }
 }
 

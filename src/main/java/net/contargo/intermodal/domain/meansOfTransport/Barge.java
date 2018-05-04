@@ -30,7 +30,7 @@ public class Barge implements MeansOfTransport {
     /**
      * Maritime Mobile Service Identity (9 digits).
      */
-    private int mmsi;
+    private Integer mmsi;
 
     /**
      * European Number of Identification e.g. 040-059 for Germany.
@@ -42,33 +42,33 @@ public class Barge implements MeansOfTransport {
     /**
      * in meter.
      */
-    private double length;
+    private Double length;
 
     /**
      * in meter.
      */
-    private double width;
+    private Double width;
 
     /**
      * in meter.
      */
-    private double draught;
+    private Double draught;
 
-    private int bays;
+    private Integer bays;
 
-    private int rows;
+    private Integer rows;
 
-    private int tiers;
+    private Integer tiers;
 
-    private boolean suitabilityDangerousGoods;
+    private Boolean suitabilityDangerousGoods;
 
     /**
      * in TEU.
      */
-    private double capacityTeu;
+    private Double capacityTeu;
 
     /**
      * in tons.
      */
-    private double capacityTons;
+    private Double capacityTons;
 }

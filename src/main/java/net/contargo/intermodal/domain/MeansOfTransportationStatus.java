@@ -93,5 +93,5 @@ public class MeansOfTransportationStatus {
      * @abbreviation_german  WTU
      * @definition_german  Kontrolle der Betriebssicherheit der Waggons mit Ladung.
      */
-    private int waggonTechnicalInspection;
+    private Integer waggonTechnicalInspection;
 }

@@ -36,35 +36,35 @@ public class Chassis implements MeansOfTransport {
      */
     private String type;
 
-    private int axles;
+    private Integer axles;
 
     /**
      * in meter.
      */
-    private double size;
+    private Double size;
 
     /**
      * in meter.
      */
-    private double height;
+    private Double height;
 
-    private boolean euAuthorization;
+    private Boolean euAuthorization;
 
     /**
      * Safety test.
      *
      * @name_german  Sicherheitsprüfung
      */
-    private boolean st;
+    private Boolean st;
 
-    private boolean suitabilityDangerousGoods;
+    private Boolean suitabilityDangerousGoods;
 
-    private boolean suitabilityWaste;
+    private Boolean suitabilityWaste;
 
-    private boolean suitabilityReefer;
+    private Boolean suitabilityReefer;
 
     /**
      * in kg.
      */
-    private double weightTara;
+    private Double weightTara;
 }

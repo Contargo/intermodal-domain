@@ -39,5 +39,5 @@ public class Waste {
     /**
      * in kg per position.
      */
-    private double weightNetto;
+    private Double weightNetto;
 }

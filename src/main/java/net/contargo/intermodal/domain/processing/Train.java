@@ -34,7 +34,7 @@ public class Train {
 
     private String loadingListWaggonId;
 
-    private int loadingListWaggonRanking;
+    private Integer loadingListWaggonRanking;
 
     private Order loadingListWaggonLoadingPositionLuOrder;
 

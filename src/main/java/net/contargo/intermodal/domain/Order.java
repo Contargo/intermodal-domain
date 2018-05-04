@@ -57,7 +57,7 @@ public class Order {
      */
     private String transportPickUpLocationType;
 
-    private boolean transportPickUpLUEmpty;
+    private Boolean transportPickUpLUEmpty;
 
     private String transportPickUpLUReference;
 
@@ -86,7 +86,7 @@ public class Order {
 
     private String transportDropOffLocationType;
 
-    private boolean transportDropOffUnitEmpty;
+    private Boolean transportDropOffUnitEmpty;
 
     private String transportDropOffUnitReference;
 

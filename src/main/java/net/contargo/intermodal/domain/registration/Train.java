@@ -50,19 +50,19 @@ public class Train {
     /**
      * in meter.
      */
-    private double totalLength;
+    private Double totalLength;
 
-    private int waggonQuantity;
-
-    /**
-     * Number of LUs.
-     */
-    private int volumeToDischarge;
+    private Integer waggonQuantity;
 
     /**
      * Number of LUs.
      */
-    private int volumeToLoad;
+    private Integer volumeToDischarge;
+
+    /**
+     * Number of LUs.
+     */
+    private Integer volumeToLoad;
 
     private String trainPaths;
 }
