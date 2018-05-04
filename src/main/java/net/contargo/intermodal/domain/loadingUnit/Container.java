@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain.loadingUnit;
 
+import javax.validation.constraints.NotNull;
+
+
 /**
  * Case for the transport of goods for the change to another
  * {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport means of transport}.
@@ -24,16 +27,19 @@ public class Container extends LoadingUnit {
     /**
      * ISO 6346 Container Size Type e.g. 20G0 for GENERAL PURPOSE CONTAINERS
      */
+    @NotNull(message = "sizeType is part of minimum requirement")
     private String sizeType;
 
     /**
      * e.g. flat, open top, high cube, bulk, ISO, reefer- or tank containers.
      */
+    @NotNull(message = "type is part of minimum requirement")
     private String type;
 
     /**
      * in foot.
      */
+    @NotNull(message = "size is part of minimum requirement")
     private Integer size;
 
     public Container() {
@@ -152,12 +158,5 @@ public class Container extends LoadingUnit {
     public Integer getSize() {
 
         return size;
-    }
-
-
-    public Boolean checkValidity() {
-
-        return super.getNumber() != null && super.getCategory() != null && this.getSizeType() != null
-            && this.getType() != null && this.getSize() != null;
     }
 }

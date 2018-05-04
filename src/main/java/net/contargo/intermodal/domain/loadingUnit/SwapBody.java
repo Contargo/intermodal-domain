@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain.loadingUnit;
 
+import javax.validation.constraints.NotNull;
+
+
 /**
  * {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit} intended for the transport of goods, optimized with
  * regard to the dimensions of road vehicles and equipped with gripping edges for the transfer between means of
@@ -25,13 +28,16 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     /**
      * e.g. Klasse A, Klasse C (C715, C745, C765, C782), Open Top
      */
+    @NotNull(message = "type is part of minimum requirement")
     private String type;
 
     /**
      * in foot.
      */
+    @NotNull(message = "size is part of minimum requirement")
     private Double size;
 
+    @NotNull(message = "stackable is part of minimum requirement")
     private Boolean stackable;
 
     public SwapBody() {
@@ -150,13 +156,6 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     public Boolean isStackable() {
 
         return stackable;
-    }
-
-
-    public Boolean checkValidity() {
-
-        return super.getNumber() != null && super.getCategory() != null && this.getType() != null
-            && this.getSize() != null && this.stackable != null;
     }
 }
 

@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain.loadingUnit;
 
+import javax.validation.constraints.NotNull;
+
+
 /**
  * Trailer vehicle which has no front axle so a substantial part of its total weight is transferred to a tractor unit.
  *
@@ -23,13 +26,16 @@ public class Trailer extends LoadingUnit {
     /**
      * e.g&#046; XL, ...
      */
+    @NotNull(message = "type is part of minimum requirement")
     private String type;
 
     /**
      * in meter.
      */
+    @NotNull(message = "size is part of minimum requirement")
     private Double size;
 
+    @NotNull(message = "craneable is part of minimum requirement")
     private Boolean craneable;
 
     public Trailer() {
@@ -148,12 +154,5 @@ public class Trailer extends LoadingUnit {
     public Boolean isCraneable() {
 
         return craneable;
-    }
-
-
-    public Boolean checkValidity() {
-
-        return super.getNumber() != null && super.getCategory() != null && this.getType() != null
-            && this.getSize() != null && this.craneable != null;
     }
 }

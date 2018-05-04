@@ -2,6 +2,8 @@ package net.contargo.intermodal.domain.loadingUnit;
 
 import net.contargo.intermodal.domain.Operator;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * Physical transport unit which can include wares and goods.
@@ -34,8 +36,13 @@ public abstract class LoadingUnit {
     /**
      * BIC, ILU (4 characters, 7 digits).
      */
+    @NotNull(message = "number is part of minimum requirement")
     private String number;
 
+    /**
+     * Is set automatically.
+     */
+    @NotNull(message = "category is part of minimum requirement")
     private LoadingUnitCategory category;
 
     /**
@@ -61,6 +68,7 @@ public abstract class LoadingUnit {
     /**
      * Is Loading Unit refrigerated?
      */
+    @NotNull(message = "reefer is part of minimum requirement")
     private Boolean reefer;
 
     /**
