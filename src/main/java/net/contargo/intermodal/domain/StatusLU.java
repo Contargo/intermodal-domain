@@ -33,6 +33,7 @@ public class StatusLU {
      * @definition_german  {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit Ladeeinheit} ist bereit für
      *                     den Umschlag/ die Kranung.
      */
+
     private Boolean readyForLoading;
 
     /**
@@ -97,4 +98,161 @@ public class StatusLU {
      *                     {@link MeansOfTransport VM} heruntergenommen, befindet sich im Umschlagpunkt.
      */
     private Boolean unloaded;
+
+    public Boolean isReadyForLoading() {
+
+        return readyForLoading;
+    }
+
+
+    public Boolean isLoaded() {
+
+        return loaded;
+    }
+
+
+    public Boolean hasInspectionOut() {
+
+        return inspectionOut;
+    }
+
+
+    public Boolean isOut() {
+
+        return out;
+    }
+
+
+    public Boolean hasInspectionIn() {
+
+        return inspectionIn;
+    }
+
+
+    public Boolean isIn() {
+
+        return in;
+    }
+
+
+    public Boolean isReadyForUnloading() {
+
+        return readyForUnloading;
+    }
+
+
+    public Boolean isUnloaded() {
+
+        return unloaded;
+    }
+
+    public static final class Builder {
+
+        private Boolean readyForLoading;
+        private Boolean loaded;
+        private Boolean inspectionOut;
+        private Boolean out;
+        private Boolean inspectionIn;
+        private Boolean in;
+        private Boolean readyForUnloading;
+        private Boolean unloaded;
+
+        private Builder() {
+        }
+
+        public static Builder newStatusLU() {
+
+            return new Builder();
+        }
+
+
+        public Builder isReadyForLoading(Boolean readyForLoading) {
+
+            this.readyForLoading = readyForLoading;
+
+            return this;
+        }
+
+
+        public Builder isLoaded(Boolean loaded) {
+
+            this.loaded = loaded;
+
+            return this;
+        }
+
+
+        public Builder isInspectionOut(Boolean inspectionOut) {
+
+            this.inspectionOut = inspectionOut;
+
+            return this;
+        }
+
+
+        public Builder isOut(Boolean out) {
+
+            this.out = out;
+
+            return this;
+        }
+
+
+        public Builder hasInspectionIn(Boolean inspectionIn) {
+
+            this.inspectionIn = inspectionIn;
+
+            return this;
+        }
+
+
+        public Builder isIn(Boolean in) {
+
+            this.in = in;
+
+            return this;
+        }
+
+
+        public Builder isReadyForUnloading(Boolean readyForUnloading) {
+
+            this.readyForUnloading = readyForUnloading;
+
+            return this;
+        }
+
+
+        public Builder isUnloaded(Boolean unloaded) {
+
+            this.unloaded = unloaded;
+
+            return this;
+        }
+
+
+        public StatusLU build() {
+
+            StatusLU statusLU = new StatusLU();
+            statusLU.readyForLoading = this.readyForLoading;
+            statusLU.readyForUnloading = this.readyForUnloading;
+            statusLU.in = this.in;
+            statusLU.loaded = this.loaded;
+            statusLU.inspectionOut = this.inspectionOut;
+            statusLU.out = this.out;
+            statusLU.unloaded = this.unloaded;
+            statusLU.inspectionIn = this.inspectionIn;
+
+            return statusLU;
+        }
+
+
+        public StatusLU buildAndValidate() {
+
+            StatusLU statusLU = this.build();
+
+            Validator.validate(statusLU);
+
+            return statusLU;
+        }
+    }
 }

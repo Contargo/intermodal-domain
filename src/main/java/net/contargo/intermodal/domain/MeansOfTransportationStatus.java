@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
+
 import java.util.Date;
 
 
@@ -35,7 +37,7 @@ public class MeansOfTransportationStatus {
      * @name_german  Abfahrt
      * @definition_german  Tatsächliche Abfahrt des {@link MeansOfTransport VM} beim Verlassen des Umschlagpunktes.
      */
-    private Date atd;
+    private String atd;
 
     /**
      * Estimated Time of Arrival of the {@link MeansOfTransport MoT} at the handling point (Format: ISO 8601 inclusive
@@ -44,7 +46,7 @@ public class MeansOfTransportationStatus {
      * @name_german  Avisiert
      * @definition_german  Geplante Ankunft des {@link MeansOfTransport VM} am Umschlagpunkt.
      */
-    private Date eta;
+    private String eta;
 
     /**
      * Actual Time of Arrival of the {@link MeansOfTransport MoT} at the handling point (Format: ISO 8601 inclusive
@@ -53,7 +55,7 @@ public class MeansOfTransportationStatus {
      * @name_german  Ankunft
      * @definition_german  Tatsächliche Ankunft des {@link MeansOfTransport VM} am Umschlagpunkt.
      */
-    private Date ata;
+    private String ata;
 
     /**
      * {@link MeansOfTransport MoT} is ready for handling of the
@@ -65,7 +67,7 @@ public class MeansOfTransportationStatus {
      * @definition_german  {@link MeansOfTransport VM} ist bereit für den Umschlag der
      *                     {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit LE} („erste Kranung“).
      */
-    private Date handlingStart;
+    private Boolean handlingStart;
 
     /**
      * {@link MeansOfTransport MoT} is loaded, end of loading process (Format: ISO 8601 inclusive UTC).
@@ -75,7 +77,7 @@ public class MeansOfTransportationStatus {
      * @abbreviation_german  BE
      * @definition_german  {@link MeansOfTransport VM} beladen, Ende Verladung erreicht („letzte Kranung“).
      */
-    private Date handlingEnd;
+    private Boolean handlingEnd;
 
     /**
      * Safety control of the loaded waggons.
@@ -85,4 +87,129 @@ public class MeansOfTransportationStatus {
      * @definition_german  Kontrolle der Betriebssicherheit der Waggons mit Ladung.
      */
     private Integer waggonTechnicalInspection;
+
+    public String getAtd() {
+
+        return atd;
+    }
+
+
+    public String getEta() {
+
+        return eta;
+    }
+
+
+    public String getAta() {
+
+        return ata;
+    }
+
+
+    public Boolean getHandlingStart() {
+
+        return handlingStart;
+    }
+
+
+    public Boolean getHandlingEnd() {
+
+        return handlingEnd;
+    }
+
+
+    public Integer getWaggonTechnicalInspection() {
+
+        return waggonTechnicalInspection;
+    }
+
+    public static final class Builder {
+
+        private String atd;
+        private String eta;
+        private String ata;
+        private Boolean handlingStart;
+        private Boolean handlingEnd;
+        private Integer waggonTechnicalInspection;
+
+        private Builder() {
+        }
+
+        public static Builder newMeansOfTransportationStatus() {
+
+            return new Builder();
+        }
+
+
+        public Builder withAtd(int year, int month, int day, int hour, int minute) {
+
+            this.atd = ISO8601DateFormatter.format(year, month, day);
+
+            return this;
+        }
+
+
+        public Builder withEta(int year, int month, int day, int hour, int minute) {
+
+            this.eta = ISO8601DateFormatter.format(year, month, day);
+
+            return this;
+        }
+
+
+        public Builder withAta(int year, int month, int day, int hour, int minute) {
+
+            this.ata = ISO8601DateFormatter.format(year, month, day);
+
+            return this;
+        }
+
+
+        public Builder withHandlingStart(Boolean handlingStart) {
+
+            this.handlingStart = handlingStart;
+
+            return this;
+        }
+
+
+        public Builder withHandlingEnd(Boolean handlingEnd) {
+
+            this.handlingEnd = handlingEnd;
+
+            return this;
+        }
+
+
+        public Builder withWaggonTechnicalInspection(Integer waggonTechnicalInspection) {
+
+            this.waggonTechnicalInspection = waggonTechnicalInspection;
+
+            return this;
+        }
+
+
+        public MeansOfTransportationStatus build() {
+
+            MeansOfTransportationStatus meansOfTransportationStatus = new MeansOfTransportationStatus();
+            meansOfTransportationStatus.atd = this.atd;
+            meansOfTransportationStatus.eta = this.eta;
+            meansOfTransportationStatus.ata = this.ata;
+            meansOfTransportationStatus.waggonTechnicalInspection = this.waggonTechnicalInspection;
+            meansOfTransportationStatus.handlingStart = this.handlingStart;
+            meansOfTransportationStatus.handlingEnd = this.handlingEnd;
+
+            return meansOfTransportationStatus;
+        }
+
+
+        public MeansOfTransportationStatus buildAndValidate() {
+
+            MeansOfTransportationStatus meansOfTransportationStatus = this.build();
+
+            Validator.validate(meansOfTransportationStatus);
+
+            return meansOfTransportationStatus;
+        }
+    }
 }

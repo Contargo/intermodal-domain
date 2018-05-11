@@ -22,4 +22,16 @@ public class ISO8601DateFormatter {
 
         return simpleDateFormat.format(time);
     }
+
+
+    public static String format(int year, int month, int day, int hour, int minute) {
+
+        TimeZone utc = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+        simpleDateFormat.setTimeZone(utc);
+
+        Date time = new GregorianCalendar(year, month - 1, day, hour, minute).getTime();
+
+        return simpleDateFormat.format(time);
+    }
 }
