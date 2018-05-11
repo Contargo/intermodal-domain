@@ -1,0 +1,130 @@
+package net.contargo.intermodal.domain;
+
+import net.contargo.intermodal.domain.MeansOfTransport;
+import net.contargo.intermodal.domain.Operator;
+
+
+/**
+ * A ship build to drive on seas and oceans.
+ *
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
+ * @name_german  Seeschiff
+ * @name_english  vessel
+ * @definition_german  Schiff, das zur Fahrt auf Meeren und Ozeanen konzipiert ist.
+ * @definition_english  A ship build to drive on seas and oceans.
+ * @note_german  Für diese API sind Schiffe relevant, die Ladeeinheiten des Kombinierten Verkehrs transportieren
+ *               können.
+ * @note_english  In this API only vessels which can transport loading units of combined traffic are relevant.
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
+ */
+public class Vessel implements MeansOfTransport {
+
+    private String name;
+
+    /**
+     * Maritime Mobile Service Identity (9 digits).
+     */
+    private String mmsi;
+
+    /**
+     * International Maritime Organization (IMO plus 7 digits).
+     */
+    private String imo;
+
+    private Operator operator;
+
+    public String getName() {
+
+        return name;
+    }
+
+
+    public String getMmsi() {
+
+        return mmsi;
+    }
+
+
+    public String getImo() {
+
+        return imo;
+    }
+
+
+    public Operator getOperator() {
+
+        return operator;
+    }
+
+    public static final class VesselBuilder {
+
+        private String name;
+        private String mmsi;
+        private String imo;
+        private Operator operator;
+
+        private VesselBuilder() {
+        }
+
+        public static VesselBuilder newVessel() {
+
+            return new VesselBuilder();
+        }
+
+
+        public VesselBuilder withName(String name) {
+
+            this.name = name;
+
+            return this;
+        }
+
+
+        public VesselBuilder withMmsi(String mmsi) {
+
+            this.mmsi = mmsi;
+
+            return this;
+        }
+
+
+        public VesselBuilder withImo(String imo) {
+
+            this.imo = imo;
+
+            return this;
+        }
+
+
+        public VesselBuilder withOperator(Operator operator) {
+
+            this.operator = operator;
+
+            return this;
+        }
+
+
+        public Vessel build() {
+
+            Vessel vessel = new Vessel();
+            vessel.name = this.name;
+            vessel.mmsi = this.mmsi;
+            vessel.imo = this.imo;
+            vessel.operator = this.operator;
+
+            return vessel;
+        }
+
+
+        public Vessel buildAndValidate() {
+
+            Vessel vessel = this.build();
+
+            Validator.validate(vessel);
+
+            return vessel;
+        }
+    }
+}

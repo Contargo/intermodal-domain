@@ -37,25 +37,21 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.2.Final</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate.validator</groupId>
             <artifactId>hibernate-validator-annotation-processor</artifactId>
             <version>6.0.2.Final</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
             <version>3.0.0</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.glassfish.web</groupId>
             <artifactId>javax.el</artifactId>
             <version>2.2.6</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -161,6 +157,11 @@
                             <name>abbreviation_english</name>
                             <placement>tmf</placement>
                             <head>abbreviation english:</head>
+                        </tag>
+                        <tag>
+                            <name>minimum_requirement</name>
+                            <placement>tmf</placement>
+                            <head>minimum requirement:</head>
                         </tag>
                         <tag>
                             <name>source</name>

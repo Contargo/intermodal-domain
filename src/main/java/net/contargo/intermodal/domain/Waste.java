@@ -1,5 +1,17 @@
 package net.contargo.intermodal.domain;
 
+import net.contargo.intermodal.domain.loadingUnit.SwapBody;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
+import javax.validation.constraints.NotNull;
+
+
 /**
  * Substances or objects that their owner disposes of, wants to dispose of or has to dispose of.
  *
@@ -13,6 +25,7 @@ package net.contargo.intermodal.domain;
  * @definition_english  Substances or objects that their owner disposes of, wants to dispose of or has to dispose of.
  *                      (@see Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der
  *                      Kreislaufwirtschaft und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)
+ * @minimum_requirement  keyId
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -21,16 +34,16 @@ public class Waste {
     private String position;
 
     /**
-     * <p>DIGIT_german: Abfallschlüsselnummer</p>
-     *
-     * <p>DIGIT_abbreviation: ASN</p>
+     * @name_german  Abfallschlüsselnummer
+     * @definition_german  Nummer zur Klassifizierung von Abfällen auf der Basis der Abfallverzeichnis-Verordnung.
+     * @abbreviation_german  ASN
      */
+    @NotNull(message = "keyID is part of minimum requirement")
     private String keyID;
 
     /**
-     * <p>DIGIT_german: Abfallverzeichnis-Verordnung</p>
-     *
-     * <p>DIGIT_abbreviation: AVV</p>
+     * @name_german  Abfallverzeichnis-Verordnung
+     * @abbreviation_german  AVV
      */
     private String wasteRegulationNumber;
 
@@ -40,4 +53,113 @@ public class Waste {
      * in kg per position.
      */
     private Double weightNetto;
+
+    public String getPosition() {
+
+        return position;
+    }
+
+
+    public String getKeyID() {
+
+        return keyID;
+    }
+
+
+    public String getWasteRegulationNumber() {
+
+        return wasteRegulationNumber;
+    }
+
+
+    public String getReceiptNumber() {
+
+        return receiptNumber;
+    }
+
+
+    public Double getWeightNetto() {
+
+        return weightNetto;
+    }
+
+    public static final class WasteBuilder {
+
+        private String position;
+        private String keyID;
+        private String wasteRegulationNumber;
+        private String receiptNumber;
+        private Double weightNetto;
+
+        private WasteBuilder() {
+        }
+
+        public static WasteBuilder newWaste() {
+
+            return new WasteBuilder();
+        }
+
+
+        public WasteBuilder withPosition(String position) {
+
+            this.position = position;
+
+            return this;
+        }
+
+
+        public WasteBuilder withKeyID(String keyID) {
+
+            this.keyID = keyID;
+
+            return this;
+        }
+
+
+        public WasteBuilder withWasteRegulationNumber(String wasteRegulationNumber) {
+
+            this.wasteRegulationNumber = wasteRegulationNumber;
+
+            return this;
+        }
+
+
+        public WasteBuilder withReceiptNumber(String receiptNumber) {
+
+            this.receiptNumber = receiptNumber;
+
+            return this;
+        }
+
+
+        public WasteBuilder withWeightNetto(Double weightNetto) {
+
+            this.weightNetto = weightNetto;
+
+            return this;
+        }
+
+
+        public Waste build() {
+
+            Waste waste = new Waste();
+            waste.receiptNumber = this.receiptNumber;
+            waste.keyID = this.keyID;
+            waste.wasteRegulationNumber = this.wasteRegulationNumber;
+            waste.position = this.position;
+            waste.weightNetto = this.weightNetto;
+
+            return waste;
+        }
+
+
+        public Waste buildAndValidate() {
+
+            Waste waste = this.build();
+
+            Validator.validate(waste);
+
+            return waste;
+        }
+    }
 }

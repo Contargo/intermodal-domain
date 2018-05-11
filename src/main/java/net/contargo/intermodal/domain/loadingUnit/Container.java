@@ -1,20 +1,21 @@
 package net.contargo.intermodal.domain.loadingUnit;
 
+import net.contargo.intermodal.domain.MeansOfTransport;
+
 import javax.validation.constraints.NotNull;
 
 
 /**
- * Case for the transport of goods for the change to another
- * {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport means of transport}.
+ * Case for the transport of goods for the change to another {@link MeansOfTransport means of transport}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
  * @name_german  Container
  * @name_english  Container
  * @definition_german  Behälter für den Gütertransport für den Wechsel von einer zur anderen
- *                     {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport Transportform}.
+ *                     {@link MeansOfTransport Transportform}.
  * @definition_english  Case for the transport of goods for the change to another
- *                      {@link net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport means of transport}.
+ *                      {@link MeansOfTransport means of transport}.
  * @note_german  Containertypen können Flat-, Open-Top-, High-Cube-, Bulk-, ISO-, Reefer- oder Tank-Container sein.
  *               (@see DIN EN ISO 17261:2012-12, 3.14 — modifiziert, Änderung der Anmerkung)
  * @note_english  Container types can be flat, open top, high cube, bulk, ISO, reefer- or tank containers. (@see DIN EN

@@ -1,4 +1,4 @@
-package net.contargo.intermodal.domain.meansOfTransport;
+package net.contargo.intermodal.domain;
 
 /**
  * Facility for transport of persons or goods.

@@ -8,7 +8,6 @@ import net.contargo.intermodal.domain.loadingUnit.Container;
 import net.contargo.intermodal.domain.loadingUnit.Direction;
 import net.contargo.intermodal.domain.loadingUnit.Order;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -44,23 +43,23 @@ class OrderTest {
                 .withSealNumber("42")
                 .build();
 
-        Assertions.assertNotNull(loadingUnitOrder.getLoadingUnit());
-        Assertions.assertEquals("1658583", loadingUnitOrder.getReference());
-        Assertions.assertEquals(16, loadingUnitOrder.getWeightBrutto().doubleValue());
-        Assertions.assertEquals(14, loadingUnitOrder.getWeightNetto().doubleValue());
-        Assertions.assertEquals(16, loadingUnitOrder.getWeightTara().doubleValue());
-        Assertions.assertNotNull(loadingUnitOrder.getDangerousGoodsIndication());
-        Assertions.assertNotNull(loadingUnitOrder.getWasteIndication());
-        Assertions.assertEquals(32, loadingUnitOrder.getSetTemperature().doubleValue());
-        Assertions.assertNotNull(loadingUnitOrder.getOperator());
-        Assertions.assertNotNull(loadingUnitOrder.getClient());
-        Assertions.assertEquals(Direction.EXPORT, loadingUnitOrder.getDirection());
-        Assertions.assertNotNull(loadingUnitOrder.getCustoms());
-        Assertions.assertEquals("food", loadingUnitOrder.getGoods());
-        Assertions.assertFalse(loadingUnitOrder.isEmpty());
-        Assertions.assertNotNull(loadingUnitOrder.getSeal());
-        Assertions.assertEquals("some seal type", loadingUnitOrder.getSealType());
-        Assertions.assertEquals("42", loadingUnitOrder.getSealNumber());
+        assertNotNull(loadingUnitOrder.getLoadingUnit());
+        assertEquals("1658583", loadingUnitOrder.getReference());
+        assertEquals(16, loadingUnitOrder.getWeightBrutto().doubleValue());
+        assertEquals(14, loadingUnitOrder.getWeightNetto().doubleValue());
+        assertEquals(16, loadingUnitOrder.getWeightTara().doubleValue());
+        assertNotNull(loadingUnitOrder.getDangerousGoodsIndication());
+        assertNotNull(loadingUnitOrder.getWasteIndication());
+        assertEquals(32, loadingUnitOrder.getSetTemperature().doubleValue());
+        assertNotNull(loadingUnitOrder.getOperator());
+        assertNotNull(loadingUnitOrder.getClient());
+        assertEquals(Direction.EXPORT, loadingUnitOrder.getDirection());
+        assertNotNull(loadingUnitOrder.getCustoms());
+        assertEquals("food", loadingUnitOrder.getGoods());
+        assertFalse(loadingUnitOrder.isEmpty());
+        assertNotNull(loadingUnitOrder.getSeal());
+        assertEquals("some seal type", loadingUnitOrder.getSealType());
+        assertEquals("42", loadingUnitOrder.getSealNumber());
     }
 
 

@@ -1,8 +1,6 @@
 package net.contargo.intermodal.domain;
 
 import net.contargo.intermodal.domain.loadingUnit.Direction;
-import net.contargo.intermodal.domain.meansOfTransport.MeansOfTransport;
-import net.contargo.intermodal.domain.meansOfTransport.Vessel;
 
 import java.util.Date;
 import java.util.List;

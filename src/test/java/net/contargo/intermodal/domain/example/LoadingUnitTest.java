@@ -2,7 +2,6 @@ package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.loadingUnit.*;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
@@ -11,6 +10,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
@@ -35,18 +36,18 @@ class LoadingUnitTest {
                 .withSize(6.5)
                 .isStackable(true);
 
-        Assertions.assertEquals("CSQU3054383", swapBody.getIdentification());
-        Assertions.assertEquals("CSQU3054383", swapBody.getNumber());
-        Assertions.assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
-        Assertions.assertEquals(70, swapBody.getWeightBruttoMax().doubleValue());
-        Assertions.assertEquals(65, swapBody.getWeightNettoMax().doubleValue());
-        Assertions.assertEquals(70, swapBody.getWeightTara().doubleValue());
-        Assertions.assertEquals("i.O.", swapBody.getCondition());
-        Assertions.assertFalse(swapBody.isReefer());
-        Assertions.assertEquals("Contargo", swapBody.getOperator());
-        Assertions.assertEquals("Open Top", swapBody.getType());
-        Assertions.assertEquals(6.5, swapBody.getSize().doubleValue());
-        Assertions.assertTrue(swapBody.isStackable());
+        assertEquals("CSQU3054383", swapBody.getIdentification());
+        assertEquals("CSQU3054383", swapBody.getNumber());
+        assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
+        assertEquals(70, swapBody.getWeightBruttoMax().doubleValue());
+        assertEquals(65, swapBody.getWeightNettoMax().doubleValue());
+        assertEquals(70, swapBody.getWeightTara().doubleValue());
+        assertEquals("i.O.", swapBody.getCondition());
+        assertFalse(swapBody.isReefer());
+        assertEquals("Contargo", swapBody.getOperator());
+        assertEquals("Open Top", swapBody.getType());
+        assertEquals(6.5, swapBody.getSize().doubleValue());
+        assertTrue(swapBody.isStackable());
 
         // Check if valid
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -77,18 +78,18 @@ class LoadingUnitTest {
                 .withType("Open Top")
                 .withSize(6);
 
-        Assertions.assertEquals("CSQU3054383", container.getIdentification());
-        Assertions.assertEquals("CSQU3054383", container.getNumber());
-        Assertions.assertEquals(LoadingUnitCategory.CONTAINER, container.getCategory());
-        Assertions.assertEquals(70, container.getWeightBruttoMax().doubleValue());
-        Assertions.assertEquals(65, container.getWeightNettoMax().doubleValue());
-        Assertions.assertEquals(70, container.getWeightTara().doubleValue());
-        Assertions.assertEquals("i.O.", container.getCondition());
-        Assertions.assertFalse(container.isReefer());
-        Assertions.assertEquals("Contargo", container.getOperator());
-        Assertions.assertEquals("20G0", container.getSizeType());
-        Assertions.assertEquals("Open Top", container.getType());
-        Assertions.assertEquals(6, container.getSize().doubleValue());
+        assertEquals("CSQU3054383", container.getIdentification());
+        assertEquals("CSQU3054383", container.getNumber());
+        assertEquals(LoadingUnitCategory.CONTAINER, container.getCategory());
+        assertEquals(70, container.getWeightBruttoMax().doubleValue());
+        assertEquals(65, container.getWeightNettoMax().doubleValue());
+        assertEquals(70, container.getWeightTara().doubleValue());
+        assertEquals("i.O.", container.getCondition());
+        assertFalse(container.isReefer());
+        assertEquals("Contargo", container.getOperator());
+        assertEquals("20G0", container.getSizeType());
+        assertEquals("Open Top", container.getType());
+        assertEquals(6, container.getSize().doubleValue());
 
         // Check if valid
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -119,19 +120,19 @@ class LoadingUnitTest {
                 .withSize(6)
                 .isCraneable(true);
 
-        Assertions.assertEquals("CSQU3054383", trailer.getIdentification());
-        Assertions.assertEquals("CSQU3054383", trailer.getNumber());
-        Assertions.assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
-        Assertions.assertEquals(70, trailer.getWeightBruttoMax().doubleValue());
-        Assertions.assertEquals(65, trailer.getWeightNettoMax().doubleValue());
-        Assertions.assertEquals(70, trailer.getWeightTara().doubleValue());
-        Assertions.assertEquals("i.O.", trailer.getCondition());
-        Assertions.assertFalse(trailer.isReefer());
-        Assertions.assertEquals("Contargo", trailer.getOperator());
-        Assertions.assertEquals("XL", trailer.getType());
+        assertEquals("CSQU3054383", trailer.getIdentification());
+        assertEquals("CSQU3054383", trailer.getNumber());
+        assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
+        assertEquals(70, trailer.getWeightBruttoMax().doubleValue());
+        assertEquals(65, trailer.getWeightNettoMax().doubleValue());
+        assertEquals(70, trailer.getWeightTara().doubleValue());
+        assertEquals("i.O.", trailer.getCondition());
+        assertFalse(trailer.isReefer());
+        assertEquals("Contargo", trailer.getOperator());
+        assertEquals("XL", trailer.getType());
 
-        Assertions.assertEquals(6, trailer.getSize().doubleValue());
-        Assertions.assertTrue(trailer.isCraneable());
+        assertEquals(6, trailer.getSize().doubleValue());
+        assertTrue(trailer.isCraneable());
 
         // Check if valid
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -158,8 +159,8 @@ class LoadingUnitTest {
 
         Set<ConstraintViolation<SwapBody>> violations = validator.validate(swapBody);
 
-        Assertions.assertEquals(5, violations.size(), "5 attributes should be mandatory for SwapBody.");
-        Assertions.assertThrows(IllegalStateException.class,
+        assertEquals(5, violations.size(), "5 attributes should be mandatory for SwapBody.");
+        assertThrows(IllegalStateException.class,
             () -> {
                 if (!violations.isEmpty()) {
                     String message = String.format("Object is invalid: %s mandatory attributes are missing",
@@ -181,8 +182,8 @@ class LoadingUnitTest {
 
         Set<ConstraintViolation<Container>> violations = validator.validate(container);
 
-        Assertions.assertEquals(5, violations.size(), "5 attributes should be mandatory for Container.");
-        Assertions.assertThrows(IllegalStateException.class,
+        assertEquals(5, violations.size(), "5 attributes should be mandatory for Container.");
+        assertThrows(IllegalStateException.class,
             () -> {
                 if (!violations.isEmpty()) {
                     String message = String.format("Object is invalid: %s mandatory attributes are missing",
@@ -204,8 +205,8 @@ class LoadingUnitTest {
 
         Set<ConstraintViolation<Trailer>> violations = validator.validate(trailer);
 
-        Assertions.assertEquals(5, violations.size(), "5 attributes should be mandatory for Trailer.");
-        Assertions.assertThrows(IllegalStateException.class,
+        assertEquals(5, violations.size(), "5 attributes should be mandatory for Trailer.");
+        assertThrows(IllegalStateException.class,
             () -> {
                 if (!violations.isEmpty()) {
                     String message = String.format("Object is invalid: %s mandatory attributes are missing",

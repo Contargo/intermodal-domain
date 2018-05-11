@@ -1,8 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.Address;
-
-
 /**
  * Unit for organization of multiple actors in trimodal transport.
  *
@@ -22,14 +19,144 @@ public class Operator {
 
     private String legalForm;
 
-    private Address adress;
+    private Address address;
 
+    /**
+     * @name_english  value added tax identification number
+     * @name_german  Umsatzsteuer-Identifikationsnummer
+     */
     private String vatId;
 
     /**
-     * Tax Identification Number.
+     * @name_english  Tax Identification Number
+     * @name_german  Steuerliche Identifikationsnummer
      */
     private String tin;
 
     private String insurance;
+
+    public String getName() {
+
+        return name;
+    }
+
+
+    public String getLegalForm() {
+
+        return legalForm;
+    }
+
+
+    public Address getAddress() {
+
+        return address;
+    }
+
+
+    public String getVatId() {
+
+        return vatId;
+    }
+
+
+    public String getTin() {
+
+        return tin;
+    }
+
+
+    public String getInsurance() {
+
+        return insurance;
+    }
+
+    public static final class OperatorBuilder {
+
+        private String name;
+        private String legalForm;
+        private Address adress;
+        private String vatId;
+        private String tin;
+        private String insurance;
+
+        private OperatorBuilder() {
+        }
+
+        public static OperatorBuilder newOperator() {
+
+            return new OperatorBuilder();
+        }
+
+
+        public OperatorBuilder withName(String name) {
+
+            this.name = name;
+
+            return this;
+        }
+
+
+        public OperatorBuilder withLegalForm(String legalForm) {
+
+            this.legalForm = legalForm;
+
+            return this;
+        }
+
+
+        public OperatorBuilder withAddress(Address address) {
+
+            this.adress = address;
+
+            return this;
+        }
+
+
+        public OperatorBuilder withVatId(String vatId) {
+
+            this.vatId = vatId;
+
+            return this;
+        }
+
+
+        public OperatorBuilder withTin(String tin) {
+
+            this.tin = tin;
+
+            return this;
+        }
+
+
+        public OperatorBuilder withInsurance(String insurance) {
+
+            this.insurance = insurance;
+
+            return this;
+        }
+
+
+        public Operator build() {
+
+            Operator operator = new Operator();
+            operator.address = this.adress;
+            operator.tin = this.tin;
+            operator.name = this.name;
+            operator.vatId = this.vatId;
+            operator.insurance = this.insurance;
+            operator.legalForm = this.legalForm;
+
+            return operator;
+        }
+
+
+        public Operator buildAndValidate() {
+
+            Operator operator = this.build();
+
+            Validator.validate(operator);
+
+            return operator;
+        }
+    }
 }

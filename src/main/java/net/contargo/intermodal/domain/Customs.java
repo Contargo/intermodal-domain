@@ -24,5 +24,82 @@ public class Customs {
      */
     private String customDocumentNumber;
 
-    private String seal;
+    private Boolean seal;
+
+    public String getCustomProcess() {
+
+        return customProcess;
+    }
+
+
+    public String getCustomDocumentNumber() {
+
+        return customDocumentNumber;
+    }
+
+
+    public Boolean getSeal() {
+
+        return seal;
+    }
+
+    public static final class CustomsBuilder {
+
+        private String customProcess;
+        private String customDocumentNumber;
+        private Boolean seal;
+
+        private CustomsBuilder() {
+        }
+
+        public static CustomsBuilder newCustoms() {
+
+            return new CustomsBuilder();
+        }
+
+
+        public CustomsBuilder withCustomProcess(String customProcess) {
+
+            this.customProcess = customProcess;
+
+            return this;
+        }
+
+
+        public CustomsBuilder withCustomDocumentNumber(String customDocumentNumber) {
+
+            this.customDocumentNumber = customDocumentNumber;
+
+            return this;
+        }
+
+
+        public CustomsBuilder withSeal(Boolean seal) {
+
+            this.seal = seal;
+
+            return this;
+        }
+
+
+        public Customs build() {
+
+            Customs customs = new Customs();
+            customs.customProcess = this.customProcess;
+            customs.customDocumentNumber = this.customDocumentNumber;
+            customs.seal = this.seal;
+
+            return customs;
+        }
+
+
+        public Customs buildAndValidate() {
+
+            Customs customs = this.build();
+
+            Validator.validate(customs);
+
+            return customs;
+        }
+    }
 }

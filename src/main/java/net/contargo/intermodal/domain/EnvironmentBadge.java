@@ -1,4 +1,4 @@
-package net.contargo.intermodal.domain.meansOfTransport;
+package net.contargo.intermodal.domain;
 
 /**
  * Badge which indicates the particulate matter emission of a motor vehicle. Depending on this badge the vehicle might
