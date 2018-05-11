@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain.loadingUnit;
 
+import net.contargo.intermodal.domain.LoadingUnit;
+import net.contargo.intermodal.domain.LoadingUnitCategory;
 import net.contargo.intermodal.domain.MeansOfTransport;
 
 import javax.validation.constraints.NotNull;
@@ -22,7 +24,9 @@ import javax.validation.constraints.NotNull;
  *                ISO 17261:2012-12, 3.14 — modifiziert, Änderung der Anmerkung)
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
+ * @minimum_requirement  number, category, reefer, sizeType, type, size
  */
+//TODO - Builder
 public class Container extends LoadingUnit {
 
     /**
@@ -43,11 +47,6 @@ public class Container extends LoadingUnit {
     @NotNull(message = "size is part of minimum requirement")
     private Integer size;
 
-    public Container() {
-
-        super.withCategory(LoadingUnitCategory.CONTAINER);
-    }
-
     public Container withSizeType(String sizeType) {
 
         this.sizeType = sizeType;
@@ -67,78 +66,6 @@ public class Container extends LoadingUnit {
     public Container withSize(Integer size) {
 
         this.size = size;
-
-        return this;
-    }
-
-
-    @Override
-    public Container withIdentification(String identification) {
-
-        super.withIdentification(identification);
-
-        return this;
-    }
-
-
-    @Override
-    public Container withNumber(String number) {
-
-        super.withNumber(number);
-
-        return this;
-    }
-
-
-    @Override
-    public Container withWeightBruttoMax(double weightBruttoMax) {
-
-        super.withWeightBruttoMax(weightBruttoMax);
-
-        return this;
-    }
-
-
-    @Override
-    public Container withWeightNettoMax(double weightNettoMax) {
-
-        super.withWeightNettoMax(weightNettoMax);
-
-        return this;
-    }
-
-
-    @Override
-    public Container withWeightTara(double weightTara) {
-
-        super.withWeightTara(weightTara);
-
-        return this;
-    }
-
-
-    @Override
-    public Container withCondition(String condition) {
-
-        super.withCondition(condition);
-
-        return this;
-    }
-
-
-    @Override
-    public Container isReefer(Boolean reefer) {
-
-        super.isReefer(reefer);
-
-        return this;
-    }
-
-
-    @Override
-    public Container withOperator(String operator) {
-
-        super.withOperator(operator);
 
         return this;
     }

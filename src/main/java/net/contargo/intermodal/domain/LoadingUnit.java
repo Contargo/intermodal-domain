@@ -1,6 +1,4 @@
-package net.contargo.intermodal.domain.loadingUnit;
-
-import net.contargo.intermodal.domain.Operator;
+package net.contargo.intermodal.domain;
 
 import javax.validation.constraints.NotNull;
 
@@ -17,12 +15,10 @@ import javax.validation.constraints.NotNull;
  * @definition_german  Physische Transporteinheit, die Waren und Güter umschließen kann.
  * @definition_english  Physical transport unit which can include wares and goods.
  * @note_german  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind
- *               {@link net.contargo.intermodal.domain.loadingUnit.Container},
- *               {@link net.contargo.intermodal.domain.loadingUnit.SwapBody Wechselbehälter},
- *               {@link net.contargo.intermodal.domain.loadingUnit.Trailer Sattelauflieger}.
+ *               {@link net.contargo.intermodal.domain.loadingUnit.Container}, {@link SwapBody Wechselbehälter},
+ *               {@link Trailer Sattelauflieger}.
  * @note_english  Loading units in combined traffic are {@link net.contargo.intermodal.domain.loadingUnit.Container},
- *                {@link net.contargo.intermodal.domain.loadingUnit.SwapBody} and
- *                {@link net.contargo.intermodal.domain.loadingUnit.Trailer}.
+ *                {@link SwapBody} and {@link Trailer}.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -76,75 +72,57 @@ public abstract class LoadingUnit {
      */
     private String operator;
 
-    LoadingUnit withCategory(LoadingUnitCategory loadingUnitCategory) {
-
-        this.category = loadingUnitCategory;
-
-        return this;
-    }
-
-
-    LoadingUnit withIdentification(String identification) {
+    void setIdentification(String identification) {
 
         this.identification = identification;
-
-        return this;
     }
 
 
-    LoadingUnit withNumber(String number) {
+    void setNumber(String number) {
 
         this.number = number;
-
-        return this;
     }
 
 
-    LoadingUnit withWeightBruttoMax(double weightBruttoMax) {
+    void setCategory(LoadingUnitCategory category) {
+
+        this.category = category;
+    }
+
+
+    void setWeightBruttoMax(Double weightBruttoMax) {
 
         this.weightBruttoMax = weightBruttoMax;
-
-        return this;
     }
 
 
-    LoadingUnit withWeightNettoMax(double weightNettoMax) {
+    void setWeightNettoMax(Double weightNettoMax) {
 
         this.weightNettoMax = weightNettoMax;
-
-        return this;
     }
 
 
-    LoadingUnit withWeightTara(double weightTara) {
+    void setWeightTara(Double weightTara) {
 
         this.weightTara = weightTara;
-
-        return this;
     }
 
 
-    LoadingUnit withCondition(String condition) {
+    void setCondition(String condition) {
 
         this.condition = condition;
-
-        return this;
     }
 
 
-    LoadingUnit isReefer(Boolean reefer) {
+    void setReefer(Boolean reefer) {
 
         this.reefer = reefer;
-
-        return this;
     }
 
 
-    LoadingUnit withOperator(String operator) {
+    void setOperator(String operator) {
 
         this.operator = operator;
-
-        return this;
     }
 
 

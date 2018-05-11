@@ -2,7 +2,7 @@ package net.contargo.intermodal.domain.registration;
 
 import net.contargo.intermodal.domain.Chassis;
 import net.contargo.intermodal.domain.Driver;
-import net.contargo.intermodal.domain.loadingUnit.Order;
+import net.contargo.intermodal.domain.LUOrder;
 import net.contargo.intermodal.domain.meansOfTransport.Truck;
 
 import java.util.Date;
@@ -10,7 +10,7 @@ import java.util.Date;
 
 /**
  * Describes the registration of road vehicles on a handling point by connecting vehicle, {@link Driver Person} and
- * {@link net.contargo.intermodal.domain.loadingUnit.Order}.
+ * {@link LUOrder}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
@@ -20,9 +20,8 @@ import java.util.Date;
  *                     von Fahrzeug, Person und Auftrag wird hier dargestellt. Die Gruppe hat sowohl für die
  *                     Anlieferung von LE Gültigkeit als auch für die Abholung von LE an einem Umschlagknoten.
  * @definition_english  Describes the registration of road vehicles on a handling point by connecting vehicle,
- *                      {@link Driver Person} and {@link net.contargo.intermodal.domain.loadingUnit.Order}. It is valid
- *                      for the delivery of loading units as well as for the pick up of an loading unit on a handling
- *                      point.
+ *                      {@link Driver Person} and {@link LUOrder}. It is valid for the delivery of loading units as
+ *                      well as for the pick up of an loading unit on a handling point.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -43,5 +42,5 @@ public class Vehicle {
      */
     private Date deliveryTime;
 
-    private Order luOrder;
+    private LUOrder luLUOrder;
 }

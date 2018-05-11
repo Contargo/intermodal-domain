@@ -1,6 +1,6 @@
 package net.contargo.intermodal.domain.processing;
 
-import net.contargo.intermodal.domain.loadingUnit.Order;
+import net.contargo.intermodal.domain.LUOrder;
 
 import java.util.Date;
 import java.util.List;
@@ -36,7 +36,7 @@ public class Train {
 
     private Integer loadingListWaggonRanking;
 
-    private Order loadingListWaggonLoadingPositionLuOrder;
+    private LUOrder loadingListWaggonLoadingPositionLuLUOrder;
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)

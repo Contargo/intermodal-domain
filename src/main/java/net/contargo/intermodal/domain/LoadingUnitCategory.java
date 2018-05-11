@@ -1,7 +1,10 @@
-package net.contargo.intermodal.domain.loadingUnit;
+package net.contargo.intermodal.domain;
+
+import net.contargo.intermodal.domain.LoadingUnit;
+
 
 /**
- * Type of a {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit}.
+ * Type of a {@link LoadingUnit}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04

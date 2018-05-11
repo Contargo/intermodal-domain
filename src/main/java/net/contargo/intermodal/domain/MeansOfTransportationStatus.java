@@ -2,8 +2,6 @@ package net.contargo.intermodal.domain;
 
 import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
 
-import java.util.Date;
-
 
 /**
  * Status of means of transport for communication flow of intermodal freight transport.
@@ -58,14 +56,14 @@ public class MeansOfTransportationStatus {
     private String ata;
 
     /**
-     * {@link MeansOfTransport MoT} is ready for handling of the
-     * {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit LU} (Format: ISO 8601 inclusive UTC).
+     * {@link MeansOfTransport MoT} is ready for handling of the {@link LoadingUnit LU} (Format: ISO 8601 inclusive
+     * UTC).
      *
      * @name_german  Bereitstellung
      * @synonym_german  Bearbeitungsstart
      * @abbreviation_german  BS
-     * @definition_german  {@link MeansOfTransport VM} ist bereit für den Umschlag der
-     *                     {@link net.contargo.intermodal.domain.loadingUnit.LoadingUnit LE} („erste Kranung“).
+     * @definition_german  {@link MeansOfTransport VM} ist bereit für den Umschlag der {@link LoadingUnit LE} („erste
+     *                     Kranung“).
      */
     private Boolean handlingStart;
 

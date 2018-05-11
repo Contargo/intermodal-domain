@@ -1,7 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.loadingUnit.Direction;
-
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +37,7 @@ public class Order {
 
     private Operator billRecipient;
 
-    private net.contargo.intermodal.domain.loadingUnit.Order luOrder;
+    private LUOrder luLUOrder;
 
     private Direction transportDirection;
 

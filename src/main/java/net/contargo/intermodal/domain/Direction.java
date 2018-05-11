@@ -1,10 +1,7 @@
-package net.contargo.intermodal.domain.loadingUnit;
-
-import net.contargo.intermodal.domain.Order;
-
+package net.contargo.intermodal.domain;
 
 /**
- * Direction of an {@link net.contargo.intermodal.domain.loadingUnit.Order} or {@link Order}.
+ * Direction of an {@link LUOrder} or {@link Order}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04

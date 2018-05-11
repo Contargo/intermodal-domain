@@ -1,8 +1,8 @@
 package net.contargo.intermodal.domain.processing;
 
+import net.contargo.intermodal.domain.LUOrder;
 import net.contargo.intermodal.domain.Person;
 import net.contargo.intermodal.domain.Skipper;
-import net.contargo.intermodal.domain.loadingUnit.Order;
 
 import java.util.Date;
 import java.util.List;
@@ -59,7 +59,7 @@ public class Barge {
      */
     private Boolean adnr;
 
-    private List<Order> loadingListLUOrder;
+    private List<LUOrder> loadingListLULUOrder;
 
     private StoragePosition loadingListStoragePosition;
 }
