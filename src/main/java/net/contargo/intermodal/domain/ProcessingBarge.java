@@ -2,7 +2,7 @@ package net.contargo.intermodal.domain;
 
 import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -60,9 +60,7 @@ public class ProcessingBarge {
      */
     private Boolean adnr;
 
-    private List<LUOrder> loadingListLuOrder;
-
-    private StoragePosition loadingListStoragePosition;
+    private LoadingList loadingList;
 
     public Barge getBarge() {
 
@@ -112,15 +110,36 @@ public class ProcessingBarge {
     }
 
 
-    public List<LUOrder> getLoadingListLuOrder() {
+    public LoadingList getLoadingList() {
 
-        return loadingListLuOrder;
+        return loadingList;
     }
 
+    public static class LoadingList {
 
-    public StoragePosition getLoadingListStoragePosition() {
+        private List<LUOrder> luOrders = new ArrayList<>();
+        private List<StoragePosition> storagePositions = new ArrayList<>();
 
-        return loadingListStoragePosition;
+        LoadingList() {
+        }
+
+        public List<LUOrder> getLuOrders() {
+
+            return luOrders;
+        }
+
+
+        public List<StoragePosition> getStoragePositions() {
+
+            return storagePositions;
+        }
+
+
+        public void with(LUOrder luOrder, StoragePosition storagePosition) {
+
+            this.luOrders.add(luOrder);
+            this.storagePositions.add(storagePosition);
+        }
     }
 
     public static final class Builder {
@@ -133,8 +152,7 @@ public class ProcessingBarge {
         private Integer reeferConnections;
         private Cone cone;
         private Boolean adnr;
-        private List<LUOrder> loadingListLuOrder;
-        private StoragePosition loadingListStoragePosition;
+        private LoadingList loadingList = new LoadingList();
 
         private Builder() {
         }
@@ -209,17 +227,9 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withLoadingListLuOrder(List<LUOrder> loadingListLuOrder) {
+        public Builder withLuOrder(LUOrder luOrder, StoragePosition storagePosition) {
 
-            this.loadingListLuOrder = loadingListLuOrder;
-
-            return this;
-        }
-
-
-        public Builder withLoadingListStoragePosition(StoragePosition loadingListStoragePosition) {
-
-            this.loadingListStoragePosition = loadingListStoragePosition;
+            this.loadingList.with(luOrder, storagePosition);
 
             return this;
         }
@@ -230,9 +240,8 @@ public class ProcessingBarge {
             ProcessingBarge processingBarge = new ProcessingBarge();
             processingBarge.barge = this.barge;
             processingBarge.reeferConnections = this.reeferConnections;
-            processingBarge.loadingListLuOrder = this.loadingListLuOrder;
+            processingBarge.loadingList = this.loadingList;
             processingBarge.eta = this.eta;
-            processingBarge.loadingListStoragePosition = this.loadingListStoragePosition;
             processingBarge.etd = this.etd;
             processingBarge.passenger = this.passenger;
             processingBarge.cone = this.cone;

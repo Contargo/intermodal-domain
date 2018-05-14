@@ -5,7 +5,6 @@ import net.contargo.intermodal.domain.ProcessingTrain;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,13 +19,10 @@ class ProcessingTrainTest {
     void ensureCanBeCreated() {
 
         ProcessingTrain processingTrain = ProcessingTrain.Builder.newProcessingTrain()
-                .withTrainTitel("My Train")
-                .withLoadingListWaggon(new ArrayList<>())
-                .withLoadingListWaggonType(Arrays.asList("SGNRS", "SGNRS", "SGNRS"))
-                .withLoadingListWaggonId(Arrays.asList("5468", "5467", "5479"))
-                .withLoadingListWaggonRanking(Arrays.asList(1, 2, 3))
-                .withLoadingListWaggonLoadingPositionLuOrder(Arrays.asList(new LUOrder(), new LUOrder(),
-                            new LUOrder()))
+                .withTrainTitle("My Train")
+                .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
+                .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
+                .withWaggon("SGNRS", "24568", 3, Arrays.asList(new LUOrder(), new LUOrder()))
                 .withTerminalEta(2018, 5, 14, 11, 0)
                 .withTerminalEtd(2018, 5, 14, 13, 0)
                 .withShuntingYardEta(2018, 5, 14, 12, 0)
@@ -34,11 +30,12 @@ class ProcessingTrainTest {
                 .withTrainPaths("12345")
                 .buildAndValidate();
 
-        assertEquals("My Train", processingTrain.getTrainTitel());
-        assertEquals(3, processingTrain.getLoadingListWaggonType().size());
-        assertEquals(3, processingTrain.getLoadingListWaggonId().size());
-        assertEquals(3, processingTrain.getLoadingListWaggonRanking().size());
-        assertEquals(3, processingTrain.getLoadingListWaggonLoadingPositionLuOrder().size());
+        assertEquals("My Train", processingTrain.getTrainTitle());
+        assertEquals(3, processingTrain.getLoadingList().size());
+        assertEquals("789784", processingTrain.getLoadingList().get(0).getId());
+        assertEquals("54789", processingTrain.getLoadingList().get(1).getId());
+        assertEquals("24568", processingTrain.getLoadingList().get(2).getId());
+        assertEquals(2, processingTrain.getLoadingList().get(2).getLoadingPosition().size());
         assertEquals("2018-05-14T11:00:00.000Z", processingTrain.getTerminalEta());
         assertEquals("2018-05-14T13:00:00.000Z", processingTrain.getTerminalEtd());
         assertEquals("2018-05-14T12:00:00.000Z", processingTrain.getShuntingYardEta());

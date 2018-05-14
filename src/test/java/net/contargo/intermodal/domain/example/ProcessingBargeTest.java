@@ -26,8 +26,9 @@ class ProcessingBargeTest {
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
                 .withAdnr(true)
-                .withLoadingListLuOrder(Arrays.asList(new LUOrder(), new LUOrder(), new LUOrder()))
-                .withLoadingListStoragePosition(StoragePosition.BAY)
+                .withLuOrder(new LUOrder(), StoragePosition.TIER)
+                .withLuOrder(new LUOrder(), StoragePosition.ROW)
+                .withLuOrder(new LUOrder(), StoragePosition.BAY)
                 .buildAndValidate();
 
         assertNotNull(processingBarge.getBarge());
@@ -38,7 +39,13 @@ class ProcessingBargeTest {
         assertEquals(12, processingBarge.getReeferConnections().intValue());
         assertEquals(Cone.ONE, processingBarge.getCone());
         assertTrue(processingBarge.getAdnr());
-        assertEquals(3, processingBarge.getLoadingListLuOrder().size());
-        assertEquals(StoragePosition.BAY, processingBarge.getLoadingListStoragePosition());
+        assertEquals(3, processingBarge.getLoadingList().getLuOrders().size());
+        assertEquals(3, processingBarge.getLoadingList().getStoragePositions().size());
+        assertEquals(StoragePosition.TIER, processingBarge.getLoadingList().getStoragePositions().get(0));
+        assertNotNull(processingBarge.getLoadingList().getLuOrders().get(0));
+        assertEquals(StoragePosition.ROW, processingBarge.getLoadingList().getStoragePositions().get(1));
+        assertNotNull(processingBarge.getLoadingList().getLuOrders().get(1));
+        assertEquals(StoragePosition.BAY, processingBarge.getLoadingList().getStoragePositions().get(2));
+        assertNotNull(processingBarge.getLoadingList().getLuOrders().get(2));
     }
 }

@@ -2,6 +2,7 @@ package net.contargo.intermodal.domain;
 
 import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,21 +27,9 @@ public class ProcessingTrain {
      * @definition_english  product number or name.
      * @definition_german  Produktnummer oder Name
      */
-    private String trainTitel;
+    private String trainTitle;
 
-    private List<String> loadingListWaggon;
-
-    private List<String> loadingListWaggonType;
-
-    private List<String> loadingListWaggonId;
-
-    /**
-     * @name_german  Verladelistewagenreihung
-     * @note  driving direction sequence
-     */
-    private List<Integer> loadingListWaggonRanking;
-
-    private List<LUOrder> loadingListWaggonLoadingPositionLuOrder;
+    private List<Waggon> loadingList = new ArrayList<>();
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
@@ -64,39 +53,9 @@ public class ProcessingTrain {
      */
     private String trainPaths;
 
-    public String getTrainTitel() {
+    public String getTrainTitle() {
 
-        return trainTitel;
-    }
-
-
-    public List<String> getLoadingListWaggon() {
-
-        return loadingListWaggon;
-    }
-
-
-    public List<String> getLoadingListWaggonType() {
-
-        return loadingListWaggonType;
-    }
-
-
-    public List<String> getLoadingListWaggonId() {
-
-        return loadingListWaggonId;
-    }
-
-
-    public List<Integer> getLoadingListWaggonRanking() {
-
-        return loadingListWaggonRanking;
-    }
-
-
-    public List<LUOrder> getLoadingListWaggonLoadingPositionLuOrder() {
-
-        return loadingListWaggonLoadingPositionLuOrder;
+        return trainTitle;
     }
 
 
@@ -129,14 +88,64 @@ public class ProcessingTrain {
         return trainPaths;
     }
 
+
+    public List<Waggon> getLoadingList() {
+
+        return loadingList;
+    }
+
+    public static class Waggon {
+
+        private String type;
+        private String id;
+
+        /**
+         * @name_german  Verladelistewagenreihung
+         * @note  driving direction sequence
+         */
+        private Integer ranking;
+        private List<LUOrder> loadingPosition = new ArrayList<>();
+
+        private Waggon() {
+        }
+
+
+        private Waggon(String type, String id, Integer ranking, List<LUOrder> loadingPosition) {
+
+            this.type = type;
+            this.id = id;
+            this.ranking = ranking;
+            this.loadingPosition = loadingPosition;
+        }
+
+        public String getType() {
+
+            return type;
+        }
+
+
+        public String getId() {
+
+            return id;
+        }
+
+
+        public Integer getRanking() {
+
+            return ranking;
+        }
+
+
+        public List<LUOrder> getLoadingPosition() {
+
+            return loadingPosition;
+        }
+    }
+
     public static final class Builder {
 
-        private String trainTitel;
-        private List<String> loadingListWaggon;
-        private List<String> loadingListWaggonType;
-        private List<String> loadingListWaggonId;
-        private List<Integer> loadingListWaggonRanking;
-        private List<LUOrder> loadingListWaggonLoadingPositionLuOrder;
+        private String trainTitle;
+        private List<Waggon> loadingList = new ArrayList<>();
         private String terminalEta;
         private String terminalEtd;
         private String shuntingYardEta;
@@ -152,50 +161,17 @@ public class ProcessingTrain {
         }
 
 
-        public Builder withTrainTitel(String trainTitel) {
+        public Builder withTrainTitle(String trainTitle) {
 
-            this.trainTitel = trainTitel;
-
-            return this;
-        }
-
-
-        public Builder withLoadingListWaggon(List<String> loadingListWaggon) {
-
-            this.loadingListWaggon = loadingListWaggon;
+            this.trainTitle = trainTitle;
 
             return this;
         }
 
 
-        public Builder withLoadingListWaggonType(List<String> loadingListWaggonType) {
+        public Builder withWaggon(String type, String id, Integer ranking, List<LUOrder> loadingPosition) {
 
-            this.loadingListWaggonType = loadingListWaggonType;
-
-            return this;
-        }
-
-
-        public Builder withLoadingListWaggonId(List<String> loadingListWaggonId) {
-
-            this.loadingListWaggonId = loadingListWaggonId;
-
-            return this;
-        }
-
-
-        public Builder withLoadingListWaggonRanking(List<Integer> loadingListWaggonRanking) {
-
-            this.loadingListWaggonRanking = loadingListWaggonRanking;
-
-            return this;
-        }
-
-
-        public Builder withLoadingListWaggonLoadingPositionLuOrder(
-            List<LUOrder> loadingListWaggonLoadingPositionLuOrder) {
-
-            this.loadingListWaggonLoadingPositionLuOrder = loadingListWaggonLoadingPositionLuOrder;
+            this.loadingList.add(new Waggon(type, id, ranking, loadingPosition));
 
             return this;
         }
@@ -244,15 +220,11 @@ public class ProcessingTrain {
         public ProcessingTrain build() {
 
             ProcessingTrain processingTrain = new ProcessingTrain();
-            processingTrain.loadingListWaggonLoadingPositionLuOrder = this.loadingListWaggonLoadingPositionLuOrder;
             processingTrain.shunter = this.shunter;
-            processingTrain.trainTitel = this.trainTitel;
-            processingTrain.loadingListWaggonRanking = this.loadingListWaggonRanking;
+            processingTrain.trainTitle = this.trainTitle;
             processingTrain.shuntingYardEta = this.shuntingYardEta;
-            processingTrain.loadingListWaggonType = this.loadingListWaggonType;
-            processingTrain.loadingListWaggon = this.loadingListWaggon;
+            processingTrain.loadingList = this.loadingList;
             processingTrain.trainPaths = this.trainPaths;
-            processingTrain.loadingListWaggonId = this.loadingListWaggonId;
             processingTrain.terminalEtd = this.terminalEtd;
             processingTrain.terminalEta = this.terminalEta;
 
