@@ -37,7 +37,7 @@ class PersonTest {
         assertEquals("1980-01-13T00:00:00.000Z", driver.getDateOfBirth());
         assertEquals("Karlsruhe", driver.getLocationCity());
         assertEquals("DE", driver.getCountryCode());
-        assertEquals("12345678", driver.getLicenseNumber());
+        assertEquals("12345678", driver.getLicense().getLicenseNumber());
         assertEquals("42", driver.getId());
         assertEquals("2018-12-31T00:00:00.000Z", driver.getAdr());
         assertEquals("2018-12-31T00:00:00.000Z", driver.getModuleEntry95());
