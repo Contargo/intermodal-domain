@@ -1,4 +1,4 @@
-package net.contargo.intermodal.domain.processing;
+package net.contargo.intermodal.domain;
 
 /**
  * Storage position of a barge.

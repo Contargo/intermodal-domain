@@ -37,7 +37,7 @@ public class Order {
 
     private Operator billRecipient;
 
-    private LUOrder luLUOrder;
+    private LUOrder luOrder;
 
     private Direction transportDirection;
 
