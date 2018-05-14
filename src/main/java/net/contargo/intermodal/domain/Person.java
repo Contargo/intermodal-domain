@@ -1,9 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.Address;
-import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
-
-
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04

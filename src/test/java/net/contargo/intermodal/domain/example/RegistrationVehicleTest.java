@@ -4,7 +4,7 @@ import net.contargo.intermodal.domain.Chassis;
 import net.contargo.intermodal.domain.Driver;
 import net.contargo.intermodal.domain.LUOrder;
 import net.contargo.intermodal.domain.RegistrationVehicle;
-import net.contargo.intermodal.domain.meansOfTransport.Truck;
+import net.contargo.intermodal.domain.Truck;
 
 import org.junit.jupiter.api.Test;
 

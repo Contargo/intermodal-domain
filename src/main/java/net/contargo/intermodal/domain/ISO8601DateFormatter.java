@@ -1,4 +1,4 @@
-package net.contargo.intermodal.domain.utility;
+package net.contargo.intermodal.domain;
 
 import java.text.SimpleDateFormat;
 
@@ -10,7 +10,7 @@ import java.util.TimeZone;
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class ISO8601DateFormatter {
+class ISO8601DateFormatter {
 
     public static String format(int year, int month, int day) {
 

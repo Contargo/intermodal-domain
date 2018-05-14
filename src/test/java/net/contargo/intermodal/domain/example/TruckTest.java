@@ -1,7 +1,7 @@
 package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.EnvironmentBadge;
-import net.contargo.intermodal.domain.meansOfTransport.Truck;
+import net.contargo.intermodal.domain.Truck;
 
 import org.junit.jupiter.api.Test;
 

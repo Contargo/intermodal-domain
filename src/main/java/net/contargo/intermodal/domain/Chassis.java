@@ -1,8 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
-
-
 /**
  * Trailer to transport loading units.
  *

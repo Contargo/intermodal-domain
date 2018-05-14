@@ -1,10 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.DangerousGoods;
-import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
-
-import java.util.Date;
-
 import javax.validation.constraints.NotNull;
 
 

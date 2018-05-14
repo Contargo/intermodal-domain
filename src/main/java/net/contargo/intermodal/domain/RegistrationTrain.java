@@ -1,7 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
-
 import javax.validation.constraints.NotNull;
 
 

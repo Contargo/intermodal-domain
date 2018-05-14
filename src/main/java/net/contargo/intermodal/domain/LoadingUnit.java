@@ -14,11 +14,9 @@ import javax.validation.constraints.NotNull;
  * @abbreviation_english  LU
  * @definition_german  Physische Transporteinheit, die Waren und Güter umschließen kann.
  * @definition_english  Physical transport unit which can include wares and goods.
- * @note_german  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind
- *               {@link net.contargo.intermodal.domain.loadingUnit.Container}, {@link SwapBody Wechselbehälter},
- *               {@link Trailer Sattelauflieger}.
- * @note_english  Loading units in combined traffic are {@link net.contargo.intermodal.domain.loadingUnit.Container},
- *                {@link SwapBody} and {@link Trailer}.
+ * @note_german  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind {@link Container},
+ *               {@link SwapBody Wechselbehälter}, {@link Trailer Sattelauflieger}.
+ * @note_english  Loading units in combined traffic are {@link Container}, {@link SwapBody} and {@link Trailer}.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

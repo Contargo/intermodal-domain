@@ -1,8 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.utility.ISO8601DateFormatter;
-
-
 /**
  * Status of means of transport for communication flow of intermodal freight transport.
  *

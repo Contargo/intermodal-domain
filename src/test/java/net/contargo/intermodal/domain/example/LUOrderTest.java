@@ -1,12 +1,12 @@
 package net.contargo.intermodal.domain.example;
 
+import net.contargo.intermodal.domain.Container;
 import net.contargo.intermodal.domain.Customs;
 import net.contargo.intermodal.domain.DangerousGoods;
 import net.contargo.intermodal.domain.Direction;
 import net.contargo.intermodal.domain.LUOrder;
 import net.contargo.intermodal.domain.Operator;
 import net.contargo.intermodal.domain.Waste;
-import net.contargo.intermodal.domain.loadingUnit.Container;
 
 import org.junit.jupiter.api.Test;
 

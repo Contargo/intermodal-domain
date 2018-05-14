@@ -1,6 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import java.util.Date;
 import java.util.List;
 
 
