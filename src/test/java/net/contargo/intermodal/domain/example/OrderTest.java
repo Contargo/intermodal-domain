@@ -17,6 +17,7 @@ class OrderTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
+        Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
 
         Order order = Order.Builder.newOrder()
                 .withReference("54642887")
@@ -26,7 +27,7 @@ class OrderTest {
                 .withPickUpMeansOfTransport(new Truck())
                 .withDropOffLocation("Koblenz", "Terminal Koblenz")
                 .withDropOffMeansOfTransport(new Barge())
-                .withStops(Arrays.asList(new Stop(), new Stop()))
+                .withStops(Arrays.asList(stop))
                 .withDestinationLocation("Terminal Koblenz")
                 .buildAndValidate();
     }
@@ -34,6 +35,8 @@ class OrderTest {
 
     @Test
     void ensureCanBeCreatedWithAllInformation() {
+
+        Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
 
         Order order = Order.Builder.newOrder()
                 .withReference("54642887")
@@ -54,7 +57,7 @@ class OrderTest {
                 .withEarliestDropOff(2018, 5, 14, 14, 0)
                 .withLatestDropOff(2018, 5, 14, 14, 15)
                 .withDropOffMeansOfTransport(new Barge())
-                .withStops(Arrays.asList(new Stop(), new Stop(), new Stop()))
+                .withStops(Arrays.asList(stop))
                 .withDestinationVessel(new Vessel())
                 .withDestinationCountryCode("DE")
                 .withDestinationLocation("Koblenz", "Terminal Koblenz")
@@ -141,7 +144,6 @@ class OrderTest {
                     .withDestinationLocation("Terminal Koblenz")
                     .buildAndValidate());
 
-        /*
         assertThrows(IllegalStateException.class,
             () ->
                 Order.Builder.newOrder()
@@ -216,6 +218,5 @@ class OrderTest {
                     .withDropOffMeansOfTransport(new Barge())
                     .withStops(Arrays.asList(new Stop(), new Stop()))
                     .buildAndValidate());
-         */
     }
 }

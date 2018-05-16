@@ -1,5 +1,6 @@
 package net.contargo.intermodal.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -75,7 +76,7 @@ public class Stop {
 
     public static final class Builder {
 
-        private List<Location> location;
+        private List<Location> location = new ArrayList<>();
         private String sequence;
 
         private String earliest;
@@ -93,9 +94,24 @@ public class Stop {
         }
 
 
-        public Builder withLocation(List<Location> location) {
+        public Builder withLocation(String city, String designation, String type) {
 
-            this.location = location;
+            Location location = new Location();
+            location.setCity(city);
+            location.setDesignation(designation);
+            location.setType(type);
+            this.location.add(location);
+
+            return this;
+        }
+
+
+        public Builder withLocation(String city, String designation) {
+
+            Location location = new Location();
+            location.setCity(city);
+            location.setDesignation(designation);
+            this.location.add(location);
 
             return this;
         }

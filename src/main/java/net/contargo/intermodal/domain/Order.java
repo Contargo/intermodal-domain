@@ -105,7 +105,7 @@ public class Order {
 
     public static final class Builder {
 
-        private Destination destination;
+        private Destination destination = new Destination();
         private String reference;
         private Operator client;
         private Operator billRecipient;
