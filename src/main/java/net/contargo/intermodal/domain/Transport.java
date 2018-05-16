@@ -1,18 +1,128 @@
 package net.contargo.intermodal.domain;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.validation.constraints.NotNull;
 
 
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-class Transport {
+public class Transport {
 
     private Direction direction;
+    private PickUp pickUp = new PickUp();
+    private DropOff dropOff = new DropOff();
+    private List<Stop> stop = new ArrayList<>();
 
-    private PickUp pickUp;
-    private DropOff dropOff;
-    private Stop stop;
+    public void setDirection(Direction direction) {
+
+        this.direction = direction;
+    }
+
+
+    public void setPickUpLocation(String city, String designation, String type) {
+
+        this.pickUp.setLocation(city, designation, type);
+    }
+
+
+    public void setPickUpLocation(String city, String designation) {
+
+        this.pickUp.setLocation(city, designation);
+    }
+
+
+    public void setPickUpLoadingUnit(String reference, Boolean isEmpty) {
+
+        this.pickUp.setLoadingUnit(reference, isEmpty);
+    }
+
+
+    public void setPickUpLoadingUnitOperator(Operator operator) {
+
+        this.pickUp.setLoadingUnitOperator(operator);
+    }
+
+
+    public void setPickUpBillingReference(String billingReference) {
+
+        this.pickUp.setBillingReference(billingReference);
+    }
+
+
+    public void setEarliestPickUp(int year, int month, int day, int hour, int minute) {
+
+        this.pickUp.setEarliest(year, month, day, hour, minute);
+    }
+
+
+    public void setLatestPickUp(int year, int month, int day, int hour, int minute) {
+
+        this.pickUp.setLatest(year, month, day, hour, minute);
+    }
+
+
+    public void setPickUpMoT(MeansOfTransport meansOfTransport) {
+
+        this.pickUp.setMoT(meansOfTransport);
+    }
+
+
+    public void setDropOffLocation(String city, String designation, String type) {
+
+        this.dropOff.setLocation(city, designation, type);
+    }
+
+
+    public void setDropOffLocation(String city, String designation) {
+
+        this.dropOff.setLocation(city, designation);
+    }
+
+
+    public void setDropOffLoadingUnit(String reference, Boolean isEmpty) {
+
+        this.dropOff.setLoadingUnit(reference, isEmpty);
+    }
+
+
+    public void setDropOffLoadingUnitOperator(Operator operator) {
+
+        this.dropOff.setLoadingUnitOperator(operator);
+    }
+
+
+    public void setDropOffBillingReference(String billingReference) {
+
+        this.dropOff.setBillingReference(billingReference);
+    }
+
+
+    public void setEarliestDropOff(int year, int month, int day, int hour, int minute) {
+
+        this.dropOff.setEarliest(year, month, day, hour, minute);
+    }
+
+
+    public void setLatestDropOff(int year, int month, int day, int hour, int minute) {
+
+        this.dropOff.setLatest(year, month, day, hour, minute);
+    }
+
+
+    public void setDropOffMoT(MeansOfTransport meansOfTransport) {
+
+        this.dropOff.setMoT(meansOfTransport);
+    }
+
+
+    public void addStop(Stop stop) {
+
+        this.stop.add(stop);
+    }
+
 
     public Direction getDirection() {
 
@@ -32,36 +142,22 @@ class Transport {
     }
 
 
-    public Stop getStop() {
+    public List<Stop> getStops() {
 
         return stop;
     }
 
     public static class DropOff {
 
-        private String locationCity;
+        @NotNull(message = "location is part of minimum requirement")
+        private Location location;
 
-        /**
-         * name of terminal.
-         */
-
-        private String locationDesignation;
-
-        /**
-         * loading place, sea or hinterland terminal.
-         */
-        private String locationType;
-
-        private Boolean luEmpty;
-
-        private String luReference;
+        private LoadingUnit loadingUnit;
 
         /**
          * Abrechnungsreferenz, PO-number für Dienstl.
          */
         private String billingReference;
-
-        private Operator luOperator;
 
         /**
          * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
@@ -73,47 +169,82 @@ class Transport {
          */
         private String latest;
 
+        /**
+         * @see  MeansOfTransport
+         */
+        @NotNull(message = "mot is part of minimum requirement")
         private MeansOfTransport mot;
 
-        public String getLocationCity() {
+        public void setLocation(String city, String designation, String type) {
 
-            return locationCity;
+            this.location = new Location();
+            this.location.setCity(city);
+            this.location.setDesignation(designation);
+            this.location.setType(type);
         }
 
 
-        public String getLocationDesignation() {
+        public void setLocation(String city, String designation) {
 
-            return locationDesignation;
+            this.location = new Location();
+            this.location.setCity(city);
+            this.location.setDesignation(designation);
         }
 
 
-        public String getLocationType() {
+        public void setLoadingUnit(String reference, Boolean isEmpty) {
 
-            return locationType;
+            this.loadingUnit = new LoadingUnit();
+            this.loadingUnit.setEmpty(isEmpty);
+            this.loadingUnit.setReference(reference);
         }
 
 
-        public Boolean getLuEmpty() {
+        public void setLoadingUnitOperator(Operator operator) {
 
-            return luEmpty;
+            this.loadingUnit.setOperator(operator);
         }
 
 
-        public String getLuReference() {
+        public void setBillingReference(String billingReference) {
 
-            return luReference;
+            this.billingReference = billingReference;
+        }
+
+
+        public void setEarliest(int year, int month, int day, int hour, int minute) {
+
+            this.earliest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+        }
+
+
+        public void setLatest(int year, int month, int day, int hour, int minute) {
+
+            this.latest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+        }
+
+
+        public void setMoT(MeansOfTransport mot) {
+
+            this.mot = mot;
+        }
+
+
+        public void setMot(MeansOfTransport mot) {
+
+            this.mot = mot;
+        }
+
+
+        public Location getLocation() {
+
+            return location;
         }
 
 
         public String getBillingReference() {
 
             return billingReference;
-        }
-
-
-        public Operator getLuOperator() {
-
-            return luOperator;
         }
 
 
@@ -132,38 +263,31 @@ class Transport {
         public MeansOfTransport getMot() {
 
             return mot;
+        }
+
+
+        public LoadingUnit getLoadingUnit() {
+
+            return loadingUnit;
         }
     }
 
     public static class PickUp {
 
-        private String locationCity;
+        @NotNull(message = "location is part of minimum requirement")
+        private Location location;
+
+        private LoadingUnit loadingUnit;
 
         /**
-         * name of terminal.
-         */
-
-        private String locationDesignation;
-
-        /**
-         * loading place, sea or hinterland terminal.
-         */
-        private String locationType;
-
-        private Boolean luEmpty;
-
-        private String luReference;
-
-        /**
-         * Abrechnungsreferenz, PO-number für Dienstl.
+         * @definition_german  Abrechnungsreferenz, PO-number für Dienstleister
          */
         private String billingReference;
-
-        private Operator luOperator;
 
         /**
          * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
+        @NotNull(message = "earliest is part of minimum requirement")
         private String earliest;
 
         /**
@@ -171,47 +295,67 @@ class Transport {
          */
         private String latest;
 
+        @NotNull(message = "mot is part of minimum requirement")
         private MeansOfTransport mot;
 
-        public String getLocationCity() {
+        public void setLocation(String city, String designation, String type) {
 
-            return locationCity;
+            this.location = new Location();
+            this.location.setCity(city);
+            this.location.setDesignation(designation);
+            this.location.setType(type);
         }
 
 
-        public String getLocationDesignation() {
+        public void setLocation(String city, String designation) {
 
-            return locationDesignation;
+            this.location = new Location();
+            this.location.setCity(city);
+            this.location.setDesignation(designation);
         }
 
 
-        public String getLocationType() {
+        public void setLoadingUnit(String reference, Boolean isEmpty) {
 
-            return locationType;
+            this.loadingUnit = new LoadingUnit();
+            this.loadingUnit.setEmpty(isEmpty);
+            this.loadingUnit.setReference(reference);
         }
 
 
-        public Boolean getLuEmpty() {
+        public void setLoadingUnitOperator(Operator operator) {
 
-            return luEmpty;
+            this.loadingUnit.setOperator(operator);
         }
 
 
-        public String getLuReference() {
+        public void setBillingReference(String billingReference) {
 
-            return luReference;
+            this.billingReference = billingReference;
+        }
+
+
+        public void setEarliest(int year, int month, int day, int hour, int minute) {
+
+            this.earliest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+        }
+
+
+        public void setLatest(int year, int month, int day, int hour, int minute) {
+
+            this.latest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+        }
+
+
+        public void setMoT(MeansOfTransport mot) {
+
+            this.mot = mot;
         }
 
 
         public String getBillingReference() {
 
             return billingReference;
-        }
-
-
-        public Operator getLuOperator() {
-
-            return luOperator;
         }
 
 
@@ -231,34 +375,59 @@ class Transport {
 
             return mot;
         }
+
+
+        public Location getLocation() {
+
+            return location;
+        }
+
+
+        public LoadingUnit getLoadingUnit() {
+
+            return loadingUnit;
+        }
     }
 
-    public static class Stop {
-
-        private List<String> location;
-
-        private List<String> locationCity;
-
-        private List<String> locationDesignation;
-
-        private String locationType;
-
-        private String sequence;
-
-        /**
-         * Format: ISO 8601 inclusive UTC.
-         */
-        private String earliest;
-
-        /**
-         * Format: ISO 8601 inclusive UTC.
-         */
-        private String latest;
+    public static class LoadingUnit {
 
         private String reference;
+        private Boolean empty;
+        private Operator operator;
 
-        private String billingReference;
+        public Boolean isEmpty() {
 
-        private MeansOfTransport mot;
+            return empty;
+        }
+
+
+        public void setEmpty(Boolean empty) {
+
+            this.empty = empty;
+        }
+
+
+        public String getReference() {
+
+            return reference;
+        }
+
+
+        public void setReference(String reference) {
+
+            this.reference = reference;
+        }
+
+
+        public Operator getOperator() {
+
+            return operator;
+        }
+
+
+        public void setOperator(Operator operator) {
+
+            this.operator = operator;
+        }
     }
 }

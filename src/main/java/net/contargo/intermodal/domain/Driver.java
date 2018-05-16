@@ -12,12 +12,7 @@ package net.contargo.intermodal.domain;
  */
 public class Driver extends Person {
 
-    /**
-     * format: DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-     */
-    private String licenseValidity;
-
-    private String licenseNumber;
+    private License license;
 
     /**
      * @name_german  Fahrerkartennummer
@@ -36,15 +31,9 @@ public class Driver extends Person {
      */
     private String moduleEntry95;
 
-    public String getLicenseValidity() {
+    public License getLicense() {
 
-        return licenseValidity;
-    }
-
-
-    public String getLicenseNumber() {
-
-        return licenseNumber;
+        return license;
     }
 
 
@@ -65,15 +54,35 @@ public class Driver extends Person {
         return moduleEntry95;
     }
 
+    public static class License {
+
+        /**
+         * format: DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+         */
+        private String licenseValidity;
+
+        private String licenseNumber;
+
+        public String getLicenseValidity() {
+
+            return licenseValidity;
+        }
+
+
+        public String getLicenseNumber() {
+
+            return licenseNumber;
+        }
+    }
+
     public static final class DriverBuilder {
 
+        private License license = new License();
         private String name;
         private String firstName;
         private Address address;
         private String cellphone;
-        private String licenseValidity;
         private String dateOfBirth;
-        private String licenseNumber;
         private String locationCity;
         private String id;
         private String countryCode;
@@ -123,7 +132,15 @@ public class Driver extends Person {
 
         public DriverBuilder withLicenseValidity(int year, int month, int day) {
 
-            this.licenseValidity = ISO8601DateFormatter.format(year, month, day);
+            this.license.licenseNumber = ISO8601DateFormatter.format(year, month, day);
+
+            return this;
+        }
+
+
+        public DriverBuilder withLicenseNumber(String licenseNumber) {
+
+            this.license.licenseNumber = licenseNumber;
 
             return this;
         }
@@ -132,14 +149,6 @@ public class Driver extends Person {
         public DriverBuilder withDateOfBirth(int year, int month, int day) {
 
             this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
-
-            return this;
-        }
-
-
-        public DriverBuilder withLicenseNumber(String licenseNumber) {
-
-            this.licenseNumber = licenseNumber;
 
             return this;
         }
@@ -192,13 +201,12 @@ public class Driver extends Person {
             driver.setLocationCity(this.locationCity);
             driver.setCountryCode(this.countryCode);
             driver.setDateOfBirth(this.dateOfBirth);
-            driver.licenseValidity = this.licenseValidity;
             driver.setName(this.name);
             driver.setAddress(this.address);
             driver.setFirstName(this.firstName);
+            driver.license = this.license;
             driver.moduleEntry95 = this.moduleEntry95;
             driver.id = this.id;
-            driver.licenseNumber = this.licenseNumber;
             driver.adr = this.adr;
 
             return driver;

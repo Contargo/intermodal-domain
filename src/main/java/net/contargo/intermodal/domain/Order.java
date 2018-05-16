@@ -2,6 +2,8 @@ package net.contargo.intermodal.domain;
 
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * Contains all data of an order.
@@ -30,113 +32,304 @@ import java.util.List;
  */
 public class Order {
 
+    @NotNull(message = "reference is part of minimum requirement")
     private String reference;
 
     private Operator client;
 
     private Operator billRecipient;
 
+    @NotNull(message = "luOrder is part of minimum requirement")
     private LUOrder luOrder;
 
-    private Direction transportDirection;
+    @NotNull(message = "transport is part of minimum requirement")
+    private Transport transport;
 
-    private String transportPickUpLocationCity;
+    @NotNull(message = "destination is part of minimum requirement")
+    private Destination destination;
 
-    /**
-     * name of terminal.
-     */
-    private String transportPickUpLocationDesignation;
+    public String getReference() {
 
-    /**
-     * loading place, sea- or hinterlandterminal.
-     */
-    private String transportPickUpLocationType;
+        return reference;
+    }
 
-    private Boolean transportPickUpLUEmpty;
 
-    private String transportPickUpLUReference;
+    public Operator getClient() {
 
-    /**
-     * Abrechnungsreferenz, PO-number für Dienstl.
-     */
-    private String transportPickUpBillingReference;
+        return client;
+    }
 
-    private Operator transportPickUpLUOperator;
 
-    /**
-     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-     */
-    private Date transportPickUpEarliest;
+    public Operator getBillRecipient() {
 
-    /**
-     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-     */
-    private Date transportPickUpLatest;
+        return billRecipient;
+    }
 
-    private MeansOfTransport transportPickUpMoT;
 
-    private String transportDropOffLocationCity;
+    public LUOrder getOrderForLoadingUnit() {
 
-    private String transportDropOffLocationDesignation;
+        return luOrder;
+    }
 
-    private String transportDropOffLocationType;
 
-    private Boolean transportDropOffUnitEmpty;
+    public Transport getTransport() {
 
-    private String transportDropOffUnitReference;
+        return transport;
+    }
 
-    private String transportDropOffBillingReference;
 
-    private Operator transportDropOffUnitOperator;
+    public Destination getDestination() {
 
-    /**
-     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-     */
-    private Date transportDropOffEarliest;
+        return destination;
+    }
 
-    /**
-     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-     */
-    private Date transportDropOffLatest;
+    public static final class Builder {
 
-    private MeansOfTransport transportDropOffMot;
+        private String reference;
+        private Operator client;
+        private Operator billRecipient;
+        private LUOrder luOrder;
+        private Transport transport = new Transport();
+        private Destination destination = new Destination();
 
-    private List<String> transportStopLocation;
+        private Builder() {
+        }
 
-    private List<String> transportStopLocationCity;
+        public static Builder newOrder() {
 
-    private List<String> transportStopLocationDesignation;
+            return new Builder();
+        }
 
-    private String transportStopLocationType;
 
-    private String transportStopSequence;
+        public Builder withReference(String reference) {
 
-    /**
-     * Format: ISO 8601 inclusive UTC.
-     */
-    private Date transportStopEarliest;
+            this.reference = reference;
 
-    /**
-     * Format: ISO 8601 inclusive UTC.
-     */
-    private Date transportStopLatest;
+            return this;
+        }
 
-    private String transportStopReference;
 
-    private String transportStopBillingReference;
+        public Builder withClient(Operator client) {
 
-    private MeansOfTransport transportStopMot;
+            this.client = client;
 
-    private Vessel destinationVessel;
+            return this;
+        }
 
-    private String destinationSeaportName;
 
-    private String destinationLocationDesignation;
+        public Builder withBillRecipient(Operator billRecipient) {
 
-    /**
-     * 2 characters (UN/LOCODE).
-     */
-    private String destinationCountryCode;
+            this.billRecipient = billRecipient;
 
-    private String destinationLocationCity;
+            return this;
+        }
+
+
+        public Builder withOrderForLoadingUnit(LUOrder luOrder) {
+
+            this.luOrder = luOrder;
+
+            return this;
+        }
+
+
+        public Builder withPickUpLocation(String city, String designation, String type) {
+
+            this.transport.setPickUpLocation(city, designation, type);
+
+            return this;
+        }
+
+
+        public Builder withPickUpLocation(String city, String designation) {
+
+            this.transport.setPickUpLocation(city, designation);
+
+            return this;
+        }
+
+
+        public Builder withEarliestPickUp(int year, int month, int day, int hour, int minute) {
+
+            this.transport.setEarliestPickUp(year, month, day, hour, minute);
+
+            return this;
+        }
+
+
+        public Builder withLatestPickUp(int year, int month, int day, int hour, int minute) {
+
+            this.transport.setLatestPickUp(year, month, day, hour, minute);
+
+            return this;
+        }
+
+
+        public Builder withPickUpMeansOfTransport(MeansOfTransport meansOfTransport) {
+
+            this.transport.setPickUpMoT(meansOfTransport);
+
+            return this;
+        }
+
+
+        public Builder withLoadingUnitToPickUp(String reference, Boolean isEmpty) {
+
+            this.transport.setPickUpLoadingUnit(reference, isEmpty);
+
+            return this;
+        }
+
+
+        public Builder withPickUpLoadingUnitOperator(Operator operator) {
+
+            this.transport.setPickUpLoadingUnitOperator(operator);
+
+            return this;
+        }
+
+
+        public Builder withBillingReferenceForPickUp(String billingReference) {
+
+            this.transport.setPickUpBillingReference(billingReference);
+
+            return this;
+        }
+
+
+        public Builder withDropOffLocation(String city, String designation, String type) {
+
+            this.transport.setDropOffLocation(city, designation, type);
+
+            return this;
+        }
+
+
+        public Builder withDropOffLocation(String city, String designation) {
+
+            this.transport.setDropOffLocation(city, designation);
+
+            return this;
+        }
+
+
+        public Builder withEarliestDropOff(int year, int month, int day, int hour, int minute) {
+
+            this.transport.setEarliestDropOff(year, month, day, hour, minute);
+
+            return this;
+        }
+
+
+        public Builder withLatestDropOff(int year, int month, int day, int hour, int minute) {
+
+            this.transport.setLatestDropOff(year, month, day, hour, minute);
+
+            return this;
+        }
+
+
+        public Builder withDropOffMeansOfTransport(MeansOfTransport meansOfTransport) {
+
+            this.transport.setDropOffMoT(meansOfTransport);
+
+            return this;
+        }
+
+
+        public Builder withLoadingUnitToDropOff(String reference, Boolean isEmpty) {
+
+            this.transport.setDropOffLoadingUnit(reference, isEmpty);
+
+            return this;
+        }
+
+
+        public Builder withDropOffLoadingUnitOperator(Operator operator) {
+
+            this.transport.setDropOffLoadingUnitOperator(operator);
+
+            return this;
+        }
+
+
+        public Builder withBillingReferenceForDropOff(String billingReference) {
+
+            this.transport.setDropOffBillingReference(billingReference);
+
+            return this;
+        }
+
+
+        public Builder withStop(Stop stop) {
+
+            this.transport.addStop(stop);
+
+            return this;
+        }
+
+
+        public Builder withStops(List<Stop> stops) {
+
+            stops.forEach(stop -> this.transport.addStop(stop));
+
+            return this;
+        }
+
+
+        public Builder withDestinationSeaport(String name) {
+
+            this.destination.setSeaport(name);
+
+            return this;
+        }
+
+
+        public Builder withDestinationVessel(Vessel vessel) {
+
+            this.destination.setVessel(vessel);
+
+            return this;
+        }
+
+
+        public Builder withDestinationLocation(String city, String designation) {
+
+            this.destination.setLocation(city, designation);
+
+            return this;
+        }
+
+
+        public Builder withDestinationCountryCode(String countryCode) {
+
+            this.destination.setCountry(countryCode);
+
+            return this;
+        }
+
+
+        public Order build() {
+
+            Order order = new Order();
+            order.destination = this.destination;
+            order.billRecipient = this.billRecipient;
+            order.luOrder = this.luOrder;
+            order.client = this.client;
+            order.transport = this.transport;
+            order.reference = this.reference;
+
+            return order;
+        }
+
+
+        public Order buildAndValidate() {
+
+            Order order = this.build();
+
+            Validator.validate(order);
+
+            return order;
+        }
+    }
 }

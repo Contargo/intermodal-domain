@@ -1,38 +1,44 @@
 package net.contargo.intermodal.domain;
 
-import javax.validation.constraints.NotNull;
-
-
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-class Destination {
+public class Destination {
 
     private Vessel vessel;
+
     private Seaport seaport;
-    @NotNull(message = "locationDesignation is part of minimum requirement")
-    private String locationDesignation;
+    private Location location;
 
     /**
      * 2 characters (UN/LOCODE).
      */
-    private String countryCode;
-    private String locationCity;
+    private Country country;
 
-    Destination() {
-    }
-
-
-    Destination(Vessel vessel, String seaportName, String locationDesignation, String countryCode,
-        String locationCity) {
+    public void setVessel(Vessel vessel) {
 
         this.vessel = vessel;
-        this.seaport = new Seaport(seaportName);
-        this.locationDesignation = locationDesignation;
-
-        this.countryCode = countryCode;
-        this.locationCity = locationCity;
     }
+
+
+    public void setCountry(String code) {
+
+        this.country = new Country();
+        this.country.setCode(code);
+    }
+
+
+    public String getCountryCode() {
+
+        return country.getCode();
+    }
+
+
+    public Location getLocation() {
+
+        return location;
+    }
+
 
     public Vessel getVessel() {
 
@@ -40,26 +46,22 @@ class Destination {
     }
 
 
-    public String getSeaportName() {
+    public Seaport getSeaport() {
 
-        return seaport.getName();
+        return seaport;
     }
 
 
-    public String getLocationDesignation() {
+    public void setSeaport(String name) {
 
-        return locationDesignation;
+        this.seaport = new Seaport(name);
     }
 
 
-    public String getCountryCode() {
+    public void setLocation(String city, String designation) {
 
-        return countryCode;
-    }
-
-
-    public String getLocationCity() {
-
-        return locationCity;
+        this.location = new Location();
+        this.location.setCity(city);
+        this.location.setDesignation(designation);
     }
 }

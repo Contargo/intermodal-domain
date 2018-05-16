@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import javax.validation.constraints.NotNull;
+
+
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
