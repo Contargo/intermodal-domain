@@ -12,7 +12,6 @@ public class Destination {
 
     private Seaport seaport;
 
-    @NotNull(message = "location is part of minimum requirement")
     private Location location;
 
     /**
@@ -43,109 +42,55 @@ public class Destination {
         return seaport;
     }
 
-    public static final class Builder {
 
-        private Vessel vessel;
-        private Seaport seaport;
-        private Location location;
-        private Country country;
+    public void setCountry(String code) {
 
-        private Builder() {
-        }
-
-        public static Builder newDestination() {
-
-            return new Builder();
-        }
+        this.country = new Country();
+        this.country.setCode(code);
+    }
 
 
-        public Builder withCountry(String code) {
+    public void setVessel(Vessel vessel) {
 
-            this.country = new Country();
-            this.country.setCode(code);
-
-            return this;
-        }
+        this.vessel = vessel;
+    }
 
 
-        public Builder withVessel(Vessel vessel) {
+    public void setSeaport(Seaport seaport) {
 
-            this.vessel = vessel;
-
-            return this;
-        }
+        this.seaport = seaport;
+    }
 
 
-        public Builder withSeaport(Seaport seaport) {
+    public void setLocation(Location location) {
 
-            this.seaport = seaport;
-
-            return this;
-        }
+        this.location = location;
+    }
 
 
-        public Builder withLocation(Location location) {
+    public void setCountry(Country country) {
 
-            this.location = location;
-
-            return this;
-        }
+        this.country = country;
+    }
 
 
-        public Builder withCountry(Country country) {
+    public void setSeaport(String name) {
 
-            this.country = country;
-
-            return this;
-        }
+        this.seaport = new Seaport(name);
+    }
 
 
-        public Builder withSeaport(String name) {
+    public void setLocation(String city, String designation) {
 
-            this.seaport = new Seaport(name);
-
-            return this;
-        }
-
-
-        public Builder withLocation(String city, String designation) {
-
-            this.location = new Location();
-            this.location.setCity(city);
-            this.location.setDesignation(designation);
-
-            return this;
-        }
+        this.location = new Location();
+        this.location.setCity(city);
+        this.location.setDesignation(designation);
+    }
 
 
-        public Builder withLocation(String designation) {
+    public void setLocation(String designation) {
 
-            this.location = new Location();
-            this.location.setDesignation(designation);
-
-            return this;
-        }
-
-
-        public Destination build() {
-
-            Destination destination = new Destination();
-            destination.vessel = vessel;
-            destination.seaport = seaport;
-            destination.location = location;
-            destination.country = country;
-
-            return destination;
-        }
-
-
-        public Destination buildAndValidate() {
-
-            Destination destination = this.build();
-
-            Validator.validate(destination);
-
-            return destination;
-        }
+        this.location = new Location();
+        this.location.setDesignation(designation);
     }
 }

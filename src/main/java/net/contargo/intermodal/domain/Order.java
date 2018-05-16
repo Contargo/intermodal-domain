@@ -26,7 +26,7 @@ import javax.validation.constraints.NotNull;
  *                      identification. This class differs much from the others and should be interpreted as complex
  *                      connection of data. It can be used to map a complete chain of transport with all of its
  *                      relevant data. It includes high level order data as well as data relevant for transport
- *                      organized by pick up, drop off, stop and destinationBuilder.
+ *                      organized by pick up, drop off, stop and destination.
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -43,9 +43,11 @@ public class Order {
     private LUOrder luOrder;
 
     @NotNull(message = "transport is part of minimum requirement")
+    @TransportConstraint(message = "must fulfill minimum requirements of transport")
     private Transport transport;
 
-    @NotNull(message = "destinationBuilder is part of minimum requirement")
+    @NotNull(message = "destination is part of minimum requirement")
+    @DestinationConstraint(message = "must fulfill minimum requirements of designation")
     private Destination destination;
 
     public String getReference() {
@@ -103,8 +105,7 @@ public class Order {
 
     public static final class Builder {
 
-        private static Destination.Builder destinationBuilder;
-
+        private Destination destination;
         private String reference;
         private Operator client;
         private Operator billRecipient;
@@ -115,8 +116,6 @@ public class Order {
         }
 
         public static Builder newOrder() {
-
-            destinationBuilder = Destination.Builder.newDestination();
 
             return new Builder();
         }
@@ -300,7 +299,7 @@ public class Order {
 
         public Builder withDestinationSeaport(String name) {
 
-            destinationBuilder.withSeaport(name);
+            destination.setSeaport(name);
 
             return this;
         }
@@ -308,7 +307,7 @@ public class Order {
 
         public Builder withDestinationVessel(Vessel vessel) {
 
-            destinationBuilder = destinationBuilder.withVessel(vessel);
+            destination.setVessel(vessel);
 
             return this;
         }
@@ -316,7 +315,7 @@ public class Order {
 
         public Builder withDestinationLocation(String city, String designation) {
 
-            destinationBuilder.withLocation(city, designation);
+            destination.setLocation(city, designation);
 
             return this;
         }
@@ -324,7 +323,7 @@ public class Order {
 
         public Builder withDestinationLocation(String designation) {
 
-            destinationBuilder.withLocation(designation);
+            destination.setLocation(designation);
 
             return this;
         }
@@ -332,7 +331,7 @@ public class Order {
 
         public Builder withDestinationCountryCode(String countryCode) {
 
-            destinationBuilder.withCountry(countryCode);
+            destination.setCountry(countryCode);
 
             return this;
         }
@@ -346,8 +345,7 @@ public class Order {
             order.client = this.client;
             order.transport = this.transport;
             order.reference = this.reference;
-
-            order.destination = destinationBuilder.buildAndValidate();
+            order.destination = this.destination;
 
             return order;
         }

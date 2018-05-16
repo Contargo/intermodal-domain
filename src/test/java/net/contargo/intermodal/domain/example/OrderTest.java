@@ -15,7 +15,25 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderTest {
 
     @Test
-    void ensureCanBeCreated() {
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+
+        Order order = Order.Builder.newOrder()
+                .withReference("54642887")
+                .withOrderForLoadingUnit(new LUOrder())
+                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                .withEarliestPickUp(2018, 5, 14, 11, 0)
+                .withPickUpMeansOfTransport(new Truck())
+                .withDropOffLocation("Koblenz", "Terminal Koblenz")
+                .withDropOffMeansOfTransport(new Barge())
+                .withStops(Arrays.asList(new Stop(), new Stop()))
+                .withDestinationLocation("Terminal Koblenz")
+                .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithAllInformation() {
 
         Order order = Order.Builder.newOrder()
                 .withReference("54642887")
@@ -82,23 +100,6 @@ class OrderTest {
 
 
     @Test
-    void ensureCanBeCreatedWithMinimumRequirements() {
-
-        Order order = Order.Builder.newOrder()
-                .withReference("54642887")
-                .withOrderForLoadingUnit(new LUOrder())
-                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                .withEarliestPickUp(2018, 5, 14, 11, 0)
-                .withPickUpMeansOfTransport(new Truck())
-                .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                .withDropOffMeansOfTransport(new Barge())
-                .withStops(Arrays.asList(new Stop(), new Stop()))
-                .withDestinationLocation("Terminal Koblenz")
-                .buildAndValidate();
-    }
-
-
-    @Test
     void ensureMissingMandatoryInformationIsDetected() {
 
         assertThrows(IllegalStateException.class,
@@ -126,7 +127,6 @@ class OrderTest {
                     .withStops(Arrays.asList(new Stop(), new Stop()))
                     .withDestinationLocation("Terminal Koblenz")
                     .buildAndValidate());
-        /*
 
         assertThrows(IllegalStateException.class,
             () ->
@@ -140,6 +140,8 @@ class OrderTest {
                     .withStops(Arrays.asList(new Stop(), new Stop()))
                     .withDestinationLocation("Terminal Koblenz")
                     .buildAndValidate());
+
+        /*
         assertThrows(IllegalStateException.class,
             () ->
                 Order.Builder.newOrder()
@@ -188,6 +190,7 @@ class OrderTest {
                     .withStops(Arrays.asList(new Stop(), new Stop()))
                     .withDestinationLocation("Terminal Koblenz")
                     .buildAndValidate());
+
         assertThrows(IllegalStateException.class,
             () ->
                 Order.Builder.newOrder()
@@ -199,20 +202,20 @@ class OrderTest {
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withDropOffMeansOfTransport(new Barge())
                     .withDestinationLocation("Terminal Koblenz")
+                    .buildAndValidate());
+
+        assertThrows(IllegalStateException.class,
+            () ->
+                Order.Builder.newOrder()
+                    .withReference("54642887")
+                    .withOrderForLoadingUnit(new LUOrder())
+                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withPickUpMeansOfTransport(new Truck())
+                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
+                    .withDropOffMeansOfTransport(new Barge())
+                    .withStops(Arrays.asList(new Stop(), new Stop()))
                     .buildAndValidate());
          */
-
-        assertThrows(IllegalStateException.class,
-            () ->
-                Order.Builder.newOrder()
-                    .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .buildAndValidate());
     }
 }

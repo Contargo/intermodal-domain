@@ -3,6 +3,8 @@ package net.contargo.intermodal.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 

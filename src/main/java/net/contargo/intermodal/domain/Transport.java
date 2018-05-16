@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
@@ -14,6 +15,7 @@ public class Transport {
     private Direction direction;
     private PickUp pickUp = new PickUp();
     private DropOff dropOff = new DropOff();
+    @NotEmpty(message = "stop is part of minimum requirement")
     private List<Stop> stop = new ArrayList<>();
 
     public void setDirection(Direction direction) {
@@ -274,7 +276,6 @@ public class Transport {
 
     public static class PickUp {
 
-        @NotNull(message = "location is part of minimum requirement")
         private Location location;
 
         private LoadingUnit loadingUnit;
