@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class WasteTest {
 
     @Test
-    void ensureWasteCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         Waste waste = Waste.WasteBuilder.newWaste()
                 .withPosition("position")

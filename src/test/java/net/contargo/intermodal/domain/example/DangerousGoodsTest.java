@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class DangerousGoodsTest {
 
     @Test
-    void ensureDangerousGoodsCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         DangerousGoods dangerousGoods = DangerousGoods.DangerousGoodsBuilder.newDangerousGoods()
                 .withUnNumber("1005")

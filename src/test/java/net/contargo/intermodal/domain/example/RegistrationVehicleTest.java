@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RegistrationVehicleTest {
 
     @Test
-    void ensureCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         RegistrationVehicle registrationVehicle = RegistrationVehicle.Builder.newRegistrationVehicle()
                 .withTruck(new Truck())
@@ -40,7 +40,7 @@ class RegistrationVehicleTest {
 
 
     @Test
-    void ensureMissingMandatoryInformationIsDetected() {
+    void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () -> {

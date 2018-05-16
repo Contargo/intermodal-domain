@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SwapBodyTest {
 
     @Test
-    void ensureCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         SwapBody swapBody = SwapBody.Builder.newSwapBody()
                 .withIdentification("CSQU3054383")
@@ -46,7 +46,7 @@ class SwapBodyTest {
 
 
     @Test
-    void ensureCanBeValidated() {
+    void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () ->

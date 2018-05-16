@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class TrailerTest {
 
     @Test
-    void ensureTrailerCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         Trailer trailer = Trailer.Builder.newTrailer()
                 .withIdentification("CSQU3054383")
@@ -47,7 +47,7 @@ class TrailerTest {
 
 
     @Test
-    void ensureCanBeValidated() {
+    void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () ->

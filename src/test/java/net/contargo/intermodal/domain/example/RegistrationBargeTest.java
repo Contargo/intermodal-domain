@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RegistrationBargeTest {
 
     @Test
-    void ensureCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         RegistrationBarge registrationBarge = RegistrationBarge.Builder.newRegistrationBarge()
                 .withBarge(new Barge())
@@ -36,7 +36,7 @@ class RegistrationBargeTest {
 
 
     @Test
-    void ensureMissingMandatoryInformationIsDetected() {
+    void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () -> {

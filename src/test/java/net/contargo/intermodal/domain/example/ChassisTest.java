@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ChassisTest {
 
     @Test
-    void ensureChassisCanBeCreated() {
+    void ensureCanBeCreated() {
 
         Chassis chassis = Chassis.ChassisBuilder.newChassis()
                 .withNumberPlate("DU CO 1782")

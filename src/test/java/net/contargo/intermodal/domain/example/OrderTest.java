@@ -103,7 +103,7 @@ class OrderTest {
 
 
     @Test
-    void ensureMissingMandatoryInformationIsDetected() {
+    void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () ->

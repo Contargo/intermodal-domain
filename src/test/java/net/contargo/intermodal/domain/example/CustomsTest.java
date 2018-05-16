@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class CustomsTest {
 
     @Test
-    void ensureCustomsCanBeCreated() {
+    void ensureCanBeCreated() {
 
         Customs customs = Customs.CustomsBuilder.newCustoms()
                 .withCustomProcess("T1")

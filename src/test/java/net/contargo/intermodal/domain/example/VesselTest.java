@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class VesselTest {
 
     @Test
-    void ensureVesselCanBeCreated() {
+    void ensureCanBeCreated() {
 
         Vessel vessel = Vessel.VesselBuilder.newVessel()
                 .withName("My Vessel")

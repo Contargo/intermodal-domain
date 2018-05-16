@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AddressTest {
 
     @Test
-    void ensureAddressCanBeCreated() {
+    void ensureCanBeCreated() {
 
         Address address = Address.AddressBuilder.newAddress()
                 .withStreet("Gartenstraße 67")

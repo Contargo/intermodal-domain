@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class OperatorTest {
 
     @Test
-    void ensureOperatorCanBeCreated() {
+    void ensureCanBeCreated() {
 
         Operator operator = Operator.OperatorBuilder.newOperator()
                 .withName("Contargo")

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class BargeTest {
 
     @Test
-    void ensureBargeCanBeCreated() {
+    void ensureCanBeCreated() {
 
         Barge barge = Barge.BargeBuilder.newBarge()
                 .withName("My Barge")

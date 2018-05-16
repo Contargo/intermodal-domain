@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class RegistrationTrainTest {
 
     @Test
-    void ensureCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         RegistrationTrain registrationTrain = RegistrationTrain.Builder.newRegistrationTrain()
                 .withTrainTitle("My Train")
@@ -50,7 +50,7 @@ class RegistrationTrainTest {
 
 
     @Test
-    void ensureMissingMandatoryInformationIsDetected() {
+    void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () ->

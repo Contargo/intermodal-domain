@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MeansOfTransportationStatusTest {
 
     @Test
-    void canBeCreated() {
+    void ensureCanBeCreated() {
 
         MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.Builder
             .newMeansOfTransportationStatus()

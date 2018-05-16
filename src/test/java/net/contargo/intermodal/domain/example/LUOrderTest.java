@@ -21,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class LUOrderTest {
 
     @Test
-    void ensureCanBeCreated() {
+    void ensureCanBeCreatedWithAllInformation() {
 
         LUOrder loadingUnitLUOrder = LUOrder.Builder.newOrder()
                 .withLoadingUnit(new Container())
@@ -64,7 +64,7 @@ class LUOrderTest {
 
 
     @Test
-    void ensureMissingMandatoryInformationIsDetected() {
+    void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () -> {
