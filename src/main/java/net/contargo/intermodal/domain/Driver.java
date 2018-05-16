@@ -75,7 +75,7 @@ public class Driver extends Person {
         }
     }
 
-    public static final class DriverBuilder {
+    public static final class Builder {
 
         private License license = new License();
         private String name;
@@ -89,16 +89,16 @@ public class Driver extends Person {
         private String adr;
         private String moduleEntry95;
 
-        private DriverBuilder() {
+        private Builder() {
         }
 
-        public static DriverBuilder newDriver() {
+        public static Builder newDriver() {
 
-            return new DriverBuilder();
+            return new Builder();
         }
 
 
-        public DriverBuilder withName(String name) {
+        public Builder withName(String name) {
 
             this.name = name;
 
@@ -106,7 +106,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withFirstName(String firstName) {
+        public Builder withFirstName(String firstName) {
 
             this.firstName = firstName;
 
@@ -114,7 +114,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withAddress(Address address) {
+        public Builder withAddress(Address address) {
 
             this.address = address;
 
@@ -122,7 +122,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withCellphone(String cellphone) {
+        public Builder withCellphone(String cellphone) {
 
             this.cellphone = cellphone;
 
@@ -130,7 +130,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withLicenseValidity(int year, int month, int day) {
+        public Builder withLicenseValidity(int year, int month, int day) {
 
             this.license.licenseNumber = ISO8601DateFormatter.format(year, month, day);
 
@@ -138,7 +138,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withLicenseNumber(String licenseNumber) {
+        public Builder withLicenseNumber(String licenseNumber) {
 
             this.license.licenseNumber = licenseNumber;
 
@@ -146,7 +146,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withDateOfBirth(int year, int month, int day) {
+        public Builder withDateOfBirth(int year, int month, int day) {
 
             this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
 
@@ -154,7 +154,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withLocationCity(String locationCity) {
+        public Builder withLocationCity(String locationCity) {
 
             this.locationCity = locationCity;
 
@@ -162,7 +162,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withId(String id) {
+        public Builder withId(String id) {
 
             this.id = id;
 
@@ -170,7 +170,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withCountryCode(String countryCode) {
+        public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
 
@@ -178,7 +178,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withAdr(int year, int month, int day) {
+        public Builder withAdr(int year, int month, int day) {
 
             this.adr = ISO8601DateFormatter.format(year, month, day);
 
@@ -186,7 +186,7 @@ public class Driver extends Person {
         }
 
 
-        public DriverBuilder withModuleEntry95(int year, int month, int day) {
+        public Builder withModuleEntry95(int year, int month, int day) {
 
             this.moduleEntry95 = ISO8601DateFormatter.format(year, month, day);
 

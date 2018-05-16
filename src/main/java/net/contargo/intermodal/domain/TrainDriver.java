@@ -32,7 +32,7 @@ public class TrainDriver extends Person {
         return rid;
     }
 
-    public static final class TrainDriverBuilder {
+    public static final class Builder {
 
         private String name;
         private String firstName;
@@ -43,16 +43,16 @@ public class TrainDriver extends Person {
         private String rid;
         private String countryCode;
 
-        private TrainDriverBuilder() {
+        private Builder() {
         }
 
-        public static TrainDriverBuilder newTrainDriver() {
+        public static Builder newTrainDriver() {
 
-            return new TrainDriverBuilder();
+            return new Builder();
         }
 
 
-        public TrainDriverBuilder withName(String name) {
+        public Builder withName(String name) {
 
             this.name = name;
 
@@ -60,7 +60,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public TrainDriverBuilder withFirstName(String firstName) {
+        public Builder withFirstName(String firstName) {
 
             this.firstName = firstName;
 
@@ -68,7 +68,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public TrainDriverBuilder withAddress(Address address) {
+        public Builder withAddress(Address address) {
 
             this.address = address;
 
@@ -76,7 +76,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public TrainDriverBuilder withCellphone(String cellphone) {
+        public Builder withCellphone(String cellphone) {
 
             this.cellphone = cellphone;
 
@@ -84,7 +84,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public TrainDriverBuilder withDateOfBirth(int year, int month, int day) {
+        public Builder withDateOfBirth(int year, int month, int day) {
 
             this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
 
@@ -92,7 +92,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public TrainDriverBuilder withLocationCity(String locationCity) {
+        public Builder withLocationCity(String locationCity) {
 
             this.locationCity = locationCity;
 
@@ -100,7 +100,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public TrainDriverBuilder withRid(int year, int month, int day) {
+        public Builder withRid(int year, int month, int day) {
 
             this.rid = ISO8601DateFormatter.format(year, month, day);
 
@@ -108,7 +108,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public TrainDriverBuilder withCountryCode(String countryCode) {
+        public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
 

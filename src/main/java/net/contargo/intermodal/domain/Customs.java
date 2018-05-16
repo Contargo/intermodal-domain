@@ -43,22 +43,22 @@ public class Customs {
         return seal;
     }
 
-    public static final class CustomsBuilder {
+    public static final class Builder {
 
         private String customProcess;
         private String customDocumentNumber;
         private Boolean seal;
 
-        private CustomsBuilder() {
+        private Builder() {
         }
 
-        public static CustomsBuilder newCustoms() {
+        public static Builder newCustoms() {
 
-            return new CustomsBuilder();
+            return new Builder();
         }
 
 
-        public CustomsBuilder withCustomProcess(String customProcess) {
+        public Builder withCustomProcess(String customProcess) {
 
             this.customProcess = customProcess;
 
@@ -66,7 +66,7 @@ public class Customs {
         }
 
 
-        public CustomsBuilder withCustomDocumentNumber(String customDocumentNumber) {
+        public Builder withCustomDocumentNumber(String customDocumentNumber) {
 
             this.customDocumentNumber = customDocumentNumber;
 
@@ -74,7 +74,7 @@ public class Customs {
         }
 
 
-        public CustomsBuilder withSeal(Boolean seal) {
+        public Builder withSeal(Boolean seal) {
 
             this.seal = seal;
 

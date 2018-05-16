@@ -17,7 +17,7 @@ class WasteTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        Waste waste = Waste.WasteBuilder.newWaste()
+        Waste waste = Waste.Builder.newWaste()
                 .withPosition("position")
                 .withKeyID("03 03 01")
                 .withWasteRegulationNumber("02")
@@ -38,7 +38,7 @@ class WasteTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Waste.WasteBuilder.newWaste()
+                Waste.Builder.newWaste()
                     .withPosition("position")
                     .withWasteRegulationNumber("02")
                     .withReceiptNumber("65478")

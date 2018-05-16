@@ -70,7 +70,7 @@ public class Operator {
         return insurance;
     }
 
-    public static final class OperatorBuilder {
+    public static final class Builder {
 
         private String name;
         private String legalForm;
@@ -79,16 +79,16 @@ public class Operator {
         private String tin;
         private String insurance;
 
-        private OperatorBuilder() {
+        private Builder() {
         }
 
-        public static OperatorBuilder newOperator() {
+        public static Builder newOperator() {
 
-            return new OperatorBuilder();
+            return new Builder();
         }
 
 
-        public OperatorBuilder withName(String name) {
+        public Builder withName(String name) {
 
             this.name = name;
 
@@ -96,7 +96,7 @@ public class Operator {
         }
 
 
-        public OperatorBuilder withLegalForm(String legalForm) {
+        public Builder withLegalForm(String legalForm) {
 
             this.legalForm = legalForm;
 
@@ -104,7 +104,7 @@ public class Operator {
         }
 
 
-        public OperatorBuilder withAddress(Address address) {
+        public Builder withAddress(Address address) {
 
             this.adress = address;
 
@@ -112,7 +112,7 @@ public class Operator {
         }
 
 
-        public OperatorBuilder withVatId(String vatId) {
+        public Builder withVatId(String vatId) {
 
             this.vatId = vatId;
 
@@ -120,7 +120,7 @@ public class Operator {
         }
 
 
-        public OperatorBuilder withTin(String tin) {
+        public Builder withTin(String tin) {
 
             this.tin = tin;
 
@@ -128,7 +128,7 @@ public class Operator {
         }
 
 
-        public OperatorBuilder withInsurance(String insurance) {
+        public Builder withInsurance(String insurance) {
 
             this.insurance = insurance;
 

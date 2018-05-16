@@ -16,7 +16,7 @@ class BargeTest {
     @Test
     void ensureCanBeCreated() {
 
-        Barge barge = Barge.BargeBuilder.newBarge()
+        Barge barge = Barge.Builder.newBarge()
                 .withName("My Barge")
                 .withMmsi("021112345")
                 .withEni("050XXXXX")

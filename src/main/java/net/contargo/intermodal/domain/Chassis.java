@@ -146,7 +146,7 @@ public class Chassis implements MeansOfTransport {
         return weightTara;
     }
 
-    public static final class ChassisBuilder {
+    public static final class Builder {
 
         private String numberPlate;
         private String mot;
@@ -161,16 +161,16 @@ public class Chassis implements MeansOfTransport {
         private Boolean suitabilityReefer;
         private Double weightTara;
 
-        private ChassisBuilder() {
+        private Builder() {
         }
 
-        public static ChassisBuilder newChassis() {
+        public static Builder newChassis() {
 
-            return new ChassisBuilder();
+            return new Builder();
         }
 
 
-        public ChassisBuilder withNumberPlate(String numberPlate) {
+        public Builder withNumberPlate(String numberPlate) {
 
             this.numberPlate = numberPlate;
 
@@ -178,7 +178,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withMot(int year, int month, int day) {
+        public Builder withMot(int year, int month, int day) {
 
             this.mot = ISO8601DateFormatter.format(year, month, day);
 
@@ -186,7 +186,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withType(String type) {
+        public Builder withType(String type) {
 
             this.type = type;
 
@@ -194,7 +194,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withAxles(Integer axles) {
+        public Builder withAxles(Integer axles) {
 
             this.axles = axles;
 
@@ -202,7 +202,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withSize(Double size) {
+        public Builder withSize(Double size) {
 
             this.size = size;
 
@@ -210,7 +210,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withHeight(Double height) {
+        public Builder withHeight(Double height) {
 
             this.height = height;
 
@@ -218,7 +218,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withEuAuthorization(Boolean euAuthorization) {
+        public Builder withEuAuthorization(Boolean euAuthorization) {
 
             this.euAuthorization = euAuthorization;
 
@@ -226,7 +226,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withSt(Boolean st) {
+        public Builder withSt(Boolean st) {
 
             this.st = st;
 
@@ -234,7 +234,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
+        public Builder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
 
             this.suitabilityDangerousGoods = suitabilityDangerousGoods;
 
@@ -242,7 +242,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withSuitabilityWaste(Boolean suitabilityWaste) {
+        public Builder withSuitabilityWaste(Boolean suitabilityWaste) {
 
             this.suitabilityWaste = suitabilityWaste;
 
@@ -250,7 +250,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withSuitabilityReefer(Boolean suitabilityReefer) {
+        public Builder withSuitabilityReefer(Boolean suitabilityReefer) {
 
             this.suitabilityReefer = suitabilityReefer;
 
@@ -258,7 +258,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public ChassisBuilder withWeightTara(Double weightTara) {
+        public Builder withWeightTara(Double weightTara) {
 
             this.weightTara = weightTara;
 

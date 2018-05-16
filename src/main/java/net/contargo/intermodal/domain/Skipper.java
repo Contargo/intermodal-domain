@@ -32,7 +32,7 @@ public class Skipper extends Person {
         return adnr;
     }
 
-    public static final class SkipperBuilder {
+    public static final class Builder {
 
         private String name;
         private String firstName;
@@ -43,16 +43,16 @@ public class Skipper extends Person {
         private String countryCode;
         private String adnr;
 
-        private SkipperBuilder() {
+        private Builder() {
         }
 
-        public static SkipperBuilder newSkipper() {
+        public static Builder newSkipper() {
 
-            return new SkipperBuilder();
+            return new Builder();
         }
 
 
-        public SkipperBuilder withName(String name) {
+        public Builder withName(String name) {
 
             this.name = name;
 
@@ -60,7 +60,7 @@ public class Skipper extends Person {
         }
 
 
-        public SkipperBuilder withFirstName(String firstName) {
+        public Builder withFirstName(String firstName) {
 
             this.firstName = firstName;
 
@@ -68,7 +68,7 @@ public class Skipper extends Person {
         }
 
 
-        public SkipperBuilder withAddress(Address address) {
+        public Builder withAddress(Address address) {
 
             this.address = address;
 
@@ -76,7 +76,7 @@ public class Skipper extends Person {
         }
 
 
-        public SkipperBuilder withCellphone(String cellphone) {
+        public Builder withCellphone(String cellphone) {
 
             this.cellphone = cellphone;
 
@@ -84,7 +84,7 @@ public class Skipper extends Person {
         }
 
 
-        public SkipperBuilder withDateOfBirth(int year, int month, int day) {
+        public Builder withDateOfBirth(int year, int month, int day) {
 
             this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
 
@@ -92,7 +92,7 @@ public class Skipper extends Person {
         }
 
 
-        public SkipperBuilder withLocationCity(String locationCity) {
+        public Builder withLocationCity(String locationCity) {
 
             this.locationCity = locationCity;
 
@@ -100,7 +100,7 @@ public class Skipper extends Person {
         }
 
 
-        public SkipperBuilder withCountryCode(String countryCode) {
+        public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
 
@@ -108,7 +108,7 @@ public class Skipper extends Person {
         }
 
 
-        public SkipperBuilder withAdnr(int year, int month, int day) {
+        public Builder withAdnr(int year, int month, int day) {
 
             this.adnr = ISO8601DateFormatter.format(year, month, day);
 

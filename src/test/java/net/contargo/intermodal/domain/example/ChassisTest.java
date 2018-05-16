@@ -15,7 +15,7 @@ class ChassisTest {
     @Test
     void ensureCanBeCreated() {
 
-        Chassis chassis = Chassis.ChassisBuilder.newChassis()
+        Chassis chassis = Chassis.Builder.newChassis()
                 .withNumberPlate("DU CO 1782")
                 .withMot(2020, 5, 22)
                 .withType("Multichassis")

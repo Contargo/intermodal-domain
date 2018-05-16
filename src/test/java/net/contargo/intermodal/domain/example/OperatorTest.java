@@ -18,7 +18,7 @@ class OperatorTest {
     @Test
     void ensureCanBeCreated() {
 
-        Operator operator = Operator.OperatorBuilder.newOperator()
+        Operator operator = Operator.Builder.newOperator()
                 .withName("Contargo")
                 .withLegalForm("GmbH & Co. KG")
                 .withAddress(new Address())

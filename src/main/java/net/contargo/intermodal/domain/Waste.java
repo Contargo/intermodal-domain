@@ -74,7 +74,7 @@ public class Waste {
         return weightNetto;
     }
 
-    public static final class WasteBuilder {
+    public static final class Builder {
 
         private String position;
         private String keyID;
@@ -82,16 +82,16 @@ public class Waste {
         private String receiptNumber;
         private Double weightNetto;
 
-        private WasteBuilder() {
+        private Builder() {
         }
 
-        public static WasteBuilder newWaste() {
+        public static Builder newWaste() {
 
-            return new WasteBuilder();
+            return new Builder();
         }
 
 
-        public WasteBuilder withPosition(String position) {
+        public Builder withPosition(String position) {
 
             this.position = position;
 
@@ -99,7 +99,7 @@ public class Waste {
         }
 
 
-        public WasteBuilder withKeyID(String keyID) {
+        public Builder withKeyID(String keyID) {
 
             this.keyID = keyID;
 
@@ -107,7 +107,7 @@ public class Waste {
         }
 
 
-        public WasteBuilder withWasteRegulationNumber(String wasteRegulationNumber) {
+        public Builder withWasteRegulationNumber(String wasteRegulationNumber) {
 
             this.wasteRegulationNumber = wasteRegulationNumber;
 
@@ -115,7 +115,7 @@ public class Waste {
         }
 
 
-        public WasteBuilder withReceiptNumber(String receiptNumber) {
+        public Builder withReceiptNumber(String receiptNumber) {
 
             this.receiptNumber = receiptNumber;
 
@@ -123,7 +123,7 @@ public class Waste {
         }
 
 
-        public WasteBuilder withWeightNetto(Double weightNetto) {
+        public Builder withWeightNetto(Double weightNetto) {
 
             this.weightNetto = weightNetto;
 

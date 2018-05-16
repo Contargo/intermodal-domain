@@ -149,7 +149,7 @@ public class Barge implements MeansOfTransport {
         return capacityTons;
     }
 
-    public static final class BargeBuilder {
+    public static final class Builder {
 
         private String name;
         private String mmsi;
@@ -165,16 +165,16 @@ public class Barge implements MeansOfTransport {
         private Double capacityTeu;
         private Double capacityTons;
 
-        private BargeBuilder() {
+        private Builder() {
         }
 
-        public static BargeBuilder newBarge() {
+        public static Builder newBarge() {
 
-            return new BargeBuilder();
+            return new Builder();
         }
 
 
-        public BargeBuilder withName(String name) {
+        public Builder withName(String name) {
 
             this.name = name;
 
@@ -182,7 +182,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withMmsi(String mmsi) {
+        public Builder withMmsi(String mmsi) {
 
             this.mmsi = mmsi;
 
@@ -190,7 +190,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withEni(String eni) {
+        public Builder withEni(String eni) {
 
             this.eni = eni;
 
@@ -198,7 +198,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withOperator(Operator operator) {
+        public Builder withOperator(Operator operator) {
 
             this.operator = operator;
 
@@ -206,7 +206,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withLength(Double length) {
+        public Builder withLength(Double length) {
 
             this.length = length;
 
@@ -214,7 +214,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withWidth(Double width) {
+        public Builder withWidth(Double width) {
 
             this.width = width;
 
@@ -222,7 +222,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withDraught(Double draught) {
+        public Builder withDraught(Double draught) {
 
             this.draught = draught;
 
@@ -230,7 +230,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withBays(Integer bays) {
+        public Builder withBays(Integer bays) {
 
             this.bays = bays;
 
@@ -238,7 +238,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withRows(Integer rows) {
+        public Builder withRows(Integer rows) {
 
             this.rows = rows;
 
@@ -246,7 +246,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withTiers(Integer tiers) {
+        public Builder withTiers(Integer tiers) {
 
             this.tiers = tiers;
 
@@ -254,7 +254,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
+        public Builder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
 
             this.suitabilityDangerousGoods = suitabilityDangerousGoods;
 
@@ -262,7 +262,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withCapacityTeu(Double capacityTeu) {
+        public Builder withCapacityTeu(Double capacityTeu) {
 
             this.capacityTeu = capacityTeu;
 
@@ -270,7 +270,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public BargeBuilder withCapacityTons(Double capacityTons) {
+        public Builder withCapacityTons(Double capacityTons) {
 
             this.capacityTons = capacityTons;
 

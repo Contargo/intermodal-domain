@@ -16,7 +16,7 @@ class VesselTest {
     @Test
     void ensureCanBeCreated() {
 
-        Vessel vessel = Vessel.VesselBuilder.newVessel()
+        Vessel vessel = Vessel.Builder.newVessel()
                 .withName("My Vessel")
                 .withMmsi("021112345")
                 .withImo("050XXXXX")

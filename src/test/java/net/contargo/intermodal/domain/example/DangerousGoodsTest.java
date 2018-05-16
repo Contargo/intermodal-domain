@@ -16,7 +16,7 @@ class DangerousGoodsTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        DangerousGoods dangerousGoods = DangerousGoods.DangerousGoodsBuilder.newDangerousGoods()
+        DangerousGoods dangerousGoods = DangerousGoods.Builder.newDangerousGoods()
                 .withUnNumber("1005")
                 .withMaterial("Ammoniak")
                 .withDangerNote("Umweltgefährdend")
@@ -45,7 +45,7 @@ class DangerousGoodsTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                DangerousGoods.DangerousGoodsBuilder.newDangerousGoods()
+                DangerousGoods.Builder.newDangerousGoods()
                     .withMaterial("Ammoniak")
                     .withDangerNote("Umweltgefährdend")
                     .withPackagingGroup("VG II")

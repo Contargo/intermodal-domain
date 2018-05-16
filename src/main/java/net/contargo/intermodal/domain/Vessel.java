@@ -1,9 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.MeansOfTransport;
-import net.contargo.intermodal.domain.Operator;
-
-
 /**
  * A ship build to drive on seas and oceans.
  *
@@ -58,23 +54,23 @@ public class Vessel implements MeansOfTransport {
         return operator;
     }
 
-    public static final class VesselBuilder {
+    public static final class Builder {
 
         private String name;
         private String mmsi;
         private String imo;
         private Operator operator;
 
-        private VesselBuilder() {
+        private Builder() {
         }
 
-        public static VesselBuilder newVessel() {
+        public static Builder newVessel() {
 
-            return new VesselBuilder();
+            return new Builder();
         }
 
 
-        public VesselBuilder withName(String name) {
+        public Builder withName(String name) {
 
             this.name = name;
 
@@ -82,7 +78,7 @@ public class Vessel implements MeansOfTransport {
         }
 
 
-        public VesselBuilder withMmsi(String mmsi) {
+        public Builder withMmsi(String mmsi) {
 
             this.mmsi = mmsi;
 
@@ -90,7 +86,7 @@ public class Vessel implements MeansOfTransport {
         }
 
 
-        public VesselBuilder withImo(String imo) {
+        public Builder withImo(String imo) {
 
             this.imo = imo;
 
@@ -98,7 +94,7 @@ public class Vessel implements MeansOfTransport {
         }
 
 
-        public VesselBuilder withOperator(Operator operator) {
+        public Builder withOperator(Operator operator) {
 
             this.operator = operator;
 

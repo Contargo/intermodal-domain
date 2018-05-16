@@ -128,7 +128,7 @@ public class Truck implements MeansOfTransport {
         return weightTara;
     }
 
-    public static final class TruckBuilder {
+    public static final class Builder {
 
         private String numberPlate;
         private String countryCode;
@@ -141,16 +141,16 @@ public class Truck implements MeansOfTransport {
         private Boolean suitabilityWaste;
         private Double weightTara;
 
-        private TruckBuilder() {
+        private Builder() {
         }
 
-        public static TruckBuilder newTruck() {
+        public static Builder newTruck() {
 
-            return new TruckBuilder();
+            return new Builder();
         }
 
 
-        public TruckBuilder withNumberPlate(String numberPlate) {
+        public Builder withNumberPlate(String numberPlate) {
 
             this.numberPlate = numberPlate;
 
@@ -158,7 +158,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withCountryCode(String countryCode) {
+        public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
 
@@ -166,7 +166,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withMot(int year, int month, int day) {
+        public Builder withMot(int year, int month, int day) {
 
             this.mot = ISO8601DateFormatter.format(year, month, day);
 
@@ -174,7 +174,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withEnvironmentBadge(EnvironmentBadge environmentBadge) {
+        public Builder withEnvironmentBadge(EnvironmentBadge environmentBadge) {
 
             this.environmentBadge = environmentBadge;
 
@@ -182,7 +182,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withType(String type) {
+        public Builder withType(String type) {
 
             this.type = type;
 
@@ -190,7 +190,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withEuAuthorization(Boolean euAuthorization) {
+        public Builder withEuAuthorization(Boolean euAuthorization) {
 
             this.euAuthorization = euAuthorization;
 
@@ -198,7 +198,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withST(Boolean st) {
+        public Builder withST(Boolean st) {
 
             this.st = st;
 
@@ -206,7 +206,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
+        public Builder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
 
             this.suitabilityDangerousGoods = suitabilityDangerousGoods;
 
@@ -214,7 +214,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withSuitabilityWaste(Boolean suitabilityWaste) {
+        public Builder withSuitabilityWaste(Boolean suitabilityWaste) {
 
             this.suitabilityWaste = suitabilityWaste;
 
@@ -222,7 +222,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public TruckBuilder withWeightTara(Double weightTara) {
+        public Builder withWeightTara(Double weightTara) {
 
             this.weightTara = weightTara;
 

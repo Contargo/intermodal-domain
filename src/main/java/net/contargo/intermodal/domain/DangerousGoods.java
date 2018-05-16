@@ -123,7 +123,7 @@ public class DangerousGoods {
         return marinePollutants;
     }
 
-    public static final class DangerousGoodsBuilder {
+    public static final class Builder {
 
         private String unNumber;
         private String material;
@@ -136,16 +136,16 @@ public class DangerousGoods {
         private Boolean limitedQuantity;
         private Boolean marinePollutants;
 
-        private DangerousGoodsBuilder() {
+        private Builder() {
         }
 
-        public static DangerousGoodsBuilder newDangerousGoods() {
+        public static Builder newDangerousGoods() {
 
-            return new DangerousGoodsBuilder();
+            return new Builder();
         }
 
 
-        public DangerousGoodsBuilder withUnNumber(String unNumber) {
+        public Builder withUnNumber(String unNumber) {
 
             this.unNumber = unNumber;
 
@@ -153,7 +153,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withMaterial(String material) {
+        public Builder withMaterial(String material) {
 
             this.material = material;
 
@@ -161,7 +161,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withDangerNote(String dangerNote) {
+        public Builder withDangerNote(String dangerNote) {
 
             this.dangerNote = dangerNote;
 
@@ -169,7 +169,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withPackagingGroup(String packagingGroup) {
+        public Builder withPackagingGroup(String packagingGroup) {
 
             this.packagingGroup = packagingGroup;
 
@@ -177,7 +177,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withPackages(Integer packages) {
+        public Builder withPackages(Integer packages) {
 
             this.packages = packages;
 
@@ -185,7 +185,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withTotalQuantity(String totalQuantity) {
+        public Builder withTotalQuantity(String totalQuantity) {
 
             this.totalQuantity = totalQuantity;
 
@@ -193,7 +193,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withTunnelRestrictionCode(TunnelRestrictionCode tunnelRestrictionCode) {
+        public Builder withTunnelRestrictionCode(TunnelRestrictionCode tunnelRestrictionCode) {
 
             this.tunnelRestrictionCode = tunnelRestrictionCode;
 
@@ -201,7 +201,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withMandatoryRouting(String mandatoryRouting) {
+        public Builder withMandatoryRouting(String mandatoryRouting) {
 
             this.mandatoryRouting = mandatoryRouting;
 
@@ -209,7 +209,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withLimitedQuantity(Boolean limitedQuantity) {
+        public Builder withLimitedQuantity(Boolean limitedQuantity) {
 
             this.limitedQuantity = limitedQuantity;
 
@@ -217,7 +217,7 @@ public class DangerousGoods {
         }
 
 
-        public DangerousGoodsBuilder withMarinePollutants(Boolean marinePollutants) {
+        public Builder withMarinePollutants(Boolean marinePollutants) {
 
             this.marinePollutants = marinePollutants;
 

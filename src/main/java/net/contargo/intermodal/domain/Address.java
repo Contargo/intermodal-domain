@@ -52,7 +52,7 @@ public class Address {
         return countryCode;
     }
 
-    public static final class AddressBuilder {
+    public static final class Builder {
 
         private String street;
         private String locationPostalCode;
@@ -60,16 +60,16 @@ public class Address {
         private String countryName;
         private String countryCode;
 
-        private AddressBuilder() {
+        private Builder() {
         }
 
-        public static AddressBuilder newAddress() {
+        public static Builder newAddress() {
 
-            return new AddressBuilder();
+            return new Builder();
         }
 
 
-        public AddressBuilder withStreet(String street) {
+        public Builder withStreet(String street) {
 
             this.street = street;
 
@@ -77,7 +77,7 @@ public class Address {
         }
 
 
-        public AddressBuilder withLocationPostalCode(String locationPostalCode) {
+        public Builder withLocationPostalCode(String locationPostalCode) {
 
             this.locationPostalCode = locationPostalCode;
 
@@ -85,7 +85,7 @@ public class Address {
         }
 
 
-        public AddressBuilder withLocationCity(String locationCity) {
+        public Builder withLocationCity(String locationCity) {
 
             this.locationCity = locationCity;
 
@@ -93,7 +93,7 @@ public class Address {
         }
 
 
-        public AddressBuilder withCountryName(String countryName) {
+        public Builder withCountryName(String countryName) {
 
             this.countryName = countryName;
 
@@ -101,7 +101,7 @@ public class Address {
         }
 
 
-        public AddressBuilder withCountryCode(String countryCode) {
+        public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
 

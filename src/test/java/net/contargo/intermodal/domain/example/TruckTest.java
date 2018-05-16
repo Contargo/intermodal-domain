@@ -16,7 +16,7 @@ class TruckTest {
     @Test
     void ensureCanBeCreated() {
 
-        Truck truck = Truck.TruckBuilder.newTruck()
+        Truck truck = Truck.Builder.newTruck()
                 .withNumberPlate("DU CO 1782")
                 .withCountryCode("DE")
                 .withMot(2020, 5, 22)

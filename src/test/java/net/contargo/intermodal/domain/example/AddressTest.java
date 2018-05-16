@@ -15,7 +15,7 @@ class AddressTest {
     @Test
     void ensureCanBeCreated() {
 
-        Address address = Address.AddressBuilder.newAddress()
+        Address address = Address.Builder.newAddress()
                 .withStreet("Gartenstraße 67")
                 .withLocationPostalCode("76135")
                 .withLocationCity("Karlsruhe")

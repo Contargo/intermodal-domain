@@ -15,7 +15,7 @@ class PersonTest {
     @Test
     void ensureDriverCanBeCreated() {
 
-        Driver driver = Driver.DriverBuilder.newDriver()
+        Driver driver = Driver.Builder.newDriver()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(new Address())
@@ -47,7 +47,7 @@ class PersonTest {
     @Test
     void ensureTrainDriverCanBeCreated() {
 
-        TrainDriver trainDriver = TrainDriver.TrainDriverBuilder.newTrainDriver()
+        TrainDriver trainDriver = TrainDriver.Builder.newTrainDriver()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(new Address())
@@ -72,7 +72,7 @@ class PersonTest {
     @Test
     void ensureSkipperCanBeCreated() {
 
-        Skipper skipper = Skipper.SkipperBuilder.newSkipper()
+        Skipper skipper = Skipper.Builder.newSkipper()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(new Address())

@@ -15,7 +15,7 @@ class CustomsTest {
     @Test
     void ensureCanBeCreated() {
 
-        Customs customs = Customs.CustomsBuilder.newCustoms()
+        Customs customs = Customs.Builder.newCustoms()
                 .withCustomProcess("T1")
                 .withCustomDocumentNumber("16DE1234...")
                 .withSeal(false)
