@@ -41,6 +41,7 @@ class ChassisTest {
         assertTrue(chassis.getSuitabilityDangerousGoods());
         assertTrue(chassis.getSuitabilityWaste());
         assertTrue(chassis.getSuitabilityReefer());
+        assertNotNull(chassis.getWeight());
         assertEquals(500.0, chassis.getWeightTara().doubleValue());
     }
 }

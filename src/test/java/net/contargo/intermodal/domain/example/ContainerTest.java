@@ -33,6 +33,7 @@ class ContainerTest {
         assertEquals("OOOCSSSSSS", container.getIdentification());
         assertEquals("OOOCSSSSSS", container.getNumber());
         assertEquals(LoadingUnitCategory.CONTAINER, container.getCategory());
+        assertNotNull(container.getWeight());
         assertEquals(70, container.getWeightBruttoMax().doubleValue());
         assertEquals(65, container.getWeightNettoMax().doubleValue());
         assertEquals(70, container.getWeightTara().doubleValue());

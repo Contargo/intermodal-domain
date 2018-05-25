@@ -29,6 +29,7 @@ class WasteTest {
         assertEquals("03 03 01", waste.getKeyID());
         assertEquals("02", waste.getWasteRegulationNumber());
         assertEquals("65478", waste.getReceiptNumber());
+        assertNotNull(waste.getWeight());
         assertEquals(75.0, waste.getWeightNetto().doubleValue());
     }
 

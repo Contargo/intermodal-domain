@@ -33,23 +33,9 @@ public class LUOrder {
     @NotNull(message = "loadingUnit is part of minimum requirement")
     private LoadingUnit loadingUnit;
 
-    /**
-     * in kg.
-     */
-    @NotNull(message = "weightBrutto is part of minimum requirement")
-    private Double weightBrutto;
-
-    /**
-     * in kg.
-     */
-    @NotNull(message = "weightNetto is part of minimum requirement")
-    private Double weightNetto;
-
-    /**
-     * in kg.
-     */
-    @NotNull(message = "weightTara is part of minimum requirement")
-    private Double weightTara;
+    @NotNull(message = "weight is part of minimum requirement")
+    @LUOrderWeightConstraint(message = "brutto, netto and tara are part of minimum requirement")
+    private Weight weight;
 
     @NotNull(message = "dangerousGoodsIndication is part of minimum requirement")
     private DangerousGoods dangerousGoodsIndication;
@@ -94,19 +80,19 @@ public class LUOrder {
 
     public Double getWeightBrutto() {
 
-        return weightBrutto;
+        return weight.getBrutto();
     }
 
 
     public Double getWeightNetto() {
 
-        return weightNetto;
+        return weight.getNetto();
     }
 
 
     public Double getWeightTara() {
 
-        return weightTara;
+        return weight.getTara();
     }
 
 
@@ -188,9 +174,9 @@ public class LUOrder {
         return "LUOrder {"
             + String.format("reference='%s', ", this.reference)
             + String.format("loadingUnit='%s', ", this.loadingUnit.toString())
-            + String.format("weightBrutto='%s' ,", this.weightBrutto)
-            + String.format("weightNetto='%s' ,", this.weightNetto)
-            + String.format("weightTara='%s',", this.weightTara)
+            + String.format("weightBrutto='%s' ,", this.weight.getBrutto())
+            + String.format("weightNetto='%s' ,", this.weight.getNetto())
+            + String.format("weightTara='%s',", this.weight.getTara())
             + String.format("dangerousGoodsIndication='%s' ,", this.dangerousGoodsIndication.toString())
             + String.format("wasteIndication='%s' ,", this.wasteIndication.toString())
             + String.format("setTemperature='%s' ,", this.setTemperature)
@@ -201,6 +187,12 @@ public class LUOrder {
             + String.format("empty='%s' ,", this.empty) + String.format("seal='%s' ,", this.seal)
             + String.format("sealType='%s' ,", this.sealType) + String.format("sealNumber='%s'", this.sealNumber)
             + "}";
+    }
+
+
+    public Weight getWeight() {
+
+        return weight;
     }
 
     public static final class Builder {
@@ -370,26 +362,29 @@ public class LUOrder {
 
         public LUOrder build() {
 
-            LUOrder LUOrder = new LUOrder();
-            LUOrder.sealNumber = this.sealNumber;
-            LUOrder.weightTara = this.weightTara;
-            LUOrder.seal = this.seal;
-            LUOrder.operator = this.operator;
-            LUOrder.weightBrutto = this.weightBrutto;
-            LUOrder.customs = this.customs;
-            LUOrder.empty = this.empty;
-            LUOrder.setTemperature = this.setTemperature;
-            LUOrder.weightNetto = this.weightNetto;
-            LUOrder.direction = this.direction;
-            LUOrder.loadingUnit = this.loadingUnit;
-            LUOrder.client = this.client;
-            LUOrder.dangerousGoodsIndication = this.dangerousGoodsIndication;
-            LUOrder.wasteIndication = this.wasteIndication;
-            LUOrder.goods = this.goods;
-            LUOrder.reference = this.reference;
-            LUOrder.sealType = this.sealType;
+            LUOrder luOrder = new LUOrder();
+            luOrder.sealNumber = this.sealNumber;
+            luOrder.seal = this.seal;
+            luOrder.operator = this.operator;
+            luOrder.customs = this.customs;
+            luOrder.empty = this.empty;
+            luOrder.setTemperature = this.setTemperature;
+            luOrder.direction = this.direction;
+            luOrder.loadingUnit = this.loadingUnit;
+            luOrder.client = this.client;
+            luOrder.dangerousGoodsIndication = this.dangerousGoodsIndication;
+            luOrder.wasteIndication = this.wasteIndication;
+            luOrder.goods = this.goods;
+            luOrder.reference = this.reference;
+            luOrder.sealType = this.sealType;
 
-            return LUOrder;
+            Weight weight = new Weight();
+            weight.setNetto(this.weightNetto);
+            weight.setBrutto(this.weightBrutto);
+            weight.setTara(this.weightTara);
+            luOrder.weight = weight;
+
+            return luOrder;
         }
 
 

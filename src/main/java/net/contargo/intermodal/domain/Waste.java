@@ -43,7 +43,7 @@ public class Waste {
     /**
      * in kg per position.
      */
-    private Double weightNetto;
+    private Weight weight;
 
     public String getPosition() {
 
@@ -71,7 +71,13 @@ public class Waste {
 
     public Double getWeightNetto() {
 
-        return weightNetto;
+        return weight.getNetto();
+    }
+
+
+    public Weight getWeight() {
+
+        return weight;
     }
 
     public static final class Builder {
@@ -138,7 +144,10 @@ public class Waste {
             waste.keyID = this.keyID;
             waste.wasteRegulationNumber = this.wasteRegulationNumber;
             waste.position = this.position;
-            waste.weightNetto = this.weightNetto;
+
+            Weight weight = new Weight();
+            weight.setNetto(this.weightNetto);
+            waste.weight = weight;
 
             return waste;
         }

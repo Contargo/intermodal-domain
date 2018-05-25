@@ -41,19 +41,9 @@ public abstract class LoadingUnit {
     private LoadingUnitCategory category;
 
     /**
-     * in kg.
+     * everything in kg.
      */
-    private Double weightBruttoMax;
-
-    /**
-     * in kg.
-     */
-    private Double weightNettoMax;
-
-    /**
-     * in kg.
-     */
-    private Double weightTara;
+    private Weight weight;
 
     /**
      * german examples in Ordnung (i.O.), schadhaft.
@@ -89,21 +79,9 @@ public abstract class LoadingUnit {
     }
 
 
-    void setWeightBruttoMax(Double weightBruttoMax) {
+    void setWeight(Weight weight) {
 
-        this.weightBruttoMax = weightBruttoMax;
-    }
-
-
-    void setWeightNettoMax(Double weightNettoMax) {
-
-        this.weightNettoMax = weightNettoMax;
-    }
-
-
-    void setWeightTara(Double weightTara) {
-
-        this.weightTara = weightTara;
+        this.weight = weight;
     }
 
 
@@ -145,19 +123,25 @@ public abstract class LoadingUnit {
 
     public Double getWeightBruttoMax() {
 
-        return weightBruttoMax;
+        return weight.getBruttoMax();
     }
 
 
     public Double getWeightNettoMax() {
 
-        return weightNettoMax;
+        return weight.getNettoMax();
     }
 
 
     public Double getWeightTara() {
 
-        return weightTara;
+        return weight.getTara();
+    }
+
+
+    public Weight getWeight() {
+
+        return weight;
     }
 
 

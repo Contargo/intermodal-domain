@@ -73,7 +73,7 @@ public class Chassis implements MeansOfTransport {
     /**
      * in kg.
      */
-    private Double weightTara;
+    private Weight weight;
 
     public String getNumberPlate() {
 
@@ -141,9 +141,15 @@ public class Chassis implements MeansOfTransport {
     }
 
 
+    public Weight getWeight() {
+
+        return weight;
+    }
+
+
     public Double getWeightTara() {
 
-        return weightTara;
+        return weight.getTara();
     }
 
     public static final class Builder {
@@ -269,7 +275,6 @@ public class Chassis implements MeansOfTransport {
         public Chassis build() {
 
             Chassis chassis = new Chassis();
-            chassis.weightTara = this.weightTara;
             chassis.numberPlate = this.numberPlate;
             chassis.axles = this.axles;
             chassis.height = this.height;
@@ -281,6 +286,10 @@ public class Chassis implements MeansOfTransport {
             chassis.mot = this.mot;
             chassis.suitabilityDangerousGoods = this.suitabilityDangerousGoods;
             chassis.suitabilityReefer = this.suitabilityReefer;
+
+            Weight weight = new Weight();
+            weight.setTara(this.weightTara);
+            chassis.weight = weight;
 
             return chassis;
         }

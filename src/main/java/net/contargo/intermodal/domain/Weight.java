@@ -5,10 +5,29 @@ package net.contargo.intermodal.domain;
  */
 public class Weight {
 
+    /**
+     * in kg.
+     */
     private Double bruttoMax;
+
+    /**
+     * in kg.
+     */
     private Double nettoMax;
+
+    /**
+     * in kg.
+     */
     private Double brutto;
+
+    /**
+     * in kg.
+     */
     private Double netto;
+
+    /**
+     * in kg.
+     */
     private Double tara;
 
     public Double getBruttoMax() {

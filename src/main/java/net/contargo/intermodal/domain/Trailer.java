@@ -88,7 +88,7 @@ public class Trailer extends LoadingUnit {
             + String.format("number='%s', ", super.getNumber()) + String.format("category='%s', ", super.getCategory())
             + String.format("weightBruttoMax='%s', ", super.getWeightBruttoMax())
             + String.format("weightNettoMax='%s', ", super.getWeightNettoMax())
-            + String.format("weightTara='%s', ", super.getWeightTara())
+            + String.format("weightTara='%s', ", super.getWeight())
             + String.format("condition='%s', ", super.getCondition())
             + String.format("reefer='%s', ", super.isReefer()) + String.format("operator='%s', ", super.getOperator())
             + String.format("type='%s', ", this.type) + String.format("size='%s', ", this.size)
@@ -211,16 +211,20 @@ public class Trailer extends LoadingUnit {
             Trailer trailer = new Trailer();
             trailer.setIdentification(identification);
             trailer.setNumber(number);
-            trailer.setCategory(LoadingUnitCategory.TRAILER);
-            trailer.setWeightBruttoMax(weightBruttoMax);
-            trailer.setWeightNettoMax(weightNettoMax);
-            trailer.setWeightTara(weightTara);
             trailer.setCondition(condition);
             trailer.setReefer(reefer);
             trailer.setOperator(operator);
             trailer.type = this.type;
             trailer.size = this.size;
             trailer.craneable = this.craneable;
+
+            Weight weight = new Weight();
+            weight.setBruttoMax(weightBruttoMax);
+            weight.setNettoMax(weightNettoMax);
+            weight.setTara(weightTara);
+            trailer.setWeight(weight);
+
+            trailer.setCategory(LoadingUnitCategory.TRAILER);
 
             return trailer;
         }

@@ -91,7 +91,7 @@ public class Container extends LoadingUnit {
             + String.format("number='%s', ", super.getNumber()) + String.format("category='%s', ", super.getCategory())
             + String.format("weightBruttoMax='%s', ", super.getWeightBruttoMax())
             + String.format("weightNettoMax='%s', ", super.getWeightNettoMax())
-            + String.format("weightTara='%s', ", super.getWeightTara())
+            + String.format("weightTara='%s', ", super.getWeight())
             + String.format("condition='%s', ", super.getCondition())
             + String.format("reefer='%s', ", super.isReefer()) + String.format("operator='%s', ", super.getOperator())
             + String.format("size='%s', ", this.size) + String.format("type='%s', ", this.type)
@@ -215,15 +215,18 @@ public class Container extends LoadingUnit {
             Container container = new Container();
             container.setIdentification(identification);
             container.setNumber(number);
-            container.setWeightBruttoMax(weightBruttoMax);
-            container.setWeightNettoMax(weightNettoMax);
-            container.setWeightTara(weightTara);
             container.setCondition(condition);
             container.setReefer(reefer);
             container.setOperator(operator);
             container.sizeType = this.sizeType;
             container.type = this.type;
             container.size = this.size;
+
+            Weight weight = new Weight();
+            weight.setBruttoMax(weightBruttoMax);
+            weight.setNettoMax(weightNettoMax);
+            weight.setTara(weightTara);
+            container.setWeight(weight);
 
             container.setCategory(LoadingUnitCategory.CONTAINER);
 

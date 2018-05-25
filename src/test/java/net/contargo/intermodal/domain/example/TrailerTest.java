@@ -33,6 +33,7 @@ class TrailerTest {
         assertEquals("OOOCSSSSSS", trailer.getIdentification());
         assertEquals("OOOCSSSSSS", trailer.getNumber());
         assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
+        assertNotNull(trailer.getWeight());
         assertEquals(70, trailer.getWeightBruttoMax().doubleValue());
         assertEquals(65, trailer.getWeightNettoMax().doubleValue());
         assertEquals(70, trailer.getWeightTara().doubleValue());

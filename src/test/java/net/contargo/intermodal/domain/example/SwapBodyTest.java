@@ -33,6 +33,7 @@ class SwapBodyTest {
         assertEquals("OOOCSSSSSS", swapBody.getIdentification());
         assertEquals("OOOCSSSSSS", swapBody.getNumber());
         assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
+        assertNotNull(swapBody.getWeight());
         assertEquals(70, swapBody.getWeightBruttoMax().doubleValue());
         assertEquals(65, swapBody.getWeightNettoMax().doubleValue());
         assertEquals(70, swapBody.getWeightTara().doubleValue());

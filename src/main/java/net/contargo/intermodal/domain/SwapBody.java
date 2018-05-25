@@ -89,7 +89,7 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
             + String.format("number='%s', ", super.getNumber()) + String.format("category='%s', ", super.getCategory())
             + String.format("weightBruttoMax='%s', ", super.getWeightBruttoMax())
             + String.format("weightNettoMax='%s', ", super.getWeightNettoMax())
-            + String.format("weightTara='%s', ", super.getWeightTara())
+            + String.format("weightTara='%s', ", super.getWeight())
             + String.format("condition='%s', ", super.getCondition())
             + String.format("reefer='%s', ", super.isReefer()) + String.format("operator='%s', ", super.getOperator())
             + String.format("type='%s', ", this.type) + String.format("size='%s', ", this.size)
@@ -212,15 +212,19 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
             SwapBody swapBody = new SwapBody();
             swapBody.setIdentification(identification);
             swapBody.setNumber(number);
-            swapBody.setWeightBruttoMax(weightBruttoMax);
-            swapBody.setWeightNettoMax(weightNettoMax);
-            swapBody.setWeightTara(weightTara);
             swapBody.setCondition(condition);
             swapBody.setReefer(reefer);
             swapBody.setOperator(operator);
             swapBody.stackable = this.stackable;
             swapBody.size = this.size;
             swapBody.type = this.type;
+
+            Weight weight = new Weight();
+            weight.setBruttoMax(weightBruttoMax);
+            weight.setNettoMax(weightNettoMax);
+            weight.setTara(weightTara);
+            swapBody.setWeight(weight);
+
             swapBody.setCategory(LoadingUnitCategory.SWAP_BODY);
 
             return swapBody;
