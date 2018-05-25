@@ -42,16 +42,11 @@ public class RegistrationBarge {
     private DangerousGoods dangerousGoodsIndication;
 
     /**
-     * Number of LUs.
+     * everything in number of LUs.
      */
-    @NotNull(message = "volumeToDischarge is part of minimum requirement")
-    private Integer volumeToDischarge;
-
-    /**
-     * Number of LUs.
-     */
-    @NotNull(message = "volumeToLoad is part of minimum requirement")
-    private Integer volumeToLoad;
+    @NotNull(message = "volume is part of minimum requirement")
+    @RegistrationVolumeConstraint(message = "toDischarge and toLoad are part of the minimum Requirement of Volume")
+    private Volume volume;
 
     public Barge getBarge() {
 
@@ -79,13 +74,13 @@ public class RegistrationBarge {
 
     public Integer getVolumeToDischarge() {
 
-        return volumeToDischarge;
+        return volume.getToDischarge();
     }
 
 
     public Integer getVolumeToLoad() {
 
-        return volumeToLoad;
+        return volume.getToLoad();
     }
 
     public static final class Builder {
@@ -158,8 +153,12 @@ public class RegistrationBarge {
 
             RegistrationBarge registrationBarge = new RegistrationBarge();
             registrationBarge.barge = this.barge;
-            registrationBarge.volumeToDischarge = this.volumeToDischarge;
-            registrationBarge.volumeToLoad = this.volumeToLoad;
+
+            Volume volume = new Volume();
+            volume.setToDischarge(this.volumeToDischarge);
+            volume.setToLoad(this.volumeToLoad);
+            registrationBarge.volume = volume;
+
             registrationBarge.eta = this.eta;
             registrationBarge.etd = this.etd;
             registrationBarge.dangerousGoodsIndication = this.dangerousGoodsIndication;

@@ -74,16 +74,11 @@ public class RegistrationTrain {
     private DangerousGoods dangerousGoodsIndication;
 
     /**
-     * Number of LUs.
+     * everything in number of LUs.
      */
-    @NotNull(message = "volumeToDischarge is part of minimum requirement")
-    private Integer volumeToDischarge;
-
-    /**
-     * Number of LUs.
-     */
-    @NotNull(message = "volumeToLoad is part of minimum requirement")
-    private Integer volumeToLoad;
+    @NotNull(message = "volume is part of minimum requirement")
+    @RegistrationVolumeConstraint(message = "toDischarge and toLoad are part of the minimum Requirement of Volume")
+    private Volume volume;
 
     /**
      * @name_german  Trassennummer
@@ -145,15 +140,21 @@ public class RegistrationTrain {
     }
 
 
+    public Volume getVolume() {
+
+        return volume;
+    }
+
+
     public Integer getVolumeToDischarge() {
 
-        return volumeToDischarge;
+        return volume.getToDischarge();
     }
 
 
     public Integer getVolumeToLoad() {
 
-        return volumeToLoad;
+        return volume.getToLoad();
     }
 
 
@@ -305,14 +306,17 @@ public class RegistrationTrain {
             registrationTrain.operator = this.operator;
             registrationTrain.trainTitle = this.trainTitle;
             registrationTrain.shuntingYardEta = this.shuntingYardEta;
-            registrationTrain.volumeToDischarge = this.volumeToDischarge;
             registrationTrain.waggonQuantity = this.waggonQuantity;
             registrationTrain.dangerousGoodsIndication = this.dangerousGoodsIndication;
             registrationTrain.terminalEtd = this.terminalEtd;
             registrationTrain.terminalEta = this.terminalEta;
             registrationTrain.shunter = this.shunter;
-            registrationTrain.volumeToLoad = this.volumeToLoad;
             registrationTrain.trainPaths = this.trainPaths;
+
+            Volume volume = new Volume();
+            volume.setToDischarge(this.volumeToDischarge);
+            volume.setToLoad(this.volumeToLoad);
+            registrationTrain.volume = volume;
 
             return registrationTrain;
         }

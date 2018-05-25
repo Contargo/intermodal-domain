@@ -1,0 +1,42 @@
+package net.contargo.intermodal.domain;
+
+import java.lang.annotation.*;
+
+import javax.validation.Constraint;
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+import javax.validation.Payload;
+
+
+/**
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
+
+@Documented
+@Constraint(validatedBy = RegistrationVolumeValidator.class)
+@Target({ ElementType.METHOD, ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+@interface RegistrationVolumeConstraint {
+
+    String message() default "Volume invalid";
+
+
+    Class<?>[] groups() default {};
+
+
+    Class<? extends Payload>[] payload() default {};
+}
+
+public class RegistrationVolumeValidator implements ConstraintValidator<RegistrationVolumeConstraint, Volume> {
+
+    public RegistrationVolumeValidator() {
+
+        // for testing
+    }
+
+    @Override
+    public boolean isValid(Volume volume, ConstraintValidatorContext context) {
+
+        return volume.getToDischarge() != null && volume.getToLoad() != null;
+    }
+}

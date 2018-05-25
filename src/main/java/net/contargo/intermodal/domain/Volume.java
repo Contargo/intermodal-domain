@@ -5,7 +5,14 @@ package net.contargo.intermodal.domain;
  */
 class Volume {
 
+    /**
+     * Number of LUs.
+     */
     private Integer toDischarge;
+
+    /**
+     * Number of LUs.
+     */
     private Integer toLoad;
 
     public Integer getToDischarge() {
