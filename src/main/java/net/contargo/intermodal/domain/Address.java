@@ -12,16 +12,9 @@ public class Address {
 
     private String street;
 
-    private String locationPostalCode;
+    private Location location;
 
-    private String locationCity;
-
-    private String countryName;
-
-    /**
-     * 2 characters (UN/LOCODE).
-     */
-    private String countryCode;
+    private Country country;
 
     public String getStreet() {
 
@@ -31,25 +24,37 @@ public class Address {
 
     public String getLocationPostalCode() {
 
-        return locationPostalCode;
+        return location.getPostalCode();
     }
 
 
     public String getLocationCity() {
 
-        return locationCity;
+        return location.getCity();
     }
 
 
     public String getCountryName() {
 
-        return countryName;
+        return country.getName();
     }
 
 
     public String getCountryCode() {
 
-        return countryCode;
+        return country.getCode();
+    }
+
+
+    public Location getLocation() {
+
+        return location;
+    }
+
+
+    public Country getCountry() {
+
+        return country;
     }
 
     public static final class Builder {
@@ -113,10 +118,16 @@ public class Address {
 
             Address address = new Address();
             address.street = this.street;
-            address.countryCode = this.countryCode;
-            address.locationCity = this.locationCity;
-            address.countryName = this.countryName;
-            address.locationPostalCode = this.locationPostalCode;
+
+            Country country = new Country();
+            country.setCode(this.countryCode);
+            country.setName(this.countryName);
+            address.country = country;
+
+            Location location = new Location();
+            location.setCity(this.locationCity);
+            location.setPostalCode(this.locationPostalCode);
+            address.location = location;
 
             return address;
         }

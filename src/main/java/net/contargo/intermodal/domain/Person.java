@@ -27,12 +27,12 @@ public abstract class Person {
      * @definition_english  City of birth
      * @definition_german  Geburtsort
      */
-    private String locationCity;
+    private Location location;
 
     /**
-     * 2 characters (UN/LOCODE).
+     * Country code with 2 characters (UN/LOCODE).
      */
-    private String countryCode;
+    private Country country;
 
     public String getName() {
 
@@ -64,15 +64,15 @@ public abstract class Person {
     }
 
 
-    public String getLocationCity() {
+    public String getCityOfBirth() {
 
-        return locationCity;
+        return location.getCity();
     }
 
 
     public String getCountryCode() {
 
-        return countryCode;
+        return country.getCode();
     }
 
 
@@ -108,12 +108,30 @@ public abstract class Person {
 
     void setLocationCity(String locationCity) {
 
-        this.locationCity = locationCity;
+        Location location = new Location();
+        location.setCity(locationCity);
+
+        this.location = location;
     }
 
 
     void setCountryCode(String countryCode) {
 
-        this.countryCode = countryCode;
+        Country country = new Country();
+        country.setCode(countryCode);
+
+        this.country = country;
+    }
+
+
+    public Location getLocation() {
+
+        return location;
+    }
+
+
+    public Country getCountry() {
+
+        return country;
     }
 }

@@ -146,7 +146,7 @@ public class Driver extends Person {
         }
 
 
-        public Builder withDateOfBirth(int year, int month, int day) {
+        public Builder bornOn(int year, int month, int day) {
 
             this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
 
@@ -154,9 +154,9 @@ public class Driver extends Person {
         }
 
 
-        public Builder withLocationCity(String locationCity) {
+        public Builder bornIn(String city) {
 
-            this.locationCity = locationCity;
+            this.locationCity = city;
 
             return this;
         }

@@ -20,8 +20,8 @@ class PersonTest {
                 .withFirstName("Max")
                 .withAddress(new Address())
                 .withCellphone("01234/56789")
-                .withDateOfBirth(1980, 1, 13)
-                .withLocationCity("Karlsruhe")
+                .bornOn(1980, 1, 13)
+                .bornIn("Karlsruhe")
                 .withCountryCode("DE")
                 .withLicenseValidity(2020, 9, 25)
                 .withLicenseNumber("12345678")
@@ -35,7 +35,7 @@ class PersonTest {
         assertNotNull(driver.getAddress());
         assertEquals("01234/56789", driver.getCellphone());
         assertEquals("1980-01-13T00:00:00.000Z", driver.getDateOfBirth());
-        assertEquals("Karlsruhe", driver.getLocationCity());
+        assertEquals("Karlsruhe", driver.getCityOfBirth());
         assertEquals("DE", driver.getCountryCode());
         assertEquals("12345678", driver.getLicense().getLicenseNumber());
         assertEquals("42", driver.getId());
@@ -52,8 +52,8 @@ class PersonTest {
                 .withFirstName("Max")
                 .withAddress(new Address())
                 .withCellphone("01234/56789")
-                .withDateOfBirth(1980, 1, 13)
-                .withLocationCity("Karlsruhe")
+                .bornOn(1980, 1, 13)
+                .bornIn("Karlsruhe")
                 .withCountryCode("DE")
                 .withRid(2018, 12, 31)
                 .buildAndValidate();
@@ -63,7 +63,7 @@ class PersonTest {
         assertNotNull(trainDriver.getAddress());
         assertEquals("01234/56789", trainDriver.getCellphone());
         assertEquals("1980-01-13T00:00:00.000Z", trainDriver.getDateOfBirth());
-        assertEquals("Karlsruhe", trainDriver.getLocationCity());
+        assertEquals("Karlsruhe", trainDriver.getCityOfBirth());
         assertEquals("DE", trainDriver.getCountryCode());
         assertEquals("2018-12-31T00:00:00.000Z", trainDriver.getRid());
     }
@@ -77,8 +77,8 @@ class PersonTest {
                 .withFirstName("Max")
                 .withAddress(new Address())
                 .withCellphone("01234/56789")
-                .withDateOfBirth(1980, 1, 13)
-                .withLocationCity("Karlsruhe")
+                .bornOn(1980, 1, 13)
+                .bornIn("Karlsruhe")
                 .withCountryCode("DE")
                 .withAdnr(2018, 12, 31)
                 .buildAndValidate();
@@ -88,7 +88,7 @@ class PersonTest {
         assertNotNull(skipper.getAddress());
         assertEquals("01234/56789", skipper.getCellphone());
         assertEquals("1980-01-13T00:00:00.000Z", skipper.getDateOfBirth());
-        assertEquals("Karlsruhe", skipper.getLocationCity());
+        assertEquals("Karlsruhe", skipper.getCityOfBirth());
         assertEquals("DE", skipper.getCountryCode());
         assertEquals("2018-12-31T00:00:00.000Z", skipper.getAdnr());
     }

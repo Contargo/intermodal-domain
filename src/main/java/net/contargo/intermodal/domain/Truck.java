@@ -21,10 +21,7 @@ public class Truck implements MeansOfTransport {
      */
     private String numberPlate;
 
-    /**
-     * 2 Characters (UN/LOCODE).
-     */
-    private String countryCode;
+    private Country country;
 
     /**
      * Format: DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
@@ -77,7 +74,7 @@ public class Truck implements MeansOfTransport {
 
     public String getCountryCode() {
 
-        return countryCode;
+        return country.getCode();
     }
 
 
@@ -126,6 +123,12 @@ public class Truck implements MeansOfTransport {
     public Double getWeightTara() {
 
         return weightTara;
+    }
+
+
+    public Country getCountry() {
+
+        return country;
     }
 
     public static final class Builder {
@@ -237,12 +240,15 @@ public class Truck implements MeansOfTransport {
             truck.suitabilityWaste = this.suitabilityWaste;
             truck.euAuthorization = this.euAuthorization;
             truck.numberPlate = this.numberPlate;
-            truck.countryCode = this.countryCode;
             truck.environmentBadge = this.environmentBadge;
             truck.weightTara = this.weightTara;
             truck.suitabilityDangerousGoods = this.suitabilityDangerousGoods;
             truck.type = this.type;
             truck.st = this.st;
+
+            Country country = new Country();
+            country.setCode(this.countryCode);
+            truck.country = country;
 
             return truck;
         }

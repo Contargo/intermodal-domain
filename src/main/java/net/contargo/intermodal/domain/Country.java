@@ -5,6 +5,9 @@ package net.contargo.intermodal.domain;
  */
 class Country {
 
+    /**
+     * 2 characters (UN/LOCODE).
+     */
     private String code;
     private String name;
 
