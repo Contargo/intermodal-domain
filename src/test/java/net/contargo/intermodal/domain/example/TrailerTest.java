@@ -17,8 +17,8 @@ class TrailerTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         Trailer trailer = Trailer.Builder.newTrailer()
-                .withIdentification("CSQU3054383")
-                .withNumber("CSQU3054383")
+                .withIdentification("OOOCSSSSSS")
+                .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(70.0)
                 .withWeightNettoMax(65.0)
                 .withWeightTara(70.0)
@@ -30,8 +30,8 @@ class TrailerTest {
                 .isCraneable(true)
                 .buildAndValidate();
 
-        assertEquals("CSQU3054383", trailer.getIdentification());
-        assertEquals("CSQU3054383", trailer.getNumber());
+        assertEquals("OOOCSSSSSS", trailer.getIdentification());
+        assertEquals("OOOCSSSSSS", trailer.getNumber());
         assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
         assertEquals(70, trailer.getWeightBruttoMax().doubleValue());
         assertEquals(65, trailer.getWeightNettoMax().doubleValue());
@@ -52,7 +52,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -66,8 +66,8 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -80,8 +80,8 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -94,8 +94,8 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -108,8 +108,8 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)

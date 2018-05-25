@@ -17,8 +17,8 @@ class SwapBodyTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         SwapBody swapBody = SwapBody.Builder.newSwapBody()
-                .withIdentification("CSQU3054383")
-                .withNumber("CSQU3054383")
+                .withIdentification("OOOCSSSSSS")
+                .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(70.0)
                 .withWeightNettoMax(65.0)
                 .withWeightTara(70.0)
@@ -30,8 +30,8 @@ class SwapBodyTest {
                 .isStackable(true)
                 .buildAndValidate();
 
-        assertEquals("CSQU3054383", swapBody.getIdentification());
-        assertEquals("CSQU3054383", swapBody.getNumber());
+        assertEquals("OOOCSSSSSS", swapBody.getIdentification());
+        assertEquals("OOOCSSSSSS", swapBody.getNumber());
         assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
         assertEquals(70, swapBody.getWeightBruttoMax().doubleValue());
         assertEquals(65, swapBody.getWeightNettoMax().doubleValue());
@@ -48,10 +48,12 @@ class SwapBodyTest {
     @Test
     void ensureMinimumRequirementIsChecked() {
 
+
+
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -65,8 +67,8 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -79,8 +81,8 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -93,8 +95,8 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)
@@ -107,8 +109,8 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("CSQU3054383")
-                    .withNumber("CSQU3054383")
+                    .withIdentification("OOOCSSSSSS")
+                    .withNumber("OOOCSSSSSS")
                     .withWeightBruttoMax(70.0)
                     .withWeightNettoMax(65.0)
                     .withWeightTara(70.0)

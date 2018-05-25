@@ -22,7 +22,6 @@ import javax.validation.constraints.NotNull;
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  * @minimum_requirement  number, category, reefer, sizeType, type, size
  */
-//TODO - Builder
 public class Container extends LoadingUnit {
 
     /**
@@ -97,5 +96,148 @@ public class Container extends LoadingUnit {
             + String.format("reefer='%s', ", super.isReefer()) + String.format("operator='%s', ", super.getOperator())
             + String.format("size='%s', ", this.size) + String.format("type='%s', ", this.type)
             + String.format("sizeType='%s'", this.sizeType) + "}";
+    }
+
+    public static final class Builder {
+
+        private String identification;
+        private String number;
+        private LoadingUnitCategory category;
+        private Double weightBruttoMax;
+        private Double weightNettoMax;
+        private String sizeType;
+        private Double weightTara;
+        private String condition;
+        private String type;
+        private Boolean reefer;
+        private Integer size;
+        private String operator;
+
+        private Builder() {
+        }
+
+        public static Builder newContainer() {
+
+            return new Builder();
+        }
+
+
+        public Builder withIdentification(String identification) {
+
+            this.identification = identification;
+
+            return this;
+        }
+
+
+        public Builder withNumber(String number) {
+
+            this.number = number;
+
+            return this;
+        }
+
+
+        public Builder withWeightBruttoMax(Double weightBruttoMax) {
+
+            this.weightBruttoMax = weightBruttoMax;
+
+            return this;
+        }
+
+
+        public Builder withWeightNettoMax(Double weightNettoMax) {
+
+            this.weightNettoMax = weightNettoMax;
+
+            return this;
+        }
+
+
+        public Builder withSizeType(String sizeType) {
+
+            this.sizeType = sizeType;
+
+            return this;
+        }
+
+
+        public Builder withWeightTara(Double weightTara) {
+
+            this.weightTara = weightTara;
+
+            return this;
+        }
+
+
+        public Builder withCondition(String condition) {
+
+            this.condition = condition;
+
+            return this;
+        }
+
+
+        public Builder withType(String type) {
+
+            this.type = type;
+
+            return this;
+        }
+
+
+        public Builder isReefer(Boolean reefer) {
+
+            this.reefer = reefer;
+
+            return this;
+        }
+
+
+        public Builder withSize(Integer size) {
+
+            this.size = size;
+
+            return this;
+        }
+
+
+        public Builder withOperator(String operator) {
+
+            this.operator = operator;
+
+            return this;
+        }
+
+
+        public Container build() {
+
+            Container container = new Container();
+            container.setIdentification(identification);
+            container.setNumber(number);
+            container.setWeightBruttoMax(weightBruttoMax);
+            container.setWeightNettoMax(weightNettoMax);
+            container.setWeightTara(weightTara);
+            container.setCondition(condition);
+            container.setReefer(reefer);
+            container.setOperator(operator);
+            container.sizeType = this.sizeType;
+            container.type = this.type;
+            container.size = this.size;
+
+            container.setCategory(LoadingUnitCategory.CONTAINER);
+
+            return container;
+        }
+
+
+        public Container buildAndValidate() {
+
+            Container container = this.build();
+
+            Validator.validate(container);
+
+            return container;
+        }
     }
 }

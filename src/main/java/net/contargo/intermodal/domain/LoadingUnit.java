@@ -1,5 +1,6 @@
 package net.contargo.intermodal.domain;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 
