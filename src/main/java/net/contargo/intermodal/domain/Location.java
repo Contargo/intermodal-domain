@@ -10,7 +10,7 @@ public class Location {
 
     /**
      * @definition_german  Eigenname Terminal
-     * @defintion_english  name of terminal
+     * @definition_english  name of terminal
      */
     @NotNull(message = "designation is part of minimum requirement")
     private String designation;

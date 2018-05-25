@@ -20,7 +20,7 @@ import javax.validation.constraints.NotNull;
  *                ISO 17261:2012-12, 3.14 — modifiziert, Änderung der Anmerkung)
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
- * @minimum_requirement  number, category, reefer, sizeType, type, size
+ * @minimum_requirement  sizeType, type, size, also @see minimum requirements of {@link LoadingUnit}
  */
 public class Container extends LoadingUnit {
 

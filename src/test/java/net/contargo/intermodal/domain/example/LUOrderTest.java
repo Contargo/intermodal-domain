@@ -41,7 +41,7 @@ class LUOrderTest {
                 .withSeal(new ArrayList<String>())
                 .withSealType("some seal type")
                 .withSealNumber("42")
-                .build();
+                .buildAndValidate();
 
         assertNotNull(loadingUnitLUOrder.getLoadingUnit());
         assertEquals("1658583", loadingUnitLUOrder.getReference());
@@ -64,10 +64,24 @@ class LUOrderTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        LUOrder.Builder.newOrder()
+            .withLoadingUnit(new Container())
+            .withWeightBrutto(16.0)
+            .withWeightNetto(14.0)
+            .withWeightTara(16.0)
+            .withDangerousGoodsIndication(new DangerousGoods())
+            .withWasteIndication(new Waste())
+            .build();
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 LUOrder.Builder.newOrder()
                     .withReference("1658583")
                     .withWeightBrutto(16.0)
@@ -75,21 +89,10 @@ class LUOrderTest {
                     .withWeightTara(16.0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withWasteIndication(new Waste())
-                    .withSetTemperature(32)
-                    .withOperator(new Operator())
-                    .withClient(new Operator())
-                    .withDirection(Direction.EXPORT)
-                    .withCustoms(new Customs())
-                    .withGoods("food")
-                    .isEmpty(false)
-                    .withSeal(new ArrayList<String>())
-                    .withSealType("some seal type")
-                    .withSealNumber("42")
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 LUOrder.Builder.newOrder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
@@ -97,20 +100,9 @@ class LUOrderTest {
                     .withWeightTara(16.0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withWasteIndication(new Waste())
-                    .withSetTemperature(32)
-                    .withOperator(new Operator())
-                    .withClient(new Operator())
-                    .withDirection(Direction.EXPORT)
-                    .withCustoms(new Customs())
-                    .withGoods("food")
-                    .isEmpty(false)
-                    .withSeal(new ArrayList<String>())
-                    .withSealType("some seal type")
-                    .withSealNumber("42")
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 LUOrder.Builder.newOrder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
@@ -118,20 +110,9 @@ class LUOrderTest {
                     .withWeightTara(16.0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withWasteIndication(new Waste())
-                    .withSetTemperature(32)
-                    .withOperator(new Operator())
-                    .withClient(new Operator())
-                    .withDirection(Direction.EXPORT)
-                    .withCustoms(new Customs())
-                    .withGoods("food")
-                    .isEmpty(false)
-                    .withSeal(new ArrayList<String>())
-                    .withSealType("some seal type")
-                    .withSealNumber("42")
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 LUOrder.Builder.newOrder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
@@ -139,20 +120,9 @@ class LUOrderTest {
                     .withWeightNetto(14.0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withWasteIndication(new Waste())
-                    .withSetTemperature(32)
-                    .withOperator(new Operator())
-                    .withClient(new Operator())
-                    .withDirection(Direction.EXPORT)
-                    .withCustoms(new Customs())
-                    .withGoods("food")
-                    .isEmpty(false)
-                    .withSeal(new ArrayList<String>())
-                    .withSealType("some seal type")
-                    .withSealNumber("42")
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 LUOrder.Builder.newOrder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
@@ -160,20 +130,9 @@ class LUOrderTest {
                     .withWeightNetto(14.0)
                     .withWeightTara(16.0)
                     .withWasteIndication(new Waste())
-                    .withSetTemperature(32)
-                    .withOperator(new Operator())
-                    .withClient(new Operator())
-                    .withDirection(Direction.EXPORT)
-                    .withCustoms(new Customs())
-                    .withGoods("food")
-                    .isEmpty(false)
-                    .withSeal(new ArrayList<String>())
-                    .withSealType("some seal type")
-                    .withSealNumber("42")
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 LUOrder.Builder.newOrder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
@@ -181,17 +140,6 @@ class LUOrderTest {
                     .withWeightNetto(14.0)
                     .withWeightTara(16.0)
                     .withDangerousGoodsIndication(new DangerousGoods())
-                    .withSetTemperature(32)
-                    .withOperator(new Operator())
-                    .withClient(new Operator())
-                    .withDirection(Direction.EXPORT)
-                    .withCustoms(new Customs())
-                    .withGoods("food")
-                    .isEmpty(false)
-                    .withSeal(new ArrayList<String>())
-                    .withSealType("some seal type")
-                    .withSealNumber("42")
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
     }
 }

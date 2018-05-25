@@ -16,9 +16,9 @@ import javax.validation.constraints.NotNull;
  * @definition_english  Substances or objects that their owner disposes of, wants to dispose of or has to dispose of.
  *                      (@see Regelwerk Abfall – Kreislaufwirtschaftsgesetz (KrWG): Gesetz zur Förderung der
  *                      Kreislaufwirtschaft und Sicherung der umweltverträglichen Bewirtschaftung von Abfällen)
+ * @minimum_requirement  keyId
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
- * @minimum_requirement  keyId
  */
 public class Waste {
 

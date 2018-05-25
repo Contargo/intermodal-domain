@@ -22,9 +22,9 @@ import javax.validation.constraints.NotNull;
  *                      loading unit is made in this class with the connection between order data and loading unit
  *                      data. Especially information about peculiarities of the loading unit including the transported
  *                      goods and operators as well as the direction of transport are collected here.
+ * @minimum_requirement  loadingUnit, weightBrutto, weightNetto, weightTara, dangerousGoodsIndication, wasteIndication
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
- * @minimum_requirement  loadingUnit, weightBrutto, weightNetto, weightTara, dangerousGoodsIndication, wasteIndication
  */
 public class LUOrder {
 

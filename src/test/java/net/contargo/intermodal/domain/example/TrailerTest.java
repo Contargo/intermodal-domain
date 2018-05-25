@@ -47,18 +47,25 @@ class TrailerTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        Trailer.Builder.newTrailer()
+            .withNumber("OOOCSSSSSS")
+            .isReefer(false)
+            .withType("XL")
+            .withSize(6.0)
+            .isCraneable(true)
+            .buildAndValidate();
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withType("XL")
                     .withSize(6.0)
                     .isCraneable(true)
@@ -66,13 +73,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
-                    .withOperator("Contargo")
                     .withType("XL")
                     .withSize(6.0)
                     .isCraneable(true)
@@ -80,42 +81,24 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withSize(6.0)
                     .isCraneable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withType("XL")
                     .isCraneable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.Builder.newTrailer()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withType("XL")
                     .withSize(6.0)
                     .buildAndValidate());

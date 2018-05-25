@@ -46,6 +46,19 @@ class ContainerTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        Container.Builder.newContainer()
+            .withNumber("OOOCSSSSSS")
+            .isReefer(false)
+            .withSizeType("45G0")
+            .withType("HIGH CUBE CONTAINER")
+            .withSize(38)
+            .buildAndValidate();
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,

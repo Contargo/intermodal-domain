@@ -41,19 +41,15 @@ class DangerousGoodsTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        DangerousGoods.Builder.newDangerousGoods().withUnNumber("1005").buildAndValidate();
+    }
+
+
+    @Test
     void ensureDangerousGoodsCanBeValidated() {
 
-        assertThrows(IllegalStateException.class,
-            () ->
-                DangerousGoods.Builder.newDangerousGoods()
-                    .withMaterial("Ammoniak")
-                    .withDangerNote("Umweltgefährdend")
-                    .withPackagingGroup("VG II")
-                    .withTotalQuantity("1000 l")
-                    .withTunnelRestrictionCode(TunnelRestrictionCode.NONE)
-                    .withMandatoryRouting("Mandatory Routing?")
-                    .withLimitedQuantity(false)
-                    .withMarinePollutants(true)
-                    .buildAndValidate());
+        assertThrows(IllegalStateException.class, () -> DangerousGoods.Builder.newDangerousGoods().buildAndValidate());
     }
 }

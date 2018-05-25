@@ -15,25 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrderTest {
 
     @Test
-    void ensureCanBeCreatedWithMinimumRequirements() {
-
-        Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
-
-        Order order = Order.Builder.newOrder()
-                .withReference("54642887")
-                .withOrderForLoadingUnit(new LUOrder())
-                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                .withEarliestPickUp(2018, 5, 14, 11, 0)
-                .withPickUpMeansOfTransport(new Truck())
-                .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                .withDropOffMeansOfTransport(new Barge())
-                .withStops(Arrays.asList(stop))
-                .withDestinationLocation("Terminal Koblenz")
-                .buildAndValidate();
-    }
-
-
-    @Test
     void ensureCanBeCreatedWithAllInformation() {
 
         Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
@@ -78,8 +59,8 @@ class OrderTest {
         assertEquals("20568097", order.getPickUp().getBillingReference());
         assertNotNull(order.getPickUp().getLoadingUnit().getOperator());
 
-        // assertEquals("2018-05-14T11:00:00.000Z", order.getPickUp().getEarliest());
-        // assertEquals("2018-05-14T11:30:00.000Z", order.getPickUp().getLatest());
+        assertEquals("2018-05-14T11:00:00.000Z", order.getPickUp().getEarliest());
+        assertEquals("2018-05-14T11:30:00.000Z", order.getPickUp().getLatest());
         assertNotNull(order.getPickUp().getMot());
 
         // Drop Off
@@ -90,8 +71,8 @@ class OrderTest {
         assertFalse(order.getDropOff().getLoadingUnit().isEmpty());
         assertEquals("98690", order.getDropOff().getBillingReference());
 
-        // assertEquals("2018-05-14T14:00:00.000Z", order.getDropOff().getEarliest());
-        // assertEquals("2018-05-14T14:15:00.000Z", order.getDropOff().getLatest());
+        assertEquals("2018-05-14T14:00:00.000Z", order.getDropOff().getEarliest());
+        assertEquals("2018-05-14T14:15:00.000Z", order.getDropOff().getLatest());
         assertNotNull(order.getDropOff().getMot());
 
         assertEquals(3, order.getStops().size());
@@ -99,6 +80,25 @@ class OrderTest {
         assertEquals("DE", order.getDestination().getCountryCode());
         assertEquals("Koblenz", order.getDestination().getLocation().getCity());
         assertEquals("Terminal Koblenz", order.getDestination().getLocation().getDesignation());
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
+
+        Order order = Order.Builder.newOrder()
+                .withReference("54642887")
+                .withOrderForLoadingUnit(new LUOrder())
+                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                .withEarliestPickUp(2018, 5, 14, 11, 0)
+                .withPickUpMeansOfTransport(new Truck())
+                .withDropOffLocation("Koblenz", "Terminal Koblenz")
+                .withDropOffMeansOfTransport(new Barge())
+                .withStops(Arrays.asList(stop))
+                .withDestinationLocation("Terminal Koblenz")
+                .buildAndValidate();
     }
 
 

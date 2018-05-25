@@ -34,15 +34,15 @@ class WasteTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        Waste.Builder.newWaste().withKeyID("03 03 01").buildAndValidate();
+    }
+
+
+    @Test
     void ensureWasteCanBeValidated() {
 
-        assertThrows(IllegalStateException.class,
-            () ->
-                Waste.Builder.newWaste()
-                    .withPosition("position")
-                    .withWasteRegulationNumber("02")
-                    .withReceiptNumber("65478")
-                    .withWeightNetto(75.0)
-                    .buildAndValidate());
+        assertThrows(IllegalStateException.class, () -> Waste.Builder.newWaste().buildAndValidate());
     }
 }

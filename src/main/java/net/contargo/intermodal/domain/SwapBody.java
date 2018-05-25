@@ -19,9 +19,9 @@ import javax.validation.constraints.NotNull;
  * @definition_english  Loading unit intended for the transport of goods, optimized with regard to the dimensions of
  *                      road vehicles and equipped with gripping edges for the transfer between means of transport,
  *                      usually between road and rail transport.
+ * @minimum_requirement  type, size, stackable, also @see minimum requirements of {@link LoadingUnit}
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
- * @minimum_requirement  number, category, reefer, type, size, stackable
  */
 public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufbau, Wechselbehälter {
 

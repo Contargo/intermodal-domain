@@ -18,9 +18,9 @@ import javax.validation.constraints.NotNull;
  * @definition_english  Trailer vehicle which has no front axle so a substantial part of its total weight is
  *                      transferred to a tractor unit. (@see DIN 70010:2001, 2.3 — modified, „(see 1.2.2.3.2) (auch
  *                      Deichselachse (Dolly))“ gestrichen, Anmerkung 1 hinzugefügt)
+ * @minimum_requirement  type, size, craneable, also @see minimum requirements of {@link LoadingUnit}
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
- * @minimum_requirement  number, category, reefer, type, size, craneable
  */
 public class Trailer extends LoadingUnit {
 

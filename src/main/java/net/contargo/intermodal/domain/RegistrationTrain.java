@@ -37,7 +37,7 @@ public class RegistrationTrain {
     private Operator railwayOperator;
 
     /**
-     * @note  only set this attribute if its value differs from railwayOperator
+     * @note_english  only set this attribute if its value differs from railwayOperator
      */
     private Operator operator;
 

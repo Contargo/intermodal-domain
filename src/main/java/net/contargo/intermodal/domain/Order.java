@@ -27,6 +27,9 @@ import javax.validation.constraints.NotNull;
  *                      connection of data. It can be used to map a complete chain of transport with all of its
  *                      relevant data. It includes high level order data as well as data relevant for transport
  *                      organized by pick up, drop off, stop and destination.
+ * @minimum_requirement  pickUpLocation with city and designation, pickUpEarliest, pickUpMeansOfTransport,
+ *                       dropOffLocation with city and designation, dropOffMeansOfTransport, stopLocation with city and
+ *                       designation, destinationDesignation
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -47,7 +50,7 @@ public class Order {
     private Transport transport;
 
     @NotNull(message = "destination is part of minimum requirement")
-    @DestinationConstraint(message = "must fulfill minimum requirements of designation")
+    @DestinationConstraint(message = "must fulfill minimum requirements of destination")
     private Destination destination;
 
     public String getReference() {

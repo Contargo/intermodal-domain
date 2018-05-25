@@ -46,20 +46,25 @@ class SwapBodyTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        SwapBody.Builder.newSwapBody()
+            .withNumber("OOOCSSSSSS")
+            .isReefer(false)
+            .withType("Open Top")
+            .withSize(6.5)
+            .isStackable(true)
+            .buildAndValidate();
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
-
-
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withType("Open Top")
                     .withSize(6.5)
                     .isStackable(true)
@@ -67,13 +72,7 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
-                    .withOperator("Contargo")
                     .withType("Open Top")
                     .withSize(6.5)
                     .isStackable(true)
@@ -81,42 +80,24 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withSize(6.5)
                     .isStackable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withType("Open Top")
                     .isStackable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.Builder.newSwapBody()
-                    .withIdentification("OOOCSSSSSS")
                     .withNumber("OOOCSSSSSS")
-                    .withWeightBruttoMax(70.0)
-                    .withWeightNettoMax(65.0)
-                    .withWeightTara(70.0)
-                    .withCondition("i.O.")
                     .isReefer(false)
-                    .withOperator("Contargo")
                     .withType("Open Top")
                     .withSize(6.5)
                     .buildAndValidate());

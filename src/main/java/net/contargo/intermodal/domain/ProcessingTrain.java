@@ -99,7 +99,7 @@ public class ProcessingTrain {
 
         /**
          * @name_german  Verladelistewagenreihung
-         * @note  driving direction sequence
+         * @note_english  driving direction sequence
          */
         private Integer ranking;
         private List<LUOrder> loadingPosition = new ArrayList<>();

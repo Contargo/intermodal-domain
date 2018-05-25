@@ -1,6 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 
@@ -18,6 +17,7 @@ import javax.validation.constraints.NotNull;
  * @note_german  Spezielle Ladeeinheiten des Kombinierten Verkehrs sind {@link Container},
  *               {@link SwapBody Wechselbehälter}, {@link Trailer Sattelauflieger}.
  * @note_english  Loading units in combined traffic are {@link Container}, {@link SwapBody} and {@link Trailer}.
+ * @minimum_requirement  number, category (is set automatically), reefer
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
