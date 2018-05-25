@@ -138,7 +138,7 @@ public class MeansOfTransportationStatus {
 
         public Builder withAtd(int year, int month, int day, int hour, int minute) {
 
-            this.atd = ISO8601DateFormatter.format(year, month, day);
+            this.atd = ISO8601DateFormatter.format(year, month, day, hour, minute);
 
             return this;
         }
@@ -146,7 +146,7 @@ public class MeansOfTransportationStatus {
 
         public Builder withEta(int year, int month, int day, int hour, int minute) {
 
-            this.eta = ISO8601DateFormatter.format(year, month, day);
+            this.eta = ISO8601DateFormatter.format(year, month, day, hour, minute);
 
             return this;
         }
@@ -154,7 +154,7 @@ public class MeansOfTransportationStatus {
 
         public Builder withAta(int year, int month, int day, int hour, int minute) {
 
-            this.ata = ISO8601DateFormatter.format(year, month, day);
+            this.ata = ISO8601DateFormatter.format(year, month, day, hour, minute);
 
             return this;
         }

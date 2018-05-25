@@ -25,9 +25,9 @@ class MeansOfTransportationStatusTest {
                 .withWaggonTechnicalInspection(1)
                 .buildAndValidate();
 
-        assertEquals("2018-05-11T06:00:00.000Z", meansOfTransportationStatus.getAtd());
-        assertEquals("2018-05-11T12:30:00.000Z", meansOfTransportationStatus.getEta());
-        assertEquals("2018-05-11T06:05:00.000Z", meansOfTransportationStatus.getAta());
+        assertEquals("2018-05-11T06:00:00", meansOfTransportationStatus.getAtd());
+        assertEquals("2018-05-11T12:30:00", meansOfTransportationStatus.getEta());
+        assertEquals("2018-05-11T06:05:00", meansOfTransportationStatus.getAta());
         assertTrue(meansOfTransportationStatus.getHandlingStart());
         assertFalse(meansOfTransportationStatus.getHandlingEnd());
         assertEquals(1, meansOfTransportationStatus.getWaggonTechnicalInspection().intValue());

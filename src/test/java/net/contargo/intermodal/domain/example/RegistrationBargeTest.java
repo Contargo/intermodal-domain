@@ -27,8 +27,8 @@ class RegistrationBargeTest {
                 .buildAndValidate();
 
         assertNotNull(registrationBarge.getBarge());
-        assertEquals("2018-05-14T11:00:00.000Z", registrationBarge.getEta());
-        assertEquals("2018-05-14T12:00:00.000Z", registrationBarge.getEtd());
+        assertEquals("2018-05-14T11:00:00", registrationBarge.getEta());
+        assertEquals("2018-05-14T12:00:00", registrationBarge.getEtd());
         assertNotNull(registrationBarge.getDangerousGoodsIndication());
         assertEquals(24, registrationBarge.getVolumeToLoad().intValue());
         assertEquals(24, registrationBarge.getVolumeToDischarge().intValue());

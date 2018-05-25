@@ -36,9 +36,9 @@ class ProcessingTrainTest {
         assertEquals("54789", processingTrain.getLoadingList().get(1).getId());
         assertEquals("24568", processingTrain.getLoadingList().get(2).getId());
         assertEquals(2, processingTrain.getLoadingList().get(2).getLoadingPosition().size());
-        assertEquals("2018-05-14T11:00:00.000Z", processingTrain.getTerminalEta());
-        assertEquals("2018-05-14T13:00:00.000Z", processingTrain.getTerminalEtd());
-        assertEquals("2018-05-14T12:00:00.000Z", processingTrain.getShuntingYardEta());
+        assertEquals("2018-05-14T11:00:00", processingTrain.getTerminalEta());
+        assertEquals("2018-05-14T13:00:00", processingTrain.getTerminalEtd());
+        assertEquals("2018-05-14T12:00:00", processingTrain.getShuntingYardEta());
         assertEquals("a shunter", processingTrain.getShunter());
         assertEquals("12345", processingTrain.getTrainPaths());
     }

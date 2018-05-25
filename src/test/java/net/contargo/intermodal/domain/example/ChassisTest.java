@@ -31,7 +31,7 @@ class ChassisTest {
                 .buildAndValidate();
 
         assertEquals("DU CO 1782", chassis.getNumberPlate());
-        assertEquals("2020-05-22T00:00:00.000Z", chassis.getMot());
+        assertEquals("2020-05-22T00:00:00", chassis.getMot());
         assertEquals("Multichassis", chassis.getType());
         assertEquals(2, chassis.getAxles().intValue());
         assertEquals(8.0, chassis.getSize().doubleValue());

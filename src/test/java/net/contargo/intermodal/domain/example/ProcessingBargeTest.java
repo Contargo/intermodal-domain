@@ -32,8 +32,8 @@ class ProcessingBargeTest {
                 .buildAndValidate();
 
         assertNotNull(processingBarge.getBarge());
-        assertEquals("2018-05-14T11:00:00.000Z", processingBarge.getEta());
-        assertEquals("2018-05-14T12:00:00.000Z", processingBarge.getEtd());
+        assertEquals("2018-05-14T11:00:00", processingBarge.getEta());
+        assertEquals("2018-05-14T12:00:00", processingBarge.getEtd());
         assertNotNull(processingBarge.getSkipper());
         assertEquals(2, processingBarge.getPassenger().size());
         assertEquals(12, processingBarge.getReeferConnections().intValue());

@@ -36,9 +36,9 @@ class RegistrationTrainTest {
         assertEquals("My Train", registrationTrain.getTrainTitle());
         assertNotNull(registrationTrain.getRailwayOperator());
         assertNotNull(registrationTrain.getOperator());
-        assertEquals("2018-05-14T11:00:00.000Z", registrationTrain.getTerminalEta());
-        assertEquals("2018-05-14T13:00:00.000Z", registrationTrain.getTerminalEtd());
-        assertEquals("2018-05-14T12:00:00.000Z", registrationTrain.getShuntingYardEta());
+        assertEquals("2018-05-14T11:00:00", registrationTrain.getTerminalEta());
+        assertEquals("2018-05-14T13:00:00", registrationTrain.getTerminalEtd());
+        assertEquals("2018-05-14T12:00:00", registrationTrain.getShuntingYardEta());
         assertEquals("a shunter", registrationTrain.getShunter());
         assertEquals(120.0, registrationTrain.getTotalLength().doubleValue());
         assertEquals(10, registrationTrain.getWaggonQuantity().intValue());

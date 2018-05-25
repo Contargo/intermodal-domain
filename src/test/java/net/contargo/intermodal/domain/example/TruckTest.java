@@ -31,7 +31,7 @@ class TruckTest {
 
         assertEquals("DU CO 1782", truck.getNumberPlate());
         assertEquals("DE", truck.getCountryCode());
-        assertEquals("2020-05-22T00:00:00.000Z", truck.getMot());
+        assertEquals("2020-05-22T00:00:00", truck.getMot());
         assertEquals(EnvironmentBadge.GREEN, truck.getEnvironmentBadge());
         assertEquals("refrigerator truck", truck.getType());
         assertTrue(truck.getEuAuthorization());

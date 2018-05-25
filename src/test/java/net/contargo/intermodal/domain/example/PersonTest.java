@@ -34,13 +34,13 @@ class PersonTest {
         assertEquals("Max", driver.getFirstName());
         assertNotNull(driver.getAddress());
         assertEquals("01234/56789", driver.getCellphone());
-        assertEquals("1980-01-13T00:00:00.000Z", driver.getDateOfBirth());
+        assertEquals("1980-01-13T00:00:00", driver.getDateOfBirth());
         assertEquals("Karlsruhe", driver.getCityOfBirth());
         assertEquals("DE", driver.getCountryCode());
         assertEquals("12345678", driver.getLicense().getLicenseNumber());
         assertEquals("42", driver.getId());
-        assertEquals("2018-12-31T00:00:00.000Z", driver.getAdr());
-        assertEquals("2018-12-31T00:00:00.000Z", driver.getModuleEntry95());
+        assertEquals("2018-12-31T00:00:00", driver.getAdr());
+        assertEquals("2018-12-31T00:00:00", driver.getModuleEntry95());
     }
 
 
@@ -62,10 +62,10 @@ class PersonTest {
         assertEquals("Max", trainDriver.getFirstName());
         assertNotNull(trainDriver.getAddress());
         assertEquals("01234/56789", trainDriver.getCellphone());
-        assertEquals("1980-01-13T00:00:00.000Z", trainDriver.getDateOfBirth());
+        assertEquals("1980-01-13T00:00:00", trainDriver.getDateOfBirth());
         assertEquals("Karlsruhe", trainDriver.getCityOfBirth());
         assertEquals("DE", trainDriver.getCountryCode());
-        assertEquals("2018-12-31T00:00:00.000Z", trainDriver.getRid());
+        assertEquals("2018-12-31T00:00:00", trainDriver.getRid());
     }
 
 
@@ -87,9 +87,9 @@ class PersonTest {
         assertEquals("Max", skipper.getFirstName());
         assertNotNull(skipper.getAddress());
         assertEquals("01234/56789", skipper.getCellphone());
-        assertEquals("1980-01-13T00:00:00.000Z", skipper.getDateOfBirth());
+        assertEquals("1980-01-13T00:00:00", skipper.getDateOfBirth());
         assertEquals("Karlsruhe", skipper.getCityOfBirth());
         assertEquals("DE", skipper.getCountryCode());
-        assertEquals("2018-12-31T00:00:00.000Z", skipper.getAdnr());
+        assertEquals("2018-12-31T00:00:00", skipper.getAdnr());
     }
 }

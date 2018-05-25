@@ -4,7 +4,9 @@ import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,7 +19,10 @@ class OrderTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
+        List<Stop> stops = new ArrayList<>();
+        stops.add(Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate());
+        stops.add(Stop.Builder.newStop().withLocation("Wörth", "Terminal Wörth").buildAndValidate());
+        stops.add(Stop.Builder.newStop().withLocation("Ludwigshafen", "Terminal Ludwigshafen").buildAndValidate());
 
         Order order = Order.Builder.newOrder()
                 .withReference("54642887")
@@ -38,7 +43,7 @@ class OrderTest {
                 .withEarliestDropOff(2018, 5, 14, 14, 0)
                 .withLatestDropOff(2018, 5, 14, 14, 15)
                 .withDropOffMeansOfTransport(new Barge())
-                .withStops(Arrays.asList(stop))
+                .withStops(stops)
                 .withDestinationVessel(new Vessel())
                 .withDestinationCountryCode("DE")
                 .withDestinationLocation("Koblenz", "Terminal Koblenz")
@@ -59,8 +64,8 @@ class OrderTest {
         assertEquals("20568097", order.getPickUp().getBillingReference());
         assertNotNull(order.getPickUp().getLoadingUnit().getOperator());
 
-        assertEquals("2018-05-14T11:00:00.000Z", order.getPickUp().getEarliest());
-        assertEquals("2018-05-14T11:30:00.000Z", order.getPickUp().getLatest());
+        assertEquals("2018-05-14T11:00:00", order.getPickUp().getEarliest());
+        assertEquals("2018-05-14T11:30:00", order.getPickUp().getLatest());
         assertNotNull(order.getPickUp().getMot());
 
         // Drop Off
@@ -71,8 +76,8 @@ class OrderTest {
         assertFalse(order.getDropOff().getLoadingUnit().isEmpty());
         assertEquals("98690", order.getDropOff().getBillingReference());
 
-        assertEquals("2018-05-14T14:00:00.000Z", order.getDropOff().getEarliest());
-        assertEquals("2018-05-14T14:15:00.000Z", order.getDropOff().getLatest());
+        assertEquals("2018-05-14T14:00:00", order.getDropOff().getEarliest());
+        assertEquals("2018-05-14T14:15:00", order.getDropOff().getLatest());
         assertNotNull(order.getDropOff().getMot());
 
         assertEquals(3, order.getStops().size());

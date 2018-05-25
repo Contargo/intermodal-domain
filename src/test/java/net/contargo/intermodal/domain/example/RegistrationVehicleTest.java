@@ -34,7 +34,7 @@ class RegistrationVehicleTest {
         assertNotNull(registrationVehicle.getDriver());
         assertEquals("haulier client", registrationVehicle.getHaulierClient());
         assertEquals("haulier realizing", registrationVehicle.getHaulierRealizing());
-        assertEquals("2018-05-14T12:30:00.000Z", registrationVehicle.getDeliveryTime());
+        assertEquals("2018-05-14T12:30:00", registrationVehicle.getDeliveryTime());
         assertNotNull(registrationVehicle.getLuOrder());
     }
 
