@@ -153,7 +153,7 @@ public class RegistrationVehicle {
         }
 
 
-        public Builder withLuOrder(LUOrder LuOrder) {
+        public Builder withLuOrder(LUOrder luOrder) {
 
             this.luOrder = luOrder;
 

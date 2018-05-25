@@ -43,7 +43,7 @@ class RegistrationVehicleTest {
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationVehicle.Builder.newRegistrationVehicle()
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
@@ -51,11 +51,10 @@ class RegistrationVehicleTest {
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(2018, 5, 14, 12, 30)
                     .withLuOrder(new LUOrder())
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationVehicle.Builder.newRegistrationVehicle()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
@@ -63,11 +62,10 @@ class RegistrationVehicleTest {
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(2018, 5, 14, 12, 30)
                     .withLuOrder(new LUOrder())
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationVehicle.Builder.newRegistrationVehicle()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
@@ -75,11 +73,10 @@ class RegistrationVehicleTest {
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(2018, 5, 14, 12, 30)
                     .withLuOrder(new LUOrder())
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationVehicle.Builder.newRegistrationVehicle()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
@@ -87,10 +84,9 @@ class RegistrationVehicleTest {
                     .withHaulierClient("haulier client")
                     .withDeliveryTime(2018, 5, 14, 12, 30)
                     .withLuOrder(new LUOrder())
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationVehicle.Builder.newRegistrationVehicle()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
@@ -98,10 +94,9 @@ class RegistrationVehicleTest {
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
                     .withLuOrder(new LUOrder())
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationVehicle.Builder.newRegistrationVehicle()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
@@ -109,7 +104,6 @@ class RegistrationVehicleTest {
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(2018, 5, 14, 12, 30)
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
     }
 }
