@@ -46,11 +46,15 @@ public class Order {
     private LUOrder luOrder;
 
     @NotNull(message = "transport is part of minimum requirement")
-    @TransportConstraint(message = "must fulfill minimum requirements of transport")
+    @TransportConstraint(
+        message = "pickUpLocation (with city and designation), pickUpEarliest, pickUpMoT, "
+            + "dropOffLocation (with city and designation), dropOffMoT and stopLocation (with city and designation) "
+            + "are part of minimum requirement of Transport"
+    )
     private Transport transport;
 
     @NotNull(message = "destination is part of minimum requirement")
-    @DestinationConstraint(message = "must fulfill minimum requirements of destination")
+    @DestinationConstraint(message = "locationDesignation is part of minimum requirement of Transport")
     private Destination destination;
 
     public String getReference() {
