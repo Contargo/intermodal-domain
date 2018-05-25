@@ -24,7 +24,7 @@ public class Customs {
      */
     private String customDocumentNumber;
 
-    private Boolean seal;
+    private Seal seal;
 
     public String getCustomProcess() {
 
@@ -38,7 +38,7 @@ public class Customs {
     }
 
 
-    public Boolean getSeal() {
+    public Seal getSeal() {
 
         return seal;
     }
@@ -47,7 +47,7 @@ public class Customs {
 
         private String customProcess;
         private String customDocumentNumber;
-        private Boolean seal;
+        private Seal seal;
 
         private Builder() {
         }
@@ -74,7 +74,7 @@ public class Customs {
         }
 
 
-        public Builder withSeal(Boolean seal) {
+        public Builder withSeal(Seal seal) {
 
             this.seal = seal;
 

@@ -3,7 +3,7 @@ package net.contargo.intermodal.domain;
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-class Seal {
+public class Seal {
 
     private String type;
 
@@ -30,5 +30,45 @@ class Seal {
     public void setNumber(String number) {
 
         this.number = number;
+    }
+
+    public static final class Builder {
+
+        private String type;
+        private String number;
+
+        private Builder() {
+        }
+
+        public static Builder newSeal() {
+
+            return new Builder();
+        }
+
+
+        public Builder withType(String type) {
+
+            this.type = type;
+
+            return this;
+        }
+
+
+        public Builder withNumber(String number) {
+
+            this.number = number;
+
+            return this;
+        }
+
+
+        public Seal build() {
+
+            Seal seal = new Seal();
+            seal.setType(type);
+            seal.setNumber(number);
+
+            return seal;
+        }
     }
 }

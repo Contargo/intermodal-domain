@@ -1,5 +1,6 @@
 package net.contargo.intermodal.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -60,11 +61,7 @@ public class LUOrder {
 
     private Boolean empty;
 
-    private List<String> seal;
-
-    private String sealType;
-
-    private String sealNumber;
+    private List<Seal> seal;
 
     public String getReference() {
 
@@ -150,25 +147,13 @@ public class LUOrder {
     }
 
 
-    public List<String> getSeal() {
+    public List<Seal> getSeals() {
 
         return seal;
     }
 
 
-    public String getSealType() {
-
-        return sealType;
-    }
-
-
-    public String getSealNumber() {
-
-        return sealNumber;
-    }
-
-
-    @Override
+    /*@Override
     public String toString() {
 
         return "LUOrder {"
@@ -187,8 +172,7 @@ public class LUOrder {
             + String.format("empty='%s' ,", this.empty) + String.format("seal='%s' ,", this.seal)
             + String.format("sealType='%s' ,", this.sealType) + String.format("sealNumber='%s'", this.sealNumber)
             + "}";
-    }
-
+    }*/
 
     public Weight getWeight() {
 
@@ -211,9 +195,7 @@ public class LUOrder {
         private Customs customs;
         private String goods;
         private Boolean empty;
-        private List<String> seal;
-        private String sealType;
-        private String sealNumber;
+        private List<Seal> seal = new ArrayList<>();
 
         private Builder() {
         }
@@ -336,25 +318,17 @@ public class LUOrder {
         }
 
 
-        public Builder withSeal(List<String> seal) {
+        public Builder withSeal(Seal seal) {
 
-            this.seal = seal;
-
-            return this;
-        }
-
-
-        public Builder withSealType(String sealType) {
-
-            this.sealType = sealType;
+            this.seal.add(seal);
 
             return this;
         }
 
 
-        public Builder withSealNumber(String sealNumber) {
+        public Builder withSeals(List<Seal> seals) {
 
-            this.sealNumber = sealNumber;
+            this.seal.addAll(seals);
 
             return this;
         }
@@ -363,8 +337,6 @@ public class LUOrder {
         public LUOrder build() {
 
             LUOrder luOrder = new LUOrder();
-            luOrder.sealNumber = this.sealNumber;
-            luOrder.seal = this.seal;
             luOrder.operator = this.operator;
             luOrder.customs = this.customs;
             luOrder.empty = this.empty;
@@ -376,7 +348,7 @@ public class LUOrder {
             luOrder.wasteIndication = this.wasteIndication;
             luOrder.goods = this.goods;
             luOrder.reference = this.reference;
-            luOrder.sealType = this.sealType;
+            luOrder.seal = this.seal;
 
             Weight weight = new Weight();
             weight.setNetto(this.weightNetto);

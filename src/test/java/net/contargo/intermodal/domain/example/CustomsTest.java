@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.Customs;
+import net.contargo.intermodal.domain.Seal;
 
 import org.junit.jupiter.api.Test;
 
@@ -18,11 +19,12 @@ class CustomsTest {
         Customs customs = Customs.Builder.newCustoms()
                 .withCustomProcess("T1")
                 .withCustomDocumentNumber("16DE1234...")
-                .withSeal(false)
+                .withSeal(Seal.Builder.newSeal().withNumber("42").withType("some seal type").build())
                 .buildAndValidate();
 
         assertEquals("T1", customs.getCustomProcess());
         assertEquals("16DE1234...", customs.getCustomDocumentNumber());
-        assertFalse(customs.getSeal());
+        assertEquals("42", customs.getSeal().getNumber());
+        assertEquals("some seal type", customs.getSeal().getType());
     }
 }

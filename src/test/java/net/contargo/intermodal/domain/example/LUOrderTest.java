@@ -1,16 +1,11 @@
 package net.contargo.intermodal.domain.example;
 
-import net.contargo.intermodal.domain.Container;
-import net.contargo.intermodal.domain.Customs;
-import net.contargo.intermodal.domain.DangerousGoods;
-import net.contargo.intermodal.domain.Direction;
-import net.contargo.intermodal.domain.LUOrder;
-import net.contargo.intermodal.domain.Operator;
-import net.contargo.intermodal.domain.Waste;
+import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,6 +17,10 @@ class LUOrderTest {
 
     @Test
     void ensureCanBeCreatedWithAllInformation() {
+
+        List<Seal> seals = new ArrayList<>();
+        seals.add(Seal.Builder.newSeal().withNumber("01234").withType("some seal type").build());
+        seals.add(Seal.Builder.newSeal().withNumber("46789").withType("another seal type").build());
 
         LUOrder loadingUnitLUOrder = LUOrder.Builder.newOrder()
                 .withLoadingUnit(new Container())
@@ -38,9 +37,7 @@ class LUOrderTest {
                 .withCustoms(new Customs())
                 .withGoods("food")
                 .isEmpty(false)
-                .withSeal(new ArrayList<String>())
-                .withSealType("some seal type")
-                .withSealNumber("42")
+                .withSeals(seals)
                 .buildAndValidate();
 
         assertNotNull(loadingUnitLUOrder.getLoadingUnit());
@@ -57,9 +54,10 @@ class LUOrderTest {
         assertNotNull(loadingUnitLUOrder.getCustoms());
         assertEquals("food", loadingUnitLUOrder.getGoods());
         assertFalse(loadingUnitLUOrder.isEmpty());
-        assertNotNull(loadingUnitLUOrder.getSeal());
-        assertEquals("some seal type", loadingUnitLUOrder.getSealType());
-        assertEquals("42", loadingUnitLUOrder.getSealNumber());
+        assertNotNull(loadingUnitLUOrder.getSeals());
+        assertEquals(2, loadingUnitLUOrder.getSeals().size());
+        assertEquals("some seal type", loadingUnitLUOrder.getSeals().get(0).getType());
+        assertEquals("01234", loadingUnitLUOrder.getSeals().get(0).getNumber());
     }
 
 
