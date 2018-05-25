@@ -62,15 +62,7 @@ public class Barge implements MeansOfTransport {
      */
     private Boolean suitabilityDangerousGoods;
 
-    /**
-     * in TEU.
-     */
-    private Double capacityTeu;
-
-    /**
-     * in tons.
-     */
-    private Double capacityTons;
+    private Capacity capacity;
 
     public String getName() {
 
@@ -140,13 +132,13 @@ public class Barge implements MeansOfTransport {
 
     public Double getCapacityTeu() {
 
-        return capacityTeu;
+        return this.capacity.getTeu();
     }
 
 
     public Double getCapacityTons() {
 
-        return capacityTons;
+        return this.capacity.getTons();
     }
 
     public static final class Builder {
@@ -289,8 +281,12 @@ public class Barge implements MeansOfTransport {
             barge.suitabilityDangerousGoods = this.suitabilityDangerousGoods;
             barge.bays = this.bays;
             barge.mmsi = this.mmsi;
-            barge.capacityTeu = this.capacityTeu;
-            barge.capacityTons = this.capacityTons;
+
+            Capacity capacity = new Capacity();
+            capacity.setTeu(this.capacityTeu);
+            capacity.setTons(this.capacityTons);
+            barge.capacity = capacity;
+
             barge.tiers = this.tiers;
             barge.rows = this.rows;
             barge.eni = this.eni;
