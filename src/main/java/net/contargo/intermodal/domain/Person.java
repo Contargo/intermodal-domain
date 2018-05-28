@@ -116,7 +116,6 @@ public abstract class Person {
 
         Location location = new Location();
         location.setCity(locationCity);
-
         this.location = location;
     }
 

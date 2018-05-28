@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 /**
@@ -75,6 +76,7 @@ public class Truck implements MeansOfTransport {
     }
 
 
+    @JsonIgnore
     public String getCountryCode() {
 
         return country.getCode();
@@ -132,6 +134,19 @@ public class Truck implements MeansOfTransport {
     public Country getCountry() {
 
         return country;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {

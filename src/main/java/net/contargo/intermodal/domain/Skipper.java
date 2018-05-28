@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+
 /**
  * A {@link Person} driving a ship.
  *
@@ -30,6 +33,19 @@ public class Skipper extends Person {
     public String getAdnr() {
 
         return adnr;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {
@@ -124,8 +140,15 @@ public class Skipper extends Person {
             skipper.setAddress(address);
             skipper.setCellphone(cellphone);
             skipper.setDateOfBirth(dateOfBirth);
-            skipper.setLocationCity(locationCity);
-            skipper.setCountryCode(countryCode);
+
+            if (locationCity != null) {
+                skipper.setLocationCity(locationCity);
+            }
+
+            if (countryCode != null) {
+                skipper.setCountryCode(countryCode);
+            }
+
             skipper.adnr = this.adnr;
 
             return skipper;

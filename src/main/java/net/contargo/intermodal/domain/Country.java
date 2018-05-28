@@ -46,12 +46,12 @@ class Country {
 
     public void setCode(String code) {
 
-        if (code.length() != 2) {
+        if (code != null && code.length() != 2) {
             LOG.warning(String.format(
                     "The country code \'%s\' has the wrong length. Please use the 2 characters LOCODE.", code));
         }
 
-        if (Arrays.stream(Locale.getISOCountries()).noneMatch(country -> country.equals(code))) {
+        if (code != null && Arrays.stream(Locale.getISOCountries()).noneMatch(country -> country.equals(code))) {
             LOG.warning(String.format("The country code \'%s\' was not found in Locale.getISOCountries()", code));
         }
 

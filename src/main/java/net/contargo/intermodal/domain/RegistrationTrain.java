@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import javax.validation.constraints.NotNull;
 
@@ -171,6 +172,19 @@ public class RegistrationTrain {
     public DangerousGoods getDangerousGoodsIndication() {
 
         return dangerousGoodsIndication;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {

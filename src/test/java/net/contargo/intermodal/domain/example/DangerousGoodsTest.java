@@ -21,6 +21,7 @@ class DangerousGoodsTest {
                 .withMaterial("Ammoniak")
                 .hasDangerNote(true)
                 .withPackagingGroup("VG II")
+                .withPackages(8)
                 .withTotalQuantity("1000 l")
                 .withTunnelRestrictionCode(TunnelRestrictionCode.NONE)
                 .withMandatoryRouting("Mandatory Routing?")

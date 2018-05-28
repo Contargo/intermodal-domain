@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+
 /**
  * A {@link Person} driving a train.
  *
@@ -30,6 +33,19 @@ public class TrainDriver extends Person {
     public String getRid() {
 
         return rid;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {
@@ -116,6 +132,19 @@ public class TrainDriver extends Person {
         }
 
 
+        @Override
+        public String toString() {
+
+            try {
+                return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+
+            return "";
+        }
+
+
         public TrainDriver build() {
 
             TrainDriver trainDriver = new TrainDriver();
@@ -124,8 +153,15 @@ public class TrainDriver extends Person {
             trainDriver.setAddress(address);
             trainDriver.setCellphone(cellphone);
             trainDriver.setDateOfBirth(dateOfBirth);
-            trainDriver.setLocationCity(locationCity);
-            trainDriver.setCountryCode(countryCode);
+
+            if (locationCity != null) {
+                trainDriver.setLocationCity(locationCity);
+            }
+
+            if (countryCode != null) {
+                trainDriver.setCountryCode(countryCode);
+            }
+
             trainDriver.rid = this.rid;
 
             return trainDriver;

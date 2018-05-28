@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+
 /**
  * Group of data necessary for customs proceedings.
  *
@@ -41,6 +44,19 @@ public class Customs {
     public Seal getSeal() {
 
         return seal;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {

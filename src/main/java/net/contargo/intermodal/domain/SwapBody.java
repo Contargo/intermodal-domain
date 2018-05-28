@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import javax.validation.constraints.NotNull;
 
 
@@ -85,15 +87,13 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     @Override
     public String toString() {
 
-        return "SwapBody {" + String.format("identification='%s', ", super.getIdentification())
-            + String.format("number='%s', ", super.getNumber()) + String.format("category='%s', ", super.getCategory())
-            + String.format("weightBruttoMax='%s', ", super.getWeightBruttoMax())
-            + String.format("weightNettoMax='%s', ", super.getWeightNettoMax())
-            + String.format("weightTara='%s', ", super.getWeight())
-            + String.format("condition='%s', ", super.getCondition())
-            + String.format("reefer='%s', ", super.isReefer()) + String.format("operator='%s', ", super.getOperator())
-            + String.format("type='%s', ", this.type) + String.format("size='%s', ", this.size)
-            + String.format("stackable='%s'", this.stackable) + "}";
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {
@@ -219,11 +219,13 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
             swapBody.size = this.size;
             swapBody.type = this.type;
 
-            Weight weight = new Weight();
-            weight.setBruttoMax(weightBruttoMax);
-            weight.setNettoMax(weightNettoMax);
-            weight.setTara(weightTara);
-            swapBody.setWeight(weight);
+            if (weightBruttoMax != null || weightNettoMax != null) {
+                Weight weight = new Weight();
+                weight.setBruttoMax(weightBruttoMax);
+                weight.setNettoMax(weightNettoMax);
+                weight.setTara(weightTara);
+                swapBody.setWeight(weight);
+            }
 
             swapBody.setCategory(LoadingUnitCategory.SWAP_BODY);
 

@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -111,6 +113,19 @@ public class ProcessingBarge {
     public LoadingList getLoadingList() {
 
         return loadingList;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static class LoadingList {

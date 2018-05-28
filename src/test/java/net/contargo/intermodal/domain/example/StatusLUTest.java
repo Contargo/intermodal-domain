@@ -27,11 +27,11 @@ class StatusLUTest {
                 .buildAndValidate();
 
         assertTrue(statusLU.isReadyForLoading());
-        assertTrue(statusLU.hasInspectionIn());
+        assertTrue(statusLU.getInspectionIn());
         assertTrue(statusLU.isIn());
         assertTrue(statusLU.isUnloaded());
         assertFalse(statusLU.isLoaded());
-        assertFalse(statusLU.hasInspectionOut());
+        assertFalse(statusLU.getInspectionOut());
         assertFalse(statusLU.isOut());
         assertFalse(statusLU.isReadyForUnloading());
     }

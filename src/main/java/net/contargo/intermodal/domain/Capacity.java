@@ -21,7 +21,7 @@ class Capacity {
     }
 
 
-    public void setTeu(Double teu) {
+    void setTeu(Double teu) {
 
         this.teu = teu;
     }
@@ -33,7 +33,7 @@ class Capacity {
     }
 
 
-    public void setTons(Double tons) {
+    void setTons(Double tons) {
 
         this.tons = tons;
     }

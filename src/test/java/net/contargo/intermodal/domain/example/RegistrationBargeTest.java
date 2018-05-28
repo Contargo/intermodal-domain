@@ -39,64 +39,58 @@ class RegistrationBargeTest {
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withEta(2018, 5, 14, 11, 0)
                     .withEtd(2018, 5, 14, 12, 0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
                     .withEtd(2018, 5, 14, 12, 0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
                     .withEta(2018, 5, 14, 11, 0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
                     .withEta(2018, 5, 14, 11, 0)
                     .withEtd(2018, 5, 14, 12, 0)
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
                     .withEta(2018, 5, 14, 11, 0)
                     .withEtd(2018, 5, 14, 12, 0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToLoad(24)
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> {
+            () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
                     .withEta(2018, 5, 14, 11, 0)
                     .withEtd(2018, 5, 14, 12, 0)
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
-                    .buildAndValidate();
-            });
+                    .buildAndValidate());
     }
 }

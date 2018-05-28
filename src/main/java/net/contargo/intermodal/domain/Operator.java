@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+
 /**
  * Unit for organization of multiple actors in trimodal transport.
  *
@@ -68,6 +71,19 @@ public class Operator {
     public String getInsurance() {
 
         return insurance;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {

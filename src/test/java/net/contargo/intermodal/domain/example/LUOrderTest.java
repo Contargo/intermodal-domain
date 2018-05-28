@@ -71,7 +71,7 @@ class LUOrderTest {
             .withWeightTara(16.0)
             .withDangerousGoodsIndication(new DangerousGoods())
             .withWasteIndication(new Waste())
-            .build();
+            .buildAndValidate();
     }
 
 

@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 
 /**
@@ -144,6 +145,25 @@ public class Barge implements MeansOfTransport {
     public Double getCapacityTons() {
 
         return this.capacity.getTons();
+    }
+
+
+    public Capacity getCapacity() {
+
+        return this.capacity;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
     public static final class Builder {

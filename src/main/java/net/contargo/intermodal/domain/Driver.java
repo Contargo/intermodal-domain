@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+
 /**
  * A {@link Person} driving a motor vehicle.
  *
@@ -54,6 +57,19 @@ public class Driver extends Person {
         return moduleEntry95;
     }
 
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
     public static class License {
 
         /**
@@ -77,7 +93,8 @@ public class Driver extends Person {
 
     public static final class Builder {
 
-        private License license = new License();
+        private String licenseValidity;
+        private String licenseNumber;
         private String name;
         private String firstName;
         private Address address;
@@ -132,7 +149,7 @@ public class Driver extends Person {
 
         public Builder withLicenseValidity(int year, int month, int day) {
 
-            this.license.licenseNumber = ISO8601DateFormatter.format(year, month, day);
+            this.licenseValidity = ISO8601DateFormatter.format(year, month, day);
 
             return this;
         }
@@ -140,7 +157,7 @@ public class Driver extends Person {
 
         public Builder withLicenseNumber(String licenseNumber) {
 
-            this.license.licenseNumber = licenseNumber;
+            this.licenseNumber = licenseNumber;
 
             return this;
         }
@@ -198,16 +215,29 @@ public class Driver extends Person {
 
             Driver driver = new Driver();
             driver.setCellphone(this.cellphone);
-            driver.setLocationCity(this.locationCity);
-            driver.setCountryCode(this.countryCode);
+
+            if (countryCode != null) {
+                driver.setCountryCode(this.countryCode);
+            }
+
             driver.setDateOfBirth(this.dateOfBirth);
             driver.setName(this.name);
             driver.setAddress(this.address);
             driver.setFirstName(this.firstName);
-            driver.license = this.license;
             driver.moduleEntry95 = this.moduleEntry95;
             driver.id = this.id;
             driver.adr = this.adr;
+
+            if (locationCity != null) {
+                driver.setLocationCity(this.locationCity);
+            }
+
+            if (licenseValidity != null || licenseNumber != null) {
+                License license = new License();
+                license.licenseNumber = licenseNumber;
+                license.licenseValidity = licenseValidity;
+                driver.license = license;
+            }
 
             return driver;
         }

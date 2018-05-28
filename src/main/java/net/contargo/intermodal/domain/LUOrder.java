@@ -1,6 +1,8 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -152,32 +154,25 @@ public class LUOrder {
     }
 
 
+    @JsonProperty("seal")
     public List<Seal> getSeals() {
 
         return seal;
     }
 
 
-    /*@Override
+    @Override
     public String toString() {
 
-        return "LUOrder {"
-            + String.format("reference='%s', ", this.reference)
-            + String.format("loadingUnit='%s', ", this.loadingUnit.toString())
-            + String.format("weightBrutto='%s' ,", this.weight.getBrutto())
-            + String.format("weightNetto='%s' ,", this.weight.getNetto())
-            + String.format("weightTara='%s',", this.weight.getTara())
-            + String.format("dangerousGoodsIndication='%s' ,", this.dangerousGoodsIndication.toString())
-            + String.format("wasteIndication='%s' ,", this.wasteIndication.toString())
-            + String.format("setTemperature='%s' ,", this.setTemperature)
-            + String.format("operator='%s' ,", this.operator.toString())
-            + String.format("client='%s' ,", this.client.toString())
-            + String.format("direction='%s' ,", this.direction)
-            + String.format("customs='%s' ,", this.customs.toString()) + String.format("goods='%s' ,", this.goods)
-            + String.format("empty='%s' ,", this.empty) + String.format("seal='%s' ,", this.seal)
-            + String.format("sealType='%s' ,", this.sealType) + String.format("sealNumber='%s'", this.sealNumber)
-            + "}";
-    }*/
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
 
     public Weight getWeight() {
 
