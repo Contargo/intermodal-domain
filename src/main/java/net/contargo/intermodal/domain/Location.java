@@ -1,11 +1,14 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 import javax.validation.constraints.NotNull;
 
 
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Location {
 
     /**

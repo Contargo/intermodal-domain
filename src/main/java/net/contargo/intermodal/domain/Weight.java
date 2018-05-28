@@ -1,9 +1,13 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class Weight {
+@JsonInclude(JsonInclude.Include.NON_NULL)
+class Weight {
 
     /**
      * in kg.
