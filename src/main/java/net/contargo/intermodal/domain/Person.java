@@ -121,6 +121,9 @@ public abstract class Person {
     }
 
 
+    /**
+     * @param  countryCode  2 characters (UN/LOCODE).
+     */
     void setCountryCode(String countryCode) {
 
         Country country = new Country();

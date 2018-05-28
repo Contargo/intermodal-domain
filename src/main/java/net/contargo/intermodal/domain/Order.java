@@ -341,6 +341,11 @@ public class Order {
         }
 
 
+        /**
+         * @param  countryCode  2 characters (UN/LOCODE).
+         *
+         * @return
+         */
         public Builder withDestinationCountryCode(String countryCode) {
 
             destination.setCountry(countryCode);

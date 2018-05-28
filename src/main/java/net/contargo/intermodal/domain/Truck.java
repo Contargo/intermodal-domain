@@ -164,6 +164,11 @@ public class Truck implements MeansOfTransport {
         }
 
 
+        /**
+         * @param  countryCode  2 characters (UN/LOCODE).
+         *
+         * @return  this
+         */
         public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
@@ -262,8 +267,7 @@ public class Truck implements MeansOfTransport {
 
             Truck truck = this.build();
 
-            // TODO
-            // Validator.validate(driver);
+            Validator.validate(truck);
 
             return truck;
         }

@@ -113,6 +113,11 @@ public class Address {
         }
 
 
+        /**
+         * @param  countryCode  2 characters (UN/LOCODE).
+         *
+         * @return  this
+         */
         public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
