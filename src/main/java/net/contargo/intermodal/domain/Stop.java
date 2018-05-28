@@ -19,7 +19,10 @@ public class Stop {
     @NotNull(message = "location is part of minimum requirement")
     private List<Location> location;
 
-    private String sequence;
+    /**
+     * Sequence of stops.
+     */
+    private Integer sequence;
 
     /**
      * Format: ISO 8601 inclusive UTC.
@@ -44,7 +47,7 @@ public class Stop {
     }
 
 
-    public String getSequence() {
+    public Integer getSequence() {
 
         return sequence;
     }
@@ -82,7 +85,7 @@ public class Stop {
     public static final class Builder {
 
         private List<Location> location = new ArrayList<>();
-        private String sequence;
+        private Integer sequence;
 
         private String earliest;
         private String latest;
@@ -122,7 +125,7 @@ public class Stop {
         }
 
 
-        public Builder withSequence(String sequence) {
+        public Builder withSequence(Integer sequence) {
 
             this.sequence = sequence;
 

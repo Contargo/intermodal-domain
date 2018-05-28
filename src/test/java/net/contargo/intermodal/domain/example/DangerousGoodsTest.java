@@ -19,7 +19,7 @@ class DangerousGoodsTest {
         DangerousGoods dangerousGoods = DangerousGoods.Builder.newDangerousGoods()
                 .withUnNumber("1005")
                 .withMaterial("Ammoniak")
-                .withDangerNote("Umweltgefährdend")
+                .hasDangerNote(true)
                 .withPackagingGroup("VG II")
                 .withTotalQuantity("1000 l")
                 .withTunnelRestrictionCode(TunnelRestrictionCode.NONE)
@@ -30,7 +30,7 @@ class DangerousGoodsTest {
 
         assertEquals("1005", dangerousGoods.getUnNumber());
         assertEquals("Ammoniak", dangerousGoods.getMaterial());
-        assertEquals("Umweltgefährdend", dangerousGoods.getDangerNote());
+        assertTrue(dangerousGoods.getDangerNote());
         assertEquals("VG II", dangerousGoods.getPackagingGroup());
         assertEquals("1000 l", dangerousGoods.getTotalQuantity());
         assertEquals(TunnelRestrictionCode.NONE, dangerousGoods.getTunnelRestrictionCode());

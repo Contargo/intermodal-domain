@@ -39,7 +39,7 @@ public class DangerousGoods {
     /**
      * @name_german  Gefahrzettel
      */
-    private String dangerNote;
+    private Boolean dangerNote;
 
     private String packagingGroup;
 
@@ -76,7 +76,7 @@ public class DangerousGoods {
     }
 
 
-    public String getDangerNote() {
+    public Boolean getDangerNote() {
 
         return dangerNote;
     }
@@ -127,7 +127,7 @@ public class DangerousGoods {
 
         private String unNumber;
         private String material;
-        private String dangerNote;
+        private Boolean dangerNote;
         private String packagingGroup;
         private Integer packages;
         private String totalQuantity;
@@ -161,7 +161,7 @@ public class DangerousGoods {
         }
 
 
-        public Builder withDangerNote(String dangerNote) {
+        public Builder hasDangerNote(Boolean dangerNote) {
 
             this.dangerNote = dangerNote;
 

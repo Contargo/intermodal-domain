@@ -62,7 +62,7 @@ public class MeansOfTransportationStatus {
      * @definition_german  {@link MeansOfTransport VM} ist bereit für den Umschlag der {@link LoadingUnit LE} („erste
      *                     Kranung“).
      */
-    private Boolean handlingStart;
+    private String handlingStart;
 
     /**
      * {@link MeansOfTransport MoT} is loaded, end of loading process (Format: ISO 8601 inclusive UTC).
@@ -72,7 +72,7 @@ public class MeansOfTransportationStatus {
      * @abbreviation_german  BE
      * @definition_german  {@link MeansOfTransport VM} beladen, Ende Verladung erreicht („letzte Kranung“).
      */
-    private Boolean handlingEnd;
+    private String handlingEnd;
 
     /**
      * Safety control of the loaded waggons.
@@ -101,13 +101,13 @@ public class MeansOfTransportationStatus {
     }
 
 
-    public Boolean getHandlingStart() {
+    public String getHandlingStart() {
 
         return handlingStart;
     }
 
 
-    public Boolean getHandlingEnd() {
+    public String getHandlingEnd() {
 
         return handlingEnd;
     }
@@ -123,8 +123,8 @@ public class MeansOfTransportationStatus {
         private String atd;
         private String eta;
         private String ata;
-        private Boolean handlingStart;
-        private Boolean handlingEnd;
+        private String handlingStart;
+        private String handlingEnd;
         private Integer waggonTechnicalInspection;
 
         private Builder() {
@@ -160,17 +160,17 @@ public class MeansOfTransportationStatus {
         }
 
 
-        public Builder withHandlingStart(Boolean handlingStart) {
+        public Builder withHandlingStart(int year, int month, int day, int hour, int minute) {
 
-            this.handlingStart = handlingStart;
+            this.handlingStart = ISO8601DateFormatter.format(year, month, day, hour, minute);
 
             return this;
         }
 
 
-        public Builder withHandlingEnd(Boolean handlingEnd) {
+        public Builder withHandlingEnd(int year, int month, int day, int hour, int minute) {
 
-            this.handlingEnd = handlingEnd;
+            this.handlingEnd = ISO8601DateFormatter.format(year, month, day, hour, minute);
 
             return this;
         }

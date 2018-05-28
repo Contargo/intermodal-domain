@@ -18,14 +18,14 @@ class WasteTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         Waste waste = Waste.Builder.newWaste()
-                .withPosition("position")
+                .withPosition(1)
                 .withKeyID("03 03 01")
                 .withWasteRegulationNumber("02")
                 .withReceiptNumber("65478")
                 .withWeightNetto(75.0)
                 .buildAndValidate();
 
-        assertEquals("position", waste.getPosition());
+        assertEquals(1, waste.getPosition().intValue());
         assertEquals("03 03 01", waste.getKeyID());
         assertEquals("02", waste.getWasteRegulationNumber());
         assertEquals("65478", waste.getReceiptNumber());

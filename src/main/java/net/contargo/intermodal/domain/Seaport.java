@@ -1,7 +1,7 @@
 package net.contargo.intermodal.domain;
 
 /**
- * Harbor which can be reached by vessels.
+ * Harbor that can be accessed by vessels.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
@@ -15,7 +15,9 @@ package net.contargo.intermodal.domain;
 
 class Seaport {
 
-    // TODO code or name of port?
+    /**
+     * UN/LOCODE.
+     */
     private String name;
 
     public Seaport(String name) {

@@ -24,7 +24,7 @@ import javax.validation.constraints.NotNull;
  */
 public class Waste {
 
-    private String position;
+    private Integer position;
 
     /**
      * @name_german  Abfallschlüsselnummer
@@ -47,7 +47,7 @@ public class Waste {
      */
     private Weight weight;
 
-    public String getPosition() {
+    public Integer getPosition() {
 
         return position;
     }
@@ -85,7 +85,7 @@ public class Waste {
 
     public static final class Builder {
 
-        private String position;
+        private Integer position;
         private String keyID;
         private String wasteRegulationNumber;
         private String receiptNumber;
@@ -100,7 +100,7 @@ public class Waste {
         }
 
 
-        public Builder withPosition(String position) {
+        public Builder withPosition(Integer position) {
 
             this.position = position;
 
