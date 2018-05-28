@@ -93,17 +93,17 @@ class OrderTest {
 
         Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
 
-        Order order = Order.Builder.newOrder()
-                .withReference("54642887")
-                .withOrderForLoadingUnit(new LUOrder())
-                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                .withEarliestPickUp(2018, 5, 14, 11, 0)
-                .withPickUpMeansOfTransport(new Truck())
-                .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                .withDropOffMeansOfTransport(new Barge())
-                .withStops(Arrays.asList(stop))
-                .withDestinationLocation("Terminal Koblenz")
-                .buildAndValidate();
+        Order.Builder.newOrder()
+            .withReference("54642887")
+            .withOrderForLoadingUnit(new LUOrder())
+            .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
+            .withEarliestPickUp(2018, 5, 14, 11, 0)
+            .withPickUpMeansOfTransport(new Truck())
+            .withDropOffLocation("Koblenz", "Terminal Koblenz")
+            .withDropOffMeansOfTransport(new Barge())
+            .withStops(Arrays.asList(stop))
+            .withDestinationLocation("Terminal Koblenz")
+            .buildAndValidate();
     }
 
 

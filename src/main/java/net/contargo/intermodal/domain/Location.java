@@ -32,19 +32,19 @@ public class Location {
 
     private String postalCode;
 
-    public void setDesignation(String designation) {
+    void setDesignation(String designation) {
 
         this.designation = designation;
     }
 
 
-    public void setCity(String city) {
+    void setCity(String city) {
 
         this.city = city;
     }
 
 
-    public void setType(String type) {
+    void setType(String type) {
 
         this.type = type;
     }
@@ -74,7 +74,7 @@ public class Location {
     }
 
 
-    public void setPostalCode(String postalCode) {
+    void setPostalCode(String postalCode) {
 
         this.postalCode = postalCode;
     }

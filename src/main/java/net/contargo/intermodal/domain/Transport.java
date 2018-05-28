@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
-public class Transport {
+class Transport {
 
     private Direction direction;
     private PickUp pickUp = new PickUp();
@@ -23,103 +23,103 @@ public class Transport {
     @NotEmpty(message = "stop is part of minimum requirement")
     private List<Stop> stop = new ArrayList<>();
 
-    public void setDirection(Direction direction) {
+    void setDirection(Direction direction) {
 
         this.direction = direction;
     }
 
 
-    public void setPickUpLocation(String city, String designation, String type) {
+    void setPickUpLocation(String city, String designation, String type) {
 
         this.pickUp.setLocation(city, designation, type);
     }
 
 
-    public void setPickUpLocation(String city, String designation) {
+    void setPickUpLocation(String city, String designation) {
 
         this.pickUp.setLocation(city, designation);
     }
 
 
-    public void setPickUpLoadingUnit(String reference, Boolean isEmpty) {
+    void setPickUpLoadingUnit(String reference, Boolean isEmpty) {
 
         this.pickUp.setLoadingUnit(reference, isEmpty);
     }
 
 
-    public void setPickUpLoadingUnitOperator(Operator operator) {
+    void setPickUpLoadingUnitOperator(Operator operator) {
 
         this.pickUp.setLoadingUnitOperator(operator);
     }
 
 
-    public void setPickUpBillingReference(String billingReference) {
+    void setPickUpBillingReference(String billingReference) {
 
         this.pickUp.setBillingReference(billingReference);
     }
 
 
-    public void setEarliestPickUp(int year, int month, int day, int hour, int minute) {
+    void setEarliestPickUp(int year, int month, int day, int hour, int minute) {
 
         this.pickUp.setEarliest(year, month, day, hour, minute);
     }
 
 
-    public void setLatestPickUp(int year, int month, int day, int hour, int minute) {
+    void setLatestPickUp(int year, int month, int day, int hour, int minute) {
 
         this.pickUp.setLatest(year, month, day, hour, minute);
     }
 
 
-    public void setPickUpMoT(MeansOfTransport meansOfTransport) {
+    void setPickUpMoT(MeansOfTransport meansOfTransport) {
 
         this.pickUp.setMoT(meansOfTransport);
     }
 
 
-    public void setDropOffLocation(String city, String designation, String type) {
+    void setDropOffLocation(String city, String designation, String type) {
 
         this.dropOff.setLocation(city, designation, type);
     }
 
 
-    public void setDropOffLocation(String city, String designation) {
+    void setDropOffLocation(String city, String designation) {
 
         this.dropOff.setLocation(city, designation);
     }
 
 
-    public void setDropOffLoadingUnit(String reference, Boolean isEmpty) {
+    void setDropOffLoadingUnit(String reference, Boolean isEmpty) {
 
         this.dropOff.setLoadingUnit(reference, isEmpty);
     }
 
 
-    public void setDropOffLoadingUnitOperator(Operator operator) {
+    void setDropOffLoadingUnitOperator(Operator operator) {
 
         this.dropOff.setLoadingUnitOperator(operator);
     }
 
 
-    public void setDropOffBillingReference(String billingReference) {
+    void setDropOffBillingReference(String billingReference) {
 
         this.dropOff.setBillingReference(billingReference);
     }
 
 
-    public void setEarliestDropOff(int year, int month, int day, int hour, int minute) {
+    void setEarliestDropOff(int year, int month, int day, int hour, int minute) {
 
         this.dropOff.setEarliest(year, month, day, hour, minute);
     }
 
 
-    public void setLatestDropOff(int year, int month, int day, int hour, int minute) {
+    void setLatestDropOff(int year, int month, int day, int hour, int minute) {
 
         this.dropOff.setLatest(year, month, day, hour, minute);
     }
 
 
-    public void setDropOffMoT(MeansOfTransport meansOfTransport) {
+    void setDropOffMoT(MeansOfTransport meansOfTransport) {
 
         this.dropOff.setMoT(meansOfTransport);
     }
@@ -182,7 +182,7 @@ public class Transport {
         @NotNull(message = "mot is part of minimum requirement")
         private MeansOfTransport mot;
 
-        public void setLocation(String city, String designation, String type) {
+        void setLocation(String city, String designation, String type) {
 
             this.location = new Location();
             this.location.setCity(city);
@@ -191,7 +191,7 @@ public class Transport {
         }
 
 
-        public void setLocation(String city, String designation) {
+        void setLocation(String city, String designation) {
 
             this.location = new Location();
             this.location.setCity(city);
@@ -199,7 +199,7 @@ public class Transport {
         }
 
 
-        public void setLoadingUnit(String reference, Boolean isEmpty) {
+        void setLoadingUnit(String reference, Boolean isEmpty) {
 
             this.loadingUnit = new LoadingUnit();
             this.loadingUnit.setEmpty(isEmpty);
@@ -207,31 +207,31 @@ public class Transport {
         }
 
 
-        public void setLoadingUnitOperator(Operator operator) {
+        void setLoadingUnitOperator(Operator operator) {
 
             this.loadingUnit.setOperator(operator);
         }
 
 
-        public void setBillingReference(String billingReference) {
+        void setBillingReference(String billingReference) {
 
             this.billingReference = billingReference;
         }
 
 
-        public void setEarliest(int year, int month, int day, int hour, int minute) {
+        void setEarliest(int year, int month, int day, int hour, int minute) {
 
             this.earliest = ISO8601DateFormatter.format(year, month, day, hour, minute);
         }
 
 
-        public void setLatest(int year, int month, int day, int hour, int minute) {
+        void setLatest(int year, int month, int day, int hour, int minute) {
 
             this.latest = ISO8601DateFormatter.format(year, month, day, hour, minute);
         }
 
 
-        public void setMoT(MeansOfTransport mot) {
+        void setMoT(MeansOfTransport mot) {
 
             this.mot = mot;
         }
@@ -304,7 +304,7 @@ public class Transport {
         @NotNull(message = "mot is part of minimum requirement")
         private MeansOfTransport mot;
 
-        public void setLocation(String city, String designation, String type) {
+        void setLocation(String city, String designation, String type) {
 
             this.location = new Location();
             this.location.setCity(city);
@@ -313,7 +313,7 @@ public class Transport {
         }
 
 
-        public void setLocation(String city, String designation) {
+        void setLocation(String city, String designation) {
 
             this.location = new Location();
             this.location.setCity(city);
@@ -321,7 +321,7 @@ public class Transport {
         }
 
 
-        public void setLoadingUnit(String reference, Boolean isEmpty) {
+        void setLoadingUnit(String reference, Boolean isEmpty) {
 
             this.loadingUnit = new LoadingUnit();
             this.loadingUnit.setEmpty(isEmpty);
@@ -329,31 +329,31 @@ public class Transport {
         }
 
 
-        public void setLoadingUnitOperator(Operator operator) {
+        void setLoadingUnitOperator(Operator operator) {
 
             this.loadingUnit.setOperator(operator);
         }
 
 
-        public void setBillingReference(String billingReference) {
+        void setBillingReference(String billingReference) {
 
             this.billingReference = billingReference;
         }
 
 
-        public void setEarliest(int year, int month, int day, int hour, int minute) {
+        void setEarliest(int year, int month, int day, int hour, int minute) {
 
             this.earliest = ISO8601DateFormatter.format(year, month, day, hour, minute);
         }
 
 
-        public void setLatest(int year, int month, int day, int hour, int minute) {
+        void setLatest(int year, int month, int day, int hour, int minute) {
 
             this.latest = ISO8601DateFormatter.format(year, month, day, hour, minute);
         }
 
 
-        public void setMoT(MeansOfTransport mot) {
+        void setMoT(MeansOfTransport mot) {
 
             this.mot = mot;
         }
@@ -407,7 +407,7 @@ public class Transport {
         }
 
 
-        public void setEmpty(Boolean empty) {
+        void setEmpty(Boolean empty) {
 
             this.empty = empty;
         }
@@ -419,7 +419,7 @@ public class Transport {
         }
 
 
-        public void setReference(String reference) {
+        void setReference(String reference) {
 
             this.reference = reference;
         }
@@ -431,7 +431,7 @@ public class Transport {
         }
 
 
-        public void setOperator(Operator operator) {
+        void setOperator(Operator operator) {
 
             this.operator = operator;
         }

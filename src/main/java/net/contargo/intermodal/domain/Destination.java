@@ -47,44 +47,44 @@ public class Destination {
     }
 
 
-    public void setCountry(String code) {
+    void setCountry(String code) {
 
         this.country = new Country();
         this.country.setCode(code);
     }
 
 
-    public void setVessel(Vessel vessel) {
+    void setVessel(Vessel vessel) {
 
         this.vessel = vessel;
     }
 
 
-    public void setSeaport(Seaport seaport) {
+    void setSeaport(Seaport seaport) {
 
         this.seaport = seaport;
     }
 
 
-    public void setLocation(Location location) {
+    void setLocation(Location location) {
 
         this.location = location;
     }
 
 
-    public void setCountry(Country country) {
+    void setCountry(Country country) {
 
         this.country = country;
     }
 
 
-    public void setSeaport(String name) {
+    void setSeaport(String name) {
 
         this.seaport = new Seaport(name);
     }
 
 
-    public void setLocation(String city, String designation) {
+    void setLocation(String city, String designation) {
 
         this.location = new Location();
         this.location.setCity(city);
@@ -92,7 +92,7 @@ public class Destination {
     }
 
 
-    public void setLocation(String designation) {
+    void setLocation(String designation) {
 
         this.location = new Location();
         this.location.setDesignation(designation);
