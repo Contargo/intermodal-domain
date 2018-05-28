@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.validation.constraints.NotNull;
 
 
@@ -69,6 +71,7 @@ public class Waste {
     }
 
 
+    @JsonIgnore
     public Double getWeightNetto() {
 
         return weight.getNetto();

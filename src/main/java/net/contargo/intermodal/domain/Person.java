@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
@@ -58,18 +61,21 @@ public abstract class Person {
     }
 
 
+    @JsonIgnore
     public String getDateOfBirth() {
 
         return dateOfBirth;
     }
 
 
+    @JsonIgnore
     public String getCityOfBirth() {
 
         return location.getCity();
     }
 
 
+    @JsonIgnore
     public String getCountryCode() {
 
         return country.getCode();

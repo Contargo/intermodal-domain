@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,18 +77,21 @@ public class LUOrder {
     }
 
 
+    @JsonIgnore
     public Double getWeightBrutto() {
 
         return weight.getBrutto();
     }
 
 
+    @JsonIgnore
     public Double getWeightNetto() {
 
         return weight.getNetto();
     }
 
 
+    @JsonIgnore
     public Double getWeightTara() {
 
         return weight.getTara();

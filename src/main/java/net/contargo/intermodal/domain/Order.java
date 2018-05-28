@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -87,18 +89,21 @@ public class Order {
     }
 
 
+    @JsonIgnore
     public Transport.PickUp getPickUp() {
 
         return this.transport.getPickUp();
     }
 
 
+    @JsonIgnore
     public Transport.DropOff getDropOff() {
 
         return this.transport.getDropOff();
     }
 
 
+    @JsonIgnore
     public List<Stop> getStops() {
 
         return this.transport.getStops();

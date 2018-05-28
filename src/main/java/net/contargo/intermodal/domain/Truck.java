@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 /**
  * Commercial vehicle which is mostly or exclusively used for carrying trailed vehicles.
  *
@@ -225,6 +228,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
+        @JsonIgnore
         public Builder withWeightTara(Double weightTara) {
 
             this.weightTara = weightTara;

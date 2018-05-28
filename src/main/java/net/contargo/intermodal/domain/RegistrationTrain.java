@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.validation.constraints.NotNull;
 
 
@@ -146,12 +148,14 @@ public class RegistrationTrain {
     }
 
 
+    @JsonIgnore
     public Integer getVolumeToDischarge() {
 
         return volume.getToDischarge();
     }
 
 
+    @JsonIgnore
     public Integer getVolumeToLoad() {
 
         return volume.getToLoad();

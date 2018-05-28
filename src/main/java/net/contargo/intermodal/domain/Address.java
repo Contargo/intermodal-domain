@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
@@ -22,24 +25,28 @@ public class Address {
     }
 
 
+    @JsonIgnore
     public String getLocationPostalCode() {
 
         return location.getPostalCode();
     }
 
 
+    @JsonIgnore
     public String getLocationCity() {
 
         return location.getCity();
     }
 
 
+    @JsonIgnore
     public String getCountryName() {
 
         return country.getName();
     }
 
 
+    @JsonIgnore
     public String getCountryCode() {
 
         return country.getCode();

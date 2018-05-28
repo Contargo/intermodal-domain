@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 /**
  * A ship build to drive on inland waters and inland waterways.
  *
@@ -130,12 +133,14 @@ public class Barge implements MeansOfTransport {
     }
 
 
+    @JsonIgnore
     public Double getCapacityTeu() {
 
         return this.capacity.getTeu();
     }
 
 
+    @JsonIgnore
     public Double getCapacityTons() {
 
         return this.capacity.getTons();

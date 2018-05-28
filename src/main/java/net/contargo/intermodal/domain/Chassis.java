@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 /**
  * Trailer to transport loading units.
  *
@@ -147,6 +150,7 @@ public class Chassis implements MeansOfTransport {
     }
 
 
+    @JsonIgnore
     public Double getWeightTara() {
 
         return weight.getTara();
