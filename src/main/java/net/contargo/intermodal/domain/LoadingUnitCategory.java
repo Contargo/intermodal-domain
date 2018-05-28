@@ -1,8 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import net.contargo.intermodal.domain.LoadingUnit;
-
-
 /**
  * Type of a {@link LoadingUnit}.
  *

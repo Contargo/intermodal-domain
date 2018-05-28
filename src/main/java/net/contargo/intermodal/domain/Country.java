@@ -5,6 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
+ * @name_german  Land
+ * @name_english  country
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class Country {

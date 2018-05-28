@@ -9,6 +9,8 @@ import java.util.TimeZone;
 
 
 /**
+ * Date formatter for ISO8601 dates.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 class ISO8601DateFormatter {

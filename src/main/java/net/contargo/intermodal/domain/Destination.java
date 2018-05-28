@@ -1,10 +1,14 @@
 package net.contargo.intermodal.domain;
 
-import javax.validation.constraints.NotNull;
-
-
 /**
+ * The final destination specified in an {@link Order}.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
+ * @name_german  Reiseziel
+ * @name_english  destination
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class Destination {
 

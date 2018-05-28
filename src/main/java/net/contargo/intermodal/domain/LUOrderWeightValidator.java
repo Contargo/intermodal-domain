@@ -9,9 +9,10 @@ import javax.validation.Payload;
 
 
 /**
+ * Validator to check whether the minimum requirements of the weight of a {@link LUOrder} are fulfilled.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-
 @Documented
 @Constraint(validatedBy = LUOrderWeightValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD })

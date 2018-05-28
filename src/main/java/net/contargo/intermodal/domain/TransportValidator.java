@@ -11,6 +11,8 @@ import javax.validation.Payload;
 
 
 /**
+ * Validator to check whether the minimum requirements of the volume of a {@link Transport} are fulfilled.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 

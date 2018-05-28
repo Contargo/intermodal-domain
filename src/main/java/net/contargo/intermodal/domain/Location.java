@@ -6,7 +6,13 @@ import javax.validation.constraints.NotNull;
 
 
 /**
+ * A location used in drop off, pick up and stops of an {@link Transport}. Also used to specify the city of birth of a
+ * {@link Person}.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Location {

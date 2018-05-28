@@ -9,6 +9,9 @@ import javax.validation.Payload;
 
 
 /**
+ * Validator to check whether the minimum requirements of the volume of a registration of a
+ * {@link RegistrationBarge barge} or {@link RegistrationTrain train} are fulfilled.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 

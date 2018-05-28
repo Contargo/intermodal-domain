@@ -4,7 +4,12 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 
 /**
+ * Weight of a {@link LoadingUnit}, {@link Truck}, {@link Chassis}, {@link Waste} or {@link Order}.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class Weight {
