@@ -16,11 +16,19 @@ class Weight {
 
     /**
      * in kg.
+     *
+     * @note_german  Abweichung von der DIGIT 2018-04: Eigentlich Brutto.Max, wird in nächster Version der DIGIT
+     *               angepasst.
+     * @note_english  Difference from Digit 2018-04: Should be Brutto.Max but will be changed in next version of DIGIT
      */
     private Double bruttoMax;
 
     /**
      * in kg.
+     *
+     * @note_german  Abweichung von der DIGIT 2018-04: Eigentlich Netto.Max, wird in nächster Version der DIGIT
+     *               angepasst.
+     * @note_english  Difference from Digit 2018-04: Should be Netto.Max but will be changed in next version of DIGIT
      */
     private Double nettoMax;
 
