@@ -68,7 +68,7 @@ public class Truck implements MeansOfTransport {
     /**
      * in kg.
      */
-    private Double weightTara;
+    private Weight weight;
 
     public String getNumberPlate() {
 
@@ -125,9 +125,16 @@ public class Truck implements MeansOfTransport {
     }
 
 
+    @JsonIgnore
     public Double getWeightTara() {
 
-        return weightTara;
+        return weight.getTara();
+    }
+
+
+    public Weight getWeight() {
+
+        return weight;
     }
 
 
@@ -265,7 +272,13 @@ public class Truck implements MeansOfTransport {
             truck.euAuthorization = this.euAuthorization;
             truck.numberPlate = this.numberPlate;
             truck.environmentBadge = this.environmentBadge;
-            truck.weightTara = this.weightTara;
+
+            if (weightTara != null) {
+                Weight weight = new Weight();
+                weight.setTara(this.weightTara);
+                truck.weight = weight;
+            }
+
             truck.suitabilityDangerousGoods = this.suitabilityDangerousGoods;
             truck.type = this.type;
             truck.st = this.st;

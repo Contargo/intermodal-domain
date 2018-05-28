@@ -1,5 +1,8 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
 /**
  * The final destination specified in an {@link Order}.
  *
@@ -23,9 +26,16 @@ public class Destination {
      */
     private Country country;
 
+    @JsonIgnore
     public String getCountryCode() {
 
         return country.getCode();
+    }
+
+
+    public Country getCountry() {
+
+        return country;
     }
 
 
