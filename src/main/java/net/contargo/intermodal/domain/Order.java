@@ -78,7 +78,7 @@ public class Order {
     }
 
 
-    public LUOrder getOrderForLoadingUnit() {
+    public LUOrder getLUOrder() {
 
         return luOrder;
     }

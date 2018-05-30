@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -149,6 +151,7 @@ class Transport {
     }
 
 
+    @JsonProperty("stop")
     public List<Stop> getStops() {
 
         return stop;

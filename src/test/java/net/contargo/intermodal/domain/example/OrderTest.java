@@ -53,7 +53,7 @@ class OrderTest {
         assertEquals("54642887", order.getReference());
         assertNotNull(order.getClient());
         assertNotNull(order.getBillRecipient());
-        assertNotNull(order.getOrderForLoadingUnit());
+        assertNotNull(order.getLUOrder());
 
         // Pick Up
         assertEquals("Ludwigshafen", order.getPickUp().getLocation().getCity());
@@ -104,8 +104,6 @@ class OrderTest {
                 .withStops(Arrays.asList(stop))
                 .withDestinationLocation("Terminal Koblenz")
                 .buildAndValidate();
-
-        System.out.print(order.toString());
     }
 
 

@@ -1,5 +1,6 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class ProcessingBarge {
      */
     private Boolean adnr;
 
-    private LoadingList loadingList;
+    private List<LoadingListElement> loadingList;
 
     public Barge getBarge() {
 
@@ -110,7 +111,7 @@ public class ProcessingBarge {
     }
 
 
-    public LoadingList getLoadingList() {
+    public List<LoadingListElement> getLoadingList() {
 
         return loadingList;
     }
@@ -128,30 +129,36 @@ public class ProcessingBarge {
         return "";
     }
 
-    public static class LoadingList {
+    public static class LoadingListElement {
 
-        private List<LUOrder> luOrders = new ArrayList<>();
-        private List<StoragePosition> storagePositions = new ArrayList<>();
+        private LUOrder luOrder;
+        private StoragePosition storagePosition;
 
-        LoadingList() {
+        LoadingListElement() {
         }
 
-        public List<LUOrder> getLuOrders() {
+        @JsonProperty("luOrder")
+        public LUOrder getLuOrder() {
 
-            return luOrders;
-        }
-
-
-        public List<StoragePosition> getStoragePositions() {
-
-            return storagePositions;
+            return luOrder;
         }
 
 
-        public void with(LUOrder luOrder, StoragePosition storagePosition) {
+        public StoragePosition getStoragePosition() {
 
-            this.luOrders.add(luOrder);
-            this.storagePositions.add(storagePosition);
+            return storagePosition;
+        }
+
+
+        void setLuOrder(LUOrder luOrder) {
+
+            this.luOrder = luOrder;
+        }
+
+
+        void setStoragePosition(StoragePosition storagePosition) {
+
+            this.storagePosition = storagePosition;
         }
     }
 
@@ -165,7 +172,7 @@ public class ProcessingBarge {
         private Integer reeferConnections;
         private Cone cone;
         private Boolean adnr;
-        private LoadingList loadingList = new LoadingList();
+        private List<LoadingListElement> loadingList;
 
         private Builder() {
         }
@@ -242,7 +249,30 @@ public class ProcessingBarge {
 
         public Builder withLuOrder(LUOrder luOrder, StoragePosition storagePosition) {
 
-            this.loadingList.with(luOrder, storagePosition);
+            if (loadingList == null) {
+                this.loadingList = new ArrayList<>();
+            }
+
+            LoadingListElement loadingListElement = new LoadingListElement();
+            loadingListElement.setLuOrder(luOrder);
+            loadingListElement.setStoragePosition(storagePosition);
+
+            this.loadingList.add(loadingListElement);
+
+            return this;
+        }
+
+
+        public Builder withLuOrder(LUOrder luOrder) {
+
+            if (loadingList == null) {
+                this.loadingList = new ArrayList<>();
+            }
+
+            LoadingListElement loadingListElement = new LoadingListElement();
+            loadingListElement.setLuOrder(luOrder);
+
+            this.loadingList.add(loadingListElement);
 
             return this;
         }
