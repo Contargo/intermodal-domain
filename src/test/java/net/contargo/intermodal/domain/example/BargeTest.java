@@ -1,9 +1,17 @@
 package net.contargo.intermodal.domain.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import net.contargo.intermodal.domain.Barge;
 import net.contargo.intermodal.domain.Operator;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+
+import static net.contargo.intermodal.domain.LengthUnit.FOOT;
+import static net.contargo.intermodal.domain.LengthUnit.METRE;
+import static net.contargo.intermodal.domain.MassUnit.TON;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,29 +29,67 @@ class BargeTest {
                 .withMmsi("021112345")
                 .withEni("050XXXXX")
                 .withOperator(new Operator())
-                .withLength(35.0)
-                .withWidth(5.0)
-                .withDraught(5.0)
+                .withLength(91.4, METRE)
+                .withWidth(27.4, METRE)
+                .withDraught(5.5, METRE)
                 .withBays(4)
                 .withRows(8)
                 .withTiers(2)
                 .withSuitabilityDangerousGoods(true)
                 .withCapacityTeu(200.0)
-                .withCapacityTons(3400.0)
+                .withCapacityTons(3400.0, TON)
                 .buildAndValidate();
 
         assertEquals("My Barge", barge.getName());
         assertEquals("021112345", barge.getMmsi());
         assertEquals("050XXXXX", barge.getEni());
         assertNotNull(barge.getOperator());
-        assertEquals(35.0, barge.getLength().doubleValue());
-        assertEquals(5.0, barge.getWidth().doubleValue());
-        assertEquals(5.0, barge.getDraught().doubleValue());
+        assertEquals(91.4, barge.getLengthValue());
+        assertEquals(27.4, barge.getWidthValue());
+        assertEquals(5.5, barge.getDraughtValue());
         assertEquals(4, barge.getBays().intValue());
         assertEquals(8, barge.getRows().intValue());
         assertEquals(2, barge.getTiers().intValue());
         assertTrue(barge.getSuitabilityDangerousGoods());
         assertEquals(200.0, barge.getCapacityTeu().doubleValue());
         assertEquals(3400.0, barge.getCapacityTons().doubleValue());
+    }
+
+
+    @Test
+    void ensureMeasurementsCanBeSetInFoot() throws IOException {
+
+        Barge barge = Barge.Builder.newBarge()
+                .withLength(300.0, FOOT)
+                .withWidth(90.0, FOOT)
+                .withDraught(18.0, FOOT)
+                .buildAndValidate();
+
+        assertEquals(91.4, barge.getLengthValue(), 0.1);
+        assertEquals(27.4, barge.getWidthValue(), 0.1);
+        assertEquals(5.5, barge.getDraughtValue(), 0.1);
+    }
+
+
+    @Test
+    void ensureCanBeParsedToJson() throws IOException {
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        Barge barge = Barge.Builder.newBarge()
+                .withName("My Barge")
+                .withMmsi("021112345")
+                .withEni("050XXXXX")
+                .withOperator(new Operator())
+                .withLength(91.4, METRE)
+                .withWidth(27.4, METRE)
+                .withDraught(5.5, METRE)
+                .withBays(4)
+                .withRows(8)
+                .withTiers(2)
+                .withSuitabilityDangerousGoods(true)
+                .withCapacityTeu(200.0)
+                .withCapacityTons(3400.0, TON)
+                .buildAndValidate();
     }
 }

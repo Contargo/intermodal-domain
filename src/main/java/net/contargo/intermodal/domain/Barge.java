@@ -2,6 +2,20 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import systems.uom.common.Imperial;
+
+import tec.units.ri.quantity.Quantities;
+
+import javax.measure.Quantity;
+import javax.measure.quantity.Length;
+import javax.measure.quantity.Mass;
+
+import static systems.uom.common.USCustomary.FOOT;
+
+import static tec.units.ri.unit.Units.METRE;
 
 
 /**
@@ -43,17 +57,20 @@ public class Barge implements MeansOfTransport {
     /**
      * in meter.
      */
-    private Double length;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> length;
 
     /**
      * in meter.
      */
-    private Double width;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> width;
 
     /**
      * in meter.
      */
-    private Double draught;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> draught;
 
     private Integer bays;
 
@@ -92,19 +109,64 @@ public class Barge implements MeansOfTransport {
     }
 
 
-    public Double getLength() {
+    @JsonIgnore
+    public double getLengthValue() {
+
+        return length.getValue().doubleValue();
+    }
+
+
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getLength() {
 
         return length;
     }
 
 
-    public Double getWidth() {
+    @JsonIgnore
+    public String getLenghtUnit() {
+
+        return length.getUnit().getSymbol();
+    }
+
+
+    @JsonIgnore
+    public double getWidthValue() {
+
+        return width.getValue().doubleValue();
+    }
+
+
+    @JsonIgnore
+    public String getWidthUnit() {
+
+        return width.getUnit().getSymbol();
+    }
+
+
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getWidth() {
 
         return width;
     }
 
 
-    public Double getDraught() {
+    @JsonIgnore
+    public double getDraughtValue() {
+
+        return draught.getValue().doubleValue();
+    }
+
+
+    @JsonIgnore
+    public String getDraughtUnit() {
+
+        return draught.getUnit().getSymbol();
+    }
+
+
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getDraught() {
 
         return draught;
     }
@@ -144,7 +206,7 @@ public class Barge implements MeansOfTransport {
     @JsonIgnore
     public Double getCapacityTons() {
 
-        return this.capacity.getTons();
+        return this.capacity.getTons().getValue().doubleValue();
     }
 
 
@@ -172,15 +234,15 @@ public class Barge implements MeansOfTransport {
         private String mmsi;
         private String eni;
         private Operator operator;
-        private Double length;
-        private Double width;
-        private Double draught;
+        private Quantity<Length> length;
+        private Quantity<Length> width;
+        private Quantity<Length> draught;
         private Integer bays;
         private Integer rows;
         private Integer tiers;
         private Boolean suitabilityDangerousGoods;
         private Double capacityTeu;
-        private Double capacityTons;
+        private Quantity<Mass> capacityTons;
 
         private Builder() {
         }
@@ -223,25 +285,37 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withLength(Double length) {
+        public Builder withLength(Double length, LengthUnit unit) {
 
-            this.length = length;
-
-            return this;
-        }
-
-
-        public Builder withWidth(Double width) {
-
-            this.width = width;
+            if (unit.toUnit().equals(METRE)) {
+                this.length = Quantities.getQuantity(length, METRE);
+            } else if (unit.toUnit().equals(FOOT)) {
+                this.length = UnitConverter.footToMetre(length);
+            }
 
             return this;
         }
 
 
-        public Builder withDraught(Double draught) {
+        public Builder withWidth(Double width, LengthUnit unit) {
 
-            this.draught = draught;
+            if (unit.toUnit().equals(METRE)) {
+                this.width = Quantities.getQuantity(width, METRE);
+            } else if (unit.toUnit().equals(FOOT)) {
+                this.width = UnitConverter.footToMetre(width);
+            }
+
+            return this;
+        }
+
+
+        public Builder withDraught(Double draught, LengthUnit unit) {
+
+            if (unit.toUnit().equals(METRE)) {
+                this.draught = Quantities.getQuantity(draught, METRE);
+            } else if (unit.toUnit().equals(FOOT)) {
+                this.draught = UnitConverter.footToMetre(draught);
+            }
 
             return this;
         }
@@ -279,6 +353,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
+        // TODO - Custom Unit for TEU
         public Builder withCapacityTeu(Double capacityTeu) {
 
             this.capacityTeu = capacityTeu;
@@ -287,9 +362,11 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withCapacityTons(Double capacityTons) {
+        public Builder withCapacityTons(Double capacity, MassUnit unit) {
 
-            this.capacityTons = capacityTons;
+            if (unit.toUnit().equals(Imperial.METRIC_TON)) {
+                this.capacityTons = Quantities.getQuantity(capacity, Imperial.METRIC_TON);
+            }
 
             return this;
         }
