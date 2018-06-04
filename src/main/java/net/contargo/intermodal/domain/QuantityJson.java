@@ -1,13 +1,16 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.WritableTypeId;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
+import com.fasterxml.jackson.databind.jsontype.TypeSerializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
 import tec.units.ri.quantity.Quantities;
@@ -23,8 +26,6 @@ import javax.measure.Quantity;
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 class QuantityJsonSerializer extends StdSerializer<Quantity<?>> {
-
-    private static ObjectMapper mapper = new ObjectMapper();
 
     public QuantityJsonSerializer() {
 
@@ -45,6 +46,16 @@ class QuantityJsonSerializer extends StdSerializer<Quantity<?>> {
         jsonGenerator.writeNumberField("value", quantity.getValue().doubleValue());
         jsonGenerator.writeStringField("unit", quantity.getUnit().toString());
         jsonGenerator.writeEndObject();
+    }
+
+
+    @Override
+    public void serializeWithType(Quantity<?> quantity, JsonGenerator jsonGenerator, SerializerProvider serializers,
+        TypeSerializer typeSer) throws IOException {
+
+        typeSer.writeTypePrefixForObject(quantity, jsonGenerator);
+        serialize(quantity, jsonGenerator, serializers);
+        typeSer.writeTypeSuffixForObject(quantity, jsonGenerator);
     }
 }
 

@@ -1,6 +1,8 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Mass;
@@ -26,6 +28,14 @@ import javax.validation.constraints.NotNull;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes(
+    {
+        @JsonSubTypes.Type(value = Container.class, name = "container"),
+        @JsonSubTypes.Type(value = SwapBody.class, name = "swapBody"),
+        @JsonSubTypes.Type(value = Trailer.class, name = "trailer")
+    }
+)
 public abstract class LoadingUnit {
 
     /**

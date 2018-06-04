@@ -75,6 +75,17 @@ public class LUOrder {
 
     private List<Seal> seal;
 
+    /**
+     * For serialization of LUOrder.
+     *
+     * @param  seal
+     */
+    private void setSeal(List<Seal> seal) {
+
+        this.seal = seal;
+    }
+
+
     public String getReference() {
 
         return reference;
