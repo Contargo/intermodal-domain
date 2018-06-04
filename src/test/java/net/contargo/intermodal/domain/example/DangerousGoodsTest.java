@@ -1,9 +1,14 @@
 package net.contargo.intermodal.domain.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.contargo.intermodal.domain.Customs;
 import net.contargo.intermodal.domain.DangerousGoods;
 import net.contargo.intermodal.domain.TunnelRestrictionCode;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,5 +57,39 @@ class DangerousGoodsTest {
     void ensureDangerousGoodsCanBeValidated() {
 
         assertThrows(IllegalStateException.class, () -> DangerousGoods.Builder.newDangerousGoods().buildAndValidate());
+    }
+
+
+    @Test
+    void ensureCanBeParsedToJson() throws IOException {
+
+        DangerousGoods dangerousGoods = DangerousGoods.Builder.newDangerousGoods()
+                .withUnNumber("1005")
+                .withMaterial("Ammoniak")
+                .hasDangerNote(true)
+                .withPackagingGroup("VG II")
+                .withPackages(8)
+                .withTotalQuantity("1000 l")
+                .withTunnelRestrictionCode(TunnelRestrictionCode.NONE)
+                .withMandatoryRouting("Mandatory Routing?")
+                .withLimitedQuantity(false)
+                .withMarinePollutants(true)
+                .buildAndValidate();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonString = mapper.writeValueAsString(dangerousGoods);
+
+        DangerousGoods deserialize = mapper.readValue(jsonString, DangerousGoods.class);
+
+        assertEquals("1005", deserialize.getUnNumber());
+        assertEquals("Ammoniak", deserialize.getMaterial());
+        assertTrue(deserialize.getDangerNote());
+        assertEquals("VG II", deserialize.getPackagingGroup());
+        assertEquals("1000 l", deserialize.getTotalQuantity());
+        assertEquals(TunnelRestrictionCode.NONE, deserialize.getTunnelRestrictionCode());
+        assertEquals("Mandatory Routing?", deserialize.getMandatoryRouting());
+        assertFalse(deserialize.getLimitedQuantity());
+        assertTrue(deserialize.getMarinePollutants());
     }
 }

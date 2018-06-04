@@ -61,7 +61,6 @@ public abstract class Person {
     }
 
 
-    @JsonIgnore
     public String getDateOfBirth() {
 
         return dateOfBirth;

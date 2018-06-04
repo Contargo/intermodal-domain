@@ -75,19 +75,19 @@ public class Driver extends Person {
         /**
          * format: DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
-        private String licenseValidity;
+        private String validity;
 
-        private String licenseNumber;
+        private String number;
 
-        public String getLicenseValidity() {
+        public String getValidity() {
 
-            return licenseValidity;
+            return validity;
         }
 
 
-        public String getLicenseNumber() {
+        public String getNumber() {
 
-            return licenseNumber;
+            return number;
         }
     }
 
@@ -234,8 +234,8 @@ public class Driver extends Person {
 
             if (licenseValidity != null || licenseNumber != null) {
                 License license = new License();
-                license.licenseNumber = licenseNumber;
-                license.licenseValidity = licenseValidity;
+                license.number = licenseNumber;
+                license.validity = licenseValidity;
                 driver.license = license;
             }
 

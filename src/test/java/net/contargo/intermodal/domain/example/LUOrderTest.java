@@ -213,7 +213,5 @@ class LUOrderTest {
         assertEquals(2, deserialize.getSeals().size());
         assertEquals("some seal type", deserialize.getSeals().get(0).getType());
         assertEquals("01234", deserialize.getSeals().get(0).getNumber());
-
-        System.out.print(loadingUnitLUOrder.toString());
     }
 }
