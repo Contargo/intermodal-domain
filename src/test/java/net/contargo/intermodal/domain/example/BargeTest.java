@@ -57,7 +57,7 @@ class BargeTest {
 
 
     @Test
-    void ensureMeasurementsCanBeSetInFoot() throws IOException {
+    void ensureMeasurementsCanBeSetInFoot() {
 
         Barge barge = Barge.Builder.newBarge()
                 .withLength(300.0, FOOT)
@@ -89,8 +89,6 @@ class BargeTest {
                 .withCapacityTeu(200.0)
                 .withCapacityTons(3400.0, TON)
                 .buildAndValidate();
-
-        System.out.print(barge.toString());
 
         ObjectMapper mapper = new ObjectMapper();
 

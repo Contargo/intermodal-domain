@@ -1,13 +1,18 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
 import javax.measure.Quantity;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import javax.validation.constraints.NotNull;
+
+import static systems.uom.common.USCustomary.FOOT;
 
 import static tec.units.ri.unit.Units.KILOGRAM;
 
@@ -44,26 +49,11 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
      * in foot.
      */
     @NotNull(message = "size is part of minimum requirement")
-    private Double size;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> size;
 
     @NotNull(message = "stackable is part of minimum requirement")
     private Boolean stackable;
-
-    public SwapBody withType(String type) {
-
-        this.type = type;
-
-        return this;
-    }
-
-
-    public SwapBody withSize(Double size) {
-
-        this.size = size;
-
-        return this;
-    }
-
 
     public SwapBody isStackable(Boolean stackable) {
 
@@ -79,7 +69,8 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     }
 
 
-    public Double getSize() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getSize() {
 
         return size;
     }
@@ -111,7 +102,7 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
         private String type;
         private Quantity<Mass> weightNettoMax;
         private Quantity<Mass> weightTara;
-        private Double size;
+        private Quantity<Length> size;
         private String condition;
         private Boolean stackable;
         private Boolean reefer;
@@ -186,9 +177,13 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
         }
 
 
-        public Builder withSize(Double size) {
+        public Builder withSize(Double size, LengthUnit unit) {
 
-            this.size = size;
+            if (unit.equals(LengthUnit.FOOT)) {
+                this.size = Quantities.getQuantity(size, FOOT);
+            } else if (unit.equals(LengthUnit.METRE)) {
+                this.size = UnitConverter.metreToFoot(size);
+            }
 
             return this;
         }

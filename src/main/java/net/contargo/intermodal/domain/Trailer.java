@@ -1,15 +1,19 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
 import javax.measure.Quantity;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import javax.validation.constraints.NotNull;
 
 import static tec.units.ri.unit.Units.KILOGRAM;
+import static tec.units.ri.unit.Units.METRE;
 
 
 /**
@@ -43,26 +47,11 @@ public class Trailer extends LoadingUnit {
      * in meter.
      */
     @NotNull(message = "size is part of minimum requirement")
-    private Double size;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> size;
 
     @NotNull(message = "craneable is part of minimum requirement")
     private Boolean craneable;
-
-    public Trailer withType(String type) {
-
-        this.type = type;
-
-        return this;
-    }
-
-
-    public Trailer withSize(double size) {
-
-        this.size = size;
-
-        return this;
-    }
-
 
     public Trailer isCraneable(Boolean craneable) {
 
@@ -78,7 +67,8 @@ public class Trailer extends LoadingUnit {
     }
 
 
-    public Double getSize() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getSize() {
 
         return size;
     }
@@ -107,7 +97,7 @@ public class Trailer extends LoadingUnit {
         private String identification;
         private String number;
         private String type;
-        private Double size;
+        private Quantity<Length> size;
         private Quantity<Mass> weightBruttoMax;
         private Boolean craneable;
         private Quantity<Mass> weightNettoMax;
@@ -149,9 +139,13 @@ public class Trailer extends LoadingUnit {
         }
 
 
-        public Builder withSize(Double size) {
+        public Builder withSize(Double size, LengthUnit unit) {
 
-            this.size = size;
+            if (unit.equals(LengthUnit.METRE)) {
+                this.size = Quantities.getQuantity(size, METRE);
+            } else if (unit.equals(LengthUnit.FOOT)) {
+                this.size = UnitConverter.footToMetre(size);
+            }
 
             return this;
         }

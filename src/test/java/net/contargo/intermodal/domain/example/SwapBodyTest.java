@@ -1,10 +1,12 @@
 package net.contargo.intermodal.domain.example;
 
-import net.contargo.intermodal.domain.LoadingUnitCategory;
-import net.contargo.intermodal.domain.MassUnit;
-import net.contargo.intermodal.domain.SwapBody;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -27,7 +29,7 @@ class SwapBodyTest {
                 .isReefer(false)
                 .withOperator("Contargo")
                 .withType("Open Top")
-                .withSize(6.5)
+                .withSize(21.58, LengthUnit.FOOT)
                 .isStackable(true)
                 .buildAndValidate();
 
@@ -42,7 +44,7 @@ class SwapBodyTest {
         assertFalse(swapBody.isReefer());
         assertEquals("Contargo", swapBody.getOperator());
         assertEquals("Open Top", swapBody.getType());
-        assertEquals(6.5, swapBody.getSize().doubleValue());
+        assertEquals(21.58, swapBody.getSize().getValue().doubleValue());
         assertTrue(swapBody.isStackable());
     }
 
@@ -54,9 +56,24 @@ class SwapBodyTest {
             .withNumber("OOOCSSSSSS")
             .isReefer(false)
             .withType("Open Top")
-            .withSize(6.5)
+            .withSize(21.58, LengthUnit.FOOT)
             .isStackable(true)
             .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureSizeCanBeSetInMetre() {
+
+        SwapBody swapBody = SwapBody.Builder.newSwapBody()
+                .withNumber("OOOCSSSSSS")
+                .isReefer(false)
+                .withType("Open Top")
+                .withSize(6.58, LengthUnit.METRE)
+                .isStackable(true)
+                .buildAndValidate();
+
+        assertEquals(21.58, swapBody.getSize().getValue().doubleValue(), 0.1);
     }
 
 
@@ -68,7 +85,7 @@ class SwapBodyTest {
                 SwapBody.Builder.newSwapBody()
                     .isReefer(false)
                     .withType("Open Top")
-                    .withSize(6.5)
+                    .withSize(21.58, LengthUnit.FOOT)
                     .isStackable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -76,7 +93,7 @@ class SwapBodyTest {
                 SwapBody.Builder.newSwapBody()
                     .withNumber("OOOCSSSSSS")
                     .withType("Open Top")
-                    .withSize(6.5)
+                    .withSize(21.58, LengthUnit.FOOT)
                     .isStackable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -84,15 +101,7 @@ class SwapBodyTest {
                 SwapBody.Builder.newSwapBody()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
-                    .withSize(6.5)
-                    .isStackable(true)
-                    .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                SwapBody.Builder.newSwapBody()
-                    .withNumber("OOOCSSSSSS")
-                    .isReefer(false)
-                    .withType("Open Top")
+                    .withSize(21.58, LengthUnit.FOOT)
                     .isStackable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -101,7 +110,54 @@ class SwapBodyTest {
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("Open Top")
-                    .withSize(6.5)
+                    .isStackable(true)
                     .buildAndValidate());
+        assertThrows(IllegalStateException.class,
+            () ->
+                SwapBody.Builder.newSwapBody()
+                    .withNumber("OOOCSSSSSS")
+                    .isReefer(false)
+                    .withType("Open Top")
+                    .withSize(21.58, LengthUnit.FOOT)
+                    .buildAndValidate());
+    }
+
+
+    @Test
+    void ensureCanBeParsedToJson() throws IOException {
+
+        SwapBody swapBody = SwapBody.Builder.newSwapBody()
+                .withIdentification("OOOCSSSSSS")
+                .withNumber("OOOCSSSSSS")
+                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
+                .withWeightTara(70.0, MassUnit.KILOGRAM)
+                .withCondition("i.O.")
+                .isReefer(false)
+                .withOperator("Contargo")
+                .withType("Open Top")
+                .withSize(21.58, LengthUnit.FOOT)
+                .isStackable(true)
+                .buildAndValidate();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonString = mapper.writeValueAsString(swapBody);
+
+        SwapBody deserialize = mapper.readValue(jsonString, SwapBody.class);
+
+        assertEquals("OOOCSSSSSS", deserialize.getIdentification());
+        assertEquals("OOOCSSSSSS", deserialize.getNumber());
+        assertEquals(LoadingUnitCategory.SWAP_BODY, deserialize.getCategory());
+        assertNotNull(deserialize.getWeight());
+        assertEquals(70, deserialize.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(65, deserialize.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(70, deserialize.getWeightTara().getValue().doubleValue());
+        assertEquals("i.O.", deserialize.getCondition());
+        assertFalse(deserialize.isReefer());
+        assertEquals("Contargo", deserialize.getOperator());
+        assertEquals("Open Top", deserialize.getType());
+        assertEquals(21.58, deserialize.getSize().getValue().doubleValue());
+        assertTrue(deserialize.isStackable());
     }
 }

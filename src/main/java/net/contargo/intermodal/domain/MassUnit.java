@@ -26,10 +26,6 @@ public enum MassUnit {
             case TON:
                 return Imperial.METRIC_TON;
 
-            // TODO - Custom Quantity for TEU
-            case TEU:
-                return Imperial.METRIC_TON;
-
             default:
                 return Units.METRE;
         }

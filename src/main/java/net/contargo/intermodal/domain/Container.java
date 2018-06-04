@@ -1,13 +1,18 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
 import javax.measure.Quantity;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import javax.validation.constraints.NotNull;
+
+import static systems.uom.common.USCustomary.FOOT;
 
 import static tec.units.ri.unit.Units.KILOGRAM;
 
@@ -49,31 +54,8 @@ public class Container extends LoadingUnit {
      * in foot.
      */
     @NotNull(message = "size is part of minimum requirement")
-    private Integer size;
-
-    public Container withSizeType(String sizeType) {
-
-        this.sizeType = sizeType;
-
-        return this;
-    }
-
-
-    public Container withType(String type) {
-
-        this.type = type;
-
-        return this;
-    }
-
-
-    public Container withSize(Integer size) {
-
-        this.size = size;
-
-        return this;
-    }
-
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> size;
 
     public String getSizeType() {
 
@@ -87,7 +69,8 @@ public class Container extends LoadingUnit {
     }
 
 
-    public Integer getSize() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getSize() {
 
         return size;
     }
@@ -117,7 +100,7 @@ public class Container extends LoadingUnit {
         private String condition;
         private String type;
         private Boolean reefer;
-        private Integer size;
+        private Quantity<Length> size;
         private String operator;
 
         private Builder() {
@@ -149,8 +132,8 @@ public class Container extends LoadingUnit {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightBruttoMax = Quantities.getQuantity(weightBruttoMax, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightBruttoMax = UnitConverter.tonToKilogram(weightBruttoMax);
             }
 
             return this;
@@ -161,8 +144,8 @@ public class Container extends LoadingUnit {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightNettoMax = Quantities.getQuantity(weightNettoMax, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightNettoMax = UnitConverter.tonToKilogram(weightNettoMax);
             }
 
             return this;
@@ -181,8 +164,8 @@ public class Container extends LoadingUnit {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightTara = UnitConverter.tonToKilogram(weightTara);
             }
 
             return this;
@@ -213,9 +196,13 @@ public class Container extends LoadingUnit {
         }
 
 
-        public Builder withSize(Integer size) {
+        public Builder withSize(Double size, LengthUnit unit) {
 
-            this.size = size;
+            if (unit.equals(LengthUnit.FOOT)) {
+                this.size = Quantities.getQuantity(size, FOOT);
+            } else if (unit.equals(LengthUnit.METRE)) {
+                this.size = UnitConverter.metreToFoot(size);
+            }
 
             return this;
         }

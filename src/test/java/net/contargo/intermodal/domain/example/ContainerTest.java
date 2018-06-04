@@ -1,10 +1,15 @@
 package net.contargo.intermodal.domain.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import net.contargo.intermodal.domain.Container;
+import net.contargo.intermodal.domain.LengthUnit;
 import net.contargo.intermodal.domain.LoadingUnitCategory;
 import net.contargo.intermodal.domain.MassUnit;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +33,7 @@ class ContainerTest {
                 .withOperator("Contargo")
                 .withSizeType("45G0")
                 .withType("HIGH CUBE CONTAINER")
-                .withSize(38)
+                .withSize(21.58, LengthUnit.FOOT)
                 .buildAndValidate();
 
         assertEquals("OOOCSSSSSS", container.getIdentification());
@@ -43,7 +48,7 @@ class ContainerTest {
         assertEquals("Contargo", container.getOperator());
         assertEquals("45G0", container.getSizeType());
         assertEquals("HIGH CUBE CONTAINER", container.getType());
-        assertEquals(38, container.getSize().doubleValue());
+        assertEquals(21.58, container.getSize().getValue().doubleValue());
     }
 
 
@@ -55,8 +60,23 @@ class ContainerTest {
             .isReefer(false)
             .withSizeType("45G0")
             .withType("HIGH CUBE CONTAINER")
-            .withSize(38)
+            .withSize(6.58, LengthUnit.METRE)
             .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureSizeCanBeSetInMetre() {
+
+        Container container = Container.Builder.newContainer()
+                .withNumber("OOOCSSSSSS")
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("HIGH CUBE CONTAINER")
+                .withSize(21.58, LengthUnit.FOOT)
+                .buildAndValidate();
+
+        assertEquals(21.58, container.getSize().getValue().doubleValue(), 0.1);
     }
 
 
@@ -69,7 +89,7 @@ class ContainerTest {
                     .isReefer(false)
                     .withSizeType("45G0")
                     .withType("HIGH CUBE CONTAINER")
-                    .withSize(38)
+                    .withSize(21.58, LengthUnit.FOOT)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -78,7 +98,7 @@ class ContainerTest {
                     .withNumber("OOOCSSSSSS")
                     .withSizeType("45G0")
                     .withType("HIGH CUBE CONTAINER")
-                    .withSize(38)
+                    .withSize(21.58, LengthUnit.FOOT)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -87,7 +107,7 @@ class ContainerTest {
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("HIGH CUBE CONTAINER")
-                    .withSize(38)
+                    .withSize(21.58, LengthUnit.FOOT)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -96,7 +116,7 @@ class ContainerTest {
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withSizeType("45G0")
-                    .withSize(38)
+                    .withSize(21.58, LengthUnit.FOOT)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -107,5 +127,44 @@ class ContainerTest {
                     .withSizeType("45G0")
                     .withType("HIGH CUBE CONTAINER")
                     .buildAndValidate());
+    }
+
+
+    @Test
+    void ensureCanBeParsedToJson() throws IOException {
+
+        Container container = Container.Builder.newContainer()
+                .withIdentification("OOOCSSSSSS")
+                .withNumber("OOOCSSSSSS")
+                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
+                .withWeightTara(70.0, MassUnit.KILOGRAM)
+                .withCondition("schadhaft")
+                .isReefer(false)
+                .withOperator("Contargo")
+                .withSizeType("45G0")
+                .withType("HIGH CUBE CONTAINER")
+                .withSize(21.58, LengthUnit.FOOT)
+                .buildAndValidate();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonString = mapper.writeValueAsString(container);
+
+        Container deserialize = mapper.readValue(jsonString, Container.class);
+
+        assertEquals("OOOCSSSSSS", deserialize.getIdentification());
+        assertEquals("OOOCSSSSSS", deserialize.getNumber());
+        assertEquals(LoadingUnitCategory.CONTAINER, deserialize.getCategory());
+        assertNotNull(container.getWeight());
+        assertEquals(70, deserialize.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(65, deserialize.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(70, deserialize.getWeightTara().getValue().doubleValue());
+        assertEquals("schadhaft", deserialize.getCondition());
+        assertFalse(deserialize.isReefer());
+        assertEquals("Contargo", deserialize.getOperator());
+        assertEquals("45G0", deserialize.getSizeType());
+        assertEquals("HIGH CUBE CONTAINER", deserialize.getType());
+        assertEquals(21.58, deserialize.getSize().getValue().doubleValue());
     }
 }
