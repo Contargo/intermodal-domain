@@ -2,6 +2,9 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.measure.Quantity;
+import javax.measure.quantity.Mass;
+
 import javax.validation.constraints.NotNull;
 
 
@@ -124,21 +127,21 @@ public abstract class LoadingUnit {
 
 
     @JsonIgnore
-    public Double getWeightBruttoMax() {
+    public Quantity<Mass> getWeightBruttoMax() {
 
         return weight.getBruttoMax();
     }
 
 
     @JsonIgnore
-    public Double getWeightNettoMax() {
+    public Quantity<Mass> getWeightNettoMax() {
 
         return weight.getNettoMax();
     }
 
 
     @JsonIgnore
-    public Double getWeightTara() {
+    public Quantity<Mass> getWeightTara() {
 
         return weight.getTara();
     }

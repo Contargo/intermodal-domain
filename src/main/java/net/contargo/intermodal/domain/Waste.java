@@ -3,7 +3,14 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import tec.units.ri.quantity.Quantities;
+
+import javax.measure.Quantity;
+import javax.measure.quantity.Mass;
+
 import javax.validation.constraints.NotNull;
+
+import static tec.units.ri.unit.Units.KILOGRAM;
 
 
 /**
@@ -73,7 +80,7 @@ public class Waste {
 
 
     @JsonIgnore
-    public Double getWeightNetto() {
+    public Quantity<Mass> getWeightNetto() {
 
         return weight.getNetto();
     }
@@ -103,7 +110,7 @@ public class Waste {
         private String keyID;
         private String wasteRegulationNumber;
         private String receiptNumber;
-        private Double weightNetto;
+        private Quantity<Mass> weightNetto;
 
         private Builder() {
         }
@@ -146,9 +153,13 @@ public class Waste {
         }
 
 
-        public Builder withWeightNetto(Double weightNetto) {
+        public Builder withWeightNetto(Double weightNetto, MassUnit unit) {
 
-            this.weightNetto = weightNetto;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightNetto = Quantities.getQuantity(weightNetto, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }

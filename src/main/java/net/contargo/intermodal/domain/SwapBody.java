@@ -2,7 +2,14 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import tec.units.ri.quantity.Quantities;
+
+import javax.measure.Quantity;
+import javax.measure.quantity.Mass;
+
 import javax.validation.constraints.NotNull;
+
+import static tec.units.ri.unit.Units.KILOGRAM;
 
 
 /**
@@ -100,10 +107,10 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
 
         private String identification;
         private String number;
-        private Double weightBruttoMax;
+        private Quantity<Mass> weightBruttoMax;
         private String type;
-        private Double weightNettoMax;
-        private Double weightTara;
+        private Quantity<Mass> weightNettoMax;
+        private Quantity<Mass> weightTara;
         private Double size;
         private String condition;
         private Boolean stackable;
@@ -127,22 +134,6 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
         }
 
 
-        public Builder withNumber(String number) {
-
-            this.number = number;
-
-            return this;
-        }
-
-
-        public Builder withWeightBruttoMax(Double weightBruttoMax) {
-
-            this.weightBruttoMax = weightBruttoMax;
-
-            return this;
-        }
-
-
         public Builder withType(String type) {
 
             this.type = type;
@@ -151,17 +142,45 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
         }
 
 
-        public Builder withWeightNettoMax(Double weightNettoMax) {
+        public Builder withNumber(String number) {
 
-            this.weightNettoMax = weightNettoMax;
+            this.number = number;
 
             return this;
         }
 
 
-        public Builder withWeightTara(Double weightTara) {
+        public Builder withWeightBruttoMax(Double weightBruttoMax, MassUnit unit) {
 
-            this.weightTara = weightTara;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightBruttoMax = Quantities.getQuantity(weightBruttoMax, KILOGRAM);
+            } else {
+                // TODO
+            }
+
+            return this;
+        }
+
+
+        public Builder withWeightNettoMax(Double weightNettoMax, MassUnit unit) {
+
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightNettoMax = Quantities.getQuantity(weightNettoMax, KILOGRAM);
+            } else {
+                // TODO
+            }
+
+            return this;
+        }
+
+
+        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }

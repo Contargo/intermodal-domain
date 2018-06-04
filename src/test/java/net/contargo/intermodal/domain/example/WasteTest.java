@@ -1,5 +1,6 @@
 package net.contargo.intermodal.domain.example;
 
+import net.contargo.intermodal.domain.MassUnit;
 import net.contargo.intermodal.domain.Waste;
 
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ class WasteTest {
                 .withKeyID("03 03 01")
                 .withWasteRegulationNumber("02")
                 .withReceiptNumber("65478")
-                .withWeightNetto(75.0)
+                .withWeightNetto(75.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
         assertEquals(1, waste.getPosition().intValue());
@@ -30,7 +31,7 @@ class WasteTest {
         assertEquals("02", waste.getWasteRegulationNumber());
         assertEquals("65478", waste.getReceiptNumber());
         assertNotNull(waste.getWeight());
-        assertEquals(75.0, waste.getWeightNetto().doubleValue());
+        assertEquals(75.0, waste.getWeightNetto().getValue().doubleValue());
     }
 
 

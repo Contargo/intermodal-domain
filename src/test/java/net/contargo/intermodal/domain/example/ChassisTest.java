@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.Chassis;
+import net.contargo.intermodal.domain.MassUnit;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,7 @@ class ChassisTest {
                 .withSuitabilityDangerousGoods(true)
                 .withSuitabilityWaste(true)
                 .withSuitabilityReefer(true)
-                .withWeightTara(500.0)
+                .withWeightTara(500.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
         assertEquals("DU CO 1782", chassis.getNumberPlate());
@@ -42,6 +43,6 @@ class ChassisTest {
         assertTrue(chassis.getSuitabilityWaste());
         assertTrue(chassis.getSuitabilityReefer());
         assertNotNull(chassis.getWeight());
-        assertEquals(500.0, chassis.getWeightTara().doubleValue());
+        assertEquals(500.0, chassis.getWeightTara().getValue().doubleValue());
     }
 }

@@ -2,6 +2,7 @@ package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.Container;
 import net.contargo.intermodal.domain.LoadingUnitCategory;
+import net.contargo.intermodal.domain.MassUnit;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,9 +20,9 @@ class ContainerTest {
         Container container = Container.Builder.newContainer()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
-                .withWeightBruttoMax(70.0)
-                .withWeightNettoMax(65.0)
-                .withWeightTara(70.0)
+                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
+                .withWeightTara(70.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -34,9 +35,9 @@ class ContainerTest {
         assertEquals("OOOCSSSSSS", container.getNumber());
         assertEquals(LoadingUnitCategory.CONTAINER, container.getCategory());
         assertNotNull(container.getWeight());
-        assertEquals(70, container.getWeightBruttoMax().doubleValue());
-        assertEquals(65, container.getWeightNettoMax().doubleValue());
-        assertEquals(70, container.getWeightTara().doubleValue());
+        assertEquals(70, container.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(65, container.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(70, container.getWeightTara().getValue().doubleValue());
         assertEquals("schadhaft", container.getCondition());
         assertFalse(container.isReefer());
         assertEquals("Contargo", container.getOperator());

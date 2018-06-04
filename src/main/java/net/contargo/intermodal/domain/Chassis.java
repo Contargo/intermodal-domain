@@ -3,6 +3,13 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import tec.units.ri.quantity.Quantities;
+
+import javax.measure.Quantity;
+import javax.measure.quantity.Mass;
+
+import static tec.units.ri.unit.Units.KILOGRAM;
+
 
 /**
  * Trailer to transport loading units.
@@ -152,7 +159,7 @@ public class Chassis implements MeansOfTransport {
 
 
     @JsonIgnore
-    public Double getWeightTara() {
+    public Quantity<Mass> getWeightTara() {
 
         return weight.getTara();
     }
@@ -183,7 +190,7 @@ public class Chassis implements MeansOfTransport {
         private Boolean suitabilityDangerousGoods;
         private Boolean suitabilityWaste;
         private Boolean suitabilityReefer;
-        private Double weightTara;
+        private Quantity<Mass> weightTara;
 
         private Builder() {
         }
@@ -282,9 +289,13 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withWeightTara(Double weightTara) {
+        public Builder withWeightTara(Double weightTara, MassUnit unit) {
 
-            this.weightTara = weightTara;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }

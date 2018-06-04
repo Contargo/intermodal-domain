@@ -74,8 +74,6 @@ class BargeTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        ObjectMapper mapper = new ObjectMapper();
-
         Barge barge = Barge.Builder.newBarge()
                 .withName("My Barge")
                 .withMmsi("021112345")
@@ -91,5 +89,27 @@ class BargeTest {
                 .withCapacityTeu(200.0)
                 .withCapacityTons(3400.0, TON)
                 .buildAndValidate();
+
+        System.out.print(barge.toString());
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonString = mapper.writeValueAsString(barge);
+
+        Barge deserialize = mapper.readValue(jsonString, Barge.class);
+
+        assertEquals("My Barge", deserialize.getName());
+        assertEquals("021112345", deserialize.getMmsi());
+        assertEquals("050XXXXX", deserialize.getEni());
+        assertNotNull(deserialize.getOperator());
+        assertEquals(91.4, deserialize.getLengthValue());
+        assertEquals(27.4, deserialize.getWidthValue());
+        assertEquals(5.5, deserialize.getDraughtValue());
+        assertEquals(4, deserialize.getBays().intValue());
+        assertEquals(8, deserialize.getRows().intValue());
+        assertEquals(2, deserialize.getTiers().intValue());
+        assertTrue(deserialize.getSuitabilityDangerousGoods());
+        assertEquals(200.0, deserialize.getCapacityTeu().doubleValue());
+        assertEquals(3400.0, deserialize.getCapacityTons().doubleValue());
     }
 }

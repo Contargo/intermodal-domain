@@ -2,7 +2,14 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import tec.units.ri.quantity.Quantities;
+
+import javax.measure.Quantity;
+import javax.measure.quantity.Mass;
+
 import javax.validation.constraints.NotNull;
+
+import static tec.units.ri.unit.Units.KILOGRAM;
 
 
 /**
@@ -103,10 +110,10 @@ public class Container extends LoadingUnit {
         private String identification;
         private String number;
         private LoadingUnitCategory category;
-        private Double weightBruttoMax;
-        private Double weightNettoMax;
+        private Quantity<Mass> weightBruttoMax;
+        private Quantity<Mass> weightNettoMax;
         private String sizeType;
-        private Double weightTara;
+        private Quantity<Mass> weightTara;
         private String condition;
         private String type;
         private Boolean reefer;
@@ -138,17 +145,25 @@ public class Container extends LoadingUnit {
         }
 
 
-        public Builder withWeightBruttoMax(Double weightBruttoMax) {
+        public Builder withWeightBruttoMax(Double weightBruttoMax, MassUnit unit) {
 
-            this.weightBruttoMax = weightBruttoMax;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightBruttoMax = Quantities.getQuantity(weightBruttoMax, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }
 
 
-        public Builder withWeightNettoMax(Double weightNettoMax) {
+        public Builder withWeightNettoMax(Double weightNettoMax, MassUnit unit) {
 
-            this.weightNettoMax = weightNettoMax;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightNettoMax = Quantities.getQuantity(weightNettoMax, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }
@@ -162,9 +177,13 @@ public class Container extends LoadingUnit {
         }
 
 
-        public Builder withWeightTara(Double weightTara) {
+        public Builder withWeightTara(Double weightTara, MassUnit unit) {
 
-            this.weightTara = weightTara;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }

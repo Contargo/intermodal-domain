@@ -1,6 +1,11 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import javax.measure.Quantity;
+import javax.measure.quantity.Mass;
 
 
 /**
@@ -21,7 +26,8 @@ class Weight {
      *               angepasst.
      * @note_english  Difference from Digit 2018-04: Should be Brutto.Max but will be changed in next version of DIGIT
      */
-    private Double bruttoMax;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Mass> bruttoMax;
 
     /**
      * in kg.
@@ -30,78 +36,87 @@ class Weight {
      *               angepasst.
      * @note_english  Difference from Digit 2018-04: Should be Netto.Max but will be changed in next version of DIGIT
      */
-    private Double nettoMax;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Mass> nettoMax;
 
     /**
      * in kg.
      */
-    private Double brutto;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Mass> brutto;
 
     /**
      * in kg.
      */
-    private Double netto;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Mass> netto;
 
     /**
      * in kg.
      */
-    private Double tara;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Mass> tara;
 
-    public Double getBruttoMax() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Mass> getBruttoMax() {
 
         return bruttoMax;
     }
 
 
-    public void setBruttoMax(Double bruttoMax) {
+    public void setBruttoMax(Quantity<Mass> bruttoMax) {
 
         this.bruttoMax = bruttoMax;
     }
 
 
-    public Double getNettoMax() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Mass> getNettoMax() {
 
         return nettoMax;
     }
 
 
-    public void setNettoMax(Double nettoMax) {
+    public void setNettoMax(Quantity<Mass> nettoMax) {
 
         this.nettoMax = nettoMax;
     }
 
 
-    public Double getBrutto() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Mass> getBrutto() {
 
         return brutto;
     }
 
 
-    public void setBrutto(Double brutto) {
+    public void setBrutto(Quantity<Mass> brutto) {
 
         this.brutto = brutto;
     }
 
 
-    public Double getNetto() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Mass> getNetto() {
 
         return netto;
     }
 
 
-    public void setNetto(Double netto) {
+    public void setNetto(Quantity<Mass> netto) {
 
         this.netto = netto;
     }
 
 
-    public Double getTara() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Mass> getTara() {
 
         return tara;
     }
 
 
-    public void setTara(Double tara) {
+    public void setTara(Quantity<Mass> tara) {
 
         this.tara = tara;
     }

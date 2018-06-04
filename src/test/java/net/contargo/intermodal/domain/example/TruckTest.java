@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.EnvironmentBadge;
+import net.contargo.intermodal.domain.MassUnit;
 import net.contargo.intermodal.domain.Truck;
 
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ class TruckTest {
                 .withST(true)
                 .withSuitabilityDangerousGoods(false)
                 .withSuitabilityWaste(false)
-                .withWeightTara(40000.0)
+                .withWeightTara(40000.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
         assertEquals("DU CO 1782", truck.getNumberPlate());
@@ -38,6 +39,6 @@ class TruckTest {
         assertTrue(truck.getSt());
         assertFalse(truck.getSuitabilityDangerousGoods());
         assertFalse(truck.getSuitabilityWaste());
-        assertEquals(40000.0, truck.getWeightTara().doubleValue());
+        assertEquals(40000.0, truck.getWeightTara().getValue().doubleValue());
     }
 }

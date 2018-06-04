@@ -4,10 +4,17 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import tec.units.ri.quantity.Quantities;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.measure.Quantity;
+import javax.measure.quantity.Mass;
+
 import javax.validation.constraints.NotNull;
+
+import static tec.units.ri.unit.Units.KILOGRAM;
 
 
 /**
@@ -80,21 +87,21 @@ public class LUOrder {
 
 
     @JsonIgnore
-    public Double getWeightBrutto() {
+    public Quantity<Mass> getWeightBrutto() {
 
         return weight.getBrutto();
     }
 
 
     @JsonIgnore
-    public Double getWeightNetto() {
+    public Quantity<Mass> getWeightNetto() {
 
         return weight.getNetto();
     }
 
 
     @JsonIgnore
-    public Double getWeightTara() {
+    public Quantity<Mass> getWeightTara() {
 
         return weight.getTara();
     }
@@ -183,9 +190,9 @@ public class LUOrder {
 
         private String reference;
         private LoadingUnit loadingUnit;
-        private Double weightBrutto;
-        private Double weightNetto;
-        private Double weightTara;
+        private Quantity<Mass> weightBrutto;
+        private Quantity<Mass> weightNetto;
+        private Quantity<Mass> weightTara;
         private DangerousGoods dangerousGoodsIndication;
         private Waste wasteIndication;
         private Integer setTemperature;
@@ -222,25 +229,37 @@ public class LUOrder {
         }
 
 
-        public Builder withWeightBrutto(Double weightBrutto) {
+        public Builder withWeightBrutto(Double weightBrutto, MassUnit unit) {
 
-            this.weightBrutto = weightBrutto;
-
-            return this;
-        }
-
-
-        public Builder withWeightNetto(Double weightNetto) {
-
-            this.weightNetto = weightNetto;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightBrutto = Quantities.getQuantity(weightBrutto, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }
 
 
-        public Builder withWeightTara(Double weightTara) {
+        public Builder withWeightNetto(Double weightNetto, MassUnit unit) {
 
-            this.weightTara = weightTara;
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightNetto = Quantities.getQuantity(weightNetto, KILOGRAM);
+            } else {
+                // TODO
+            }
+
+            return this;
+        }
+
+
+        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+            } else {
+                // TODO
+            }
 
             return this;
         }

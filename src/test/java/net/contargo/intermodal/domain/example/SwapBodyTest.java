@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.LoadingUnitCategory;
+import net.contargo.intermodal.domain.MassUnit;
 import net.contargo.intermodal.domain.SwapBody;
 
 import org.junit.jupiter.api.Test;
@@ -19,9 +20,9 @@ class SwapBodyTest {
         SwapBody swapBody = SwapBody.Builder.newSwapBody()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
-                .withWeightBruttoMax(70.0)
-                .withWeightNettoMax(65.0)
-                .withWeightTara(70.0)
+                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
+                .withWeightTara(70.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -34,9 +35,9 @@ class SwapBodyTest {
         assertEquals("OOOCSSSSSS", swapBody.getNumber());
         assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
         assertNotNull(swapBody.getWeight());
-        assertEquals(70, swapBody.getWeightBruttoMax().doubleValue());
-        assertEquals(65, swapBody.getWeightNettoMax().doubleValue());
-        assertEquals(70, swapBody.getWeightTara().doubleValue());
+        assertEquals(70, swapBody.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(65, swapBody.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(70, swapBody.getWeightTara().getValue().doubleValue());
         assertEquals("i.O.", swapBody.getCondition());
         assertFalse(swapBody.isReefer());
         assertEquals("Contargo", swapBody.getOperator());

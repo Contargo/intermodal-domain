@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain.example;
 
 import net.contargo.intermodal.domain.LoadingUnitCategory;
+import net.contargo.intermodal.domain.MassUnit;
 import net.contargo.intermodal.domain.Trailer;
 
 import org.junit.jupiter.api.Test;
@@ -19,9 +20,9 @@ class TrailerTest {
         Trailer trailer = Trailer.Builder.newTrailer()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
-                .withWeightBruttoMax(70.0)
-                .withWeightNettoMax(65.0)
-                .withWeightTara(70.0)
+                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
+                .withWeightTara(70.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -34,9 +35,9 @@ class TrailerTest {
         assertEquals("OOOCSSSSSS", trailer.getNumber());
         assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
         assertNotNull(trailer.getWeight());
-        assertEquals(70, trailer.getWeightBruttoMax().doubleValue());
-        assertEquals(65, trailer.getWeightNettoMax().doubleValue());
-        assertEquals(70, trailer.getWeightTara().doubleValue());
+        assertEquals(70, trailer.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(65, trailer.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(70, trailer.getWeightTara().getValue().doubleValue());
         assertEquals("i.O.", trailer.getCondition());
         assertFalse(trailer.isReefer());
         assertEquals("Contargo", trailer.getOperator());
