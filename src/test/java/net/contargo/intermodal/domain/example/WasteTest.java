@@ -1,9 +1,14 @@
 package net.contargo.intermodal.domain.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.contargo.intermodal.domain.Container;
 import net.contargo.intermodal.domain.MassUnit;
 import net.contargo.intermodal.domain.Waste;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -46,5 +51,43 @@ class WasteTest {
     void ensureWasteCanBeValidated() {
 
         assertThrows(IllegalStateException.class, () -> Waste.Builder.newWaste().buildAndValidate());
+    }
+
+
+    @Test
+    void ensureWeightCanBeSetInTon() {
+
+        Waste waste = Waste.Builder.newWaste()
+                .withKeyID("03 03 01")
+                .withWeightNetto(0.5, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(500.0, waste.getWeightNetto().getValue().doubleValue(), 0.1);
+    }
+
+
+    @Test
+    void ensureCanBeParsedToJson() throws IOException {
+
+        Waste waste = Waste.Builder.newWaste()
+                .withPosition(1)
+                .withKeyID("03 03 01")
+                .withWasteRegulationNumber("02")
+                .withReceiptNumber("65478")
+                .withWeightNetto(75.0, MassUnit.KILOGRAM)
+                .buildAndValidate();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonString = mapper.writeValueAsString(waste);
+
+        Waste deserialize = mapper.readValue(jsonString, Waste.class);
+
+        assertEquals(1, deserialize.getPosition().intValue());
+        assertEquals("03 03 01", deserialize.getKeyID());
+        assertEquals("02", deserialize.getWasteRegulationNumber());
+        assertEquals("65478", deserialize.getReceiptNumber());
+        assertNotNull(deserialize.getWeight());
+        assertEquals(75.0, deserialize.getWeightNetto().getValue().doubleValue());
     }
 }

@@ -2,13 +2,17 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
 import javax.measure.Quantity;
+import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
 
 import static tec.units.ri.unit.Units.KILOGRAM;
+import static tec.units.ri.unit.Units.METRE;
 
 
 /**
@@ -48,12 +52,14 @@ public class Chassis implements MeansOfTransport {
     /**
      * in meter.
      */
-    private Double size;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> size;
 
     /**
      * in meter.
      */
-    private Double height;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> height;
 
     /**
      * @name_german  EU Zulassung
@@ -110,13 +116,15 @@ public class Chassis implements MeansOfTransport {
     }
 
 
-    public Double getSize() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getSize() {
 
         return size;
     }
 
 
-    public Double getHeight() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getHeight() {
 
         return height;
     }
@@ -183,8 +191,8 @@ public class Chassis implements MeansOfTransport {
         private String mot;
         private String type;
         private Integer axles;
-        private Double size;
-        private Double height;
+        private Quantity<Length> size;
+        private Quantity<Length> height;
         private Boolean euAuthorization;
         private Boolean st;
         private Boolean suitabilityDangerousGoods;
@@ -233,17 +241,25 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withSize(Double size) {
+        public Builder withSize(Double size, LengthUnit unit) {
 
-            this.size = size;
+            if (unit.equals(LengthUnit.METRE)) {
+                this.size = Quantities.getQuantity(size, METRE);
+            } else if (unit.equals(LengthUnit.FOOT)) {
+                this.size = UnitConverter.footToMetre(size);
+            }
 
             return this;
         }
 
 
-        public Builder withHeight(Double height) {
+        public Builder withHeight(Double height, LengthUnit unit) {
 
-            this.height = height;
+            if (unit.equals(LengthUnit.METRE)) {
+                this.height = Quantities.getQuantity(height, METRE);
+            } else if (unit.equals(LengthUnit.FOOT)) {
+                this.height = UnitConverter.footToMetre(height);
+            }
 
             return this;
         }
@@ -293,8 +309,8 @@ public class Chassis implements MeansOfTransport {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightTara = UnitConverter.tonToKilogram(weightTara);
             }
 
             return this;

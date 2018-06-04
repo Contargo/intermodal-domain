@@ -14,8 +14,7 @@ import tec.units.ri.unit.Units;
 public enum MassUnit {
 
     KILOGRAM,
-    TON,
-    TEU;
+    TON;
 
     javax.measure.Unit toUnit() {
 

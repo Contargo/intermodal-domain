@@ -266,8 +266,8 @@ public class Truck implements MeansOfTransport {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightTara = UnitConverter.tonToKilogram(weightTara);
             }
 
             return this;

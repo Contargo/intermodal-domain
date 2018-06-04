@@ -157,8 +157,8 @@ public class Waste {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightNetto = Quantities.getQuantity(weightNetto, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightNetto = UnitConverter.tonToKilogram(weightNetto);
             }
 
             return this;

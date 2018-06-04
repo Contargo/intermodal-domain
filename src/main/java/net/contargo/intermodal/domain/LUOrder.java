@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
@@ -233,8 +234,8 @@ public class LUOrder {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightBrutto = Quantities.getQuantity(weightBrutto, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightBrutto = UnitConverter.tonToKilogram(weightBrutto);
             }
 
             return this;
@@ -245,8 +246,8 @@ public class LUOrder {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightNetto = Quantities.getQuantity(weightNetto, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightNetto = UnitConverter.tonToKilogram(weightNetto);
             }
 
             return this;
@@ -257,8 +258,8 @@ public class LUOrder {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightTara = UnitConverter.tonToKilogram(weightTara);
             }
 
             return this;

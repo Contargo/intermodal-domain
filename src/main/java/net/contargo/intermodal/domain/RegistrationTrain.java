@@ -2,8 +2,17 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import tec.units.ri.quantity.Quantities;
+
+import javax.measure.Quantity;
+import javax.measure.quantity.Length;
 
 import javax.validation.constraints.NotNull;
+
+import static tec.units.ri.unit.Units.METRE;
 
 
 /**
@@ -69,7 +78,8 @@ public class RegistrationTrain {
      * in meter.
      */
     @NotNull(message = "totalLength is part of minimum requirement")
-    private Double totalLength;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Length> totalLength;
 
     @NotNull(message = "waggonQuantity is part of minimum requirement")
     private Integer waggonQuantity;
@@ -131,7 +141,8 @@ public class RegistrationTrain {
     }
 
 
-    public Double getTotalLength() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Length> getTotalLength() {
 
         return totalLength;
     }
@@ -196,7 +207,7 @@ public class RegistrationTrain {
         private String terminalEtd;
         private String shuntingYardEta;
         private String shunter;
-        private Double totalLength;
+        private Quantity<Length> totalLength;
         private Integer waggonQuantity;
         private DangerousGoods dangerousGoodsIndication;
         private Integer volumeToDischarge;
@@ -268,9 +279,13 @@ public class RegistrationTrain {
         }
 
 
-        public Builder withTotalLength(Double totalLength) {
+        public Builder withTotalLength(Double totalLength, LengthUnit unit) {
 
-            this.totalLength = totalLength;
+            if (unit.equals(LengthUnit.METRE)) {
+                this.totalLength = Quantities.getQuantity(totalLength, METRE);
+            } else if (unit.equals(LengthUnit.FOOT)) {
+                this.totalLength = UnitConverter.footToMetre(totalLength);
+            }
 
             return this;
         }
