@@ -55,7 +55,7 @@ class WasteTest {
 
 
     @Test
-    void ensureWeightCanBeSetInTon() {
+    void ensureWeightCanBeSetInTons() {
 
         Waste waste = Waste.Builder.newWaste()
                 .withKeyID("03 03 01")

@@ -2,10 +2,7 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Container;
-import net.contargo.intermodal.domain.LengthUnit;
-import net.contargo.intermodal.domain.LoadingUnitCategory;
-import net.contargo.intermodal.domain.MassUnit;
+import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -49,6 +46,26 @@ class ContainerTest {
         assertEquals("45G0", container.getSizeType());
         assertEquals("HIGH CUBE CONTAINER", container.getType());
         assertEquals(21.58, container.getSize().getValue().doubleValue());
+    }
+
+
+    @Test
+    void ensureWeightCanBeSetInTons() {
+
+        Container container = Container.Builder.newContainer()
+                .withNumber("OOOCSSSSSS")
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("HIGH CUBE CONTAINER")
+                .withSize(6.58, LengthUnit.METRE)
+                .withWeightBruttoMax(30.48, MassUnit.TON)
+                .withWeightNettoMax(28.08, MassUnit.TON)
+                .withWeightTara(2.4, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(30480.0, container.getWeightBruttoMax().getValue().doubleValue(), 0.1);
+        assertEquals(28080.0, container.getWeightNettoMax().getValue().doubleValue(), 0.1);
+        assertEquals(2400.0, container.getWeightTara().getValue().doubleValue(), 0.1);
     }
 
 

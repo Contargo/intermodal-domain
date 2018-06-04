@@ -80,7 +80,7 @@ class LUOrderTest {
 
 
     @Test
-    void ensureWeightCanBeSetInTon() {
+    void ensureWeightCanBeSetInTons() {
 
         LUOrder luOrder = LUOrder.Builder.newOrder()
                 .withLoadingUnit(new Container())

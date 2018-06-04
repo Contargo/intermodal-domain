@@ -49,7 +49,7 @@ class TruckTest {
 
 
     @Test
-    void ensureWeightCanBeSetInTon() {
+    void ensureWeightCanBeSetInTons() {
 
         Truck truck = Truck.Builder.newTruck()
                 .withNumberPlate("DU CO 1782")
