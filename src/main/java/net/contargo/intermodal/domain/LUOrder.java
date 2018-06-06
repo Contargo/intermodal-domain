@@ -3,7 +3,6 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
@@ -35,7 +34,7 @@ import static tec.units.ri.unit.Units.KILOGRAM;
  *                      loading unit is made in this class with the connection between order data and loading unit
  *                      data. Especially information about peculiarities of the loading unit including the transported
  *                      goods and operators as well as the direction of transport are collected here.
- * @minimum_requirement  loadingUnit, weightBrutto, weightNetto, weightTara, dangerousGoodsIndication, wasteIndication
+ * @minimum_requirement  loadingUnit, weightBrutto, weightNetto, weightTare, dangerousGoodsIndication, wasteIndication
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -47,7 +46,7 @@ public class LUOrder {
     private LoadingUnit loadingUnit;
 
     @NotNull(message = "weight is part of minimum requirement")
-    @LUOrderWeightConstraint(message = "brutto, netto and tara are part of minimum requirement")
+    @LUOrderWeightConstraint(message = "brutto, netto and tare are part of minimum requirement")
     private Weight weight;
 
     @NotNull(message = "dangerousGoodsIndication is part of minimum requirement")
@@ -113,9 +112,9 @@ public class LUOrder {
 
 
     @JsonIgnore
-    public Quantity<Mass> getWeightTara() {
+    public Quantity<Mass> getWeightTare() {
 
-        return weight.getTara();
+        return weight.getTare();
     }
 
 
@@ -204,7 +203,7 @@ public class LUOrder {
         private LoadingUnit loadingUnit;
         private Quantity<Mass> weightBrutto;
         private Quantity<Mass> weightNetto;
-        private Quantity<Mass> weightTara;
+        private Quantity<Mass> weightTare;
         private DangerousGoods dangerousGoodsIndication;
         private Waste wasteIndication;
         private Integer setTemperature;
@@ -265,12 +264,12 @@ public class LUOrder {
         }
 
 
-        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
-                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
-                this.weightTara = UnitConverter.tonToKilogram(weightTara);
+                this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
 
             return this;
@@ -384,7 +383,7 @@ public class LUOrder {
             Weight weight = new Weight();
             weight.setNetto(this.weightNetto);
             weight.setBrutto(this.weightBrutto);
-            weight.setTara(this.weightTara);
+            weight.setTare(this.weightTare);
             luOrder.weight = weight;
 
             return luOrder;

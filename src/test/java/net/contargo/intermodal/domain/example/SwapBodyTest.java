@@ -24,7 +24,7 @@ class SwapBodyTest {
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
-                .withWeightTara(70.0, MassUnit.KILOGRAM)
+                .withWeightTare(70.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -39,7 +39,7 @@ class SwapBodyTest {
         assertNotNull(swapBody.getWeight());
         assertEquals(70, swapBody.getWeightBruttoMax().getValue().doubleValue());
         assertEquals(65, swapBody.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(70, swapBody.getWeightTara().getValue().doubleValue());
+        assertEquals(70, swapBody.getWeightTare().getValue().doubleValue());
         assertEquals("i.O.", swapBody.getCondition());
         assertFalse(swapBody.isReefer());
         assertEquals("Contargo", swapBody.getOperator());
@@ -131,7 +131,7 @@ class SwapBodyTest {
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
-                .withWeightTara(70.0, MassUnit.KILOGRAM)
+                .withWeightTare(70.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -152,7 +152,7 @@ class SwapBodyTest {
         assertNotNull(deserialize.getWeight());
         assertEquals(70, deserialize.getWeightBruttoMax().getValue().doubleValue());
         assertEquals(65, deserialize.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(70, deserialize.getWeightTara().getValue().doubleValue());
+        assertEquals(70, deserialize.getWeightTare().getValue().doubleValue());
         assertEquals("i.O.", deserialize.getCondition());
         assertFalse(deserialize.isReefer());
         assertEquals("Contargo", deserialize.getOperator());

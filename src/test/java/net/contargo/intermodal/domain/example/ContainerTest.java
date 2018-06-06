@@ -24,7 +24,7 @@ class ContainerTest {
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -39,7 +39,7 @@ class ContainerTest {
         assertNotNull(container.getWeight());
         assertEquals(30480., container.getWeightBruttoMax().getValue().doubleValue());
         assertEquals(28080.0, container.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(2400.0, container.getWeightTara().getValue().doubleValue());
+        assertEquals(2400.0, container.getWeightTare().getValue().doubleValue());
         assertEquals("schadhaft", container.getCondition());
         assertFalse(container.isReefer());
         assertEquals("Contargo", container.getOperator());
@@ -60,12 +60,12 @@ class ContainerTest {
                 .withSize(6.58, LengthUnit.METRE)
                 .withWeightBruttoMax(30.48, MassUnit.TON)
                 .withWeightNettoMax(28.08, MassUnit.TON)
-                .withWeightTara(2.4, MassUnit.TON)
+                .withWeightTare(2.4, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(30480.0, container.getWeightBruttoMax().getValue().doubleValue(), 0.1);
         assertEquals(28080.0, container.getWeightNettoMax().getValue().doubleValue(), 0.1);
-        assertEquals(2400.0, container.getWeightTara().getValue().doubleValue(), 0.1);
+        assertEquals(2400.0, container.getWeightTare().getValue().doubleValue(), 0.1);
     }
 
 
@@ -155,7 +155,7 @@ class ContainerTest {
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -176,7 +176,7 @@ class ContainerTest {
         assertNotNull(container.getWeight());
         assertEquals(30480., container.getWeightBruttoMax().getValue().doubleValue());
         assertEquals(28080.0, container.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(2400.0, container.getWeightTara().getValue().doubleValue());
+        assertEquals(2400.0, container.getWeightTare().getValue().doubleValue());
         assertEquals("schadhaft", deserialize.getCondition());
         assertFalse(deserialize.isReefer());
         assertEquals("Contargo", deserialize.getOperator());

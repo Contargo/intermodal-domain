@@ -33,7 +33,7 @@ class ChassisTest {
                 .withSuitabilityDangerousGoods(true)
                 .withSuitabilityWaste(true)
                 .withSuitabilityReefer(true)
-                .withWeightTara(500.0, MassUnit.KILOGRAM)
+                .withWeightTare(500.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
         assertEquals("DU CO 1782", chassis.getNumberPlate());
@@ -48,7 +48,7 @@ class ChassisTest {
         assertTrue(chassis.getSuitabilityWaste());
         assertTrue(chassis.getSuitabilityReefer());
         assertNotNull(chassis.getWeight());
-        assertEquals(500.0, chassis.getWeightTara().getValue().doubleValue());
+        assertEquals(500.0, chassis.getWeightTare().getValue().doubleValue());
     }
 
 
@@ -59,12 +59,12 @@ class ChassisTest {
                 .withMot(2020, 5, 22)
                 .withSize(13.12, LengthUnit.FOOT)
                 .withHeight(3.28, LengthUnit.FOOT)
-                .withWeightTara(0.5, MassUnit.TON)
+                .withWeightTare(0.5, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(4.0, chassis.getSize().getValue().doubleValue(), 0.1);
         assertEquals(1.0, chassis.getHeight().getValue().doubleValue(), 0.1);
-        assertEquals(1.0, chassis.getWeightTara().getValue().doubleValue(), 500);
+        assertEquals(1.0, chassis.getWeightTare().getValue().doubleValue(), 500);
     }
 
 
@@ -83,7 +83,7 @@ class ChassisTest {
                 .withSuitabilityDangerousGoods(true)
                 .withSuitabilityWaste(true)
                 .withSuitabilityReefer(true)
-                .withWeightTara(500.0, MassUnit.KILOGRAM)
+                .withWeightTare(500.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -104,6 +104,6 @@ class ChassisTest {
         assertTrue(chassis.getSuitabilityWaste());
         assertTrue(chassis.getSuitabilityReefer());
         assertNotNull(chassis.getWeight());
-        assertEquals(500.0, chassis.getWeightTara().getValue().doubleValue());
+        assertEquals(500.0, chassis.getWeightTare().getValue().doubleValue());
     }
 }

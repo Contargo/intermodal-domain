@@ -101,7 +101,7 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
         private Quantity<Mass> weightBruttoMax;
         private String type;
         private Quantity<Mass> weightNettoMax;
-        private Quantity<Mass> weightTara;
+        private Quantity<Mass> weightTare;
         private Quantity<Length> size;
         private String condition;
         private Boolean stackable;
@@ -165,10 +165,10 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
         }
 
 
-        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
-                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else {
                 // TODO
             }
@@ -237,7 +237,7 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
                 Weight weight = new Weight();
                 weight.setBruttoMax(weightBruttoMax);
                 weight.setNettoMax(weightNettoMax);
-                weight.setTara(weightTara);
+                weight.setTare(weightTare);
                 swapBody.setWeight(weight);
             }
 

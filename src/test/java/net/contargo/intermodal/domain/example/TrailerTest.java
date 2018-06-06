@@ -27,7 +27,7 @@ class TrailerTest {
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
-                .withWeightTara(70.0, MassUnit.KILOGRAM)
+                .withWeightTare(70.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -42,7 +42,7 @@ class TrailerTest {
         assertNotNull(trailer.getWeight());
         assertEquals(70, trailer.getWeightBruttoMax().getValue().doubleValue());
         assertEquals(65, trailer.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(70, trailer.getWeightTara().getValue().doubleValue());
+        assertEquals(70, trailer.getWeightTare().getValue().doubleValue());
         assertEquals("i.O.", trailer.getCondition());
         assertFalse(trailer.isReefer());
         assertEquals("Contargo", trailer.getOperator());
@@ -135,7 +135,7 @@ class TrailerTest {
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
-                .withWeightTara(70.0, MassUnit.KILOGRAM)
+                .withWeightTare(70.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -156,7 +156,7 @@ class TrailerTest {
         assertNotNull(deserialize.getWeight());
         assertEquals(70, deserialize.getWeightBruttoMax().getValue().doubleValue());
         assertEquals(65, deserialize.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(70, deserialize.getWeightTara().getValue().doubleValue());
+        assertEquals(70, deserialize.getWeightTare().getValue().doubleValue());
         assertEquals("i.O.", deserialize.getCondition());
         assertFalse(deserialize.isReefer());
         assertEquals("Contargo", deserialize.getOperator());

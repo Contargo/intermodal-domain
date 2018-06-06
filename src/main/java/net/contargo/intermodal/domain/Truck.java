@@ -133,9 +133,9 @@ public class Truck implements MeansOfTransport {
 
 
     @JsonIgnore
-    public Quantity<Mass> getWeightTara() {
+    public Quantity<Mass> getWeightTare() {
 
-        return weight.getTara();
+        return weight.getTare();
     }
 
 
@@ -174,7 +174,7 @@ public class Truck implements MeansOfTransport {
         private Boolean st;
         private Boolean suitabilityDangerousGoods;
         private Boolean suitabilityWaste;
-        private Quantity<Mass> weightTara;
+        private Quantity<Mass> weightTare;
 
         private Builder() {
         }
@@ -262,12 +262,12 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
-                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
-                this.weightTara = UnitConverter.tonToKilogram(weightTara);
+                this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
 
             return this;
@@ -283,9 +283,9 @@ public class Truck implements MeansOfTransport {
             truck.numberPlate = this.numberPlate;
             truck.environmentBadge = this.environmentBadge;
 
-            if (weightTara != null) {
+            if (weightTare != null) {
                 Weight weight = new Weight();
-                weight.setTara(this.weightTara);
+                weight.setTare(this.weightTare);
                 truck.weight = weight;
             }
 

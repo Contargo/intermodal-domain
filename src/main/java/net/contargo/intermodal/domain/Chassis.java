@@ -167,9 +167,9 @@ public class Chassis implements MeansOfTransport {
 
 
     @JsonIgnore
-    public Quantity<Mass> getWeightTara() {
+    public Quantity<Mass> getWeightTare() {
 
-        return weight.getTara();
+        return weight.getTare();
     }
 
 
@@ -198,7 +198,7 @@ public class Chassis implements MeansOfTransport {
         private Boolean suitabilityDangerousGoods;
         private Boolean suitabilityWaste;
         private Boolean suitabilityReefer;
-        private Quantity<Mass> weightTara;
+        private Quantity<Mass> weightTare;
 
         private Builder() {
         }
@@ -305,12 +305,12 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
-                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
-                this.weightTara = UnitConverter.tonToKilogram(weightTara);
+                this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
 
             return this;
@@ -333,7 +333,7 @@ public class Chassis implements MeansOfTransport {
             chassis.suitabilityReefer = this.suitabilityReefer;
 
             Weight weight = new Weight();
-            weight.setTara(this.weightTara);
+            weight.setTare(this.weightTare);
             chassis.weight = weight;
 
             return chassis;

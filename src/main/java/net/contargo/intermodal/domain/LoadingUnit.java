@@ -151,9 +151,9 @@ public abstract class LoadingUnit {
 
 
     @JsonIgnore
-    public Quantity<Mass> getWeightTara() {
+    public Quantity<Mass> getWeightTare() {
 
-        return weight.getTara();
+        return weight.getTare();
     }
 
 

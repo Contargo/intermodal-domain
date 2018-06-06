@@ -38,6 +38,6 @@ public class LUOrderWeightValidator implements ConstraintValidator<LUOrderWeight
     @Override
     public boolean isValid(Weight weight, ConstraintValidatorContext context) {
 
-        return weight.getBrutto() != null && weight.getNetto() != null && weight.getTara() != null;
+        return weight.getBrutto() != null && weight.getNetto() != null && weight.getTare() != null;
     }
 }

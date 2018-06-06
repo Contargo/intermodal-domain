@@ -32,7 +32,7 @@ class TruckTest {
                 .withST(true)
                 .withSuitabilityDangerousGoods(false)
                 .withSuitabilityWaste(false)
-                .withWeightTara(40000.0, MassUnit.KILOGRAM)
+                .withWeightTare(40000.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
         assertEquals("DU CO 1782", truck.getNumberPlate());
@@ -44,7 +44,7 @@ class TruckTest {
         assertTrue(truck.getSt());
         assertFalse(truck.getSuitabilityDangerousGoods());
         assertFalse(truck.getSuitabilityWaste());
-        assertEquals(40000.0, truck.getWeightTara().getValue().doubleValue());
+        assertEquals(40000.0, truck.getWeightTare().getValue().doubleValue());
     }
 
 
@@ -61,10 +61,10 @@ class TruckTest {
                 .withST(true)
                 .withSuitabilityDangerousGoods(false)
                 .withSuitabilityWaste(false)
-                .withWeightTara(40.0, MassUnit.TON)
+                .withWeightTare(40.0, MassUnit.TON)
                 .buildAndValidate();
 
-        assertEquals(40000.0, truck.getWeightTara().getValue().doubleValue(), 0.1);
+        assertEquals(40000.0, truck.getWeightTare().getValue().doubleValue(), 0.1);
     }
 
 
@@ -81,7 +81,7 @@ class TruckTest {
                 .withST(true)
                 .withSuitabilityDangerousGoods(false)
                 .withSuitabilityWaste(false)
-                .withWeightTara(40000.0, MassUnit.KILOGRAM)
+                .withWeightTare(40000.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -99,6 +99,6 @@ class TruckTest {
         assertTrue(deserialize.getSt());
         assertFalse(deserialize.getSuitabilityDangerousGoods());
         assertFalse(deserialize.getSuitabilityWaste());
-        assertEquals(40000.0, deserialize.getWeightTara().getValue().doubleValue());
+        assertEquals(40000.0, deserialize.getWeightTare().getValue().doubleValue());
     }
 }

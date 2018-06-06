@@ -55,7 +55,7 @@ class Weight {
      * in kg.
      */
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
-    private Quantity<Mass> tara;
+    private Quantity<Mass> tare;
 
     @JsonSerialize(using = QuantityJsonSerializer.class)
     public Quantity<Mass> getBruttoMax() {
@@ -110,14 +110,14 @@ class Weight {
 
 
     @JsonSerialize(using = QuantityJsonSerializer.class)
-    public Quantity<Mass> getTara() {
+    public Quantity<Mass> getTare() {
 
-        return tara;
+        return tare;
     }
 
 
-    public void setTara(Quantity<Mass> tara) {
+    public void setTare(Quantity<Mass> tare) {
 
-        this.tara = tara;
+        this.tare = tare;
     }
 }

@@ -96,7 +96,7 @@ public class Container extends LoadingUnit {
         private Quantity<Mass> weightBruttoMax;
         private Quantity<Mass> weightNettoMax;
         private String sizeType;
-        private Quantity<Mass> weightTara;
+        private Quantity<Mass> weightTare;
         private String condition;
         private String type;
         private Boolean reefer;
@@ -160,12 +160,12 @@ public class Container extends LoadingUnit {
         }
 
 
-        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
-                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
-                this.weightTara = UnitConverter.tonToKilogram(weightTara);
+                this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
 
             return this;
@@ -232,7 +232,7 @@ public class Container extends LoadingUnit {
                 Weight weight = new Weight();
                 weight.setBruttoMax(weightBruttoMax);
                 weight.setNettoMax(weightNettoMax);
-                weight.setTara(weightTara);
+                weight.setTare(weightTare);
                 container.setWeight(weight);
             }
 

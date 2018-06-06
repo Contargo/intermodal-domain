@@ -101,7 +101,7 @@ public class Trailer extends LoadingUnit {
         private Quantity<Mass> weightBruttoMax;
         private Boolean craneable;
         private Quantity<Mass> weightNettoMax;
-        private Quantity<Mass> weightTara;
+        private Quantity<Mass> weightTare;
         private String condition;
         private Boolean reefer;
         private String operator;
@@ -183,10 +183,10 @@ public class Trailer extends LoadingUnit {
         }
 
 
-        public Builder withWeightTara(Double weightTara, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
-                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else {
                 // TODO
             }
@@ -235,7 +235,7 @@ public class Trailer extends LoadingUnit {
                 Weight weight = new Weight();
                 weight.setBruttoMax(weightBruttoMax);
                 weight.setNettoMax(weightNettoMax);
-                weight.setTara(weightTara);
+                weight.setTare(weightTare);
                 trailer.setWeight(weight);
             }
 
