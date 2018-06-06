@@ -63,7 +63,5 @@ class MeansOfTransportationStatusTest {
         assertEquals("2018-05-11T06:30:00", deserialize.getHandlingStart());
         assertEquals("2018-05-11T06:35:00", deserialize.getHandlingEnd());
         assertEquals(1, deserialize.getWaggonTechnicalInspection().intValue());
-
-        System.out.print(meansOfTransportationStatus.toString());
     }
 }

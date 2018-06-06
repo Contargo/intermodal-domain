@@ -1,5 +1,9 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+
 /**
  * Facility for transport of persons or goods.
  *
@@ -14,5 +18,14 @@ package net.contargo.intermodal.domain;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes(
+    {
+        @JsonSubTypes.Type(value = Barge.class, name = "barge"),
+        @JsonSubTypes.Type(value = Chassis.class, name = "chassis"),
+        @JsonSubTypes.Type(value = Truck.class, name = "truck"),
+        @JsonSubTypes.Type(value = Vessel.class, name = "vessel")
+    }
+)
 public interface MeansOfTransport {
 }

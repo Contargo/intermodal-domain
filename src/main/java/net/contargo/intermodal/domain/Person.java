@@ -1,6 +1,8 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 
 
 /**
@@ -11,6 +13,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type")
+@JsonSubTypes(
+    {
+        @JsonSubTypes.Type(value = Driver.class, name = "driver"),
+        @JsonSubTypes.Type(value = TrainDriver.class, name = "trainDriver"),
+        @JsonSubTypes.Type(value = Skipper.class, name = "skipper")
+    }
+)
 public abstract class Person {
 
     private String name;
