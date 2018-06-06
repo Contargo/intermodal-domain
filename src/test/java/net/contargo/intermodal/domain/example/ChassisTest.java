@@ -79,6 +79,7 @@ class ChassisTest {
 
         Chassis chassis = Chassis.Builder.newChassis()
                 .withNumberPlate("DU CO 1782")
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
                 .withAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
