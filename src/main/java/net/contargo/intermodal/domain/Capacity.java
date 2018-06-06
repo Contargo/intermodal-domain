@@ -1,16 +1,5 @@
 package net.contargo.intermodal.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import tec.units.ri.quantity.Quantities;
-
-import javax.measure.Quantity;
-import javax.measure.quantity.Mass;
-
-
 /**
  * Capacity of a {@link Barge}.
  *
@@ -23,10 +12,8 @@ import javax.measure.quantity.Mass;
  */
 class Capacity {
 
-    // TODO - Custom Quantity for TEU
     private Double teu;
-    @JsonDeserialize(using = QuantityJsonDeserializer.class)
-    private Quantity<Mass> tons;
+    private Double tons;
 
     public Double getTeu() {
 
@@ -40,21 +27,13 @@ class Capacity {
     }
 
 
-    @JsonSerialize(using = QuantityJsonSerializer.class)
-    public Quantity<Mass> getTons() {
+    public Double getTons() {
 
         return tons;
     }
 
 
-    @JsonIgnore
-    public double getTonsValue() {
-
-        return tons.getValue().doubleValue();
-    }
-
-
-    void setTons(Quantity<Mass> tons) {
+    void setTons(Double tons) {
 
         this.tons = tons;
     }

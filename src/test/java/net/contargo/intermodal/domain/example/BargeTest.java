@@ -37,7 +37,7 @@ class BargeTest {
                 .withTiers(2)
                 .withSuitabilityDangerousGoods(true)
                 .withCapacityTeu(200.0)
-                .withCapacityTons(3400.0, TON)
+                .withCapacityTons(3400.0)
                 .buildAndValidate();
 
         assertEquals("My Barge", barge.getName());
@@ -87,7 +87,7 @@ class BargeTest {
                 .withTiers(2)
                 .withSuitabilityDangerousGoods(true)
                 .withCapacityTeu(200.0)
-                .withCapacityTons(3400.0, TON)
+                .withCapacityTons(3400.0)
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

@@ -70,11 +70,6 @@ class UnitConverter {
 
                 return Imperial.METRIC_TON;
 
-            case "teu":
-
-                // TODO - Custom Unit for TEU
-                return Imperial.METRIC_TON;
-
             default:
                 throw new IllegalStateException(String.format("Unknown unit %s", symbol));
         }

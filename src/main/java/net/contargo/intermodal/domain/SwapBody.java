@@ -145,8 +145,8 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightBruttoMax = Quantities.getQuantity(weightBruttoMax, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightBruttoMax = UnitConverter.tonToKilogram(weightBruttoMax);
             }
 
             return this;
@@ -157,8 +157,8 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightNettoMax = Quantities.getQuantity(weightNettoMax, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightNettoMax = UnitConverter.tonToKilogram(weightNettoMax);
             }
 
             return this;
@@ -169,8 +169,8 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
-            } else {
-                // TODO
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
 
             return this;

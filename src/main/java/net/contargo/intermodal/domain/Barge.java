@@ -206,7 +206,7 @@ public class Barge implements MeansOfTransport {
     @JsonIgnore
     public Double getCapacityTons() {
 
-        return this.capacity.getTons().getValue().doubleValue();
+        return this.capacity.getTons().doubleValue();
     }
 
 
@@ -242,7 +242,7 @@ public class Barge implements MeansOfTransport {
         private Integer tiers;
         private Boolean suitabilityDangerousGoods;
         private Double capacityTeu;
-        private Quantity<Mass> capacityTons;
+        private Double capacityTons;
 
         private Builder() {
         }
@@ -353,7 +353,6 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        // TODO - Custom Unit for TEU
         public Builder withCapacityTeu(Double capacityTeu) {
 
             this.capacityTeu = capacityTeu;
@@ -362,11 +361,9 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withCapacityTons(Double capacity, MassUnit unit) {
+        public Builder withCapacityTons(Double capacity) {
 
-            if (unit.toUnit().equals(Imperial.METRIC_TON)) {
-                this.capacityTons = Quantities.getQuantity(capacity, Imperial.METRIC_TON);
-            }
+            this.capacityTons = capacity;
 
             return this;
         }

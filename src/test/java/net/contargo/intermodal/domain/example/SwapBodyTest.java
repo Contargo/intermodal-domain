@@ -22,9 +22,9 @@ class SwapBodyTest {
         SwapBody swapBody = SwapBody.Builder.newSwapBody()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
-                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
-                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
-                .withWeightTare(70.0, MassUnit.KILOGRAM)
+                .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -37,9 +37,9 @@ class SwapBodyTest {
         assertEquals("OOOCSSSSSS", swapBody.getNumber());
         assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
         assertNotNull(swapBody.getWeight());
-        assertEquals(70, swapBody.getWeightBruttoMax().getValue().doubleValue());
-        assertEquals(65, swapBody.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(70, swapBody.getWeightTare().getValue().doubleValue());
+        assertEquals(30480.0, swapBody.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(28080.0, swapBody.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(2400.0, swapBody.getWeightTare().getValue().doubleValue());
         assertEquals("i.O.", swapBody.getCondition());
         assertFalse(swapBody.isReefer());
         assertEquals("Contargo", swapBody.getOperator());
@@ -74,6 +74,26 @@ class SwapBodyTest {
                 .buildAndValidate();
 
         assertEquals(21.58, swapBody.getSize().getValue().doubleValue(), 0.1);
+    }
+
+
+    @Test
+    void ensureWeightCanBeSetInTons() {
+
+        SwapBody swapBody = SwapBody.Builder.newSwapBody()
+                .withNumber("OOOCSSSSSS")
+                .isReefer(false)
+                .withType("Open Top")
+                .withSize(6.58, LengthUnit.METRE)
+                .isStackable(true)
+                .withWeightBruttoMax(30.480, MassUnit.TON)
+                .withWeightNettoMax(28.080, MassUnit.TON)
+                .withWeightTare(2.400, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(30480.0, swapBody.getWeightBruttoMax().getValue().doubleValue(), 0.1);
+        assertEquals(28080.0, swapBody.getWeightNettoMax().getValue().doubleValue(), 0.1);
+        assertEquals(2400.0, swapBody.getWeightTare().getValue().doubleValue(), 0.1);
     }
 
 
@@ -129,9 +149,9 @@ class SwapBodyTest {
         SwapBody swapBody = SwapBody.Builder.newSwapBody()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
-                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
-                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
-                .withWeightTare(70.0, MassUnit.KILOGRAM)
+                .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -150,9 +170,9 @@ class SwapBodyTest {
         assertEquals("OOOCSSSSSS", deserialize.getNumber());
         assertEquals(LoadingUnitCategory.SWAP_BODY, deserialize.getCategory());
         assertNotNull(deserialize.getWeight());
-        assertEquals(70, deserialize.getWeightBruttoMax().getValue().doubleValue());
-        assertEquals(65, deserialize.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(70, deserialize.getWeightTare().getValue().doubleValue());
+        assertEquals(30480.0, deserialize.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(28080.0, deserialize.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(2400.0, deserialize.getWeightTare().getValue().doubleValue());
         assertEquals("i.O.", deserialize.getCondition());
         assertFalse(deserialize.isReefer());
         assertEquals("Contargo", deserialize.getOperator());

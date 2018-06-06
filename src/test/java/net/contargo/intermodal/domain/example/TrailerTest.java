@@ -25,14 +25,14 @@ class TrailerTest {
         Trailer trailer = Trailer.Builder.newTrailer()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
-                .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
-                .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
-                .withWeightTare(70.0, MassUnit.KILOGRAM)
+                .withWeightBruttoMax(14082.331, MassUnit.KILOGRAM)
+                .withWeightNettoMax(10000.0, MassUnit.KILOGRAM)
+                .withWeightTare(4082.331, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
                 .withType("XL")
-                .withSize(8.53, LengthUnit.METRE)
+                .withSize(15.5, LengthUnit.METRE)
                 .isCraneable(true)
                 .buildAndValidate();
 
@@ -40,15 +40,15 @@ class TrailerTest {
         assertEquals("OOOCSSSSSS", trailer.getNumber());
         assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
         assertNotNull(trailer.getWeight());
-        assertEquals(70, trailer.getWeightBruttoMax().getValue().doubleValue());
-        assertEquals(65, trailer.getWeightNettoMax().getValue().doubleValue());
-        assertEquals(70, trailer.getWeightTare().getValue().doubleValue());
+        assertEquals(14082.331, trailer.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(10000.0, trailer.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(4082.331, trailer.getWeightTare().getValue().doubleValue());
         assertEquals("i.O.", trailer.getCondition());
         assertFalse(trailer.isReefer());
         assertEquals("Contargo", trailer.getOperator());
         assertEquals("XL", trailer.getType());
 
-        assertEquals(8.53, trailer.getSize().getValue().doubleValue());
+        assertEquals(15.5, trailer.getSize().getValue().doubleValue());
         assertTrue(trailer.isCraneable());
     }
 
@@ -60,24 +60,44 @@ class TrailerTest {
             .withNumber("OOOCSSSSSS")
             .isReefer(false)
             .withType("XL")
-            .withSize(6.0, LengthUnit.METRE)
+            .withSize(15.5, LengthUnit.METRE)
             .isCraneable(true)
             .buildAndValidate();
     }
 
 
     @Test
-    void ensureSizeCanBeSetInMetre() {
+    void ensureSizeCanBeSetInFoot() {
 
         Trailer trailer = Trailer.Builder.newTrailer()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withType("XL")
                 .isCraneable(true)
-                .withSize(28.0, LengthUnit.FOOT)
+                .withSize(50.853, LengthUnit.FOOT)
                 .buildAndValidate();
 
-        assertEquals(8.53, trailer.getSize().getValue().doubleValue(), 0.1);
+        assertEquals(15.5, trailer.getSize().getValue().doubleValue(), 0.1);
+    }
+
+
+    @Test
+    void ensureWeightCanBeSetInTons() {
+
+        Trailer trailer = Trailer.Builder.newTrailer()
+                .withNumber("OOOCSSSSSS")
+                .isReefer(false)
+                .withType("XL")
+                .isCraneable(true)
+                .withSize(15.5, LengthUnit.METRE)
+                .withWeightBruttoMax(14.082, MassUnit.TON)
+                .withWeightNettoMax(10.000, MassUnit.TON)
+                .withWeightTare(4.082, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(14082.0, trailer.getWeightBruttoMax().getValue().doubleValue(), 0.1);
+        assertEquals(10000.0, trailer.getWeightNettoMax().getValue().doubleValue(), 0.1);
+        assertEquals(4082.0, trailer.getWeightTare().getValue().doubleValue(), 0.1);
     }
 
 
@@ -89,7 +109,7 @@ class TrailerTest {
                 Trailer.Builder.newTrailer()
                     .isReefer(false)
                     .withType("XL")
-                    .withSize(8.53, LengthUnit.METRE)
+                    .withSize(15.5, LengthUnit.METRE)
                     .isCraneable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -97,7 +117,7 @@ class TrailerTest {
                 Trailer.Builder.newTrailer()
                     .withNumber("OOOCSSSSSS")
                     .withType("XL")
-                    .withSize(8.53, LengthUnit.METRE)
+                    .withSize(15.5, LengthUnit.METRE)
                     .isCraneable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -105,15 +125,7 @@ class TrailerTest {
                 Trailer.Builder.newTrailer()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
-                    .withSize(8.53, LengthUnit.METRE)
-                    .isCraneable(true)
-                    .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                Trailer.Builder.newTrailer()
-                    .withNumber("OOOCSSSSSS")
-                    .isReefer(false)
-                    .withType("XL")
+                    .withSize(15.5, LengthUnit.METRE)
                     .isCraneable(true)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -122,7 +134,15 @@ class TrailerTest {
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("XL")
-                    .withSize(8.53, LengthUnit.METRE)
+                    .isCraneable(true)
+                    .buildAndValidate());
+        assertThrows(IllegalStateException.class,
+            () ->
+                Trailer.Builder.newTrailer()
+                    .withNumber("OOOCSSSSSS")
+                    .isReefer(false)
+                    .withType("XL")
+                    .withSize(15.5, LengthUnit.METRE)
                     .buildAndValidate());
     }
 
