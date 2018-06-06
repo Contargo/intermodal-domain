@@ -37,7 +37,6 @@ import javax.validation.constraints.NotNull;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
-@JsonIgnoreProperties
 public class Order {
 
     @NotNull(message = "reference is part of minimum requirement")
@@ -80,7 +79,7 @@ public class Order {
     }
 
 
-    public LUOrder getLUOrder() {
+    public LUOrder getLuOrder() {
 
         return luOrder;
     }
@@ -89,6 +88,13 @@ public class Order {
     public Transport getTransport() {
 
         return transport;
+    }
+
+
+    @JsonIgnore
+    public Direction getTransportDirection() {
+
+        return transport.getDirection();
     }
 
 
@@ -133,7 +139,11 @@ public class Order {
 
     public static final class Builder {
 
-        private Destination destination = new Destination();
+        private String destinationCity;
+        private String destinationDesignation;
+        private String destinationSeaport;
+        private Vessel destinationVessl;
+        private String destinationCountryCode;
         private String reference;
         private Operator client;
         private Operator billRecipient;
@@ -146,6 +156,14 @@ public class Order {
         public static Builder newOrder() {
 
             return new Builder();
+        }
+
+
+        public Builder withTransportDirection(Direction direction) {
+
+            this.transport.setDirection(direction);
+
+            return this;
         }
 
 
@@ -327,7 +345,7 @@ public class Order {
 
         public Builder withDestinationSeaport(String name) {
 
-            destination.setSeaport(name);
+            this.destinationSeaport = name;
 
             return this;
         }
@@ -335,7 +353,7 @@ public class Order {
 
         public Builder withDestinationVessel(Vessel vessel) {
 
-            destination.setVessel(vessel);
+            this.destinationVessl = vessel;
 
             return this;
         }
@@ -343,7 +361,8 @@ public class Order {
 
         public Builder withDestinationLocation(String city, String designation) {
 
-            destination.setLocation(city, designation);
+            this.destinationCity = city;
+            this.destinationDesignation = designation;
 
             return this;
         }
@@ -351,7 +370,7 @@ public class Order {
 
         public Builder withDestinationLocation(String designation) {
 
-            destination.setLocation(designation);
+            this.destinationDesignation = designation;
 
             return this;
         }
@@ -364,7 +383,7 @@ public class Order {
          */
         public Builder withDestinationCountryCode(String countryCode) {
 
-            destination.setCountry(countryCode);
+            this.destinationCountryCode = countryCode;
 
             return this;
         }
@@ -378,7 +397,21 @@ public class Order {
             order.client = this.client;
             order.transport = this.transport;
             order.reference = this.reference;
-            order.destination = this.destination;
+
+            Destination destination = new Destination();
+            destination.setCountryCode(destinationCountryCode);
+            destination.setVessel(destinationVessl);
+
+            Seaport seaport = new Seaport();
+            seaport.setName(destinationSeaport);
+            destination.setSeaport(seaport);
+
+            Location location = new Location();
+            location.setDesignation(destinationDesignation);
+            location.setCity(destinationCity);
+            destination.setLocation(location);
+
+            order.destination = destination;
 
             return order;
         }

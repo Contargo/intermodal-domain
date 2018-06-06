@@ -33,6 +33,19 @@ public class Destination {
     }
 
 
+    @JsonIgnore
+    public String getSeaportName() {
+
+        return seaport.getName();
+    }
+
+
+    public Seaport getSeaport() {
+
+        return seaport;
+    }
+
+
     public Country getCountry() {
 
         return country;
@@ -51,13 +64,14 @@ public class Destination {
     }
 
 
-    public Seaport getSeaport() {
+    void setCountry(Country country) {
 
-        return seaport;
+        this.country = country;
     }
 
 
-    void setCountry(String code) {
+    @JsonIgnore
+    void setCountryCode(String code) {
 
         this.country = new Country();
         this.country.setCode(code);
@@ -79,32 +93,5 @@ public class Destination {
     void setLocation(Location location) {
 
         this.location = location;
-    }
-
-
-    void setCountry(Country country) {
-
-        this.country = country;
-    }
-
-
-    void setSeaport(String name) {
-
-        this.seaport = new Seaport(name);
-    }
-
-
-    void setLocation(String city, String designation) {
-
-        this.location = new Location();
-        this.location.setCity(city);
-        this.location.setDesignation(designation);
-    }
-
-
-    void setLocation(String designation) {
-
-        this.location = new Location();
-        this.location.setDesignation(designation);
     }
 }

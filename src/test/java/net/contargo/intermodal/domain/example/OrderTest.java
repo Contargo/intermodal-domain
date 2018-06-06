@@ -1,8 +1,12 @@
 package net.contargo.intermodal.domain.example;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,7 +25,6 @@ class OrderTest {
 
         List<Stop> stops = new ArrayList<>();
         stops.add(Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate());
-        stops.add(Stop.Builder.newStop().withLocation("Wörth", "Terminal Wörth").buildAndValidate());
         stops.add(Stop.Builder.newStop().withLocation("Ludwigshafen", "Terminal Ludwigshafen").buildAndValidate());
 
         Order order = Order.Builder.newOrder()
@@ -29,6 +32,7 @@ class OrderTest {
                 .withClient(new Operator())
                 .withBillRecipient(new Operator())
                 .withOrderForLoadingUnit(new LUOrder())
+                .withTransportDirection(Direction.EXPORT)
                 .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
                 .withLoadingUnitToPickUp("12345", false)
                 .withBillingReferenceForPickUp("20568097")
@@ -46,14 +50,15 @@ class OrderTest {
                 .withStops(stops)
                 .withDestinationVessel(new Vessel())
                 .withDestinationCountryCode("DE")
-                .withDestinationLocation("Koblenz", "Terminal Koblenz")
-                .withDestinationSeaport("Koblenz")
+                .withDestinationLocation("Duisburg", "Terminal Duisburg")
+                .withDestinationSeaport("DEDUI")
                 .buildAndValidate();
 
         assertEquals("54642887", order.getReference());
         assertNotNull(order.getClient());
         assertNotNull(order.getBillRecipient());
-        assertNotNull(order.getLUOrder());
+        assertNotNull(order.getLuOrder());
+        assertEquals(Direction.EXPORT, order.getTransportDirection());
 
         // Pick Up
         assertEquals("Ludwigshafen", order.getPickUp().getLocation().getCity());
@@ -80,11 +85,12 @@ class OrderTest {
         assertEquals("2018-05-14T14:15:00", order.getDropOff().getLatest());
         assertNotNull(order.getDropOff().getMot());
 
-        assertEquals(3, order.getStops().size());
+        assertEquals(2, order.getStops().size());
         assertNotNull(order.getDestination().getVessel());
         assertEquals("DE", order.getDestination().getCountryCode());
-        assertEquals("Koblenz", order.getDestination().getLocation().getCity());
-        assertEquals("Terminal Koblenz", order.getDestination().getLocation().getDesignation());
+        assertEquals("Duisburg", order.getDestination().getLocation().getCity());
+        assertEquals("Terminal Duisburg", order.getDestination().getLocation().getDesignation());
+        assertEquals("DEDUI", order.getDestination().getSeaportName());
     }
 
 
@@ -223,5 +229,89 @@ class OrderTest {
                     .withDropOffMeansOfTransport(new Barge())
                     .withStops(Arrays.asList(new Stop(), new Stop()))
                     .buildAndValidate());
+    }
+
+
+    @Test
+    void ensureCanBeParsedToJson() throws IOException {
+
+        List<Stop> stops = new ArrayList<>();
+        stops.add(Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz", "terminal").buildAndValidate());
+        stops.add(Stop.Builder.newStop()
+            .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
+            .buildAndValidate());
+
+        Order order = Order.Builder.newOrder()
+                .withReference("54642887")
+                .withClient(new Operator())
+                .withBillRecipient(new Operator())
+                .withOrderForLoadingUnit(new LUOrder())
+                .withTransportDirection(Direction.EXPORT)
+                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLoadingUnitToPickUp("12345", false)
+                .withBillingReferenceForPickUp("20568097")
+                .withPickUpLoadingUnitOperator(new Operator())
+                .withEarliestPickUp(2018, 5, 14, 11, 0)
+                .withLatestPickUp(2018, 5, 14, 11, 30)
+                .withPickUpMeansOfTransport(new Truck())
+                .withDropOffLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLoadingUnitToDropOff("63876846", false)
+                .withDropOffLoadingUnitOperator(new Operator())
+                .withBillingReferenceForDropOff("98690")
+                .withEarliestDropOff(2018, 5, 14, 14, 0)
+                .withLatestDropOff(2018, 5, 14, 14, 15)
+                .withDropOffMeansOfTransport(new Barge())
+                .withStops(stops)
+                .withDestinationVessel(new Vessel())
+                .withDestinationCountryCode("DE")
+                .withDestinationLocation("Duisburg", "Terminal Duisburg")
+                .withDestinationSeaport("DEDUI")
+                .buildAndValidate();
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        String jsonString = mapper.writeValueAsString(order);
+
+        System.out.print(order.toString());
+
+        Order deserialize = mapper.readValue(jsonString, Order.class);
+
+        assertEquals("54642887", deserialize.getReference());
+        assertNotNull(deserialize.getClient());
+        assertNotNull(deserialize.getBillRecipient());
+        assertNotNull(deserialize.getLuOrder());
+        assertEquals(Direction.EXPORT, deserialize.getTransportDirection());
+
+        // Pick Up
+        assertEquals("Ludwigshafen", deserialize.getPickUp().getLocation().getCity());
+        assertEquals("hinterland terminal", deserialize.getPickUp().getLocation().getType());
+        assertEquals("Terminal Ludwigshafen", deserialize.getPickUp().getLocation().getDesignation());
+        assertEquals("12345", deserialize.getPickUp().getLoadingUnit().getReference());
+        assertFalse(deserialize.getPickUp().getLoadingUnit().isEmpty());
+        assertEquals("20568097", deserialize.getPickUp().getBillingReference());
+        assertNotNull(deserialize.getPickUp().getLoadingUnit().getOperator());
+
+        assertEquals("2018-05-14T11:00:00", deserialize.getPickUp().getEarliest());
+        assertEquals("2018-05-14T11:30:00", deserialize.getPickUp().getLatest());
+        assertNotNull(deserialize.getPickUp().getMot());
+
+        // Drop Off
+        assertEquals("Duisburg", deserialize.getDropOff().getLocation().getCity());
+        assertEquals("terminal", deserialize.getDropOff().getLocation().getType());
+        assertEquals("Terminal Duisburg", deserialize.getDropOff().getLocation().getDesignation());
+        assertEquals("63876846", deserialize.getDropOff().getLoadingUnit().getReference());
+        assertFalse(deserialize.getDropOff().getLoadingUnit().isEmpty());
+        assertEquals("98690", deserialize.getDropOff().getBillingReference());
+
+        assertEquals("2018-05-14T14:00:00", deserialize.getDropOff().getEarliest());
+        assertEquals("2018-05-14T14:15:00", deserialize.getDropOff().getLatest());
+        assertNotNull(deserialize.getDropOff().getMot());
+
+        assertEquals(2, deserialize.getStops().size());
+        assertNotNull(deserialize.getDestination().getVessel());
+        assertEquals("DE", deserialize.getDestination().getCountryCode());
+        assertEquals("Duisburg", deserialize.getDestination().getLocation().getCity());
+        assertEquals("Terminal Duisburg", deserialize.getDestination().getLocation().getDesignation());
+        assertEquals("DEDUI", deserialize.getDestination().getSeaportName());
     }
 }

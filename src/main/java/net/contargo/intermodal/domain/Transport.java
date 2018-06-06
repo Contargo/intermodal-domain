@@ -162,7 +162,7 @@ class Transport {
         @NotNull(message = "location is part of minimum requirement")
         private Location location;
 
-        private LoadingUnit loadingUnit;
+        private LoadingUnit loadingUnit = new LoadingUnit();
 
         /**
          * Abrechnungsreferenz, PO-number für Dienstl.
@@ -204,7 +204,6 @@ class Transport {
 
         void setLoadingUnit(String reference, Boolean isEmpty) {
 
-            this.loadingUnit = new LoadingUnit();
             this.loadingUnit.setEmpty(isEmpty);
             this.loadingUnit.setReference(reference);
         }
@@ -286,7 +285,7 @@ class Transport {
 
         private Location location;
 
-        private LoadingUnit loadingUnit;
+        private LoadingUnit loadingUnit = new LoadingUnit();
 
         /**
          * @definition_german  Abrechnungsreferenz, PO-number für Dienstleister
@@ -326,7 +325,6 @@ class Transport {
 
         void setLoadingUnit(String reference, Boolean isEmpty) {
 
-            this.loadingUnit = new LoadingUnit();
             this.loadingUnit.setEmpty(isEmpty);
             this.loadingUnit.setReference(reference);
         }
