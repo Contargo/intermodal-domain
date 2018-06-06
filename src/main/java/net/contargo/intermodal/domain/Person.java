@@ -3,6 +3,10 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 
 /**
@@ -34,7 +38,8 @@ public abstract class Person {
     /**
      * format: ISO 8601 yyyy-mm-dd e.g. 1994-02-25
      */
-    private String dateOfBirth;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant dateOfBirth;
 
     /**
      * @definition_english  City of birth
@@ -71,7 +76,8 @@ public abstract class Person {
     }
 
 
-    public String getDateOfBirth() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getDateOfBirth() {
 
         return dateOfBirth;
     }
@@ -115,7 +121,7 @@ public abstract class Person {
     }
 
 
-    void setDateOfBirth(String dateOfBirth) {
+    void setDateOfBirth(Instant dateOfBirth) {
 
         this.dateOfBirth = dateOfBirth;
     }

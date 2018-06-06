@@ -2,6 +2,10 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 import javax.validation.constraints.NotNull;
 
@@ -24,19 +28,21 @@ import javax.validation.constraints.NotNull;
 public class RegistrationBarge {
 
     @NotNull(message = "barge is part of minimum requirement")
-    private net.contargo.intermodal.domain.Barge barge;
+    private Barge barge;
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
     @NotNull(message = "eta is part of minimum requirement")
-    private String eta;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant eta;
 
     /**
      * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
     @NotNull(message = "etd is part of minimum requirement")
-    private String etd;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant etd;
 
     /**
      * Value is optional and can be null.
@@ -57,13 +63,15 @@ public class RegistrationBarge {
     }
 
 
-    public String getEta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getEta() {
 
         return eta;
     }
 
 
-    public String getEtd() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getEtd() {
 
         return etd;
     }
@@ -110,8 +118,8 @@ public class RegistrationBarge {
     public static final class Builder {
 
         private Barge barge;
-        private String eta;
-        private String etd;
+        private Instant eta;
+        private Instant etd;
         private DangerousGoods dangerousGoodsIndication;
         private Integer volumeToDischarge;
         private Integer volumeToLoad;
@@ -133,17 +141,17 @@ public class RegistrationBarge {
         }
 
 
-        public Builder withEta(int year, int month, int day, int hour, int minute) {
+        public Builder withEta(Instant instant) {
 
-            this.eta = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.eta = instant;
 
             return this;
         }
 
 
-        public Builder withEtd(int year, int month, int day, int hour, int minute) {
+        public Builder withEtd(Instant instant) {
 
-            this.etd = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.etd = instant;
 
             return this;
         }

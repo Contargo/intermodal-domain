@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
+import java.time.Instant;
+
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
 
@@ -57,19 +59,22 @@ public class RegistrationTrain {
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
     @NotNull(message = "terminalEta is part of minimum requirement")
-    private String terminalEta;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant terminalEta;
 
     /**
      * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
     @NotNull(message = "terminalEtd is part of minimum requirement")
-    private String terminalEtd;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant terminalEtd;
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
     @NotNull(message = "shuntingYardEta is part of minimum requirement")
-    private String shuntingYardEta;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant shuntingYardEta;
 
     @NotNull(message = "shunter is part of minimum requirement")
     private String shunter;
@@ -117,19 +122,22 @@ public class RegistrationTrain {
     }
 
 
-    public String getTerminalEta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getTerminalEta() {
 
         return terminalEta;
     }
 
 
-    public String getTerminalEtd() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getTerminalEtd() {
 
         return terminalEtd;
     }
 
 
-    public String getShuntingYardEta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getShuntingYardEta() {
 
         return shuntingYardEta;
     }
@@ -203,9 +211,9 @@ public class RegistrationTrain {
         private String trainTitle;
         private Operator railwayOperator;
         private Operator operator;
-        private String terminalEta;
-        private String terminalEtd;
-        private String shuntingYardEta;
+        private Instant terminalEta;
+        private Instant terminalEtd;
+        private Instant shuntingYardEta;
         private String shunter;
         private Quantity<Length> totalLength;
         private Integer waggonQuantity;
@@ -247,25 +255,25 @@ public class RegistrationTrain {
         }
 
 
-        public Builder withTerminalEta(int year, int month, int day, int hour, int minute) {
+        public Builder withTerminalEta(Instant instant) {
 
-            this.terminalEta = ISO8601DateFormatter.format(year, month, day, hour, minute);
-
-            return this;
-        }
-
-
-        public Builder withTerminalEtd(int year, int month, int day, int hour, int minute) {
-
-            this.terminalEtd = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.terminalEta = instant;
 
             return this;
         }
 
 
-        public Builder withShuntingYardEta(int year, int month, int day, int hour, int minute) {
+        public Builder withTerminalEtd(Instant instant) {
 
-            this.shuntingYardEta = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.terminalEtd = instant;
+
+            return this;
+        }
+
+
+        public Builder withShuntingYardEta(Instant instant) {
+
+            this.shuntingYardEta = instant;
 
             return this;
         }

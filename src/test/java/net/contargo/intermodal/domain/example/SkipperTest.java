@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -34,20 +36,20 @@ class SkipperTest {
                 .withFirstName("Max")
                 .withAddress(address)
                 .withCellphone("01234/56789")
-                .bornOn(1980, 1, 13)
+                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
                 .bornIn("Karlsruhe")
                 .withCountryCode("DE")
-                .withAdnr(2018, 12, 31)
+                .withAdnr(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
         assertEquals("Mustermann", skipper.getName());
         assertEquals("Max", skipper.getFirstName());
         assertNotNull(skipper.getAddress());
         assertEquals("01234/56789", skipper.getCellphone());
-        assertEquals("1980-01-13T00:00:00", skipper.getDateOfBirth());
+        assertEquals("1980-01-13T00:00:00Z", skipper.getDateOfBirth().toString());
         assertEquals("Karlsruhe", skipper.getCityOfBirth());
         assertEquals("DE", skipper.getCountryCode());
-        assertEquals("2018-12-31T00:00:00", skipper.getAdnr());
+        assertEquals("2018-12-31T00:00:00Z", skipper.getAdnr().toString());
     }
 
 
@@ -67,10 +69,10 @@ class SkipperTest {
                 .withFirstName("Max")
                 .withAddress(address)
                 .withCellphone("01234/56789")
-                .bornOn(1980, 1, 13)
+                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
                 .bornIn("Karlsruhe")
                 .withCountryCode("DE")
-                .withAdnr(2018, 12, 31)
+                .withAdnr(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -83,9 +85,9 @@ class SkipperTest {
         assertEquals("Max", deserialize.getFirstName());
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
-        assertEquals("1980-01-13T00:00:00", deserialize.getDateOfBirth());
+        assertEquals("1980-01-13T00:00:00Z", deserialize.getDateOfBirth().toString());
         assertEquals("Karlsruhe", deserialize.getCityOfBirth());
         assertEquals("DE", deserialize.getCountryCode());
-        assertEquals("2018-12-31T00:00:00", deserialize.getAdnr());
+        assertEquals("2018-12-31T00:00:00Z", deserialize.getAdnr().toString());
     }
 }

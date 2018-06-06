@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 
 /**
@@ -35,7 +39,8 @@ public class MeansOfTransportationStatus {
      * @name_german  Abfahrt
      * @definition_german  Tatsächliche Abfahrt des {@link MeansOfTransport VM} beim Verlassen des Umschlagpunktes.
      */
-    private String atd;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant atd;
 
     /**
      * Estimated Time of Arrival of the {@link MeansOfTransport MoT} at the handling point (Format: ISO 8601 inclusive
@@ -44,7 +49,8 @@ public class MeansOfTransportationStatus {
      * @name_german  Avisiert
      * @definition_german  Geplante Ankunft des {@link MeansOfTransport VM} am Umschlagpunkt.
      */
-    private String eta;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant eta;
 
     /**
      * Actual Time of Arrival of the {@link MeansOfTransport MoT} at the handling point (Format: ISO 8601 inclusive
@@ -53,7 +59,8 @@ public class MeansOfTransportationStatus {
      * @name_german  Ankunft
      * @definition_german  Tatsächliche Ankunft des {@link MeansOfTransport VM} am Umschlagpunkt.
      */
-    private String ata;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant ata;
 
     /**
      * {@link MeansOfTransport MoT} is ready for handling of the {@link LoadingUnit LU} (Format: ISO 8601 inclusive
@@ -65,7 +72,8 @@ public class MeansOfTransportationStatus {
      * @definition_german  {@link MeansOfTransport VM} ist bereit für den Umschlag der {@link LoadingUnit LE} („erste
      *                     Kranung“).
      */
-    private String handlingStart;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant handlingStart;
 
     /**
      * {@link MeansOfTransport MoT} is loaded, end of loading process (Format: ISO 8601 inclusive UTC).
@@ -75,7 +83,8 @@ public class MeansOfTransportationStatus {
      * @abbreviation_german  BE
      * @definition_german  {@link MeansOfTransport VM} beladen, Ende Verladung erreicht („letzte Kranung“).
      */
-    private String handlingEnd;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant handlingEnd;
 
     /**
      * Safety control of the loaded waggons.
@@ -86,31 +95,36 @@ public class MeansOfTransportationStatus {
      */
     private Integer waggonTechnicalInspection;
 
-    public String getAtd() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getAtd() {
 
         return atd;
     }
 
 
-    public String getEta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getEta() {
 
         return eta;
     }
 
 
-    public String getAta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getAta() {
 
         return ata;
     }
 
 
-    public String getHandlingStart() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getHandlingStart() {
 
         return handlingStart;
     }
 
 
-    public String getHandlingEnd() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getHandlingEnd() {
 
         return handlingEnd;
     }
@@ -136,11 +150,11 @@ public class MeansOfTransportationStatus {
 
     public static final class Builder {
 
-        private String atd;
-        private String eta;
-        private String ata;
-        private String handlingStart;
-        private String handlingEnd;
+        private Instant atd;
+        private Instant eta;
+        private Instant ata;
+        private Instant handlingStart;
+        private Instant handlingEnd;
         private Integer waggonTechnicalInspection;
 
         private Builder() {
@@ -152,41 +166,41 @@ public class MeansOfTransportationStatus {
         }
 
 
-        public Builder withAtd(int year, int month, int day, int hour, int minute) {
+        public Builder withAtd(Instant instant) {
 
-            this.atd = ISO8601DateFormatter.format(year, month, day, hour, minute);
-
-            return this;
-        }
-
-
-        public Builder withEta(int year, int month, int day, int hour, int minute) {
-
-            this.eta = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.atd = instant;
 
             return this;
         }
 
 
-        public Builder withAta(int year, int month, int day, int hour, int minute) {
+        public Builder withEta(Instant instant) {
 
-            this.ata = ISO8601DateFormatter.format(year, month, day, hour, minute);
-
-            return this;
-        }
-
-
-        public Builder withHandlingStart(int year, int month, int day, int hour, int minute) {
-
-            this.handlingStart = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.eta = instant;
 
             return this;
         }
 
 
-        public Builder withHandlingEnd(int year, int month, int day, int hour, int minute) {
+        public Builder withAta(Instant instant) {
 
-            this.handlingEnd = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.ata = instant;
+
+            return this;
+        }
+
+
+        public Builder withHandlingStart(Instant instant) {
+
+            this.handlingStart = instant;
+
+            return this;
+        }
+
+
+        public Builder withHandlingEnd(Instant instant) {
+
+            this.handlingEnd = instant;
 
             return this;
         }

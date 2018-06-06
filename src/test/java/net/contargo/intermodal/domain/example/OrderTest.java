@@ -8,6 +8,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -37,15 +39,15 @@ class OrderTest {
                 .withLoadingUnitToPickUp("12345", false)
                 .withBillingReferenceForPickUp("20568097")
                 .withPickUpLoadingUnitOperator(new Operator())
-                .withEarliestPickUp(2018, 5, 14, 11, 0)
-                .withLatestPickUp(2018, 5, 14, 11, 30)
+                .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
+                .withLatestPickUp(Instant.parse("2018-05-14T11:30:00Z"))
                 .withPickUpMeansOfTransport(new Truck())
                 .withDropOffLocation("Koblenz", "Terminal Koblenz", "hinterland terminal")
                 .withLoadingUnitToDropOff("63876846", false)
                 .withDropOffLoadingUnitOperator(new Operator())
                 .withBillingReferenceForDropOff("98690")
-                .withEarliestDropOff(2018, 5, 14, 14, 0)
-                .withLatestDropOff(2018, 5, 14, 14, 15)
+                .withEarliestDropOff(Instant.parse("2018-05-14T14:00:00Z"))
+                .withLatestDropOff(Instant.parse("2018-05-14T14:15:00Z"))
                 .withDropOffMeansOfTransport(new Barge())
                 .withStops(stops)
                 .withDestinationVessel(new Vessel())
@@ -69,8 +71,8 @@ class OrderTest {
         assertEquals("20568097", order.getPickUp().getBillingReference());
         assertNotNull(order.getPickUp().getLoadingUnit().getOperator());
 
-        assertEquals("2018-05-14T11:00:00", order.getPickUp().getEarliest());
-        assertEquals("2018-05-14T11:30:00", order.getPickUp().getLatest());
+        assertEquals("2018-05-14T11:00:00Z", order.getPickUp().getEarliest().toString());
+        assertEquals("2018-05-14T11:30:00Z", order.getPickUp().getLatest().toString());
         assertNotNull(order.getPickUp().getMot());
 
         // Drop Off
@@ -81,8 +83,8 @@ class OrderTest {
         assertFalse(order.getDropOff().getLoadingUnit().isEmpty());
         assertEquals("98690", order.getDropOff().getBillingReference());
 
-        assertEquals("2018-05-14T14:00:00", order.getDropOff().getEarliest());
-        assertEquals("2018-05-14T14:15:00", order.getDropOff().getLatest());
+        assertEquals("2018-05-14T14:00:00Z", order.getDropOff().getEarliest().toString());
+        assertEquals("2018-05-14T14:15:00Z", order.getDropOff().getLatest().toString());
         assertNotNull(order.getDropOff().getMot());
 
         assertEquals(2, order.getStops().size());
@@ -103,7 +105,7 @@ class OrderTest {
                 .withReference("54642887")
                 .withOrderForLoadingUnit(new LUOrder())
                 .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                .withEarliestPickUp(2018, 5, 14, 11, 0)
+                .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                 .withPickUpMeansOfTransport(new Truck())
                 .withDropOffLocation("Koblenz", "Terminal Koblenz")
                 .withDropOffMeansOfTransport(new Barge())
@@ -121,7 +123,7 @@ class OrderTest {
                 Order.Builder.newOrder()
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withPickUpMeansOfTransport(new Truck())
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withDropOffMeansOfTransport(new Barge())
@@ -134,7 +136,7 @@ class OrderTest {
                 Order.Builder.newOrder()
                     .withReference("54642887")
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withPickUpMeansOfTransport(new Truck())
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withDropOffMeansOfTransport(new Barge())
@@ -147,7 +149,7 @@ class OrderTest {
                 Order.Builder.newOrder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withPickUpMeansOfTransport(new Truck())
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withDropOffMeansOfTransport(new Barge())
@@ -173,7 +175,7 @@ class OrderTest {
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withDropOffMeansOfTransport(new Barge())
                     .withStops(Arrays.asList(new Stop(), new Stop()))
@@ -185,7 +187,7 @@ class OrderTest {
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withPickUpMeansOfTransport(new Truck())
                     .withDropOffMeansOfTransport(new Barge())
                     .withStops(Arrays.asList(new Stop(), new Stop()))
@@ -197,7 +199,7 @@ class OrderTest {
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withPickUpMeansOfTransport(new Truck())
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withStops(Arrays.asList(new Stop(), new Stop()))
@@ -210,7 +212,7 @@ class OrderTest {
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withPickUpMeansOfTransport(new Truck())
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withDropOffMeansOfTransport(new Barge())
@@ -223,7 +225,7 @@ class OrderTest {
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(2018, 5, 14, 11, 0)
+                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
                     .withPickUpMeansOfTransport(new Truck())
                     .withDropOffLocation("Koblenz", "Terminal Koblenz")
                     .withDropOffMeansOfTransport(new Barge())
@@ -251,15 +253,15 @@ class OrderTest {
                 .withLoadingUnitToPickUp("12345", false)
                 .withBillingReferenceForPickUp("20568097")
                 .withPickUpLoadingUnitOperator(new Operator())
-                .withEarliestPickUp(2018, 5, 14, 11, 0)
-                .withLatestPickUp(2018, 5, 14, 11, 30)
+                .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
+                .withLatestPickUp(Instant.parse("2018-05-14T11:30:00Z"))
                 .withPickUpMeansOfTransport(new Truck())
                 .withDropOffLocation("Duisburg", "Terminal Duisburg", "terminal")
                 .withLoadingUnitToDropOff("63876846", false)
                 .withDropOffLoadingUnitOperator(new Operator())
                 .withBillingReferenceForDropOff("98690")
-                .withEarliestDropOff(2018, 5, 14, 14, 0)
-                .withLatestDropOff(2018, 5, 14, 14, 15)
+                .withEarliestDropOff(Instant.parse("2018-05-14T14:00:00Z"))
+                .withLatestDropOff(Instant.parse("2018-05-14T14:15:00Z"))
                 .withDropOffMeansOfTransport(new Barge())
                 .withStops(stops)
                 .withDestinationVessel(new Vessel())
@@ -291,8 +293,8 @@ class OrderTest {
         assertEquals("20568097", deserialize.getPickUp().getBillingReference());
         assertNotNull(deserialize.getPickUp().getLoadingUnit().getOperator());
 
-        assertEquals("2018-05-14T11:00:00", deserialize.getPickUp().getEarliest());
-        assertEquals("2018-05-14T11:30:00", deserialize.getPickUp().getLatest());
+        assertEquals("2018-05-14T11:00:00Z", deserialize.getPickUp().getEarliest().toString());
+        assertEquals("2018-05-14T11:30:00Z", deserialize.getPickUp().getLatest().toString());
         assertNotNull(deserialize.getPickUp().getMot());
 
         // Drop Off
@@ -303,8 +305,8 @@ class OrderTest {
         assertFalse(deserialize.getDropOff().getLoadingUnit().isEmpty());
         assertEquals("98690", deserialize.getDropOff().getBillingReference());
 
-        assertEquals("2018-05-14T14:00:00", deserialize.getDropOff().getEarliest());
-        assertEquals("2018-05-14T14:15:00", deserialize.getDropOff().getLatest());
+        assertEquals("2018-05-14T14:00:00Z", deserialize.getDropOff().getEarliest().toString());
+        assertEquals("2018-05-14T14:15:00Z", deserialize.getDropOff().getLatest().toString());
         assertNotNull(deserialize.getDropOff().getMot());
 
         assertEquals(2, deserialize.getStops().size());

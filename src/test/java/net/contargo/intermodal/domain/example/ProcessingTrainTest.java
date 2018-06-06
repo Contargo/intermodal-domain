@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,9 +30,9 @@ class ProcessingTrainTest {
                 .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
                 .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
                 .withWaggon("SGNRS", "24568", 3, Arrays.asList(new LUOrder(), new LUOrder()))
-                .withTerminalEta(2018, 5, 14, 11, 0)
-                .withTerminalEtd(2018, 5, 14, 13, 0)
-                .withShuntingYardEta(2018, 5, 14, 12, 0)
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                 .withShunter("a shunter")
                 .withTrainPaths("12345")
                 .buildAndValidate();
@@ -41,9 +43,9 @@ class ProcessingTrainTest {
         assertEquals("54789", processingTrain.getLoadingList().get(1).getId());
         assertEquals("24568", processingTrain.getLoadingList().get(2).getId());
         assertEquals(2, processingTrain.getLoadingList().get(2).getLoadingPosition().size());
-        assertEquals("2018-05-14T11:00:00", processingTrain.getTerminalEta());
-        assertEquals("2018-05-14T13:00:00", processingTrain.getTerminalEtd());
-        assertEquals("2018-05-14T12:00:00", processingTrain.getShuntingYardEta());
+        assertEquals("2018-05-14T11:00:00Z", processingTrain.getTerminalEta().toString());
+        assertEquals("2018-05-14T13:00:00Z", processingTrain.getTerminalEtd().toString());
+        assertEquals("2018-05-14T12:00:00Z", processingTrain.getShuntingYardEta().toString());
         assertEquals("a shunter", processingTrain.getShunter());
         assertEquals("12345", processingTrain.getTrainPaths());
     }
@@ -57,9 +59,9 @@ class ProcessingTrainTest {
                 .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
                 .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
                 .withWaggon("SGNRS", "24568", 3, Arrays.asList(new LUOrder(), new LUOrder()))
-                .withTerminalEta(2018, 5, 14, 11, 0)
-                .withTerminalEtd(2018, 5, 14, 13, 0)
-                .withShuntingYardEta(2018, 5, 14, 12, 0)
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                 .withShunter("a shunter")
                 .withTrainPaths("12345")
                 .buildAndValidate();
@@ -76,9 +78,9 @@ class ProcessingTrainTest {
         assertEquals("54789", deserialize.getLoadingList().get(1).getId());
         assertEquals("24568", deserialize.getLoadingList().get(2).getId());
         assertEquals(2, deserialize.getLoadingList().get(2).getLoadingPosition().size());
-        assertEquals("2018-05-14T11:00:00", deserialize.getTerminalEta());
-        assertEquals("2018-05-14T13:00:00", deserialize.getTerminalEtd());
-        assertEquals("2018-05-14T12:00:00", deserialize.getShuntingYardEta());
+        assertEquals("2018-05-14T11:00:00Z", deserialize.getTerminalEta().toString());
+        assertEquals("2018-05-14T13:00:00Z", deserialize.getTerminalEtd().toString());
+        assertEquals("2018-05-14T12:00:00Z", deserialize.getShuntingYardEta().toString());
         assertEquals("a shunter", deserialize.getShunter());
         assertEquals("12345", deserialize.getTrainPaths());
     }

@@ -12,6 +12,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -29,7 +31,7 @@ class RegistrationVehicleTest {
                 .withDriver(new Driver())
                 .withHaulierClient("haulier client")
                 .withHaulierRealizing("haulier realizing")
-                .withDeliveryTime(2018, 5, 14, 12, 30)
+                .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
                 .withLuOrder(new LUOrder())
                 .buildAndValidate();
 
@@ -38,7 +40,7 @@ class RegistrationVehicleTest {
         assertNotNull(registrationVehicle.getDriver());
         assertEquals("haulier client", registrationVehicle.getHaulierClient());
         assertEquals("haulier realizing", registrationVehicle.getHaulierRealizing());
-        assertEquals("2018-05-14T12:30:00", registrationVehicle.getDeliveryTime());
+        assertEquals("2018-05-14T12:30:00Z", registrationVehicle.getDeliveryTime().toString());
         assertNotNull(registrationVehicle.getLuOrder());
     }
 
@@ -53,7 +55,7 @@ class RegistrationVehicleTest {
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
-                    .withDeliveryTime(2018, 5, 14, 12, 30)
+                    .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
                     .withLuOrder(new LUOrder())
                     .buildAndValidate());
 
@@ -64,7 +66,7 @@ class RegistrationVehicleTest {
                     .withChassis(new Chassis())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
-                    .withDeliveryTime(2018, 5, 14, 12, 30)
+                    .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
                     .withLuOrder(new LUOrder())
                     .buildAndValidate());
 
@@ -75,7 +77,7 @@ class RegistrationVehicleTest {
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierRealizing("haulier realizing")
-                    .withDeliveryTime(2018, 5, 14, 12, 30)
+                    .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
                     .withLuOrder(new LUOrder())
                     .buildAndValidate());
 
@@ -86,7 +88,7 @@ class RegistrationVehicleTest {
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
-                    .withDeliveryTime(2018, 5, 14, 12, 30)
+                    .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
                     .withLuOrder(new LUOrder())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -107,7 +109,7 @@ class RegistrationVehicleTest {
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
-                    .withDeliveryTime(2018, 5, 14, 12, 30)
+                    .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
                     .buildAndValidate());
     }
 
@@ -121,7 +123,7 @@ class RegistrationVehicleTest {
                 .withDriver(new Driver())
                 .withHaulierClient("haulier client")
                 .withHaulierRealizing("haulier realizing")
-                .withDeliveryTime(2018, 5, 14, 12, 30)
+                .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
                 .withLuOrder(new LUOrder())
                 .buildAndValidate();
 
@@ -136,7 +138,7 @@ class RegistrationVehicleTest {
         assertNotNull(deserialize.getDriver());
         assertEquals("haulier client", deserialize.getHaulierClient());
         assertEquals("haulier realizing", deserialize.getHaulierRealizing());
-        assertEquals("2018-05-14T12:30:00", deserialize.getDeliveryTime());
+        assertEquals("2018-05-14T12:30:00Z", deserialize.getDeliveryTime().toString());
         assertNotNull(deserialize.getLuOrder());
     }
 }

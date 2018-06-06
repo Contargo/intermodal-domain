@@ -7,6 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
+import java.time.Instant;
+
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -40,7 +42,8 @@ public class Chassis implements MeansOfTransport {
      * @name_english  Ministry of Transport Test
      * @name_german  Hauptuntersuchung
      */
-    private String mot;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant mot;
 
     /**
      * e.g&#046; Multichassis.
@@ -98,7 +101,8 @@ public class Chassis implements MeansOfTransport {
     }
 
 
-    public String getMot() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getMot() {
 
         return mot;
     }
@@ -188,7 +192,7 @@ public class Chassis implements MeansOfTransport {
     public static final class Builder {
 
         private String numberPlate;
-        private String mot;
+        private Instant mot;
         private String type;
         private Integer axles;
         private Quantity<Length> size;
@@ -217,9 +221,9 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withMot(int year, int month, int day) {
+        public Builder withMot(Instant instant) {
 
-            this.mot = ISO8601DateFormatter.format(year, month, day);
+            this.mot = instant;
 
             return this;
         }

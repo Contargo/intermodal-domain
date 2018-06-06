@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,17 +38,20 @@ public class ProcessingTrain {
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
-    private String terminalEta;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant terminalEta;
 
     /**
      * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
-    private String terminalEtd;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant terminalEtd;
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
-    private String shuntingYardEta;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant shuntingYardEta;
 
     private String shunter;
 
@@ -59,19 +66,22 @@ public class ProcessingTrain {
     }
 
 
-    public String getTerminalEta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getTerminalEta() {
 
         return terminalEta;
     }
 
 
-    public String getTerminalEtd() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getTerminalEtd() {
 
         return terminalEtd;
     }
 
 
-    public String getShuntingYardEta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getShuntingYardEta() {
 
         return shuntingYardEta;
     }
@@ -159,9 +169,9 @@ public class ProcessingTrain {
 
         private String trainTitle;
         private List<Waggon> loadingList = new ArrayList<>();
-        private String terminalEta;
-        private String terminalEtd;
-        private String shuntingYardEta;
+        private Instant terminalEta;
+        private Instant terminalEtd;
+        private Instant shuntingYardEta;
         private String shunter;
         private String trainPaths;
 
@@ -190,25 +200,25 @@ public class ProcessingTrain {
         }
 
 
-        public Builder withTerminalEta(int year, int month, int day, int hour, int minute) {
+        public Builder withTerminalEta(Instant instant) {
 
-            this.terminalEta = ISO8601DateFormatter.format(year, month, day, hour, minute);
-
-            return this;
-        }
-
-
-        public Builder withTerminalEtd(int year, int month, int day, int hour, int minute) {
-
-            this.terminalEtd = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.terminalEta = instant;
 
             return this;
         }
 
 
-        public Builder withShuntingYardEta(int year, int month, int day, int hour, int minute) {
+        public Builder withTerminalEtd(Instant instant) {
 
-            this.shuntingYardEta = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.terminalEtd = instant;
+
+            return this;
+        }
+
+
+        public Builder withShuntingYardEta(Instant instant) {
+
+            this.shuntingYardEta = instant;
 
             return this;
         }

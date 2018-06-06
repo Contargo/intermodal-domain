@@ -2,6 +2,10 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,12 +40,14 @@ public class ProcessingBarge {
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
-    private String eta;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant eta;
 
     /**
      * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
-    private String etd;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant etd;
 
     private Skipper skipper;
 
@@ -59,7 +65,8 @@ public class ProcessingBarge {
      * intérieure sur le Rhin): european treaty for transport of dangerous goods on the Rhine. (Format: DateTime ISO
      * 8601 inclusive) UTC.
      */
-    private Boolean adnr;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant adnr;
 
     private List<LoadingListElement> loadingList;
 
@@ -69,13 +76,15 @@ public class ProcessingBarge {
     }
 
 
-    public String getEta() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getEta() {
 
         return eta;
     }
 
 
-    public String getEtd() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getEtd() {
 
         return etd;
     }
@@ -105,7 +114,8 @@ public class ProcessingBarge {
     }
 
 
-    public Boolean getAdnr() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getAdnr() {
 
         return adnr;
     }
@@ -165,13 +175,13 @@ public class ProcessingBarge {
     public static final class Builder {
 
         private Barge barge;
-        private String eta;
-        private String etd;
+        private Instant eta;
+        private Instant etd;
         private Skipper skipper;
         private List<Person> passenger;
         private Integer reeferConnections;
         private Cone cone;
-        private Boolean adnr;
+        private Instant adnr;
         private List<LoadingListElement> loadingList;
 
         private Builder() {
@@ -191,17 +201,17 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withEta(int year, int month, int day, int hour, int minute) {
+        public Builder withEta(Instant instant) {
 
-            this.eta = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.eta = instant;
 
             return this;
         }
 
 
-        public Builder withEtd(int year, int month, int day, int hour, int minute) {
+        public Builder withEtd(Instant instant) {
 
-            this.etd = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.etd = instant;
 
             return this;
         }
@@ -239,9 +249,9 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withAdnr(Boolean adnr) {
+        public Builder withAdnr(Instant instant) {
 
-            this.adnr = adnr;
+            this.adnr = instant;
 
             return this;
         }

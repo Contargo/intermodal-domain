@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -25,7 +27,7 @@ class TruckTest {
         Truck truck = Truck.Builder.newTruck()
                 .withNumberPlate("DU CO 1782")
                 .withCountryCode("DE")
-                .withMot(2020, 5, 22)
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withEnvironmentBadge(EnvironmentBadge.GREEN)
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
@@ -37,7 +39,7 @@ class TruckTest {
 
         assertEquals("DU CO 1782", truck.getNumberPlate());
         assertEquals("DE", truck.getCountryCode());
-        assertEquals("2020-05-22T00:00:00", truck.getMot());
+        assertEquals("2020-05-22T00:00:00Z", truck.getMot().toString());
         assertEquals(EnvironmentBadge.GREEN, truck.getEnvironmentBadge());
         assertEquals("refrigerator truck", truck.getType());
         assertTrue(truck.getEuAuthorization());
@@ -54,7 +56,7 @@ class TruckTest {
         Truck truck = Truck.Builder.newTruck()
                 .withNumberPlate("DU CO 1782")
                 .withCountryCode("DE")
-                .withMot(2020, 5, 22)
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withEnvironmentBadge(EnvironmentBadge.GREEN)
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
@@ -74,7 +76,7 @@ class TruckTest {
         Truck truck = Truck.Builder.newTruck()
                 .withNumberPlate("DU CO 1782")
                 .withCountryCode("DE")
-                .withMot(2020, 5, 22)
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withEnvironmentBadge(EnvironmentBadge.GREEN)
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
@@ -92,7 +94,7 @@ class TruckTest {
 
         assertEquals("DU CO 1782", deserialize.getNumberPlate());
         assertEquals("DE", deserialize.getCountryCode());
-        assertEquals("2020-05-22T00:00:00", deserialize.getMot());
+        assertEquals("2020-05-22T00:00:00Z", deserialize.getMot().toString());
         assertEquals(EnvironmentBadge.GREEN, deserialize.getEnvironmentBadge());
         assertEquals("refrigerator truck", deserialize.getType());
         assertTrue(deserialize.getEuAuthorization());

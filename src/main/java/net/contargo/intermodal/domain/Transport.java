@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,15 +65,15 @@ class Transport {
     }
 
 
-    void setEarliestPickUp(int year, int month, int day, int hour, int minute) {
+    void setEarliestPickUp(Instant instant) {
 
-        this.pickUp.setEarliest(year, month, day, hour, minute);
+        this.pickUp.setEarliest(instant);
     }
 
 
-    void setLatestPickUp(int year, int month, int day, int hour, int minute) {
+    void setLatestPickUp(Instant instant) {
 
-        this.pickUp.setLatest(year, month, day, hour, minute);
+        this.pickUp.setLatest(instant);
     }
 
 
@@ -109,15 +113,15 @@ class Transport {
     }
 
 
-    void setEarliestDropOff(int year, int month, int day, int hour, int minute) {
+    void setEarliestDropOff(Instant instant) {
 
-        this.dropOff.setEarliest(year, month, day, hour, minute);
+        this.dropOff.setEarliest(instant);
     }
 
 
-    void setLatestDropOff(int year, int month, int day, int hour, int minute) {
+    void setLatestDropOff(Instant instant) {
 
-        this.dropOff.setLatest(year, month, day, hour, minute);
+        this.dropOff.setLatest(instant);
     }
 
 
@@ -172,12 +176,14 @@ class Transport {
         /**
          * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
-        private String earliest;
+        @JsonDeserialize(using = InstantJsonDeserializer.class)
+        private Instant earliest;
 
         /**
          * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
-        private String latest;
+        @JsonDeserialize(using = InstantJsonDeserializer.class)
+        private Instant latest;
 
         /**
          * @see  MeansOfTransport
@@ -221,15 +227,15 @@ class Transport {
         }
 
 
-        void setEarliest(int year, int month, int day, int hour, int minute) {
+        void setEarliest(Instant instant) {
 
-            this.earliest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.earliest = instant;
         }
 
 
-        void setLatest(int year, int month, int day, int hour, int minute) {
+        void setLatest(Instant instant) {
 
-            this.latest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.latest = instant;
         }
 
 
@@ -257,13 +263,15 @@ class Transport {
         }
 
 
-        public String getEarliest() {
+        @JsonSerialize(using = InstantJsonSerializer.class)
+        public Instant getEarliest() {
 
             return earliest;
         }
 
 
-        public String getLatest() {
+        @JsonSerialize(using = InstantJsonSerializer.class)
+        public Instant getLatest() {
 
             return latest;
         }
@@ -296,12 +304,14 @@ class Transport {
          * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
         @NotNull(message = "earliest is part of minimum requirement")
-        private String earliest;
+        @JsonDeserialize(using = InstantJsonDeserializer.class)
+        private Instant earliest;
 
         /**
          * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
-        private String latest;
+        @JsonDeserialize(using = InstantJsonDeserializer.class)
+        private Instant latest;
 
         @NotNull(message = "mot is part of minimum requirement")
         private MeansOfTransport mot;
@@ -342,15 +352,15 @@ class Transport {
         }
 
 
-        void setEarliest(int year, int month, int day, int hour, int minute) {
+        void setEarliest(Instant instant) {
 
-            this.earliest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.earliest = instant;
         }
 
 
-        void setLatest(int year, int month, int day, int hour, int minute) {
+        void setLatest(Instant instant) {
 
-            this.latest = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.latest = instant;
         }
 
 
@@ -366,13 +376,15 @@ class Transport {
         }
 
 
-        public String getEarliest() {
+        @JsonSerialize(using = InstantJsonSerializer.class)
+        public Instant getEarliest() {
 
             return earliest;
         }
 
 
-        public String getLatest() {
+        @JsonSerialize(using = InstantJsonSerializer.class)
+        public Instant getLatest() {
 
             return latest;
         }

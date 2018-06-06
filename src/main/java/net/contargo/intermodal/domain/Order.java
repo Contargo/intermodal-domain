@@ -1,8 +1,9 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import java.time.Instant;
 
 import java.util.List;
 
@@ -215,17 +216,17 @@ public class Order {
         }
 
 
-        public Builder withEarliestPickUp(int year, int month, int day, int hour, int minute) {
+        public Builder withEarliestPickUp(Instant instant) {
 
-            this.transport.setEarliestPickUp(year, month, day, hour, minute);
+            this.transport.setEarliestPickUp(instant);
 
             return this;
         }
 
 
-        public Builder withLatestPickUp(int year, int month, int day, int hour, int minute) {
+        public Builder withLatestPickUp(Instant instant) {
 
-            this.transport.setLatestPickUp(year, month, day, hour, minute);
+            this.transport.setLatestPickUp(instant);
 
             return this;
         }
@@ -279,17 +280,17 @@ public class Order {
         }
 
 
-        public Builder withEarliestDropOff(int year, int month, int day, int hour, int minute) {
+        public Builder withEarliestDropOff(Instant instant) {
 
-            this.transport.setEarliestDropOff(year, month, day, hour, minute);
+            this.transport.setEarliestDropOff(instant);
 
             return this;
         }
 
 
-        public Builder withLatestDropOff(int year, int month, int day, int hour, int minute) {
+        public Builder withLatestDropOff(Instant instant) {
 
-            this.transport.setLatestDropOff(year, month, day, hour, minute);
+            this.transport.setLatestDropOff(instant);
 
             return this;
         }

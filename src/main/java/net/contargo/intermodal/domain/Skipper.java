@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 
 /**
@@ -20,17 +24,11 @@ public class Skipper extends Person {
      * intérieure sur le Rhin): european treaty for transport of dangerous goods on the Rhine. (Format: DateTime ISO
      * 8601 inclusive) UTC.
      */
-    private String adnr;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant adnr;
 
-    public Skipper withAdnr(int year, int month, int day) {
-
-        this.adnr = ISO8601DateFormatter.format(year, month, day);
-
-        return this;
-    }
-
-
-    public String getAdnr() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getAdnr() {
 
         return adnr;
     }
@@ -54,10 +52,10 @@ public class Skipper extends Person {
         private String firstName;
         private Address address;
         private String cellphone;
-        private String dateOfBirth;
+        private Instant dateOfBirth;
         private String locationCity;
         private String countryCode;
-        private String adnr;
+        private Instant adnr;
 
         private Builder() {
         }
@@ -100,9 +98,9 @@ public class Skipper extends Person {
         }
 
 
-        public Builder bornOn(int year, int month, int day) {
+        public Builder bornOn(Instant instant) {
 
-            this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
+            this.dateOfBirth = instant;
 
             return this;
         }
@@ -124,9 +122,9 @@ public class Skipper extends Person {
         }
 
 
-        public Builder withAdnr(int year, int month, int day) {
+        public Builder withAdnr(Instant instant) {
 
-            this.adnr = ISO8601DateFormatter.format(year, month, day);
+            this.adnr = instant;
 
             return this;
         }

@@ -11,6 +11,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -26,9 +28,9 @@ class RegistrationTrainTest {
                 .withTrainTitle("My Train")
                 .withRailwayOperator(new Operator())
                 .withOperator(new Operator())
-                .withTerminalEta(2018, 5, 14, 11, 0)
-                .withTerminalEtd(2018, 5, 14, 13, 0)
-                .withShuntingYardEta(2018, 5, 14, 12, 0)
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                 .withShunter("a shunter")
                 .withTotalLength(120.0, LengthUnit.METRE)
                 .withWaggonQuantity(10)
@@ -41,9 +43,9 @@ class RegistrationTrainTest {
         assertEquals("My Train", registrationTrain.getTrainTitle());
         assertNotNull(registrationTrain.getRailwayOperator());
         assertNotNull(registrationTrain.getOperator());
-        assertEquals("2018-05-14T11:00:00", registrationTrain.getTerminalEta());
-        assertEquals("2018-05-14T13:00:00", registrationTrain.getTerminalEtd());
-        assertEquals("2018-05-14T12:00:00", registrationTrain.getShuntingYardEta());
+        assertEquals("2018-05-14T11:00:00Z", registrationTrain.getTerminalEta().toString());
+        assertEquals("2018-05-14T13:00:00Z", registrationTrain.getTerminalEtd().toString());
+        assertEquals("2018-05-14T12:00:00Z", registrationTrain.getShuntingYardEta().toString());
         assertEquals("a shunter", registrationTrain.getShunter());
         assertEquals(120.0, registrationTrain.getTotalLength().getValue().doubleValue());
         assertEquals(10, registrationTrain.getWaggonQuantity().intValue());
@@ -61,9 +63,9 @@ class RegistrationTrainTest {
             .withTrainTitle("My Train")
             .withRailwayOperator(new Operator())
             .withOperator(new Operator())
-            .withTerminalEta(2018, 5, 14, 11, 0)
-            .withTerminalEtd(2018, 5, 14, 13, 0)
-            .withShuntingYardEta(2018, 5, 14, 12, 0)
+            .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+            .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+            .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
             .withShunter("a shunter")
             .withTotalLength(120.0, LengthUnit.METRE)
             .withWaggonQuantity(10)
@@ -83,9 +85,9 @@ class RegistrationTrainTest {
                 RegistrationTrain.Builder.newRegistrationTrain()
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
@@ -99,25 +101,9 @@ class RegistrationTrainTest {
                 RegistrationTrain.Builder.newRegistrationTrain()
                     .withTrainTitle("My Train")
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
-                    .withShunter("a shunter")
-                    .withTotalLength(120.0, LengthUnit.METRE)
-                    .withWaggonQuantity(10)
-                    .withDangerousGoodsIndication(new DangerousGoods())
-                    .withVolumeToDischarge(10)
-                    .withVolumeToLoad(8)
-                    .withTrainPaths("12345")
-                    .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
-                    .withTrainTitle("My Train")
-                    .withRailwayOperator(new Operator())
-                    .withOperator(new Operator())
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
@@ -132,8 +118,8 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
@@ -148,8 +134,8 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
@@ -164,9 +150,9 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
                     .withDangerousGoodsIndication(new DangerousGoods())
@@ -180,9 +166,25 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
+                    .withTotalLength(120.0, LengthUnit.METRE)
+                    .withWaggonQuantity(10)
+                    .withDangerousGoodsIndication(new DangerousGoods())
+                    .withVolumeToDischarge(10)
+                    .withVolumeToLoad(8)
+                    .withTrainPaths("12345")
+                    .buildAndValidate());
+        assertThrows(IllegalStateException.class,
+            () ->
+                RegistrationTrain.Builder.newRegistrationTrain()
+                    .withTrainTitle("My Train")
+                    .withRailwayOperator(new Operator())
+                    .withOperator(new Operator())
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withWaggonQuantity(10)
                     .withDangerousGoodsIndication(new DangerousGoods())
@@ -196,9 +198,9 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withDangerousGoodsIndication(new DangerousGoods())
@@ -212,9 +214,9 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
@@ -228,9 +230,9 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
@@ -244,9 +246,9 @@ class RegistrationTrainTest {
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
-                    .withTerminalEta(2018, 5, 14, 11, 0)
-                    .withTerminalEtd(2018, 5, 14, 13, 0)
-                    .withShuntingYardEta(2018, 5, 14, 12, 0)
+                    .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                    .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                     .withShunter("a shunter")
                     .withTotalLength(120.0, LengthUnit.METRE)
                     .withWaggonQuantity(10)
@@ -264,9 +266,9 @@ class RegistrationTrainTest {
                 .withTrainTitle("My Train")
                 .withRailwayOperator(new Operator())
                 .withOperator(new Operator())
-                .withTerminalEta(2018, 5, 14, 11, 0)
-                .withTerminalEtd(2018, 5, 14, 13, 0)
-                .withShuntingYardEta(2018, 5, 14, 12, 0)
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                 .withShunter("a shunter")
                 .withTotalLength(393.70, LengthUnit.FOOT)
                 .withWaggonQuantity(10)
@@ -287,9 +289,9 @@ class RegistrationTrainTest {
                 .withTrainTitle("My Train")
                 .withRailwayOperator(new Operator())
                 .withOperator(new Operator())
-                .withTerminalEta(2018, 5, 14, 11, 0)
-                .withTerminalEtd(2018, 5, 14, 13, 0)
-                .withShuntingYardEta(2018, 5, 14, 12, 0)
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
                 .withShunter("a shunter")
                 .withTotalLength(120.0, LengthUnit.METRE)
                 .withWaggonQuantity(10)
@@ -308,9 +310,9 @@ class RegistrationTrainTest {
         assertEquals("My Train", deserialize.getTrainTitle());
         assertNotNull(deserialize.getRailwayOperator());
         assertNotNull(deserialize.getOperator());
-        assertEquals("2018-05-14T11:00:00", deserialize.getTerminalEta());
-        assertEquals("2018-05-14T13:00:00", deserialize.getTerminalEtd());
-        assertEquals("2018-05-14T12:00:00", deserialize.getShuntingYardEta());
+        assertEquals("2018-05-14T11:00:00Z", deserialize.getTerminalEta().toString());
+        assertEquals("2018-05-14T13:00:00Z", deserialize.getTerminalEtd().toString());
+        assertEquals("2018-05-14T12:00:00Z", deserialize.getShuntingYardEta().toString());
         assertEquals("a shunter", deserialize.getShunter());
         assertEquals(120.0, deserialize.getTotalLength().getValue().doubleValue());
         assertEquals(10, deserialize.getWaggonQuantity().intValue());

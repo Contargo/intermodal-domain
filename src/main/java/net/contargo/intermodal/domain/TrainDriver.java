@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 
 /**
@@ -20,17 +24,11 @@ public class TrainDriver extends Person {
      * regulation of international transport of dangerous goods in rail transport. (Format: DateTime ISO 8601 inclusive
      * UTC.)
      */
-    private String rid;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant rid;
 
-    public TrainDriver withRid(int year, int month, int day) {
-
-        this.rid = ISO8601DateFormatter.format(year, month, day);
-
-        return this;
-    }
-
-
-    public String getRid() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getRid() {
 
         return rid;
     }
@@ -54,9 +52,9 @@ public class TrainDriver extends Person {
         private String firstName;
         private Address address;
         private String cellphone;
-        private String dateOfBirth;
+        private Instant dateOfBirth;
         private String locationCity;
-        private String rid;
+        private Instant rid;
         private String countryCode;
 
         private Builder() {
@@ -100,9 +98,9 @@ public class TrainDriver extends Person {
         }
 
 
-        public Builder bornOn(int year, int month, int day) {
+        public Builder bornOn(Instant instant) {
 
-            this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
+            this.dateOfBirth = instant;
 
             return this;
         }
@@ -116,9 +114,9 @@ public class TrainDriver extends Person {
         }
 
 
-        public Builder withRid(int year, int month, int day) {
+        public Builder withRid(Instant instant) {
 
-            this.rid = ISO8601DateFormatter.format(year, month, day);
+            this.rid = instant;
 
             return this;
         }

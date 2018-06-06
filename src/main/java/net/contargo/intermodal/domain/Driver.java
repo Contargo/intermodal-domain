@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 
 /**
@@ -27,12 +31,14 @@ public class Driver extends Person {
      * treaty for international transport of dangerous goods. (Format: DateTime ISO 8601 inclusive UTC
      * (yyyy-MM-dd'T'HH:mm:ss.SSSX).)
      */
-    private String adr;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant adr;
 
     /**
      * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
-    private String moduleEntry95;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant moduleEntry95;
 
     public License getLicense() {
 
@@ -46,13 +52,15 @@ public class Driver extends Person {
     }
 
 
-    public String getAdr() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getAdr() {
 
         return adr;
     }
 
 
-    public String getModuleEntry95() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getModuleEntry95() {
 
         return moduleEntry95;
     }
@@ -75,11 +83,13 @@ public class Driver extends Person {
         /**
          * format: DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
-        private String validity;
+        @JsonDeserialize(using = InstantJsonDeserializer.class)
+        private Instant validity;
 
         private String number;
 
-        public String getValidity() {
+        @JsonSerialize(using = InstantJsonSerializer.class)
+        public Instant getValidity() {
 
             return validity;
         }
@@ -93,18 +103,18 @@ public class Driver extends Person {
 
     public static final class Builder {
 
-        private String licenseValidity;
+        private Instant licenseValidity;
         private String licenseNumber;
         private String name;
         private String firstName;
         private Address address;
         private String cellphone;
-        private String dateOfBirth;
+        private Instant dateOfBirth;
         private String locationCity;
         private String id;
         private String countryCode;
-        private String adr;
-        private String moduleEntry95;
+        private Instant adr;
+        private Instant moduleEntry95;
 
         private Builder() {
         }
@@ -147,9 +157,9 @@ public class Driver extends Person {
         }
 
 
-        public Builder withLicenseValidity(int year, int month, int day) {
+        public Builder withLicenseValidity(Instant instant) {
 
-            this.licenseValidity = ISO8601DateFormatter.format(year, month, day);
+            this.licenseValidity = instant;
 
             return this;
         }
@@ -163,9 +173,9 @@ public class Driver extends Person {
         }
 
 
-        public Builder bornOn(int year, int month, int day) {
+        public Builder bornOn(Instant instant) {
 
-            this.dateOfBirth = ISO8601DateFormatter.format(year, month, day);
+            this.dateOfBirth = instant;
 
             return this;
         }
@@ -195,17 +205,17 @@ public class Driver extends Person {
         }
 
 
-        public Builder withAdr(int year, int month, int day) {
+        public Builder withAdr(Instant instant) {
 
-            this.adr = ISO8601DateFormatter.format(year, month, day);
+            this.adr = instant;
 
             return this;
         }
 
 
-        public Builder withModuleEntry95(int year, int month, int day) {
+        public Builder withModuleEntry95(Instant instant) {
 
-            this.moduleEntry95 = ISO8601DateFormatter.format(year, month, day);
+            this.moduleEntry95 = instant;
 
             return this;
         }

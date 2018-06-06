@@ -2,8 +2,12 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
+
+import java.time.Instant;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Mass;
@@ -42,7 +46,8 @@ public class Truck implements MeansOfTransport {
      * @abbreviation_german  TÜV
      * @abbreviation_english  MOT
      */
-    private String mot;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant mot;
 
     /**
      * @name_german  Umweltplakette
@@ -90,7 +95,8 @@ public class Truck implements MeansOfTransport {
     }
 
 
-    public String getMot() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getMot() {
 
         return mot;
     }
@@ -167,7 +173,7 @@ public class Truck implements MeansOfTransport {
 
         private String numberPlate;
         private String countryCode;
-        private String mot;
+        private Instant mot;
         private EnvironmentBadge environmentBadge;
         private String type;
         private Boolean euAuthorization;
@@ -206,9 +212,9 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public Builder withMot(int year, int month, int day) {
+        public Builder withMot(Instant instant) {
 
-            this.mot = ISO8601DateFormatter.format(year, month, day);
+            this.mot = instant;
 
             return this;
         }

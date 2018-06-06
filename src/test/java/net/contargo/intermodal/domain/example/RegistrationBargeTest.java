@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -23,16 +25,16 @@ class RegistrationBargeTest {
 
         RegistrationBarge registrationBarge = RegistrationBarge.Builder.newRegistrationBarge()
                 .withBarge(new Barge())
-                .withEta(2018, 5, 14, 11, 0)
-                .withEtd(2018, 5, 14, 12, 0)
+                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                 .withDangerousGoodsIndication(new DangerousGoods())
                 .withVolumeToDischarge(24)
                 .withVolumeToLoad(24)
                 .buildAndValidate();
 
         assertNotNull(registrationBarge.getBarge());
-        assertEquals("2018-05-14T11:00:00", registrationBarge.getEta());
-        assertEquals("2018-05-14T12:00:00", registrationBarge.getEtd());
+        assertEquals("2018-05-14T11:00:00Z", registrationBarge.getEta().toString());
+        assertEquals("2018-05-14T12:00:00Z", registrationBarge.getEtd().toString());
         assertNotNull(registrationBarge.getDangerousGoodsIndication());
         assertEquals(24, registrationBarge.getVolumeToLoad().intValue());
         assertEquals(24, registrationBarge.getVolumeToDischarge().intValue());
@@ -45,8 +47,8 @@ class RegistrationBargeTest {
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
-                    .withEta(2018, 5, 14, 11, 0)
-                    .withEtd(2018, 5, 14, 12, 0)
+                    .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
@@ -55,7 +57,7 @@ class RegistrationBargeTest {
             () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
-                    .withEtd(2018, 5, 14, 12, 0)
+                    .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
@@ -64,7 +66,7 @@ class RegistrationBargeTest {
             () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
-                    .withEta(2018, 5, 14, 11, 0)
+                    .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
@@ -73,8 +75,8 @@ class RegistrationBargeTest {
             () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
-                    .withEta(2018, 5, 14, 11, 0)
-                    .withEtd(2018, 5, 14, 12, 0)
+                    .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
                     .buildAndValidate());
@@ -82,8 +84,8 @@ class RegistrationBargeTest {
             () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
-                    .withEta(2018, 5, 14, 11, 0)
-                    .withEtd(2018, 5, 14, 12, 0)
+                    .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToLoad(24)
                     .buildAndValidate());
@@ -91,8 +93,8 @@ class RegistrationBargeTest {
             () ->
                 RegistrationBarge.Builder.newRegistrationBarge()
                     .withBarge(new Barge())
-                    .withEta(2018, 5, 14, 11, 0)
-                    .withEtd(2018, 5, 14, 12, 0)
+                    .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                    .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
                     .withVolumeToDischarge(24)
                     .buildAndValidate());
@@ -104,8 +106,8 @@ class RegistrationBargeTest {
 
         RegistrationBarge registrationBarge = RegistrationBarge.Builder.newRegistrationBarge()
                 .withBarge(new Barge())
-                .withEta(2018, 5, 14, 11, 0)
-                .withEtd(2018, 5, 14, 12, 0)
+                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                 .withDangerousGoodsIndication(new DangerousGoods())
                 .withVolumeToDischarge(24)
                 .withVolumeToLoad(24)
@@ -118,8 +120,8 @@ class RegistrationBargeTest {
         RegistrationBarge deserialize = mapper.readValue(jsonString, RegistrationBarge.class);
 
         assertNotNull(deserialize.getBarge());
-        assertEquals("2018-05-14T11:00:00", deserialize.getEta());
-        assertEquals("2018-05-14T12:00:00", deserialize.getEtd());
+        assertEquals("2018-05-14T11:00:00Z", deserialize.getEta().toString());
+        assertEquals("2018-05-14T12:00:00Z", deserialize.getEtd().toString());
         assertNotNull(deserialize.getDangerousGoodsIndication());
         assertEquals(24, deserialize.getVolumeToLoad().intValue());
         assertEquals(24, deserialize.getVolumeToDischarge().intValue());

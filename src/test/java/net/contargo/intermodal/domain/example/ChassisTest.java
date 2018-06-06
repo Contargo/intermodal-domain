@@ -10,6 +10,12 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import java.time.Instant;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -23,7 +29,7 @@ class ChassisTest {
 
         Chassis chassis = Chassis.Builder.newChassis()
                 .withNumberPlate("DU CO 1782")
-                .withMot(2020, 5, 22)
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
                 .withAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
@@ -37,7 +43,7 @@ class ChassisTest {
                 .buildAndValidate();
 
         assertEquals("DU CO 1782", chassis.getNumberPlate());
-        assertEquals("2020-05-22T00:00:00", chassis.getMot());
+        assertEquals("2020-05-22T00:00:00Z", chassis.getMot().toString());
         assertEquals("Multichassis", chassis.getType());
         assertEquals(2, chassis.getAxles().intValue());
         assertEquals(4.0, chassis.getSize().getValue().doubleValue());
@@ -56,7 +62,7 @@ class ChassisTest {
     void ensureMeasurementsCanBeSetInFoot() {
 
         Chassis chassis = Chassis.Builder.newChassis()
-                .withMot(2020, 5, 22)
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withSize(13.12, LengthUnit.FOOT)
                 .withHeight(3.28, LengthUnit.FOOT)
                 .withWeightTare(0.5, MassUnit.TON)
@@ -73,7 +79,6 @@ class ChassisTest {
 
         Chassis chassis = Chassis.Builder.newChassis()
                 .withNumberPlate("DU CO 1782")
-                .withMot(2020, 5, 22)
                 .withType("Multichassis")
                 .withAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
@@ -88,22 +93,24 @@ class ChassisTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
+        System.out.print(chassis.toString());
+
         String jsonString = mapper.writeValueAsString(chassis);
 
         Chassis deserialize = mapper.readValue(jsonString, Chassis.class);
 
-        assertEquals("DU CO 1782", chassis.getNumberPlate());
-        assertEquals("2020-05-22T00:00:00", chassis.getMot());
-        assertEquals("Multichassis", chassis.getType());
-        assertEquals(2, chassis.getAxles().intValue());
-        assertEquals(4.0, chassis.getSize().getValue().doubleValue());
-        assertEquals(1.0, chassis.getHeight().getValue().doubleValue());
-        assertTrue(chassis.getEuAuthorization());
-        assertTrue(chassis.getSt());
-        assertTrue(chassis.getSuitabilityDangerousGoods());
-        assertTrue(chassis.getSuitabilityWaste());
-        assertTrue(chassis.getSuitabilityReefer());
-        assertNotNull(chassis.getWeight());
-        assertEquals(500.0, chassis.getWeightTare().getValue().doubleValue());
+        assertEquals("DU CO 1782", deserialize.getNumberPlate());
+        assertEquals("2020-05-22T00:00:00Z", deserialize.getMot().toString());
+        assertEquals("Multichassis", deserialize.getType());
+        assertEquals(2, deserialize.getAxles().intValue());
+        assertEquals(4.0, deserialize.getSize().getValue().doubleValue());
+        assertEquals(1.0, deserialize.getHeight().getValue().doubleValue());
+        assertTrue(deserialize.getEuAuthorization());
+        assertTrue(deserialize.getSt());
+        assertTrue(deserialize.getSuitabilityDangerousGoods());
+        assertTrue(deserialize.getSuitabilityWaste());
+        assertTrue(deserialize.getSuitabilityReefer());
+        assertNotNull(deserialize.getWeight());
+        assertEquals(500.0, deserialize.getWeightTare().getValue().doubleValue());
     }
 }

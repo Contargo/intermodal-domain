@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 import javax.validation.constraints.NotNull;
 
@@ -42,7 +46,8 @@ public class RegistrationVehicle {
      * Format: ISO 8601 inclusive UTC
      */
     @NotNull(message = "deliveryTime is part of minimum requirement")
-    private String deliveryTime;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant deliveryTime;
 
     @NotNull(message = "luOrder is part of minimum requirement")
     private LUOrder luOrder;
@@ -77,7 +82,8 @@ public class RegistrationVehicle {
     }
 
 
-    public String getDeliveryTime() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getDeliveryTime() {
 
         return deliveryTime;
     }
@@ -108,7 +114,7 @@ public class RegistrationVehicle {
         private Driver driver;
         private String haulierClient;
         private String haulierRealizing;
-        private String deliveryTime;
+        private Instant deliveryTime;
         private LUOrder luOrder;
 
         private Builder() {
@@ -160,9 +166,9 @@ public class RegistrationVehicle {
         }
 
 
-        public Builder withDeliveryTime(int year, int month, int day, int hour, int minute) {
+        public Builder withDeliveryTime(Instant instant) {
 
-            this.deliveryTime = ISO8601DateFormatter.format(year, month, day, hour, minute);
+            this.deliveryTime = instant;
 
             return this;
         }
