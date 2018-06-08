@@ -37,7 +37,7 @@ import static tec.units.ri.unit.Units.KILOGRAM;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
-public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufbau, Wechselbehälter {
+public class SwapBody extends LoadingUnit {
 
     /**
      * e.g. Klasse A, Klasse C (C715, C745, C765, C782), Open Top
@@ -256,13 +256,4 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
             return swapBody;
         }
     }
-}
-
-interface Wechselbrücke {
-}
-
-interface Wechselbehälter {
-}
-
-interface Wechselaufbau {
 }
