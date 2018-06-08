@@ -20,7 +20,7 @@ class VesselTest {
     @Test
     void ensureCanBeCreated() {
 
-        Vessel vessel = Vessel.Builder.newVessel()
+        Vessel vessel = Vessel.newBuilder()
                 .withName("My Vessel")
                 .withMmsi("021112345")
                 .withImo("050XXXXX")
@@ -37,7 +37,7 @@ class VesselTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Vessel vessel = Vessel.Builder.newVessel()
+        Vessel vessel = Vessel.newBuilder()
                 .withName("My Vessel")
                 .withMmsi("021112345")
                 .withImo("050XXXXX")

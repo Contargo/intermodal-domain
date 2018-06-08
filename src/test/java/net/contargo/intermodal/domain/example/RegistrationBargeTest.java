@@ -23,7 +23,7 @@ class RegistrationBargeTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        RegistrationBarge registrationBarge = RegistrationBarge.Builder.newRegistrationBarge()
+        RegistrationBarge registrationBarge = RegistrationBarge.newBuilder()
                 .withBarge(new Barge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
@@ -46,7 +46,7 @@ class RegistrationBargeTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationBarge.Builder.newRegistrationBarge()
+                RegistrationBarge.newBuilder()
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
@@ -55,7 +55,7 @@ class RegistrationBargeTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationBarge.Builder.newRegistrationBarge()
+                RegistrationBarge.newBuilder()
                     .withBarge(new Barge())
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
@@ -64,7 +64,7 @@ class RegistrationBargeTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationBarge.Builder.newRegistrationBarge()
+                RegistrationBarge.newBuilder()
                     .withBarge(new Barge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withDangerousGoodsIndication(new DangerousGoods())
@@ -73,7 +73,7 @@ class RegistrationBargeTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationBarge.Builder.newRegistrationBarge()
+                RegistrationBarge.newBuilder()
                     .withBarge(new Barge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
@@ -82,7 +82,7 @@ class RegistrationBargeTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationBarge.Builder.newRegistrationBarge()
+                RegistrationBarge.newBuilder()
                     .withBarge(new Barge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
@@ -91,7 +91,7 @@ class RegistrationBargeTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationBarge.Builder.newRegistrationBarge()
+                RegistrationBarge.newBuilder()
                     .withBarge(new Barge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
@@ -104,7 +104,7 @@ class RegistrationBargeTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        RegistrationBarge registrationBarge = RegistrationBarge.Builder.newRegistrationBarge()
+        RegistrationBarge registrationBarge = RegistrationBarge.newBuilder()
                 .withBarge(new Barge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))

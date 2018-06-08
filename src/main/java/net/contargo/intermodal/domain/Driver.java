@@ -40,6 +40,12 @@ public class Driver extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant moduleEntry95;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public License getLicense() {
 
         return license;
@@ -118,12 +124,6 @@ public class Driver extends Person {
 
         private Builder() {
         }
-
-        public static Builder newDriver() {
-
-            return new Builder();
-        }
-
 
         public Builder withName(String name) {
 

@@ -20,7 +20,7 @@ class CustomsTest {
     @Test
     void ensureCanBeCreated() {
 
-        Customs customs = Customs.Builder.newCustoms()
+        Customs customs = Customs.newBuilder()
                 .withCustomProcess("T1")
                 .withCustomDocumentNumber("16DE1234...")
                 .withSeal(Seal.Builder.newSeal().withNumber("42").withType("some seal type").build())
@@ -36,7 +36,7 @@ class CustomsTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Customs customs = Customs.Builder.newCustoms()
+        Customs customs = Customs.newBuilder()
                 .withCustomProcess("T1")
                 .withCustomDocumentNumber("16DE1234...")
                 .withSeal(Seal.Builder.newSeal().withNumber("42").withType("some seal type").build())

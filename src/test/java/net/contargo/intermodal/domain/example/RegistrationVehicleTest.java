@@ -25,7 +25,7 @@ class RegistrationVehicleTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        RegistrationVehicle registrationVehicle = RegistrationVehicle.Builder.newRegistrationVehicle()
+        RegistrationVehicle registrationVehicle = RegistrationVehicle.newBuilder()
                 .withTruck(new Truck())
                 .withChassis(new Chassis())
                 .withDriver(new Driver())
@@ -50,7 +50,7 @@ class RegistrationVehicleTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationVehicle.Builder.newRegistrationVehicle()
+                RegistrationVehicle.newBuilder()
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
@@ -61,7 +61,7 @@ class RegistrationVehicleTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationVehicle.Builder.newRegistrationVehicle()
+                RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
                     .withHaulierClient("haulier client")
@@ -72,7 +72,7 @@ class RegistrationVehicleTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationVehicle.Builder.newRegistrationVehicle()
+                RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
@@ -83,7 +83,7 @@ class RegistrationVehicleTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationVehicle.Builder.newRegistrationVehicle()
+                RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
@@ -93,7 +93,7 @@ class RegistrationVehicleTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationVehicle.Builder.newRegistrationVehicle()
+                RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
@@ -103,7 +103,7 @@ class RegistrationVehicleTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationVehicle.Builder.newRegistrationVehicle()
+                RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
                     .withChassis(new Chassis())
                     .withDriver(new Driver())
@@ -117,7 +117,7 @@ class RegistrationVehicleTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        RegistrationVehicle registrationVehicle = RegistrationVehicle.Builder.newRegistrationVehicle()
+        RegistrationVehicle registrationVehicle = RegistrationVehicle.newBuilder()
                 .withTruck(new Truck())
                 .withChassis(new Chassis())
                 .withDriver(new Driver())

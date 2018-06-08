@@ -23,7 +23,7 @@ class TrainDriverTest {
     @Test
     void ensureTrainDriverCanBeCreated() {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withCountryCode("DE")
                 .withCountryName("Germany")
                 .withLocationCity("Karlsruhe")
@@ -31,7 +31,7 @@ class TrainDriverTest {
                 .withStreet("Hauptstraße 42")
                 .buildAndValidate();
 
-        TrainDriver trainDriver = TrainDriver.Builder.newTrainDriver()
+        TrainDriver trainDriver = TrainDriver.newBuilder()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(address)
@@ -56,7 +56,7 @@ class TrainDriverTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withCountryCode("DE")
                 .withCountryName("Germany")
                 .withLocationCity("Karlsruhe")
@@ -64,7 +64,7 @@ class TrainDriverTest {
                 .withStreet("Hauptstraße 42")
                 .buildAndValidate();
 
-        TrainDriver trainDriver = TrainDriver.Builder.newTrainDriver()
+        TrainDriver trainDriver = TrainDriver.newBuilder()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(address)

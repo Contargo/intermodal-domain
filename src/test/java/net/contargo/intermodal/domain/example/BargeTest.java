@@ -24,7 +24,7 @@ class BargeTest {
     @Test
     void ensureCanBeCreated() {
 
-        Barge barge = Barge.Builder.newBarge()
+        Barge barge = Barge.newBuilder()
                 .withName("My Barge")
                 .withMmsi("021112345")
                 .withEni("050XXXXX")
@@ -59,7 +59,7 @@ class BargeTest {
     @Test
     void ensureMeasurementsCanBeSetInFoot() {
 
-        Barge barge = Barge.Builder.newBarge()
+        Barge barge = Barge.newBuilder()
                 .withLength(300.0, FOOT)
                 .withWidth(90.0, FOOT)
                 .withDraught(18.0, FOOT)
@@ -74,7 +74,7 @@ class BargeTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Barge barge = Barge.Builder.newBarge()
+        Barge barge = Barge.newBuilder()
                 .withName("My Barge")
                 .withMmsi("021112345")
                 .withEni("050XXXXX")

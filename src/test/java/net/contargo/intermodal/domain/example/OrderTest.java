@@ -26,10 +26,10 @@ class OrderTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         List<Stop> stops = new ArrayList<>();
-        stops.add(Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate());
-        stops.add(Stop.Builder.newStop().withLocation("Ludwigshafen", "Terminal Ludwigshafen").buildAndValidate());
+        stops.add(Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate());
+        stops.add(Stop.newBuilder().withLocation("Ludwigshafen", "Terminal Ludwigshafen").buildAndValidate());
 
-        Order order = Order.Builder.newOrder()
+        Order order = Order.newBuilder()
                 .withReference("54642887")
                 .withClient(new Operator())
                 .withBillRecipient(new Operator())
@@ -99,9 +99,9 @@ class OrderTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        Stop stop = Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
+        Stop stop = Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
 
-        Order order = Order.Builder.newOrder()
+        Order order = Order.newBuilder()
                 .withReference("54642887")
                 .withOrderForLoadingUnit(new LUOrder())
                 .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
@@ -120,7 +120,7 @@ class OrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
                     .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
@@ -133,7 +133,7 @@ class OrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
                     .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
@@ -146,7 +146,7 @@ class OrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
@@ -159,7 +159,7 @@ class OrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
@@ -171,7 +171,7 @@ class OrderTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
@@ -183,7 +183,7 @@ class OrderTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
@@ -195,7 +195,7 @@ class OrderTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
@@ -208,7 +208,7 @@ class OrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
@@ -221,7 +221,7 @@ class OrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Order.Builder.newOrder()
+                Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
                     .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
@@ -238,12 +238,12 @@ class OrderTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         List<Stop> stops = new ArrayList<>();
-        stops.add(Stop.Builder.newStop().withLocation("Koblenz", "Terminal Koblenz", "terminal").buildAndValidate());
-        stops.add(Stop.Builder.newStop()
+        stops.add(Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz", "terminal").buildAndValidate());
+        stops.add(Stop.newBuilder()
             .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
             .buildAndValidate());
 
-        Order order = Order.Builder.newOrder()
+        Order order = Order.newBuilder()
                 .withReference("54642887")
                 .withClient(new Operator())
                 .withBillRecipient(new Operator())
@@ -273,8 +273,6 @@ class OrderTest {
         ObjectMapper mapper = new ObjectMapper();
 
         String jsonString = mapper.writeValueAsString(order);
-
-        System.out.print(order.toString());
 
         Order deserialize = mapper.readValue(jsonString, Order.class);
 

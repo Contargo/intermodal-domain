@@ -29,6 +29,12 @@ public class Customs {
 
     private Seal seal;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getCustomProcess() {
 
         return customProcess;
@@ -67,12 +73,6 @@ public class Customs {
 
         private Builder() {
         }
-
-        public static Builder newCustoms() {
-
-            return new Builder();
-        }
-
 
         public Builder withCustomProcess(String customProcess) {
 

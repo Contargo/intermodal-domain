@@ -34,6 +34,12 @@ public class Vessel implements MeansOfTransport {
 
     private Operator operator;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getName() {
 
         return name;
@@ -79,12 +85,6 @@ public class Vessel implements MeansOfTransport {
 
         private Builder() {
         }
-
-        public static Builder newVessel() {
-
-            return new Builder();
-        }
-
 
         public Builder withName(String name) {
 

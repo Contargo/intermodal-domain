@@ -62,6 +62,12 @@ public class Order {
     @DestinationConstraint(message = "locationDesignation is part of minimum requirement of Transport")
     private Destination destination;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getReference() {
 
         return reference;
@@ -153,12 +159,6 @@ public class Order {
 
         private Builder() {
         }
-
-        public static Builder newOrder() {
-
-            return new Builder();
-        }
-
 
         public Builder withTransportDirection(Direction direction) {
 

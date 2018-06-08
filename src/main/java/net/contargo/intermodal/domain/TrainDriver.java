@@ -27,6 +27,12 @@ public class TrainDriver extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant rid;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     @JsonSerialize(using = InstantJsonSerializer.class)
     public Instant getRid() {
 
@@ -59,12 +65,6 @@ public class TrainDriver extends Person {
 
         private Builder() {
         }
-
-        public static Builder newTrainDriver() {
-
-            return new Builder();
-        }
-
 
         public Builder withName(String name) {
 

@@ -52,6 +52,12 @@ public class RegistrationVehicle {
     @NotNull(message = "luOrder is part of minimum requirement")
     private LUOrder luOrder;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public Truck getTruck() {
 
         return truck;
@@ -119,12 +125,6 @@ public class RegistrationVehicle {
 
         private Builder() {
         }
-
-        public static Builder newRegistrationVehicle() {
-
-            return new Builder();
-        }
-
 
         public Builder withTruck(Truck truck) {
 

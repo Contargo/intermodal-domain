@@ -95,6 +95,12 @@ public class Chassis implements MeansOfTransport {
      */
     private Weight weight;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getNumberPlate() {
 
         return numberPlate;
@@ -206,12 +212,6 @@ public class Chassis implements MeansOfTransport {
 
         private Builder() {
         }
-
-        public static Builder newChassis() {
-
-            return new Builder();
-        }
-
 
         public Builder withNumberPlate(String numberPlate) {
 

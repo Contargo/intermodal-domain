@@ -104,6 +104,12 @@ public class RegistrationTrain {
     @NotNull(message = "trainPaths is part of minimum requirement")
     private String trainPaths;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getTrainTitle() {
 
         return trainTitle;
@@ -224,12 +230,6 @@ public class RegistrationTrain {
 
         private Builder() {
         }
-
-        public static Builder newRegistrationTrain() {
-
-            return new Builder();
-        }
-
 
         public Builder withTrainTitle(String trainTitle) {
 

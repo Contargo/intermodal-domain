@@ -60,6 +60,12 @@ public class ProcessingTrain {
      */
     private String trainPaths;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getTrainTitle() {
 
         return trainTitle;
@@ -177,12 +183,6 @@ public class ProcessingTrain {
 
         private Builder() {
         }
-
-        public static Builder newProcessingTrain() {
-
-            return new Builder();
-        }
-
 
         public Builder withTrainTitle(String trainTitle) {
 

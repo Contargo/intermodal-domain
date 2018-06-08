@@ -23,7 +23,7 @@ class DriverTest {
     @Test
     void ensureDriverCanBeCreated() {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withCountryCode("DE")
                 .withCountryName("Germany")
                 .withLocationCity("Karlsruhe")
@@ -31,7 +31,7 @@ class DriverTest {
                 .withStreet("Hauptstraße 42")
                 .buildAndValidate();
 
-        Driver driver = Driver.Builder.newDriver()
+        Driver driver = Driver.newBuilder()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(address)
@@ -64,7 +64,7 @@ class DriverTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withCountryCode("DE")
                 .withCountryName("Germany")
                 .withLocationCity("Karlsruhe")
@@ -72,7 +72,7 @@ class DriverTest {
                 .withStreet("Hauptstraße 42")
                 .buildAndValidate();
 
-        Driver driver = Driver.Builder.newDriver()
+        Driver driver = Driver.newBuilder()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(address)

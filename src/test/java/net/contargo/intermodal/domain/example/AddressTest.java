@@ -19,7 +19,7 @@ class AddressTest {
     @Test
     void ensureCanBeCreated() {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withStreet("Gartenstraße 67")
                 .withLocationPostalCode("76135")
                 .withLocationCity("Karlsruhe")
@@ -38,7 +38,7 @@ class AddressTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withStreet("Gartenstraße 67")
                 .withLocationPostalCode("76135")
                 .withLocationCity("Karlsruhe")

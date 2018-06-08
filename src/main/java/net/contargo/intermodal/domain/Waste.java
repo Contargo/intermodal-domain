@@ -55,6 +55,12 @@ public class Waste {
      */
     private Weight weight;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public Integer getPosition() {
 
         return position;
@@ -114,12 +120,6 @@ public class Waste {
 
         private Builder() {
         }
-
-        public static Builder newWaste() {
-
-            return new Builder();
-        }
-
 
         public Builder withPosition(Integer position) {
 

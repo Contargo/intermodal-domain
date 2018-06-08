@@ -19,7 +19,7 @@ class StatusLUTest {
     @Test
     void canBeCreated() {
 
-        StatusLU statusLU = StatusLU.Builder.newStatusLU()
+        StatusLU statusLU = StatusLU.newBuilder()
                 .isReadyForLoading(true)
                 .isLoaded(false)
                 .isInspectionOut(false)
@@ -44,7 +44,7 @@ class StatusLUTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        StatusLU statusLU = StatusLU.Builder.newStatusLU()
+        StatusLU statusLU = StatusLU.newBuilder()
                 .isReadyForLoading(true)
                 .isLoaded(false)
                 .isInspectionOut(false)

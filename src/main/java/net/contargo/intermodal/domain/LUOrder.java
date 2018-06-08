@@ -74,6 +74,12 @@ public class LUOrder {
 
     private List<Seal> seal;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     /**
      * For serialization of LUOrder.
      *
@@ -217,12 +223,6 @@ public class LUOrder {
 
         private Builder() {
         }
-
-        public static Builder newOrder() {
-
-            return new Builder();
-        }
-
 
         public Builder withReference(String reference) {
 

@@ -55,6 +55,12 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
     @NotNull(message = "stackable is part of minimum requirement")
     private Boolean stackable;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public SwapBody isStackable(Boolean stackable) {
 
         this.stackable = stackable;
@@ -110,12 +116,6 @@ public class SwapBody extends LoadingUnit implements Wechselbrücke, Wechselaufb
 
         private Builder() {
         }
-
-        public static Builder newSwapBody() {
-
-            return new Builder();
-        }
-
 
         public Builder withIdentification(String identification) {
 

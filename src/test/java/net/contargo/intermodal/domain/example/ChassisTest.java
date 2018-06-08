@@ -27,7 +27,7 @@ class ChassisTest {
     @Test
     void ensureCanBeCreated() {
 
-        Chassis chassis = Chassis.Builder.newChassis()
+        Chassis chassis = Chassis.newBuilder()
                 .withNumberPlate("DU CO 1782")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
@@ -61,7 +61,7 @@ class ChassisTest {
     @Test
     void ensureMeasurementsCanBeSetInFoot() {
 
-        Chassis chassis = Chassis.Builder.newChassis()
+        Chassis chassis = Chassis.newBuilder()
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withSize(13.12, LengthUnit.FOOT)
                 .withHeight(3.28, LengthUnit.FOOT)
@@ -77,7 +77,7 @@ class ChassisTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Chassis chassis = Chassis.Builder.newChassis()
+        Chassis chassis = Chassis.newBuilder()
                 .withNumberPlate("DU CO 1782")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")

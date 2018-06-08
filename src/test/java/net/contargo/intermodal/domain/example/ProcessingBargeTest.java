@@ -23,7 +23,7 @@ class ProcessingBargeTest {
     @Test
     void ensureCanBeCreated() {
 
-        ProcessingBarge processingBarge = ProcessingBarge.Builder.newProcessingBarge()
+        ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
                 .withBarge(new Barge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
@@ -54,7 +54,7 @@ class ProcessingBargeTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        ProcessingBarge processingBarge = ProcessingBarge.Builder.newProcessingBarge()
+        ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
                 .withBarge(new Barge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))

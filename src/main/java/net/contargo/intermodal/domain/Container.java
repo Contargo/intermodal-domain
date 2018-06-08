@@ -57,6 +57,12 @@ public class Container extends LoadingUnit {
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Length> size;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getSizeType() {
 
         return sizeType;
@@ -105,12 +111,6 @@ public class Container extends LoadingUnit {
 
         private Builder() {
         }
-
-        public static Builder newContainer() {
-
-            return new Builder();
-        }
-
 
         public Builder withIdentification(String identification) {
 

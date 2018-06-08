@@ -24,7 +24,7 @@ class TruckTest {
     @Test
     void ensureCanBeCreated() {
 
-        Truck truck = Truck.Builder.newTruck()
+        Truck truck = Truck.newBuilder()
                 .withNumberPlate("DU CO 1782")
                 .withCountryCode("DE")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
@@ -53,7 +53,7 @@ class TruckTest {
     @Test
     void ensureWeightCanBeSetInTons() {
 
-        Truck truck = Truck.Builder.newTruck()
+        Truck truck = Truck.newBuilder()
                 .withNumberPlate("DU CO 1782")
                 .withCountryCode("DE")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
@@ -73,7 +73,7 @@ class TruckTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Truck truck = Truck.Builder.newTruck()
+        Truck truck = Truck.newBuilder()
                 .withNumberPlate("DU CO 1782")
                 .withCountryCode("DE")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))

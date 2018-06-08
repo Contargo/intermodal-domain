@@ -25,7 +25,7 @@ class ProcessingTrainTest {
     @Test
     void ensureCanBeCreated() {
 
-        ProcessingTrain processingTrain = ProcessingTrain.Builder.newProcessingTrain()
+        ProcessingTrain processingTrain = ProcessingTrain.newBuilder()
                 .withTrainTitle("My Train")
                 .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
                 .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
@@ -54,7 +54,7 @@ class ProcessingTrainTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        ProcessingTrain processingTrain = ProcessingTrain.Builder.newProcessingTrain()
+        ProcessingTrain processingTrain = ProcessingTrain.newBuilder()
                 .withTrainTitle("My Train")
                 .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
                 .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))

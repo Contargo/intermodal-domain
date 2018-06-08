@@ -21,7 +21,7 @@ class DangerousGoodsTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        DangerousGoods dangerousGoods = DangerousGoods.Builder.newDangerousGoods()
+        DangerousGoods dangerousGoods = DangerousGoods.newBuilder()
                 .withUnNumber("1005")
                 .withMaterial("Ammoniak")
                 .hasDangerNote(true)
@@ -49,21 +49,21 @@ class DangerousGoodsTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        DangerousGoods.Builder.newDangerousGoods().withUnNumber("1005").buildAndValidate();
+        DangerousGoods.newBuilder().withUnNumber("1005").buildAndValidate();
     }
 
 
     @Test
     void ensureDangerousGoodsCanBeValidated() {
 
-        assertThrows(IllegalStateException.class, () -> DangerousGoods.Builder.newDangerousGoods().buildAndValidate());
+        assertThrows(IllegalStateException.class, () -> DangerousGoods.newBuilder().buildAndValidate());
     }
 
 
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        DangerousGoods dangerousGoods = DangerousGoods.Builder.newDangerousGoods()
+        DangerousGoods dangerousGoods = DangerousGoods.newBuilder()
                 .withUnNumber("1005")
                 .withMaterial("Ammoniak")
                 .hasDangerNote(true)

@@ -21,8 +21,7 @@ class MeansOfTransportationStatusTest {
     @Test
     void ensureCanBeCreated() {
 
-        MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.Builder
-            .newMeansOfTransportationStatus()
+        MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.newBuilder()
                 .withAtd(Instant.parse("2018-05-11T06:00:00Z"))
                 .withEta(Instant.parse("2018-05-11T12:30:00Z"))
                 .withAta(Instant.parse("2018-05-11T06:05:00Z"))
@@ -43,8 +42,7 @@ class MeansOfTransportationStatusTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.Builder
-            .newMeansOfTransportationStatus()
+        MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.newBuilder()
                 .withAtd(Instant.parse("2018-05-11T06:00:00Z"))
                 .withEta(Instant.parse("2018-05-11T12:30:00Z"))
                 .withAta(Instant.parse("2018-05-11T06:05:00Z"))

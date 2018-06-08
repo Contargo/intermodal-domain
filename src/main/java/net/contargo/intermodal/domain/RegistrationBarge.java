@@ -57,6 +57,12 @@ public class RegistrationBarge {
     @RegistrationVolumeConstraint(message = "toDischarge and toLoad are part of the minimum Requirement of Volume")
     private Volume volume;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public Barge getBarge() {
 
         return barge;
@@ -126,12 +132,6 @@ public class RegistrationBarge {
 
         private Builder() {
         }
-
-        public static Builder newRegistrationBarge() {
-
-            return new Builder();
-        }
-
 
         public Builder withBarge(Barge barge) {
 

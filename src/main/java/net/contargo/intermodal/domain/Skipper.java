@@ -27,6 +27,12 @@ public class Skipper extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant adnr;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     @JsonSerialize(using = InstantJsonSerializer.class)
     public Instant getAdnr() {
 
@@ -59,12 +65,6 @@ public class Skipper extends Person {
 
         private Builder() {
         }
-
-        public static Builder newSkipper() {
-
-            return new Builder();
-        }
-
 
         public Builder withName(String name) {
 

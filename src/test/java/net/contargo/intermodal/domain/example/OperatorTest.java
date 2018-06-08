@@ -22,7 +22,7 @@ class OperatorTest {
     @Test
     void ensureCanBeCreated() {
 
-        Operator operator = Operator.Builder.newOperator()
+        Operator operator = Operator.newBuilder()
                 .withName("Contargo")
                 .withLegalForm("GmbH & Co. KG")
                 .withAddress(new Address())
@@ -43,7 +43,7 @@ class OperatorTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Operator operator = Operator.Builder.newOperator()
+        Operator operator = Operator.newBuilder()
                 .withName("Contargo")
                 .withLegalForm("GmbH & Co. KG")
                 .withAddress(new Address())

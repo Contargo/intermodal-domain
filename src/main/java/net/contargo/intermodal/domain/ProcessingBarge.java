@@ -70,6 +70,12 @@ public class ProcessingBarge {
 
     private List<LoadingListElement> loadingList;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public Barge getBarge() {
 
         return barge;
@@ -186,12 +192,6 @@ public class ProcessingBarge {
 
         private Builder() {
         }
-
-        public static Builder newProcessingBarge() {
-
-            return new Builder();
-        }
-
 
         public Builder withBarge(Barge barge) {
 

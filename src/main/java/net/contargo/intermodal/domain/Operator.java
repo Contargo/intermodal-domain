@@ -38,6 +38,12 @@ public class Operator {
 
     private String insurance;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getName() {
 
         return name;
@@ -97,12 +103,6 @@ public class Operator {
 
         private Builder() {
         }
-
-        public static Builder newOperator() {
-
-            return new Builder();
-        }
-
 
         public Builder withName(String name) {
 

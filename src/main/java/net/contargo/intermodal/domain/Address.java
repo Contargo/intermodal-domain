@@ -20,6 +20,12 @@ public class Address {
 
     private Country country;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getStreet() {
 
         return street;
@@ -88,12 +94,6 @@ public class Address {
 
         private Builder() {
         }
-
-        public static Builder newAddress() {
-
-            return new Builder();
-        }
-
 
         public Builder withStreet(String street) {
 

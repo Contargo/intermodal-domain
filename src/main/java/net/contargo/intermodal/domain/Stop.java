@@ -43,6 +43,12 @@ public class Stop {
 
     private MeansOfTransport mot;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public List<Location> getLocation() {
 
         return location;
@@ -110,12 +116,6 @@ public class Stop {
 
         private Builder() {
         }
-
-        public static Builder newStop() {
-
-            return new Builder();
-        }
-
 
         public Builder withLocation(String city, String designation, String type) {
 

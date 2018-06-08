@@ -53,6 +53,12 @@ public class Trailer extends LoadingUnit {
     @NotNull(message = "craneable is part of minimum requirement")
     private Boolean craneable;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public Trailer isCraneable(Boolean craneable) {
 
         this.craneable = craneable;
@@ -108,12 +114,6 @@ public class Trailer extends LoadingUnit {
 
         private Builder() {
         }
-
-        public static Builder newTrailer() {
-
-            return new Builder();
-        }
-
 
         public Builder withIdentification(String identification) {
 

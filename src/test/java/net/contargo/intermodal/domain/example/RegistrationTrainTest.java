@@ -24,7 +24,7 @@ class RegistrationTrainTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        RegistrationTrain registrationTrain = RegistrationTrain.Builder.newRegistrationTrain()
+        RegistrationTrain registrationTrain = RegistrationTrain.newBuilder()
                 .withTrainTitle("My Train")
                 .withRailwayOperator(new Operator())
                 .withOperator(new Operator())
@@ -59,7 +59,7 @@ class RegistrationTrainTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        RegistrationTrain.Builder.newRegistrationTrain()
+        RegistrationTrain.newBuilder()
             .withTrainTitle("My Train")
             .withRailwayOperator(new Operator())
             .withOperator(new Operator())
@@ -82,7 +82,7 @@ class RegistrationTrainTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
                     .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
@@ -98,7 +98,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withOperator(new Operator())
                     .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
@@ -114,7 +114,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -130,7 +130,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -146,7 +146,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -162,7 +162,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -178,7 +178,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -194,7 +194,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -210,7 +210,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -226,7 +226,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -242,7 +242,7 @@ class RegistrationTrainTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                RegistrationTrain.Builder.newRegistrationTrain()
+                RegistrationTrain.newBuilder()
                     .withTrainTitle("My Train")
                     .withRailwayOperator(new Operator())
                     .withOperator(new Operator())
@@ -262,7 +262,7 @@ class RegistrationTrainTest {
     @Test
     void ensureLengthCanBeSetInFoot() {
 
-        RegistrationTrain registrationTrain = RegistrationTrain.Builder.newRegistrationTrain()
+        RegistrationTrain registrationTrain = RegistrationTrain.newBuilder()
                 .withTrainTitle("My Train")
                 .withRailwayOperator(new Operator())
                 .withOperator(new Operator())
@@ -285,7 +285,7 @@ class RegistrationTrainTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        RegistrationTrain registrationTrain = RegistrationTrain.Builder.newRegistrationTrain()
+        RegistrationTrain registrationTrain = RegistrationTrain.newBuilder()
                 .withTrainTitle("My Train")
                 .withRailwayOperator(new Operator())
                 .withOperator(new Operator())

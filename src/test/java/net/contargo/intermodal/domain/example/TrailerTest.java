@@ -22,7 +22,7 @@ class TrailerTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        Trailer trailer = Trailer.Builder.newTrailer()
+        Trailer trailer = Trailer.newBuilder()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(14082.331, MassUnit.KILOGRAM)
@@ -56,7 +56,7 @@ class TrailerTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        Trailer.Builder.newTrailer()
+        Trailer.newBuilder()
             .withNumber("OOOCSSSSSS")
             .isReefer(false)
             .withType("XL")
@@ -69,7 +69,7 @@ class TrailerTest {
     @Test
     void ensureSizeCanBeSetInFoot() {
 
-        Trailer trailer = Trailer.Builder.newTrailer()
+        Trailer trailer = Trailer.newBuilder()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withType("XL")
@@ -84,7 +84,7 @@ class TrailerTest {
     @Test
     void ensureWeightCanBeSetInTons() {
 
-        Trailer trailer = Trailer.Builder.newTrailer()
+        Trailer trailer = Trailer.newBuilder()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withType("XL")
@@ -106,7 +106,7 @@ class TrailerTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Trailer.Builder.newTrailer()
+                Trailer.newBuilder()
                     .isReefer(false)
                     .withType("XL")
                     .withSize(15.5, LengthUnit.METRE)
@@ -114,7 +114,7 @@ class TrailerTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                Trailer.Builder.newTrailer()
+                Trailer.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .withType("XL")
                     .withSize(15.5, LengthUnit.METRE)
@@ -122,7 +122,7 @@ class TrailerTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                Trailer.Builder.newTrailer()
+                Trailer.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withSize(15.5, LengthUnit.METRE)
@@ -130,7 +130,7 @@ class TrailerTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                Trailer.Builder.newTrailer()
+                Trailer.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("XL")
@@ -138,7 +138,7 @@ class TrailerTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                Trailer.Builder.newTrailer()
+                Trailer.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("XL")
@@ -150,7 +150,7 @@ class TrailerTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Trailer trailer = Trailer.Builder.newTrailer()
+        Trailer trailer = Trailer.newBuilder()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)

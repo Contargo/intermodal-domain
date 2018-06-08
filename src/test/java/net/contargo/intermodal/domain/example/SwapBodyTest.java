@@ -19,7 +19,7 @@ class SwapBodyTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        SwapBody swapBody = SwapBody.Builder.newSwapBody()
+        SwapBody swapBody = SwapBody.newBuilder()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
@@ -52,7 +52,7 @@ class SwapBodyTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        SwapBody.Builder.newSwapBody()
+        SwapBody.newBuilder()
             .withNumber("OOOCSSSSSS")
             .isReefer(false)
             .withType("Open Top")
@@ -65,7 +65,7 @@ class SwapBodyTest {
     @Test
     void ensureSizeCanBeSetInMetre() {
 
-        SwapBody swapBody = SwapBody.Builder.newSwapBody()
+        SwapBody swapBody = SwapBody.newBuilder()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withType("Open Top")
@@ -80,7 +80,7 @@ class SwapBodyTest {
     @Test
     void ensureWeightCanBeSetInTons() {
 
-        SwapBody swapBody = SwapBody.Builder.newSwapBody()
+        SwapBody swapBody = SwapBody.newBuilder()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withType("Open Top")
@@ -102,7 +102,7 @@ class SwapBodyTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                SwapBody.Builder.newSwapBody()
+                SwapBody.newBuilder()
                     .isReefer(false)
                     .withType("Open Top")
                     .withSize(21.58, LengthUnit.FOOT)
@@ -110,7 +110,7 @@ class SwapBodyTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                SwapBody.Builder.newSwapBody()
+                SwapBody.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .withType("Open Top")
                     .withSize(21.58, LengthUnit.FOOT)
@@ -118,7 +118,7 @@ class SwapBodyTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                SwapBody.Builder.newSwapBody()
+                SwapBody.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withSize(21.58, LengthUnit.FOOT)
@@ -126,7 +126,7 @@ class SwapBodyTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                SwapBody.Builder.newSwapBody()
+                SwapBody.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("Open Top")
@@ -134,7 +134,7 @@ class SwapBodyTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                SwapBody.Builder.newSwapBody()
+                SwapBody.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("Open Top")
@@ -146,7 +146,7 @@ class SwapBodyTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        SwapBody swapBody = SwapBody.Builder.newSwapBody()
+        SwapBody swapBody = SwapBody.newBuilder()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)

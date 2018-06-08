@@ -23,7 +23,7 @@ class WasteTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        Waste waste = Waste.Builder.newWaste()
+        Waste waste = Waste.newBuilder()
                 .withPosition(1)
                 .withKeyID("03 03 01")
                 .withWasteRegulationNumber("02")
@@ -43,24 +43,21 @@ class WasteTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        Waste.Builder.newWaste().withKeyID("03 03 01").buildAndValidate();
+        Waste.newBuilder().withKeyID("03 03 01").buildAndValidate();
     }
 
 
     @Test
     void ensureWasteCanBeValidated() {
 
-        assertThrows(IllegalStateException.class, () -> Waste.Builder.newWaste().buildAndValidate());
+        assertThrows(IllegalStateException.class, () -> Waste.newBuilder().buildAndValidate());
     }
 
 
     @Test
     void ensureWeightCanBeSetInTons() {
 
-        Waste waste = Waste.Builder.newWaste()
-                .withKeyID("03 03 01")
-                .withWeightNetto(0.5, MassUnit.TON)
-                .buildAndValidate();
+        Waste waste = Waste.newBuilder().withKeyID("03 03 01").withWeightNetto(0.5, MassUnit.TON).buildAndValidate();
 
         assertEquals(500.0, waste.getWeightNetto().getValue().doubleValue(), 0.1);
     }
@@ -69,7 +66,7 @@ class WasteTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Waste waste = Waste.Builder.newWaste()
+        Waste waste = Waste.newBuilder()
                 .withPosition(1)
                 .withKeyID("03 03 01")
                 .withWasteRegulationNumber("02")

@@ -23,7 +23,7 @@ class SkipperTest {
     @Test
     void ensureSkipperCanBeCreated() {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withCountryCode("DE")
                 .withCountryName("Germany")
                 .withLocationCity("Karlsruhe")
@@ -31,7 +31,7 @@ class SkipperTest {
                 .withStreet("Hauptstraße 42")
                 .buildAndValidate();
 
-        Skipper skipper = Skipper.Builder.newSkipper()
+        Skipper skipper = Skipper.newBuilder()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(address)
@@ -56,7 +56,7 @@ class SkipperTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Address address = Address.Builder.newAddress()
+        Address address = Address.newBuilder()
                 .withCountryCode("DE")
                 .withCountryName("Germany")
                 .withLocationCity("Karlsruhe")
@@ -64,7 +64,7 @@ class SkipperTest {
                 .withStreet("Hauptstraße 42")
                 .buildAndValidate();
 
-        Skipper skipper = Skipper.Builder.newSkipper()
+        Skipper skipper = Skipper.newBuilder()
                 .withName("Mustermann")
                 .withFirstName("Max")
                 .withAddress(address)

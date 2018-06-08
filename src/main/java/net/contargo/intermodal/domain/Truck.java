@@ -82,6 +82,12 @@ public class Truck implements MeansOfTransport {
      */
     private Weight weight;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getNumberPlate() {
 
         return numberPlate;
@@ -184,12 +190,6 @@ public class Truck implements MeansOfTransport {
 
         private Builder() {
         }
-
-        public static Builder newTruck() {
-
-            return new Builder();
-        }
-
 
         public Builder withNumberPlate(String numberPlate) {
 

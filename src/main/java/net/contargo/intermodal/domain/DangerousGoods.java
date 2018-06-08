@@ -66,6 +66,12 @@ public class DangerousGoods {
      */
     private Boolean marinePollutants;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getUnNumber() {
 
         return unNumber;
@@ -153,12 +159,6 @@ public class DangerousGoods {
 
         private Builder() {
         }
-
-        public static Builder newDangerousGoods() {
-
-            return new Builder();
-        }
-
 
         public Builder withUnNumber(String unNumber) {
 

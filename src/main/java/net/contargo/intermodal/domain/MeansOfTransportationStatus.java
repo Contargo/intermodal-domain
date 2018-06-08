@@ -95,6 +95,12 @@ public class MeansOfTransportationStatus {
      */
     private Integer waggonTechnicalInspection;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     @JsonSerialize(using = InstantJsonSerializer.class)
     public Instant getAtd() {
 
@@ -159,12 +165,6 @@ public class MeansOfTransportationStatus {
 
         private Builder() {
         }
-
-        public static Builder newMeansOfTransportationStatus() {
-
-            return new Builder();
-        }
-
 
         public Builder withAtd(Instant instant) {
 

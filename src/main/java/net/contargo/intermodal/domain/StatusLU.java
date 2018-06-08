@@ -99,6 +99,12 @@ public class StatusLU {
      */
     private Boolean unloaded;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public Boolean isReadyForLoading() {
 
         return readyForLoading;
@@ -172,12 +178,6 @@ public class StatusLU {
 
         private Builder() {
         }
-
-        public static Builder newStatusLU() {
-
-            return new Builder();
-        }
-
 
         public Builder isReadyForLoading(Boolean readyForLoading) {
 

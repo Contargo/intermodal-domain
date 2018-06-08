@@ -19,7 +19,7 @@ class ContainerTest {
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
-        Container container = Container.Builder.newContainer()
+        Container container = Container.newBuilder()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
@@ -52,7 +52,7 @@ class ContainerTest {
     @Test
     void ensureWeightCanBeSetInTons() {
 
-        Container container = Container.Builder.newContainer()
+        Container container = Container.newBuilder()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withSizeType("45G0")
@@ -72,7 +72,7 @@ class ContainerTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        Container.Builder.newContainer()
+        Container.newBuilder()
             .withNumber("OOOCSSSSSS")
             .isReefer(false)
             .withSizeType("45G0")
@@ -85,7 +85,7 @@ class ContainerTest {
     @Test
     void ensureSizeCanBeSetInFoot() {
 
-        Container container = Container.Builder.newContainer()
+        Container container = Container.newBuilder()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withSizeType("45G0")
@@ -102,7 +102,7 @@ class ContainerTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Container.Builder.newContainer()
+                Container.newBuilder()
                     .isReefer(false)
                     .withSizeType("45G0")
                     .withType("HIGH CUBE CONTAINER")
@@ -111,7 +111,7 @@ class ContainerTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Container.Builder.newContainer()
+                Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .withSizeType("45G0")
                     .withType("HIGH CUBE CONTAINER")
@@ -120,7 +120,7 @@ class ContainerTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Container.Builder.newContainer()
+                Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("HIGH CUBE CONTAINER")
@@ -129,7 +129,7 @@ class ContainerTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Container.Builder.newContainer()
+                Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withSizeType("45G0")
@@ -138,7 +138,7 @@ class ContainerTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                Container.Builder.newContainer()
+                Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withSizeType("45G0")
@@ -150,7 +150,7 @@ class ContainerTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Container container = Container.Builder.newContainer()
+        Container container = Container.newBuilder()
                 .withIdentification("OOOCSSSSSS")
                 .withNumber("OOOCSSSSSS")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)

@@ -26,7 +26,7 @@ class LUOrderTest {
         seals.add(Seal.Builder.newSeal().withNumber("01234").withType("some seal type").build());
         seals.add(Seal.Builder.newSeal().withNumber("46789").withType("another seal type").build());
 
-        LUOrder loadingUnitLUOrder = LUOrder.Builder.newOrder()
+        LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
                 .withLoadingUnit(new Container())
                 .withReference("1658583")
                 .withWeightBrutto(16.0, MassUnit.KILOGRAM)
@@ -68,7 +68,7 @@ class LUOrderTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        LUOrder.Builder.newOrder()
+        LUOrder.newBuilder()
             .withLoadingUnit(new Container())
             .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
             .withWeightNetto(28080.0, MassUnit.KILOGRAM)
@@ -82,7 +82,7 @@ class LUOrderTest {
     @Test
     void ensureWeightCanBeSetInTons() {
 
-        LUOrder luOrder = LUOrder.Builder.newOrder()
+        LUOrder luOrder = LUOrder.newBuilder()
                 .withLoadingUnit(new Container())
                 .withWeightBrutto(30.48, MassUnit.TON)
                 .withWeightNetto(28.08, MassUnit.TON)
@@ -102,7 +102,7 @@ class LUOrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                LUOrder.Builder.newOrder()
+                LUOrder.newBuilder()
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
                     .withWeightNetto(28080.0, MassUnit.KILOGRAM)
@@ -113,7 +113,7 @@ class LUOrderTest {
 
         assertThrows(IllegalStateException.class,
             () ->
-                LUOrder.Builder.newOrder()
+                LUOrder.newBuilder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
                     .withWeightNetto(28080.0, MassUnit.KILOGRAM)
@@ -123,7 +123,7 @@ class LUOrderTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                LUOrder.Builder.newOrder()
+                LUOrder.newBuilder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
@@ -133,7 +133,7 @@ class LUOrderTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                LUOrder.Builder.newOrder()
+                LUOrder.newBuilder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
@@ -143,7 +143,7 @@ class LUOrderTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                LUOrder.Builder.newOrder()
+                LUOrder.newBuilder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
@@ -153,7 +153,7 @@ class LUOrderTest {
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
-                LUOrder.Builder.newOrder()
+                LUOrder.newBuilder()
                     .withLoadingUnit(new Container())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
@@ -171,7 +171,7 @@ class LUOrderTest {
         seals.add(Seal.Builder.newSeal().withNumber("01234").withType("some seal type").build());
         seals.add(Seal.Builder.newSeal().withNumber("46789").withType("another seal type").build());
 
-        LUOrder loadingUnitLUOrder = LUOrder.Builder.newOrder()
+        LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
                 .withLoadingUnit(new Container())
                 .withReference("1658583")
                 .withWeightBrutto(16.0, MassUnit.KILOGRAM)

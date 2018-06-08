@@ -85,6 +85,12 @@ public class Barge implements MeansOfTransport {
 
     private Capacity capacity;
 
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
     public String getName() {
 
         return name;
@@ -246,12 +252,6 @@ public class Barge implements MeansOfTransport {
 
         private Builder() {
         }
-
-        public static Builder newBarge() {
-
-            return new Builder();
-        }
-
 
         public Builder withName(String name) {
 
