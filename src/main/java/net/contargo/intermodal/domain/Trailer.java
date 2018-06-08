@@ -109,7 +109,7 @@ public class Trailer extends LoadingUnit {
         private Quantity<Mass> weightNettoMax;
         private Quantity<Mass> weightTare;
         private String condition;
-        private Boolean reefer;
+        private boolean reefer;
         private String operator;
 
         private Builder() {
@@ -203,7 +203,7 @@ public class Trailer extends LoadingUnit {
         }
 
 
-        public Builder isReefer(Boolean reefer) {
+        public Builder isReefer(boolean reefer) {
 
             this.reefer = reefer;
 

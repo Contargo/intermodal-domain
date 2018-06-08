@@ -105,7 +105,7 @@ public class Container extends LoadingUnit {
         private Quantity<Mass> weightTare;
         private String condition;
         private String type;
-        private Boolean reefer;
+        private boolean reefer;
         private Quantity<Length> size;
         private String operator;
 
@@ -188,7 +188,7 @@ public class Container extends LoadingUnit {
         }
 
 
-        public Builder isReefer(Boolean reefer) {
+        public Builder isReefer(boolean reefer) {
 
             this.reefer = reefer;
 

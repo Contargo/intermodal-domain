@@ -111,7 +111,7 @@ public class SwapBody extends LoadingUnit {
         private Quantity<Length> size;
         private String condition;
         private Boolean stackable;
-        private Boolean reefer;
+        private boolean reefer;
         private String operator;
 
         private Builder() {
@@ -205,7 +205,7 @@ public class SwapBody extends LoadingUnit {
         }
 
 
-        public Builder isReefer(Boolean reefer) {
+        public Builder isReefer(boolean reefer) {
 
             this.reefer = reefer;
 

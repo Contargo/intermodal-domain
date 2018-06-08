@@ -69,7 +69,7 @@ public abstract class LoadingUnit {
      * Is Loading Unit refrigerated?
      */
     @NotNull(message = "reefer is part of minimum requirement")
-    private Boolean reefer;
+    private boolean reefer;
 
     /**
      * Name of {@link Operator}.
