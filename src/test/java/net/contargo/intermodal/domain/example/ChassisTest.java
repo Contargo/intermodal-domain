@@ -94,8 +94,6 @@ class ChassisTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        System.out.print(chassis.toString());
-
         String jsonString = mapper.writeValueAsString(chassis);
 
         Chassis deserialize = mapper.readValue(jsonString, Chassis.class);
