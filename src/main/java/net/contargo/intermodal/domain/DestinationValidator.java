@@ -39,6 +39,7 @@ public class DestinationValidator implements ConstraintValidator<DestinationCons
     @Override
     public boolean isValid(Destination destination, ConstraintValidatorContext context) {
 
-        return destination.getLocation() != null && destination.getLocation().getDesignation() != null;
+        return destination != null && destination.getLocation() != null
+            && destination.getLocation().getDesignation() != null;
     }
 }

@@ -1,6 +1,9 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
+
+import javax.validation.constraints.NotNull;
 
 
 /**
@@ -19,12 +22,20 @@ public class Destination {
 
     private Seaport seaport;
 
+    @NotNull(message = "location is part of minimum requirement")
+    @DestinationLocationConstraint(message = "location designation is part of the minimum requirement of designation")
     private Location location;
 
     /**
      * 2 characters (UN/LOCODE).
      */
     private Country country;
+
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
 
     @JsonIgnore
     public String getCountryCode() {
@@ -64,34 +75,103 @@ public class Destination {
     }
 
 
-    void setCountry(Country country) {
+    @Override
+    public String toString() {
 
-        this.country = country;
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
     }
 
+    public static final class Builder {
 
-    @JsonIgnore
-    void setCountryCode(String code) {
+        private Vessel vessel;
+        private Seaport seaport;
+        private Location location;
+        private Country country;
 
-        this.country = new Country();
-        this.country.setCode(code);
-    }
+        private Builder() {
+        }
 
+        public Builder withCountry(Country country) {
 
-    void setVessel(Vessel vessel) {
+            this.country = country;
 
-        this.vessel = vessel;
-    }
-
-
-    void setSeaport(Seaport seaport) {
-
-        this.seaport = seaport;
-    }
+            return this;
+        }
 
 
-    void setLocation(Location location) {
+        public Builder withCountryCode(String code) {
 
-        this.location = location;
+            this.country = new Country();
+            this.country.setCode(code);
+
+            return this;
+        }
+
+
+        public Builder withVessel(Vessel vessel) {
+
+            this.vessel = vessel;
+
+            return this;
+        }
+
+
+        public Builder withSeaport(String name) {
+
+            Seaport seaport = new Seaport();
+            seaport.setName(name);
+            this.seaport = seaport;
+
+            return this;
+        }
+
+
+        public Builder withLocation(String city, String designation) {
+
+            Location location = new Location();
+            location.setCity(city);
+            location.setDesignation(designation);
+            this.location = location;
+
+            return this;
+        }
+
+
+        public Builder withLocation(String designation) {
+
+            Location location = new Location();
+            location.setDesignation(designation);
+            this.location = location;
+
+            return this;
+        }
+
+
+        public Destination build() {
+
+            Destination destination = new Destination();
+            destination.vessel = this.vessel;
+            destination.seaport = this.seaport;
+            destination.location = this.location;
+            destination.country = this.country;
+
+            return destination;
+        }
+
+
+        public Destination buildAndValidate() {
+
+            Destination destination = this.build();
+
+            Validator.validate(destination);
+
+            return destination;
+        }
     }
 }

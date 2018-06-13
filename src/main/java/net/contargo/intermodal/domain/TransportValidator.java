@@ -35,7 +35,7 @@ public class TransportValidator implements ConstraintValidator<TransportConstrai
 
     public TransportValidator() {
 
-        // for testing
+        // OK
     }
 
     @Override
@@ -45,14 +45,14 @@ public class TransportValidator implements ConstraintValidator<TransportConstrai
     }
 
 
-    private boolean isValid(Transport.PickUp pickUp) {
+    private boolean isValid(PickUp pickUp) {
 
         return pickUp != null && isValid(pickUp.getLocation()) && pickUp.getEarliest() != null
             && pickUp.getMot() != null;
     }
 
 
-    private boolean isValid(Transport.DropOff dropOff) {
+    private boolean isValid(DropOff dropOff) {
 
         return dropOff != null && isValid(dropOff.getLocation()) && dropOff.getMot() != null;
     }

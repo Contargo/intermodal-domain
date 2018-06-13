@@ -1,0 +1,207 @@
+package net.contargo.intermodal.domain;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
+
+import javax.validation.constraints.NotNull;
+
+
+/**
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ */
+public class DropOff {
+
+    @NotNull(message = "location is part of minimum requirement")
+    @LocationConstraint(message = "location city and designation are part of the minimum requirement of dropOff")
+    private Location location;
+
+    private Transport.LoadingUnit loadingUnit = new Transport.LoadingUnit();
+
+    /**
+     * Abrechnungsreferenz, PO-number für Dienstl.
+     */
+    private String billingReference;
+
+    /**
+     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     */
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant earliest;
+
+    /**
+     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     */
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant latest;
+
+    /**
+     * @see  MeansOfTransport
+     */
+    @NotNull(message = "mot is part of minimum requirement")
+    private MeansOfTransport mot;
+
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
+    public Location getLocation() {
+
+        return location;
+    }
+
+
+    public String getBillingReference() {
+
+        return billingReference;
+    }
+
+
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getEarliest() {
+
+        return earliest;
+    }
+
+
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getLatest() {
+
+        return latest;
+    }
+
+
+    public MeansOfTransport getMot() {
+
+        return mot;
+    }
+
+
+    public Transport.LoadingUnit getLoadingUnit() {
+
+        return loadingUnit;
+    }
+
+
+    @Override
+    public String toString() {
+
+        try {
+            return this.getClass().getSimpleName() + ": " + JsonStringMapper.map(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
+    public static final class Builder {
+
+        private Location location;
+        private Transport.LoadingUnit loadingUnit = new Transport.LoadingUnit();
+        private String billingReference;
+        private Instant earliest;
+        private Instant latest;
+        private MeansOfTransport mot;
+
+        private Builder() {
+        }
+
+        public Builder withLocation(String city, String designation, String type) {
+
+            this.location = new Location();
+            this.location.setCity(city);
+            this.location.setDesignation(designation);
+            this.location.setType(type);
+
+            return this;
+        }
+
+
+        public Builder withLocation(String city, String designation) {
+
+            this.location = new Location();
+            this.location.setCity(city);
+            this.location.setDesignation(designation);
+
+            return this;
+        }
+
+
+        public Builder withLoadingUnit(String reference, Boolean isEmpty) {
+
+            this.loadingUnit.setEmpty(isEmpty);
+            this.loadingUnit.setReference(reference);
+
+            return this;
+        }
+
+
+        public Builder withLoadingUnitOperator(Operator operator) {
+
+            this.loadingUnit.setOperator(operator);
+
+            return this;
+        }
+
+
+        public Builder withBillingReference(String billingReference) {
+
+            this.billingReference = billingReference;
+
+            return this;
+        }
+
+
+        public Builder withEarliest(Instant instant) {
+
+            this.earliest = instant;
+
+            return this;
+        }
+
+
+        public Builder withLatest(Instant instant) {
+
+            this.latest = instant;
+
+            return this;
+        }
+
+
+        public Builder withMeansOfTransport(MeansOfTransport mot) {
+
+            this.mot = mot;
+
+            return this;
+        }
+
+
+        public DropOff build() {
+
+            DropOff dropOff = new DropOff();
+            dropOff.location = this.location;
+            dropOff.loadingUnit = this.loadingUnit;
+            dropOff.billingReference = this.billingReference;
+            dropOff.earliest = this.earliest;
+            dropOff.latest = latest;
+            dropOff.mot = mot;
+
+            return dropOff;
+        }
+
+
+        public DropOff buildAndValidate() {
+
+            DropOff dropOff = this.build();
+
+            Validator.validate(dropOff);
+
+            return dropOff;
+        }
+    }
+}

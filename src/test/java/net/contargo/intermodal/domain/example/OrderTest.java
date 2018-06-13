@@ -29,31 +29,43 @@ class OrderTest {
         stops.add(Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate());
         stops.add(Stop.newBuilder().withLocation("Ludwigshafen", "Terminal Ludwigshafen").buildAndValidate());
 
+        PickUp pickUp = PickUp.newBuilder()
+                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLoadingUnit("12345", false)
+                .withBillingReference("20568097")
+                .withLoadingUnitOperator(new Operator())
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
+                .withMeansOfTransport(new Truck())
+                .buildAndValidate();
+
+        DropOff dropOff = DropOff.newBuilder()
+                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLoadingUnit("63876846", false)
+                .withLoadingUnitOperator(new Operator())
+                .withBillingReference("98690")
+                .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
+                .withMeansOfTransport(new Barge())
+                .buildAndValidate();
+
+        Destination destination = Destination.newBuilder()
+                .withVessel(new Vessel())
+                .withCountryCode("DE")
+                .withLocation("Duisburg", "Terminal Duisburg")
+                .withSeaport("DEDUI")
+                .buildAndValidate();
+
         Order order = Order.newBuilder()
                 .withReference("54642887")
                 .withClient(new Operator())
                 .withBillRecipient(new Operator())
                 .withOrderForLoadingUnit(new LUOrder())
                 .withTransportDirection(Direction.EXPORT)
-                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
-                .withLoadingUnitToPickUp("12345", false)
-                .withBillingReferenceForPickUp("20568097")
-                .withPickUpLoadingUnitOperator(new Operator())
-                .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                .withLatestPickUp(Instant.parse("2018-05-14T11:30:00Z"))
-                .withPickUpMeansOfTransport(new Truck())
-                .withDropOffLocation("Koblenz", "Terminal Koblenz", "hinterland terminal")
-                .withLoadingUnitToDropOff("63876846", false)
-                .withDropOffLoadingUnitOperator(new Operator())
-                .withBillingReferenceForDropOff("98690")
-                .withEarliestDropOff(Instant.parse("2018-05-14T14:00:00Z"))
-                .withLatestDropOff(Instant.parse("2018-05-14T14:15:00Z"))
-                .withDropOffMeansOfTransport(new Barge())
+                .withTransportPickUp(pickUp)
+                .withTransportDropOff(dropOff)
                 .withStops(stops)
-                .withDestinationVessel(new Vessel())
-                .withDestinationCountryCode("DE")
-                .withDestinationLocation("Duisburg", "Terminal Duisburg")
-                .withDestinationSeaport("DEDUI")
+                .withDestination(destination)
                 .buildAndValidate();
 
         assertEquals("54642887", order.getReference());
@@ -76,9 +88,9 @@ class OrderTest {
         assertNotNull(order.getPickUp().getMot());
 
         // Drop Off
-        assertEquals("Koblenz", order.getDropOff().getLocation().getCity());
-        assertEquals("hinterland terminal", order.getDropOff().getLocation().getType());
-        assertEquals("Terminal Koblenz", order.getDropOff().getLocation().getDesignation());
+        assertEquals("Duisburg", order.getDropOff().getLocation().getCity());
+        assertEquals("terminal", order.getDropOff().getLocation().getType());
+        assertEquals("Terminal Duisburg", order.getDropOff().getLocation().getDesignation());
         assertEquals("63876846", order.getDropOff().getLoadingUnit().getReference());
         assertFalse(order.getDropOff().getLoadingUnit().isEmpty());
         assertEquals("98690", order.getDropOff().getBillingReference());
@@ -99,18 +111,28 @@ class OrderTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
+        PickUp pickUp = PickUp.newBuilder()
+                .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withMeansOfTransport(new Truck())
+                .buildAndValidate();
+
+        DropOff dropOff = DropOff.newBuilder()
+                .withLocation("Koblenz", "Terminal Koblenz")
+                .withMeansOfTransport(new Barge())
+                .buildAndValidate();
+
         Stop stop = Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
+
+        Destination destination = Destination.newBuilder().withLocation("Terminal Koblenz").buildAndValidate();
 
         Order order = Order.newBuilder()
                 .withReference("54642887")
                 .withOrderForLoadingUnit(new LUOrder())
-                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                .withPickUpMeansOfTransport(new Truck())
-                .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                .withDropOffMeansOfTransport(new Barge())
+                .withTransportPickUp(pickUp)
+                .withTransportDropOff(dropOff)
                 .withStops(Arrays.asList(stop))
-                .withDestinationLocation("Terminal Koblenz")
+                .withDestination(destination)
                 .buildAndValidate();
     }
 
@@ -118,43 +140,37 @@ class OrderTest {
     @Test
     void ensureMinimumRequirementIsChecked() {
 
+        PickUp pickUp = PickUp.newBuilder()
+                .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withMeansOfTransport(new Truck())
+                .buildAndValidate();
+
+        DropOff dropOff = DropOff.newBuilder()
+                .withLocation("Koblenz", "Terminal Koblenz")
+                .withMeansOfTransport(new Barge())
+                .buildAndValidate();
+
+        Destination destination = Destination.newBuilder().withLocation("Terminal Koblenz").buildAndValidate();
+
         assertThrows(IllegalStateException.class,
             () ->
                 Order.newBuilder()
                     .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
+                    .withTransportPickUp(pickUp)
+                    .withTransportDropOff(dropOff)
                     .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .withDestinationLocation("Terminal Koblenz")
+                    .withDestination(destination)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 Order.newBuilder()
                     .withReference("54642887")
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
+                    .withTransportPickUp(pickUp)
+                    .withTransportDropOff(dropOff)
                     .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .withDestinationLocation("Terminal Koblenz")
-                    .buildAndValidate());
-
-        assertThrows(IllegalStateException.class,
-            () ->
-                Order.newBuilder()
-                    .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .withDestinationLocation("Terminal Koblenz")
+                    .withDestination(destination)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -162,48 +178,9 @@ class OrderTest {
                 Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
+                    .withTransportDropOff(dropOff)
                     .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .withDestinationLocation("Terminal Koblenz")
-                    .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                Order.newBuilder()
-                    .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .withDestinationLocation("Terminal Koblenz")
-                    .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                Order.newBuilder()
-                    .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffMeansOfTransport(new Barge())
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .withDestinationLocation("Terminal Koblenz")
-                    .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                Order.newBuilder()
-                    .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
-                    .withDestinationLocation("Terminal Koblenz")
+                    .withDestination(destination)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -211,12 +188,9 @@ class OrderTest {
                 Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
-                    .withDestinationLocation("Terminal Koblenz")
+                    .withTransportDropOff(dropOff)
+                    .withStops(Arrays.asList(new Stop(), new Stop()))
+                    .withDestination(destination)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -224,11 +198,18 @@ class OrderTest {
                 Order.newBuilder()
                     .withReference("54642887")
                     .withOrderForLoadingUnit(new LUOrder())
-                    .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withPickUpMeansOfTransport(new Truck())
-                    .withDropOffLocation("Koblenz", "Terminal Koblenz")
-                    .withDropOffMeansOfTransport(new Barge())
+                    .withTransportPickUp(pickUp)
+                    .withTransportDropOff(dropOff)
+                    .withDestination(destination)
+                    .buildAndValidate());
+
+        assertThrows(IllegalStateException.class,
+            () ->
+                Order.newBuilder()
+                    .withReference("54642887")
+                    .withOrderForLoadingUnit(new LUOrder())
+                    .withTransportPickUp(pickUp)
+                    .withTransportDropOff(dropOff)
                     .withStops(Arrays.asList(new Stop(), new Stop()))
                     .buildAndValidate());
     }
@@ -243,31 +224,43 @@ class OrderTest {
             .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
             .buildAndValidate());
 
+        PickUp pickUp = PickUp.newBuilder()
+                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLoadingUnit("12345", false)
+                .withBillingReference("20568097")
+                .withLoadingUnitOperator(new Operator())
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
+                .withMeansOfTransport(new Truck())
+                .buildAndValidate();
+
+        DropOff dropOff = DropOff.newBuilder()
+                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLoadingUnit("63876846", false)
+                .withLoadingUnitOperator(new Operator())
+                .withBillingReference("98690")
+                .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
+                .withMeansOfTransport(new Barge())
+                .buildAndValidate();
+
+        Destination destination = Destination.newBuilder()
+                .withVessel(new Vessel())
+                .withCountryCode("DE")
+                .withLocation("Duisburg", "Terminal Duisburg")
+                .withSeaport("DEDUI")
+                .buildAndValidate();
+
         Order order = Order.newBuilder()
                 .withReference("54642887")
                 .withClient(new Operator())
                 .withBillRecipient(new Operator())
                 .withOrderForLoadingUnit(new LUOrder())
                 .withTransportDirection(Direction.EXPORT)
-                .withPickUpLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
-                .withLoadingUnitToPickUp("12345", false)
-                .withBillingReferenceForPickUp("20568097")
-                .withPickUpLoadingUnitOperator(new Operator())
-                .withEarliestPickUp(Instant.parse("2018-05-14T11:00:00Z"))
-                .withLatestPickUp(Instant.parse("2018-05-14T11:30:00Z"))
-                .withPickUpMeansOfTransport(new Truck())
-                .withDropOffLocation("Duisburg", "Terminal Duisburg", "terminal")
-                .withLoadingUnitToDropOff("63876846", false)
-                .withDropOffLoadingUnitOperator(new Operator())
-                .withBillingReferenceForDropOff("98690")
-                .withEarliestDropOff(Instant.parse("2018-05-14T14:00:00Z"))
-                .withLatestDropOff(Instant.parse("2018-05-14T14:15:00Z"))
-                .withDropOffMeansOfTransport(new Barge())
+                .withTransportPickUp(pickUp)
+                .withTransportDropOff(dropOff)
                 .withStops(stops)
-                .withDestinationVessel(new Vessel())
-                .withDestinationCountryCode("DE")
-                .withDestinationLocation("Duisburg", "Terminal Duisburg")
-                .withDestinationSeaport("DEDUI")
+                .withDestination(destination)
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

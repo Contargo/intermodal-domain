@@ -106,14 +106,14 @@ public class Order {
 
 
     @JsonIgnore
-    public Transport.PickUp getPickUp() {
+    public PickUp getPickUp() {
 
         return this.transport.getPickUp();
     }
 
 
     @JsonIgnore
-    public Transport.DropOff getDropOff() {
+    public DropOff getDropOff() {
 
         return this.transport.getDropOff();
     }
@@ -146,10 +146,7 @@ public class Order {
 
     public static final class Builder {
 
-        private String destinationCity;
-        private String destinationDesignation;
-        private String destinationSeaport;
-        private Vessel destinationVessl;
+        private Destination destination;
         private String destinationCountryCode;
         private String reference;
         private Operator client;
@@ -200,129 +197,17 @@ public class Order {
         }
 
 
-        public Builder withPickUpLocation(String city, String designation, String type) {
+        public Builder withTransportPickUp(PickUp pickUp) {
 
-            this.transport.setPickUpLocation(city, designation, type);
-
-            return this;
-        }
-
-
-        public Builder withPickUpLocation(String city, String designation) {
-
-            this.transport.setPickUpLocation(city, designation);
+            this.transport.setPickUp(pickUp);
 
             return this;
         }
 
 
-        public Builder withEarliestPickUp(Instant instant) {
+        public Builder withTransportDropOff(DropOff dropOff) {
 
-            this.transport.setEarliestPickUp(instant);
-
-            return this;
-        }
-
-
-        public Builder withLatestPickUp(Instant instant) {
-
-            this.transport.setLatestPickUp(instant);
-
-            return this;
-        }
-
-
-        public Builder withPickUpMeansOfTransport(MeansOfTransport meansOfTransport) {
-
-            this.transport.setPickUpMoT(meansOfTransport);
-
-            return this;
-        }
-
-
-        public Builder withLoadingUnitToPickUp(String reference, Boolean isEmpty) {
-
-            this.transport.setPickUpLoadingUnit(reference, isEmpty);
-
-            return this;
-        }
-
-
-        public Builder withPickUpLoadingUnitOperator(Operator operator) {
-
-            this.transport.setPickUpLoadingUnitOperator(operator);
-
-            return this;
-        }
-
-
-        public Builder withBillingReferenceForPickUp(String billingReference) {
-
-            this.transport.setPickUpBillingReference(billingReference);
-
-            return this;
-        }
-
-
-        public Builder withDropOffLocation(String city, String designation, String type) {
-
-            this.transport.setDropOffLocation(city, designation, type);
-
-            return this;
-        }
-
-
-        public Builder withDropOffLocation(String city, String designation) {
-
-            this.transport.setDropOffLocation(city, designation);
-
-            return this;
-        }
-
-
-        public Builder withEarliestDropOff(Instant instant) {
-
-            this.transport.setEarliestDropOff(instant);
-
-            return this;
-        }
-
-
-        public Builder withLatestDropOff(Instant instant) {
-
-            this.transport.setLatestDropOff(instant);
-
-            return this;
-        }
-
-
-        public Builder withDropOffMeansOfTransport(MeansOfTransport meansOfTransport) {
-
-            this.transport.setDropOffMoT(meansOfTransport);
-
-            return this;
-        }
-
-
-        public Builder withLoadingUnitToDropOff(String reference, Boolean isEmpty) {
-
-            this.transport.setDropOffLoadingUnit(reference, isEmpty);
-
-            return this;
-        }
-
-
-        public Builder withDropOffLoadingUnitOperator(Operator operator) {
-
-            this.transport.setDropOffLoadingUnitOperator(operator);
-
-            return this;
-        }
-
-
-        public Builder withBillingReferenceForDropOff(String billingReference) {
-
-            this.transport.setDropOffBillingReference(billingReference);
+            this.transport.setDropOff(dropOff);
 
             return this;
         }
@@ -344,47 +229,9 @@ public class Order {
         }
 
 
-        public Builder withDestinationSeaport(String name) {
+        public Builder withDestination(Destination destination) {
 
-            this.destinationSeaport = name;
-
-            return this;
-        }
-
-
-        public Builder withDestinationVessel(Vessel vessel) {
-
-            this.destinationVessl = vessel;
-
-            return this;
-        }
-
-
-        public Builder withDestinationLocation(String city, String designation) {
-
-            this.destinationCity = city;
-            this.destinationDesignation = designation;
-
-            return this;
-        }
-
-
-        public Builder withDestinationLocation(String designation) {
-
-            this.destinationDesignation = designation;
-
-            return this;
-        }
-
-
-        /**
-         * @param  countryCode  2 characters (UN/LOCODE).
-         *
-         * @return
-         */
-        public Builder withDestinationCountryCode(String countryCode) {
-
-            this.destinationCountryCode = countryCode;
+            this.destination = destination;
 
             return this;
         }
@@ -398,21 +245,7 @@ public class Order {
             order.client = this.client;
             order.transport = this.transport;
             order.reference = this.reference;
-
-            Destination destination = new Destination();
-            destination.setCountryCode(destinationCountryCode);
-            destination.setVessel(destinationVessl);
-
-            Seaport seaport = new Seaport();
-            seaport.setName(destinationSeaport);
-            destination.setSeaport(seaport);
-
-            Location location = new Location();
-            location.setDesignation(destinationDesignation);
-            location.setCity(destinationCity);
-            destination.setLocation(location);
-
-            order.destination = destination;
+            order.destination = this.destination;
 
             return order;
         }

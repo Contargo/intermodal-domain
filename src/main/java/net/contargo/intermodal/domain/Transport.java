@@ -35,102 +35,6 @@ class Transport {
     }
 
 
-    void setPickUpLocation(String city, String designation, String type) {
-
-        this.pickUp.setLocation(city, designation, type);
-    }
-
-
-    void setPickUpLocation(String city, String designation) {
-
-        this.pickUp.setLocation(city, designation);
-    }
-
-
-    void setPickUpLoadingUnit(String reference, Boolean isEmpty) {
-
-        this.pickUp.setLoadingUnit(reference, isEmpty);
-    }
-
-
-    void setPickUpLoadingUnitOperator(Operator operator) {
-
-        this.pickUp.setLoadingUnitOperator(operator);
-    }
-
-
-    void setPickUpBillingReference(String billingReference) {
-
-        this.pickUp.setBillingReference(billingReference);
-    }
-
-
-    void setEarliestPickUp(Instant instant) {
-
-        this.pickUp.setEarliest(instant);
-    }
-
-
-    void setLatestPickUp(Instant instant) {
-
-        this.pickUp.setLatest(instant);
-    }
-
-
-    void setPickUpMoT(MeansOfTransport meansOfTransport) {
-
-        this.pickUp.setMoT(meansOfTransport);
-    }
-
-
-    void setDropOffLocation(String city, String designation, String type) {
-
-        this.dropOff.setLocation(city, designation, type);
-    }
-
-
-    void setDropOffLocation(String city, String designation) {
-
-        this.dropOff.setLocation(city, designation);
-    }
-
-
-    void setDropOffLoadingUnit(String reference, Boolean isEmpty) {
-
-        this.dropOff.setLoadingUnit(reference, isEmpty);
-    }
-
-
-    void setDropOffLoadingUnitOperator(Operator operator) {
-
-        this.dropOff.setLoadingUnitOperator(operator);
-    }
-
-
-    void setDropOffBillingReference(String billingReference) {
-
-        this.dropOff.setBillingReference(billingReference);
-    }
-
-
-    void setEarliestDropOff(Instant instant) {
-
-        this.dropOff.setEarliest(instant);
-    }
-
-
-    void setLatestDropOff(Instant instant) {
-
-        this.dropOff.setLatest(instant);
-    }
-
-
-    void setDropOffMoT(MeansOfTransport meansOfTransport) {
-
-        this.dropOff.setMoT(meansOfTransport);
-    }
-
-
     public void addStop(Stop stop) {
 
         this.stop.add(stop);
@@ -161,258 +65,30 @@ class Transport {
         return stop;
     }
 
-    public static class DropOff {
 
-        @NotNull(message = "location is part of minimum requirement")
-        private Location location;
+    public void setPickUp(PickUp pickUp) {
 
-        private LoadingUnit loadingUnit = new LoadingUnit();
-
-        /**
-         * Abrechnungsreferenz, PO-number für Dienstl.
-         */
-        private String billingReference;
-
-        /**
-         * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-         */
-        @JsonDeserialize(using = InstantJsonDeserializer.class)
-        private Instant earliest;
-
-        /**
-         * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-         */
-        @JsonDeserialize(using = InstantJsonDeserializer.class)
-        private Instant latest;
-
-        /**
-         * @see  MeansOfTransport
-         */
-        @NotNull(message = "mot is part of minimum requirement")
-        private MeansOfTransport mot;
-
-        void setLocation(String city, String designation, String type) {
-
-            this.location = new Location();
-            this.location.setCity(city);
-            this.location.setDesignation(designation);
-            this.location.setType(type);
-        }
-
-
-        void setLocation(String city, String designation) {
-
-            this.location = new Location();
-            this.location.setCity(city);
-            this.location.setDesignation(designation);
-        }
-
-
-        void setLoadingUnit(String reference, Boolean isEmpty) {
-
-            this.loadingUnit.setEmpty(isEmpty);
-            this.loadingUnit.setReference(reference);
-        }
-
-
-        void setLoadingUnitOperator(Operator operator) {
-
-            this.loadingUnit.setOperator(operator);
-        }
-
-
-        void setBillingReference(String billingReference) {
-
-            this.billingReference = billingReference;
-        }
-
-
-        void setEarliest(Instant instant) {
-
-            this.earliest = instant;
-        }
-
-
-        void setLatest(Instant instant) {
-
-            this.latest = instant;
-        }
-
-
-        void setMoT(MeansOfTransport mot) {
-
-            this.mot = mot;
-        }
-
-
-        public void setMot(MeansOfTransport mot) {
-
-            this.mot = mot;
-        }
-
-
-        public Location getLocation() {
-
-            return location;
-        }
-
-
-        public String getBillingReference() {
-
-            return billingReference;
-        }
-
-
-        @JsonSerialize(using = InstantJsonSerializer.class)
-        public Instant getEarliest() {
-
-            return earliest;
-        }
-
-
-        @JsonSerialize(using = InstantJsonSerializer.class)
-        public Instant getLatest() {
-
-            return latest;
-        }
-
-
-        public MeansOfTransport getMot() {
-
-            return mot;
-        }
-
-
-        public LoadingUnit getLoadingUnit() {
-
-            return loadingUnit;
-        }
+        this.pickUp = pickUp;
     }
 
-    public static class PickUp {
 
-        private Location location;
+    public void setDropOff(DropOff dropOff) {
 
-        private LoadingUnit loadingUnit = new LoadingUnit();
-
-        /**
-         * @definition_german  Abrechnungsreferenz, PO-number für Dienstleister
-         */
-        private String billingReference;
-
-        /**
-         * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-         */
-        @NotNull(message = "earliest is part of minimum requirement")
-        @JsonDeserialize(using = InstantJsonDeserializer.class)
-        private Instant earliest;
-
-        /**
-         * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
-         */
-        @JsonDeserialize(using = InstantJsonDeserializer.class)
-        private Instant latest;
-
-        @NotNull(message = "mot is part of minimum requirement")
-        private MeansOfTransport mot;
-
-        void setLocation(String city, String designation, String type) {
-
-            this.location = new Location();
-            this.location.setCity(city);
-            this.location.setDesignation(designation);
-            this.location.setType(type);
-        }
-
-
-        void setLocation(String city, String designation) {
-
-            this.location = new Location();
-            this.location.setCity(city);
-            this.location.setDesignation(designation);
-        }
-
-
-        void setLoadingUnit(String reference, Boolean isEmpty) {
-
-            this.loadingUnit.setEmpty(isEmpty);
-            this.loadingUnit.setReference(reference);
-        }
-
-
-        void setLoadingUnitOperator(Operator operator) {
-
-            this.loadingUnit.setOperator(operator);
-        }
-
-
-        void setBillingReference(String billingReference) {
-
-            this.billingReference = billingReference;
-        }
-
-
-        void setEarliest(Instant instant) {
-
-            this.earliest = instant;
-        }
-
-
-        void setLatest(Instant instant) {
-
-            this.latest = instant;
-        }
-
-
-        void setMoT(MeansOfTransport mot) {
-
-            this.mot = mot;
-        }
-
-
-        public String getBillingReference() {
-
-            return billingReference;
-        }
-
-
-        @JsonSerialize(using = InstantJsonSerializer.class)
-        public Instant getEarliest() {
-
-            return earliest;
-        }
-
-
-        @JsonSerialize(using = InstantJsonSerializer.class)
-        public Instant getLatest() {
-
-            return latest;
-        }
-
-
-        public MeansOfTransport getMot() {
-
-            return mot;
-        }
-
-
-        public Location getLocation() {
-
-            return location;
-        }
-
-
-        public LoadingUnit getLoadingUnit() {
-
-            return loadingUnit;
-        }
+        this.dropOff = dropOff;
     }
 
     public static class LoadingUnit {
 
         private String reference;
+
         private Boolean empty;
         private Operator operator;
+
+        public Boolean getEmpty() {
+
+            return empty;
+        }
+
 
         public Boolean isEmpty() {
 
