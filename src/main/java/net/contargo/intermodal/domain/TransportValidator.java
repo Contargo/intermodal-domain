@@ -66,8 +66,8 @@ public class TransportValidator implements ConstraintValidator<TransportConstrai
 
     private boolean isValid(List<Stop> stops) {
 
-        return stops != null && stops.stream().noneMatch(stop -> stop.getLocation() == null)
-            && stops.stream().flatMap(stop -> stop.getLocation().stream()).anyMatch(location ->
+        return stops != null && stops.stream().noneMatch(stop -> stop.getLocations() == null)
+            && stops.stream().flatMap(stop -> stop.getLocations().stream()).anyMatch(location ->
                     location.getCity() != null && location.getDesignation() != null);
     }
 }

@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+import java.time.Instant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +22,12 @@ import javax.validation.constraints.NotNull;
  */
 public class Stop {
 
-    @NotNull(message = "location is part of minimum requirement")
-    private List<Location> location;
+    /**
+     * Multi stops possible.
+     */
+    @NotNull(message = "locations is part of minimum requirement")
+    @StopLocationConstraint(message = "locations city and designation are part of the minimum requirement of stop")
+    private List<Location> locations;
 
     /**
      * Sequence of stops.
@@ -29,13 +37,14 @@ public class Stop {
     /**
      * Format: ISO 8601 inclusive UTC.
      */
-
-    private String earliest;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant earliest;
 
     /**
      * Format: ISO 8601 inclusive UTC.
      */
-    private String latest;
+    @JsonDeserialize(using = InstantJsonDeserializer.class)
+    private Instant latest;
 
     private String reference;
 
@@ -49,9 +58,15 @@ public class Stop {
     }
 
 
-    public List<Location> getLocation() {
+    private void setLocations(List<Location> location) {
 
-        return location;
+        this.locations = location;
+    }
+
+
+    public List<Location> getLocations() {
+
+        return locations;
     }
 
 
@@ -61,13 +76,15 @@ public class Stop {
     }
 
 
-    public String getEarliest() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getEarliest() {
 
         return earliest;
     }
 
 
-    public String getLatest() {
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    public Instant getLatest() {
 
         return latest;
     }
@@ -108,8 +125,8 @@ public class Stop {
         private List<Location> location = new ArrayList<>();
         private Integer sequence;
 
-        private String earliest;
-        private String latest;
+        private Instant earliest;
+        private Instant latest;
         private String reference;
         private String billingReference;
         private MeansOfTransport mot;
@@ -148,7 +165,7 @@ public class Stop {
         }
 
 
-        public Builder withEarliest(String earliest) {
+        public Builder withEarliest(Instant earliest) {
 
             this.earliest = earliest;
 
@@ -156,7 +173,7 @@ public class Stop {
         }
 
 
-        public Builder withLatest(String latest) {
+        public Builder withLatest(Instant latest) {
 
             this.latest = latest;
 
@@ -180,7 +197,7 @@ public class Stop {
         }
 
 
-        public Builder withMot(MeansOfTransport mot) {
+        public Builder withMeansOfTransport(MeansOfTransport mot) {
 
             this.mot = mot;
 
@@ -195,7 +212,7 @@ public class Stop {
             stop.latest = this.latest;
             stop.earliest = this.earliest;
             stop.mot = this.mot;
-            stop.location = this.location;
+            stop.locations = this.location;
             stop.sequence = this.sequence;
             stop.reference = this.reference;
 
