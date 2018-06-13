@@ -1,5 +1,9 @@
 package net.contargo.intermodal.domain;
 
+import java.util.Arrays;
+import java.util.Optional;
+
+
 /**
  * ISO 6346 type of a {@link Container}.
  *
@@ -84,5 +88,35 @@ public enum ISO6346ContainerType {
         this.typeDesignation = typeDesignation;
         this.mainCharacteristics = mainCharacteristics;
         this.typeGroupCode = typeGroupCode;
+    }
+
+    public String getType() {
+
+        return type;
+    }
+
+
+    public String getTypeDesignation() {
+
+        return typeDesignation;
+    }
+
+
+    public String getMainCharacteristics() {
+
+        return mainCharacteristics;
+    }
+
+
+    public String getTypeGroupCode() {
+
+        return typeGroupCode;
+    }
+
+
+    public static Optional<ISO6346ContainerType> getByType(String typeCode) {
+
+        return Arrays.stream(ISO6346ContainerType.values()).filter(containerType ->
+                    typeCode.equals(containerType.getType())).findAny();
     }
 }

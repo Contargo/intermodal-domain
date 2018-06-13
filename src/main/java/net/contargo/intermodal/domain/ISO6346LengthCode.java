@@ -1,5 +1,9 @@
 package net.contargo.intermodal.domain;
 
+import java.util.Arrays;
+import java.util.Optional;
+
+
 /**
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
@@ -30,5 +34,22 @@ public enum ISO6346LengthCode {
 
         this.character = character;
         this.lengthInFoot = lengthInFoot;
+    }
+
+    public char getCharacter() {
+
+        return character;
+    }
+
+
+    public Double getLengthInFoot() {
+
+        return lengthInFoot;
+    }
+
+
+    public static Optional<ISO6346LengthCode> getByCharacter(char character) {
+
+        return Arrays.stream(ISO6346LengthCode.values()).filter(code -> code.getCharacter() == character).findAny();
     }
 }

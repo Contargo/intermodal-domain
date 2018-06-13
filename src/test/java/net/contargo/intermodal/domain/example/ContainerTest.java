@@ -50,6 +50,33 @@ class ContainerTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        Container.newBuilder()
+            .withNumber("OOOCSSSSSS")
+            .isReefer(false)
+            .withSizeType("45G0")
+            .withType("HIGH CUBE CONTAINER")
+            .withSize(6.58, LengthUnit.METRE)
+            .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureTypeAndSizeCanBeSetBySizeType() {
+
+        Container container = Container.newBuilder()
+                .withNumber("OOOCSSSSSS")
+                .isReefer(false)
+                .withSizeType("45G0")
+                .buildAndValidate();
+
+        assertEquals("General purpose container (without ventilation)", container.getType());
+        assertEquals(40.0, container.getSize().getValue());
+    }
+
+
+    @Test
     void ensureWeightCanBeSetInTons() {
 
         Container container = Container.newBuilder()
@@ -66,19 +93,6 @@ class ContainerTest {
         assertEquals(30480.0, container.getWeightBruttoMax().getValue().doubleValue(), 0.1);
         assertEquals(28080.0, container.getWeightNettoMax().getValue().doubleValue(), 0.1);
         assertEquals(2400.0, container.getWeightTare().getValue().doubleValue(), 0.1);
-    }
-
-
-    @Test
-    void ensureCanBeCreatedWithMinimumRequirements() {
-
-        Container.newBuilder()
-            .withNumber("OOOCSSSSSS")
-            .isReefer(false)
-            .withSizeType("45G0")
-            .withType("HIGH CUBE CONTAINER")
-            .withSize(6.58, LengthUnit.METRE)
-            .buildAndValidate();
     }
 
 

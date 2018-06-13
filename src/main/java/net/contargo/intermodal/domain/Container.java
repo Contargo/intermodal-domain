@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
+import java.util.Optional;
+
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
 import javax.measure.quantity.Mass;
@@ -156,7 +158,22 @@ public class Container extends LoadingUnit {
 
             this.sizeType = sizeType;
 
+            getInformationFromSizeType();
+
             return this;
+        }
+
+
+        private void getInformationFromSizeType() {
+
+            Optional<Double> lengthFromSizeType = ISO6346CodeConverter.getLengthFromSizeType(sizeType);
+
+            lengthFromSizeType.ifPresent(length -> this.size = Quantities.getQuantity(length, FOOT));
+
+            Optional<String> typeDesignationFromSizeType = ISO6346CodeConverter.getTypeDesignationFromSizeType(
+                    sizeType);
+
+            typeDesignationFromSizeType.ifPresent(containerType -> this.type = containerType);
         }
 
 
