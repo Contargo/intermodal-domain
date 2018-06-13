@@ -12,16 +12,24 @@ public class ISO6346CodeConverter {
 
     public static Optional<Double> getLengthFromSizeType(String sizeType) {
 
-        Optional<ISO6346LengthCode> lengthCode = ISO6346LengthCode.getByCharacter(sizeType.charAt(0));
+        if (sizeType.length() == 4) {
+            Optional<ISO6346LengthCode> lengthCode = ISO6346LengthCode.getByCharacter(sizeType.charAt(0));
 
-        return lengthCode.map(ISO6346LengthCode::getLengthInFoot);
+            return lengthCode.map(ISO6346LengthCode::getLengthInFoot);
+        }
+
+        return Optional.empty();
     }
 
 
     public static Optional<String> getTypeDesignationFromSizeType(String sizeType) {
 
-        Optional<ISO6346ContainerType> containerType = ISO6346ContainerType.getByType(sizeType.substring(2, 4));
+        if (sizeType.length() == 4) {
+            Optional<ISO6346ContainerType> containerType = ISO6346ContainerType.getByType(sizeType.substring(2, 4));
 
-        return containerType.map(ISO6346ContainerType::getTypeDesignation);
+            return containerType.map(ISO6346ContainerType::getTypeDesignation);
+        }
+
+        return Optional.empty();
     }
 }

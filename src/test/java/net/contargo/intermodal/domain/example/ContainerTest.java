@@ -137,7 +137,7 @@ class ContainerTest {
                 Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
-                    .withSizeType("45G0")
+                    .withSizeType("G0")
                     .withSize(21.58, LengthUnit.FOOT)
                     .buildAndValidate());
 
@@ -146,7 +146,7 @@ class ContainerTest {
                 Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
-                    .withSizeType("45G0")
+                    .withSizeType("G0")
                     .withType("HIGH CUBE CONTAINER")
                     .buildAndValidate());
     }
