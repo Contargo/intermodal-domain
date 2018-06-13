@@ -112,14 +112,7 @@ class TrailerTest {
                     .withSize(15.5, LengthUnit.METRE)
                     .isCraneable(true)
                     .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                Trailer.newBuilder()
-                    .withNumber("OOOCSSSSSS")
-                    .withType("XL")
-                    .withSize(15.5, LengthUnit.METRE)
-                    .isCraneable(true)
-                    .buildAndValidate());
+
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
@@ -128,6 +121,7 @@ class TrailerTest {
                     .withSize(15.5, LengthUnit.METRE)
                     .isCraneable(true)
                     .buildAndValidate());
+
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
@@ -136,6 +130,7 @@ class TrailerTest {
                     .withType("XL")
                     .isCraneable(true)
                     .buildAndValidate());
+
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()

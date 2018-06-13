@@ -108,14 +108,7 @@ class SwapBodyTest {
                     .withSize(21.58, LengthUnit.FOOT)
                     .isStackable(true)
                     .buildAndValidate());
-        assertThrows(IllegalStateException.class,
-            () ->
-                SwapBody.newBuilder()
-                    .withNumber("OOOCSSSSSS")
-                    .withType("Open Top")
-                    .withSize(21.58, LengthUnit.FOOT)
-                    .isStackable(true)
-                    .buildAndValidate());
+
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.newBuilder()
@@ -124,6 +117,7 @@ class SwapBodyTest {
                     .withSize(21.58, LengthUnit.FOOT)
                     .isStackable(true)
                     .buildAndValidate());
+
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.newBuilder()
@@ -132,6 +126,7 @@ class SwapBodyTest {
                     .withType("Open Top")
                     .isStackable(true)
                     .buildAndValidate());
+
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.newBuilder()

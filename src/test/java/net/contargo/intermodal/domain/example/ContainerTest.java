@@ -113,15 +113,6 @@ class ContainerTest {
             () ->
                 Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
-                    .withSizeType("45G0")
-                    .withType("HIGH CUBE CONTAINER")
-                    .withSize(21.58, LengthUnit.FOOT)
-                    .buildAndValidate());
-
-        assertThrows(IllegalStateException.class,
-            () ->
-                Container.newBuilder()
-                    .withNumber("OOOCSSSSSS")
                     .isReefer(false)
                     .withType("HIGH CUBE CONTAINER")
                     .withSize(21.58, LengthUnit.FOOT)
