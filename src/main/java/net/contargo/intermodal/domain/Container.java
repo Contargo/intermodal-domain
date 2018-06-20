@@ -113,17 +113,17 @@ public class Container extends LoadingUnit {
         private Builder() {
         }
 
-        public Builder withIdentification(String identification) {
+        public Builder withNumberAndIdentification(String number) {
 
-            this.identification = identification;
+            number = number.replaceAll("[^A-Za-z0-9]", "");
 
-            return this;
-        }
-
-
-        public Builder withNumber(String number) {
+            if (!LoadingUnitNumber.isValidBIC(number)) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid number/identification for LoadingUnit: \'%s\' is not a valid BIC/ILU.", number));
+            }
 
             this.number = number;
+            this.identification = number;
 
             return this;
         }
@@ -170,11 +170,11 @@ public class Container extends LoadingUnit {
 
         private void getInformationFromSizeType() {
 
-            Optional<Double> lengthFromSizeType = ISO6346CodeConverter.getLengthFromSizeType(sizeType);
+            Optional<Double> lengthFromSizeType = ISO6346SizeTypeConverter.getLengthFromSizeType(sizeType);
 
             lengthFromSizeType.ifPresent(length -> this.size = Quantities.getQuantity(length, FOOT));
 
-            Optional<String> typeDesignationFromSizeType = ISO6346CodeConverter.getTypeDesignationFromSizeType(
+            Optional<String> typeDesignationFromSizeType = ISO6346SizeTypeConverter.getTypeDesignationFromSizeType(
                     sizeType);
 
             typeDesignationFromSizeType.ifPresent(containerType -> this.type = containerType);

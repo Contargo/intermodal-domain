@@ -41,18 +41,20 @@ public abstract class LoadingUnit {
     /**
      * e.g&#046; BIC, ILU, SOC.
      */
+    @LoadingUnitNumberConstraint(message = "identification has to be valid BIC/ILU")
     private String identification;
 
     /**
      * BIC, ILU (4 characters, 7 digits).
      */
-    @NotNull(message = "number is part of minimum requirement")
+    @NotNull(message = "number is part of minimum requirement and must not be null")
+    @LoadingUnitNumberConstraint(message = "number has to be valid BIC/ILU")
     private String number;
 
     /**
      * Is set automatically.
      */
-    @NotNull(message = "category is part of minimum requirement")
+    @NotNull(message = "category is part of minimum requirement and must not be null")
     private LoadingUnitCategory category;
 
     /**
@@ -68,7 +70,7 @@ public abstract class LoadingUnit {
     /**
      * Is Loading Unit refrigerated?
      */
-    @NotNull(message = "reefer is part of minimum requirement")
+    @NotNull(message = "reefer is part of minimum requirement and must not be null")
     private boolean reefer;
 
     /**

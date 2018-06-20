@@ -2,10 +2,7 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.LengthUnit;
-import net.contargo.intermodal.domain.LoadingUnitCategory;
-import net.contargo.intermodal.domain.MassUnit;
-import net.contargo.intermodal.domain.Trailer;
+import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,8 +20,7 @@ class TrailerTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withIdentification("OOOCSSSSSS")
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .withWeightBruttoMax(14082.331, MassUnit.KILOGRAM)
                 .withWeightNettoMax(10000.0, MassUnit.KILOGRAM)
                 .withWeightTare(4082.331, MassUnit.KILOGRAM)
@@ -36,8 +32,8 @@ class TrailerTest {
                 .isCraneable(true)
                 .buildAndValidate();
 
-        assertEquals("OOOCSSSSSS", trailer.getIdentification());
-        assertEquals("OOOCSSSSSS", trailer.getNumber());
+        assertEquals("MSKU1806510", trailer.getIdentification());
+        assertEquals("MSKU1806510", trailer.getNumber());
         assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
         assertNotNull(trailer.getWeight());
         assertEquals(14082.331, trailer.getWeightBruttoMax().getValue().doubleValue());
@@ -57,7 +53,7 @@ class TrailerTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         Trailer.newBuilder()
-            .withNumber("OOOCSSSSSS")
+            .withNumberAndIdentification("MSKU1806510")
             .isReefer(false)
             .withType("XL")
             .withSize(15.5, LengthUnit.METRE)
@@ -67,10 +63,26 @@ class TrailerTest {
 
 
     @Test
+    void ensureSpecialCharactersInNumberAreIgnored() {
+
+        Trailer trailer = Trailer.newBuilder()
+                .withNumberAndIdentification("MSKU 180651-0")
+                .isReefer(false)
+                .withType("XL")
+                .withSize(15.5, LengthUnit.METRE)
+                .isCraneable(true)
+                .buildAndValidate();
+
+        assertEquals("MSKU1806510", trailer.getNumber());
+        assertEquals("MSKU1806510", trailer.getIdentification());
+    }
+
+
+    @Test
     void ensureSizeCanBeSetInFoot() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .isReefer(false)
                 .withType("XL")
                 .isCraneable(true)
@@ -85,7 +97,7 @@ class TrailerTest {
     void ensureWeightCanBeSetInTons() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .isReefer(false)
                 .withType("XL")
                 .isCraneable(true)
@@ -116,7 +128,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
-                    .withNumber("OOOCSSSSSS")
+                    .withNumberAndIdentification("MSKU1806510")
                     .isReefer(false)
                     .withSize(15.5, LengthUnit.METRE)
                     .isCraneable(true)
@@ -125,7 +137,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
-                    .withNumber("OOOCSSSSSS")
+                    .withNumberAndIdentification("MSKU1806510")
                     .isReefer(false)
                     .withType("XL")
                     .isCraneable(true)
@@ -134,7 +146,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
-                    .withNumber("OOOCSSSSSS")
+                    .withNumberAndIdentification("MSKU1806510")
                     .isReefer(false)
                     .withType("XL")
                     .withSize(15.5, LengthUnit.METRE)
@@ -146,8 +158,7 @@ class TrailerTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         Trailer trailer = Trailer.newBuilder()
-                .withIdentification("OOOCSSSSSS")
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
                 .withWeightTare(70.0, MassUnit.KILOGRAM)
@@ -165,8 +176,8 @@ class TrailerTest {
 
         Trailer deserialize = mapper.readValue(jsonString, Trailer.class);
 
-        assertEquals("OOOCSSSSSS", deserialize.getIdentification());
-        assertEquals("OOOCSSSSSS", deserialize.getNumber());
+        assertEquals("MSKU1806510", deserialize.getIdentification());
+        assertEquals("MSKU1806510", deserialize.getNumber());
         assertEquals(LoadingUnitCategory.TRAILER, deserialize.getCategory());
         assertNotNull(deserialize.getWeight());
         assertEquals(70, deserialize.getWeightBruttoMax().getValue().doubleValue());

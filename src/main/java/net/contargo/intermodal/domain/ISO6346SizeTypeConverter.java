@@ -8,7 +8,7 @@ import java.util.Optional;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-public class ISO6346CodeConverter {
+public class ISO6346SizeTypeConverter {
 
     /**
      * Returns the length of a {@link Container} as indicated by the first character of its sizeType.
@@ -19,7 +19,7 @@ public class ISO6346CodeConverter {
      */
     public static Optional<Double> getLengthFromSizeType(String sizeType) {
 
-        Optional<ISO6346LengthCode> lengthCode = ISO6346LengthCode.getByCharacter(sizeType.charAt(0));
+        Optional<ISO6346LengthCode> lengthCode = ISO6346LengthCode.getByCharacter(String.valueOf(sizeType.charAt(0)));
 
         if (!lengthCode.isPresent()) {
             throw new IllegalArgumentException(String.format(

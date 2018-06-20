@@ -115,17 +115,17 @@ public class Trailer extends LoadingUnit {
         private Builder() {
         }
 
-        public Builder withIdentification(String identification) {
+        public Builder withNumberAndIdentification(String number) {
 
-            this.identification = identification;
+            number = number.replaceAll("[^A-Za-z0-9]", "");
 
-            return this;
-        }
-
-
-        public Builder withNumber(String number) {
+            if (!LoadingUnitNumber.isValidBIC(number)) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid number/identification for LoadingUnit: \'%s\' is not a valid BIC/ILU.", number));
+            }
 
             this.number = number;
+            this.identification = number;
 
             return this;
         }

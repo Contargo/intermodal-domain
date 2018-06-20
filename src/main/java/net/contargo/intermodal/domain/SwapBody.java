@@ -117,14 +117,6 @@ public class SwapBody extends LoadingUnit {
         private Builder() {
         }
 
-        public Builder withIdentification(String identification) {
-
-            this.identification = identification;
-
-            return this;
-        }
-
-
         public Builder withType(String type) {
 
             this.type = type;
@@ -133,9 +125,17 @@ public class SwapBody extends LoadingUnit {
         }
 
 
-        public Builder withNumber(String number) {
+        public Builder withNumberAndIdentification(String number) {
+
+            number = number.replaceAll("[^A-Za-z0-9]", "");
+
+            if (!LoadingUnitNumber.isValidBIC(number)) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid number/identification for LoadingUnit: \'%s\' is not a valid BIC/ILU.", number));
+            }
 
             this.number = number;
+            this.identification = number;
 
             return this;
         }

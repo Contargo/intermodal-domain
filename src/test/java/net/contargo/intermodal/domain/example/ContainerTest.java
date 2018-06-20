@@ -20,8 +20,7 @@ class ContainerTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         Container container = Container.newBuilder()
-                .withIdentification("OOOCSSSSSS")
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
                 .withWeightTare(2400.0, MassUnit.KILOGRAM)
@@ -33,8 +32,8 @@ class ContainerTest {
                 .withType("General purpose container (without ventilation)")
                 .buildAndValidate();
 
-        assertEquals("OOOCSSSSSS", container.getIdentification());
-        assertEquals("OOOCSSSSSS", container.getNumber());
+        assertEquals("MSKU1806510", container.getIdentification());
+        assertEquals("MSKU1806510", container.getNumber());
         assertEquals(LoadingUnitCategory.CONTAINER, container.getCategory());
         assertNotNull(container.getWeight());
         assertEquals(30480., container.getWeightBruttoMax().getValue().doubleValue());
@@ -53,7 +52,7 @@ class ContainerTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         Container.newBuilder()
-            .withNumber("OOOCSSSSSS")
+            .withNumberAndIdentification("MSKU1806510")
             .isReefer(false)
             .withSizeType("45G0")
             .withType("General purpose container (without ventilation)")
@@ -66,7 +65,7 @@ class ContainerTest {
     void ensureTypeAndSizeCanBeSetBySizeType() {
 
         Container container = Container.newBuilder()
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .isReefer(false)
                 .withSizeType("45G0")
                 .buildAndValidate();
@@ -77,10 +76,26 @@ class ContainerTest {
 
 
     @Test
+    void ensureSpecialCharactersInNumberAreIgnored() {
+
+        Container container = Container.newBuilder()
+                .withNumberAndIdentification("MSKU 180651-0")
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("General purpose container (without ventilation)")
+                .withSize(40.0, LengthUnit.FOOT)
+                .buildAndValidate();
+
+        assertEquals("MSKU1806510", container.getNumber());
+        assertEquals("MSKU1806510", container.getIdentification());
+    }
+
+
+    @Test
     void ensureWeightCanBeSetInTons() {
 
         Container container = Container.newBuilder()
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .isReefer(false)
                 .withSizeType("45G0")
                 .withType("General purpose container (without ventilation)")
@@ -100,7 +115,7 @@ class ContainerTest {
     void ensureSizeCanBeSetInMetre() {
 
         Container container = Container.newBuilder()
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .isReefer(false)
                 .withSizeType("45G0")
                 .withType("General purpose container (without ventilation)")
@@ -126,7 +141,7 @@ class ContainerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Container.newBuilder()
-                    .withNumber("OOOCSSSSSS")
+                    .withNumberAndIdentification("MSKU1806510")
                     .isReefer(false)
                     .withType("General purpose container (without ventilation)")
                     .withSize(40.0, LengthUnit.FOOT)
@@ -135,7 +150,7 @@ class ContainerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Container.newBuilder()
-                    .withNumber("OOOCSSSSSS")
+                    .withNumberAndIdentification("MSKU1806510")
                     .isReefer(false)
                     .withSizeType("45G0")
                     .withType(null)
@@ -146,7 +161,7 @@ class ContainerTest {
         assertThrows(IllegalArgumentException.class,
             () ->
                 Container.newBuilder()
-                    .withNumber("OOOCSSSSSS")
+                    .withNumberAndIdentification("MSKU1806510")
                     .isReefer(false)
                     .withSizeType("45X0")
                     .withSize(40.0, LengthUnit.FOOT)
@@ -156,7 +171,7 @@ class ContainerTest {
         assertThrows(IllegalArgumentException.class,
             () ->
                 Container.newBuilder()
-                    .withNumber("OOOCSSSSSS")
+                    .withNumberAndIdentification("MSKU1806510")
                     .isReefer(false)
                     .withSizeType("82G0")
                     .withType("General purpose container (without ventilation)")
@@ -168,8 +183,7 @@ class ContainerTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         Container container = Container.newBuilder()
-                .withIdentification("OOOCSSSSSS")
-                .withNumber("OOOCSSSSSS")
+                .withNumberAndIdentification("MSKU1806510")
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
                 .withWeightTare(2400.0, MassUnit.KILOGRAM)
@@ -187,8 +201,8 @@ class ContainerTest {
 
         Container deserialize = mapper.readValue(jsonString, Container.class);
 
-        assertEquals("OOOCSSSSSS", deserialize.getIdentification());
-        assertEquals("OOOCSSSSSS", deserialize.getNumber());
+        assertEquals("MSKU1806510", deserialize.getIdentification());
+        assertEquals("MSKU1806510", deserialize.getNumber());
         assertEquals(LoadingUnitCategory.CONTAINER, deserialize.getCategory());
         assertNotNull(container.getWeight());
         assertEquals(30480., container.getWeightBruttoMax().getValue().doubleValue());
