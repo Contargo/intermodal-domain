@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
  *                     an Umschlagpunkten durch die Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.
  * @definition_english  Contains data for registration of {@link net.contargo.intermodal.domain.Barge barges} on
  *                      handling points by connecting barge, schedule and quantity information.
+ * @minimum_requirement  barge, eta, etd, dangerousGoodsIndication, volume
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -181,6 +182,11 @@ public class RegistrationBarge {
         }
 
 
+        /**
+         * Builds {@link RegistrationBarge} without input validation.
+         *
+         * @return  new {@link RegistrationBarge} with attributes specified in {@link Builder}
+         */
         public RegistrationBarge build() {
 
             RegistrationBarge registrationBarge = new RegistrationBarge();
@@ -199,6 +205,12 @@ public class RegistrationBarge {
         }
 
 
+        /**
+         * Validates the input and builds {@link RegistrationBarge}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link RegistrationBarge}.
+         *
+         * @return  new {@link RegistrationBarge} with attributes specified in {@link Builder}
+         */
         public RegistrationBarge buildAndValidate() {
 
             RegistrationBarge registrationBarge = this.build();

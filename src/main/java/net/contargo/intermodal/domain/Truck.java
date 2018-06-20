@@ -280,6 +280,11 @@ public class Truck implements MeansOfTransport {
         }
 
 
+        /**
+         * Builds {@link Truck} without input validation.
+         *
+         * @return  new {@link Truck} with attributes specified in {@link Builder}
+         */
         public Truck build() {
 
             Truck truck = new Truck();
@@ -307,6 +312,12 @@ public class Truck implements MeansOfTransport {
         }
 
 
+        /**
+         * Validates the input and builds {@link Truck}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Truck}.
+         *
+         * @return  new {@link Truck} with attributes specified in {@link Builder}
+         */
         public Truck buildAndValidate() {
 
             Truck truck = this.build();

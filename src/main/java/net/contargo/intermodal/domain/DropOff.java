@@ -10,7 +10,10 @@ import javax.validation.constraints.NotNull;
 
 
 /**
+ * Drop off of an {@link Transport}.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @minimum_requirement  location with city and designation, mot
  */
 public class DropOff {
 
@@ -181,6 +184,11 @@ public class DropOff {
         }
 
 
+        /**
+         * Builds {@link DropOff} without input validation.
+         *
+         * @return  new {@link DropOff} with attributes specified in {@link Builder}
+         */
         public DropOff build() {
 
             DropOff dropOff = new DropOff();
@@ -195,6 +203,12 @@ public class DropOff {
         }
 
 
+        /**
+         * Validates the input and builds {@link DropOff}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link DropOff}.
+         *
+         * @return  new {@link DropOff} with attributes specified in {@link Builder}
+         */
         public DropOff buildAndValidate() {
 
             DropOff dropOff = this.build();

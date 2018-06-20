@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 /**
+ * Maps Objects to Json String.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 class JsonStringMapper {

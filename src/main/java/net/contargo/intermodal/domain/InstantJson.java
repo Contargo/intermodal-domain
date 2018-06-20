@@ -2,18 +2,13 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 
-import tec.units.ri.quantity.Quantities;
-
 import java.io.IOException;
-import java.io.StringWriter;
 
 import java.time.Instant;
 
@@ -46,7 +41,7 @@ class InstantJsonSerializer extends StdSerializer<Instant> {
 }
 
 /**
- * Custom JSON deserializer for Quantities.
+ * Custom JSON deserializer for Instant.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */

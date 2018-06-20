@@ -10,7 +10,10 @@ import javax.validation.constraints.NotNull;
 
 
 /**
+ * Pick up of an {@link Transport}.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @minimum_requirement  location with city and designation, earliest, mot
  */
 public class PickUp {
 
@@ -179,6 +182,11 @@ public class PickUp {
         }
 
 
+        /**
+         * Builds {@link PickUp} without input validation.
+         *
+         * @return  new {@link PickUp} with attributes specified in {@link Builder}
+         */
         public PickUp build() {
 
             PickUp pickUp = new PickUp();
@@ -193,6 +201,12 @@ public class PickUp {
         }
 
 
+        /**
+         * Validates the input and builds {@link PickUp}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link PickUp}.
+         *
+         * @return  new {@link PickUp} with attributes specified in {@link Builder}
+         */
         public PickUp buildAndValidate() {
 
             PickUp pickUp = this.build();

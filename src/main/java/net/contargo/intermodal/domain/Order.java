@@ -3,8 +3,6 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import java.time.Instant;
-
 import java.util.List;
 
 import javax.validation.constraints.NotNull;
@@ -237,6 +235,11 @@ public class Order {
         }
 
 
+        /**
+         * Builds {@link Order} without input validation.
+         *
+         * @return  new {@link Order} with attributes specified in {@link Builder}
+         */
         public Order build() {
 
             Order order = new Order();
@@ -251,6 +254,12 @@ public class Order {
         }
 
 
+        /**
+         * Validates the input and builds {@link Order}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Order}.
+         *
+         * @return  new {@link Order} with attributes specified in {@link Container.Builder}
+         */
         public Order buildAndValidate() {
 
             Order order = this.build();

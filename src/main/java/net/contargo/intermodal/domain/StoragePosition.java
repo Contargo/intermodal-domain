@@ -1,7 +1,7 @@
 package net.contargo.intermodal.domain;
 
 /**
- * Storage position of a barge.
+ * Storage position of a {@link Barge}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04

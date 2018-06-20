@@ -364,6 +364,11 @@ public class LUOrder {
         }
 
 
+        /**
+         * Builds {@link LUOrder} without input validation.
+         *
+         * @return  new {@link LUOrder} with attributes specified in {@link Builder}
+         */
         public LUOrder build() {
 
             LUOrder luOrder = new LUOrder();
@@ -390,6 +395,12 @@ public class LUOrder {
         }
 
 
+        /**
+         * Validates the input and builds {@link LUOrder}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link LUOrder}.
+         *
+         * @return  new {@link LUOrder} with attributes specified in {@link Builder}
+         */
         public LUOrder buildAndValidate() {
 
             LUOrder LUOrder = this.build();

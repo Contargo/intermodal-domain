@@ -221,6 +221,11 @@ public class Driver extends Person {
         }
 
 
+        /**
+         * Builds {@link Driver} without input validation.
+         *
+         * @return  new {@link Driver} with attributes specified in {@link Builder}
+         */
         public Driver build() {
 
             Driver driver = new Driver();
@@ -253,6 +258,12 @@ public class Driver extends Person {
         }
 
 
+        /**
+         * Validates the input and builds {@link Driver}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Driver}.
+         *
+         * @return  new {@link Driver} with attributes specified in {@link Builder}
+         */
         public Driver buildAndValidate() {
 
             Driver driver = this.build();

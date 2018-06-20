@@ -23,6 +23,7 @@ import javax.validation.constraints.NotNull;
  * @definition_english  Describes the registration of road vehicles on a handling point by connecting vehicle,
  *                      {@link Driver Person} and {@link LUOrder}. It is valid for the delivery of loading units as
  *                      well as for the pick up of an loading unit on a handling point.
+ * @minimum_requirement  truck, driver, haulierClient, haulierRealizing, deliveryTime, luOrder
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -182,6 +183,11 @@ public class RegistrationVehicle {
         }
 
 
+        /**
+         * Builds {@link RegistrationVehicle} without input validation.
+         *
+         * @return  new {@link RegistrationVehicle} with attributes specified in {@link Builder}
+         */
         public RegistrationVehicle build() {
 
             RegistrationVehicle registrationVehicle = new RegistrationVehicle();
@@ -197,6 +203,12 @@ public class RegistrationVehicle {
         }
 
 
+        /**
+         * Validates the input and builds {@link RegistrationVehicle}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link RegistrationVehicle}.
+         *
+         * @return  new {@link RegistrationVehicle} with attributes specified in {@link Builder}
+         */
         public RegistrationVehicle buildAndValidate() {
 
             RegistrationVehicle registrationVehicle = this.build();

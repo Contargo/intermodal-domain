@@ -31,6 +31,8 @@ import static tec.units.ri.unit.Units.METRE;
  * @definition_english  Contains data for registration of trains by connecting its properties and load as well as
  *                      schedules and shunting information. The train title in combination with the train paths is used
  *                      for clear identification.
+ * @minimum_requirement  trainTitle, railwayOperator, terminalEta, terminalEtd, shuntingYardEta, shunter, totalLength,
+ *                       waggonQuantity, volume to discharge and to load, trainPaths
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -339,6 +341,11 @@ public class RegistrationTrain {
         }
 
 
+        /**
+         * Builds {@link RegistrationTrain} without input validation.
+         *
+         * @return  new {@link RegistrationTrain} with attributes specified in {@link Builder}
+         */
         public RegistrationTrain build() {
 
             RegistrationTrain registrationTrain = new RegistrationTrain();
@@ -363,6 +370,12 @@ public class RegistrationTrain {
         }
 
 
+        /**
+         * Validates the input and builds {@link RegistrationTrain}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link RegistrationTrain}.
+         *
+         * @return  new {@link RegistrationTrain} with attributes specified in {@link Builder}
+         */
         public RegistrationTrain buildAndValidate() {
 
             RegistrationTrain registrationBarge = this.build();

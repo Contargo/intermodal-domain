@@ -140,6 +140,11 @@ public class Address {
         }
 
 
+        /**
+         * Builds {@link Address} without input validation.
+         *
+         * @return  new {@link Address} with attributes specified in {@link Builder}
+         */
         public Address build() {
 
             Address address = new Address();
@@ -159,6 +164,12 @@ public class Address {
         }
 
 
+        /**
+         * Validates the input and builds {@link Address}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Address}.
+         *
+         * @return  new {@link Address} with attributes specified in {@link Builder}
+         */
         public Address buildAndValidate() {
 
             Address address = this.build();

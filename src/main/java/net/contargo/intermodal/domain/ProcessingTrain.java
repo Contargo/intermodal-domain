@@ -240,6 +240,11 @@ public class ProcessingTrain {
         }
 
 
+        /**
+         * Builds {@link ProcessingTrain} without input validation.
+         *
+         * @return  new {@link ProcessingTrain} with attributes specified in {@link Builder}
+         */
         public ProcessingTrain build() {
 
             ProcessingTrain processingTrain = new ProcessingTrain();
@@ -255,6 +260,12 @@ public class ProcessingTrain {
         }
 
 
+        /**
+         * Validates the input and builds {@link ProcessingTrain}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link ProcessingTrain}.
+         *
+         * @return  new {@link ProcessingTrain} with attributes specified in {@link Builder}
+         */
         public ProcessingTrain buildAndValidate() {
 
             ProcessingTrain processingTrain = this.build();

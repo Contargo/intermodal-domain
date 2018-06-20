@@ -240,6 +240,11 @@ public class DangerousGoods {
         }
 
 
+        /**
+         * Builds {@link DangerousGoods} without input validation.
+         *
+         * @return  new {@link DangerousGoods} with attributes specified in {@link Builder}
+         */
         public DangerousGoods build() {
 
             DangerousGoods dangerousGoods = new DangerousGoods();
@@ -258,6 +263,12 @@ public class DangerousGoods {
         }
 
 
+        /**
+         * Validates the input and builds {@link DangerousGoods}. Throws IllegalStateException if input doesn't fulfill
+         * the minimum requirement of {@link DangerousGoods}.
+         *
+         * @return  new {@link DangerousGoods} with attributes specified in {@link Builder}
+         */
         public DangerousGoods buildAndValidate() {
 
             DangerousGoods dangerousGoods = this.build();

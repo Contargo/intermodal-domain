@@ -16,7 +16,7 @@ import static tec.units.ri.unit.Units.METRE;
 
 
 /**
- * Helper class for conversion between different units.
+ * For conversion between different units.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */

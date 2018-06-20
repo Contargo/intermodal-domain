@@ -15,22 +15,6 @@ import javax.validation.Payload;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-
-@Documented
-@Constraint(validatedBy = TransportValidator.class)
-@Target({ ElementType.METHOD, ElementType.FIELD })
-@Retention(RetentionPolicy.RUNTIME)
-@interface TransportConstraint {
-
-    String message() default "Transport invalid";
-
-
-    Class<?>[] groups() default {};
-
-
-    Class<? extends Payload>[] payload() default {};
-}
-
 public class TransportValidator implements ConstraintValidator<TransportConstraint, Transport> {
 
     public TransportValidator() {
@@ -70,4 +54,19 @@ public class TransportValidator implements ConstraintValidator<TransportConstrai
             && stops.stream().flatMap(stop -> stop.getLocations().stream()).anyMatch(location ->
                     location.getCity() != null && location.getDesignation() != null);
     }
+}
+
+@Documented
+@Constraint(validatedBy = TransportValidator.class)
+@Target({ ElementType.METHOD, ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+@interface TransportConstraint {
+
+    String message() default "Transport invalid";
+
+
+    Class<?>[] groups() default {};
+
+
+    Class<? extends Payload>[] payload() default {};
 }

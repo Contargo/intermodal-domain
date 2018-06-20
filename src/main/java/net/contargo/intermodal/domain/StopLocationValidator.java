@@ -15,6 +15,17 @@ import javax.validation.Payload;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
+
+public class StopLocationValidator implements ConstraintValidator<TransportConstraint, List<Location>> {
+
+    @Override
+    public boolean isValid(List<Location> value, ConstraintValidatorContext context) {
+
+        return value != null && !value.isEmpty() && value.stream().noneMatch(location ->
+                    location == null || location.getCity() == null || location.getDesignation() == null);
+    }
+}
+
 @Documented
 @Constraint(validatedBy = StopLocationValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD })
@@ -28,14 +39,4 @@ import javax.validation.Payload;
 
 
     Class<? extends Payload>[] payload() default {};
-}
-
-public class StopLocationValidator implements ConstraintValidator<TransportConstraint, List<Location>> {
-
-    @Override
-    public boolean isValid(List<Location> value, ConstraintValidatorContext context) {
-
-        return value != null && !value.isEmpty() && value.stream().noneMatch(location ->
-                    location == null || location.getCity() == null || location.getDesignation() == null);
-    }
 }

@@ -1,16 +1,11 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import java.time.Instant;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 
 /**
@@ -18,6 +13,7 @@ import javax.validation.constraints.NotNull;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
+ * @minimum_requirement  stop
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

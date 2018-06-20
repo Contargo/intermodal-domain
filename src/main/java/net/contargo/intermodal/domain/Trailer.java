@@ -31,7 +31,7 @@ import static tec.units.ri.unit.Units.METRE;
  * @definition_english  Trailer vehicle which has no front axle so a substantial part of its total weight is
  *                      transferred to a tractor unit. (@see DIN 70010:2001, 2.3 — modified, „(see 1.2.2.3.2) (auch
  *                      Deichselachse (Dolly))“ gestrichen, Anmerkung 1 hinzugefügt)
- * @minimum_requirement  type, size, craneable, also @see minimum requirements of {@link LoadingUnit}
+ * @minimum_requirement  type, size, craneable, @see also minimum requirements of {@link LoadingUnit}
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -219,6 +219,11 @@ public class Trailer extends LoadingUnit {
         }
 
 
+        /**
+         * Builds {@link Trailer} without input validation.
+         *
+         * @return  new {@link Trailer} with attributes specified in {@link Builder}
+         */
         public Trailer build() {
 
             Trailer trailer = new Trailer();
@@ -245,6 +250,12 @@ public class Trailer extends LoadingUnit {
         }
 
 
+        /**
+         * Validates the input and builds {@link Trailer}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Trailer}.
+         *
+         * @return  new {@link Trailer} with attributes specified in {@link Builder}
+         */
         public Trailer buildAndValidate() {
 
             Trailer trailer = this.build();

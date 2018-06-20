@@ -152,6 +152,11 @@ public class Operator {
         }
 
 
+        /**
+         * Builds {@link Operator} without input validation.
+         *
+         * @return  new {@link Operator} with attributes specified in {@link Builder}
+         */
         public Operator build() {
 
             Operator operator = new Operator();
@@ -166,6 +171,12 @@ public class Operator {
         }
 
 
+        /**
+         * Validates the input and builds {@link Operator}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Operator}.
+         *
+         * @return  new {@link Operator} with attributes specified in {@link Builder}
+         */
         public Operator buildAndValidate() {
 
             Operator operator = this.build();

@@ -83,6 +83,11 @@ public class Seal {
         }
 
 
+        /**
+         * Builds {@link Seal} without input validation.
+         *
+         * @return  new {@link Seal} with attributes specified in {@link Builder}
+         */
         public Seal build() {
 
             Seal seal = new Seal();

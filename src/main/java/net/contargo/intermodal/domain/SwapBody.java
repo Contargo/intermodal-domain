@@ -33,7 +33,7 @@ import static tec.units.ri.unit.Units.KILOGRAM;
  * @definition_english  Loading unit intended for the transport of goods, optimized with regard to the dimensions of
  *                      road vehicles and equipped with gripping edges for the transfer between means of transport,
  *                      usually between road and rail transport.
- * @minimum_requirement  type, size, stackable, also @see minimum requirements of {@link LoadingUnit}
+ * @minimum_requirement  type, size, stackable, @see also minimum requirements of {@link LoadingUnit}
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -221,6 +221,11 @@ public class SwapBody extends LoadingUnit {
         }
 
 
+        /**
+         * Builds {@link SwapBody} without input validation.
+         *
+         * @return  new {@link SwapBody} with attributes specified in {@link Builder}
+         */
         public SwapBody build() {
 
             SwapBody swapBody = new SwapBody();
@@ -247,6 +252,12 @@ public class SwapBody extends LoadingUnit {
         }
 
 
+        /**
+         * Validates the input and builds {@link SwapBody}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link SwapBody}.
+         *
+         * @return  new {@link SwapBody} with attributes specified in {@link Builder}
+         */
         public SwapBody buildAndValidate() {
 
             SwapBody swapBody = this.build();

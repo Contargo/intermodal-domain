@@ -118,6 +118,11 @@ public class Vessel implements MeansOfTransport {
         }
 
 
+        /**
+         * Builds {@link Vessel} without input validation.
+         *
+         * @return  new {@link Vessel} with attributes specified in {@link Builder}
+         */
         public Vessel build() {
 
             Vessel vessel = new Vessel();
@@ -130,6 +135,12 @@ public class Vessel implements MeansOfTransport {
         }
 
 
+        /**
+         * Validates the input and builds {@link Vessel}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Vessel}.
+         *
+         * @return  new {@link Vessel} with attributes specified in {@link Builder}
+         */
         public Vessel buildAndValidate() {
 
             Vessel vessel = this.build();

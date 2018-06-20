@@ -14,6 +14,19 @@ import javax.validation.Payload;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
+public class RegistrationVolumeValidator implements ConstraintValidator<RegistrationVolumeConstraint, Volume> {
+
+    public RegistrationVolumeValidator() {
+
+        // for testing
+    }
+
+    @Override
+    public boolean isValid(Volume volume, ConstraintValidatorContext context) {
+
+        return volume.getToDischarge() != null && volume.getToLoad() != null;
+    }
+}
 
 @Documented
 @Constraint(validatedBy = RegistrationVolumeValidator.class)
@@ -28,18 +41,4 @@ import javax.validation.Payload;
 
 
     Class<? extends Payload>[] payload() default {};
-}
-
-public class RegistrationVolumeValidator implements ConstraintValidator<RegistrationVolumeConstraint, Volume> {
-
-    public RegistrationVolumeValidator() {
-
-        // for testing
-    }
-
-    @Override
-    public boolean isValid(Volume volume, ConstraintValidatorContext context) {
-
-        return volume.getToDischarge() != null && volume.getToLoad() != null;
-    }
 }

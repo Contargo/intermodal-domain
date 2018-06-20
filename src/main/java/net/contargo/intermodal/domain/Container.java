@@ -36,7 +36,7 @@ import static tec.units.ri.unit.Units.KILOGRAM;
  *                ISO 17261:2012-12, 3.14 — modifiziert, Änderung der Anmerkung)
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
- * @minimum_requirement  sizeType, type, size, also @see minimum requirements of {@link LoadingUnit}
+ * @minimum_requirement  sizeType, type, size, @see also minimum requirements of {@link LoadingUnit}
  */
 public class Container extends LoadingUnit {
 
@@ -237,6 +237,11 @@ public class Container extends LoadingUnit {
         }
 
 
+        /**
+         * Builds {@link Container} without input validation.
+         *
+         * @return  new {@link Container} with attributes specified in {@link Builder}
+         */
         public Container build() {
 
             Container container = new Container();
@@ -263,6 +268,12 @@ public class Container extends LoadingUnit {
         }
 
 
+        /**
+         * Validates the input and builds {@link Container}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Container}.
+         *
+         * @return  new {@link Container} with attributes specified in {@link Builder}
+         */
         public Container buildAndValidate() {
 
             Container container = this.build();

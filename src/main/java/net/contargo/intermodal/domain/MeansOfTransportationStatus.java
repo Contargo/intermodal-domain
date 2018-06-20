@@ -214,6 +214,11 @@ public class MeansOfTransportationStatus {
         }
 
 
+        /**
+         * Builds {@link MeansOfTransportationStatus} without input validation.
+         *
+         * @return  new {@link MeansOfTransportationStatus} with attributes specified in {@link Builder}
+         */
         public MeansOfTransportationStatus build() {
 
             MeansOfTransportationStatus meansOfTransportationStatus = new MeansOfTransportationStatus();
@@ -228,6 +233,12 @@ public class MeansOfTransportationStatus {
         }
 
 
+        /**
+         * Validates the input and builds {@link MeansOfTransportationStatus}. Throws IllegalStateException if input
+         * doesn't fulfill the minimum requirement of {@link MeansOfTransportationStatus}.
+         *
+         * @return  new {@link MeansOfTransportationStatus} with attributes specified in {@link Builder}
+         */
         public MeansOfTransportationStatus buildAndValidate() {
 
             MeansOfTransportationStatus meansOfTransportationStatus = this.build();

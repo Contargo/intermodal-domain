@@ -243,6 +243,11 @@ public class StatusLU {
         }
 
 
+        /**
+         * Builds {@link StatusLU} without input validation.
+         *
+         * @return  new {@link StatusLU} with attributes specified in {@link Builder}
+         */
         public StatusLU build() {
 
             StatusLU statusLU = new StatusLU();
@@ -259,6 +264,12 @@ public class StatusLU {
         }
 
 
+        /**
+         * Validates the input and builds {@link StatusLU}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link StatusLU}.
+         *
+         * @return  new {@link StatusLU} with attributes specified in {@link Builder}
+         */
         public StatusLU buildAndValidate() {
 
             StatusLU statusLU = this.build();

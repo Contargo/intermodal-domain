@@ -13,20 +13,6 @@ import javax.validation.Payload;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-@Documented
-@Constraint(validatedBy = DestinationLocationValidator.class)
-@Target({ ElementType.METHOD, ElementType.FIELD })
-@Retention(RetentionPolicy.RUNTIME)
-@interface DestinationLocationConstraint {
-
-    String message() default "Location invalid";
-
-
-    Class<?>[] groups() default {};
-
-
-    Class<? extends Payload>[] payload() default {};
-}
 
 public class DestinationLocationValidator implements ConstraintValidator<TransportConstraint, Location> {
 
@@ -40,4 +26,19 @@ public class DestinationLocationValidator implements ConstraintValidator<Transpo
 
         return value != null && value.getDesignation() != null;
     }
+}
+
+@Documented
+@Constraint(validatedBy = DestinationLocationValidator.class)
+@Target({ ElementType.METHOD, ElementType.FIELD })
+@Retention(RetentionPolicy.RUNTIME)
+@interface DestinationLocationConstraint {
+
+    String message() default "Location invalid";
+
+
+    Class<?>[] groups() default {};
+
+
+    Class<? extends Payload>[] payload() default {};
 }

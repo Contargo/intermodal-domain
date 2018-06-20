@@ -321,6 +321,11 @@ public class Chassis implements MeansOfTransport {
         }
 
 
+        /**
+         * Builds {@link Chassis} without input validation.
+         *
+         * @return  new {@link Chassis} with attributes specified in {@link Builder}
+         */
         public Chassis build() {
 
             Chassis chassis = new Chassis();
@@ -344,6 +349,12 @@ public class Chassis implements MeansOfTransport {
         }
 
 
+        /**
+         * Validates the input and builds {@link Chassis}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Chassis}.
+         *
+         * @return  new {@link Chassis} with attributes specified in {@link Builder}
+         */
         public Chassis buildAndValidate() {
 
             Chassis chassis = this.build();

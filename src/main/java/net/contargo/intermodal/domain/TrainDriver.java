@@ -143,6 +143,11 @@ public class TrainDriver extends Person {
         }
 
 
+        /**
+         * Builds {@link TrainDriver} without input validation.
+         *
+         * @return  new {@link TrainDriver} with attributes specified in {@link Builder}
+         */
         public TrainDriver build() {
 
             TrainDriver trainDriver = new TrainDriver();
@@ -166,6 +171,12 @@ public class TrainDriver extends Person {
         }
 
 
+        /**
+         * Validates the input and builds {@link TrainDriver}. Throws IllegalStateException if input doesn't fulfill
+         * the minimum requirement of {@link TrainDriver}.
+         *
+         * @return  new {@link TrainDriver} with attributes specified in {@link Builder}
+         */
         public TrainDriver buildAndValidate() {
 
             TrainDriver trainDriver = this.build();

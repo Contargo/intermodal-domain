@@ -98,6 +98,11 @@ public class Customs {
         }
 
 
+        /**
+         * Builds {@link Customs} without input validation.
+         *
+         * @return  new {@link Customs} with attributes specified in {@link Builder}
+         */
         public Customs build() {
 
             Customs customs = new Customs();
@@ -109,6 +114,12 @@ public class Customs {
         }
 
 
+        /**
+         * Validates the input and builds {@link Customs}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Customs}.
+         *
+         * @return  new {@link Customs} with attributes specified in {@link Builder}
+         */
         public Customs buildAndValidate() {
 
             Customs customs = this.build();

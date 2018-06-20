@@ -13,6 +13,20 @@ import javax.validation.Payload;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
+public class DestinationValidator implements ConstraintValidator<DestinationConstraint, Destination> {
+
+    public DestinationValidator() {
+
+        // for testing
+    }
+
+    @Override
+    public boolean isValid(Destination destination, ConstraintValidatorContext context) {
+
+        return destination != null && destination.getLocation() != null
+            && destination.getLocation().getDesignation() != null;
+    }
+}
 
 @Documented
 @Constraint(validatedBy = DestinationValidator.class)
@@ -27,19 +41,4 @@ import javax.validation.Payload;
 
 
     Class<? extends Payload>[] payload() default {};
-}
-
-public class DestinationValidator implements ConstraintValidator<DestinationConstraint, Destination> {
-
-    public DestinationValidator() {
-
-        // for testing
-    }
-
-    @Override
-    public boolean isValid(Destination destination, ConstraintValidatorContext context) {
-
-        return destination != null && destination.getLocation() != null
-            && destination.getLocation().getDesignation() != null;
-    }
 }

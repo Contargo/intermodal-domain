@@ -165,6 +165,11 @@ public class Waste {
         }
 
 
+        /**
+         * Builds {@link Waste} without input validation.
+         *
+         * @return  new {@link Waste} with attributes specified in {@link Builder}
+         */
         public Waste build() {
 
             Waste waste = new Waste();
@@ -181,6 +186,12 @@ public class Waste {
         }
 
 
+        /**
+         * Validates the input and builds {@link Waste}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Waste}.
+         *
+         * @return  new {@link Waste} with attributes specified in {@link Builder}
+         */
         public Waste buildAndValidate() {
 
             Waste waste = this.build();

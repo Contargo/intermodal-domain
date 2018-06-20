@@ -5,13 +5,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import systems.uom.common.Imperial;
-
 import tec.units.ri.quantity.Quantities;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Length;
-import javax.measure.quantity.Mass;
 
 import static systems.uom.common.USCustomary.FOOT;
 
@@ -369,6 +366,11 @@ public class Barge implements MeansOfTransport {
         }
 
 
+        /**
+         * Builds {@link Barge} without input validation.
+         *
+         * @return  new {@link Barge} with attributes specified in {@link Builder}
+         */
         public Barge build() {
 
             Barge barge = new Barge();
@@ -394,6 +396,12 @@ public class Barge implements MeansOfTransport {
         }
 
 
+        /**
+         * Validates the input and builds {@link Barge}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Barge}.
+         *
+         * @return  new {@link Barge} with attributes specified in {@link Builder}
+         */
         public Barge buildAndValidate() {
 
             Barge barge = this.build();

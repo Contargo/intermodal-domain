@@ -1,11 +1,8 @@
 package net.contargo.intermodal.domain;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
 import javax.validation.Validation;
 import javax.validation.ValidatorFactory;
 
@@ -17,6 +14,12 @@ import javax.validation.ValidatorFactory;
  */
 class Validator {
 
+    /**
+     * Checks if an object fulfills its minimum requirement as specified by DIGIT. Throws IllegalStateException if
+     * object is invalid.
+     *
+     * @param  object
+     */
     static void validate(Object object) {
 
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

@@ -13,6 +13,20 @@ import javax.validation.Payload;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
+public class LUOrderWeightValidator implements ConstraintValidator<LUOrderWeightConstraint, Weight> {
+
+    public LUOrderWeightValidator() {
+
+        // for testing
+    }
+
+    @Override
+    public boolean isValid(Weight weight, ConstraintValidatorContext context) {
+
+        return weight.getBrutto() != null && weight.getNetto() != null && weight.getTare() != null;
+    }
+}
+
 @Documented
 @Constraint(validatedBy = LUOrderWeightValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD })
@@ -26,18 +40,4 @@ import javax.validation.Payload;
 
 
     Class<? extends Payload>[] payload() default {};
-}
-
-public class LUOrderWeightValidator implements ConstraintValidator<LUOrderWeightConstraint, Weight> {
-
-    public LUOrderWeightValidator() {
-
-        // for testing
-    }
-
-    @Override
-    public boolean isValid(Weight weight, ConstraintValidatorContext context) {
-
-        return weight.getBrutto() != null && weight.getNetto() != null && weight.getTare() != null;
-    }
 }

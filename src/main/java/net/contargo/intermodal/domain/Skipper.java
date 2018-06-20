@@ -130,6 +130,11 @@ public class Skipper extends Person {
         }
 
 
+        /**
+         * Builds {@link Skipper} without input validation.
+         *
+         * @return  new {@link Skipper} with attributes specified in {@link Builder}
+         */
         public Skipper build() {
 
             Skipper skipper = new Skipper();
@@ -153,6 +158,12 @@ public class Skipper extends Person {
         }
 
 
+        /**
+         * Validates the input and builds {@link Skipper}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Skipper}.
+         *
+         * @return  new {@link Skipper} with attributes specified in {@link Builder}
+         */
         public Skipper buildAndValidate() {
 
             Skipper skipper = this.build();

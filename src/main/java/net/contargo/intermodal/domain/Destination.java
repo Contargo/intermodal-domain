@@ -153,6 +153,11 @@ public class Destination {
         }
 
 
+        /**
+         * Builds {@link Destination} without input validation.
+         *
+         * @return  new {@link Destination} with attributes specified in {@link Builder}
+         */
         public Destination build() {
 
             Destination destination = new Destination();
@@ -165,6 +170,12 @@ public class Destination {
         }
 
 
+        /**
+         * Validates the input and builds {@link Destination}. Throws IllegalStateException if input doesn't fulfill
+         * the minimum requirement of {@link Destination}.
+         *
+         * @return  new {@link Destination} with attributes specified in {@link Builder}
+         */
         public Destination buildAndValidate() {
 
             Destination destination = this.build();

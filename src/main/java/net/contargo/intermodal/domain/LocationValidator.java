@@ -14,6 +14,20 @@ import javax.validation.Payload;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
+public class LocationValidator implements ConstraintValidator<TransportConstraint, Location> {
+
+    public LocationValidator() {
+
+        // OK
+    }
+
+    @Override
+    public boolean isValid(Location value, ConstraintValidatorContext context) {
+
+        return value != null && value.getDesignation() != null && value.getCity() != null;
+    }
+}
+
 @Documented
 @Constraint(validatedBy = LocationValidator.class)
 @Target({ ElementType.METHOD, ElementType.FIELD })
@@ -27,18 +41,4 @@ import javax.validation.Payload;
 
 
     Class<? extends Payload>[] payload() default {};
-}
-
-public class LocationValidator implements ConstraintValidator<TransportConstraint, Location> {
-
-    public LocationValidator() {
-
-        // OK
-    }
-
-    @Override
-    public boolean isValid(Location value, ConstraintValidatorContext context) {
-
-        return value != null && value.getDesignation() != null && value.getCity() != null;
-    }
 }

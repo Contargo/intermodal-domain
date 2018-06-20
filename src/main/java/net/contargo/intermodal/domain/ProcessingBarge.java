@@ -288,6 +288,11 @@ public class ProcessingBarge {
         }
 
 
+        /**
+         * Builds {@link ProcessingBarge} without input validation.
+         *
+         * @return  new {@link ProcessingBarge} with attributes specified in {@link Builder}
+         */
         public ProcessingBarge build() {
 
             ProcessingBarge processingBarge = new ProcessingBarge();
@@ -305,6 +310,12 @@ public class ProcessingBarge {
         }
 
 
+        /**
+         * Validates the input and builds {@link ProcessingBarge}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link ProcessingBarge}.
+         *
+         * @return  new {@link ProcessingBarge} with attributes specified in {@link Builder}
+         */
         public ProcessingBarge buildAndValidate() {
 
             ProcessingBarge processingBarge = this.build();
