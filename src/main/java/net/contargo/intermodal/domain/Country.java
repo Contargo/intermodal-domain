@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Arrays;
 import java.util.Locale;
-import java.util.logging.Logger;
 
 
 /**
@@ -17,8 +16,6 @@ import java.util.logging.Logger;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 class Country {
-
-    private static final Logger LOG = Logger.getLogger(Country.class.getName());
 
     /**
      * 2 characters (UN/LOCODE).
@@ -47,12 +44,13 @@ class Country {
     public void setCode(String code) {
 
         if (code != null && code.length() != 2) {
-            LOG.warning(String.format(
-                    "The country code \'%s\' has the wrong length. Please use the 2 characters LOCODE.", code));
+            throw new IllegalArgumentException(String.format(
+                    "Wrong length of country code \'%s\'. Please use 2 characters LOCODE.", code));
         }
 
         if (code != null && Arrays.stream(Locale.getISOCountries()).noneMatch(country -> country.equals(code))) {
-            LOG.warning(String.format("The country code \'%s\' was not found in Locale.getISOCountries()", code));
+            throw new IllegalArgumentException(String.format(
+                    "Invalid country code \'%s\': Was not found in Locale.getISOCountries().", code));
         }
 
         this.code = code;
