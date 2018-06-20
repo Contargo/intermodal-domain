@@ -100,7 +100,6 @@ public class Container extends LoadingUnit {
 
         private String identification;
         private String number;
-        private LoadingUnitCategory category;
         private Quantity<Mass> weightBruttoMax;
         private Quantity<Mass> weightNettoMax;
         private String sizeType;
@@ -158,7 +157,12 @@ public class Container extends LoadingUnit {
 
             this.sizeType = sizeType;
 
-            getInformationFromSizeType();
+            if (sizeType != null && sizeType.length() == 4) {
+                getInformationFromSizeType();
+            } else {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid container size type \'%s\': Wrong length of sizeType.", sizeType));
+            }
 
             return this;
         }
@@ -215,9 +219,9 @@ public class Container extends LoadingUnit {
 
         public Builder withSize(Double size, LengthUnit unit) {
 
-            if (unit.equals(LengthUnit.FOOT)) {
+            if (unit.equals(LengthUnit.FOOT) && size != null) {
                 this.size = Quantities.getQuantity(size, FOOT);
-            } else if (unit.equals(LengthUnit.METRE)) {
+            } else if (unit.equals(LengthUnit.METRE) && size != null) {
                 this.size = UnitConverter.metreToFoot(size);
             }
 

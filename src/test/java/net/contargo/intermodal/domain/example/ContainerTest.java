@@ -29,8 +29,8 @@ class ContainerTest {
                 .isReefer(false)
                 .withOperator("Contargo")
                 .withSizeType("45G0")
-                .withType("HIGH CUBE CONTAINER")
-                .withSize(21.58, LengthUnit.FOOT)
+                .withSize(40.0, LengthUnit.FOOT)
+                .withType("General purpose container (without ventilation)")
                 .buildAndValidate();
 
         assertEquals("OOOCSSSSSS", container.getIdentification());
@@ -44,8 +44,8 @@ class ContainerTest {
         assertFalse(container.isReefer());
         assertEquals("Contargo", container.getOperator());
         assertEquals("45G0", container.getSizeType());
-        assertEquals("HIGH CUBE CONTAINER", container.getType());
-        assertEquals(21.58, container.getSize().getValue().doubleValue());
+        assertEquals("General purpose container (without ventilation)", container.getType());
+        assertEquals(40.0, container.getSize().getValue().doubleValue());
     }
 
 
@@ -56,8 +56,8 @@ class ContainerTest {
             .withNumber("OOOCSSSSSS")
             .isReefer(false)
             .withSizeType("45G0")
-            .withType("HIGH CUBE CONTAINER")
-            .withSize(6.58, LengthUnit.METRE)
+            .withType("General purpose container (without ventilation)")
+            .withSize(40.0, LengthUnit.FOOT)
             .buildAndValidate();
     }
 
@@ -83,7 +83,7 @@ class ContainerTest {
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withSizeType("45G0")
-                .withType("HIGH CUBE CONTAINER")
+                .withType("General purpose container (without ventilation)")
                 .withSize(6.58, LengthUnit.METRE)
                 .withWeightBruttoMax(30.48, MassUnit.TON)
                 .withWeightNettoMax(28.08, MassUnit.TON)
@@ -97,17 +97,17 @@ class ContainerTest {
 
 
     @Test
-    void ensureSizeCanBeSetInFoot() {
+    void ensureSizeCanBeSetInMetre() {
 
         Container container = Container.newBuilder()
                 .withNumber("OOOCSSSSSS")
                 .isReefer(false)
                 .withSizeType("45G0")
-                .withType("HIGH CUBE CONTAINER")
-                .withSize(21.58, LengthUnit.FOOT)
+                .withType("General purpose container (without ventilation)")
+                .withSize(12.192, LengthUnit.METRE)
                 .buildAndValidate();
 
-        assertEquals(21.58, container.getSize().getValue().doubleValue(), 0.1);
+        assertEquals(40.0, container.getSize().getValue().doubleValue(), 0.1);
     }
 
 
@@ -119,8 +119,8 @@ class ContainerTest {
                 Container.newBuilder()
                     .isReefer(false)
                     .withSizeType("45G0")
-                    .withType("HIGH CUBE CONTAINER")
-                    .withSize(21.58, LengthUnit.FOOT)
+                    .withType("General purpose container (without ventilation)")
+                    .withSize(40.0, LengthUnit.FOOT)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -128,8 +128,8 @@ class ContainerTest {
                 Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
-                    .withType("HIGH CUBE CONTAINER")
-                    .withSize(21.58, LengthUnit.FOOT)
+                    .withType("General purpose container (without ventilation)")
+                    .withSize(40.0, LengthUnit.FOOT)
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -137,17 +137,29 @@ class ContainerTest {
                 Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
-                    .withSizeType("G0")
-                    .withSize(21.58, LengthUnit.FOOT)
+                    .withSizeType("45G0")
+                    .withType(null)
+                    .withSize(40.0, LengthUnit.FOOT)
                     .buildAndValidate());
 
-        assertThrows(IllegalStateException.class,
+        // Wrong type code in sizeType
+        assertThrows(IllegalArgumentException.class,
             () ->
                 Container.newBuilder()
                     .withNumber("OOOCSSSSSS")
                     .isReefer(false)
-                    .withSizeType("G0")
-                    .withType("HIGH CUBE CONTAINER")
+                    .withSizeType("45X0")
+                    .withSize(40.0, LengthUnit.FOOT)
+                    .buildAndValidate());
+
+        // Wrong length code sizeType
+        assertThrows(IllegalArgumentException.class,
+            () ->
+                Container.newBuilder()
+                    .withNumber("OOOCSSSSSS")
+                    .isReefer(false)
+                    .withSizeType("82G0")
+                    .withType("General purpose container (without ventilation)")
                     .buildAndValidate());
     }
 
@@ -165,8 +177,8 @@ class ContainerTest {
                 .isReefer(false)
                 .withOperator("Contargo")
                 .withSizeType("45G0")
-                .withType("HIGH CUBE CONTAINER")
-                .withSize(21.58, LengthUnit.FOOT)
+                .withType("General purpose container (without ventilation)")
+                .withSize(40.0, LengthUnit.FOOT)
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -186,7 +198,7 @@ class ContainerTest {
         assertFalse(deserialize.isReefer());
         assertEquals("Contargo", deserialize.getOperator());
         assertEquals("45G0", deserialize.getSizeType());
-        assertEquals("HIGH CUBE CONTAINER", deserialize.getType());
-        assertEquals(21.58, deserialize.getSize().getValue().doubleValue());
+        assertEquals("General purpose container (without ventilation)", deserialize.getType());
+        assertEquals(40.0, deserialize.getSize().getValue().doubleValue());
     }
 }

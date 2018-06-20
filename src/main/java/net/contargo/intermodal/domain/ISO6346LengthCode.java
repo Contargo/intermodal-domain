@@ -5,6 +5,8 @@ import java.util.Optional;
 
 
 /**
+ * Overview of valid ISO 6346 length codes and their according length in foot.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 public enum ISO6346LengthCode {

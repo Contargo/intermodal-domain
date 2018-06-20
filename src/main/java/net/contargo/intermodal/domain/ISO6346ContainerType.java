@@ -5,7 +5,7 @@ import java.util.Optional;
 
 
 /**
- * ISO 6346 type of a {@link Container}.
+ * Overview of valid ISO 6346 {@link Container} types.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
@@ -68,14 +68,8 @@ public enum ISO6346ContainerType {
     T9("T9", "Tank container (For gases)", "TG", "Minimum pressure (to be decided)"),
     A0("A0", "Air/surface container", "AS", "Air/surface container");
 
-    /**
-     * ISO 6346 Container Size Type e.g. 20G0 for GENERAL PURPOSE CONTAINERS
-     */
     private String type;
 
-    /**
-     * e.g. flat, open top, high cube, bulk, ISO, reefer- or tank containers.
-     */
     private String typeDesignation;
 
     private String mainCharacteristics;
