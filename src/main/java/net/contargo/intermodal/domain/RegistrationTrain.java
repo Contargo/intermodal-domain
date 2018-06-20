@@ -42,14 +42,14 @@ public class RegistrationTrain {
      * @definition_german  Produktnummer oder Name
      * @definition_english  product number or name
      */
-    @NotNull(message = "trainTitle is part of minimum requirement")
+    @NotNull(message = "trainTitle is part of minimum requirement and must not be null")
     private String trainTitle;
 
     /**
      * @name_german  Eisenbahnverkehrsunternehmen
      * @abbreviation_german  EVU
      */
-    @NotNull(message = "railwayOperator is part of minimum requirement")
+    @NotNull(message = "railwayOperator is part of minimum requirement and must not be null")
     private Operator railwayOperator;
 
     /**
@@ -60,35 +60,35 @@ public class RegistrationTrain {
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
-    @NotNull(message = "terminalEta is part of minimum requirement")
+    @NotNull(message = "terminalEta is part of minimum requirement and must not be null")
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant terminalEta;
 
     /**
      * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
-    @NotNull(message = "terminalEtd is part of minimum requirement")
+    @NotNull(message = "terminalEtd is part of minimum requirement and must not be null")
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant terminalEtd;
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
-    @NotNull(message = "shuntingYardEta is part of minimum requirement")
+    @NotNull(message = "shuntingYardEta is part of minimum requirement and must not be null")
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant shuntingYardEta;
 
-    @NotNull(message = "shunter is part of minimum requirement")
+    @NotNull(message = "shunter is part of minimum requirement and must not be null")
     private String shunter;
 
     /**
      * in meter.
      */
-    @NotNull(message = "totalLength is part of minimum requirement")
+    @NotNull(message = "totalLength is part of minimum requirement and must not be null")
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Length> totalLength;
 
-    @NotNull(message = "waggonQuantity is part of minimum requirement")
+    @NotNull(message = "waggonQuantity is part of minimum requirement and must not be null")
     private Integer waggonQuantity;
 
     private DangerousGoods dangerousGoodsIndication;
@@ -96,14 +96,14 @@ public class RegistrationTrain {
     /**
      * everything in number of LUs.
      */
-    @NotNull(message = "volume is part of minimum requirement")
+    @NotNull(message = "volume is part of minimum requirement and must not be null")
     @RegistrationVolumeConstraint(message = "toDischarge and toLoad are part of the minimum Requirement of Volume")
     private Volume volume;
 
     /**
      * @name_german  Trassennummer
      */
-    @NotNull(message = "trainPaths is part of minimum requirement")
+    @NotNull(message = "trainPaths is part of minimum requirement and must not be null")
     private String trainPaths;
 
     public static Builder newBuilder() {
@@ -380,7 +380,7 @@ public class RegistrationTrain {
 
             RegistrationTrain registrationBarge = this.build();
 
-            Validator.validate(registrationBarge);
+            MinimumRequirementValidator.validate(registrationBarge);
 
             return registrationBarge;
         }

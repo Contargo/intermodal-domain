@@ -40,17 +40,17 @@ public class Trailer extends LoadingUnit {
     /**
      * e.g&#046; XL, ...
      */
-    @NotNull(message = "type is part of minimum requirement")
+    @NotNull(message = "type is part of minimum requirement and must not be null")
     private String type;
 
     /**
      * in meter.
      */
-    @NotNull(message = "size is part of minimum requirement")
+    @NotNull(message = "size is part of minimum requirement and must not be null")
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Length> size;
 
-    @NotNull(message = "craneable is part of minimum requirement")
+    @NotNull(message = "craneable is part of minimum requirement and must not be null")
     private Boolean craneable;
 
     public static Builder newBuilder() {
@@ -260,7 +260,7 @@ public class Trailer extends LoadingUnit {
 
             Trailer trailer = this.build();
 
-            Validator.validate(trailer);
+            MinimumRequirementValidator.validate(trailer);
 
             return trailer;
         }

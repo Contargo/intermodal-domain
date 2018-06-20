@@ -145,7 +145,7 @@ public class Vessel implements MeansOfTransport {
 
             Vessel vessel = this.build();
 
-            Validator.validate(vessel);
+            MinimumRequirementValidator.validate(vessel);
 
             return vessel;
         }

@@ -322,7 +322,7 @@ public class Truck implements MeansOfTransport {
 
             Truck truck = this.build();
 
-            Validator.validate(truck);
+            MinimumRequirementValidator.validate(truck);
 
             return truck;
         }

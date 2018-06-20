@@ -243,7 +243,7 @@ public class MeansOfTransportationStatus {
 
             MeansOfTransportationStatus meansOfTransportationStatus = this.build();
 
-            Validator.validate(meansOfTransportationStatus);
+            MinimumRequirementValidator.validate(meansOfTransportationStatus);
 
             return meansOfTransportationStatus;
         }

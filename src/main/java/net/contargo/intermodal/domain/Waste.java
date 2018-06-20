@@ -39,7 +39,7 @@ public class Waste {
      * @definition_german  Nummer zur Klassifizierung von Abfällen auf der Basis der Abfallverzeichnis-Verordnung.
      * @abbreviation_german  ASN
      */
-    @NotNull(message = "keyID is part of minimum requirement")
+    @NotNull(message = "keyID is part of minimum requirement and must not be null")
     private String keyID;
 
     /**
@@ -196,7 +196,7 @@ public class Waste {
 
             Waste waste = this.build();
 
-            Validator.validate(waste);
+            MinimumRequirementValidator.validate(waste);
 
             return waste;
         }

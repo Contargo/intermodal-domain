@@ -181,7 +181,7 @@ public class TrainDriver extends Person {
 
             TrainDriver trainDriver = this.build();
 
-            Validator.validate(trainDriver);
+            MinimumRequirementValidator.validate(trainDriver);
 
             return trainDriver;
         }

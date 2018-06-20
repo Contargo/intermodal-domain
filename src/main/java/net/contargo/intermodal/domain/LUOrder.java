@@ -42,17 +42,17 @@ public class LUOrder {
 
     private String reference;
 
-    @NotNull(message = "loadingUnit is part of minimum requirement")
+    @NotNull(message = "loadingUnit is part of minimum requirement and must not be null")
     private LoadingUnit loadingUnit;
 
-    @NotNull(message = "weight is part of minimum requirement")
+    @NotNull(message = "weight is part of minimum requirement and must not be null")
     @LUOrderWeightConstraint(message = "brutto, netto and tare are part of minimum requirement")
     private Weight weight;
 
-    @NotNull(message = "dangerousGoodsIndication is part of minimum requirement")
+    @NotNull(message = "dangerousGoodsIndication is part of minimum requirement and must not be null")
     private DangerousGoods dangerousGoodsIndication;
 
-    @NotNull(message = "wasteIndication is part of minimum requirement")
+    @NotNull(message = "wasteIndication is part of minimum requirement and must not be null")
     private Waste wasteIndication;
 
     /**
@@ -405,7 +405,7 @@ public class LUOrder {
 
             LUOrder LUOrder = this.build();
 
-            Validator.validate(LUOrder);
+            MinimumRequirementValidator.validate(LUOrder);
 
             return LUOrder;
         }

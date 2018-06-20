@@ -12,6 +12,8 @@ import javax.validation.constraints.NotEmpty;
  * Contains information about pick ups, drop offs and stops of an {@link Order}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04 /** Contains information about pick ups, drop offs and stops of an {@link Order}.
  * @version  2018-04
  * @minimum_requirement  stop
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
@@ -22,7 +24,7 @@ class Transport {
     private Direction direction;
     private PickUp pickUp = new PickUp();
     private DropOff dropOff = new DropOff();
-    @NotEmpty(message = "stop is part of minimum requirement")
+    @NotEmpty(message = "stop is part of minimum requirement and must not be null")
     private List<Stop> stop = new ArrayList<>();
 
     void setDirection(Direction direction) {

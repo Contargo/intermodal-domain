@@ -359,7 +359,7 @@ public class Chassis implements MeansOfTransport {
 
             Chassis chassis = this.build();
 
-            Validator.validate(chassis);
+            MinimumRequirementValidator.validate(chassis);
 
             return chassis;
         }

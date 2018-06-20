@@ -406,7 +406,7 @@ public class Barge implements MeansOfTransport {
 
             Barge barge = this.build();
 
-            Validator.validate(barge);
+            MinimumRequirementValidator.validate(barge);
 
             return barge;
         }

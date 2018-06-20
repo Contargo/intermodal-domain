@@ -270,7 +270,7 @@ public class ProcessingTrain {
 
             ProcessingTrain processingTrain = this.build();
 
-            Validator.validate(processingTrain);
+            MinimumRequirementValidator.validate(processingTrain);
 
             return processingTrain;
         }

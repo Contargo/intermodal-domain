@@ -22,7 +22,7 @@ public class Location {
      * @definition_german  Eigenname Terminal
      * @definition_english  name of terminal
      */
-    @NotNull(message = "designation is part of minimum requirement")
+    @NotNull(message = "designation is part of minimum requirement and must not be null")
     private String designation;
     private String city;
 

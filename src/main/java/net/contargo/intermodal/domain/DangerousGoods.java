@@ -30,7 +30,7 @@ public class DangerousGoods {
     /**
      * 4 digits.
      */
-    @NotNull(message = "unNumber is part of minimum requirement")
+    @NotNull(message = "unNumber is part of minimum requirement and must not be null")
     private String unNumber;
 
     /**
@@ -273,7 +273,7 @@ public class DangerousGoods {
 
             DangerousGoods dangerousGoods = this.build();
 
-            Validator.validate(dangerousGoods);
+            MinimumRequirementValidator.validate(dangerousGoods);
 
             return dangerousGoods;
         }

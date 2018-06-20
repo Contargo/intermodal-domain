@@ -43,19 +43,19 @@ public class Container extends LoadingUnit {
     /**
      * ISO 6346 Container Size Type e.g. 20G0 for GENERAL PURPOSE CONTAINERS
      */
-    @NotNull(message = "sizeType is part of minimum requirement")
+    @NotNull(message = "sizeType is part of minimum requirement and must not be null")
     private String sizeType;
 
     /**
      * e.g. flat, open top, high cube, bulk, ISO, reefer- or tank containers.
      */
-    @NotNull(message = "type is part of minimum requirement")
+    @NotNull(message = "type is part of minimum requirement and must not be null")
     private String type;
 
     /**
      * in foot.
      */
-    @NotNull(message = "size is part of minimum requirement")
+    @NotNull(message = "size is part of minimum requirement and must not be null")
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Length> size;
 
@@ -278,7 +278,7 @@ public class Container extends LoadingUnit {
 
             Container container = this.build();
 
-            Validator.validate(container);
+            MinimumRequirementValidator.validate(container);
 
             return container;
         }

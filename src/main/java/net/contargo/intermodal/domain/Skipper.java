@@ -168,7 +168,7 @@ public class Skipper extends Person {
 
             Skipper skipper = this.build();
 
-            Validator.validate(skipper);
+            MinimumRequirementValidator.validate(skipper);
 
             return skipper;
         }

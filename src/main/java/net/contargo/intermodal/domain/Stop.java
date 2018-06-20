@@ -26,7 +26,7 @@ public class Stop {
     /**
      * Multi stops possible.
      */
-    @NotNull(message = "locations is part of minimum requirement")
+    @NotNull(message = "locations is part of minimum requirement and must not be null")
     @StopLocationConstraint(message = "locations city and designation are part of the minimum requirement of stop")
     private List<Location> locations;
 
@@ -225,7 +225,7 @@ public class Stop {
 
             Stop stop = this.build();
 
-            Validator.validate(stop);
+            MinimumRequirementValidator.validate(stop);
 
             return stop;
         }

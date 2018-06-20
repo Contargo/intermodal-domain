@@ -124,7 +124,7 @@ public class Customs {
 
             Customs customs = this.build();
 
-            Validator.validate(customs);
+            MinimumRequirementValidator.validate(customs);
 
             return customs;
         }

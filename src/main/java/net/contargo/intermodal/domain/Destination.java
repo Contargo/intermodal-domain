@@ -22,7 +22,7 @@ public class Destination {
 
     private Seaport seaport;
 
-    @NotNull(message = "location is part of minimum requirement")
+    @NotNull(message = "location is part of minimum requirement and must not be null")
     @DestinationLocationConstraint(message = "location designation is part of the minimum requirement of designation")
     private Location location;
 
@@ -180,7 +180,7 @@ public class Destination {
 
             Destination destination = this.build();
 
-            Validator.validate(destination);
+            MinimumRequirementValidator.validate(destination);
 
             return destination;
         }

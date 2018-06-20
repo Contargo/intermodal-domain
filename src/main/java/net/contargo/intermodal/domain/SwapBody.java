@@ -42,17 +42,17 @@ public class SwapBody extends LoadingUnit {
     /**
      * e.g. Klasse A, Klasse C (C715, C745, C765, C782), Open Top
      */
-    @NotNull(message = "type is part of minimum requirement")
+    @NotNull(message = "type is part of minimum requirement and must not be null")
     private String type;
 
     /**
      * in foot.
      */
-    @NotNull(message = "size is part of minimum requirement")
+    @NotNull(message = "size is part of minimum requirement and must not be null")
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Length> size;
 
-    @NotNull(message = "stackable is part of minimum requirement")
+    @NotNull(message = "stackable is part of minimum requirement and must not be null")
     private Boolean stackable;
 
     public static Builder newBuilder() {
@@ -262,7 +262,7 @@ public class SwapBody extends LoadingUnit {
 
             SwapBody swapBody = this.build();
 
-            Validator.validate(swapBody);
+            MinimumRequirementValidator.validate(swapBody);
 
             return swapBody;
         }

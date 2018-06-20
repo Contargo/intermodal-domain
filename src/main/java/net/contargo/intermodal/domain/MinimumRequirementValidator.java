@@ -8,11 +8,11 @@ import javax.validation.ValidatorFactory;
 
 
 /**
- * Validator to check if the minimum requirements of an Object are fulfilled.
+ * MinimumRequirementValidator to check if the minimum requirements of an Object are fulfilled.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-class Validator {
+class MinimumRequirementValidator {
 
     /**
      * Checks if an object fulfills its minimum requirement as specified by DIGIT. Throws IllegalStateException if
@@ -26,7 +26,11 @@ class Validator {
         javax.validation.Validator validator = factory.getValidator();
 
         List<String> violations = new ArrayList<>();
-        validator.validate(object).forEach(violation -> {
+        validator.validate(object).stream().filter(violation ->
+                    !violation.getConstraintDescriptor()
+                    .getAnnotation()
+                    .toString()
+                    .contains("LoadingUnitNumberConstraint")).forEach(violation -> {
             if (!violation.getConstraintDescriptor().getAnnotation().toString().contains("NotNull")) {
                 violations.add(violation.getMessage());
             } else {
@@ -36,7 +40,7 @@ class Validator {
 
         if (!violations.isEmpty()) {
             String message = String.format(
-                    "Invalid Object %s: The following attributes have to be set to fulfill the minimum requirement: %s.",
+                    "Invalid Object %s: The following conditions have to be true to fulfill the minimum requirement: %s.",
                     object.getClass().getName(), String.join(", ", violations));
             throw new IllegalStateException(message);
         }

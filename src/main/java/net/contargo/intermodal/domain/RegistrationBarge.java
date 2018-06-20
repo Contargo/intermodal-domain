@@ -28,33 +28,33 @@ import javax.validation.constraints.NotNull;
  */
 public class RegistrationBarge {
 
-    @NotNull(message = "barge is part of minimum requirement")
+    @NotNull(message = "barge is part of minimum requirement and must not be null")
     private Barge barge;
 
     /**
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
-    @NotNull(message = "eta is part of minimum requirement")
+    @NotNull(message = "eta is part of minimum requirement and must not be null")
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant eta;
 
     /**
      * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
-    @NotNull(message = "etd is part of minimum requirement")
+    @NotNull(message = "etd is part of minimum requirement and must not be null")
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant etd;
 
     /**
      * Value is optional and can be null.
      */
-    @NotNull(message = "dangerousGoodsIndication is part of minimum requirement")
+    @NotNull(message = "dangerousGoodsIndication is part of minimum requirement and must not be null")
     private DangerousGoods dangerousGoodsIndication;
 
     /**
      * everything in number of LUs.
      */
-    @NotNull(message = "volume is part of minimum requirement")
+    @NotNull(message = "volume is part of minimum requirement and must not be null")
     @RegistrationVolumeConstraint(message = "toDischarge and toLoad are part of the minimum Requirement of Volume")
     private Volume volume;
 
@@ -215,7 +215,7 @@ public class RegistrationBarge {
 
             RegistrationBarge registrationBarge = this.build();
 
-            Validator.validate(registrationBarge);
+            MinimumRequirementValidator.validate(registrationBarge);
 
             return registrationBarge;
         }

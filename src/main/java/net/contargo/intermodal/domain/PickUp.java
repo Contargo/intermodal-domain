@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  */
 public class PickUp {
 
-    @NotNull(message = "location is part of minimum requirement")
+    @NotNull(message = "location is part of minimum requirement and must not be null")
     @LocationConstraint(message = "location city and designation are part of the minimum requirement of pickUp")
     private Location location;
 
@@ -31,7 +31,7 @@ public class PickUp {
     /**
      * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
-    @NotNull(message = "earliest is part of minimum requirement")
+    @NotNull(message = "earliest is part of minimum requirement and must not be null")
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant earliest;
 
@@ -41,7 +41,7 @@ public class PickUp {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant latest;
 
-    @NotNull(message = "mot is part of minimum requirement")
+    @NotNull(message = "mot is part of minimum requirement and must not be null")
     private MeansOfTransport mot;
 
     public static Builder newBuilder() {
@@ -211,7 +211,7 @@ public class PickUp {
 
             PickUp pickUp = this.build();
 
-            Validator.validate(pickUp);
+            MinimumRequirementValidator.validate(pickUp);
 
             return pickUp;
         }

@@ -174,7 +174,7 @@ public class Address {
 
             Address address = this.build();
 
-            Validator.validate(address);
+            MinimumRequirementValidator.validate(address);
 
             return address;
         }

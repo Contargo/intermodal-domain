@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  */
 public class DropOff {
 
-    @NotNull(message = "location is part of minimum requirement")
+    @NotNull(message = "location is part of minimum requirement and must not be null")
     @LocationConstraint(message = "location city and designation are part of the minimum requirement of dropOff")
     private Location location;
 
@@ -43,7 +43,7 @@ public class DropOff {
     /**
      * @see  MeansOfTransport
      */
-    @NotNull(message = "mot is part of minimum requirement")
+    @NotNull(message = "mot is part of minimum requirement and must not be null")
     private MeansOfTransport mot;
 
     public static Builder newBuilder() {
@@ -213,7 +213,7 @@ public class DropOff {
 
             DropOff dropOff = this.build();
 
-            Validator.validate(dropOff);
+            MinimumRequirementValidator.validate(dropOff);
 
             return dropOff;
         }

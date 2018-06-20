@@ -268,7 +268,7 @@ public class Driver extends Person {
 
             Driver driver = this.build();
 
-            Validator.validate(driver);
+            MinimumRequirementValidator.validate(driver);
 
             return driver;
         }

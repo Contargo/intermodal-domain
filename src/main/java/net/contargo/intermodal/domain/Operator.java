@@ -181,7 +181,7 @@ public class Operator {
 
             Operator operator = this.build();
 
-            Validator.validate(operator);
+            MinimumRequirementValidator.validate(operator);
 
             return operator;
         }

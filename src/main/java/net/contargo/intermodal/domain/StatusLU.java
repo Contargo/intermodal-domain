@@ -274,7 +274,7 @@ public class StatusLU {
 
             StatusLU statusLU = this.build();
 
-            Validator.validate(statusLU);
+            MinimumRequirementValidator.validate(statusLU);
 
             return statusLU;
         }

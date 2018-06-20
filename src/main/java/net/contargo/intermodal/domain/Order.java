@@ -38,17 +38,17 @@ import javax.validation.constraints.NotNull;
  */
 public class Order {
 
-    @NotNull(message = "reference is part of minimum requirement")
+    @NotNull(message = "reference is part of minimum requirement and must not be null")
     private String reference;
 
     private Operator client;
 
     private Operator billRecipient;
 
-    @NotNull(message = "luOrder is part of minimum requirement")
+    @NotNull(message = "luOrder is part of minimum requirement and must not be null")
     private LUOrder luOrder;
 
-    @NotNull(message = "transport is part of minimum requirement")
+    @NotNull(message = "transport is part of minimum requirement and must not be null")
     @TransportConstraint(
         message = "pickUpLocation (with city and designation), pickUpEarliest, pickUpMoT, "
             + "dropOffLocation (with city and designation), dropOffMoT and stopLocation (with city and designation) "
@@ -56,8 +56,10 @@ public class Order {
     )
     private Transport transport;
 
-    @NotNull(message = "destination is part of minimum requirement")
-    @DestinationConstraint(message = "locationDesignation is part of minimum requirement of Transport")
+    @NotNull(message = "destination is part of minimum requirement and must not be null")
+    @DestinationConstraint(
+        message = "locationDesignation is part of minimum requirement and must not be null of Transport"
+    )
     private Destination destination;
 
     public static Builder newBuilder() {
@@ -264,7 +266,7 @@ public class Order {
 
             Order order = this.build();
 
-            Validator.validate(order);
+            MinimumRequirementValidator.validate(order);
 
             return order;
         }

@@ -29,28 +29,28 @@ import javax.validation.constraints.NotNull;
  */
 public class RegistrationVehicle {
 
-    @NotNull(message = "truck is part of minimum requirement")
+    @NotNull(message = "truck is part of minimum requirement and must not be null")
     private Truck truck;
 
     private Chassis chassis;
 
-    @NotNull(message = "driver is part of minimum requirement")
+    @NotNull(message = "driver is part of minimum requirement and must not be null")
     private Driver driver;
 
-    @NotNull(message = "haulierClient is part of minimum requirement")
+    @NotNull(message = "haulierClient is part of minimum requirement and must not be null")
     private String haulierClient;
 
-    @NotNull(message = "haulierRealizing is part of minimum requirement")
+    @NotNull(message = "haulierRealizing is part of minimum requirement and must not be null")
     private String haulierRealizing;
 
     /**
      * Format: ISO 8601 inclusive UTC
      */
-    @NotNull(message = "deliveryTime is part of minimum requirement")
+    @NotNull(message = "deliveryTime is part of minimum requirement and must not be null")
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant deliveryTime;
 
-    @NotNull(message = "luOrder is part of minimum requirement")
+    @NotNull(message = "luOrder is part of minimum requirement and must not be null")
     private LUOrder luOrder;
 
     public static Builder newBuilder() {
@@ -213,7 +213,7 @@ public class RegistrationVehicle {
 
             RegistrationVehicle registrationVehicle = this.build();
 
-            Validator.validate(registrationVehicle);
+            MinimumRequirementValidator.validate(registrationVehicle);
 
             return registrationVehicle;
         }

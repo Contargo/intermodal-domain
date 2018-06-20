@@ -320,7 +320,7 @@ public class ProcessingBarge {
 
             ProcessingBarge processingBarge = this.build();
 
-            Validator.validate(processingBarge);
+            MinimumRequirementValidator.validate(processingBarge);
 
             return processingBarge;
         }
