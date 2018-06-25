@@ -99,9 +99,34 @@ public class StatusLU {
      */
     private Boolean unloaded;
 
+    /**
+     * Creates a new builder for {@link StatusLU}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link StatusLU}.
+     *
+     * @param  statusLU  that should be copied.
+     *
+     * @return  new builder with values of given statusLU.
+     */
+    public static Builder newBuilder(StatusLU statusLU) {
+
+        return new Builder().isReadyForLoading(statusLU.isReadyForLoading())
+            .isReadyForUnloading(statusLU.isReadyForUnloading())
+            .isIn(statusLU.isIn())
+            .isLoaded(statusLU.isLoaded())
+            .isInspectionOut(statusLU.getInspectionOut())
+            .isOut(statusLU.isOut())
+            .isUnloaded(statusLU.isUnloaded())
+            .hasInspectionIn(statusLU.getInspectionIn());
     }
 
 

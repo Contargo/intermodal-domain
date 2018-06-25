@@ -106,9 +106,38 @@ public class RegistrationTrain {
     @NotNull(message = "trainPaths is part of minimum requirement and must not be null")
     private String trainPaths;
 
+    /**
+     * Creates a new builder for {@link RegistrationTrain}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link RegistrationTrain}.
+     *
+     * @param  registrationTrain  that should be copied.
+     *
+     * @return  new builder with values of given registrationTrain.
+     */
+    public static Builder newBuilder(RegistrationTrain registrationTrain) {
+
+        return new Builder().withTotalLength(registrationTrain.getTotalLength())
+            .withRailwayOperator(registrationTrain.getRailwayOperator())
+            .withOperator(registrationTrain.getOperator())
+            .withTrainTitle(registrationTrain.getTrainTitle())
+            .withShuntingYardEta(registrationTrain.getShuntingYardEta())
+            .withWaggonQuantity(registrationTrain.getWaggonQuantity())
+            .withDangerousGoodsIndication(registrationTrain.getDangerousGoodsIndication())
+            .withTerminalEtd(registrationTrain.getTerminalEtd())
+            .withTerminalEta(registrationTrain.getTerminalEta())
+            .withShunter(registrationTrain.getShunter())
+            .withTrainPaths(registrationTrain.getTrainPaths())
+            .withVolume(registrationTrain.getVolume());
     }
 
 
@@ -301,6 +330,14 @@ public class RegistrationTrain {
         }
 
 
+        Builder withTotalLength(Quantity<Length> totalLength) {
+
+            this.totalLength = totalLength;
+
+            return this;
+        }
+
+
         public Builder withWaggonQuantity(Integer waggonQuantity) {
 
             this.waggonQuantity = waggonQuantity;
@@ -328,6 +365,17 @@ public class RegistrationTrain {
         public Builder withVolumeToLoad(Integer volumeToLoad) {
 
             this.volumeToLoad = volumeToLoad;
+
+            return this;
+        }
+
+
+        Builder withVolume(Volume volume) {
+
+            if (volume != null) {
+                this.volumeToDischarge = volume.getToDischarge();
+                this.volumeToLoad = volume.getToLoad();
+            }
 
             return this;
         }

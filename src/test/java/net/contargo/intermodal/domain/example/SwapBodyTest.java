@@ -62,6 +62,40 @@ class SwapBodyTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        SwapBody swapBody = SwapBody.newBuilder()
+                .withNumberAndIdentification("MSKU1806510")
+                .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withCondition("i.O.")
+                .isReefer(false)
+                .withOperator("Contargo")
+                .withType("Open Top")
+                .withSize(21.58, LengthUnit.FOOT)
+                .isStackable(true)
+                .buildAndValidate();
+
+        SwapBody copiedSwapBody = SwapBody.newBuilder(swapBody).buildAndValidate();
+
+        assertEquals("MSKU1806510", copiedSwapBody.getIdentification());
+        assertEquals("MSKU1806510", copiedSwapBody.getNumber());
+        assertEquals(LoadingUnitCategory.SWAP_BODY, copiedSwapBody.getCategory());
+        assertNotNull(copiedSwapBody.getWeight());
+        assertEquals(30480.0, copiedSwapBody.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(28080.0, copiedSwapBody.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(2400.0, copiedSwapBody.getWeightTare().getValue().doubleValue());
+        assertEquals("i.O.", copiedSwapBody.getCondition());
+        assertFalse(copiedSwapBody.isReefer());
+        assertEquals("Contargo", copiedSwapBody.getOperator());
+        assertEquals("Open Top", copiedSwapBody.getType());
+        assertEquals(21.58, copiedSwapBody.getSize().getValue().doubleValue());
+        assertTrue(copiedSwapBody.isStackable());
+    }
+
+
+    @Test
     void ensureSpecialCharactersInNumberAreIgnored() {
 
         SwapBody swapBody = SwapBody.newBuilder()

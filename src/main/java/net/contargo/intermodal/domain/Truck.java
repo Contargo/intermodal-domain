@@ -82,9 +82,36 @@ public class Truck implements MeansOfTransport {
      */
     private Weight weight;
 
+    /**
+     * Creates a new builder for {@link Truck}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Truck}.
+     *
+     * @param  truck  that should be copied.
+     *
+     * @return  new builder with values of given truck.
+     */
+    public static Builder newBuilder(Truck truck) {
+
+        return new Builder().withMot(truck.getMot())
+            .withSuitabilityWaste(truck.getSuitabilityWaste())
+            .withEuAuthorization(truck.getEuAuthorization())
+            .withNumberPlate(truck.getNumberPlate())
+            .withEnvironmentBadge(truck.getEnvironmentBadge())
+            .withSuitabilityDangerousGoods(truck.getSuitabilityDangerousGoods())
+            .withType(truck.getType())
+            .withST(truck.getSt())
+            .withCountryCode(truck.getCountryCode())
+            .withWeight(truck.getWeight());
     }
 
 
@@ -274,6 +301,16 @@ public class Truck implements MeansOfTransport {
                 this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
                 this.weightTare = UnitConverter.tonToKilogram(weightTare);
+            }
+
+            return this;
+        }
+
+
+        Builder withWeight(Weight weight) {
+
+            if (weight != null) {
+                this.weightTare = weight.getTare();
             }
 
             return this;

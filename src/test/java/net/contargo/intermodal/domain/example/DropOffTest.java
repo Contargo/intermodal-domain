@@ -57,6 +57,34 @@ class DropOffTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        DropOff dropOff = DropOff.newBuilder()
+                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLoadingUnit("63876846", false)
+                .withLoadingUnitOperator(new Operator())
+                .withBillingReference("98690")
+                .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
+                .withMeansOfTransport(new Barge())
+                .buildAndValidate();
+
+        DropOff copiedDropOff = DropOff.newBuilder(dropOff).buildAndValidate();
+
+        assertEquals("Duisburg", copiedDropOff.getLocation().getCity());
+        assertEquals("Terminal Duisburg", copiedDropOff.getLocation().getDesignation());
+        assertEquals("terminal", copiedDropOff.getLocation().getType());
+        assertEquals("63876846", copiedDropOff.getLoadingUnit().getReference());
+        assertFalse(copiedDropOff.getLoadingUnit().getEmpty());
+        assertEquals("98690", copiedDropOff.getBillingReference());
+        assertNotNull(copiedDropOff.getLoadingUnit().getOperator());
+        assertEquals("2018-05-14T14:00:00Z", copiedDropOff.getEarliest().toString());
+        assertEquals("2018-05-14T14:15:00Z", copiedDropOff.getLatest().toString());
+        assertNotNull(copiedDropOff.getMot());
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,

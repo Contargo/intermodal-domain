@@ -62,9 +62,32 @@ public class Order {
     )
     private Destination destination;
 
+    /**
+     * Creates a new builder for {@link Order}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Order}.
+     *
+     * @param  order  that should be copied.
+     *
+     * @return  new builder with values of given order.
+     */
+    public static Builder newBuilder(Order order) {
+
+        return new Builder().withBillRecipient(order.getBillRecipient())
+            .withOrderForLoadingUnit(order.getLuOrder())
+            .withClient(order.getClient())
+            .withTransport(order.getTransport())
+            .withReference(order.getReference())
+            .withDestination(order.getDestination());
     }
 
 
@@ -160,6 +183,14 @@ public class Order {
         public Builder withTransportDirection(Direction direction) {
 
             this.transport.setDirection(direction);
+
+            return this;
+        }
+
+
+        Builder withTransport(Transport transport) {
+
+            this.transport = transport;
 
             return this;
         }

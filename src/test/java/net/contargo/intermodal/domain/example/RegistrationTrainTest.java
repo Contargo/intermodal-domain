@@ -78,6 +78,43 @@ class RegistrationTrainTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        RegistrationTrain registrationTrain = RegistrationTrain.newBuilder()
+                .withTrainTitle("My Train")
+                .withRailwayOperator(new Operator())
+                .withOperator(new Operator())
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
+                .withShunter("a shunter")
+                .withTotalLength(120.0, LengthUnit.METRE)
+                .withWaggonQuantity(10)
+                .withDangerousGoodsIndication(new DangerousGoods())
+                .withVolumeToDischarge(10)
+                .withVolumeToLoad(8)
+                .withTrainPaths("12345")
+                .buildAndValidate();
+
+        RegistrationTrain copiedRegistrationTrain = RegistrationTrain.newBuilder(registrationTrain).buildAndValidate();
+
+        assertEquals("My Train", copiedRegistrationTrain.getTrainTitle());
+        assertNotNull(copiedRegistrationTrain.getRailwayOperator());
+        assertNotNull(copiedRegistrationTrain.getOperator());
+        assertEquals("2018-05-14T11:00:00Z", copiedRegistrationTrain.getTerminalEta().toString());
+        assertEquals("2018-05-14T13:00:00Z", copiedRegistrationTrain.getTerminalEtd().toString());
+        assertEquals("2018-05-14T12:00:00Z", copiedRegistrationTrain.getShuntingYardEta().toString());
+        assertEquals("a shunter", copiedRegistrationTrain.getShunter());
+        assertEquals(120.0, copiedRegistrationTrain.getTotalLength().getValue().doubleValue());
+        assertEquals(10, copiedRegistrationTrain.getWaggonQuantity().intValue());
+        assertNotNull(copiedRegistrationTrain.getDangerousGoodsIndication());
+        assertEquals(10, copiedRegistrationTrain.getVolumeToDischarge().intValue());
+        assertEquals(8, copiedRegistrationTrain.getVolumeToLoad().intValue());
+        assertEquals("12345", copiedRegistrationTrain.getTrainPaths());
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,

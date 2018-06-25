@@ -58,6 +58,34 @@ class PickUpTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        PickUp pickUp = PickUp.newBuilder()
+                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLoadingUnit("12345", false)
+                .withBillingReference("20568097")
+                .withLoadingUnitOperator(new Operator())
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
+                .withMeansOfTransport(new Truck())
+                .buildAndValidate();
+
+        PickUp copiedPickUp = PickUp.newBuilder(pickUp).buildAndValidate();
+
+        assertEquals("Ludwigshafen", copiedPickUp.getLocation().getCity());
+        assertEquals("Terminal Ludwigshafen", copiedPickUp.getLocation().getDesignation());
+        assertEquals("hinterland terminal", copiedPickUp.getLocation().getType());
+        assertEquals("12345", copiedPickUp.getLoadingUnit().getReference());
+        assertFalse(copiedPickUp.getLoadingUnit().getEmpty());
+        assertEquals("20568097", copiedPickUp.getBillingReference());
+        assertNotNull(copiedPickUp.getLoadingUnit().getOperator());
+        assertEquals("2018-05-14T11:00:00Z", copiedPickUp.getEarliest().toString());
+        assertEquals("2018-05-14T11:30:00Z", copiedPickUp.getLatest().toString());
+        assertNotNull(copiedPickUp.getMot());
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,

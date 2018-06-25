@@ -40,6 +40,31 @@ class PassengerTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Passenger passenger = Passenger.newBuilder()
+                .withName("Mustermann")
+                .withFirstName("Max")
+                .withAddress(new Address())
+                .withCellphone("01234/56789")
+                .withDateOfBirth(Instant.parse("1980-01-13T00:00:00Z"))
+                .withLocation("Karlsruhe")
+                .withCountryCode("DE")
+                .buildAndValidate();
+
+        Passenger copiedPassenger = Passenger.newBuilder(passenger).buildAndValidate();
+
+        assertEquals("Mustermann", copiedPassenger.getName());
+        assertEquals("Max", copiedPassenger.getFirstName());
+        assertNotNull(copiedPassenger.getAddress());
+        assertEquals("01234/56789", copiedPassenger.getCellphone());
+        assertEquals("1980-01-13T00:00:00Z", copiedPassenger.getDateOfBirth().toString());
+        assertEquals("Karlsruhe", copiedPassenger.getCityOfBirth());
+        assertEquals("DE", copiedPassenger.getCountryCode());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         Passenger passenger = Passenger.newBuilder()

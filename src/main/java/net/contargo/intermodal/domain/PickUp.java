@@ -44,9 +44,32 @@ public class PickUp {
     @NotNull(message = "mot is part of minimum requirement and must not be null")
     private MeansOfTransport mot;
 
+    /**
+     * Creates a new builder for {@link PickUp}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link PickUp}.
+     *
+     * @param  pickUp  that should be copied.
+     *
+     * @return  new builder with values of given pickUp.
+     */
+    public static Builder newBuilder(PickUp pickUp) {
+
+        return new Builder().withLocation(pickUp.getLocation())
+            .withLoadingUnit(pickUp.getLoadingUnit())
+            .withBillingReference(pickUp.getBillingReference())
+            .withEarliest(pickUp.getEarliest())
+            .withLatest(pickUp.getLatest())
+            .withMeansOfTransport(pickUp.getMot());
     }
 
 
@@ -133,10 +156,26 @@ public class PickUp {
         }
 
 
+        Builder withLocation(Location location) {
+
+            this.location = location;
+
+            return this;
+        }
+
+
         public Builder withLoadingUnit(String reference, Boolean isEmpty) {
 
             this.loadingUnit.setEmpty(isEmpty);
             this.loadingUnit.setReference(reference);
+
+            return this;
+        }
+
+
+        Builder withLoadingUnit(Transport.LoadingUnit loadingUnit) {
+
+            this.loadingUnit = loadingUnit;
 
             return this;
         }

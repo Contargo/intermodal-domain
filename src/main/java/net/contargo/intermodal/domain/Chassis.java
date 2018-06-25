@@ -95,9 +95,38 @@ public class Chassis implements MeansOfTransport {
      */
     private Weight weight;
 
+    /**
+     * Creates a new builder for {@link Chassis}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Chassis}.
+     *
+     * @param  chassis  that should be copied.
+     *
+     * @return  new builder with values of given chassis.
+     */
+    public static Builder newBuilder(Chassis chassis) {
+
+        return new Builder().withNumberPlate(chassis.getNumberPlate())
+            .withAxles(chassis.getAxles())
+            .withHeight(chassis.getHeight())
+            .withEuAuthorization(chassis.getEuAuthorization())
+            .withSt(chassis.getSt())
+            .withType(chassis.getType())
+            .withSize(chassis.getSize())
+            .withSuitabilityDangerousGoods(chassis.getSuitabilityDangerousGoods())
+            .withSuitabilityWaste(chassis.getSuitabilityWaste())
+            .withSuitabilityReefer(chassis.getSuitabilityReefer())
+            .withMot(chassis.getMot())
+            .withWeight(chassis.getWeight());
     }
 
 
@@ -245,6 +274,14 @@ public class Chassis implements MeansOfTransport {
         }
 
 
+        Builder withSize(Quantity<Length> size) {
+
+            this.size = size;
+
+            return this;
+        }
+
+
         public Builder withSize(Double size, LengthUnit unit) {
 
             if (unit.equals(LengthUnit.METRE)) {
@@ -252,6 +289,14 @@ public class Chassis implements MeansOfTransport {
             } else if (unit.equals(LengthUnit.FOOT)) {
                 this.size = UnitConverter.footToMetre(size);
             }
+
+            return this;
+        }
+
+
+        Builder withHeight(Quantity<Length> height) {
+
+            this.height = height;
 
             return this;
         }
@@ -316,6 +361,14 @@ public class Chassis implements MeansOfTransport {
             } else if (unit.equals(MassUnit.TON)) {
                 this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
+
+            return this;
+        }
+
+
+        Builder withWeight(Weight weight) {
+
+            this.weightTare = weight.getTare();
 
             return this;
         }

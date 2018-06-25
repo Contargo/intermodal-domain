@@ -40,6 +40,31 @@ class MeansOfTransportationStatusTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.newBuilder()
+                .withAtd(Instant.parse("2018-05-11T06:00:00Z"))
+                .withEta(Instant.parse("2018-05-11T12:30:00Z"))
+                .withAta(Instant.parse("2018-05-11T06:05:00Z"))
+                .withHandlingStart(Instant.parse("2018-05-11T06:30:00Z"))
+                .withHandlingEnd(Instant.parse("2018-05-11T06:35:00Z"))
+                .withWaggonTechnicalInspection(1)
+                .buildAndValidate();
+
+        MeansOfTransportationStatus copiedMeansOfTransportationStatus = MeansOfTransportationStatus.newBuilder(
+                meansOfTransportationStatus)
+                .buildAndValidate();
+
+        assertEquals("2018-05-11T06:00:00Z", copiedMeansOfTransportationStatus.getAtd().toString());
+        assertEquals("2018-05-11T12:30:00Z", copiedMeansOfTransportationStatus.getEta().toString());
+        assertEquals("2018-05-11T06:05:00Z", copiedMeansOfTransportationStatus.getAta().toString());
+        assertEquals("2018-05-11T06:30:00Z", copiedMeansOfTransportationStatus.getHandlingStart().toString());
+        assertEquals("2018-05-11T06:35:00Z", copiedMeansOfTransportationStatus.getHandlingEnd().toString());
+        assertEquals(1, copiedMeansOfTransportationStatus.getWaggonTechnicalInspection().intValue());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.newBuilder()

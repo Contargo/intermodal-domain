@@ -82,9 +82,38 @@ public class Barge implements MeansOfTransport {
 
     private Capacity capacity;
 
+    /**
+     * Creates a new builder for {@link Barge}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Barge}.
+     *
+     * @param  barge  that should be copied.
+     *
+     * @return  new builder with values of given barge.
+     */
+    public static Builder newBuilder(Barge barge) {
+
+        return new Builder().withName(barge.getName())
+            .withWidth(barge.getWidth())
+            .withDraught(barge.getDraught())
+            .withOperator(barge.getOperator())
+            .withLength(barge.getLength())
+            .withSuitabilityDangerousGoods(barge.getSuitabilityDangerousGoods())
+            .withBays(barge.getBays())
+            .withMmsi(barge.getMmsi())
+            .withCapacity(barge.getCapacity())
+            .withTiers(barge.getTiers())
+            .withRows(barge.getRows())
+            .withEni(barge.getEni());
     }
 
 
@@ -282,6 +311,14 @@ public class Barge implements MeansOfTransport {
         }
 
 
+        Builder withLength(Quantity<Length> length) {
+
+            this.length = length;
+
+            return this;
+        }
+
+
         public Builder withLength(Double length, LengthUnit unit) {
 
             if (unit.toUnit().equals(METRE)) {
@@ -294,6 +331,14 @@ public class Barge implements MeansOfTransport {
         }
 
 
+        Builder withWidth(Quantity<Length> width) {
+
+            this.width = width;
+
+            return this;
+        }
+
+
         public Builder withWidth(Double width, LengthUnit unit) {
 
             if (unit.toUnit().equals(METRE)) {
@@ -301,6 +346,14 @@ public class Barge implements MeansOfTransport {
             } else if (unit.toUnit().equals(FOOT)) {
                 this.width = UnitConverter.footToMetre(width);
             }
+
+            return this;
+        }
+
+
+        Builder withDraught(Quantity<Length> draught) {
+
+            this.draught = draught;
 
             return this;
         }
@@ -345,6 +398,15 @@ public class Barge implements MeansOfTransport {
         public Builder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
 
             this.suitabilityDangerousGoods = suitabilityDangerousGoods;
+
+            return this;
+        }
+
+
+        Builder withCapacity(Capacity capacity) {
+
+            this.capacityTeu = capacity.getTeu();
+            this.capacityTons = capacity.getTons();
 
             return this;
         }

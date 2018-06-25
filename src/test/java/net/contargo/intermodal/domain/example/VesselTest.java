@@ -35,6 +35,25 @@ class VesselTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Vessel vessel = Vessel.newBuilder()
+                .withName("My Vessel")
+                .withMmsi("021112345")
+                .withImo("050XXXXX")
+                .withOperator(new Operator())
+                .buildAndValidate();
+
+        Vessel copiedVessel = Vessel.newBuilder(vessel).buildAndValidate();
+
+        assertEquals("My Vessel", copiedVessel.getName());
+        assertEquals("021112345", copiedVessel.getMmsi());
+        assertEquals("050XXXXX", copiedVessel.getImo());
+        assertNotNull(copiedVessel.getOperator());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         Vessel vessel = Vessel.newBuilder()

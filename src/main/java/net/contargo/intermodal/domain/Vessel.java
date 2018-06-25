@@ -34,9 +34,30 @@ public class Vessel implements MeansOfTransport {
 
     private Operator operator;
 
+    /**
+     * Creates a new builder for {@link Vessel}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Vessel}.
+     *
+     * @param  vessel  that should be copied.
+     *
+     * @return  new builder with values of given vessel.
+     */
+    public static Builder newBuilder(Vessel vessel) {
+
+        return new Builder().withName(vessel.getName())
+            .withMmsi(vessel.getMmsi())
+            .withImo(vessel.getImo())
+            .withOperator(vessel.getOperator());
     }
 
 

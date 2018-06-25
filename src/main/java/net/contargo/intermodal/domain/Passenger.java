@@ -30,9 +30,33 @@ public class Passenger extends Person {
     }
 
 
+    /**
+     * Creates a new builder for {@link Passenger}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Passenger}.
+     *
+     * @param  passenger  that should be copied.
+     *
+     * @return  new builder with values of given passenger.
+     */
+    public static Builder newBuilder(Passenger passenger) {
+
+        return new Builder().withName(passenger.getName())
+            .withFirstName(passenger.getFirstName())
+            .withAddress(passenger.getAddress())
+            .withCellphone(passenger.getCellphone())
+            .withDateOfBirth(passenger.getDateOfBirth())
+            .withLocation(passenger.getLocation())
+            .withCountryCode(passenger.getCountryCode());
     }
 
     public static final class Builder {
@@ -89,6 +113,16 @@ public class Passenger extends Person {
         public Builder withDateOfBirth(Instant dateOfBirth) {
 
             this.dateOfBirth = dateOfBirth;
+
+            return this;
+        }
+
+
+        Builder withLocation(Location location) {
+
+            if (location != null) {
+                this.locationCity = location.getCity();
+            }
 
             return this;
         }

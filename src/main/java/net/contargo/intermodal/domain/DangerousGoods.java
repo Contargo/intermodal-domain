@@ -66,9 +66,36 @@ public class DangerousGoods {
      */
     private Boolean marinePollutants;
 
+    /**
+     * Creates a new builder for {@link DangerousGoods}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link DangerousGoods}.
+     *
+     * @param  dangerousGoods  that should be copied.
+     *
+     * @return  new builder with values of given dangerousGoods.
+     */
+    public static Builder newBuilder(DangerousGoods dangerousGoods) {
+
+        return new Builder().hasDangerNote(dangerousGoods.getDangerNote())
+            .withPackagingGroup(dangerousGoods.getPackagingGroup())
+            .withMaterial(dangerousGoods.getMaterial())
+            .withTunnelRestrictionCode(dangerousGoods.getTunnelRestrictionCode())
+            .withUnNumber(dangerousGoods.getUnNumber())
+            .withTotalQuantity(dangerousGoods.getTotalQuantity())
+            .withPackages(dangerousGoods.getPackages())
+            .withLimitedQuantity(dangerousGoods.getLimitedQuantity())
+            .withMarinePollutants(dangerousGoods.getMarinePollutants())
+            .withMandatoryRouting(dangerousGoods.getMandatoryRouting());
     }
 
 

@@ -53,9 +53,34 @@ public class Trailer extends LoadingUnit {
     @NotNull(message = "craneable is part of minimum requirement and must not be null")
     private Boolean craneable;
 
+    /**
+     * Creates a new builder for {@link Trailer}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Trailer}.
+     *
+     * @param  trailer  that should be copied.
+     *
+     * @return  new builder with values of given trailer.
+     */
+    public static Builder newBuilder(Trailer trailer) {
+
+        return new Builder().withNumberAndIdentification(trailer.getNumber())
+            .withCondition(trailer.getCondition())
+            .isReefer(trailer.isReefer())
+            .withOperator(trailer.getOperator())
+            .withType(trailer.getType())
+            .withSize(trailer.getSize())
+            .isCraneable(trailer.isCraneable())
+            .withWeight(trailer.getWeight());
     }
 
 
@@ -139,6 +164,14 @@ public class Trailer extends LoadingUnit {
         }
 
 
+        Builder withSize(Quantity<Length> size) {
+
+            this.size = size;
+
+            return this;
+        }
+
+
         public Builder withSize(Double size, LengthUnit unit) {
 
             if (unit.equals(LengthUnit.METRE)) {
@@ -189,6 +222,18 @@ public class Trailer extends LoadingUnit {
                 this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
                 this.weightTare = UnitConverter.tonToKilogram(weightTare);
+            }
+
+            return this;
+        }
+
+
+        Builder withWeight(Weight weight) {
+
+            if (weight != null) {
+                this.weightBruttoMax = weight.getBruttoMax();
+                this.weightNettoMax = weight.getNettoMax();
+                this.weightTare = weight.getTare();
             }
 
             return this;

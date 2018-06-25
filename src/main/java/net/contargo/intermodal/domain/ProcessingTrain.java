@@ -60,9 +60,33 @@ public class ProcessingTrain {
      */
     private String trainPaths;
 
+    /**
+     * Creates a new builder for {@link ProcessingTrain}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link ProcessingTrain}.
+     *
+     * @param  processingTrain  that should be copied.
+     *
+     * @return  new builder with values of given processingTrain.
+     */
+    public static Builder newBuilder(ProcessingTrain processingTrain) {
+
+        return new Builder().withShunter(processingTrain.getShunter())
+            .withTrainTitle(processingTrain.getTrainTitle())
+            .withShuntingYardEta(processingTrain.getShuntingYardEta())
+            .withTrainPaths(processingTrain.getTrainPaths())
+            .withTerminalEta(processingTrain.getTerminalEta())
+            .withTerminalEtd(processingTrain.getTerminalEtd())
+            .withLoadingList(processingTrain.getLoadingList());
     }
 
 
@@ -195,6 +219,14 @@ public class ProcessingTrain {
         public Builder withWaggon(String type, String id, Integer ranking, List<LUOrder> loadingPosition) {
 
             this.loadingList.add(new Waggon(type, id, ranking, loadingPosition));
+
+            return this;
+        }
+
+
+        Builder withLoadingList(List<Waggon> loadingList) {
+
+            this.loadingList = loadingList;
 
             return this;
         }

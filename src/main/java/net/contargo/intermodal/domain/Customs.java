@@ -29,9 +29,29 @@ public class Customs {
 
     private Seal seal;
 
+    /**
+     * Creates a new builder for {@link Customs}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Customs}.
+     *
+     * @param  customs  that should be copied.
+     *
+     * @return  new builder with values of given customs.
+     */
+    public static Builder newBuilder(Customs customs) {
+
+        return new Builder().withCustomProcess(customs.getCustomProcess())
+            .withCustomDocumentNumber(customs.getCustomDocumentNumber())
+            .withSeal(customs.getSeal());
     }
 
 

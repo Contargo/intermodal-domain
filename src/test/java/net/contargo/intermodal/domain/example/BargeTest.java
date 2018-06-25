@@ -57,6 +57,43 @@ class BargeTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Barge barge = Barge.newBuilder()
+                .withName("My Barge")
+                .withMmsi("021112345")
+                .withEni("050XXXXX")
+                .withOperator(new Operator())
+                .withLength(91.4, METRE)
+                .withWidth(27.4, METRE)
+                .withDraught(5.5, METRE)
+                .withBays(4)
+                .withRows(8)
+                .withTiers(2)
+                .withSuitabilityDangerousGoods(true)
+                .withCapacityTeu(200.0)
+                .withCapacityTons(3400.0)
+                .buildAndValidate();
+
+        Barge copiedBarge = Barge.newBuilder(barge).buildAndValidate();
+
+        assertEquals("My Barge", copiedBarge.getName());
+        assertEquals("021112345", copiedBarge.getMmsi());
+        assertEquals("050XXXXX", copiedBarge.getEni());
+        assertNotNull(copiedBarge.getOperator());
+        assertEquals(91.4, copiedBarge.getLengthValue());
+        assertEquals(27.4, copiedBarge.getWidthValue());
+        assertEquals(5.5, copiedBarge.getDraughtValue());
+        assertEquals(4, copiedBarge.getBays().intValue());
+        assertEquals(8, copiedBarge.getRows().intValue());
+        assertEquals(2, copiedBarge.getTiers().intValue());
+        assertTrue(copiedBarge.getSuitabilityDangerousGoods());
+        assertEquals(200.0, copiedBarge.getCapacityTeu().doubleValue());
+        assertEquals(3400.0, copiedBarge.getCapacityTons().doubleValue());
+    }
+
+
+    @Test
     void ensureMeasurementsCanBeSetInFoot() {
 
         Barge barge = Barge.newBuilder()

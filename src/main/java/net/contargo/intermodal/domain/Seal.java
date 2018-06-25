@@ -17,13 +17,37 @@ public class Seal {
 
     private String number;
 
+    /**
+     * Creates a new builder for {@link Seal}.
+     *
+     * @return  new builder
+     */
+    public static Builder newBuilder() {
+
+        return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Seal}.
+     *
+     * @param  seal  that should be copied.
+     *
+     * @return  new builder with values of given seal.
+     */
+    public static Builder newBuilder(Seal seal) {
+
+        return new Builder().withType(seal.getType()).withNumber(seal.getNumber());
+    }
+
+
     public String getType() {
 
         return type;
     }
 
 
-    public void setType(String type) {
+    void setType(String type) {
 
         this.type = type;
     }
@@ -35,7 +59,7 @@ public class Seal {
     }
 
 
-    public void setNumber(String number) {
+    void setNumber(String number) {
 
         this.number = number;
     }
@@ -60,12 +84,6 @@ public class Seal {
 
         private Builder() {
         }
-
-        public static Builder newSeal() {
-
-            return new Builder();
-        }
-
 
         public Builder withType(String type) {
 

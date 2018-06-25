@@ -63,6 +63,41 @@ class TrailerTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Trailer trailer = Trailer.newBuilder()
+                .withNumberAndIdentification("MSKU1806510")
+                .withWeightBruttoMax(14082.331, MassUnit.KILOGRAM)
+                .withWeightNettoMax(10000.0, MassUnit.KILOGRAM)
+                .withWeightTare(4082.331, MassUnit.KILOGRAM)
+                .withCondition("i.O.")
+                .isReefer(false)
+                .withOperator("Contargo")
+                .withType("XL")
+                .withSize(15.5, LengthUnit.METRE)
+                .isCraneable(true)
+                .buildAndValidate();
+
+        Trailer copiedTrailer = Trailer.newBuilder(trailer).buildAndValidate();
+
+        assertEquals("MSKU1806510", copiedTrailer.getIdentification());
+        assertEquals("MSKU1806510", copiedTrailer.getNumber());
+        assertEquals(LoadingUnitCategory.TRAILER, copiedTrailer.getCategory());
+        assertNotNull(copiedTrailer.getWeight());
+        assertEquals(14082.331, copiedTrailer.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(10000.0, copiedTrailer.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(4082.331, copiedTrailer.getWeightTare().getValue().doubleValue());
+        assertEquals("i.O.", copiedTrailer.getCondition());
+        assertFalse(copiedTrailer.isReefer());
+        assertEquals("Contargo", copiedTrailer.getOperator());
+        assertEquals("XL", copiedTrailer.getType());
+
+        assertEquals(15.5, copiedTrailer.getSize().getValue().doubleValue());
+        assertTrue(copiedTrailer.isCraneable());
+    }
+
+
+    @Test
     void ensureSpecialCharactersInNumberAreIgnored() {
 
         Trailer trailer = Trailer.newBuilder()

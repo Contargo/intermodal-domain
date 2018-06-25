@@ -54,6 +54,33 @@ class TrainDriverTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        TrainDriver trainDriver = TrainDriver.newBuilder()
+                .withName("Mustermann")
+                .withFirstName("Max")
+                .withAddress(new Address())
+                .withCellphone("01234/56789")
+                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornIn("Karlsruhe")
+                .withCountryCode("DE")
+                .withRid(Instant.parse("2018-12-31T00:00:00Z"))
+                .buildAndValidate();
+
+        TrainDriver copiedTrainDriver = TrainDriver.newBuilder(trainDriver).buildAndValidate();
+
+        assertEquals("Mustermann", copiedTrainDriver.getName());
+        assertEquals("Max", copiedTrainDriver.getFirstName());
+        assertNotNull(copiedTrainDriver.getAddress());
+        assertEquals("01234/56789", copiedTrainDriver.getCellphone());
+        assertEquals("1980-01-13T00:00:00Z", copiedTrainDriver.getDateOfBirth().toString());
+        assertEquals("Karlsruhe", copiedTrainDriver.getCityOfBirth());
+        assertEquals("DE", copiedTrainDriver.getCountryCode());
+        assertEquals("2018-12-31T00:00:00Z", copiedTrainDriver.getRid().toString());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         Address address = Address.newBuilder()

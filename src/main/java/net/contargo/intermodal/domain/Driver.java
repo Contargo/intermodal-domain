@@ -40,9 +40,37 @@ public class Driver extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant moduleEntry95;
 
+    /**
+     * Creates a new builder for {@link Driver}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Driver}.
+     *
+     * @param  driver  that should be copied.
+     *
+     * @return  new builder with values of given driver.
+     */
+    public static Builder newBuilder(Driver driver) {
+
+        return new Builder().withCellphone(driver.getCellphone())
+            .withCountryCode(driver.getCountryCode())
+            .bornOn(driver.getDateOfBirth())
+            .withName(driver.getName())
+            .withAddress(driver.getAddress())
+            .withFirstName(driver.getFirstName())
+            .withModuleEntry95(driver.getModuleEntry95())
+            .withId(driver.getId())
+            .withAdr(driver.getAdr())
+            .bornIn(driver.getCityOfBirth())
+            .withLicense(driver.getLicense());
     }
 
 
@@ -168,6 +196,15 @@ public class Driver extends Person {
         public Builder withLicenseNumber(String licenseNumber) {
 
             this.licenseNumber = licenseNumber;
+
+            return this;
+        }
+
+
+        Builder withLicense(License license) {
+
+            this.licenseValidity = license.getValidity();
+            this.licenseNumber = license.getNumber();
 
             return this;
         }

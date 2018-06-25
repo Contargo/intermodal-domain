@@ -54,6 +54,36 @@ class DangerousGoodsTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        DangerousGoods dangerousGoods = DangerousGoods.newBuilder()
+                .withUnNumber("1005")
+                .withMaterial("Ammoniak")
+                .hasDangerNote(true)
+                .withPackagingGroup("VG II")
+                .withPackages(8)
+                .withTotalQuantity("1000 l")
+                .withTunnelRestrictionCode(TunnelRestrictionCode.NONE)
+                .withMandatoryRouting("Mandatory Routing?")
+                .withLimitedQuantity(false)
+                .withMarinePollutants(true)
+                .buildAndValidate();
+
+        DangerousGoods copiedDangerousGoods = DangerousGoods.newBuilder(dangerousGoods).buildAndValidate();
+
+        assertEquals("1005", copiedDangerousGoods.getUnNumber());
+        assertEquals("Ammoniak", copiedDangerousGoods.getMaterial());
+        assertTrue(copiedDangerousGoods.getDangerNote());
+        assertEquals("VG II", copiedDangerousGoods.getPackagingGroup());
+        assertEquals("1000 l", copiedDangerousGoods.getTotalQuantity());
+        assertEquals(TunnelRestrictionCode.NONE, copiedDangerousGoods.getTunnelRestrictionCode());
+        assertEquals("Mandatory Routing?", copiedDangerousGoods.getMandatoryRouting());
+        assertFalse(copiedDangerousGoods.getLimitedQuantity());
+        assertTrue(copiedDangerousGoods.getMarinePollutants());
+    }
+
+
+    @Test
     void ensureDangerousGoodsCanBeValidated() {
 
         assertThrows(IllegalStateException.class, () -> DangerousGoods.newBuilder().buildAndValidate());

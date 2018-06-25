@@ -58,9 +58,31 @@ public class RegistrationBarge {
     @RegistrationVolumeConstraint(message = "toDischarge and toLoad are part of the minimum Requirement of Volume")
     private Volume volume;
 
+    /**
+     * Creates a new builder for {@link RegistrationBarge}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link RegistrationBarge}.
+     *
+     * @param  registrationBarge  that should be copied.
+     *
+     * @return  new builder with values of given registrationBarge.
+     */
+    public static Builder newBuilder(RegistrationBarge registrationBarge) {
+
+        return new Builder().withBarge(registrationBarge.getBarge())
+            .withEta(registrationBarge.getEta())
+            .withEtd(registrationBarge.getEtd())
+            .withDangerousGoodsIndication(registrationBarge.getDangerousGoodsIndication())
+            .withVolume(registrationBarge.getVolume());
     }
 
 
@@ -177,6 +199,17 @@ public class RegistrationBarge {
         public Builder withVolumeToLoad(Integer volumeToLoad) {
 
             this.volumeToLoad = volumeToLoad;
+
+            return this;
+        }
+
+
+        Builder withVolume(Volume volume) {
+
+            if (volume != null) {
+                this.volumeToDischarge = volume.getToDischarge();
+                this.volumeToLoad = volume.getToLoad();
+            }
 
             return this;
         }

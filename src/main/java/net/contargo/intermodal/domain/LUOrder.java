@@ -74,9 +74,39 @@ public class LUOrder {
 
     private List<Seal> seal;
 
+    /**
+     * Creates a new builder for {@link LUOrder}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link LUOrder}.
+     *
+     * @param  luOrder  that should be copied.
+     *
+     * @return  new builder with values of given luOrder.
+     */
+    public static Builder newBuilder(LUOrder luOrder) {
+
+        return new Builder().withOperator(luOrder.getOperator())
+            .withCustoms(luOrder.getCustoms())
+            .isEmpty(luOrder.isEmpty())
+            .withSetTemperature(luOrder.getSetTemperature())
+            .withDirection(luOrder.getDirection())
+            .withLoadingUnit(luOrder.getLoadingUnit())
+            .withClient(luOrder.getClient())
+            .withDangerousGoodsIndication(luOrder.getDangerousGoodsIndication())
+            .withWasteIndication(luOrder.getWasteIndication())
+            .withGoods(luOrder.getGoods())
+            .withReference(luOrder.getReference())
+            .withSeals(luOrder.getSeals())
+            .withWeight(luOrder.getWeight());
     }
 
 
@@ -270,6 +300,18 @@ public class LUOrder {
                 this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
                 this.weightTare = UnitConverter.tonToKilogram(weightTare);
+            }
+
+            return this;
+        }
+
+
+        Builder withWeight(Weight weight) {
+
+            if (weight != null) {
+                this.weightBrutto = weight.getBrutto();
+                this.weightNetto = weight.getNetto();
+                this.weightTare = weight.getTare();
             }
 
             return this;

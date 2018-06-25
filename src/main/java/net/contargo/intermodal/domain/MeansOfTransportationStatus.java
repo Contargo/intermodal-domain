@@ -95,9 +95,32 @@ public class MeansOfTransportationStatus {
      */
     private Integer waggonTechnicalInspection;
 
+    /**
+     * Creates a new builder for {@link MeansOfTransportationStatus}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link MeansOfTransportationStatus}.
+     *
+     * @param  meansOfTransportationStatus  that should be copied.
+     *
+     * @return  new builder with values of given meansOfTransportationStatus.
+     */
+    public static Builder newBuilder(MeansOfTransportationStatus meansOfTransportationStatus) {
+
+        return new Builder().withAtd(meansOfTransportationStatus.getAtd())
+            .withEta(meansOfTransportationStatus.getEta())
+            .withAta(meansOfTransportationStatus.getAta())
+            .withWaggonTechnicalInspection(meansOfTransportationStatus.getWaggonTechnicalInspection())
+            .withHandlingStart(meansOfTransportationStatus.getHandlingStart())
+            .withHandlingEnd(meansOfTransportationStatus.getHandlingEnd());
     }
 
 

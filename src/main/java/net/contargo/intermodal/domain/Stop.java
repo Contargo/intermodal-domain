@@ -53,9 +53,33 @@ public class Stop {
 
     private MeansOfTransport mot;
 
+    /**
+     * Creates a new builder for {@link Stop}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Stop}.
+     *
+     * @param  stop  that should be copied.
+     *
+     * @return  new builder with values of given stop.
+     */
+    public static Builder newBuilder(Stop stop) {
+
+        return new Builder().withBillingReference(stop.getBillingReference())
+            .withLatest(stop.getLatest())
+            .withEarliest(stop.getEarliest())
+            .withMeansOfTransport(stop.getMot())
+            .withLocations(stop.getLocations())
+            .withSequence(stop.getSequence())
+            .withReference(stop.getReference());
     }
 
 
@@ -134,6 +158,14 @@ public class Stop {
 
         private Builder() {
         }
+
+        Builder withLocations(List<Location> locations) {
+
+            this.location.addAll(locations);
+
+            return this;
+        }
+
 
         public Builder withLocation(String city, String designation, String type) {
 

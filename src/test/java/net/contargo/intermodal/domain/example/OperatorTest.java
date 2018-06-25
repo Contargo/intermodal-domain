@@ -41,6 +41,29 @@ class OperatorTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Operator operator = Operator.newBuilder()
+                .withName("Contargo")
+                .withLegalForm("GmbH & Co. KG")
+                .withAddress(new Address())
+                .withVatId("DE999999999")
+                .withTin("5FFF0BBBBUUUP")
+                .withInsurance("Some Insurance")
+                .buildAndValidate();
+
+        Operator copiedOperator = Operator.newBuilder(operator).buildAndValidate();
+
+        assertEquals("Contargo", copiedOperator.getName());
+        assertEquals("GmbH & Co. KG", copiedOperator.getLegalForm());
+        assertEquals("5FFF0BBBBUUUP", copiedOperator.getTin());
+        assertEquals("DE999999999", copiedOperator.getVatId());
+        assertEquals("Some Insurance", copiedOperator.getInsurance());
+        assertNotNull(copiedOperator.getAddress());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         Operator operator = Operator.newBuilder()

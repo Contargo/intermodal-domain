@@ -42,6 +42,43 @@ class RegistrationBargeTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        RegistrationBarge.newBuilder()
+            .withBarge(new Barge())
+            .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+            .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
+            .withDangerousGoodsIndication(new DangerousGoods())
+            .withVolumeToDischarge(24)
+            .withVolumeToLoad(24)
+            .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureCanBeCopied() {
+
+        RegistrationBarge registrationBarge = RegistrationBarge.newBuilder()
+                .withBarge(new Barge())
+                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
+                .withDangerousGoodsIndication(new DangerousGoods())
+                .withVolumeToDischarge(24)
+                .withVolumeToLoad(24)
+                .buildAndValidate();
+
+        RegistrationBarge copiedRegistrationBarge = RegistrationBarge.newBuilder(registrationBarge).buildAndValidate();
+
+        assertNotNull(copiedRegistrationBarge.getBarge());
+        assertEquals("2018-05-14T11:00:00Z", copiedRegistrationBarge.getEta().toString());
+        assertEquals("2018-05-14T12:00:00Z", copiedRegistrationBarge.getEtd().toString());
+        assertNotNull(copiedRegistrationBarge.getDangerousGoodsIndication());
+        assertEquals(24, copiedRegistrationBarge.getVolumeToLoad().intValue());
+        assertEquals(24, copiedRegistrationBarge.getVolumeToDischarge().intValue());
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,

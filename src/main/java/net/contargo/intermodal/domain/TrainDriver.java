@@ -27,9 +27,34 @@ public class TrainDriver extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant rid;
 
+    /**
+     * Creates a new builder for {@link TrainDriver}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link TrainDriver}.
+     *
+     * @param  trainDriver  that should be copied.
+     *
+     * @return  new builder with values of given trainDriver.
+     */
+    public static Builder newBuilder(TrainDriver trainDriver) {
+
+        return new Builder().withName(trainDriver.getName())
+            .withFirstName(trainDriver.getFirstName())
+            .withAddress(trainDriver.getAddress())
+            .withCellphone(trainDriver.getCellphone())
+            .bornOn(trainDriver.getDateOfBirth())
+            .bornIn(trainDriver.getCityOfBirth())
+            .withCountryCode(trainDriver.getCountryCode())
+            .withRid(trainDriver.getRid());
     }
 
 

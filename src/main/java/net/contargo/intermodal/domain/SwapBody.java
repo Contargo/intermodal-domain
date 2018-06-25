@@ -55,9 +55,34 @@ public class SwapBody extends LoadingUnit {
     @NotNull(message = "stackable is part of minimum requirement and must not be null")
     private Boolean stackable;
 
+    /**
+     * Creates a new builder for {@link SwapBody}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link SwapBody}.
+     *
+     * @param  swapBody  that should be copied.
+     *
+     * @return  new builder with values of given swapBody.
+     */
+    public static Builder newBuilder(SwapBody swapBody) {
+
+        return new Builder().withNumberAndIdentification(swapBody.getNumber())
+            .withCondition(swapBody.getCondition())
+            .isReefer(swapBody.isReefer())
+            .withOperator(swapBody.getOperator())
+            .isStackable(swapBody.isStackable())
+            .withSize(swapBody.getSize())
+            .withType(swapBody.getType())
+            .withWeight(swapBody.getWeight());
     }
 
 
@@ -172,6 +197,26 @@ public class SwapBody extends LoadingUnit {
             } else if (unit.equals(MassUnit.TON)) {
                 this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
+
+            return this;
+        }
+
+
+        Builder withWeight(Weight weight) {
+
+            if (weight != null) {
+                this.weightTare = weight.getTare();
+                this.weightBruttoMax = weight.getBruttoMax();
+                this.weightNettoMax = weight.getNettoMax();
+            }
+
+            return this;
+        }
+
+
+        Builder withSize(Quantity<Length> size) {
+
+            this.size = size;
 
             return this;
         }

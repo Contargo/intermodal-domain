@@ -70,9 +70,35 @@ public class ProcessingBarge {
 
     private List<LoadingListElement> loadingList;
 
+    /**
+     * Creates a new builder for {@link ProcessingBarge}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link ProcessingBarge}.
+     *
+     * @param  processingBarge  that should be copied.
+     *
+     * @return  new builder with values of given processingBarge.
+     */
+    public static Builder newBuilder(ProcessingBarge processingBarge) {
+
+        return new Builder().withBarge(processingBarge.getBarge())
+            .withReeferConnections(processingBarge.getReeferConnections())
+            .withEta(processingBarge.getEta())
+            .withEtd(processingBarge.getEtd())
+            .withPassenger(processingBarge.getPassenger())
+            .withCone(processingBarge.getCone())
+            .withSkipper(processingBarge.getSkipper())
+            .withAdnr(processingBarge.getAdnr())
+            .withLoadingList(processingBarge.getLoadingList());
     }
 
 
@@ -283,6 +309,14 @@ public class ProcessingBarge {
             loadingListElement.setLuOrder(luOrder);
 
             this.loadingList.add(loadingListElement);
+
+            return this;
+        }
+
+
+        Builder withLoadingList(List<LoadingListElement> loadingList) {
+
+            this.loadingList = loadingList;
 
             return this;
         }

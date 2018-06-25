@@ -62,6 +62,40 @@ class ContainerTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Container container = Container.newBuilder()
+                .withNumberAndIdentification("MSKU1806510")
+                .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withCondition("schadhaft")
+                .isReefer(false)
+                .withOperator("Contargo")
+                .withSizeType("45G0")
+                .withSize(40.0, LengthUnit.FOOT)
+                .withType("General purpose container (without ventilation)")
+                .buildAndValidate();
+
+        Container copiedContainer = Container.newBuilder(container).buildAndValidate();
+
+        assertEquals("MSKU1806510", copiedContainer.getIdentification());
+        assertEquals("MSKU1806510", copiedContainer.getNumber());
+        assertEquals(LoadingUnitCategory.CONTAINER, copiedContainer.getCategory());
+        assertNotNull(copiedContainer.getWeight());
+        assertEquals(30480., copiedContainer.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(28080.0, copiedContainer.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(2400.0, copiedContainer.getWeightTare().getValue().doubleValue());
+        assertEquals("schadhaft", copiedContainer.getCondition());
+        assertFalse(copiedContainer.isReefer());
+        assertEquals("Contargo", copiedContainer.getOperator());
+        assertEquals("45G0", copiedContainer.getSizeType());
+        assertEquals("General purpose container (without ventilation)", copiedContainer.getType());
+        assertEquals(40.0, copiedContainer.getSize().getValue().doubleValue());
+    }
+
+
+    @Test
     void ensureTypeAndSizeCanBeSetBySizeType() {
 
         Container container = Container.newBuilder()

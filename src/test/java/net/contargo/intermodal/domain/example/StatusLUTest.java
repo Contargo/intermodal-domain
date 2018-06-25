@@ -42,6 +42,33 @@ class StatusLUTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        StatusLU statusLU = StatusLU.newBuilder()
+                .isReadyForLoading(true)
+                .isLoaded(false)
+                .isInspectionOut(false)
+                .isOut(false)
+                .hasInspectionIn(true)
+                .isIn(true)
+                .isReadyForUnloading(false)
+                .isUnloaded(true)
+                .buildAndValidate();
+
+        StatusLU copiedStatusLU = StatusLU.newBuilder(statusLU).buildAndValidate();
+
+        assertTrue(copiedStatusLU.isReadyForLoading());
+        assertTrue(copiedStatusLU.getInspectionIn());
+        assertTrue(copiedStatusLU.isIn());
+        assertTrue(copiedStatusLU.isUnloaded());
+        assertFalse(copiedStatusLU.isLoaded());
+        assertFalse(copiedStatusLU.getInspectionOut());
+        assertFalse(copiedStatusLU.isOut());
+        assertFalse(copiedStatusLU.isReadyForUnloading());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         StatusLU statusLU = StatusLU.newBuilder()

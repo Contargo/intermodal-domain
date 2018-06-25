@@ -51,6 +51,37 @@ class TruckTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Truck truck = Truck.newBuilder()
+                .withNumberPlate("DU CO 1782")
+                .withCountryCode("DE")
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
+                .withEnvironmentBadge(EnvironmentBadge.GREEN)
+                .withType("refrigerator truck")
+                .withEuAuthorization(true)
+                .withST(true)
+                .withSuitabilityDangerousGoods(false)
+                .withSuitabilityWaste(false)
+                .withWeightTare(40000.0, MassUnit.KILOGRAM)
+                .buildAndValidate();
+
+        Truck copiedTruck = Truck.newBuilder(truck).buildAndValidate();
+
+        assertEquals("DU CO 1782", copiedTruck.getNumberPlate());
+        assertEquals("DE", copiedTruck.getCountryCode());
+        assertEquals("2020-05-22T00:00:00Z", copiedTruck.getMot().toString());
+        assertEquals(EnvironmentBadge.GREEN, copiedTruck.getEnvironmentBadge());
+        assertEquals("refrigerator truck", copiedTruck.getType());
+        assertTrue(copiedTruck.getEuAuthorization());
+        assertTrue(copiedTruck.getSt());
+        assertFalse(copiedTruck.getSuitabilityDangerousGoods());
+        assertFalse(copiedTruck.getSuitabilityWaste());
+        assertEquals(40000.0, copiedTruck.getWeightTare().getValue().doubleValue());
+    }
+
+
+    @Test
     void ensureWeightCanBeSetInTons() {
 
         Truck truck = Truck.newBuilder()

@@ -23,7 +23,7 @@ class CustomsTest {
         Customs customs = Customs.newBuilder()
                 .withCustomProcess("T1")
                 .withCustomDocumentNumber("16DE1234...")
-                .withSeal(Seal.Builder.newSeal().withNumber("42").withType("some seal type").build())
+                .withSeal(Seal.newBuilder().withNumber("42").withType("some seal type").build())
                 .buildAndValidate();
 
         assertEquals("T1", customs.getCustomProcess());
@@ -34,12 +34,30 @@ class CustomsTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Customs customs = Customs.newBuilder()
+                .withCustomProcess("T1")
+                .withCustomDocumentNumber("16DE1234...")
+                .withSeal(Seal.newBuilder().withNumber("42").withType("some seal type").build())
+                .buildAndValidate();
+
+        Customs copiedCustoms = Customs.newBuilder(customs).buildAndValidate();
+
+        assertEquals("T1", copiedCustoms.getCustomProcess());
+        assertEquals("16DE1234...", copiedCustoms.getCustomDocumentNumber());
+        assertEquals("42", copiedCustoms.getSeal().getNumber());
+        assertEquals("some seal type", copiedCustoms.getSeal().getType());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         Customs customs = Customs.newBuilder()
                 .withCustomProcess("T1")
                 .withCustomDocumentNumber("16DE1234...")
-                .withSeal(Seal.Builder.newSeal().withNumber("42").withType("some seal type").build())
+                .withSeal(Seal.newBuilder().withNumber("42").withType("some seal type").build())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

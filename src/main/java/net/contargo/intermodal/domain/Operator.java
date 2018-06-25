@@ -38,9 +38,32 @@ public class Operator {
 
     private String insurance;
 
+    /**
+     * Creates a new builder for {@link Operator}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Operator}.
+     *
+     * @param  operator  that should be copied.
+     *
+     * @return  new builder with values of given operator.
+     */
+    public static Builder newBuilder(Operator operator) {
+
+        return new Builder().withAddress(operator.getAddress())
+            .withTin(operator.getTin())
+            .withName(operator.getName())
+            .withVatId(operator.getVatId())
+            .withInsurance(operator.getInsurance())
+            .withLegalForm(operator.getLegalForm());
     }
 
 

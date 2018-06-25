@@ -53,9 +53,33 @@ public class RegistrationVehicle {
     @NotNull(message = "luOrder is part of minimum requirement and must not be null")
     private LUOrder luOrder;
 
+    /**
+     * Creates a new builder for {@link RegistrationVehicle}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link RegistrationVehicle}.
+     *
+     * @param  registrationVehicle  that should be copied.
+     *
+     * @return  new builder with values of given registrationVehicle.
+     */
+    public static Builder newBuilder(RegistrationVehicle registrationVehicle) {
+
+        return new Builder().withHaulierClient(registrationVehicle.getHaulierClient())
+            .withChassis(registrationVehicle.getChassis())
+            .withDeliveryTime(registrationVehicle.getDeliveryTime())
+            .withTruck(registrationVehicle.getTruck())
+            .withLuOrder(registrationVehicle.getLuOrder())
+            .withHaulierRealizing(registrationVehicle.getHaulierRealizing())
+            .withDriver(registrationVehicle.getDriver());
     }
 
 

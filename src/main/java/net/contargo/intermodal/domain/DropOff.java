@@ -46,9 +46,32 @@ public class DropOff {
     @NotNull(message = "mot is part of minimum requirement and must not be null")
     private MeansOfTransport mot;
 
+    /**
+     * Creates a new builder for {@link DropOff}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link DropOff}.
+     *
+     * @param  dropOff  that should be copied.
+     *
+     * @return  new builder with values of given dropOff.
+     */
+    public static Builder newBuilder(DropOff dropOff) {
+
+        return new Builder().withLocation(dropOff.getLocation())
+            .withLoadingUnit(dropOff.getLoadingUnit())
+            .withBillingReference(dropOff.getBillingReference())
+            .withEarliest(dropOff.getEarliest())
+            .withLatest(dropOff.getLatest())
+            .withMeansOfTransport(dropOff.getMot());
     }
 
 
@@ -135,10 +158,26 @@ public class DropOff {
         }
 
 
+        Builder withLocation(Location location) {
+
+            this.location = location;
+
+            return this;
+        }
+
+
         public Builder withLoadingUnit(String reference, Boolean isEmpty) {
 
             this.loadingUnit.setEmpty(isEmpty);
             this.loadingUnit.setReference(reference);
+
+            return this;
+        }
+
+
+        Builder withLoadingUnit(Transport.LoadingUnit loadingUnit) {
+
+            this.loadingUnit = loadingUnit;
 
             return this;
         }

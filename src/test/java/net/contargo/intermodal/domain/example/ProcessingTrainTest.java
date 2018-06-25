@@ -52,6 +52,37 @@ class ProcessingTrainTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        ProcessingTrain processingTrain = ProcessingTrain.newBuilder()
+                .withTrainTitle("My Train")
+                .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
+                .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
+                .withWaggon("SGNRS", "24568", 3, Arrays.asList(new LUOrder(), new LUOrder()))
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
+                .withShunter("a shunter")
+                .withTrainPaths("12345")
+                .buildAndValidate();
+
+        ProcessingTrain copiedProcessingTrain = ProcessingTrain.newBuilder(processingTrain).buildAndValidate();
+
+        assertEquals("My Train", copiedProcessingTrain.getTrainTitle());
+        assertEquals(3, copiedProcessingTrain.getLoadingList().size());
+        assertEquals("789784", copiedProcessingTrain.getLoadingList().get(0).getId());
+        assertEquals("54789", copiedProcessingTrain.getLoadingList().get(1).getId());
+        assertEquals("24568", copiedProcessingTrain.getLoadingList().get(2).getId());
+        assertEquals(2, copiedProcessingTrain.getLoadingList().get(2).getLoadingPosition().size());
+        assertEquals("2018-05-14T11:00:00Z", copiedProcessingTrain.getTerminalEta().toString());
+        assertEquals("2018-05-14T13:00:00Z", copiedProcessingTrain.getTerminalEtd().toString());
+        assertEquals("2018-05-14T12:00:00Z", copiedProcessingTrain.getShuntingYardEta().toString());
+        assertEquals("a shunter", copiedProcessingTrain.getShunter());
+        assertEquals("12345", copiedProcessingTrain.getTrainPaths());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         ProcessingTrain processingTrain = ProcessingTrain.newBuilder()

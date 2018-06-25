@@ -54,6 +54,35 @@ class StopTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Stop stop = Stop.newBuilder()
+                .withLocation("Koblenz", "Terminal Koblenz", "terminal")
+                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
+                .withSequence(1)
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T12:00:00Z"))
+                .withReference("1234567")
+                .withBillingReference("894738")
+                .withMeansOfTransport(new Barge())
+                .buildAndValidate();
+
+        Stop copiedStop = Stop.newBuilder(stop).buildAndValidate();
+
+        assertEquals(2, copiedStop.getLocations().size());
+        assertEquals("Koblenz", copiedStop.getLocations().get(0).getCity());
+        assertEquals("Terminal Koblenz", copiedStop.getLocations().get(0).getDesignation());
+        assertEquals("terminal", copiedStop.getLocations().get(0).getType());
+        assertEquals(1, copiedStop.getSequence().intValue());
+        assertEquals("2018-05-14T11:00:00Z", copiedStop.getEarliest().toString());
+        assertEquals("2018-05-14T12:00:00Z", copiedStop.getLatest().toString());
+        assertEquals("1234567", copiedStop.getReference());
+        assertEquals("894738", copiedStop.getBillingReference());
+        assertNotNull(copiedStop.getMot());
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class, () -> Stop.newBuilder().buildAndValidate());

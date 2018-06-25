@@ -46,12 +46,51 @@ class RegistrationVehicleTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirements() {
+
+        RegistrationVehicle.newBuilder()
+            .withTruck(new Truck())
+            .withDriver(new Driver())
+            .withHaulierClient("haulier client")
+            .withHaulierRealizing("haulier realizing")
+            .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
+            .withLuOrder(new LUOrder())
+            .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureCanBeCopied() {
+
+        RegistrationVehicle registrationVehicle = RegistrationVehicle.newBuilder()
+                .withTruck(new Truck())
+                .withChassis(new Chassis())
+                .withDriver(new Driver())
+                .withHaulierClient("haulier client")
+                .withHaulierRealizing("haulier realizing")
+                .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
+                .withLuOrder(new LUOrder())
+                .buildAndValidate();
+
+        RegistrationVehicle copiedRegistrationVehicle = RegistrationVehicle.newBuilder(registrationVehicle)
+                .buildAndValidate();
+
+        assertNotNull(copiedRegistrationVehicle.getTruck());
+        assertNotNull(copiedRegistrationVehicle.getChassis());
+        assertNotNull(copiedRegistrationVehicle.getDriver());
+        assertEquals("haulier client", copiedRegistrationVehicle.getHaulierClient());
+        assertEquals("haulier realizing", copiedRegistrationVehicle.getHaulierRealizing());
+        assertEquals("2018-05-14T12:30:00Z", copiedRegistrationVehicle.getDeliveryTime().toString());
+        assertNotNull(copiedRegistrationVehicle.getLuOrder());
+    }
+
+
+    @Test
     void ensureMinimumRequirementIsChecked() {
 
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationVehicle.newBuilder()
-                    .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
@@ -63,7 +102,6 @@ class RegistrationVehicleTest {
             () ->
                 RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
-                    .withChassis(new Chassis())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
@@ -74,7 +112,6 @@ class RegistrationVehicleTest {
             () ->
                 RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
-                    .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
@@ -85,7 +122,6 @@ class RegistrationVehicleTest {
             () ->
                 RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
-                    .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
@@ -95,7 +131,6 @@ class RegistrationVehicleTest {
             () ->
                 RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
-                    .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
@@ -105,7 +140,6 @@ class RegistrationVehicleTest {
             () ->
                 RegistrationVehicle.newBuilder()
                     .withTruck(new Truck())
-                    .withChassis(new Chassis())
                     .withDriver(new Driver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")

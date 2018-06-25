@@ -55,9 +55,31 @@ public class Waste {
      */
     private Weight weight;
 
+    /**
+     * Creates a new builder for {@link Waste}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Waste}.
+     *
+     * @param  waste  that should be copied.
+     *
+     * @return  new builder with values of given waste.
+     */
+    public static Builder newBuilder(Waste waste) {
+
+        return new Builder().withReceiptNumber(waste.getReceiptNumber())
+            .withKeyID(waste.getKeyID())
+            .withWasteRegulationNumber(waste.getWasteRegulationNumber())
+            .withPosition(waste.getPosition())
+            .withWeight(waste.getWeight());
     }
 
 
@@ -159,6 +181,16 @@ public class Waste {
                 this.weightNetto = Quantities.getQuantity(weightNetto, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
                 this.weightNetto = UnitConverter.tonToKilogram(weightNetto);
+            }
+
+            return this;
+        }
+
+
+        Builder withWeight(Weight weight) {
+
+            if (weight != null) {
+                this.weightNetto = weight.getNetto();
             }
 
             return this;

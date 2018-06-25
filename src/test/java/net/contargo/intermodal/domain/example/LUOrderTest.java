@@ -23,8 +23,8 @@ class LUOrderTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         List<Seal> seals = new ArrayList<>();
-        seals.add(Seal.Builder.newSeal().withNumber("01234").withType("some seal type").build());
-        seals.add(Seal.Builder.newSeal().withNumber("46789").withType("another seal type").build());
+        seals.add(Seal.newBuilder().withNumber("01234").withType("some seal type").build());
+        seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
 
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
                 .withLoadingUnit(new Container())
@@ -76,6 +76,54 @@ class LUOrderTest {
             .withDangerousGoodsIndication(new DangerousGoods())
             .withWasteIndication(new Waste())
             .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureCanBeCopied() {
+
+        List<Seal> seals = new ArrayList<>();
+        seals.add(Seal.newBuilder().withNumber("01234").withType("some seal type").build());
+        seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
+
+        LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
+                .withLoadingUnit(new Container())
+                .withReference("1658583")
+                .withWeightBrutto(16.0, MassUnit.KILOGRAM)
+                .withWeightNetto(14.0, MassUnit.KILOGRAM)
+                .withWeightTare(16.0, MassUnit.KILOGRAM)
+                .withDangerousGoodsIndication(new DangerousGoods())
+                .withWasteIndication(new Waste())
+                .withSetTemperature(32)
+                .withOperator(new Operator())
+                .withClient(new Operator())
+                .withDirection(Direction.EXPORT)
+                .withCustoms(new Customs())
+                .withGoods("food")
+                .isEmpty(false)
+                .withSeals(seals)
+                .buildAndValidate();
+
+        LUOrder copiedLuOrder = LUOrder.newBuilder(loadingUnitLUOrder).buildAndValidate();
+
+        assertNotNull(copiedLuOrder.getLoadingUnit());
+        assertEquals("1658583", copiedLuOrder.getReference());
+        assertEquals(16, copiedLuOrder.getWeightBrutto().getValue().doubleValue());
+        assertEquals(14, copiedLuOrder.getWeightNetto().getValue().doubleValue());
+        assertEquals(16, copiedLuOrder.getWeightTare().getValue().doubleValue());
+        assertNotNull(copiedLuOrder.getDangerousGoodsIndication());
+        assertNotNull(copiedLuOrder.getWasteIndication());
+        assertEquals(32, copiedLuOrder.getSetTemperature().doubleValue());
+        assertNotNull(copiedLuOrder.getOperator());
+        assertNotNull(copiedLuOrder.getClient());
+        assertEquals(Direction.EXPORT, copiedLuOrder.getDirection());
+        assertNotNull(copiedLuOrder.getCustoms());
+        assertEquals("food", copiedLuOrder.getGoods());
+        assertFalse(copiedLuOrder.isEmpty());
+        assertNotNull(copiedLuOrder.getSeals());
+        assertEquals(2, copiedLuOrder.getSeals().size());
+        assertEquals("some seal type", copiedLuOrder.getSeals().get(0).getType());
+        assertEquals("01234", copiedLuOrder.getSeals().get(0).getNumber());
     }
 
 
@@ -168,8 +216,8 @@ class LUOrderTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         List<Seal> seals = new ArrayList<>();
-        seals.add(Seal.Builder.newSeal().withNumber("01234").withType("some seal type").build());
-        seals.add(Seal.Builder.newSeal().withNumber("46789").withType("another seal type").build());
+        seals.add(Seal.newBuilder().withNumber("01234").withType("some seal type").build());
+        seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
 
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
                 .withLoadingUnit(new Container())

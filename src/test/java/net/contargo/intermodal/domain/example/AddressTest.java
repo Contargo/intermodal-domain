@@ -36,6 +36,27 @@ class AddressTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Address address = Address.newBuilder()
+                .withStreet("Gartenstraße 67")
+                .withLocationPostalCode("76135")
+                .withLocationCity("Karlsruhe")
+                .withCountryName("Germany")
+                .withCountryCode("DE")
+                .buildAndValidate();
+
+        Address copiedAddress = Address.newBuilder(address).buildAndValidate();
+
+        assertEquals("Gartenstraße 67", copiedAddress.getStreet());
+        assertEquals("76135", copiedAddress.getLocationPostalCode());
+        assertEquals("Karlsruhe", copiedAddress.getLocationCity());
+        assertEquals("Germany", copiedAddress.getCountryName());
+        assertEquals("DE", copiedAddress.getCountryCode());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         Address address = Address.newBuilder()

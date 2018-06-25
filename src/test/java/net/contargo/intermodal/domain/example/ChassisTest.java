@@ -59,6 +59,42 @@ class ChassisTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Chassis chassis = Chassis.newBuilder()
+                .withNumberPlate("DU CO 1782")
+                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
+                .withType("Multichassis")
+                .withAxles(2)
+                .withSize(4.0, LengthUnit.METRE)
+                .withHeight(1.0, LengthUnit.METRE)
+                .withEuAuthorization(true)
+                .withSt(true)
+                .withSuitabilityDangerousGoods(true)
+                .withSuitabilityWaste(true)
+                .withSuitabilityReefer(true)
+                .withWeightTare(500.0, MassUnit.KILOGRAM)
+                .buildAndValidate();
+
+        Chassis copiedChassis = Chassis.newBuilder(chassis).buildAndValidate();
+
+        assertEquals("DU CO 1782", copiedChassis.getNumberPlate());
+        assertEquals("2020-05-22T00:00:00Z", copiedChassis.getMot().toString());
+        assertEquals("Multichassis", copiedChassis.getType());
+        assertEquals(2, copiedChassis.getAxles().intValue());
+        assertEquals(4.0, copiedChassis.getSize().getValue().doubleValue());
+        assertEquals(1.0, copiedChassis.getHeight().getValue().doubleValue());
+        assertTrue(copiedChassis.getEuAuthorization());
+        assertTrue(copiedChassis.getSt());
+        assertTrue(copiedChassis.getSuitabilityDangerousGoods());
+        assertTrue(copiedChassis.getSuitabilityWaste());
+        assertTrue(copiedChassis.getSuitabilityReefer());
+        assertNotNull(copiedChassis.getWeight());
+        assertEquals(500.0, copiedChassis.getWeightTare().getValue().doubleValue());
+    }
+
+
+    @Test
     void ensureMeasurementsCanBeSetInFoot() {
 
         Chassis chassis = Chassis.newBuilder()

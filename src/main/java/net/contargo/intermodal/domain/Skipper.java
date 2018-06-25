@@ -27,9 +27,34 @@ public class Skipper extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant adnr;
 
+    /**
+     * Creates a new builder for {@link Skipper}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Skipper}.
+     *
+     * @param  skipper  that should be copied.
+     *
+     * @return  new builder with values of given skipper.
+     */
+    public static Builder newBuilder(Skipper skipper) {
+
+        return new Builder().withName(skipper.getName())
+            .withFirstName(skipper.getFirstName())
+            .withAddress(skipper.getAddress())
+            .withCellphone(skipper.getCellphone())
+            .bornOn(skipper.getDateOfBirth())
+            .bornIn(skipper.getCityOfBirth())
+            .withCountryCode(skipper.getCountryCode())
+            .withAdnr(skipper.getAdnr());
     }
 
 

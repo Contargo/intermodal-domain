@@ -52,6 +52,39 @@ class ProcessingBargeTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
+                .withBarge(new Barge())
+                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
+                .withSkipper(new Skipper())
+                .withPassenger(Arrays.asList(new Passenger(), new Passenger()))
+                .withReeferConnections(12)
+                .withCone(Cone.ONE)
+                .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
+                .withLuOrder(new LUOrder(), StoragePosition.TIER)
+                .withLuOrder(new LUOrder(), StoragePosition.ROW)
+                .withLuOrder(new LUOrder(), StoragePosition.BAY)
+                .buildAndValidate();
+
+        ProcessingBarge copiedProcessingBarge = ProcessingBarge.newBuilder(processingBarge).buildAndValidate();
+
+        assertNotNull(copiedProcessingBarge.getBarge());
+        assertEquals("2018-05-14T11:00:00Z", copiedProcessingBarge.getEta().toString());
+        assertEquals("2018-05-14T12:00:00Z", copiedProcessingBarge.getEtd().toString());
+        assertNotNull(copiedProcessingBarge.getSkipper());
+        assertEquals(2, copiedProcessingBarge.getPassenger().size());
+        assertEquals(12, copiedProcessingBarge.getReeferConnections().intValue());
+        assertEquals(Cone.ONE, copiedProcessingBarge.getCone());
+        assertEquals("2020-06-01T12:00:00Z", copiedProcessingBarge.getAdnr().toString());
+        assertEquals(3, copiedProcessingBarge.getLoadingList().size());
+        assertEquals(StoragePosition.TIER, copiedProcessingBarge.getLoadingList().get(0).getStoragePosition());
+        assertNotNull(copiedProcessingBarge.getLoadingList().get(0).getLuOrder());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         ProcessingBarge processingBarge = ProcessingBarge.newBuilder()

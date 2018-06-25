@@ -48,6 +48,28 @@ class WasteTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Waste waste = Waste.newBuilder()
+                .withPosition(1)
+                .withKeyID("03 03 01")
+                .withWasteRegulationNumber("02")
+                .withReceiptNumber("65478")
+                .withWeightNetto(75.0, MassUnit.KILOGRAM)
+                .buildAndValidate();
+
+        Waste copiedWaste = Waste.newBuilder(waste).buildAndValidate();
+
+        assertEquals(1, copiedWaste.getPosition().intValue());
+        assertEquals("03 03 01", copiedWaste.getKeyID());
+        assertEquals("02", copiedWaste.getWasteRegulationNumber());
+        assertEquals("65478", copiedWaste.getReceiptNumber());
+        assertNotNull(copiedWaste.getWeight());
+        assertEquals(75.0, copiedWaste.getWeightNetto().getValue().doubleValue());
+    }
+
+
+    @Test
     void ensureWasteCanBeValidated() {
 
         assertThrows(IllegalStateException.class, () -> Waste.newBuilder().buildAndValidate());

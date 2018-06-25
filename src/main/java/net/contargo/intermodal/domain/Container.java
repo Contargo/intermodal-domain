@@ -59,9 +59,34 @@ public class Container extends LoadingUnit {
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Length> size;
 
+    /**
+     * Creates a new builder for {@link Container}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Container}.
+     *
+     * @param  container  that should be copied.
+     *
+     * @return  new builder with values of given container.
+     */
+    public static Builder newBuilder(Container container) {
+
+        return new Builder().withNumberAndIdentification(container.getNumber())
+            .withCondition(container.getCondition())
+            .isReefer(container.isReefer())
+            .withOperator(container.getOperator())
+            .withSizeType(container.sizeType)
+            .withType(container.getType())
+            .withSize(container.getSize())
+            .withWeight(container.getWeight());
     }
 
 
@@ -209,9 +234,29 @@ public class Container extends LoadingUnit {
         }
 
 
+        Builder withWeight(Weight weight) {
+
+            if (weight != null) {
+                this.weightNettoMax = weight.getNettoMax();
+                this.weightBruttoMax = weight.getBruttoMax();
+                this.weightTare = weight.getTare();
+            }
+
+            return this;
+        }
+
+
         public Builder isReefer(boolean reefer) {
 
             this.reefer = reefer;
+
+            return this;
+        }
+
+
+        Builder withSize(Quantity<Length> size) {
+
+            this.size = size;
 
             return this;
         }

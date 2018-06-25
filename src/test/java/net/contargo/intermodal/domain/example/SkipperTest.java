@@ -54,6 +54,33 @@ class SkipperTest {
 
 
     @Test
+    void ensureCanBeCopied() {
+
+        Skipper skipper = Skipper.newBuilder()
+                .withName("Mustermann")
+                .withFirstName("Max")
+                .withAddress(new Address())
+                .withCellphone("01234/56789")
+                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornIn("Karlsruhe")
+                .withCountryCode("DE")
+                .withAdnr(Instant.parse("2018-12-31T00:00:00Z"))
+                .buildAndValidate();
+
+        Skipper copiedSkipper = Skipper.newBuilder(skipper).buildAndValidate();
+
+        assertEquals("Mustermann", copiedSkipper.getName());
+        assertEquals("Max", copiedSkipper.getFirstName());
+        assertNotNull(copiedSkipper.getAddress());
+        assertEquals("01234/56789", copiedSkipper.getCellphone());
+        assertEquals("1980-01-13T00:00:00Z", copiedSkipper.getDateOfBirth().toString());
+        assertEquals("Karlsruhe", copiedSkipper.getCityOfBirth());
+        assertEquals("DE", copiedSkipper.getCountryCode());
+        assertEquals("2018-12-31T00:00:00Z", copiedSkipper.getAdnr().toString());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         Address address = Address.newBuilder()

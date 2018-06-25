@@ -20,9 +20,30 @@ public class Address {
 
     private Country country;
 
+    /**
+     * Creates a new builder for {@link Address}.
+     *
+     * @return  new builder
+     */
     public static Builder newBuilder() {
 
         return new Builder();
+    }
+
+
+    /**
+     * Creates a new builder with the values of another {@link Address}.
+     *
+     * @param  address  that should be copied.
+     *
+     * @return  new builder with values of given address.
+     */
+    public static Builder newBuilder(Address address) {
+
+        return new Builder().withStreet(address.getStreet())
+            .withLocation(address.getLocation())
+            .withCountryName(address.getCountryName())
+            .withCountryCode(address.getCountryCode());
     }
 
 
@@ -135,6 +156,17 @@ public class Address {
         public Builder withCountryCode(String countryCode) {
 
             this.countryCode = countryCode;
+
+            return this;
+        }
+
+
+        Builder withLocation(Location location) {
+
+            if (location != null) {
+                this.locationCity = location.getCity();
+                this.locationPostalCode = location.getPostalCode();
+            }
 
             return this;
         }
