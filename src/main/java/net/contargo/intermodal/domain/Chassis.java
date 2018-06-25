@@ -116,15 +116,15 @@ public class Chassis implements MeansOfTransport {
     public static Builder newBuilder(Chassis chassis) {
 
         return new Builder().withNumberPlate(chassis.getNumberPlate())
-            .withAxles(chassis.getAxles())
+            .withNumberOfAxles(chassis.getAxles())
             .withHeight(chassis.getHeight())
             .withEuAuthorization(chassis.getEuAuthorization())
-            .withSt(chassis.getSt())
+            .withSecurityTest(chassis.getSt())
             .withType(chassis.getType())
             .withSize(chassis.getSize())
-            .withSuitabilityDangerousGoods(chassis.getSuitabilityDangerousGoods())
-            .withSuitabilityWaste(chassis.getSuitabilityWaste())
-            .withSuitabilityReefer(chassis.getSuitabilityReefer())
+            .isSuitableForDangerousGoods(chassis.getSuitabilityDangerousGoods())
+            .isSuitableForWaste(chassis.getSuitabilityWaste())
+            .isSuitableForReefer(chassis.getSuitabilityReefer())
             .withMot(chassis.getMot())
             .withWeight(chassis.getWeight());
     }
@@ -266,7 +266,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withAxles(Integer axles) {
+        public Builder withNumberOfAxles(Integer axles) {
 
             this.axles = axles;
 
@@ -322,7 +322,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withSt(Boolean st) {
+        public Builder withSecurityTest(Boolean st) {
 
             this.st = st;
 
@@ -330,7 +330,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
+        public Builder isSuitableForDangerousGoods(Boolean suitabilityDangerousGoods) {
 
             this.suitabilityDangerousGoods = suitabilityDangerousGoods;
 
@@ -338,7 +338,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withSuitabilityWaste(Boolean suitabilityWaste) {
+        public Builder isSuitableForWaste(Boolean suitabilityWaste) {
 
             this.suitabilityWaste = suitabilityWaste;
 
@@ -346,7 +346,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withSuitabilityReefer(Boolean suitabilityReefer) {
+        public Builder isSuitableForReefer(Boolean suitabilityReefer) {
 
             this.suitabilityReefer = suitabilityReefer;
 

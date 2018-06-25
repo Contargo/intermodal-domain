@@ -107,12 +107,12 @@ public class Barge implements MeansOfTransport {
             .withDraught(barge.getDraught())
             .withOperator(barge.getOperator())
             .withLength(barge.getLength())
-            .withSuitabilityDangerousGoods(barge.getSuitabilityDangerousGoods())
-            .withBays(barge.getBays())
+            .isSuitableForDangerousGoods(barge.getSuitabilityDangerousGoods())
+            .withNumberOfBays(barge.getBays())
             .withMmsi(barge.getMmsi())
             .withCapacity(barge.getCapacity())
-            .withTiers(barge.getTiers())
-            .withRows(barge.getRows())
+            .withNumberOfTiers(barge.getTiers())
+            .withNumberOfRows(barge.getRows())
             .withEni(barge.getEni());
     }
 
@@ -371,7 +371,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withBays(Integer bays) {
+        public Builder withNumberOfBays(Integer bays) {
 
             this.bays = bays;
 
@@ -379,7 +379,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withRows(Integer rows) {
+        public Builder withNumberOfRows(Integer rows) {
 
             this.rows = rows;
 
@@ -387,7 +387,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withTiers(Integer tiers) {
+        public Builder withNumberOfTiers(Integer tiers) {
 
             this.tiers = tiers;
 
@@ -395,7 +395,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
+        public Builder isSuitableForDangerousGoods(Boolean suitabilityDangerousGoods) {
 
             this.suitabilityDangerousGoods = suitabilityDangerousGoods;
 
@@ -412,7 +412,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withCapacityTeu(Double capacityTeu) {
+        public Builder withCapacityInTeu(Double capacityTeu) {
 
             this.capacityTeu = capacityTeu;
 
@@ -420,7 +420,7 @@ public class Barge implements MeansOfTransport {
         }
 
 
-        public Builder withCapacityTons(Double capacity) {
+        public Builder withCapacityInTons(Double capacity) {
 
             this.capacityTons = capacity;
 

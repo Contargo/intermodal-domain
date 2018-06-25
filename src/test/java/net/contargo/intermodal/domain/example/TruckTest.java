@@ -2,7 +2,6 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Container;
 import net.contargo.intermodal.domain.EnvironmentBadge;
 import net.contargo.intermodal.domain.MassUnit;
 import net.contargo.intermodal.domain.Truck;
@@ -32,8 +31,8 @@ class TruckTest {
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
                 .withST(true)
-                .withSuitabilityDangerousGoods(false)
-                .withSuitabilityWaste(false)
+                .isSuitableForDangerousGoods(false)
+                .isSuitableForWaste(false)
                 .withWeightTare(40000.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
@@ -61,8 +60,8 @@ class TruckTest {
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
                 .withST(true)
-                .withSuitabilityDangerousGoods(false)
-                .withSuitabilityWaste(false)
+                .isSuitableForDangerousGoods(false)
+                .isSuitableForWaste(false)
                 .withWeightTare(40000.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
@@ -92,8 +91,8 @@ class TruckTest {
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
                 .withST(true)
-                .withSuitabilityDangerousGoods(false)
-                .withSuitabilityWaste(false)
+                .isSuitableForDangerousGoods(false)
+                .isSuitableForWaste(false)
                 .withWeightTare(40.0, MassUnit.TON)
                 .buildAndValidate();
 
@@ -112,8 +111,8 @@ class TruckTest {
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
                 .withST(true)
-                .withSuitabilityDangerousGoods(false)
-                .withSuitabilityWaste(false)
+                .isSuitableForDangerousGoods(false)
+                .isSuitableForWaste(false)
                 .withWeightTare(40000.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 

@@ -12,10 +12,6 @@ import java.io.IOException;
 
 import java.time.Instant;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -31,14 +27,14 @@ class ChassisTest {
                 .withNumberPlate("DU CO 1782")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
-                .withAxles(2)
+                .withNumberOfAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
                 .withHeight(1.0, LengthUnit.METRE)
                 .withEuAuthorization(true)
-                .withSt(true)
-                .withSuitabilityDangerousGoods(true)
-                .withSuitabilityWaste(true)
-                .withSuitabilityReefer(true)
+                .withSecurityTest(true)
+                .isSuitableForDangerousGoods(true)
+                .isSuitableForWaste(true)
+                .isSuitableForReefer(true)
                 .withWeightTare(500.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
@@ -65,14 +61,14 @@ class ChassisTest {
                 .withNumberPlate("DU CO 1782")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
-                .withAxles(2)
+                .withNumberOfAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
                 .withHeight(1.0, LengthUnit.METRE)
                 .withEuAuthorization(true)
-                .withSt(true)
-                .withSuitabilityDangerousGoods(true)
-                .withSuitabilityWaste(true)
-                .withSuitabilityReefer(true)
+                .withSecurityTest(true)
+                .isSuitableForDangerousGoods(true)
+                .isSuitableForWaste(true)
+                .isSuitableForReefer(true)
                 .withWeightTare(500.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 
@@ -117,14 +113,14 @@ class ChassisTest {
                 .withNumberPlate("DU CO 1782")
                 .withMot(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
-                .withAxles(2)
+                .withNumberOfAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
                 .withHeight(1.0, LengthUnit.METRE)
                 .withEuAuthorization(true)
-                .withSt(true)
-                .withSuitabilityDangerousGoods(true)
-                .withSuitabilityWaste(true)
-                .withSuitabilityReefer(true)
+                .withSecurityTest(true)
+                .isSuitableForDangerousGoods(true)
+                .isSuitableForWaste(true)
+                .isSuitableForReefer(true)
                 .withWeightTare(500.0, MassUnit.KILOGRAM)
                 .buildAndValidate();
 

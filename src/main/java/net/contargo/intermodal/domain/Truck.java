@@ -103,11 +103,11 @@ public class Truck implements MeansOfTransport {
     public static Builder newBuilder(Truck truck) {
 
         return new Builder().withMot(truck.getMot())
-            .withSuitabilityWaste(truck.getSuitabilityWaste())
+            .isSuitableForWaste(truck.getSuitabilityWaste())
             .withEuAuthorization(truck.getEuAuthorization())
             .withNumberPlate(truck.getNumberPlate())
             .withEnvironmentBadge(truck.getEnvironmentBadge())
-            .withSuitabilityDangerousGoods(truck.getSuitabilityDangerousGoods())
+            .isSuitableForDangerousGoods(truck.getSuitabilityDangerousGoods())
             .withType(truck.getType())
             .withST(truck.getSt())
             .withCountryCode(truck.getCountryCode())
@@ -279,7 +279,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public Builder withSuitabilityDangerousGoods(Boolean suitabilityDangerousGoods) {
+        public Builder isSuitableForDangerousGoods(Boolean suitabilityDangerousGoods) {
 
             this.suitabilityDangerousGoods = suitabilityDangerousGoods;
 
@@ -287,7 +287,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public Builder withSuitabilityWaste(Boolean suitabilityWaste) {
+        public Builder isSuitableForWaste(Boolean suitabilityWaste) {
 
             this.suitabilityWaste = suitabilityWaste;
 

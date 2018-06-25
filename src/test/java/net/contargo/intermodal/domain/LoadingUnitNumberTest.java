@@ -37,11 +37,4 @@ class LoadingUnitNumberTest {
 
         assertFalse(LoadingUnitNumber.isValidBIC("MSKU18A6510"));
     }
-
-
-    @Test
-    void ensureWrongCheckDigitIsDetected() {
-
-        assertFalse(LoadingUnitNumber.isValidBIC("MSKU1806513"));
-    }
 }

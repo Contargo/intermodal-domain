@@ -11,7 +11,6 @@ import java.io.IOException;
 
 import static net.contargo.intermodal.domain.LengthUnit.FOOT;
 import static net.contargo.intermodal.domain.LengthUnit.METRE;
-import static net.contargo.intermodal.domain.MassUnit.TON;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,12 +31,12 @@ class BargeTest {
                 .withLength(91.4, METRE)
                 .withWidth(27.4, METRE)
                 .withDraught(5.5, METRE)
-                .withBays(4)
-                .withRows(8)
-                .withTiers(2)
-                .withSuitabilityDangerousGoods(true)
-                .withCapacityTeu(200.0)
-                .withCapacityTons(3400.0)
+                .withNumberOfBays(4)
+                .withNumberOfRows(8)
+                .withNumberOfTiers(2)
+                .isSuitableForDangerousGoods(true)
+                .withCapacityInTeu(200.0)
+                .withCapacityInTons(3400.0)
                 .buildAndValidate();
 
         assertEquals("My Barge", barge.getName());
@@ -67,12 +66,12 @@ class BargeTest {
                 .withLength(91.4, METRE)
                 .withWidth(27.4, METRE)
                 .withDraught(5.5, METRE)
-                .withBays(4)
-                .withRows(8)
-                .withTiers(2)
-                .withSuitabilityDangerousGoods(true)
-                .withCapacityTeu(200.0)
-                .withCapacityTons(3400.0)
+                .withNumberOfBays(4)
+                .withNumberOfRows(8)
+                .withNumberOfTiers(2)
+                .isSuitableForDangerousGoods(true)
+                .withCapacityInTeu(200.0)
+                .withCapacityInTons(3400.0)
                 .buildAndValidate();
 
         Barge copiedBarge = Barge.newBuilder(barge).buildAndValidate();
@@ -119,12 +118,12 @@ class BargeTest {
                 .withLength(91.4, METRE)
                 .withWidth(27.4, METRE)
                 .withDraught(5.5, METRE)
-                .withBays(4)
-                .withRows(8)
-                .withTiers(2)
-                .withSuitabilityDangerousGoods(true)
-                .withCapacityTeu(200.0)
-                .withCapacityTons(3400.0)
+                .withNumberOfBays(4)
+                .withNumberOfRows(8)
+                .withNumberOfTiers(2)
+                .isSuitableForDangerousGoods(true)
+                .withCapacityInTeu(200.0)
+                .withCapacityInTons(3400.0)
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
