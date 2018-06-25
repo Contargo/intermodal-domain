@@ -124,28 +124,44 @@ public class Order {
     @JsonIgnore
     public Direction getTransportDirection() {
 
-        return transport.getDirection();
+        if (transport != null) {
+            return transport.getDirection();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public PickUp getPickUp() {
 
-        return this.transport.getPickUp();
+        if (transport != null) {
+            return this.transport.getPickUp();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public DropOff getDropOff() {
 
-        return this.transport.getDropOff();
+        if (transport != null) {
+            return this.transport.getDropOff();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public List<Stop> getStops() {
 
-        return this.transport.getStops();
+        if (transport != null) {
+            return this.transport.getStops();
+        }
+
+        return null;
     }
 
 
@@ -170,7 +186,6 @@ public class Order {
     public static final class Builder {
 
         private Destination destination;
-        private String destinationCountryCode;
         private String reference;
         private Operator client;
         private Operator billRecipient;

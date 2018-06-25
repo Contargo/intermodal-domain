@@ -3,7 +3,6 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.LUOrder;
-import net.contargo.intermodal.domain.ProcessingBarge;
 import net.contargo.intermodal.domain.ProcessingTrain;
 
 import org.junit.jupiter.api.Test;
@@ -42,7 +41,7 @@ class ProcessingTrainTest {
         assertEquals("789784", processingTrain.getLoadingList().get(0).getId());
         assertEquals("54789", processingTrain.getLoadingList().get(1).getId());
         assertEquals("24568", processingTrain.getLoadingList().get(2).getId());
-        assertEquals(2, processingTrain.getLoadingList().get(2).getLoadingPosition().size());
+        assertEquals(2, processingTrain.getLoadingList().get(2).getLoadingPositions().size());
         assertEquals("2018-05-14T11:00:00Z", processingTrain.getTerminalEta().toString());
         assertEquals("2018-05-14T13:00:00Z", processingTrain.getTerminalEtd().toString());
         assertEquals("2018-05-14T12:00:00Z", processingTrain.getShuntingYardEta().toString());
@@ -73,7 +72,7 @@ class ProcessingTrainTest {
         assertEquals("789784", copiedProcessingTrain.getLoadingList().get(0).getId());
         assertEquals("54789", copiedProcessingTrain.getLoadingList().get(1).getId());
         assertEquals("24568", copiedProcessingTrain.getLoadingList().get(2).getId());
-        assertEquals(2, copiedProcessingTrain.getLoadingList().get(2).getLoadingPosition().size());
+        assertEquals(2, copiedProcessingTrain.getLoadingList().get(2).getLoadingPositions().size());
         assertEquals("2018-05-14T11:00:00Z", copiedProcessingTrain.getTerminalEta().toString());
         assertEquals("2018-05-14T13:00:00Z", copiedProcessingTrain.getTerminalEtd().toString());
         assertEquals("2018-05-14T12:00:00Z", copiedProcessingTrain.getShuntingYardEta().toString());
@@ -108,7 +107,7 @@ class ProcessingTrainTest {
         assertEquals("789784", deserialize.getLoadingList().get(0).getId());
         assertEquals("54789", deserialize.getLoadingList().get(1).getId());
         assertEquals("24568", deserialize.getLoadingList().get(2).getId());
-        assertEquals(2, deserialize.getLoadingList().get(2).getLoadingPosition().size());
+        assertEquals(2, deserialize.getLoadingList().get(2).getLoadingPositions().size());
         assertEquals("2018-05-14T11:00:00Z", deserialize.getTerminalEta().toString());
         assertEquals("2018-05-14T13:00:00Z", deserialize.getTerminalEtd().toString());
         assertEquals("2018-05-14T12:00:00Z", deserialize.getShuntingYardEta().toString());

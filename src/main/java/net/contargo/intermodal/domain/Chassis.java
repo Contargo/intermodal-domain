@@ -208,7 +208,11 @@ public class Chassis implements MeansOfTransport {
     @JsonIgnore
     public Quantity<Mass> getWeightTare() {
 
-        return weight.getTare();
+        if (weight != null) {
+            return weight.getTare();
+        }
+
+        return null;
     }
 
 

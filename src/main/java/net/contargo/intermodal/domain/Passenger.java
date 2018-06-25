@@ -71,12 +71,6 @@ public class Passenger extends Person {
         private Builder() {
         }
 
-        public static Builder aPassenger() {
-
-            return new Builder();
-        }
-
-
         public Builder named(String firstName, String lastName) {
 
             this.firstName = firstName;

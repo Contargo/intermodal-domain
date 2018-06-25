@@ -142,9 +142,13 @@ public class Barge implements MeansOfTransport {
 
 
     @JsonIgnore
-    public double getLengthValue() {
+    public Double getLengthValue() {
 
-        return length.getValue().doubleValue();
+        if (length != null) {
+            return length.getValue().doubleValue();
+        }
+
+        return null;
     }
 
 
@@ -158,21 +162,33 @@ public class Barge implements MeansOfTransport {
     @JsonIgnore
     public String getLenghtUnit() {
 
-        return length.getUnit().getSymbol();
+        if (length != null) {
+            return length.getUnit().getSymbol();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
-    public double getWidthValue() {
+    public Double getWidthValue() {
 
-        return width.getValue().doubleValue();
+        if (width != null) {
+            return width.getValue().doubleValue();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public String getWidthUnit() {
 
-        return width.getUnit().getSymbol();
+        if (width != null) {
+            return width.getUnit().getSymbol();
+        }
+
+        return null;
     }
 
 
@@ -184,16 +200,24 @@ public class Barge implements MeansOfTransport {
 
 
     @JsonIgnore
-    public double getDraughtValue() {
+    public Double getDraughtValue() {
 
-        return draught.getValue().doubleValue();
+        if (draught != null) {
+            return draught.getValue().doubleValue();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public String getDraughtUnit() {
 
-        return draught.getUnit().getSymbol();
+        if (draught != null) {
+            return draught.getUnit().getSymbol();
+        }
+
+        return null;
     }
 
 
@@ -231,14 +255,22 @@ public class Barge implements MeansOfTransport {
     @JsonIgnore
     public Double getCapacityTeu() {
 
-        return this.capacity.getTeu();
+        if (capacity != null) {
+            return this.capacity.getTeu();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public Double getCapacityTons() {
 
-        return this.capacity.getTons().doubleValue();
+        if (capacity != null) {
+            return this.capacity.getTons();
+        }
+
+        return null;
     }
 
 

@@ -1,5 +1,6 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -189,7 +190,8 @@ public class ProcessingTrain {
         }
 
 
-        public List<LUOrder> getLoadingPosition() {
+        @JsonProperty("loadingPosition")
+        public List<LUOrder> getLoadingPositions() {
 
             return loadingPosition;
         }

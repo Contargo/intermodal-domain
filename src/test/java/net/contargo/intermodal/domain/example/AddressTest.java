@@ -50,7 +50,7 @@ class AddressTest {
 
         assertEquals("Gartenstraße 67", copiedAddress.getStreet());
         assertEquals("76135", copiedAddress.getLocationPostalCode());
-        assertEquals("Karlsruhe", copiedAddress.getLocationCity());
+        assertEquals("Karlsruhe", copiedAddress.getLocation().getCity());
         assertEquals("Germany", copiedAddress.getCountryName());
         assertEquals("DE", copiedAddress.getCountryCode());
     }

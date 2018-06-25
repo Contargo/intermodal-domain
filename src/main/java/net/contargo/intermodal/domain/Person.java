@@ -88,14 +88,22 @@ public abstract class Person {
     @JsonIgnore
     public String getCityOfBirth() {
 
-        return location.getCity();
+        if (location != null) {
+            return location.getCity();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public String getNationality() {
 
-        return country.getCode();
+        if (country != null) {
+            return country.getCode();
+        }
+
+        return null;
     }
 
 

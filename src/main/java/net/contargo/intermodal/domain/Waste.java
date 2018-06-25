@@ -110,7 +110,11 @@ public class Waste {
     @JsonIgnore
     public Quantity<Mass> getWeightNetto() {
 
-        return weight.getNetto();
+        if (weight != null) {
+            return weight.getNetto();
+        }
+
+        return null;
     }
 
 

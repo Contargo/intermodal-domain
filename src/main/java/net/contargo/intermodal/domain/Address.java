@@ -56,28 +56,44 @@ public class Address {
     @JsonIgnore
     public String getLocationPostalCode() {
 
-        return location.getPostalCode();
+        if (location != null) {
+            return location.getPostalCode();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public String getLocationCity() {
 
-        return location.getCity();
+        if (location != null) {
+            return location.getCity();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public String getCountryName() {
 
-        return country.getName();
+        if (country != null) {
+            return country.getName();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public String getCountryCode() {
 
-        return country.getCode();
+        if (country != null) {
+            return country.getCode();
+        }
+
+        return null;
     }
 
 

@@ -40,14 +40,22 @@ public class Destination {
     @JsonIgnore
     public String getCountryCode() {
 
-        return country.getCode();
+        if (country != null) {
+            return country.getCode();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public String getSeaportName() {
 
-        return seaport.getName();
+        if (seaport != null) {
+            return seaport.getName();
+        }
+
+        return null;
     }
 
 

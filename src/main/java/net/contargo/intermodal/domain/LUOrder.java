@@ -136,21 +136,33 @@ public class LUOrder {
     @JsonIgnore
     public Quantity<Mass> getWeightBrutto() {
 
-        return weight.getBrutto();
+        if (weight != null) {
+            return weight.getBrutto();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public Quantity<Mass> getWeightNetto() {
 
-        return weight.getNetto();
+        if (weight != null) {
+            return weight.getNetto();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public Quantity<Mass> getWeightTare() {
 
-        return weight.getTare();
+        if (weight != null) {
+            return weight.getTare();
+        }
+
+        return null;
     }
 
 

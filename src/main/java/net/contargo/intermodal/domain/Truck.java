@@ -124,7 +124,11 @@ public class Truck implements MeansOfTransport {
     @JsonIgnore
     public String getCountryCode() {
 
-        return country.getCode();
+        if (country != null) {
+            return country.getCode();
+        }
+
+        return null;
     }
 
 
@@ -174,7 +178,11 @@ public class Truck implements MeansOfTransport {
     @JsonIgnore
     public Quantity<Mass> getWeightTare() {
 
-        return weight.getTare();
+        if (weight != null) {
+            return weight.getTare();
+        }
+
+        return null;
     }
 
 

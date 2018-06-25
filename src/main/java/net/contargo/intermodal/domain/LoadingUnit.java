@@ -141,21 +141,33 @@ public abstract class LoadingUnit {
     @JsonIgnore
     public Quantity<Mass> getWeightBruttoMax() {
 
-        return weight.getBruttoMax();
+        if (weight != null) {
+            return weight.getBruttoMax();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public Quantity<Mass> getWeightNettoMax() {
 
-        return weight.getNettoMax();
+        if (weight != null) {
+            return weight.getNettoMax();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public Quantity<Mass> getWeightTare() {
 
-        return weight.getTare();
+        if (weight != null) {
+            return weight.getTare();
+        }
+
+        return null;
     }
 
 

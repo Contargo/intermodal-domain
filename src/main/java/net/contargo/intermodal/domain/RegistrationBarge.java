@@ -115,14 +115,22 @@ public class RegistrationBarge {
     @JsonIgnore
     public Integer getVolumeToDischarge() {
 
-        return volume.getToDischarge();
+        if (volume != null) {
+            return volume.getToDischarge();
+        }
+
+        return null;
     }
 
 
     @JsonIgnore
     public Integer getVolumeToLoad() {
 
-        return volume.getToLoad();
+        if (volume != null) {
+            return volume.getToLoad();
+        }
+
+        return null;
     }
 
 

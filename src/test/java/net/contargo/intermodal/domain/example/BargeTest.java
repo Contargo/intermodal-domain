@@ -43,9 +43,9 @@ class BargeTest {
         assertEquals("021112345", barge.getMmsi());
         assertEquals("050XXXXX", barge.getEni());
         assertNotNull(barge.getOperator());
-        assertEquals(91.4, barge.getLengthValue());
-        assertEquals(27.4, barge.getWidthValue());
-        assertEquals(5.5, barge.getDraughtValue());
+        assertEquals(91.4, barge.getLengthValue().doubleValue());
+        assertEquals(27.4, barge.getWidthValue().doubleValue());
+        assertEquals(5.5, barge.getDraughtValue().doubleValue());
         assertEquals(4, barge.getBays().intValue());
         assertEquals(8, barge.getRows().intValue());
         assertEquals(2, barge.getTiers().intValue());
@@ -80,9 +80,9 @@ class BargeTest {
         assertEquals("021112345", copiedBarge.getMmsi());
         assertEquals("050XXXXX", copiedBarge.getEni());
         assertNotNull(copiedBarge.getOperator());
-        assertEquals(91.4, copiedBarge.getLengthValue());
-        assertEquals(27.4, copiedBarge.getWidthValue());
-        assertEquals(5.5, copiedBarge.getDraughtValue());
+        assertEquals(91.4, copiedBarge.getLengthValue().doubleValue());
+        assertEquals(27.4, copiedBarge.getWidthValue().doubleValue());
+        assertEquals(5.5, copiedBarge.getDraughtValue().doubleValue());
         assertEquals(4, copiedBarge.getBays().intValue());
         assertEquals(8, copiedBarge.getRows().intValue());
         assertEquals(2, copiedBarge.getTiers().intValue());
@@ -136,9 +136,9 @@ class BargeTest {
         assertEquals("021112345", deserialize.getMmsi());
         assertEquals("050XXXXX", deserialize.getEni());
         assertNotNull(deserialize.getOperator());
-        assertEquals(91.4, deserialize.getLengthValue());
-        assertEquals(27.4, deserialize.getWidthValue());
-        assertEquals(5.5, deserialize.getDraughtValue());
+        assertEquals(91.4, deserialize.getLengthValue().doubleValue());
+        assertEquals(27.4, deserialize.getWidthValue().doubleValue());
+        assertEquals(5.5, deserialize.getDraughtValue().doubleValue());
         assertEquals(4, deserialize.getBays().intValue());
         assertEquals(8, deserialize.getRows().intValue());
         assertEquals(2, deserialize.getTiers().intValue());
