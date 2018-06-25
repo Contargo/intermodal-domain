@@ -47,13 +47,13 @@ public class TrainDriver extends Person {
      */
     public static Builder newBuilder(TrainDriver trainDriver) {
 
-        return new Builder().withName(trainDriver.getName())
+        return new Builder().withName(trainDriver.getLastName())
             .withFirstName(trainDriver.getFirstName())
             .withAddress(trainDriver.getAddress())
             .withCellphone(trainDriver.getCellphone())
             .bornOn(trainDriver.getDateOfBirth())
             .bornIn(trainDriver.getCityOfBirth())
-            .withCountryCode(trainDriver.getCountryCode())
+            .withCountryCode(trainDriver.getNationality())
             .withRid(trainDriver.getRid());
     }
 

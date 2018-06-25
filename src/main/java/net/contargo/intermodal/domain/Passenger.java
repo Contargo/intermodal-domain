@@ -50,13 +50,12 @@ public class Passenger extends Person {
      */
     public static Builder newBuilder(Passenger passenger) {
 
-        return new Builder().withName(passenger.getName())
-            .withFirstName(passenger.getFirstName())
+        return new Builder().named(passenger.getFirstName(), passenger.getLastName())
             .withAddress(passenger.getAddress())
-            .withCellphone(passenger.getCellphone())
-            .withDateOfBirth(passenger.getDateOfBirth())
-            .withLocation(passenger.getLocation())
-            .withCountryCode(passenger.getCountryCode());
+            .withCellphoneNumber(passenger.getCellphone())
+            .bornOn(passenger.getDateOfBirth())
+            .bornIn(passenger.getLocation())
+            .withNationality(passenger.getNationality());
     }
 
     public static final class Builder {
@@ -78,17 +77,10 @@ public class Passenger extends Person {
         }
 
 
-        public Builder withName(String name) {
-
-            this.name = name;
-
-            return this;
-        }
-
-
-        public Builder withFirstName(String firstName) {
+        public Builder named(String firstName, String lastName) {
 
             this.firstName = firstName;
+            this.name = lastName;
 
             return this;
         }
@@ -102,7 +94,7 @@ public class Passenger extends Person {
         }
 
 
-        public Builder withCellphone(String cellphone) {
+        public Builder withCellphoneNumber(String cellphone) {
 
             this.cellphone = cellphone;
 
@@ -110,7 +102,7 @@ public class Passenger extends Person {
         }
 
 
-        public Builder withDateOfBirth(Instant dateOfBirth) {
+        public Builder bornOn(Instant dateOfBirth) {
 
             this.dateOfBirth = dateOfBirth;
 
@@ -118,7 +110,7 @@ public class Passenger extends Person {
         }
 
 
-        Builder withLocation(Location location) {
+        Builder bornIn(Location location) {
 
             if (location != null) {
                 this.locationCity = location.getCity();
@@ -128,7 +120,7 @@ public class Passenger extends Person {
         }
 
 
-        public Builder withLocation(String locationCity) {
+        public Builder bornIn(String locationCity) {
 
             this.locationCity = locationCity;
 
@@ -136,7 +128,7 @@ public class Passenger extends Person {
         }
 
 
-        public Builder withCountryCode(String countryCode) {
+        public Builder withNationality(String countryCode) {
 
             this.countryCode = countryCode;
 

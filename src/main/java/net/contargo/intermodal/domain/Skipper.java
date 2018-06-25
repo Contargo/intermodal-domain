@@ -47,13 +47,12 @@ public class Skipper extends Person {
      */
     public static Builder newBuilder(Skipper skipper) {
 
-        return new Builder().withName(skipper.getName())
-            .withFirstName(skipper.getFirstName())
+        return new Builder().named(skipper.getFirstName(), skipper.getLastName())
             .withAddress(skipper.getAddress())
-            .withCellphone(skipper.getCellphone())
+            .withCellphoneNumber(skipper.getCellphone())
             .bornOn(skipper.getDateOfBirth())
             .bornIn(skipper.getCityOfBirth())
-            .withCountryCode(skipper.getCountryCode())
+            .withNationality(skipper.getNationality())
             .withAdnr(skipper.getAdnr());
     }
 
@@ -91,17 +90,10 @@ public class Skipper extends Person {
         private Builder() {
         }
 
-        public Builder withName(String name) {
-
-            this.name = name;
-
-            return this;
-        }
-
-
-        public Builder withFirstName(String firstName) {
+        public Builder named(String firstName, String lastName) {
 
             this.firstName = firstName;
+            this.name = lastName;
 
             return this;
         }
@@ -115,7 +107,7 @@ public class Skipper extends Person {
         }
 
 
-        public Builder withCellphone(String cellphone) {
+        public Builder withCellphoneNumber(String cellphone) {
 
             this.cellphone = cellphone;
 
@@ -139,7 +131,7 @@ public class Skipper extends Person {
         }
 
 
-        public Builder withCountryCode(String countryCode) {
+        public Builder withNationality(String countryCode) {
 
             this.countryCode = countryCode;
 

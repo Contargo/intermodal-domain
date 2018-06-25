@@ -60,12 +60,11 @@ public class Driver extends Person {
      */
     public static Builder newBuilder(Driver driver) {
 
-        return new Builder().withCellphone(driver.getCellphone())
-            .withCountryCode(driver.getCountryCode())
+        return new Builder().withCellphoneNumber(driver.getCellphone())
+            .withNationality(driver.getNationality())
             .bornOn(driver.getDateOfBirth())
-            .withName(driver.getName())
+            .named(driver.getFirstName(), driver.getLastName())
             .withAddress(driver.getAddress())
-            .withFirstName(driver.getFirstName())
             .withModuleEntry95(driver.getModuleEntry95())
             .withId(driver.getId())
             .withAdr(driver.getAdr())
@@ -137,8 +136,6 @@ public class Driver extends Person {
 
     public static final class Builder {
 
-        private Instant licenseValidity;
-        private String licenseNumber;
         private String name;
         private String firstName;
         private Address address;
@@ -149,21 +146,15 @@ public class Driver extends Person {
         private String countryCode;
         private Instant adr;
         private Instant moduleEntry95;
+        private License license;
 
         private Builder() {
         }
 
-        public Builder withName(String name) {
-
-            this.name = name;
-
-            return this;
-        }
-
-
-        public Builder withFirstName(String firstName) {
+        public Builder named(String firstName, String lastName) {
 
             this.firstName = firstName;
+            this.name = lastName;
 
             return this;
         }
@@ -177,7 +168,7 @@ public class Driver extends Person {
         }
 
 
-        public Builder withCellphone(String cellphone) {
+        public Builder withCellphoneNumber(String cellphone) {
 
             this.cellphone = cellphone;
 
@@ -185,17 +176,12 @@ public class Driver extends Person {
         }
 
 
-        public Builder withLicenseValidity(Instant instant) {
+        public Builder withLicense(String number, Instant validity) {
 
-            this.licenseValidity = instant;
-
-            return this;
-        }
-
-
-        public Builder withLicenseNumber(String licenseNumber) {
-
-            this.licenseNumber = licenseNumber;
+            License license = new License();
+            license.validity = validity;
+            license.number = number;
+            this.license = license;
 
             return this;
         }
@@ -203,8 +189,7 @@ public class Driver extends Person {
 
         Builder withLicense(License license) {
 
-            this.licenseValidity = license.getValidity();
-            this.licenseNumber = license.getNumber();
+            this.license = license;
 
             return this;
         }
@@ -234,7 +219,7 @@ public class Driver extends Person {
         }
 
 
-        public Builder withCountryCode(String countryCode) {
+        public Builder withNationality(String countryCode) {
 
             this.countryCode = countryCode;
 
@@ -279,16 +264,10 @@ public class Driver extends Person {
             driver.moduleEntry95 = this.moduleEntry95;
             driver.id = this.id;
             driver.adr = this.adr;
+            driver.license = this.license;
 
             if (locationCity != null) {
                 driver.setLocationCity(this.locationCity);
-            }
-
-            if (licenseValidity != null || licenseNumber != null) {
-                License license = new License();
-                license.number = licenseNumber;
-                license.validity = licenseValidity;
-                driver.license = license;
             }
 
             return driver;

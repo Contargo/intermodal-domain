@@ -1,6 +1,9 @@
-package net.contargo.intermodal.domain;
+package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.Passenger;
 
 import org.junit.jupiter.api.Test;
 
@@ -20,22 +23,21 @@ class PassengerTest {
     void ensureCanBeCreated() {
 
         Passenger passenger = Passenger.newBuilder()
-                .withName("Mustermann")
-                .withFirstName("Max")
+                .named("Max", "Mustermann")
                 .withAddress(new Address())
-                .withCellphone("01234/56789")
-                .withDateOfBirth(Instant.parse("1980-01-13T00:00:00Z"))
-                .withLocation("Karlsruhe")
-                .withCountryCode("DE")
+                .withCellphoneNumber("01234/56789")
+                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornIn("Karlsruhe")
+                .withNationality("DE")
                 .buildAndValidate();
 
-        assertEquals("Mustermann", passenger.getName());
+        assertEquals("Mustermann", passenger.getLastName());
         assertEquals("Max", passenger.getFirstName());
         assertNotNull(passenger.getAddress());
         assertEquals("01234/56789", passenger.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", passenger.getDateOfBirth().toString());
         assertEquals("Karlsruhe", passenger.getCityOfBirth());
-        assertEquals("DE", passenger.getCountryCode());
+        assertEquals("DE", passenger.getNationality());
     }
 
 
@@ -43,24 +45,23 @@ class PassengerTest {
     void ensureCanBeCopied() {
 
         Passenger passenger = Passenger.newBuilder()
-                .withName("Mustermann")
-                .withFirstName("Max")
+                .named("Max", "Mustermann")
                 .withAddress(new Address())
-                .withCellphone("01234/56789")
-                .withDateOfBirth(Instant.parse("1980-01-13T00:00:00Z"))
-                .withLocation("Karlsruhe")
-                .withCountryCode("DE")
+                .withCellphoneNumber("01234/56789")
+                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornIn("Karlsruhe")
+                .withNationality("DE")
                 .buildAndValidate();
 
         Passenger copiedPassenger = Passenger.newBuilder(passenger).buildAndValidate();
 
-        assertEquals("Mustermann", copiedPassenger.getName());
+        assertEquals("Mustermann", copiedPassenger.getLastName());
         assertEquals("Max", copiedPassenger.getFirstName());
         assertNotNull(copiedPassenger.getAddress());
         assertEquals("01234/56789", copiedPassenger.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", copiedPassenger.getDateOfBirth().toString());
         assertEquals("Karlsruhe", copiedPassenger.getCityOfBirth());
-        assertEquals("DE", copiedPassenger.getCountryCode());
+        assertEquals("DE", copiedPassenger.getNationality());
     }
 
 
@@ -68,13 +69,12 @@ class PassengerTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         Passenger passenger = Passenger.newBuilder()
-                .withName("Mustermann")
-                .withFirstName("Max")
+                .named("Max", "Mustermann")
                 .withAddress(new Address())
-                .withCellphone("01234/56789")
-                .withDateOfBirth(Instant.parse("1980-01-13T00:00:00Z"))
-                .withLocation("Karlsruhe")
-                .withCountryCode("DE")
+                .withCellphoneNumber("01234/56789")
+                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornIn("Karlsruhe")
+                .withNationality("DE")
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -83,12 +83,12 @@ class PassengerTest {
 
         Passenger deserialize = mapper.readValue(jsonString, Passenger.class);
 
-        assertEquals("Mustermann", deserialize.getName());
+        assertEquals("Mustermann", deserialize.getLastName());
         assertEquals("Max", deserialize.getFirstName());
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", deserialize.getDateOfBirth().toString());
         assertEquals("Karlsruhe", deserialize.getCityOfBirth());
-        assertEquals("DE", deserialize.getCountryCode());
+        assertEquals("DE", deserialize.getNationality());
     }
 }

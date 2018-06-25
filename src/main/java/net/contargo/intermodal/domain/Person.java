@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -52,7 +53,8 @@ public abstract class Person {
      */
     private Country country;
 
-    public String getName() {
+    @JsonProperty("name")
+    public String getLastName() {
 
         return name;
     }
@@ -91,7 +93,7 @@ public abstract class Person {
 
 
     @JsonIgnore
-    public String getCountryCode() {
+    public String getNationality() {
 
         return country.getCode();
     }

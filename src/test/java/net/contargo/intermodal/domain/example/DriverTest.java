@@ -24,27 +24,25 @@ class DriverTest {
     void ensureDriverCanBeCreated() {
 
         Driver driver = Driver.newBuilder()
-                .withName("Mustermann")
-                .withFirstName("Max")
+                .named("Max", "Mustermann")
                 .withAddress(new Address())
-                .withCellphone("01234/56789")
+                .withCellphoneNumber("01234/56789")
                 .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
                 .bornIn("Karlsruhe")
-                .withCountryCode("DE")
-                .withLicenseValidity(Instant.parse("2020-09-25T00:00:00Z"))
-                .withLicenseNumber("12345678")
+                .withNationality("DE")
+                .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
                 .withId("42")
                 .withAdr(Instant.parse("2018-12-31T00:00:00Z"))
                 .withModuleEntry95(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
-        assertEquals("Mustermann", driver.getName());
+        assertEquals("Mustermann", driver.getLastName());
         assertEquals("Max", driver.getFirstName());
         assertNotNull(driver.getAddress());
         assertEquals("01234/56789", driver.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", driver.getDateOfBirth().toString());
         assertEquals("Karlsruhe", driver.getCityOfBirth());
-        assertEquals("DE", driver.getCountryCode());
+        assertEquals("DE", driver.getNationality());
         assertEquals("12345678", driver.getLicense().getNumber());
         assertEquals("2020-09-25T00:00:00Z", driver.getLicense().getValidity().toString());
         assertEquals("42", driver.getId());
@@ -57,15 +55,13 @@ class DriverTest {
     void ensureCanBeCopied() {
 
         Driver driver = Driver.newBuilder()
-                .withName("Mustermann")
-                .withFirstName("Max")
+                .named("Max", "Mustermann")
                 .withAddress(new Address())
-                .withCellphone("01234/56789")
+                .withCellphoneNumber("01234/56789")
                 .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
                 .bornIn("Karlsruhe")
-                .withCountryCode("DE")
-                .withLicenseValidity(Instant.parse("2020-09-25T00:00:00Z"))
-                .withLicenseNumber("12345678")
+                .withNationality("DE")
+                .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
                 .withId("42")
                 .withAdr(Instant.parse("2018-12-31T00:00:00Z"))
                 .withModuleEntry95(Instant.parse("2018-12-31T00:00:00Z"))
@@ -73,13 +69,13 @@ class DriverTest {
 
         Driver copiedDriver = Driver.newBuilder(driver).buildAndValidate();
 
-        assertEquals("Mustermann", copiedDriver.getName());
+        assertEquals("Mustermann", copiedDriver.getLastName());
         assertEquals("Max", copiedDriver.getFirstName());
         assertNotNull(copiedDriver.getAddress());
         assertEquals("01234/56789", copiedDriver.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", copiedDriver.getDateOfBirth().toString());
         assertEquals("Karlsruhe", copiedDriver.getCityOfBirth());
-        assertEquals("DE", copiedDriver.getCountryCode());
+        assertEquals("DE", copiedDriver.getNationality());
         assertEquals("12345678", copiedDriver.getLicense().getNumber());
         assertEquals("2020-09-25T00:00:00Z", copiedDriver.getLicense().getValidity().toString());
         assertEquals("42", copiedDriver.getId());
@@ -100,15 +96,13 @@ class DriverTest {
                 .buildAndValidate();
 
         Driver driver = Driver.newBuilder()
-                .withName("Mustermann")
-                .withFirstName("Max")
+                .named("Max", "Mustermann")
                 .withAddress(address)
-                .withCellphone("01234/56789")
+                .withCellphoneNumber("01234/56789")
                 .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
                 .bornIn("Karlsruhe")
-                .withCountryCode("DE")
-                .withLicenseValidity(Instant.parse("2020-09-25T00:00:00Z"))
-                .withLicenseNumber("12345678")
+                .withNationality("DE")
+                .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
                 .withId("42")
                 .withAdr(Instant.parse("2018-12-31T00:00:00Z"))
                 .withModuleEntry95(Instant.parse("2018-12-31T00:00:00Z"))
@@ -120,13 +114,13 @@ class DriverTest {
 
         Driver deserialize = mapper.readValue(jsonString, Driver.class);
 
-        assertEquals("Mustermann", deserialize.getName());
+        assertEquals("Mustermann", deserialize.getLastName());
         assertEquals("Max", deserialize.getFirstName());
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", deserialize.getDateOfBirth().toString());
         assertEquals("Karlsruhe", deserialize.getCityOfBirth());
-        assertEquals("DE", deserialize.getCountryCode());
+        assertEquals("DE", deserialize.getNationality());
         assertEquals("12345678", deserialize.getLicense().getNumber());
         assertEquals("2020-09-25T00:00:00Z", deserialize.getLicense().getValidity().toString());
         assertEquals("42", deserialize.getId());

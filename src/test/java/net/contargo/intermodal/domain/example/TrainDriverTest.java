@@ -42,13 +42,13 @@ class TrainDriverTest {
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
-        assertEquals("Mustermann", trainDriver.getName());
+        assertEquals("Mustermann", trainDriver.getLastName());
         assertEquals("Max", trainDriver.getFirstName());
         assertNotNull(trainDriver.getAddress());
         assertEquals("01234/56789", trainDriver.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", trainDriver.getDateOfBirth().toString());
         assertEquals("Karlsruhe", trainDriver.getCityOfBirth());
-        assertEquals("DE", trainDriver.getCountryCode());
+        assertEquals("DE", trainDriver.getNationality());
         assertEquals("2018-12-31T00:00:00Z", trainDriver.getRid().toString());
     }
 
@@ -69,13 +69,13 @@ class TrainDriverTest {
 
         TrainDriver copiedTrainDriver = TrainDriver.newBuilder(trainDriver).buildAndValidate();
 
-        assertEquals("Mustermann", copiedTrainDriver.getName());
+        assertEquals("Mustermann", copiedTrainDriver.getLastName());
         assertEquals("Max", copiedTrainDriver.getFirstName());
         assertNotNull(copiedTrainDriver.getAddress());
         assertEquals("01234/56789", copiedTrainDriver.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", copiedTrainDriver.getDateOfBirth().toString());
         assertEquals("Karlsruhe", copiedTrainDriver.getCityOfBirth());
-        assertEquals("DE", copiedTrainDriver.getCountryCode());
+        assertEquals("DE", copiedTrainDriver.getNationality());
         assertEquals("2018-12-31T00:00:00Z", copiedTrainDriver.getRid().toString());
     }
 
@@ -108,13 +108,13 @@ class TrainDriverTest {
 
         TrainDriver deserialize = mapper.readValue(jsonString, TrainDriver.class);
 
-        assertEquals("Mustermann", deserialize.getName());
+        assertEquals("Mustermann", deserialize.getLastName());
         assertEquals("Max", deserialize.getFirstName());
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
         assertEquals("1980-01-13T00:00:00Z", deserialize.getDateOfBirth().toString());
         assertEquals("Karlsruhe", deserialize.getCityOfBirth());
-        assertEquals("DE", deserialize.getCountryCode());
+        assertEquals("DE", deserialize.getNationality());
         assertEquals("2018-12-31T00:00:00Z", deserialize.getRid().toString());
     }
 }
