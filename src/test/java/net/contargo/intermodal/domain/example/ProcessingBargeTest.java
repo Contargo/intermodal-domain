@@ -28,7 +28,7 @@ class ProcessingBargeTest {
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                 .withSkipper(new Skipper())
-                .withPassenger(Arrays.asList(new Skipper(), new Skipper()))
+                .withPassenger(Arrays.asList(new Passenger(), new Passenger()))
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
                 .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
