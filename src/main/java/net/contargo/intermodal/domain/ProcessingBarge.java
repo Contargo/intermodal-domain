@@ -174,7 +174,12 @@ public class ProcessingBarge {
     public static class LoadingListElement {
 
         private LUOrder luOrder;
-        private StoragePosition storagePosition;
+
+        /**
+         * Bay-Row-Tier-System (BBBRRTT) as described in: BICS2 Anweisungsblatt - Kodierung Stauplatz in der
+         * Binnenschifffahrt.
+         */
+        private String storagePosition;
 
         LoadingListElement() {
         }
@@ -186,7 +191,7 @@ public class ProcessingBarge {
         }
 
 
-        public StoragePosition getStoragePosition() {
+        public String getStoragePosition() {
 
             return storagePosition;
         }
@@ -198,7 +203,7 @@ public class ProcessingBarge {
         }
 
 
-        void setStoragePosition(StoragePosition storagePosition) {
+        void setStoragePosition(String storagePosition) {
 
             this.storagePosition = storagePosition;
         }
@@ -283,7 +288,7 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withLuOrder(LUOrder luOrder, StoragePosition storagePosition) {
+        public Builder withLuOrder(LUOrder luOrder, String storagePosition) {
 
             if (loadingList == null) {
                 this.loadingList = new ArrayList<>();
