@@ -136,62 +136,62 @@
                         <tag>
                             <name>definition_english</name>
                             <placement>tmf</placement>
-                            <head>definition english:</head>
+                            <head>Definition English:</head>
                         </tag>
                         <tag>
                             <name>name_english</name>
                             <placement>tmf</placement>
-                            <head>name english:</head>
+                            <head>Name English:</head>
                         </tag>
                         <tag>
                             <name>name_german</name>
                             <placement>tmf</placement>
-                            <head>name german:</head>
+                            <head>Name German:</head>
                         </tag>
                         <tag>
                             <name>definition_german</name>
                             <placement>tmf</placement>
-                            <head>definition german:</head>
+                            <head>Definition German:</head>
                         </tag>
                         <tag>
                             <name>note_german</name>
                             <placement>tmf</placement>
-                            <head>note german:</head>
+                            <head>Note German:</head>
                         </tag>
                         <tag>
                             <name>note_english</name>
                             <placement>tmf</placement>
-                            <head>note english:</head>
+                            <head>Note English:</head>
                         </tag>
                         <tag>
                             <name>synonym_german</name>
                             <placement>tmf</placement>
-                            <head>synonym german:</head>
+                            <head>Synonym German:</head>
                         </tag>
                         <tag>
                             <name>synonym_english</name>
                             <placement>tmf</placement>
-                            <head>synonym english:</head>
+                            <head>Synonym English:</head>
                         </tag>
                         <tag>
                             <name>abbreviation_german</name>
                             <placement>tmf</placement>
-                            <head>abbreviation german:</head>
+                            <head>Abbreviation German:</head>
                         </tag>
                         <tag>
                             <name>abbreviation_english</name>
                             <placement>tmf</placement>
-                            <head>abbreviation english:</head>
+                            <head>Abbreviation English:</head>
                         </tag>
                         <tag>
                             <name>minimum_requirement</name>
                             <placement>tmf</placement>
-                            <head>minimum requirement:</head>
+                            <head>Minimum Requirement:</head>
                         </tag>
                         <tag>
                             <name>source</name>
                             <placement>tmf</placement>
-                            <head>source:</head>
+                            <head>Source:</head>
                         </tag>
                     </tags>
                 </configuration>
