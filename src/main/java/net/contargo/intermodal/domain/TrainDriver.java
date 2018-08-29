@@ -20,9 +20,10 @@ import java.time.Instant;
 public class TrainDriver extends Person {
 
     /**
-     * RID (fr: Règlement concernant le transport international ferroviaire de marchandises dangereuses): treaty for
-     * regulation of international transport of dangerous goods in rail transport. (Format: DateTime ISO 8601 inclusive
-     * UTC.)
+     * @definition_german  RID-Schulungsbescheinigung (Format: DateTime ISO 8601 inclusive UTC) ist ein europäischer
+     *                     Gefahrgutführerschein für internationale Beförderung gefährlicher Güter per Schienenverkehr.
+     * @definition_english  RID (Format: DateTime ISO 8601 inclusive UTC) is a European certificate needed for the
+     *                      international transport of dangerous goods in rail transport.
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant rid;

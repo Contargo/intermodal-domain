@@ -20,9 +20,12 @@ import java.time.Instant;
 public class Skipper extends Person {
 
     /**
-     * ADNR (fr: Accord européen relatif au transport international des marchandises dangereuses par voie de navigation
-     * intérieure sur le Rhin): european treaty for transport of dangerous goods on the Rhine. (Format: DateTime ISO
-     * 8601 inclusive) UTC.
+     * @definition_german  ADNR-Schulungsbescheinigung (Format: DateTime ISO 8601 inclusive UTC) ist ein
+     *                     Gefahrgutführerschein für internationale Beförderung gefährlicher Güter auf Wasserstraßen.
+     *                     Das ADNR gilt nicht für Seeschiffe auf Seeschifffahrtsstraßen.
+     * @definition_english  ADNR (Format: DateTime ISO 8601 inclusive UTC) is a European certificate needed for the
+     *                      international transport of dangerous goods by waterway. The ADNR is not relevant for
+     *                      vessels on sea lanes.
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant adnr;

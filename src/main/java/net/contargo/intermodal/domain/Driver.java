@@ -27,9 +27,10 @@ public class Driver extends Person {
     private String id;
 
     /**
-     * ADR (fr: Accord européen relatif au transport international des marchandises dangereuses par route): european
-     * treaty for international transport of dangerous goods. (Format: DateTime ISO 8601 inclusive UTC
-     * (yyyy-MM-dd'T'HH:mm:ss.SSSX).)
+     * @definition_german  ADR-Schulungsbescheinigung (Format: DateTime ISO 8601 inclusive UTC) ist ein europäischer
+     *                     Gefahrgutführerschein für internationale Beförderung gefährlicher Güter auf der Straße.
+     * @definition_english  ADR (Format: DateTime ISO 8601 inclusive UTC) is a European certificate needed for the
+     *                      international transport of dangerous goods by road.
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant adr;
