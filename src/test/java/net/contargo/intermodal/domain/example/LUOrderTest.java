@@ -142,6 +142,10 @@ class LUOrderTest {
         assertEquals(30480.0, luOrder.getWeightBrutto().getValue().doubleValue(), 0.1);
         assertEquals(28080.0, luOrder.getWeightNetto().getValue().doubleValue(), 0.1);
         assertEquals(2400.0, luOrder.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", luOrder.getWeightBrutto().getUnit().toString());
+        assertEquals("kg", luOrder.getWeightNetto().getUnit().toString());
+        assertEquals("kg", luOrder.getWeightTare().getUnit().toString());
     }
 
 

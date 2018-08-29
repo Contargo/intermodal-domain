@@ -125,6 +125,7 @@ class TrailerTest {
                 .buildAndValidate();
 
         assertEquals(15.5, trailer.getSize().getValue().doubleValue(), 0.1);
+        assertEquals("m", trailer.getSize().getUnit().toString());
     }
 
 
@@ -145,6 +146,10 @@ class TrailerTest {
         assertEquals(14082.0, trailer.getWeightBruttoMax().getValue().doubleValue(), 0.1);
         assertEquals(10000.0, trailer.getWeightNettoMax().getValue().doubleValue(), 0.1);
         assertEquals(4082.0, trailer.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", trailer.getWeightBruttoMax().getUnit().toString());
+        assertEquals("kg", trailer.getWeightNettoMax().getUnit().toString());
+        assertEquals("kg", trailer.getWeightTare().getUnit().toString());
     }
 
 

@@ -123,6 +123,7 @@ class SwapBodyTest {
                 .buildAndValidate();
 
         assertEquals(21.58, swapBody.getSize().getValue().doubleValue(), 0.1);
+        assertEquals("ft", swapBody.getSize().getUnit().toString());
     }
 
 
@@ -143,6 +144,10 @@ class SwapBodyTest {
         assertEquals(30480.0, swapBody.getWeightBruttoMax().getValue().doubleValue(), 0.1);
         assertEquals(28080.0, swapBody.getWeightNettoMax().getValue().doubleValue(), 0.1);
         assertEquals(2400.0, swapBody.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", swapBody.getWeightBruttoMax().getUnit().toString());
+        assertEquals("kg", swapBody.getWeightNettoMax().getUnit().toString());
+        assertEquals("kg", swapBody.getWeightTare().getUnit().toString());
     }
 
 

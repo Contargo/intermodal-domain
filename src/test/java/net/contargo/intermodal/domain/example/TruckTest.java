@@ -97,6 +97,7 @@ class TruckTest {
                 .buildAndValidate();
 
         assertEquals(40000.0, truck.getWeightTare().getValue().doubleValue(), 0.1);
+        assertEquals("kg", truck.getWeightTare().getUnit().toString());
     }
 
 

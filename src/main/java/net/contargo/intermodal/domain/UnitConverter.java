@@ -26,7 +26,7 @@ class UnitConverter {
 
         javax.measure.UnitConverter toMeter = FOOT.getConverterTo(METRE);
 
-        return Quantities.getQuantity(toMeter.convert(value), FOOT);
+        return Quantities.getQuantity(toMeter.convert(value), METRE);
     }
 
 
@@ -34,7 +34,7 @@ class UnitConverter {
 
         javax.measure.UnitConverter toFoot = METRE.getConverterTo(FOOT);
 
-        return Quantities.getQuantity(toFoot.convert(value), METRE);
+        return Quantities.getQuantity(toFoot.convert(value), FOOT);
     }
 
 
@@ -42,7 +42,7 @@ class UnitConverter {
 
         javax.measure.UnitConverter toTon = KILOGRAM.getConverterTo(Imperial.METRIC_TON);
 
-        return Quantities.getQuantity(toTon.convert(value), KILOGRAM);
+        return Quantities.getQuantity(toTon.convert(value), Imperial.METRIC_TON);
     }
 
 
@@ -50,7 +50,7 @@ class UnitConverter {
 
         javax.measure.UnitConverter toKilogram = Imperial.METRIC_TON.getConverterTo(KILOGRAM);
 
-        return Quantities.getQuantity(toKilogram.convert(value), Imperial.METRIC_TON);
+        return Quantities.getQuantity(toKilogram.convert(value), KILOGRAM);
     }
 
 

@@ -142,6 +142,10 @@ class ContainerTest {
         assertEquals(30480.0, container.getWeightBruttoMax().getValue().doubleValue(), 0.1);
         assertEquals(28080.0, container.getWeightNettoMax().getValue().doubleValue(), 0.1);
         assertEquals(2400.0, container.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", container.getWeightBruttoMax().getUnit().toString());
+        assertEquals("kg", container.getWeightNettoMax().getUnit().toString());
+        assertEquals("kg", container.getWeightTare().getUnit().toString());
     }
 
 
@@ -157,6 +161,7 @@ class ContainerTest {
                 .buildAndValidate();
 
         assertEquals(40.0, container.getSize().getValue().doubleValue(), 0.1);
+        assertEquals("ft", container.getSize().getUnit().toString());
     }
 
 

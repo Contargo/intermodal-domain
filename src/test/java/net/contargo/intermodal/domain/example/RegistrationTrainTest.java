@@ -316,6 +316,7 @@ class RegistrationTrainTest {
                 .buildAndValidate();
 
         assertEquals(120, registrationTrain.getTotalLength().getValue().doubleValue(), 0.1);
+        assertEquals("m", registrationTrain.getTotalLength().getUnit().toString());
     }
 
 

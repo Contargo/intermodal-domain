@@ -395,4 +395,11 @@ class OrderTest {
         assertEquals("Terminal Duisburg", deserialize.getDestination().getLocation().getDesignation());
         assertEquals("DEDUI", deserialize.getDestination().getSeaportName());
     }
+
+
+    @Test
+    void ensureDestinationCanBeBuildWithoutSeaportAndVessel() {
+
+        Destination.newBuilder().withCountryCode("DE").withLocation("Wörth", "Terminal Wörth").buildAndValidate();
+    }
 }

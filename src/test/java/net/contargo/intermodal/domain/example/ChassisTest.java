@@ -103,6 +103,10 @@ class ChassisTest {
         assertEquals(4.0, chassis.getSize().getValue().doubleValue(), 0.1);
         assertEquals(1.0, chassis.getHeight().getValue().doubleValue(), 0.1);
         assertEquals(1.0, chassis.getWeightTare().getValue().doubleValue(), 500);
+
+        assertEquals("m", chassis.getSize().getUnit().toString());
+        assertEquals("m", chassis.getHeight().getUnit().toString());
+        assertEquals("kg", chassis.getWeightTare().getUnit().toString());
     }
 
 

@@ -82,6 +82,7 @@ class WasteTest {
         Waste waste = Waste.newBuilder().withKeyID("03 03 01").withWeightNetto(0.5, MassUnit.TON).buildAndValidate();
 
         assertEquals(500.0, waste.getWeightNetto().getValue().doubleValue(), 0.1);
+        assertEquals("kg", waste.getWeightNetto().getUnit().toString());
     }
 
 

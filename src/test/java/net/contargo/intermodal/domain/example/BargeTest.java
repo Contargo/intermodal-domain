@@ -104,6 +104,10 @@ class BargeTest {
         assertEquals(91.4, barge.getLengthValue(), 0.1);
         assertEquals(27.4, barge.getWidthValue(), 0.1);
         assertEquals(5.5, barge.getDraughtValue(), 0.1);
+
+        assertEquals("m", barge.getLength().getUnit().toString());
+        assertEquals("m", barge.getWidth().getUnit().toString());
+        assertEquals("m", barge.getDraught().getUnit().toString());
     }
 
 
