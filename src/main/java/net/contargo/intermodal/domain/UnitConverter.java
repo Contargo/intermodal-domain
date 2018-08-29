@@ -11,6 +11,7 @@ import javax.measure.quantity.Mass;
 
 import static systems.uom.common.USCustomary.FOOT;
 
+import static tec.units.ri.unit.Units.CELSIUS;
 import static tec.units.ri.unit.Units.KILOGRAM;
 import static tec.units.ri.unit.Units.METRE;
 
@@ -69,6 +70,10 @@ class UnitConverter {
             case "t":
 
                 return Imperial.METRIC_TON;
+
+            case "°c":
+
+                return CELSIUS;
 
             default:
                 throw new IllegalStateException(String.format("Unknown unit %s", symbol));

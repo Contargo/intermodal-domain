@@ -34,7 +34,7 @@ class LUOrderTest {
                 .withWeightTare(16.0, MassUnit.KILOGRAM)
                 .withDangerousGoodsIndication(new DangerousGoods())
                 .withWasteIndication(new Waste())
-                .withSetTemperature(32)
+                .withSetTemperature(32, TemperatureUnit.CELSIUS)
                 .withOperator(new Operator())
                 .withClient(new Operator())
                 .withDirection(Direction.EXPORT)
@@ -51,7 +51,7 @@ class LUOrderTest {
         assertEquals(16, loadingUnitLUOrder.getWeightTare().getValue().doubleValue());
         assertNotNull(loadingUnitLUOrder.getDangerousGoodsIndication());
         assertNotNull(loadingUnitLUOrder.getWasteIndication());
-        assertEquals(32, loadingUnitLUOrder.getSetTemperature().doubleValue());
+        assertEquals(32, loadingUnitLUOrder.getSetTemperature().getValue().doubleValue());
         assertNotNull(loadingUnitLUOrder.getOperator());
         assertNotNull(loadingUnitLUOrder.getClient());
         assertEquals(Direction.EXPORT, loadingUnitLUOrder.getDirection());
@@ -94,7 +94,7 @@ class LUOrderTest {
                 .withWeightTare(16.0, MassUnit.KILOGRAM)
                 .withDangerousGoodsIndication(new DangerousGoods())
                 .withWasteIndication(new Waste())
-                .withSetTemperature(32)
+                .withSetTemperature(32, TemperatureUnit.CELSIUS)
                 .withOperator(new Operator())
                 .withClient(new Operator())
                 .withDirection(Direction.EXPORT)
@@ -113,7 +113,7 @@ class LUOrderTest {
         assertEquals(16, copiedLuOrder.getWeightTare().getValue().doubleValue());
         assertNotNull(copiedLuOrder.getDangerousGoodsIndication());
         assertNotNull(copiedLuOrder.getWasteIndication());
-        assertEquals(32, copiedLuOrder.getSetTemperature().doubleValue());
+        assertEquals(32, copiedLuOrder.getSetTemperature().getValue().doubleValue());
         assertNotNull(copiedLuOrder.getOperator());
         assertNotNull(copiedLuOrder.getClient());
         assertEquals(Direction.EXPORT, copiedLuOrder.getDirection());
@@ -231,7 +231,7 @@ class LUOrderTest {
                 .withWeightTare(16.0, MassUnit.KILOGRAM)
                 .withDangerousGoodsIndication(new DangerousGoods())
                 .withWasteIndication(new Waste())
-                .withSetTemperature(32)
+                .withSetTemperature(32, TemperatureUnit.CELSIUS)
                 .withOperator(new Operator())
                 .withClient(new Operator())
                 .withDirection(Direction.EXPORT)
@@ -254,7 +254,7 @@ class LUOrderTest {
         assertEquals(16, deserialize.getWeightTare().getValue().doubleValue());
         assertNotNull(deserialize.getDangerousGoodsIndication());
         assertNotNull(deserialize.getWasteIndication());
-        assertEquals(32, deserialize.getSetTemperature().doubleValue());
+        assertEquals(32, deserialize.getSetTemperature().getValue().doubleValue());
         assertNotNull(deserialize.getOperator());
         assertNotNull(deserialize.getClient());
         assertEquals(Direction.EXPORT, deserialize.getDirection());

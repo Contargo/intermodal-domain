@@ -76,7 +76,7 @@ class QuantityJsonDeserializer extends StdDeserializer<Quantity<?>> {
 
     @Override
     public Quantity<?> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
-        throws IOException, JsonProcessingException {
+        throws IOException {
 
         JsonNode node = jsonParser.getCodec().readTree(jsonParser);
 

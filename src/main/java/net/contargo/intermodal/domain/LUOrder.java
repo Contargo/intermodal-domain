@@ -3,6 +3,8 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import tec.units.ri.quantity.Quantities;
 
@@ -11,9 +13,11 @@ import java.util.List;
 
 import javax.measure.Quantity;
 import javax.measure.quantity.Mass;
+import javax.measure.quantity.Temperature;
 
 import javax.validation.constraints.NotNull;
 
+import static tec.units.ri.unit.Units.CELSIUS;
 import static tec.units.ri.unit.Units.KILOGRAM;
 
 
@@ -58,7 +62,8 @@ public class LUOrder {
     /**
      * For refrigerated containers (in °C).
      */
-    private Integer setTemperature;
+    @JsonDeserialize(using = QuantityJsonDeserializer.class)
+    private Quantity<Temperature> setTemperature;
 
     private Operator operator;
 
@@ -178,9 +183,21 @@ public class LUOrder {
     }
 
 
-    public Integer getSetTemperature() {
+    @JsonSerialize(using = QuantityJsonSerializer.class)
+    public Quantity<Temperature> getSetTemperature() {
 
         return setTemperature;
+    }
+
+
+    @JsonIgnore
+    public String getSetTemperatureUnit() {
+
+        if (setTemperature != null) {
+            return setTemperature.getUnit().getSymbol();
+        }
+
+        return null;
     }
 
 
@@ -254,7 +271,7 @@ public class LUOrder {
         private Quantity<Mass> weightTare;
         private DangerousGoods dangerousGoodsIndication;
         private Waste wasteIndication;
-        private Integer setTemperature;
+        private Quantity<Temperature> setTemperature;
         private Operator operator;
         private Operator client;
         private Direction direction;
@@ -346,7 +363,17 @@ public class LUOrder {
         }
 
 
-        public Builder withSetTemperature(Integer setTemperature) {
+        public Builder withSetTemperature(Integer setTemperature, TemperatureUnit unit) {
+
+            if (unit.toUnit().equals(CELSIUS)) {
+                this.setTemperature = Quantities.getQuantity(setTemperature, CELSIUS);
+            }
+
+            return this;
+        }
+
+
+        Builder withSetTemperature(Quantity<Temperature> setTemperature) {
 
             this.setTemperature = setTemperature;
 
