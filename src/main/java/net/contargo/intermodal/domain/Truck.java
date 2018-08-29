@@ -102,7 +102,7 @@ public class Truck implements MeansOfTransport {
      */
     public static Builder newBuilder(Truck truck) {
 
-        return new Builder().withMot(truck.getMot())
+        return new Builder().withMinistryOfTransportTest(truck.getMot())
             .isSuitableForWaste(truck.getSuitabilityWaste())
             .withEuAuthorization(truck.getEuAuthorization())
             .withNumberPlate(truck.getNumberPlate())
@@ -247,7 +247,7 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public Builder withMot(Instant instant) {
+        public Builder withMinistryOfTransportTest(Instant instant) {
 
             this.mot = instant;
 
