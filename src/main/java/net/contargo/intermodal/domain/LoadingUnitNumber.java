@@ -24,7 +24,7 @@ final class LoadingUnitNumber {
             boolean validOwnerCode = match(Optional.of(value.substring(0, BIC_OWNER_CODE_END_INDEX)), "[A-Z]{3}");
 
             boolean validEquipmentCategory = match(Optional.of(value.charAt(BIC_EQUIPMENT_CATEGORY_END_INDEX)),
-                    "[A-Z]{1}");
+                    "(U|J|Z){1}");
 
             boolean validSerialNumber = match(Optional.of(
                         value.substring(BIC_EQUIPMENT_CATEGORY_END_INDEX + 1, BIC_SERIAL_NUMBER_END_INDEX)),

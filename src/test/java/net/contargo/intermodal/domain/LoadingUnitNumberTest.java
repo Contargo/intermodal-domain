@@ -37,4 +37,15 @@ class LoadingUnitNumberTest {
 
         assertFalse(LoadingUnitNumber.isValidBIC("MSKU18A6510"));
     }
+
+
+    @Test
+    void ensureWrongEquipmentCategoryIsDetected() {
+
+        assertTrue(LoadingUnitNumber.isValidBIC("MSKU1806510"));
+        assertTrue(LoadingUnitNumber.isValidBIC("MSKZ1806510"));
+        assertTrue(LoadingUnitNumber.isValidBIC("MSKJ1806510"));
+        assertFalse(LoadingUnitNumber.isValidBIC("MSKX1806510"));
+        assertFalse(LoadingUnitNumber.isValidBIC("MSKZZ1806510"));
+    }
 }
