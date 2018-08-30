@@ -3,6 +3,9 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -50,7 +53,7 @@ public class Passenger extends Person {
      */
     public static Builder newBuilder(Passenger passenger) {
 
-        return new Builder().named(passenger.getFirstName(), passenger.getLastName())
+        return new Builder().named(passenger.getFirstName(), passenger.getName())
             .withAddress(passenger.getAddress())
             .withCellphoneNumber(passenger.getCellphone())
             .bornOn(passenger.getDateOfBirth())
@@ -64,7 +67,7 @@ public class Passenger extends Person {
         private String firstName;
         private Address address;
         private String cellphone;
-        private Instant dateOfBirth;
+        private LocalDate dateOfBirth;
         private String locationCity;
         private String countryCode;
 
@@ -96,7 +99,20 @@ public class Passenger extends Person {
         }
 
 
-        public Builder bornOn(Instant dateOfBirth) {
+        /**
+         * @param  dateOfBirth  Format yyyy-mm-dd
+         *
+         * @return  this
+         */
+        public Builder bornOn(String dateOfBirth) {
+
+            this.dateOfBirth = LocalDate.parse(dateOfBirth);
+
+            return this;
+        }
+
+
+        Builder bornOn(LocalDate dateOfBirth) {
 
             this.dateOfBirth = dateOfBirth;
 

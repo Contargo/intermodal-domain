@@ -25,7 +25,7 @@ class ChassisTest {
 
         Chassis chassis = Chassis.newBuilder()
                 .withNumberPlate("DU CO 1782")
-                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
+                .withMinistryOfTransportTest(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
                 .withNumberOfAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
@@ -59,7 +59,7 @@ class ChassisTest {
 
         Chassis chassis = Chassis.newBuilder()
                 .withNumberPlate("DU CO 1782")
-                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
+                .withMinistryOfTransportTest(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
                 .withNumberOfAxles(2)
                 .withSize(4.0, LengthUnit.METRE)
@@ -94,7 +94,7 @@ class ChassisTest {
     void ensureMeasurementsCanBeSetInFoot() {
 
         Chassis chassis = Chassis.newBuilder()
-                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
+                .withMinistryOfTransportTest(Instant.parse("2020-05-22T00:00:00Z"))
                 .withSize(13.12, LengthUnit.FOOT)
                 .withHeight(3.28, LengthUnit.FOOT)
                 .withWeightTare(0.5, MassUnit.TON)
@@ -115,7 +115,7 @@ class ChassisTest {
 
         Chassis chassis = Chassis.newBuilder()
                 .withNumberPlate("DU CO 1782")
-                .withMot(Instant.parse("2020-05-22T00:00:00Z"))
+                .withMinistryOfTransportTest(Instant.parse("2020-05-22T00:00:00Z"))
                 .withType("Multichassis")
                 .withNumberOfAxles(2)
                 .withSize(4.0, LengthUnit.METRE)

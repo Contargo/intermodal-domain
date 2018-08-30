@@ -1,13 +1,12 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 
 /**
@@ -39,8 +38,8 @@ public abstract class Person {
     /**
      * format: ISO 8601 yyyy-mm-dd e.g. 1994-02-25
      */
-    @JsonDeserialize(using = InstantJsonDeserializer.class)
-    private Instant dateOfBirth;
+    @JsonDeserialize(using = LocalDataJsonDeserializer.class)
+    private LocalDate dateOfBirth;
 
     /**
      * @definition_english  City of birth
@@ -53,8 +52,7 @@ public abstract class Person {
      */
     private Country country;
 
-    @JsonProperty("name")
-    public String getLastName() {
+    public String getName() {
 
         return name;
     }
@@ -78,8 +76,8 @@ public abstract class Person {
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getDateOfBirth() {
+    @JsonSerialize(using = LocalDataJsonSerializer.class)
+    public LocalDate getDateOfBirth() {
 
         return dateOfBirth;
     }
@@ -131,7 +129,7 @@ public abstract class Person {
     }
 
 
-    void setDateOfBirth(Instant dateOfBirth) {
+    void setDateOfBirth(LocalDate dateOfBirth) {
 
         this.dateOfBirth = dateOfBirth;
     }

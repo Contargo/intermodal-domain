@@ -36,17 +36,17 @@ class TrainDriverTest {
                 .withFirstName("Max")
                 .withAddress(address)
                 .withCellphone("01234/56789")
-                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornOn("1980-01-13")
                 .bornIn("Karlsruhe")
                 .withCountryCode("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
-        assertEquals("Mustermann", trainDriver.getLastName());
+        assertEquals("Mustermann", trainDriver.getName());
         assertEquals("Max", trainDriver.getFirstName());
         assertNotNull(trainDriver.getAddress());
         assertEquals("01234/56789", trainDriver.getCellphone());
-        assertEquals("1980-01-13T00:00:00Z", trainDriver.getDateOfBirth().toString());
+        assertEquals("1980-01-13", trainDriver.getDateOfBirth().toString());
         assertEquals("Karlsruhe", trainDriver.getCityOfBirth());
         assertEquals("DE", trainDriver.getNationality());
         assertEquals("2018-12-31T00:00:00Z", trainDriver.getRid().toString());
@@ -61,7 +61,7 @@ class TrainDriverTest {
                 .withFirstName("Max")
                 .withAddress(new Address())
                 .withCellphone("01234/56789")
-                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornOn("1980-01-13")
                 .bornIn("Karlsruhe")
                 .withCountryCode("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
@@ -69,11 +69,11 @@ class TrainDriverTest {
 
         TrainDriver copiedTrainDriver = TrainDriver.newBuilder(trainDriver).buildAndValidate();
 
-        assertEquals("Mustermann", copiedTrainDriver.getLastName());
+        assertEquals("Mustermann", copiedTrainDriver.getName());
         assertEquals("Max", copiedTrainDriver.getFirstName());
         assertNotNull(copiedTrainDriver.getAddress());
         assertEquals("01234/56789", copiedTrainDriver.getCellphone());
-        assertEquals("1980-01-13T00:00:00Z", copiedTrainDriver.getDateOfBirth().toString());
+        assertEquals("1980-01-13", copiedTrainDriver.getDateOfBirth().toString());
         assertEquals("Karlsruhe", copiedTrainDriver.getCityOfBirth());
         assertEquals("DE", copiedTrainDriver.getNationality());
         assertEquals("2018-12-31T00:00:00Z", copiedTrainDriver.getRid().toString());
@@ -96,7 +96,7 @@ class TrainDriverTest {
                 .withFirstName("Max")
                 .withAddress(address)
                 .withCellphone("01234/56789")
-                .bornOn(Instant.parse("1980-01-13T00:00:00Z"))
+                .bornOn("1980-01-13")
                 .bornIn("Karlsruhe")
                 .withCountryCode("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
@@ -108,11 +108,11 @@ class TrainDriverTest {
 
         TrainDriver deserialize = mapper.readValue(jsonString, TrainDriver.class);
 
-        assertEquals("Mustermann", deserialize.getLastName());
+        assertEquals("Mustermann", deserialize.getName());
         assertEquals("Max", deserialize.getFirstName());
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
-        assertEquals("1980-01-13T00:00:00Z", deserialize.getDateOfBirth().toString());
+        assertEquals("1980-01-13", deserialize.getDateOfBirth().toString());
         assertEquals("Karlsruhe", deserialize.getCityOfBirth());
         assertEquals("DE", deserialize.getNationality());
         assertEquals("2018-12-31T00:00:00Z", deserialize.getRid().toString());

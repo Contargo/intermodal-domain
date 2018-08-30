@@ -125,7 +125,7 @@ public class Chassis implements MeansOfTransport {
             .isSuitableForDangerousGoods(chassis.getSuitabilityDangerousGoods())
             .isSuitableForWaste(chassis.getSuitabilityWaste())
             .isSuitableForReefer(chassis.getSuitabilityReefer())
-            .withMot(chassis.getMot())
+            .withMinistryOfTransportTest(chassis.getMot())
             .withWeight(chassis.getWeight());
     }
 
@@ -254,7 +254,7 @@ public class Chassis implements MeansOfTransport {
         }
 
 
-        public Builder withMot(Instant instant) {
+        public Builder withMinistryOfTransportTest(Instant instant) {
 
             this.mot = instant;
 

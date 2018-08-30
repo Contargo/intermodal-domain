@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 
 /**
@@ -64,7 +65,7 @@ public class Driver extends Person {
         return new Builder().withCellphoneNumber(driver.getCellphone())
             .withNationality(driver.getNationality())
             .bornOn(driver.getDateOfBirth())
-            .named(driver.getFirstName(), driver.getLastName())
+            .named(driver.getFirstName(), driver.getName())
             .withAddress(driver.getAddress())
             .withModuleEntry95(driver.getModuleEntry95())
             .withId(driver.getId())
@@ -141,7 +142,7 @@ public class Driver extends Person {
         private String firstName;
         private Address address;
         private String cellphone;
-        private Instant dateOfBirth;
+        private LocalDate dateOfBirth;
         private String locationCity;
         private String id;
         private String countryCode;
@@ -196,9 +197,17 @@ public class Driver extends Person {
         }
 
 
-        public Builder bornOn(Instant instant) {
+        public Builder bornOn(String dateOfBirth) {
 
-            this.dateOfBirth = instant;
+            this.dateOfBirth = LocalDate.parse(dateOfBirth);
+
+            return this;
+        }
+
+
+        Builder bornOn(LocalDate dateOfBirth) {
+
+            this.dateOfBirth = dateOfBirth;
 
             return this;
         }

@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 
 /**
@@ -50,7 +51,7 @@ public class Skipper extends Person {
      */
     public static Builder newBuilder(Skipper skipper) {
 
-        return new Builder().named(skipper.getFirstName(), skipper.getLastName())
+        return new Builder().named(skipper.getFirstName(), skipper.getName())
             .withAddress(skipper.getAddress())
             .withCellphoneNumber(skipper.getCellphone())
             .bornOn(skipper.getDateOfBirth())
@@ -85,7 +86,7 @@ public class Skipper extends Person {
         private String firstName;
         private Address address;
         private String cellphone;
-        private Instant dateOfBirth;
+        private LocalDate dateOfBirth;
         private String locationCity;
         private String countryCode;
         private Instant adnr;
@@ -118,9 +119,17 @@ public class Skipper extends Person {
         }
 
 
-        public Builder bornOn(Instant instant) {
+        public Builder bornOn(String dateOfBirth) {
 
-            this.dateOfBirth = instant;
+            this.dateOfBirth = LocalDate.parse(dateOfBirth);
+
+            return this;
+        }
+
+
+        Builder bornOn(LocalDate dateOfBirth) {
+
+            this.dateOfBirth = dateOfBirth;
 
             return this;
         }

@@ -94,7 +94,7 @@ public class ProcessingBarge {
             .withReeferConnections(processingBarge.getReeferConnections())
             .withEta(processingBarge.getEta())
             .withEtd(processingBarge.getEtd())
-            .withPassenger(processingBarge.getPassenger())
+            .withPassengers(processingBarge.getPassenger())
             .withCone(processingBarge.getCone())
             .withSkipper(processingBarge.getSkipper())
             .withAdnr(processingBarge.getAdnr())
@@ -215,7 +215,7 @@ public class ProcessingBarge {
         private Instant eta;
         private Instant etd;
         private Skipper skipper;
-        private List<Person> passenger;
+        private List<Person> passenger = new ArrayList<>();
         private Integer reeferConnections;
         private Cone cone;
         private Instant adnr;
@@ -256,9 +256,17 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withPassenger(List<Person> passenger) {
+        public Builder withPassengers(List<Person> passengers) {
 
-            this.passenger = passenger;
+            this.passenger.addAll(passengers);
+
+            return this;
+        }
+
+
+        public Builder withPassenger(Person passenger) {
+
+            this.passenger.add(passenger);
 
             return this;
         }
