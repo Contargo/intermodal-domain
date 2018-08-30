@@ -32,7 +32,7 @@ import static tec.units.ri.unit.Units.METRE;
 public class Chassis implements MeansOfTransport {
 
     /**
-     * Format: spaces included.
+     * Format: spaces included e.g. in Germany: DU CO 1782
      */
     private String numberPlate;
 

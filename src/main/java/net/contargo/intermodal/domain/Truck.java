@@ -32,7 +32,7 @@ import static tec.units.ri.unit.Units.KILOGRAM;
 public class Truck implements MeansOfTransport {
 
     /**
-     * Format: spaces included.
+     * Format: spaces included e.g. in Germany: DU CO 1782
      */
     private String numberPlate;
 
