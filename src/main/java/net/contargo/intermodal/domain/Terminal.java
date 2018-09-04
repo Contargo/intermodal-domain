@@ -15,6 +15,7 @@ package net.contargo.intermodal.domain;
  * <p>Further information: <a href="http://www.contargo.net/de/terminals/">Contargo terminals</a></p>
  *
  * @author  Olle Törnström - toernstroem@synyx.de
+ * @source  Contargo Domain
  */
 public interface Terminal {
 }

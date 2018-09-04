@@ -15,6 +15,7 @@ package net.contargo.intermodal.domain;
  * @see  Seaport
  * @see  LoadingPlace
  * @see  Location
+ * @source  Contargo Domain
  */
 public interface Site {
 }

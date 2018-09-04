@@ -6,6 +6,7 @@ package net.contargo.intermodal.domain;
  * <p>In german {@link Nachricht}</p>
  *
  * @author  Olle Törnström - toernstroem@synyx.de
+ * @source  Contargo Domain
  */
 public interface Message {
 }

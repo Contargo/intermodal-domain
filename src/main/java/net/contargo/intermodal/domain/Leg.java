@@ -12,6 +12,7 @@ package net.contargo.intermodal.domain;
  * <p>In german {@link Teilstrecke}.</p>
  *
  * @author  Olle Törnström - toernstroem@synyx.de
+ * @source  Contargo Domain
  */
 public interface Leg {
 }

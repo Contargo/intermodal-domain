@@ -11,6 +11,7 @@ package net.contargo.intermodal.domain;
  *
  * @author  Olle Törnström - toernstroem@synyx.de
  * @see  User
+ * @source  Contargo Domain
  */
 public interface Profile {
 }

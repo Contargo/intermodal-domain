@@ -5,6 +5,7 @@ package net.contargo.intermodal.domain;
  * subsidiary {@link Location}, a place where one can make business or visit.
  *
  * @author  Olle Törnström - toernstroem@synyx.de
+ * @source  Contargo Domain
  */
 public interface Company {
 }

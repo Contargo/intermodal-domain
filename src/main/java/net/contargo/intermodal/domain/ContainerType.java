@@ -10,6 +10,7 @@ package net.contargo.intermodal.domain;
  * <p>Further information: <a href="http://www.contargo.net/de/goodtoknow/container/">container types</a></p>
  *
  * @author  Aljona Murygina - murygina@synyx.de
+ * @source  Contargo Domain
  */
 public interface ContainerType {
 }

@@ -10,6 +10,7 @@ package net.contargo.intermodal.domain;
  * <p>In german {@link Empfaenger}.</p>
  *
  * @author  Olle Törnström - toernstroem@synyx.de
+ * @source  Contargo Domain
  */
 public interface Recipient {
 }

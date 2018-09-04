@@ -7,6 +7,7 @@ package net.contargo.intermodal.domain;
  * <p>In german {@link Benachrichtigung}.</p>
  *
  * @author  Olle Törnström - toernstroem@synyx.de
+ * @source  Contargo Domain
  */
 public interface Notification {
 }
