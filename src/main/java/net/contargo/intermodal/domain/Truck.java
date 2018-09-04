@@ -82,6 +82,11 @@ public class Truck implements MeansOfTransport {
      */
     private Weight weight;
 
+    private Truck() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Truck}.
      *

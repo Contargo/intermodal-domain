@@ -38,6 +38,11 @@ public class Operator {
 
     private String insurance;
 
+    private Operator() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Operator}.
      *

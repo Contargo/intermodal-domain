@@ -55,6 +55,11 @@ public class Waste {
      */
     private Weight weight;
 
+    private Waste() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Waste}.
      *

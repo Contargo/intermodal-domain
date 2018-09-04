@@ -99,6 +99,11 @@ public class StatusLU {
      */
     private Boolean unloaded;
 
+    private StatusLU() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link StatusLU}.
      *

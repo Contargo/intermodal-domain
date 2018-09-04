@@ -61,6 +61,11 @@ public class ProcessingTrain {
      */
     private String trainPaths;
 
+    private ProcessingTrain() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link ProcessingTrain}.
      *

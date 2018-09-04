@@ -66,6 +66,11 @@ public class DangerousGoods {
      */
     private Boolean marinePollutants;
 
+    private DangerousGoods() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link DangerousGoods}.
      *

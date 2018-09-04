@@ -27,18 +27,18 @@ class LUOrderTest {
         seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
 
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
-                .withLoadingUnit(new Container())
+                .withLoadingUnit(TestDataCreator.createContainer())
                 .withReference("1658583")
                 .withWeightBrutto(16.0, MassUnit.KILOGRAM)
                 .withWeightNetto(14.0, MassUnit.KILOGRAM)
                 .withWeightTare(16.0, MassUnit.KILOGRAM)
-                .withDangerousGoodsIndication(new DangerousGoods())
-                .withWasteIndication(new Waste())
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withWasteIndication(TestDataCreator.createWaste())
                 .withSetTemperature(32, TemperatureUnit.CELSIUS)
-                .withOperator(new Operator())
-                .withClient(new Operator())
+                .withOperator(TestDataCreator.createOperator())
+                .withClient(TestDataCreator.createOperator())
                 .withDirection(Direction.EXPORT)
-                .withCustoms(new Customs())
+                .withCustoms(TestDataCreator.createCustoms())
                 .withGoods("food")
                 .isEmpty(false)
                 .withSeals(seals)
@@ -69,12 +69,12 @@ class LUOrderTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         LUOrder.newBuilder()
-            .withLoadingUnit(new Container())
+            .withLoadingUnit(TestDataCreator.createContainer())
             .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
             .withWeightNetto(28080.0, MassUnit.KILOGRAM)
             .withWeightTare(2400.0, MassUnit.KILOGRAM)
-            .withDangerousGoodsIndication(new DangerousGoods())
-            .withWasteIndication(new Waste())
+            .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+            .withWasteIndication(TestDataCreator.createWaste())
             .buildAndValidate();
     }
 
@@ -87,18 +87,18 @@ class LUOrderTest {
         seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
 
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
-                .withLoadingUnit(new Container())
+                .withLoadingUnit(TestDataCreator.createContainer())
                 .withReference("1658583")
                 .withWeightBrutto(16.0, MassUnit.KILOGRAM)
                 .withWeightNetto(14.0, MassUnit.KILOGRAM)
                 .withWeightTare(16.0, MassUnit.KILOGRAM)
-                .withDangerousGoodsIndication(new DangerousGoods())
-                .withWasteIndication(new Waste())
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withWasteIndication(TestDataCreator.createWaste())
                 .withSetTemperature(32, TemperatureUnit.CELSIUS)
-                .withOperator(new Operator())
-                .withClient(new Operator())
+                .withOperator(TestDataCreator.createOperator())
+                .withClient(TestDataCreator.createOperator())
                 .withDirection(Direction.EXPORT)
-                .withCustoms(new Customs())
+                .withCustoms(TestDataCreator.createCustoms())
                 .withGoods("food")
                 .isEmpty(false)
                 .withSeals(seals)
@@ -131,12 +131,12 @@ class LUOrderTest {
     void ensureWeightCanBeSetInTons() {
 
         LUOrder luOrder = LUOrder.newBuilder()
-                .withLoadingUnit(new Container())
+                .withLoadingUnit(TestDataCreator.createContainer())
                 .withWeightBrutto(30.48, MassUnit.TON)
                 .withWeightNetto(28.08, MassUnit.TON)
                 .withWeightTare(2.4, MassUnit.TON)
-                .withDangerousGoodsIndication(new DangerousGoods())
-                .withWasteIndication(new Waste())
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withWasteIndication(TestDataCreator.createWaste())
                 .buildAndValidate();
 
         assertEquals(30480.0, luOrder.getWeightBrutto().getValue().doubleValue(), 0.1);
@@ -159,59 +159,59 @@ class LUOrderTest {
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
                     .withWeightNetto(28080.0, MassUnit.KILOGRAM)
                     .withWeightTare(2400.0, MassUnit.KILOGRAM)
-                    .withDangerousGoodsIndication(new DangerousGoods())
-                    .withWasteIndication(new Waste())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                    .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 LUOrder.newBuilder()
-                    .withLoadingUnit(new Container())
+                    .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
                     .withWeightNetto(28080.0, MassUnit.KILOGRAM)
                     .withWeightTare(2400.0, MassUnit.KILOGRAM)
-                    .withDangerousGoodsIndication(new DangerousGoods())
-                    .withWasteIndication(new Waste())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                    .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 LUOrder.newBuilder()
-                    .withLoadingUnit(new Container())
+                    .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
                     .withWeightTare(2400.0, MassUnit.KILOGRAM)
-                    .withDangerousGoodsIndication(new DangerousGoods())
-                    .withWasteIndication(new Waste())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                    .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 LUOrder.newBuilder()
-                    .withLoadingUnit(new Container())
+                    .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
                     .withWeightNetto(28080.0, MassUnit.KILOGRAM)
-                    .withDangerousGoodsIndication(new DangerousGoods())
-                    .withWasteIndication(new Waste())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                    .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 LUOrder.newBuilder()
-                    .withLoadingUnit(new Container())
+                    .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
                     .withWeightNetto(28080.0, MassUnit.KILOGRAM)
                     .withWeightTare(2400.0, MassUnit.KILOGRAM)
-                    .withWasteIndication(new Waste())
+                    .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 LUOrder.newBuilder()
-                    .withLoadingUnit(new Container())
+                    .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
                     .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
                     .withWeightNetto(28080.0, MassUnit.KILOGRAM)
                     .withWeightTare(2400.0, MassUnit.KILOGRAM)
-                    .withDangerousGoodsIndication(new DangerousGoods())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .buildAndValidate());
     }
 
@@ -224,18 +224,18 @@ class LUOrderTest {
         seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
 
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
-                .withLoadingUnit(new Container())
+                .withLoadingUnit(TestDataCreator.createContainer())
                 .withReference("1658583")
                 .withWeightBrutto(16.0, MassUnit.KILOGRAM)
                 .withWeightNetto(14.0, MassUnit.KILOGRAM)
                 .withWeightTare(16.0, MassUnit.KILOGRAM)
-                .withDangerousGoodsIndication(new DangerousGoods())
-                .withWasteIndication(new Waste())
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withWasteIndication(TestDataCreator.createWaste())
                 .withSetTemperature(32, TemperatureUnit.CELSIUS)
-                .withOperator(new Operator())
-                .withClient(new Operator())
+                .withOperator(TestDataCreator.createOperator())
+                .withClient(TestDataCreator.createOperator())
                 .withDirection(Direction.EXPORT)
-                .withCustoms(new Customs())
+                .withCustoms(TestDataCreator.createCustoms())
                 .withGoods("food")
                 .isEmpty(false)
                 .withSeals(seals)

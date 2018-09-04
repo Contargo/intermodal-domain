@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Operator;
 import net.contargo.intermodal.domain.PickUp;
+import net.contargo.intermodal.domain.TestDataCreator;
 import net.contargo.intermodal.domain.Truck;
 
 import org.junit.jupiter.api.Test;
@@ -27,10 +28,10 @@ class PickUpTest {
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createTruck())
                 .buildAndValidate();
 
         assertEquals("Ludwigshafen", pickUp.getLocation().getCity());
@@ -52,7 +53,7 @@ class PickUpTest {
         PickUp.newBuilder()
             .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
             .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-            .withMeansOfTransport(new Truck())
+            .withMeansOfTransport(TestDataCreator.createTruck())
             .buildAndValidate();
     }
 
@@ -64,10 +65,10 @@ class PickUpTest {
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createTruck())
                 .buildAndValidate();
 
         PickUp copiedPickUp = PickUp.newBuilder(pickUp).buildAndValidate();
@@ -92,7 +93,7 @@ class PickUpTest {
             () ->
                 PickUp.newBuilder()
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withMeansOfTransport(new Truck())
+                    .withMeansOfTransport(TestDataCreator.createTruck())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -100,7 +101,7 @@ class PickUpTest {
                 PickUp.newBuilder()
                     .withLocation(null, "Terminal Ludwigshafen")
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withMeansOfTransport(new Truck())
+                    .withMeansOfTransport(TestDataCreator.createTruck())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -108,14 +109,14 @@ class PickUpTest {
                 PickUp.newBuilder()
                     .withLocation("Ludwigshafen", null)
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withMeansOfTransport(new Truck())
+                    .withMeansOfTransport(TestDataCreator.createTruck())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 PickUp.newBuilder()
                     .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
-                    .withMeansOfTransport(new Truck())
+                    .withMeansOfTransport(TestDataCreator.createTruck())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -134,10 +135,10 @@ class PickUpTest {
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createTruck())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Destination;
+import net.contargo.intermodal.domain.TestDataCreator;
 import net.contargo.intermodal.domain.Vessel;
 
 import org.junit.jupiter.api.Test;
@@ -21,10 +22,10 @@ class DestinationTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         Destination destination = Destination.newBuilder()
-                .withVessel(new Vessel())
+                .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
                 .withLocation("Duisburg", "Terminal Duisburg")
-                .withSeaport("DEDUI")
+                .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
         assertNotNull(destination.getVessel());
@@ -56,10 +57,10 @@ class DestinationTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         Destination destination = Destination.newBuilder()
-                .withVessel(new Vessel())
+                .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
                 .withLocation("Duisburg", "Terminal Duisburg")
-                .withSeaport("DEDUI")
+                .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

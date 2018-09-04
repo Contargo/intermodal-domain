@@ -55,6 +55,11 @@ public class SwapBody extends LoadingUnit {
     @NotNull(message = "stackable is part of minimum requirement and must not be null")
     private Boolean stackable;
 
+    private SwapBody() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link SwapBody}.
      *

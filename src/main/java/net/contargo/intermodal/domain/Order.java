@@ -62,6 +62,11 @@ public class Order {
     )
     private Destination destination;
 
+    private Order() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Order}.
      *

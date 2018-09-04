@@ -27,6 +27,11 @@ class Transport {
     @NotEmpty(message = "stop is part of minimum requirement and must not be null")
     private List<Stop> stop = new ArrayList<>();
 
+    Transport() {
+
+        // OK
+    }
+
     void setDirection(Direction direction) {
 
         this.direction = direction;

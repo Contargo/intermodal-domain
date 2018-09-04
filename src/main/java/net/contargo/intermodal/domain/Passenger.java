@@ -20,6 +20,11 @@ import java.time.format.DateTimeFormatter;
  */
 public class Passenger extends Person {
 
+    private Passenger() {
+
+        // OK
+    }
+
     @Override
     public String toString() {
 

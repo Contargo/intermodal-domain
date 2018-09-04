@@ -33,6 +33,11 @@ public class Location {
 
     private String postalCode;
 
+    Location() {
+
+        // OK
+    }
+
     void setDesignation(String designation) {
 
         this.designation = designation;

@@ -20,6 +20,11 @@ public class Address {
 
     private Country country;
 
+    private Address() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Address}.
      *

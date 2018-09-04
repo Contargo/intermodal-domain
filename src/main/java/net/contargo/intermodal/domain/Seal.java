@@ -17,6 +17,11 @@ public class Seal {
 
     private String number;
 
+    private Seal() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Seal}.
      *

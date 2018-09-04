@@ -95,6 +95,11 @@ public class MeansOfTransportationStatus {
      */
     private Integer waggonTechnicalInspection;
 
+    private MeansOfTransportationStatus() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link MeansOfTransportationStatus}.
      *

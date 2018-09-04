@@ -53,6 +53,11 @@ public class Trailer extends LoadingUnit {
     @NotNull(message = "craneable is part of minimum requirement and must not be null")
     private Boolean craneable;
 
+    private Trailer() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Trailer}.
      *

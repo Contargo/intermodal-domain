@@ -31,6 +31,11 @@ public class Destination {
      */
     private Country country;
 
+    private Destination() {
+
+        // OK
+    }
+
     public static Builder newBuilder() {
 
         return new Builder();
@@ -130,10 +135,8 @@ public class Destination {
         }
 
 
-        public Builder withSeaport(String name) {
+        public Builder withSeaport(Seaport seaport) {
 
-            Seaport seaport = new Seaport();
-            seaport.setName(name);
             this.seaport = seaport;
 
             return this;

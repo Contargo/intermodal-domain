@@ -58,6 +58,11 @@ public class RegistrationBarge {
     @RegistrationVolumeConstraint(message = "toDischarge and toLoad are part of the minimum Requirement of Volume")
     private Volume volume;
 
+    private RegistrationBarge() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link RegistrationBarge}.
      *

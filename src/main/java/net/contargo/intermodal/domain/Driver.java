@@ -42,6 +42,11 @@ public class Driver extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant moduleEntry95;
 
+    private Driver() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Driver}.
      *

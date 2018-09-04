@@ -33,34 +33,34 @@ class OrderTest {
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Duisburg", "Terminal Duisburg", "terminal")
                 .withLoadingUnit("63876846", false)
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
                 .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         Destination destination = Destination.newBuilder()
-                .withVessel(new Vessel())
+                .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
                 .withLocation("Duisburg", "Terminal Duisburg")
-                .withSeaport("DEDUI")
+                .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
         Order order = Order.newBuilder()
                 .withReference("54642887")
-                .withClient(new Operator())
-                .withBillRecipient(new Operator())
-                .withOrderForLoadingUnit(new LUOrder())
+                .withClient(TestDataCreator.createOperator())
+                .withBillRecipient(TestDataCreator.createOperator())
+                .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                 .withTransportDirection(Direction.EXPORT)
                 .withTransportPickUp(pickUp)
                 .withTransportDropOff(dropOff)
@@ -114,12 +114,12 @@ class OrderTest {
         PickUp pickUp = PickUp.newBuilder()
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Koblenz", "Terminal Koblenz")
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         Stop stop = Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
@@ -128,7 +128,7 @@ class OrderTest {
 
         Order order = Order.newBuilder()
                 .withReference("54642887")
-                .withOrderForLoadingUnit(new LUOrder())
+                .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                 .withTransportPickUp(pickUp)
                 .withTransportDropOff(dropOff)
                 .withStops(Arrays.asList(stop))
@@ -148,34 +148,34 @@ class OrderTest {
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Duisburg", "Terminal Duisburg", "terminal")
                 .withLoadingUnit("63876846", false)
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
                 .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         Destination destination = Destination.newBuilder()
-                .withVessel(new Vessel())
+                .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
                 .withLocation("Duisburg", "Terminal Duisburg")
-                .withSeaport("DEDUI")
+                .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
         Order order = Order.newBuilder()
                 .withReference("54642887")
-                .withClient(new Operator())
-                .withBillRecipient(new Operator())
-                .withOrderForLoadingUnit(new LUOrder())
+                .withClient(TestDataCreator.createOperator())
+                .withBillRecipient(TestDataCreator.createOperator())
+                .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                 .withTransportDirection(Direction.EXPORT)
                 .withTransportPickUp(pickUp)
                 .withTransportDropOff(dropOff)
@@ -231,12 +231,12 @@ class OrderTest {
         PickUp pickUp = PickUp.newBuilder()
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Koblenz", "Terminal Koblenz")
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         Destination destination = Destination.newBuilder().withLocation("Terminal Koblenz").buildAndValidate();
@@ -244,10 +244,10 @@ class OrderTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Order.newBuilder()
-                    .withOrderForLoadingUnit(new LUOrder())
+                    .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                     .withTransportPickUp(pickUp)
                     .withTransportDropOff(dropOff)
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
+                    .withStops(Arrays.asList(TestDataCreator.createStop(), TestDataCreator.createStop()))
                     .withDestination(destination)
                     .buildAndValidate());
 
@@ -257,7 +257,7 @@ class OrderTest {
                     .withReference("54642887")
                     .withTransportPickUp(pickUp)
                     .withTransportDropOff(dropOff)
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
+                    .withStops(Arrays.asList(TestDataCreator.createStop(), TestDataCreator.createStop()))
                     .withDestination(destination)
                     .buildAndValidate());
 
@@ -265,9 +265,9 @@ class OrderTest {
             () ->
                 Order.newBuilder()
                     .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
+                    .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                     .withTransportDropOff(dropOff)
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
+                    .withStops(Arrays.asList(TestDataCreator.createStop(), TestDataCreator.createStop()))
                     .withDestination(destination)
                     .buildAndValidate());
 
@@ -275,9 +275,9 @@ class OrderTest {
             () ->
                 Order.newBuilder()
                     .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
+                    .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                     .withTransportDropOff(dropOff)
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
+                    .withStops(Arrays.asList(TestDataCreator.createStop(), TestDataCreator.createStop()))
                     .withDestination(destination)
                     .buildAndValidate());
 
@@ -285,7 +285,7 @@ class OrderTest {
             () ->
                 Order.newBuilder()
                     .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
+                    .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                     .withTransportPickUp(pickUp)
                     .withTransportDropOff(dropOff)
                     .withDestination(destination)
@@ -295,10 +295,10 @@ class OrderTest {
             () ->
                 Order.newBuilder()
                     .withReference("54642887")
-                    .withOrderForLoadingUnit(new LUOrder())
+                    .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                     .withTransportPickUp(pickUp)
                     .withTransportDropOff(dropOff)
-                    .withStops(Arrays.asList(new Stop(), new Stop()))
+                    .withStops(Arrays.asList(TestDataCreator.createStop(), TestDataCreator.createStop()))
                     .buildAndValidate());
     }
 
@@ -316,34 +316,34 @@ class OrderTest {
                 .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(new Truck())
+                .withMeansOfTransport(TestDataCreator.createTruck())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Duisburg", "Terminal Duisburg", "terminal")
                 .withLoadingUnit("63876846", false)
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
                 .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createTruck())
                 .buildAndValidate();
 
         Destination destination = Destination.newBuilder()
-                .withVessel(new Vessel())
+                .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
                 .withLocation("Duisburg", "Terminal Duisburg")
-                .withSeaport("DEDUI")
+                .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
         Order order = Order.newBuilder()
                 .withReference("54642887")
-                .withClient(new Operator())
-                .withBillRecipient(new Operator())
-                .withOrderForLoadingUnit(new LUOrder())
+                .withClient(TestDataCreator.createOperator())
+                .withBillRecipient(TestDataCreator.createOperator())
+                .withOrderForLoadingUnit(TestDataCreator.createLUOrder())
                 .withTransportDirection(Direction.EXPORT)
                 .withTransportPickUp(pickUp)
                 .withTransportDropOff(dropOff)
@@ -394,12 +394,5 @@ class OrderTest {
         assertEquals("Duisburg", deserialize.getDestination().getLocation().getCity());
         assertEquals("Terminal Duisburg", deserialize.getDestination().getLocation().getDesignation());
         assertEquals("DEDUI", deserialize.getDestination().getSeaportName());
-    }
-
-
-    @Test
-    void ensureDestinationCanBeBuildWithoutSeaportAndVessel() {
-
-        Destination.newBuilder().withCountryCode("DE").withLocation("Wörth", "Terminal Wörth").buildAndValidate();
     }
 }

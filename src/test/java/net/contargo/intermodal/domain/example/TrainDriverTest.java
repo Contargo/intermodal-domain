@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.TestDataCreator;
 import net.contargo.intermodal.domain.TrainDriver;
 
 import org.junit.jupiter.api.Test;
@@ -59,7 +60,7 @@ class TrainDriverTest {
         TrainDriver trainDriver = TrainDriver.newBuilder()
                 .withName("Mustermann")
                 .withFirstName("Max")
-                .withAddress(new Address())
+                .withAddress(TestDataCreator.createAddress())
                 .withCellphone("01234/56789")
                 .bornOn("1980-01-13")
                 .bornIn("Karlsruhe")

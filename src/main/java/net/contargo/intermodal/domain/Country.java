@@ -23,6 +23,11 @@ class Country {
     private String code;
     private String name;
 
+    Country() {
+
+        // OK
+    }
+
     public String getName() {
 
         return name;

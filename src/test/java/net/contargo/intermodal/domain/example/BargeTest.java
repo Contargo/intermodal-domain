@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Barge;
 import net.contargo.intermodal.domain.Operator;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +28,7 @@ class BargeTest {
                 .withName("My Barge")
                 .withMmsi("021112345")
                 .withEni("050XXXXX")
-                .withOperator(new Operator())
+                .withOperator(TestDataCreator.createOperator())
                 .withLength(91.4, METRE)
                 .withWidth(27.4, METRE)
                 .withDraught(5.5, METRE)
@@ -62,7 +63,7 @@ class BargeTest {
                 .withName("My Barge")
                 .withMmsi("021112345")
                 .withEni("050XXXXX")
-                .withOperator(new Operator())
+                .withOperator(TestDataCreator.createOperator())
                 .withLength(91.4, METRE)
                 .withWidth(27.4, METRE)
                 .withDraught(5.5, METRE)
@@ -118,7 +119,7 @@ class BargeTest {
                 .withName("My Barge")
                 .withMmsi("021112345")
                 .withEni("050XXXXX")
-                .withOperator(new Operator())
+                .withOperator(TestDataCreator.createOperator())
                 .withLength(91.4, METRE)
                 .withWidth(27.4, METRE)
                 .withDraught(5.5, METRE)

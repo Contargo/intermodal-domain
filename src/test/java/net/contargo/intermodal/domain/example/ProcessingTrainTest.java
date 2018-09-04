@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.LUOrder;
 import net.contargo.intermodal.domain.ProcessingTrain;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,9 +27,10 @@ class ProcessingTrainTest {
 
         ProcessingTrain processingTrain = ProcessingTrain.newBuilder()
                 .withTrainTitle("My Train")
-                .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
-                .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
-                .withWaggon("SGNRS", "24568", 3, Arrays.asList(new LUOrder(), new LUOrder()))
+                .withWaggon("SGNRS", "789784", 1, Arrays.asList(TestDataCreator.createLUOrder()))
+                .withWaggon("SGNRS", "54789", 2, Arrays.asList(TestDataCreator.createLUOrder()))
+                .withWaggon("SGNRS", "24568", 3,
+                        Arrays.asList(TestDataCreator.createLUOrder(), TestDataCreator.createLUOrder()))
                 .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
                 .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
@@ -55,9 +57,10 @@ class ProcessingTrainTest {
 
         ProcessingTrain processingTrain = ProcessingTrain.newBuilder()
                 .withTrainTitle("My Train")
-                .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
-                .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
-                .withWaggon("SGNRS", "24568", 3, Arrays.asList(new LUOrder(), new LUOrder()))
+                .withWaggon("SGNRS", "789784", 1, Arrays.asList(TestDataCreator.createLUOrder()))
+                .withWaggon("SGNRS", "54789", 2, Arrays.asList(TestDataCreator.createLUOrder()))
+                .withWaggon("SGNRS", "24568", 3,
+                        Arrays.asList(TestDataCreator.createLUOrder(), TestDataCreator.createLUOrder()))
                 .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
                 .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
@@ -86,9 +89,10 @@ class ProcessingTrainTest {
 
         ProcessingTrain processingTrain = ProcessingTrain.newBuilder()
                 .withTrainTitle("My Train")
-                .withWaggon("SGNRS", "789784", 1, Arrays.asList(new LUOrder()))
-                .withWaggon("SGNRS", "54789", 2, Arrays.asList(new LUOrder()))
-                .withWaggon("SGNRS", "24568", 3, Arrays.asList(new LUOrder(), new LUOrder()))
+                .withWaggon("SGNRS", "789784", 1, Arrays.asList(TestDataCreator.createLUOrder()))
+                .withWaggon("SGNRS", "54789", 2, Arrays.asList(TestDataCreator.createLUOrder()))
+                .withWaggon("SGNRS", "24568", 3,
+                        Arrays.asList(TestDataCreator.createLUOrder(), TestDataCreator.createLUOrder()))
                 .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
                 .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))

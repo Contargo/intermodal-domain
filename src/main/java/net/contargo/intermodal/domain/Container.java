@@ -59,6 +59,11 @@ public class Container extends LoadingUnit {
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Length> size;
 
+    private Container() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Container}.
      *

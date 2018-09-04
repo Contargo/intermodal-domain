@@ -79,6 +79,11 @@ public class LUOrder {
 
     private List<Seal> seal;
 
+    private LUOrder() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link LUOrder}.
      *

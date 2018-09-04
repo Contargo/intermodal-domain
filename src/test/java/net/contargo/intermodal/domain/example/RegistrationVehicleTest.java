@@ -2,11 +2,7 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Chassis;
-import net.contargo.intermodal.domain.Driver;
-import net.contargo.intermodal.domain.LUOrder;
-import net.contargo.intermodal.domain.RegistrationVehicle;
-import net.contargo.intermodal.domain.Truck;
+import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,13 +22,13 @@ class RegistrationVehicleTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         RegistrationVehicle registrationVehicle = RegistrationVehicle.newBuilder()
-                .withTruck(new Truck())
-                .withChassis(new Chassis())
-                .withDriver(new Driver())
+                .withTruck(TestDataCreator.createTruck())
+                .withChassis(TestDataCreator.createChassis())
+                .withDriver(TestDataCreator.createDriver())
                 .withHaulierClient("haulier client")
                 .withHaulierRealizing("haulier realizing")
                 .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-                .withLuOrder(new LUOrder())
+                .withLuOrder(TestDataCreator.createLUOrder())
                 .buildAndValidate();
 
         assertNotNull(registrationVehicle.getTruck());
@@ -49,12 +45,12 @@ class RegistrationVehicleTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         RegistrationVehicle.newBuilder()
-            .withTruck(new Truck())
-            .withDriver(new Driver())
+            .withTruck(TestDataCreator.createTruck())
+            .withDriver(TestDataCreator.createDriver())
             .withHaulierClient("haulier client")
             .withHaulierRealizing("haulier realizing")
             .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-            .withLuOrder(new LUOrder())
+            .withLuOrder(TestDataCreator.createLUOrder())
             .buildAndValidate();
     }
 
@@ -63,13 +59,13 @@ class RegistrationVehicleTest {
     void ensureCanBeCopied() {
 
         RegistrationVehicle registrationVehicle = RegistrationVehicle.newBuilder()
-                .withTruck(new Truck())
-                .withChassis(new Chassis())
-                .withDriver(new Driver())
+                .withTruck(TestDataCreator.createTruck())
+                .withChassis(TestDataCreator.createChassis())
+                .withDriver(TestDataCreator.createDriver())
                 .withHaulierClient("haulier client")
                 .withHaulierRealizing("haulier realizing")
                 .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-                .withLuOrder(new LUOrder())
+                .withLuOrder(TestDataCreator.createLUOrder())
                 .buildAndValidate();
 
         RegistrationVehicle copiedRegistrationVehicle = RegistrationVehicle.newBuilder(registrationVehicle)
@@ -91,56 +87,56 @@ class RegistrationVehicleTest {
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationVehicle.newBuilder()
-                    .withDriver(new Driver())
+                    .withDriver(TestDataCreator.createDriver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-                    .withLuOrder(new LUOrder())
+                    .withLuOrder(TestDataCreator.createLUOrder())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationVehicle.newBuilder()
-                    .withTruck(new Truck())
+                    .withTruck(TestDataCreator.createTruck())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-                    .withLuOrder(new LUOrder())
+                    .withLuOrder(TestDataCreator.createLUOrder())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationVehicle.newBuilder()
-                    .withTruck(new Truck())
-                    .withDriver(new Driver())
+                    .withTruck(TestDataCreator.createTruck())
+                    .withDriver(TestDataCreator.createDriver())
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-                    .withLuOrder(new LUOrder())
+                    .withLuOrder(TestDataCreator.createLUOrder())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationVehicle.newBuilder()
-                    .withTruck(new Truck())
-                    .withDriver(new Driver())
+                    .withTruck(TestDataCreator.createTruck())
+                    .withDriver(TestDataCreator.createDriver())
                     .withHaulierClient("haulier client")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-                    .withLuOrder(new LUOrder())
+                    .withLuOrder(TestDataCreator.createLUOrder())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationVehicle.newBuilder()
-                    .withTruck(new Truck())
-                    .withDriver(new Driver())
+                    .withTruck(TestDataCreator.createTruck())
+                    .withDriver(TestDataCreator.createDriver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
-                    .withLuOrder(new LUOrder())
+                    .withLuOrder(TestDataCreator.createLUOrder())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationVehicle.newBuilder()
-                    .withTruck(new Truck())
-                    .withDriver(new Driver())
+                    .withTruck(TestDataCreator.createTruck())
+                    .withDriver(TestDataCreator.createDriver())
                     .withHaulierClient("haulier client")
                     .withHaulierRealizing("haulier realizing")
                     .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
@@ -152,13 +148,13 @@ class RegistrationVehicleTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         RegistrationVehicle registrationVehicle = RegistrationVehicle.newBuilder()
-                .withTruck(new Truck())
-                .withChassis(new Chassis())
-                .withDriver(new Driver())
+                .withTruck(TestDataCreator.createTruck())
+                .withChassis(TestDataCreator.createChassis())
+                .withDriver(TestDataCreator.createDriver())
                 .withHaulierClient("haulier client")
                 .withHaulierRealizing("haulier realizing")
                 .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
-                .withLuOrder(new LUOrder())
+                .withLuOrder(TestDataCreator.createLUOrder())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

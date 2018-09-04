@@ -57,6 +57,11 @@ class Weight {
     @JsonDeserialize(using = QuantityJsonDeserializer.class)
     private Quantity<Mass> tare;
 
+    Weight() {
+
+        // OK
+    }
+
     @JsonSerialize(using = QuantityJsonSerializer.class)
     public Quantity<Mass> getBruttoMax() {
 

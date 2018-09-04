@@ -34,6 +34,11 @@ public class Vessel implements MeansOfTransport {
 
     private Operator operator;
 
+    private Vessel() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Vessel}.
      *

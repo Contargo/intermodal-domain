@@ -95,6 +95,11 @@ public class Chassis implements MeansOfTransport {
      */
     private Weight weight;
 
+    private Chassis() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Chassis}.
      *

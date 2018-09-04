@@ -24,17 +24,17 @@ class ProcessingBargeTest {
     void ensureCanBeCreated() {
 
         ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
-                .withBarge(new Barge())
+                .withBarge(TestDataCreator.createBarge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                .withSkipper(new Skipper())
-                .withPassengers(Arrays.asList(new Passenger(), new Passenger()))
+                .withSkipper(TestDataCreator.createSkipper())
+                .withPassengers(Arrays.asList(TestDataCreator.createPassenger(), TestDataCreator.createPassenger()))
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
                 .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
-                .withLuOrder(new LUOrder(), "0010302")
-                .withLuOrder(new LUOrder(), "0010304")
-                .withLuOrder(new LUOrder(), "0010306")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010302")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010304")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010306")
                 .buildAndValidate();
 
         assertNotNull(processingBarge.getBarge());
@@ -55,17 +55,17 @@ class ProcessingBargeTest {
     void ensureCanBeCopied() {
 
         ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
-                .withBarge(new Barge())
+                .withBarge(TestDataCreator.createBarge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                .withSkipper(new Skipper())
-                .withPassengers(Arrays.asList(new Passenger(), new Passenger()))
+                .withSkipper(TestDataCreator.createSkipper())
+                .withPassengers(Arrays.asList(TestDataCreator.createPassenger(), TestDataCreator.createPassenger()))
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
                 .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
-                .withLuOrder(new LUOrder(), "0010302")
-                .withLuOrder(new LUOrder(), "0010304")
-                .withLuOrder(new LUOrder(), "0010306")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010302")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010304")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010306")
                 .buildAndValidate();
 
         ProcessingBarge copiedProcessingBarge = ProcessingBarge.newBuilder(processingBarge).buildAndValidate();
@@ -88,17 +88,17 @@ class ProcessingBargeTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
-                .withBarge(new Barge())
+                .withBarge(TestDataCreator.createBarge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                .withSkipper(new Skipper())
-                .withPassengers(Arrays.asList(new Skipper(), new Skipper()))
+                .withSkipper(TestDataCreator.createSkipper())
+                .withPassengers(Arrays.asList(TestDataCreator.createSkipper(), TestDataCreator.createSkipper()))
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
                 .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
-                .withLuOrder(new LUOrder(), "0010302")
-                .withLuOrder(new LUOrder(), "0010304")
-                .withLuOrder(new LUOrder(), "0010306")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010302")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010304")
+                .withLuOrder(TestDataCreator.createLUOrder(), "0010306")
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

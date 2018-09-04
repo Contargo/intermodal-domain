@@ -53,6 +53,11 @@ public class Stop {
 
     private MeansOfTransport mot;
 
+    private Stop() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Stop}.
      *

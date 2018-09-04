@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.contargo.intermodal.domain.Barge;
 import net.contargo.intermodal.domain.DropOff;
 import net.contargo.intermodal.domain.Operator;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,11 +27,11 @@ class DropOffTest {
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Duisburg", "Terminal Duisburg", "terminal")
                 .withLoadingUnit("63876846", false)
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
                 .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         assertEquals("Duisburg", dropOff.getLocation().getCity());
@@ -51,7 +52,7 @@ class DropOffTest {
 
         DropOff.newBuilder()
             .withLocation("Duisburg", "Terminal Duisburg")
-            .withMeansOfTransport(new Barge())
+            .withMeansOfTransport(TestDataCreator.createBarge())
             .buildAndValidate();
     }
 
@@ -62,11 +63,11 @@ class DropOffTest {
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Duisburg", "Terminal Duisburg", "terminal")
                 .withLoadingUnit("63876846", false)
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
                 .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         DropOff copiedDropOff = DropOff.newBuilder(dropOff).buildAndValidate();
@@ -91,14 +92,14 @@ class DropOffTest {
             () ->
                 DropOff.newBuilder()
                     .withLocation(null, "Terminal Duisburg")
-                    .withMeansOfTransport(new Barge())
+                    .withMeansOfTransport(TestDataCreator.createBarge())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 DropOff.newBuilder()
                     .withLocation("Duisburg", null)
-                    .withMeansOfTransport(new Barge())
+                    .withMeansOfTransport(TestDataCreator.createBarge())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -112,11 +113,11 @@ class DropOffTest {
         DropOff dropOff = DropOff.newBuilder()
                 .withLocation("Duisburg", "Terminal Duisburg", "terminal")
                 .withLoadingUnit("63876846", false)
-                .withLoadingUnitOperator(new Operator())
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
                 .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

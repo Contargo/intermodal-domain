@@ -29,6 +29,11 @@ public class TrainDriver extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant rid;
 
+    private TrainDriver() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link TrainDriver}.
      *

@@ -21,7 +21,7 @@ import static tec.units.ri.unit.Units.METRE;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
-class UnitConverter {
+final class UnitConverter {
 
     public static Quantity<Length> footToMetre(double value) {
 

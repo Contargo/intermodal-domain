@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Operator;
+import net.contargo.intermodal.domain.TestDataCreator;
 import net.contargo.intermodal.domain.Vessel;
 
 import org.junit.jupiter.api.Test;
@@ -24,7 +25,7 @@ class VesselTest {
                 .withName("My Vessel")
                 .withMmsi("021112345")
                 .withImo("050XXXXX")
-                .withOperator(new Operator())
+                .withOperator(TestDataCreator.createOperator())
                 .buildAndValidate();
 
         assertEquals("My Vessel", vessel.getName());
@@ -41,7 +42,7 @@ class VesselTest {
                 .withName("My Vessel")
                 .withMmsi("021112345")
                 .withImo("050XXXXX")
-                .withOperator(new Operator())
+                .withOperator(TestDataCreator.createOperator())
                 .buildAndValidate();
 
         Vessel copiedVessel = Vessel.newBuilder(vessel).buildAndValidate();
@@ -60,7 +61,7 @@ class VesselTest {
                 .withName("My Vessel")
                 .withMmsi("021112345")
                 .withImo("050XXXXX")
-                .withOperator(new Operator())
+                .withOperator(TestDataCreator.createOperator())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();

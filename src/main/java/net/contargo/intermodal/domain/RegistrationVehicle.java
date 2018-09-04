@@ -53,6 +53,11 @@ public class RegistrationVehicle {
     @NotNull(message = "luOrder is part of minimum requirement and must not be null")
     private LUOrder luOrder;
 
+    private RegistrationVehicle() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link RegistrationVehicle}.
      *

@@ -82,6 +82,11 @@ public class Barge implements MeansOfTransport {
 
     private Capacity capacity;
 
+    private Barge() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Barge}.
      *

@@ -106,6 +106,11 @@ public class RegistrationTrain {
     @NotNull(message = "trainPaths is part of minimum requirement and must not be null")
     private String trainPaths;
 
+    private RegistrationTrain() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link RegistrationTrain}.
      *

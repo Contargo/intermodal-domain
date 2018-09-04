@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
 import net.contargo.intermodal.domain.Operator;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ class OperatorTest {
         Operator operator = Operator.newBuilder()
                 .withName("Contargo")
                 .withLegalForm("GmbH & Co. KG")
-                .withAddress(new Address())
+                .withAddress(TestDataCreator.createAddress())
                 .withVatId("DE999999999")
                 .withTin("5FFF0BBBBUUUP")
                 .withInsurance("Some Insurance")
@@ -46,7 +47,7 @@ class OperatorTest {
         Operator operator = Operator.newBuilder()
                 .withName("Contargo")
                 .withLegalForm("GmbH & Co. KG")
-                .withAddress(new Address())
+                .withAddress(TestDataCreator.createAddress())
                 .withVatId("DE999999999")
                 .withTin("5FFF0BBBBUUUP")
                 .withInsurance("Some Insurance")
@@ -69,7 +70,7 @@ class OperatorTest {
         Operator operator = Operator.newBuilder()
                 .withName("Contargo")
                 .withLegalForm("GmbH & Co. KG")
-                .withAddress(new Address())
+                .withAddress(TestDataCreator.createAddress())
                 .withVatId("DE999999999")
                 .withTin("5FFF0BBBBUUUP")
                 .withInsurance("Some Insurance")

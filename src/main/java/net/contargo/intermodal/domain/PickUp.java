@@ -44,6 +44,11 @@ public class PickUp {
     @NotNull(message = "mot is part of minimum requirement and must not be null")
     private MeansOfTransport mot;
 
+    PickUp() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link PickUp}.
      *

@@ -15,6 +15,11 @@ class Capacity {
     private Double teu;
     private Double tons;
 
+    Capacity() {
+
+        // OK
+    }
+
     public Double getTeu() {
 
         return teu;

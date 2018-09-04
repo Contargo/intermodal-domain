@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import net.contargo.intermodal.domain.Barge;
 import net.contargo.intermodal.domain.DangerousGoods;
 import net.contargo.intermodal.domain.RegistrationBarge;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,10 +25,10 @@ class RegistrationBargeTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         RegistrationBarge registrationBarge = RegistrationBarge.newBuilder()
-                .withBarge(new Barge())
+                .withBarge(TestDataCreator.createBarge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                .withDangerousGoodsIndication(new DangerousGoods())
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                 .withVolumeToDischarge(24)
                 .withVolumeToLoad(24)
                 .buildAndValidate();
@@ -45,10 +46,10 @@ class RegistrationBargeTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         RegistrationBarge.newBuilder()
-            .withBarge(new Barge())
+            .withBarge(TestDataCreator.createBarge())
             .withEta(Instant.parse("2018-05-14T11:00:00Z"))
             .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-            .withDangerousGoodsIndication(new DangerousGoods())
+            .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
             .withVolumeToDischarge(24)
             .withVolumeToLoad(24)
             .buildAndValidate();
@@ -59,10 +60,10 @@ class RegistrationBargeTest {
     void ensureCanBeCopied() {
 
         RegistrationBarge registrationBarge = RegistrationBarge.newBuilder()
-                .withBarge(new Barge())
+                .withBarge(TestDataCreator.createBarge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                .withDangerousGoodsIndication(new DangerousGoods())
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                 .withVolumeToDischarge(24)
                 .withVolumeToLoad(24)
                 .buildAndValidate();
@@ -86,32 +87,32 @@ class RegistrationBargeTest {
                 RegistrationBarge.newBuilder()
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                    .withDangerousGoodsIndication(new DangerousGoods())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationBarge.newBuilder()
-                    .withBarge(new Barge())
+                    .withBarge(TestDataCreator.createBarge())
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                    .withDangerousGoodsIndication(new DangerousGoods())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationBarge.newBuilder()
-                    .withBarge(new Barge())
+                    .withBarge(TestDataCreator.createBarge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withDangerousGoodsIndication(new DangerousGoods())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withVolumeToDischarge(24)
                     .withVolumeToLoad(24)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationBarge.newBuilder()
-                    .withBarge(new Barge())
+                    .withBarge(TestDataCreator.createBarge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
                     .withVolumeToDischarge(24)
@@ -120,19 +121,19 @@ class RegistrationBargeTest {
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationBarge.newBuilder()
-                    .withBarge(new Barge())
+                    .withBarge(TestDataCreator.createBarge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                    .withDangerousGoodsIndication(new DangerousGoods())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withVolumeToLoad(24)
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
             () ->
                 RegistrationBarge.newBuilder()
-                    .withBarge(new Barge())
+                    .withBarge(TestDataCreator.createBarge())
                     .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                     .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                    .withDangerousGoodsIndication(new DangerousGoods())
+                    .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withVolumeToDischarge(24)
                     .buildAndValidate());
     }
@@ -142,10 +143,10 @@ class RegistrationBargeTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         RegistrationBarge registrationBarge = RegistrationBarge.newBuilder()
-                .withBarge(new Barge())
+                .withBarge(TestDataCreator.createBarge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
-                .withDangerousGoodsIndication(new DangerousGoods())
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                 .withVolumeToDischarge(24)
                 .withVolumeToLoad(24)
                 .buildAndValidate();

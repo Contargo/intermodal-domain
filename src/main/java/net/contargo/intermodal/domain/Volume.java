@@ -21,6 +21,11 @@ class Volume {
      */
     private Integer toLoad;
 
+    Volume() {
+
+        // OK
+    }
+
     public Integer getToDischarge() {
 
         return toDischarge;

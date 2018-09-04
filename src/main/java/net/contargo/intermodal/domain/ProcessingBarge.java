@@ -70,6 +70,11 @@ public class ProcessingBarge {
 
     private List<LoadingListElement> loadingList;
 
+    private ProcessingBarge() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link ProcessingBarge}.
      *

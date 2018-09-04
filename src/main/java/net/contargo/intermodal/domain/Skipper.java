@@ -31,6 +31,11 @@ public class Skipper extends Person {
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant adnr;
 
+    private Skipper() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Skipper}.
      *

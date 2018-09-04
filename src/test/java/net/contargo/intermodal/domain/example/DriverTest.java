@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
 import net.contargo.intermodal.domain.Driver;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +26,7 @@ class DriverTest {
 
         Driver driver = Driver.newBuilder()
                 .named("Max", "Mustermann")
-                .withAddress(new Address())
+                .withAddress(TestDataCreator.createAddress())
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
                 .bornIn("Karlsruhe")
@@ -56,7 +57,7 @@ class DriverTest {
 
         Driver driver = Driver.newBuilder()
                 .named("Max", "Mustermann")
-                .withAddress(new Address())
+                .withAddress(TestDataCreator.createAddress())
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
                 .bornIn("Karlsruhe")

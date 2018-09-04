@@ -46,6 +46,11 @@ public class DropOff {
     @NotNull(message = "mot is part of minimum requirement and must not be null")
     private MeansOfTransport mot;
 
+    DropOff() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link DropOff}.
      *

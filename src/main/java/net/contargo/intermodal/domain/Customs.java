@@ -29,6 +29,11 @@ public class Customs {
 
     private Seal seal;
 
+    private Customs() {
+
+        // OK
+    }
+
     /**
      * Creates a new builder for {@link Customs}.
      *

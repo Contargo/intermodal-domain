@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Barge;
 import net.contargo.intermodal.domain.Stop;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ class StopTest {
                 .withLatest(Instant.parse("2018-05-14T12:00:00Z"))
                 .withReference("1234567")
                 .withBillingReference("894738")
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         assertEquals(2, stop.getLocations().size());
@@ -64,7 +65,7 @@ class StopTest {
                 .withLatest(Instant.parse("2018-05-14T12:00:00Z"))
                 .withReference("1234567")
                 .withBillingReference("894738")
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         Stop copiedStop = Stop.newBuilder(stop).buildAndValidate();
@@ -104,7 +105,7 @@ class StopTest {
                 .withLatest(Instant.parse("2018-05-14T12:00:00Z"))
                 .withReference("1234567")
                 .withBillingReference("894738")
-                .withMeansOfTransport(new Barge())
+                .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
