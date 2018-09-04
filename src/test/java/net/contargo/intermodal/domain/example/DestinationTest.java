@@ -3,9 +3,11 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Destination;
+import net.contargo.intermodal.domain.Location;
 import net.contargo.intermodal.domain.TestDataCreator;
 import net.contargo.intermodal.domain.Vessel;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -18,13 +20,25 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class DestinationTest {
 
+    private Location terminalDuisburg;
+
+    @BeforeEach
+    void setUp() {
+
+        terminalDuisburg = Location.newBuilder()
+                .withCity("Duisburg")
+                .withDesignation("Terminal Duisburg")
+                .buildAndValidate();
+    }
+
+
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
         Destination destination = Destination.newBuilder()
                 .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
-                .withLocation("Duisburg", "Terminal Duisburg")
+                .withLocation(terminalDuisburg)
                 .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
@@ -39,7 +53,7 @@ class DestinationTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        Destination.newBuilder().withLocation("Terminal Duisburg").buildAndValidate();
+        Destination.newBuilder().withLocation(terminalDuisburg).buildAndValidate();
     }
 
 
@@ -59,7 +73,7 @@ class DestinationTest {
         Destination destination = Destination.newBuilder()
                 .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
-                .withLocation("Duisburg", "Terminal Duisburg")
+                .withLocation(terminalDuisburg)
                 .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 

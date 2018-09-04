@@ -142,28 +142,7 @@ public class DropOff {
         private Builder() {
         }
 
-        public Builder withLocation(String city, String designation, String type) {
-
-            this.location = new Location();
-            this.location.setCity(city);
-            this.location.setDesignation(designation);
-            this.location.setType(type);
-
-            return this;
-        }
-
-
-        public Builder withLocation(String city, String designation) {
-
-            this.location = new Location();
-            this.location.setCity(city);
-            this.location.setDesignation(designation);
-
-            return this;
-        }
-
-
-        Builder withLocation(Location location) {
+        public Builder withLocation(Location location) {
 
             this.location = location;
 

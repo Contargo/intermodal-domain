@@ -59,7 +59,7 @@ public class TrainDriver extends Person {
             .withAddress(trainDriver.getAddress())
             .withCellphone(trainDriver.getCellphone())
             .bornOn(trainDriver.getDateOfBirth())
-            .bornIn(trainDriver.getCityOfBirth())
+            .bornIn(trainDriver.getLocation())
             .withCountryCode(trainDriver.getNationality())
             .withRid(trainDriver.getRid());
     }
@@ -91,7 +91,7 @@ public class TrainDriver extends Person {
         private Address address;
         private String cellphone;
         private LocalDate dateOfBirth;
-        private String locationCity;
+        private Location location;
         private Instant rid;
         private String countryCode;
 
@@ -146,9 +146,9 @@ public class TrainDriver extends Person {
         }
 
 
-        public Builder bornIn(String locationCity) {
+        public Builder bornIn(Location location) {
 
-            this.locationCity = locationCity;
+            this.location = location;
 
             return this;
         }
@@ -197,9 +197,7 @@ public class TrainDriver extends Person {
             trainDriver.setCellphone(cellphone);
             trainDriver.setDateOfBirth(dateOfBirth);
 
-            if (locationCity != null) {
-                trainDriver.setLocationCity(locationCity);
-            }
+            trainDriver.setLocation(location);
 
             if (countryCode != null) {
                 trainDriver.setCountryCode(countryCode);

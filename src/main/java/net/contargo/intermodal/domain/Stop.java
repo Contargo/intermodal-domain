@@ -172,23 +172,8 @@ public class Stop {
         }
 
 
-        public Builder withLocation(String city, String designation, String type) {
+        public Builder withLocation(Location location) {
 
-            Location location = new Location();
-            location.setCity(city);
-            location.setDesignation(designation);
-            location.setType(type);
-            this.location.add(location);
-
-            return this;
-        }
-
-
-        public Builder withLocation(String city, String designation) {
-
-            Location location = new Location();
-            location.setCity(city);
-            location.setDesignation(designation);
             this.location.add(location);
 
             return this;

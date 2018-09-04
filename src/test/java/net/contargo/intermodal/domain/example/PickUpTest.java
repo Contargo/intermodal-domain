@@ -2,10 +2,7 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Operator;
-import net.contargo.intermodal.domain.PickUp;
-import net.contargo.intermodal.domain.TestDataCreator;
-import net.contargo.intermodal.domain.Truck;
+import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +22,11 @@ class PickUpTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLocation(Location.newBuilder()
+                        .withCity("Ludwigshafen")
+                        .withDesignation("Terminal Ludwigshafen")
+                        .withType("hinterland terminal")
+                        .buildAndValidate())
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
@@ -51,7 +52,10 @@ class PickUpTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         PickUp.newBuilder()
-            .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
+            .withLocation(Location.newBuilder()
+                    .withCity("Ludwigshafen")
+                    .withDesignation("Terminal Ludwigshafen")
+                    .buildAndValidate())
             .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
             .withMeansOfTransport(TestDataCreator.createTruck())
             .buildAndValidate();
@@ -62,7 +66,11 @@ class PickUpTest {
     void ensureCanBeCopied() {
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLocation(Location.newBuilder()
+                        .withCity("Ludwigshafen")
+                        .withDesignation("Terminal Ludwigshafen")
+                        .withType("hinterland terminal")
+                        .buildAndValidate())
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
@@ -99,7 +107,7 @@ class PickUpTest {
         assertThrows(IllegalStateException.class,
             () ->
                 PickUp.newBuilder()
-                    .withLocation(null, "Terminal Ludwigshafen")
+                    .withLocation(Location.newBuilder().withDesignation("Terminal Ludwigshafen").buildAndValidate())
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                     .withMeansOfTransport(TestDataCreator.createTruck())
                     .buildAndValidate());
@@ -107,7 +115,7 @@ class PickUpTest {
         assertThrows(IllegalStateException.class,
             () ->
                 PickUp.newBuilder()
-                    .withLocation("Ludwigshafen", null)
+                    .withLocation(Location.newBuilder().withCity("Ludwigshafen").buildAndValidate())
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                     .withMeansOfTransport(TestDataCreator.createTruck())
                     .buildAndValidate());
@@ -115,14 +123,22 @@ class PickUpTest {
         assertThrows(IllegalStateException.class,
             () ->
                 PickUp.newBuilder()
-                    .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                    .withLocation(
+                            Location.newBuilder()
+                                .withCity("Ludwigshafen")
+                                .withDesignation("Terminal Ludwigshafen")
+                                .buildAndValidate())
                     .withMeansOfTransport(TestDataCreator.createTruck())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 PickUp.newBuilder()
-                    .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                    .withLocation(
+                            Location.newBuilder()
+                                .withCity("Ludwigshafen")
+                                .withDesignation("Terminal Ludwigshafen")
+                                .buildAndValidate())
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                     .buildAndValidate());
     }
@@ -132,7 +148,11 @@ class PickUpTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLocation(Location.newBuilder()
+                        .withCity("Ludwigshafen")
+                        .withDesignation("Terminal Ludwigshafen")
+                        .withType("hinterland terminal")
+                        .buildAndValidate())
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
                 .withLoadingUnitOperator(TestDataCreator.createOperator())

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
 import net.contargo.intermodal.domain.Driver;
+import net.contargo.intermodal.domain.Location;
 import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
@@ -24,12 +25,14 @@ class DriverTest {
     @Test
     void ensureDriverCanBeCreated() {
 
+        Address address = TestDataCreator.createAddress();
+
         Driver driver = Driver.newBuilder()
                 .named("Max", "Mustermann")
-                .withAddress(TestDataCreator.createAddress())
+                .withAddress(address)
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
                 .withId("42")
@@ -60,7 +63,7 @@ class DriverTest {
                 .withAddress(TestDataCreator.createAddress())
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
                 .withId("42")
@@ -88,20 +91,14 @@ class DriverTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Address address = Address.newBuilder()
-                .withCountryCode("DE")
-                .withCountryName("Germany")
-                .withLocationCity("Karlsruhe")
-                .withLocationPostalCode("76131")
-                .withStreet("Hauptstraße 42")
-                .buildAndValidate();
+        Address address = TestDataCreator.createAddress();
 
         Driver driver = Driver.newBuilder()
                 .named("Max", "Mustermann")
                 .withAddress(address)
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
                 .withId("42")

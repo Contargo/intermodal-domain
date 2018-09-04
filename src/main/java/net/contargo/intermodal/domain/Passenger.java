@@ -2,10 +2,7 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 
 
 /**
@@ -73,7 +70,7 @@ public class Passenger extends Person {
         private Address address;
         private String cellphone;
         private LocalDate dateOfBirth;
-        private String locationCity;
+        private Location location;
         private String countryCode;
 
         private Builder() {
@@ -125,19 +122,9 @@ public class Passenger extends Person {
         }
 
 
-        Builder bornIn(Location location) {
+        public Builder bornIn(Location location) {
 
-            if (location != null) {
-                this.locationCity = location.getCity();
-            }
-
-            return this;
-        }
-
-
-        public Builder bornIn(String locationCity) {
-
-            this.locationCity = locationCity;
+            this.location = location;
 
             return this;
         }
@@ -164,8 +151,8 @@ public class Passenger extends Person {
             passenger.setAddress(address);
             passenger.setCellphone(cellphone);
             passenger.setDateOfBirth(dateOfBirth);
-            passenger.setLocationCity(this.locationCity);
-            passenger.setCountryCode(this.countryCode);
+            passenger.setLocation(location);
+            passenger.setCountryCode(countryCode);
 
             return passenger;
         }

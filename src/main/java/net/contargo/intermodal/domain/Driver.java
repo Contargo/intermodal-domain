@@ -75,7 +75,7 @@ public class Driver extends Person {
             .withModuleEntry95(driver.getModuleEntry95())
             .withId(driver.getId())
             .withAdr(driver.getAdr())
-            .bornIn(driver.getCityOfBirth())
+            .bornIn(driver.getLocation())
             .withLicense(driver.getLicense());
     }
 
@@ -148,7 +148,7 @@ public class Driver extends Person {
         private Address address;
         private String cellphone;
         private LocalDate dateOfBirth;
-        private String locationCity;
+        private Location location;
         private String id;
         private String countryCode;
         private Instant adr;
@@ -218,9 +218,9 @@ public class Driver extends Person {
         }
 
 
-        public Builder bornIn(String city) {
+        public Builder bornIn(Location city) {
 
-            this.locationCity = city;
+            this.location = city;
 
             return this;
         }
@@ -281,9 +281,7 @@ public class Driver extends Person {
             driver.adr = this.adr;
             driver.license = this.license;
 
-            if (locationCity != null) {
-                driver.setLocationCity(this.locationCity);
-            }
+            driver.setLocation(this.location);
 
             return driver;
         }

@@ -135,10 +135,8 @@ public abstract class Person {
     }
 
 
-    void setLocationCity(String locationCity) {
+    public void setLocation(Location location) {
 
-        Location location = new Location();
-        location.setCity(locationCity);
         this.location = location;
     }
 

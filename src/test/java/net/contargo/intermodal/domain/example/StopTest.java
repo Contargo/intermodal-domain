@@ -3,9 +3,11 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Barge;
+import net.contargo.intermodal.domain.Location;
 import net.contargo.intermodal.domain.Stop;
 import net.contargo.intermodal.domain.TestDataCreator;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -20,12 +22,32 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class StopTest {
 
+    private Location terminalKoblenz;
+    private Location terminalLudwigshafen;
+
+    @BeforeEach
+    void setUp() {
+
+        terminalKoblenz = Location.newBuilder()
+                .withCity("Koblenz")
+                .withDesignation("Terminal Koblenz")
+                .withType("terminal")
+                .buildAndValidate();
+
+        terminalLudwigshafen = Location.newBuilder()
+                .withCity("Ludwigshafen")
+                .withDesignation("Terminal Ludwigshafen")
+                .withType("terminal")
+                .buildAndValidate();
+    }
+
+
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
         Stop stop = Stop.newBuilder()
-                .withLocation("Koblenz", "Terminal Koblenz", "terminal")
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
+                .withLocation(terminalKoblenz)
+                .withLocation(terminalLudwigshafen)
                 .withSequence(1)
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T12:00:00Z"))
@@ -50,7 +72,7 @@ class StopTest {
     @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
-        Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz", "terminal").buildAndValidate();
+        Stop.newBuilder().withLocation(terminalKoblenz).buildAndValidate();
     }
 
 
@@ -58,8 +80,8 @@ class StopTest {
     void ensureCanBeCopied() {
 
         Stop stop = Stop.newBuilder()
-                .withLocation("Koblenz", "Terminal Koblenz", "terminal")
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
+                .withLocation(terminalKoblenz)
+                .withLocation(terminalLudwigshafen)
                 .withSequence(1)
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T12:00:00Z"))
@@ -88,9 +110,15 @@ class StopTest {
 
         assertThrows(IllegalStateException.class, () -> Stop.newBuilder().buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> Stop.newBuilder().withLocation(null, "Terminal Koblenz").buildAndValidate());
+            () ->
+                Stop.newBuilder()
+                    .withLocation(Location.newBuilder().withDesignation("Terminal Koblenz").buildAndValidate())
+                    .buildAndValidate());
         assertThrows(IllegalStateException.class,
-            () -> Stop.newBuilder().withLocation("Koblenz", null).buildAndValidate());
+            () ->
+                Stop.newBuilder()
+                    .withLocation(Location.newBuilder().withCity("Koblenz").buildAndValidate())
+                    .buildAndValidate());
     }
 
 
@@ -98,8 +126,8 @@ class StopTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         Stop stop = Stop.newBuilder()
-                .withLocation("Koblenz", "Terminal Koblenz", "terminal")
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
+                .withLocation(terminalKoblenz)
+                .withLocation(terminalLudwigshafen)
                 .withSequence(1)
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T12:00:00Z"))

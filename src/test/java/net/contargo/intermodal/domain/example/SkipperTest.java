@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.Location;
 import net.contargo.intermodal.domain.Skipper;
 import net.contargo.intermodal.domain.TestDataCreator;
 
@@ -24,20 +25,14 @@ class SkipperTest {
     @Test
     void ensureSkipperCanBeCreated() {
 
-        Address address = Address.newBuilder()
-                .withCountryCode("DE")
-                .withCountryName("Germany")
-                .withLocationCity("Karlsruhe")
-                .withLocationPostalCode("76131")
-                .withStreet("Hauptstraße 42")
-                .buildAndValidate();
+        Address address = TestDataCreator.createAddress();
 
         Skipper skipper = Skipper.newBuilder()
                 .named("Max", "Mustermann")
                 .withAddress(address)
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withAdnr(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
@@ -61,7 +56,7 @@ class SkipperTest {
                 .withAddress(TestDataCreator.createAddress())
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withAdnr(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
@@ -82,20 +77,14 @@ class SkipperTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Address address = Address.newBuilder()
-                .withCountryCode("DE")
-                .withCountryName("Germany")
-                .withLocationCity("Karlsruhe")
-                .withLocationPostalCode("76131")
-                .withStreet("Hauptstraße 42")
-                .buildAndValidate();
+        Address address = TestDataCreator.createAddress();
 
         Skipper skipper = Skipper.newBuilder()
                 .named("Max", "Mustermann")
                 .withAddress(address)
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withAdnr(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();

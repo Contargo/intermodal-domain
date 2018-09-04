@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.*;
 
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -22,15 +24,47 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class OrderTest {
 
+    private Location terminalKoblenz;
+    private Location terminalLudwigshafen;
+    private Location terminalDuisburg;
+
+    @BeforeEach
+    void setUp() {
+
+        terminalKoblenz = Location.newBuilder()
+                .withCity("Koblenz")
+                .withDesignation("Terminal Koblenz")
+                .buildAndValidate();
+
+        terminalLudwigshafen = Location.newBuilder()
+                .withCity("Ludwigshafen")
+                .withDesignation("Terminal Ludwigshafen")
+                .withType("terminal")
+                .buildAndValidate();
+
+        terminalDuisburg = Location.newBuilder()
+                .withCity("Duisburg")
+                .withDesignation("Terminal Duisburg")
+                .withType("terminal")
+                .buildAndValidate();
+    }
+
+
     @Test
     void ensureCanBeCreatedWithAllInformation() {
 
         List<Stop> stops = new ArrayList<>();
-        stops.add(Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate());
-        stops.add(Stop.newBuilder().withLocation("Ludwigshafen", "Terminal Ludwigshafen").buildAndValidate());
+        stops.add(Stop.newBuilder().withLocation(terminalKoblenz).buildAndValidate());
+        stops.add(Stop.newBuilder()
+            .withLocation(
+                    Location.newBuilder()
+                        .withCity("Ludwigshafen")
+                        .withDesignation("Terminal Ludwigshafen")
+                        .buildAndValidate())
+            .buildAndValidate());
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLocation(terminalLudwigshafen)
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
@@ -40,7 +74,7 @@ class OrderTest {
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLocation(terminalDuisburg)
                 .withLoadingUnit("63876846", false)
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
@@ -52,7 +86,7 @@ class OrderTest {
         Destination destination = Destination.newBuilder()
                 .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
-                .withLocation("Duisburg", "Terminal Duisburg")
+                .withLocation(terminalDuisburg)
                 .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
@@ -76,7 +110,7 @@ class OrderTest {
 
         // Pick Up
         assertEquals("Ludwigshafen", order.getPickUp().getLocation().getCity());
-        assertEquals("hinterland terminal", order.getPickUp().getLocation().getType());
+        assertEquals("terminal", order.getPickUp().getLocation().getType());
         assertEquals("Terminal Ludwigshafen", order.getPickUp().getLocation().getDesignation());
         assertEquals("12345", order.getPickUp().getLoadingUnit().getReference());
         assertFalse(order.getPickUp().getLoadingUnit().isEmpty());
@@ -112,19 +146,19 @@ class OrderTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                .withLocation(terminalLudwigshafen)
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Koblenz", "Terminal Koblenz")
+                .withLocation(terminalKoblenz)
                 .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
-        Stop stop = Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate();
+        Stop stop = Stop.newBuilder().withLocation(terminalKoblenz).buildAndValidate();
 
-        Destination destination = Destination.newBuilder().withLocation("Terminal Koblenz").buildAndValidate();
+        Destination destination = Destination.newBuilder().withLocation(terminalKoblenz).buildAndValidate();
 
         Order order = Order.newBuilder()
                 .withReference("54642887")
@@ -141,11 +175,11 @@ class OrderTest {
     void ensureCanBeCopied() {
 
         List<Stop> stops = new ArrayList<>();
-        stops.add(Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz").buildAndValidate());
-        stops.add(Stop.newBuilder().withLocation("Ludwigshafen", "Terminal Ludwigshafen").buildAndValidate());
+        stops.add(Stop.newBuilder().withLocation(terminalKoblenz).buildAndValidate());
+        stops.add(Stop.newBuilder().withLocation(terminalLudwigshafen).buildAndValidate());
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLocation(terminalLudwigshafen)
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
@@ -155,7 +189,7 @@ class OrderTest {
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLocation(terminalDuisburg)
                 .withLoadingUnit("63876846", false)
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
@@ -167,7 +201,7 @@ class OrderTest {
         Destination destination = Destination.newBuilder()
                 .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
-                .withLocation("Duisburg", "Terminal Duisburg")
+                .withLocation(terminalDuisburg)
                 .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
@@ -193,7 +227,7 @@ class OrderTest {
 
         // Pick Up
         assertEquals("Ludwigshafen", copiedOrder.getPickUp().getLocation().getCity());
-        assertEquals("hinterland terminal", copiedOrder.getPickUp().getLocation().getType());
+        assertEquals("terminal", copiedOrder.getPickUp().getLocation().getType());
         assertEquals("Terminal Ludwigshafen", copiedOrder.getPickUp().getLocation().getDesignation());
         assertEquals("12345", copiedOrder.getPickUp().getLoadingUnit().getReference());
         assertFalse(copiedOrder.getPickUp().getLoadingUnit().isEmpty());
@@ -229,17 +263,17 @@ class OrderTest {
     void ensureMinimumRequirementIsChecked() {
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen")
+                .withLocation(terminalLudwigshafen)
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Koblenz", "Terminal Koblenz")
+                .withLocation(terminalKoblenz)
                 .withMeansOfTransport(TestDataCreator.createBarge())
                 .buildAndValidate();
 
-        Destination destination = Destination.newBuilder().withLocation("Terminal Koblenz").buildAndValidate();
+        Destination destination = Destination.newBuilder().withLocation(terminalKoblenz).buildAndValidate();
 
         assertThrows(IllegalStateException.class,
             () ->
@@ -307,13 +341,11 @@ class OrderTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         List<Stop> stops = new ArrayList<>();
-        stops.add(Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz", "terminal").buildAndValidate());
-        stops.add(Stop.newBuilder()
-            .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "terminal")
-            .buildAndValidate());
+        stops.add(Stop.newBuilder().withLocation(terminalKoblenz).buildAndValidate());
+        stops.add(Stop.newBuilder().withLocation(terminalLudwigshafen).buildAndValidate());
 
         PickUp pickUp = PickUp.newBuilder()
-                .withLocation("Ludwigshafen", "Terminal Ludwigshafen", "hinterland terminal")
+                .withLocation(terminalLudwigshafen)
                 .withLoadingUnit("12345", false)
                 .withBillingReference("20568097")
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
@@ -323,7 +355,7 @@ class OrderTest {
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLocation(terminalDuisburg)
                 .withLoadingUnit("63876846", false)
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
@@ -335,7 +367,7 @@ class OrderTest {
         Destination destination = Destination.newBuilder()
                 .withVessel(TestDataCreator.createVessel())
                 .withCountryCode("DE")
-                .withLocation("Duisburg", "Terminal Duisburg")
+                .withLocation(terminalDuisburg)
                 .withSeaport(TestDataCreator.createSeaport())
                 .buildAndValidate();
 
@@ -365,7 +397,7 @@ class OrderTest {
 
         // Pick Up
         assertEquals("Ludwigshafen", deserialize.getPickUp().getLocation().getCity());
-        assertEquals("hinterland terminal", deserialize.getPickUp().getLocation().getType());
+        assertEquals("terminal", deserialize.getPickUp().getLocation().getType());
         assertEquals("Terminal Ludwigshafen", deserialize.getPickUp().getLocation().getDesignation());
         assertEquals("12345", deserialize.getPickUp().getLoadingUnit().getReference());
         assertFalse(deserialize.getPickUp().getLoadingUnit().isEmpty());

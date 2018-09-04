@@ -3,6 +3,8 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.Location;
+import net.contargo.intermodal.domain.TestDataCreator;
 
 import org.junit.jupiter.api.Test;
 
@@ -19,10 +21,11 @@ class AddressTest {
     @Test
     void ensureCanBeCreated() {
 
+        Location location = Location.newBuilder().withCity("Karlsruhe").withPostalCode("76135").buildAndValidate();
+
         Address address = Address.newBuilder()
                 .withStreet("Gartenstraße 67")
-                .withLocationPostalCode("76135")
-                .withLocationCity("Karlsruhe")
+                .withLocation(location)
                 .withCountryName("Germany")
                 .withCountryCode("DE")
                 .buildAndValidate();
@@ -38,10 +41,11 @@ class AddressTest {
     @Test
     void ensureCanBeCopied() {
 
+        Location location = Location.newBuilder().withCity("Karlsruhe").withPostalCode("76135").buildAndValidate();
+
         Address address = Address.newBuilder()
                 .withStreet("Gartenstraße 67")
-                .withLocationPostalCode("76135")
-                .withLocationCity("Karlsruhe")
+                .withLocation(location)
                 .withCountryName("Germany")
                 .withCountryCode("DE")
                 .buildAndValidate();
@@ -59,10 +63,11 @@ class AddressTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
+        Location location = Location.newBuilder().withCity("Karlsruhe").withPostalCode("76135").buildAndValidate();
+
         Address address = Address.newBuilder()
                 .withStreet("Gartenstraße 67")
-                .withLocationPostalCode("76135")
-                .withLocationCity("Karlsruhe")
+                .withLocation(location)
                 .withCountryName("Germany")
                 .withCountryCode("DE")
                 .buildAndValidate();

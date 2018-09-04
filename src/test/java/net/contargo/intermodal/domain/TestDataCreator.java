@@ -153,7 +153,13 @@ public class TestDataCreator {
      */
     public static Stop createStop() {
 
-        return Stop.newBuilder().withLocation("Koblenz", "Terminal Koblenz", "terminal").buildAndValidate();
+        return Stop.newBuilder()
+            .withLocation(Location.newBuilder()
+                    .withCity("Koblenz")
+                    .withDesignation("Terminal Koblenz")
+                    .withType("terminal")
+                    .buildAndValidate())
+            .buildAndValidate();
     }
 
 
@@ -198,5 +204,16 @@ public class TestDataCreator {
     public static Passenger createPassenger() {
 
         return Passenger.newBuilder().buildAndValidate();
+    }
+
+
+    /**
+     * Creates coordinates with only minimum requirements.
+     *
+     * @return  simple {@link Coordinates} with minimum requirements
+     */
+    public static Coordinates createCoordinates() {
+
+        return Coordinates.newBuilder().withLatitude(49.0594626).withLongitude(8.2966241).buildAndValidate();
     }
 }

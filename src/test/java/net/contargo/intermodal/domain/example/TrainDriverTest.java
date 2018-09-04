@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.Location;
 import net.contargo.intermodal.domain.TestDataCreator;
 import net.contargo.intermodal.domain.TrainDriver;
 
@@ -24,13 +25,7 @@ class TrainDriverTest {
     @Test
     void ensureTrainDriverCanBeCreated() {
 
-        Address address = Address.newBuilder()
-                .withCountryCode("DE")
-                .withCountryName("Germany")
-                .withLocationCity("Karlsruhe")
-                .withLocationPostalCode("76131")
-                .withStreet("Hauptstraße 42")
-                .buildAndValidate();
+        Address address = TestDataCreator.createAddress();
 
         TrainDriver trainDriver = TrainDriver.newBuilder()
                 .withName("Mustermann")
@@ -38,7 +33,7 @@ class TrainDriverTest {
                 .withAddress(address)
                 .withCellphone("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withCountryCode("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
@@ -63,7 +58,7 @@ class TrainDriverTest {
                 .withAddress(TestDataCreator.createAddress())
                 .withCellphone("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withCountryCode("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
@@ -84,13 +79,7 @@ class TrainDriverTest {
     @Test
     void ensureCanBeParsedToJson() throws IOException {
 
-        Address address = Address.newBuilder()
-                .withCountryCode("DE")
-                .withCountryName("Germany")
-                .withLocationCity("Karlsruhe")
-                .withLocationPostalCode("76131")
-                .withStreet("Hauptstraße 42")
-                .buildAndValidate();
+        Address address = TestDataCreator.createAddress();
 
         TrainDriver trainDriver = TrainDriver.newBuilder()
                 .withName("Mustermann")
@@ -98,7 +87,7 @@ class TrainDriverTest {
                 .withAddress(address)
                 .withCellphone("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withCountryCode("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();

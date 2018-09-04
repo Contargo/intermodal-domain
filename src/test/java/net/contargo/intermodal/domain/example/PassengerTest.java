@@ -3,6 +3,7 @@ package net.contargo.intermodal.domain.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.Address;
+import net.contargo.intermodal.domain.Location;
 import net.contargo.intermodal.domain.Passenger;
 import net.contargo.intermodal.domain.TestDataCreator;
 
@@ -28,7 +29,7 @@ class PassengerTest {
                 .withAddress(TestDataCreator.createAddress())
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .buildAndValidate();
 
@@ -50,7 +51,7 @@ class PassengerTest {
                 .withAddress(TestDataCreator.createAddress())
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .buildAndValidate();
 
@@ -74,7 +75,7 @@ class PassengerTest {
                 .withAddress(TestDataCreator.createAddress())
                 .withCellphoneNumber("01234/56789")
                 .bornOn("1980-01-13")
-                .bornIn("Karlsruhe")
+                .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .buildAndValidate();
 

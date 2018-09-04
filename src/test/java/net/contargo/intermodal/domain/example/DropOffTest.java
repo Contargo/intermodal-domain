@@ -2,10 +2,7 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Barge;
-import net.contargo.intermodal.domain.DropOff;
-import net.contargo.intermodal.domain.Operator;
-import net.contargo.intermodal.domain.TestDataCreator;
+import net.contargo.intermodal.domain.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,7 +22,11 @@ class DropOffTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLocation(Location.newBuilder()
+                        .withCity("Duisburg")
+                        .withDesignation("Terminal Duisburg")
+                        .withType("terminal")
+                        .buildAndValidate())
                 .withLoadingUnit("63876846", false)
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
@@ -51,7 +52,11 @@ class DropOffTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         DropOff.newBuilder()
-            .withLocation("Duisburg", "Terminal Duisburg")
+            .withLocation(Location.newBuilder()
+                    .withCity("Duisburg")
+                    .withDesignation("Terminal Duisburg")
+                    .withType("terminal")
+                    .buildAndValidate())
             .withMeansOfTransport(TestDataCreator.createBarge())
             .buildAndValidate();
     }
@@ -61,7 +66,11 @@ class DropOffTest {
     void ensureCanBeCopied() {
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLocation(Location.newBuilder()
+                        .withCity("Duisburg")
+                        .withDesignation("Terminal Duisburg")
+                        .withType("terminal")
+                        .buildAndValidate())
                 .withLoadingUnit("63876846", false)
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")
@@ -91,19 +100,26 @@ class DropOffTest {
         assertThrows(IllegalStateException.class,
             () ->
                 DropOff.newBuilder()
-                    .withLocation(null, "Terminal Duisburg")
+                    .withLocation(Location.newBuilder().withDesignation("Terminal Duisburg").buildAndValidate())
                     .withMeansOfTransport(TestDataCreator.createBarge())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
             () ->
                 DropOff.newBuilder()
-                    .withLocation("Duisburg", null)
+                    .withLocation(Location.newBuilder().withCity("Duisburg").buildAndValidate())
                     .withMeansOfTransport(TestDataCreator.createBarge())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
-            () -> DropOff.newBuilder().withLocation("Duisburg", "Terminal Duisburg").buildAndValidate());
+            () ->
+                DropOff.newBuilder()
+                    .withLocation(
+                            Location.newBuilder()
+                                .withCity("Duisburg")
+                                .withDesignation("Terminal Duisburg")
+                                .buildAndValidate())
+                    .buildAndValidate());
     }
 
 
@@ -111,7 +127,11 @@ class DropOffTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         DropOff dropOff = DropOff.newBuilder()
-                .withLocation("Duisburg", "Terminal Duisburg", "terminal")
+                .withLocation(Location.newBuilder()
+                        .withCity("Duisburg")
+                        .withDesignation("Terminal Duisburg")
+                        .withType("terminal")
+                        .buildAndValidate())
                 .withLoadingUnit("63876846", false)
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withBillingReference("98690")

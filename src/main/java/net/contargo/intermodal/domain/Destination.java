@@ -143,21 +143,8 @@ public class Destination {
         }
 
 
-        public Builder withLocation(String city, String designation) {
+        public Builder withLocation(Location location) {
 
-            Location location = new Location();
-            location.setCity(city);
-            location.setDesignation(designation);
-            this.location = location;
-
-            return this;
-        }
-
-
-        public Builder withLocation(String designation) {
-
-            Location location = new Location();
-            location.setDesignation(designation);
             this.location = location;
 
             return this;
