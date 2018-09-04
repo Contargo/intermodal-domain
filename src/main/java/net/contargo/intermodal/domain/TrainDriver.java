@@ -59,8 +59,8 @@ public class TrainDriver extends Person {
             .withAddress(trainDriver.getAddress())
             .withCellphone(trainDriver.getCellphone())
             .bornOn(trainDriver.getDateOfBirth())
-            .bornIn(trainDriver.getLocation())
-            .withCountryCode(trainDriver.getNationality())
+            .bornIn(trainDriver.getCityOfBirth())
+            .withNationality(trainDriver.getNationality())
             .withRid(trainDriver.getRid());
     }
 
@@ -162,7 +162,7 @@ public class TrainDriver extends Person {
         }
 
 
-        public Builder withCountryCode(String countryCode) {
+        public Builder withNationality(String countryCode) {
 
             this.countryCode = countryCode;
 
@@ -197,10 +197,10 @@ public class TrainDriver extends Person {
             trainDriver.setCellphone(cellphone);
             trainDriver.setDateOfBirth(dateOfBirth);
 
-            trainDriver.setLocation(location);
+            trainDriver.setCityOfBirth(location);
 
             if (countryCode != null) {
-                trainDriver.setCountryCode(countryCode);
+                trainDriver.setNationality(countryCode);
             }
 
             trainDriver.rid = this.rid;

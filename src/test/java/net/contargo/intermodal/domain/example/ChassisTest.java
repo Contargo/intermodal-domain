@@ -39,7 +39,7 @@ class ChassisTest {
                 .buildAndValidate();
 
         assertEquals("DU CO 1782", chassis.getNumberPlate());
-        assertEquals("2020-05-22T00:00:00Z", chassis.getMot().toString());
+        assertEquals("2020-05-22T00:00:00Z", chassis.getMinistryOfTransportTest().toString());
         assertEquals("Multichassis", chassis.getType());
         assertEquals(2, chassis.getAxles().intValue());
         assertEquals(4.0, chassis.getSize().getValue().doubleValue());
@@ -75,7 +75,7 @@ class ChassisTest {
         Chassis copiedChassis = Chassis.newBuilder(chassis).buildAndValidate();
 
         assertEquals("DU CO 1782", copiedChassis.getNumberPlate());
-        assertEquals("2020-05-22T00:00:00Z", copiedChassis.getMot().toString());
+        assertEquals("2020-05-22T00:00:00Z", copiedChassis.getMinistryOfTransportTest().toString());
         assertEquals("Multichassis", copiedChassis.getType());
         assertEquals(2, copiedChassis.getAxles().intValue());
         assertEquals(4.0, copiedChassis.getSize().getValue().doubleValue());
@@ -135,7 +135,7 @@ class ChassisTest {
         Chassis deserialize = mapper.readValue(jsonString, Chassis.class);
 
         assertEquals("DU CO 1782", deserialize.getNumberPlate());
-        assertEquals("2020-05-22T00:00:00Z", deserialize.getMot().toString());
+        assertEquals("2020-05-22T00:00:00Z", deserialize.getMinistryOfTransportTest().toString());
         assertEquals("Multichassis", deserialize.getType());
         assertEquals(2, deserialize.getAxles().intValue());
         assertEquals(4.0, deserialize.getSize().getValue().doubleValue());

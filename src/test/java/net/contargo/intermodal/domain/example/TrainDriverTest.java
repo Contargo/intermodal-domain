@@ -34,7 +34,7 @@ class TrainDriverTest {
                 .withCellphone("01234/56789")
                 .bornOn("1980-01-13")
                 .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
-                .withCountryCode("DE")
+                .withNationality("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
@@ -43,7 +43,7 @@ class TrainDriverTest {
         assertNotNull(trainDriver.getAddress());
         assertEquals("01234/56789", trainDriver.getCellphone());
         assertEquals("1980-01-13", trainDriver.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", trainDriver.getCityOfBirth());
+        assertEquals("Karlsruhe", trainDriver.getCityOfBirth().getCity());
         assertEquals("DE", trainDriver.getNationality());
         assertEquals("2018-12-31T00:00:00Z", trainDriver.getRid().toString());
     }
@@ -59,7 +59,7 @@ class TrainDriverTest {
                 .withCellphone("01234/56789")
                 .bornOn("1980-01-13")
                 .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
-                .withCountryCode("DE")
+                .withNationality("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
@@ -70,7 +70,7 @@ class TrainDriverTest {
         assertNotNull(copiedTrainDriver.getAddress());
         assertEquals("01234/56789", copiedTrainDriver.getCellphone());
         assertEquals("1980-01-13", copiedTrainDriver.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", copiedTrainDriver.getCityOfBirth());
+        assertEquals("Karlsruhe", copiedTrainDriver.getCityOfBirth().getCity());
         assertEquals("DE", copiedTrainDriver.getNationality());
         assertEquals("2018-12-31T00:00:00Z", copiedTrainDriver.getRid().toString());
     }
@@ -88,7 +88,7 @@ class TrainDriverTest {
                 .withCellphone("01234/56789")
                 .bornOn("1980-01-13")
                 .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
-                .withCountryCode("DE")
+                .withNationality("DE")
                 .withRid(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
 
@@ -103,7 +103,7 @@ class TrainDriverTest {
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
         assertEquals("1980-01-13", deserialize.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", deserialize.getCityOfBirth());
+        assertEquals("Karlsruhe", deserialize.getCityOfBirth().getCity());
         assertEquals("DE", deserialize.getNationality());
         assertEquals("2018-12-31T00:00:00Z", deserialize.getRid().toString());
     }

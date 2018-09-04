@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -47,6 +48,8 @@ public class Truck implements MeansOfTransport {
      * @abbreviation_english  MOT
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    @JsonProperty("mot")
     private Instant mot;
 
     /**
@@ -65,6 +68,7 @@ public class Truck implements MeansOfTransport {
      * @name_english  security test
      * @name_german  Sicherheitsprüfung
      */
+    @JsonProperty("st")
     private Boolean st;
 
     /**
@@ -107,14 +111,14 @@ public class Truck implements MeansOfTransport {
      */
     public static Builder newBuilder(Truck truck) {
 
-        return new Builder().withMinistryOfTransportTest(truck.getMot())
+        return new Builder().withMinistryOfTransportTest(truck.getMinistryOfTransportTest())
             .isSuitableForWaste(truck.getSuitabilityWaste())
             .withEuAuthorization(truck.getEuAuthorization())
             .withNumberPlate(truck.getNumberPlate())
             .withEnvironmentBadge(truck.getEnvironmentBadge())
             .isSuitableForDangerousGoods(truck.getSuitabilityDangerousGoods())
             .withType(truck.getType())
-            .withST(truck.getSt())
+            .withSafetyTest(truck.getSafetyTest())
             .withCountryCode(truck.getCountryCode())
             .withWeight(truck.getWeight());
     }
@@ -137,8 +141,8 @@ public class Truck implements MeansOfTransport {
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getMot() {
+    @JsonIgnore
+    public Instant getMinistryOfTransportTest() {
 
         return mot;
     }
@@ -162,7 +166,8 @@ public class Truck implements MeansOfTransport {
     }
 
 
-    public Boolean getSt() {
+    @JsonProperty("st")
+    public Boolean getSafetyTest() {
 
         return st;
     }
@@ -284,9 +289,9 @@ public class Truck implements MeansOfTransport {
         }
 
 
-        public Builder withST(Boolean st) {
+        public Builder withSafetyTest(Boolean safetyTest) {
 
-            this.st = st;
+            this.st = safetyTest;
 
             return this;
         }

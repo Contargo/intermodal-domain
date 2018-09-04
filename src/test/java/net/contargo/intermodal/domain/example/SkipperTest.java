@@ -42,7 +42,7 @@ class SkipperTest {
         assertNotNull(skipper.getAddress());
         assertEquals("01234/56789", skipper.getCellphone());
         assertEquals("1980-01-13", skipper.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", skipper.getCityOfBirth());
+        assertEquals("Karlsruhe", skipper.getCityOfBirth().getCity());
         assertEquals("DE", skipper.getNationality());
         assertEquals("2018-12-31T00:00:00Z", skipper.getAdnr().toString());
     }
@@ -68,7 +68,7 @@ class SkipperTest {
         assertNotNull(copiedSkipper.getAddress());
         assertEquals("01234/56789", copiedSkipper.getCellphone());
         assertEquals("1980-01-13", copiedSkipper.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", copiedSkipper.getCityOfBirth());
+        assertEquals("Karlsruhe", copiedSkipper.getCityOfBirth().getCity());
         assertEquals("DE", copiedSkipper.getNationality());
         assertEquals("2018-12-31T00:00:00Z", copiedSkipper.getAdnr().toString());
     }
@@ -100,7 +100,7 @@ class SkipperTest {
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
         assertEquals("1980-01-13", deserialize.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", deserialize.getCityOfBirth());
+        assertEquals("Karlsruhe", deserialize.getCityOfBirth().getCity());
         assertEquals("DE", deserialize.getNationality());
         assertEquals("2018-12-31T00:00:00Z", deserialize.getAdnr().toString());
     }

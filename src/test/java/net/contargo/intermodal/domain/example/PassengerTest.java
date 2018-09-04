@@ -38,7 +38,7 @@ class PassengerTest {
         assertNotNull(passenger.getAddress());
         assertEquals("01234/56789", passenger.getCellphone());
         assertEquals("1980-01-13", passenger.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", passenger.getCityOfBirth());
+        assertEquals("Karlsruhe", passenger.getCityOfBirth().getCity());
         assertEquals("DE", passenger.getNationality());
     }
 
@@ -62,7 +62,7 @@ class PassengerTest {
         assertNotNull(copiedPassenger.getAddress());
         assertEquals("01234/56789", copiedPassenger.getCellphone());
         assertEquals("1980-01-13", copiedPassenger.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", copiedPassenger.getCityOfBirth());
+        assertEquals("Karlsruhe", copiedPassenger.getCityOfBirth().getCity());
         assertEquals("DE", copiedPassenger.getNationality());
     }
 
@@ -90,7 +90,7 @@ class PassengerTest {
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
         assertEquals("1980-01-13", deserialize.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", deserialize.getCityOfBirth());
+        assertEquals("Karlsruhe", deserialize.getCityOfBirth().getCity());
         assertEquals("DE", deserialize.getNationality());
     }
 }

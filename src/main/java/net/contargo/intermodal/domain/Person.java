@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -83,14 +84,10 @@ public abstract class Person {
     }
 
 
-    @JsonIgnore
-    public String getCityOfBirth() {
+    @JsonProperty("location")
+    public Location getCityOfBirth() {
 
-        if (location != null) {
-            return location.getCity();
-        }
-
-        return null;
+        return location;
     }
 
 
@@ -135,7 +132,7 @@ public abstract class Person {
     }
 
 
-    public void setLocation(Location location) {
+    public void setCityOfBirth(Location location) {
 
         this.location = location;
     }
@@ -144,18 +141,12 @@ public abstract class Person {
     /**
      * @param  countryCode  2 characters (UN/LOCODE).
      */
-    void setCountryCode(String countryCode) {
+    void setNationality(String countryCode) {
 
         Country country = new Country();
         country.setCode(countryCode);
 
         this.country = country;
-    }
-
-
-    public Location getLocation() {
-
-        return location;
     }
 
 

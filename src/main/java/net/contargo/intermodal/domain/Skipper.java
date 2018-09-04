@@ -60,7 +60,7 @@ public class Skipper extends Person {
             .withAddress(skipper.getAddress())
             .withCellphoneNumber(skipper.getCellphone())
             .bornOn(skipper.getDateOfBirth())
-            .bornIn(skipper.getLocation())
+            .bornIn(skipper.getCityOfBirth())
             .withNationality(skipper.getNationality())
             .withAdnr(skipper.getAdnr());
     }
@@ -178,10 +178,10 @@ public class Skipper extends Person {
             skipper.setCellphone(cellphone);
             skipper.setDateOfBirth(dateOfBirth);
 
-            skipper.setLocation(location);
+            skipper.setCityOfBirth(location);
 
             if (countryCode != null) {
-                skipper.setCountryCode(countryCode);
+                skipper.setNationality(countryCode);
             }
 
             skipper.adnr = this.adnr;

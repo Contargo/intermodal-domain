@@ -59,7 +59,7 @@ public class Passenger extends Person {
             .withAddress(passenger.getAddress())
             .withCellphoneNumber(passenger.getCellphone())
             .bornOn(passenger.getDateOfBirth())
-            .bornIn(passenger.getLocation())
+            .bornIn(passenger.getCityOfBirth())
             .withNationality(passenger.getNationality());
     }
 
@@ -151,8 +151,8 @@ public class Passenger extends Person {
             passenger.setAddress(address);
             passenger.setCellphone(cellphone);
             passenger.setDateOfBirth(dateOfBirth);
-            passenger.setLocation(location);
-            passenger.setCountryCode(countryCode);
+            passenger.setCityOfBirth(location);
+            passenger.setNationality(countryCode);
 
             return passenger;
         }

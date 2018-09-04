@@ -1,6 +1,7 @@
 package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -130,7 +131,7 @@ public class Chassis implements MeansOfTransport {
             .isSuitableForDangerousGoods(chassis.getSuitabilityDangerousGoods())
             .isSuitableForWaste(chassis.getSuitabilityWaste())
             .isSuitableForReefer(chassis.getSuitabilityReefer())
-            .withMinistryOfTransportTest(chassis.getMot())
+            .withMinistryOfTransportTest(chassis.getMinistryOfTransportTest())
             .withWeight(chassis.getWeight());
     }
 
@@ -142,7 +143,8 @@ public class Chassis implements MeansOfTransport {
 
 
     @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getMot() {
+    @JsonProperty("mot")
+    public Instant getMinistryOfTransportTest() {
 
         return mot;
     }

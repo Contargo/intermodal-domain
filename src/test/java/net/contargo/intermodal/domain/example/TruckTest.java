@@ -30,7 +30,7 @@ class TruckTest {
                 .withEnvironmentBadge(EnvironmentBadge.GREEN)
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
-                .withST(true)
+                .withSafetyTest(true)
                 .isSuitableForDangerousGoods(false)
                 .isSuitableForWaste(false)
                 .withWeightTare(40000.0, MassUnit.KILOGRAM)
@@ -38,11 +38,11 @@ class TruckTest {
 
         assertEquals("DU CO 1782", truck.getNumberPlate());
         assertEquals("DE", truck.getCountryCode());
-        assertEquals("2020-05-22T00:00:00Z", truck.getMot().toString());
+        assertEquals("2020-05-22T00:00:00Z", truck.getMinistryOfTransportTest().toString());
         assertEquals(EnvironmentBadge.GREEN, truck.getEnvironmentBadge());
         assertEquals("refrigerator truck", truck.getType());
         assertTrue(truck.getEuAuthorization());
-        assertTrue(truck.getSt());
+        assertTrue(truck.getSafetyTest());
         assertFalse(truck.getSuitabilityDangerousGoods());
         assertFalse(truck.getSuitabilityWaste());
         assertEquals(40000.0, truck.getWeightTare().getValue().doubleValue());
@@ -59,7 +59,7 @@ class TruckTest {
                 .withEnvironmentBadge(EnvironmentBadge.GREEN)
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
-                .withST(true)
+                .withSafetyTest(true)
                 .isSuitableForDangerousGoods(false)
                 .isSuitableForWaste(false)
                 .withWeightTare(40000.0, MassUnit.KILOGRAM)
@@ -69,11 +69,11 @@ class TruckTest {
 
         assertEquals("DU CO 1782", copiedTruck.getNumberPlate());
         assertEquals("DE", copiedTruck.getCountryCode());
-        assertEquals("2020-05-22T00:00:00Z", copiedTruck.getMot().toString());
+        assertEquals("2020-05-22T00:00:00Z", copiedTruck.getMinistryOfTransportTest().toString());
         assertEquals(EnvironmentBadge.GREEN, copiedTruck.getEnvironmentBadge());
         assertEquals("refrigerator truck", copiedTruck.getType());
         assertTrue(copiedTruck.getEuAuthorization());
-        assertTrue(copiedTruck.getSt());
+        assertTrue(copiedTruck.getSafetyTest());
         assertFalse(copiedTruck.getSuitabilityDangerousGoods());
         assertFalse(copiedTruck.getSuitabilityWaste());
         assertEquals(40000.0, copiedTruck.getWeightTare().getValue().doubleValue());
@@ -90,7 +90,7 @@ class TruckTest {
                 .withEnvironmentBadge(EnvironmentBadge.GREEN)
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
-                .withST(true)
+                .withSafetyTest(true)
                 .isSuitableForDangerousGoods(false)
                 .isSuitableForWaste(false)
                 .withWeightTare(40.0, MassUnit.TON)
@@ -111,7 +111,7 @@ class TruckTest {
                 .withEnvironmentBadge(EnvironmentBadge.GREEN)
                 .withType("refrigerator truck")
                 .withEuAuthorization(true)
-                .withST(true)
+                .withSafetyTest(true)
                 .isSuitableForDangerousGoods(false)
                 .isSuitableForWaste(false)
                 .withWeightTare(40000.0, MassUnit.KILOGRAM)
@@ -125,11 +125,11 @@ class TruckTest {
 
         assertEquals("DU CO 1782", deserialize.getNumberPlate());
         assertEquals("DE", deserialize.getCountryCode());
-        assertEquals("2020-05-22T00:00:00Z", deserialize.getMot().toString());
+        assertEquals("2020-05-22T00:00:00Z", deserialize.getMinistryOfTransportTest().toString());
         assertEquals(EnvironmentBadge.GREEN, deserialize.getEnvironmentBadge());
         assertEquals("refrigerator truck", deserialize.getType());
         assertTrue(deserialize.getEuAuthorization());
-        assertTrue(deserialize.getSt());
+        assertTrue(deserialize.getSafetyTest());
         assertFalse(deserialize.getSuitabilityDangerousGoods());
         assertFalse(deserialize.getSuitabilityWaste());
         assertEquals(40000.0, deserialize.getWeightTare().getValue().doubleValue());

@@ -35,7 +35,7 @@ class DriverTest {
                 .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
-                .withId("42")
+                .withDriverCardNumber("42")
                 .withAdr(Instant.parse("2018-12-31T00:00:00Z"))
                 .withModuleEntry95(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
@@ -45,11 +45,11 @@ class DriverTest {
         assertNotNull(driver.getAddress());
         assertEquals("01234/56789", driver.getCellphone());
         assertEquals("1980-01-13", driver.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", driver.getCityOfBirth());
+        assertEquals("Karlsruhe", driver.getCityOfBirth().getCity());
         assertEquals("DE", driver.getNationality());
         assertEquals("12345678", driver.getLicense().getNumber());
         assertEquals("2020-09-25T00:00:00Z", driver.getLicense().getValidity().toString());
-        assertEquals("42", driver.getId());
+        assertEquals("42", driver.getDriverCardNumber());
         assertEquals("2018-12-31T00:00:00Z", driver.getAdr().toString());
         assertEquals("2018-12-31T00:00:00Z", driver.getModuleEntry95().toString());
     }
@@ -66,7 +66,7 @@ class DriverTest {
                 .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
-                .withId("42")
+                .withDriverCardNumber("42")
                 .withAdr(Instant.parse("2018-12-31T00:00:00Z"))
                 .withModuleEntry95(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
@@ -78,11 +78,11 @@ class DriverTest {
         assertNotNull(copiedDriver.getAddress());
         assertEquals("01234/56789", copiedDriver.getCellphone());
         assertEquals("1980-01-13", copiedDriver.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", copiedDriver.getCityOfBirth());
+        assertEquals("Karlsruhe", copiedDriver.getCityOfBirth().getCity());
         assertEquals("DE", copiedDriver.getNationality());
         assertEquals("12345678", copiedDriver.getLicense().getNumber());
         assertEquals("2020-09-25T00:00:00Z", copiedDriver.getLicense().getValidity().toString());
-        assertEquals("42", copiedDriver.getId());
+        assertEquals("42", copiedDriver.getDriverCardNumber());
         assertEquals("2018-12-31T00:00:00Z", copiedDriver.getAdr().toString());
         assertEquals("2018-12-31T00:00:00Z", copiedDriver.getModuleEntry95().toString());
     }
@@ -101,7 +101,7 @@ class DriverTest {
                 .bornIn(Location.newBuilder().withCity("Karlsruhe").buildAndValidate())
                 .withNationality("DE")
                 .withLicense("12345678", Instant.parse("2020-09-25T00:00:00Z"))
-                .withId("42")
+                .withDriverCardNumber("42")
                 .withAdr(Instant.parse("2018-12-31T00:00:00Z"))
                 .withModuleEntry95(Instant.parse("2018-12-31T00:00:00Z"))
                 .buildAndValidate();
@@ -117,11 +117,11 @@ class DriverTest {
         assertNotNull(deserialize.getAddress());
         assertEquals("01234/56789", deserialize.getCellphone());
         assertEquals("1980-01-13", deserialize.getDateOfBirth().toString());
-        assertEquals("Karlsruhe", deserialize.getCityOfBirth());
+        assertEquals("Karlsruhe", deserialize.getCityOfBirth().getCity());
         assertEquals("DE", deserialize.getNationality());
         assertEquals("12345678", deserialize.getLicense().getNumber());
         assertEquals("2020-09-25T00:00:00Z", deserialize.getLicense().getValidity().toString());
-        assertEquals("42", deserialize.getId());
+        assertEquals("42", deserialize.getDriverCardNumber());
         assertEquals("2018-12-31T00:00:00Z", deserialize.getAdr().toString());
         assertEquals("2018-12-31T00:00:00Z", deserialize.getModuleEntry95().toString());
     }

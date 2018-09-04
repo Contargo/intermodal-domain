@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -25,6 +27,7 @@ public class Driver extends Person {
     /**
      * @name_german  Fahrerkartennummer
      */
+    @JsonProperty("id")
     private String id;
 
     /**
@@ -73,9 +76,9 @@ public class Driver extends Person {
             .named(driver.getFirstName(), driver.getName())
             .withAddress(driver.getAddress())
             .withModuleEntry95(driver.getModuleEntry95())
-            .withId(driver.getId())
+            .withDriverCardNumber(driver.getDriverCardNumber())
             .withAdr(driver.getAdr())
-            .bornIn(driver.getLocation())
+            .bornIn(driver.getCityOfBirth())
             .withLicense(driver.getLicense());
     }
 
@@ -86,7 +89,8 @@ public class Driver extends Person {
     }
 
 
-    public String getId() {
+    @JsonIgnore
+    public String getDriverCardNumber() {
 
         return id;
     }
@@ -226,7 +230,7 @@ public class Driver extends Person {
         }
 
 
-        public Builder withId(String id) {
+        public Builder withDriverCardNumber(String id) {
 
             this.id = id;
 
@@ -269,7 +273,7 @@ public class Driver extends Person {
             driver.setCellphone(this.cellphone);
 
             if (countryCode != null) {
-                driver.setCountryCode(this.countryCode);
+                driver.setNationality(this.countryCode);
             }
 
             driver.setDateOfBirth(this.dateOfBirth);
@@ -281,7 +285,7 @@ public class Driver extends Person {
             driver.adr = this.adr;
             driver.license = this.license;
 
-            driver.setLocation(this.location);
+            driver.setCityOfBirth(this.location);
 
             return driver;
         }
