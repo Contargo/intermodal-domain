@@ -3,8 +3,10 @@ package net.contargo.intermodal.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 
@@ -46,7 +48,8 @@ public class Order {
     private Operator billRecipient;
 
     @NotNull(message = "luOrder is part of minimum requirement and must not be null")
-    private LUOrder luOrder;
+    @NotEmpty(message = "luOrder is part of minimum requirement and must not be empty")
+    private List<LUOrder> luOrder;
 
     @NotNull(message = "transport is part of minimum requirement and must not be null")
     @TransportConstraint(
@@ -88,7 +91,7 @@ public class Order {
     public static Builder newBuilder(Order order) {
 
         return new Builder().withBillRecipient(order.getBillRecipient())
-            .withOrderForLoadingUnit(order.getLuOrder())
+            .withOrdersForLoadingUnit(order.getLuOrder())
             .withClient(order.getClient())
             .withTransport(order.getTransport())
             .withReference(order.getReference())
@@ -114,7 +117,7 @@ public class Order {
     }
 
 
-    public LUOrder getLuOrder() {
+    public List<LUOrder> getLuOrder() {
 
         return luOrder;
     }
@@ -194,7 +197,7 @@ public class Order {
         private String reference;
         private Operator client;
         private Operator billRecipient;
-        private LUOrder luOrder;
+        private List<LUOrder> luOrder = new ArrayList<>();
         private Transport transport = new Transport();
 
         private Builder() {
@@ -242,7 +245,15 @@ public class Order {
 
         public Builder withOrderForLoadingUnit(LUOrder luOrder) {
 
-            this.luOrder = luOrder;
+            this.luOrder.add(luOrder);
+
+            return this;
+        }
+
+
+        public Builder withOrdersForLoadingUnit(List<LUOrder> luOrders) {
+
+            this.luOrder.addAll(luOrders);
 
             return this;
         }
