@@ -253,6 +253,14 @@ public class Trailer extends LoadingUnit {
         }
 
 
+        public Builder withCondition(LoadingUnitCondition loadingUnitCondition) {
+
+            this.condition = loadingUnitCondition.name();
+
+            return this;
+        }
+
+
         public Builder isReefer(boolean reefer) {
 
             this.reefer = reefer;

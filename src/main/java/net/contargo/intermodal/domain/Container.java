@@ -231,6 +231,14 @@ public class Container extends LoadingUnit {
         }
 
 
+        public Builder withCondition(LoadingUnitCondition loadingUnitCondition) {
+
+            this.condition = loadingUnitCondition.name();
+
+            return this;
+        }
+
+
         public Builder withType(String type) {
 
             this.type = type;

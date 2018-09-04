@@ -62,6 +62,22 @@ class ContainerTest {
 
 
     @Test
+    void ensureConditionCanBeSetAsLoadingUnitCondition() {
+
+        Container container = Container.newBuilder()
+                .withNumberAndIdentification("MSKU1806510")
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("General purpose container (without ventilation)")
+                .withSize(40.0, LengthUnit.FOOT)
+                .withCondition(LoadingUnitCondition.DAMAGED)
+                .buildAndValidate();
+
+        assertEquals("DAMAGED", container.getCondition());
+    }
+
+
+    @Test
     void ensureCanBeCopied() {
 
         Container container = Container.newBuilder()

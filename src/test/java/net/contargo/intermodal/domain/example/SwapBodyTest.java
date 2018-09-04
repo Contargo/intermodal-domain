@@ -62,6 +62,22 @@ class SwapBodyTest {
 
 
     @Test
+    void ensureConditionCanBeSetAsLoadingUnitCondition() {
+
+        SwapBody swapBody = SwapBody.newBuilder()
+                .withNumberAndIdentification("MSKU1806510")
+                .isReefer(false)
+                .withType("Open Top")
+                .withSize(21.58, LengthUnit.FOOT)
+                .isStackable(true)
+                .withCondition(LoadingUnitCondition.UNCHECKED)
+                .buildAndValidate();
+
+        assertEquals("UNCHECKED", swapBody.getCondition());
+    }
+
+
+    @Test
     void ensureCanBeCopied() {
 
         SwapBody swapBody = SwapBody.newBuilder()

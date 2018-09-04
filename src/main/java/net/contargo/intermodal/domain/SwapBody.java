@@ -247,6 +247,14 @@ public class SwapBody extends LoadingUnit {
         }
 
 
+        public Builder withCondition(LoadingUnitCondition loadingUnitCondition) {
+
+            this.condition = loadingUnitCondition.name();
+
+            return this;
+        }
+
+
         public Builder isStackable(Boolean stackable) {
 
             this.stackable = stackable;

@@ -63,6 +63,22 @@ class TrailerTest {
 
 
     @Test
+    void ensureConditionCanBeSetAsLoadingUnitCondition() {
+
+        Trailer trailer = Trailer.newBuilder()
+                .withNumberAndIdentification("MSKU1806510")
+                .isReefer(false)
+                .withType("XL")
+                .withSize(15.5, LengthUnit.METRE)
+                .isCraneable(true)
+                .withCondition(LoadingUnitCondition.OK)
+                .buildAndValidate();
+
+        assertEquals("OK", trailer.getCondition());
+    }
+
+
+    @Test
     void ensureCanBeCopied() {
 
         Trailer trailer = Trailer.newBuilder()
