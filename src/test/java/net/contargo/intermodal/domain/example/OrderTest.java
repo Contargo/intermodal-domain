@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.contargo.intermodal.domain.*;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -119,7 +118,7 @@ class OrderTest {
 
         assertEquals("2018-05-14T11:00:00Z", order.getPickUp().getEarliest().toString());
         assertEquals("2018-05-14T11:30:00Z", order.getPickUp().getLatest().toString());
-        assertNotNull(order.getPickUp().getMot());
+        assertNotNull(order.getPickUp().getMeansOfTransport());
 
         // Drop Off
         assertEquals("Duisburg", order.getDropOff().getLocation().getCity());
@@ -236,7 +235,7 @@ class OrderTest {
 
         assertEquals("2018-05-14T11:00:00Z", copiedOrder.getPickUp().getEarliest().toString());
         assertEquals("2018-05-14T11:30:00Z", copiedOrder.getPickUp().getLatest().toString());
-        assertNotNull(order.getPickUp().getMot());
+        assertNotNull(order.getPickUp().getMeansOfTransport());
 
         // Drop Off
         assertEquals("Duisburg", copiedOrder.getDropOff().getLocation().getCity());
@@ -351,7 +350,7 @@ class OrderTest {
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(TestDataCreator.createTruck())
+                .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                 .buildAndValidate();
 
         DropOff dropOff = DropOff.newBuilder()
@@ -361,7 +360,7 @@ class OrderTest {
                 .withBillingReference("98690")
                 .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
-                .withMeansOfTransport(TestDataCreator.createTruck())
+                .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                 .buildAndValidate();
 
         Destination destination = Destination.newBuilder()
@@ -406,7 +405,7 @@ class OrderTest {
 
         assertEquals("2018-05-14T11:00:00Z", deserialize.getPickUp().getEarliest().toString());
         assertEquals("2018-05-14T11:30:00Z", deserialize.getPickUp().getLatest().toString());
-        assertNotNull(deserialize.getPickUp().getMot());
+        assertNotNull(deserialize.getPickUp().getMeansOfTransport());
 
         // Drop Off
         assertEquals("Duisburg", deserialize.getDropOff().getLocation().getCity());

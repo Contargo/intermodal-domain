@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -42,6 +44,7 @@ public class PickUp {
     private Instant latest;
 
     @NotNull(message = "mot is part of minimum requirement and must not be null")
+    @JsonProperty("mot")
     private MeansOfTransport mot;
 
     PickUp() {
@@ -74,7 +77,7 @@ public class PickUp {
             .withBillingReference(pickUp.getBillingReference())
             .withEarliest(pickUp.getEarliest())
             .withLatest(pickUp.getLatest())
-            .withMeansOfTransport(pickUp.getMot());
+            .withMeansOfTransport(pickUp.getMeansOfTransport());
     }
 
 
@@ -98,7 +101,8 @@ public class PickUp {
     }
 
 
-    public MeansOfTransport getMot() {
+    @JsonIgnore
+    public MeansOfTransport getMeansOfTransport() {
 
         return mot;
     }

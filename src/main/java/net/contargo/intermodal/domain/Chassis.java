@@ -30,7 +30,7 @@ import static tec.units.ri.unit.Units.METRE;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
-public class Chassis implements MeansOfTransport {
+public class Chassis {
 
     /**
      * Format: spaces included e.g. in Germany: DU CO 1782

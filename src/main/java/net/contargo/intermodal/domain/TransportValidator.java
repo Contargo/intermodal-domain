@@ -32,7 +32,7 @@ public class TransportValidator implements ConstraintValidator<TransportConstrai
     private boolean isValid(PickUp pickUp) {
 
         return pickUp != null && isValid(pickUp.getLocation()) && pickUp.getEarliest() != null
-            && pickUp.getMot() != null;
+            && pickUp.getMeansOfTransport() != null;
     }
 
 

@@ -32,7 +32,7 @@ class PickUpTest {
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(TestDataCreator.createTruck())
+                .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                 .buildAndValidate();
 
         assertEquals("Ludwigshafen", pickUp.getLocation().getCity());
@@ -44,7 +44,7 @@ class PickUpTest {
         assertNotNull(pickUp.getLoadingUnit().getOperator());
         assertEquals("2018-05-14T11:00:00Z", pickUp.getEarliest().toString());
         assertEquals("2018-05-14T11:30:00Z", pickUp.getLatest().toString());
-        assertNotNull(pickUp.getMot());
+        assertNotNull(pickUp.getMeansOfTransport());
     }
 
 
@@ -57,7 +57,7 @@ class PickUpTest {
                     .withDesignation("Terminal Ludwigshafen")
                     .buildAndValidate())
             .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-            .withMeansOfTransport(TestDataCreator.createTruck())
+            .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
             .buildAndValidate();
     }
 
@@ -76,7 +76,7 @@ class PickUpTest {
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(TestDataCreator.createTruck())
+                .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                 .buildAndValidate();
 
         PickUp copiedPickUp = PickUp.newBuilder(pickUp).buildAndValidate();
@@ -90,7 +90,7 @@ class PickUpTest {
         assertNotNull(copiedPickUp.getLoadingUnit().getOperator());
         assertEquals("2018-05-14T11:00:00Z", copiedPickUp.getEarliest().toString());
         assertEquals("2018-05-14T11:30:00Z", copiedPickUp.getLatest().toString());
-        assertNotNull(copiedPickUp.getMot());
+        assertNotNull(copiedPickUp.getMeansOfTransport());
     }
 
 
@@ -101,7 +101,7 @@ class PickUpTest {
             () ->
                 PickUp.newBuilder()
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withMeansOfTransport(TestDataCreator.createTruck())
+                    .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -109,7 +109,7 @@ class PickUpTest {
                 PickUp.newBuilder()
                     .withLocation(Location.newBuilder().withDesignation("Terminal Ludwigshafen").buildAndValidate())
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withMeansOfTransport(TestDataCreator.createTruck())
+                    .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -117,7 +117,7 @@ class PickUpTest {
                 PickUp.newBuilder()
                     .withLocation(Location.newBuilder().withCity("Ludwigshafen").buildAndValidate())
                     .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
-                    .withMeansOfTransport(TestDataCreator.createTruck())
+                    .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -128,7 +128,7 @@ class PickUpTest {
                                 .withCity("Ludwigshafen")
                                 .withDesignation("Terminal Ludwigshafen")
                                 .buildAndValidate())
-                    .withMeansOfTransport(TestDataCreator.createTruck())
+                    .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                     .buildAndValidate());
 
         assertThrows(IllegalStateException.class,
@@ -158,7 +158,7 @@ class PickUpTest {
                 .withLoadingUnitOperator(TestDataCreator.createOperator())
                 .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
                 .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
-                .withMeansOfTransport(TestDataCreator.createTruck())
+                .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
                 .buildAndValidate();
 
         ObjectMapper mapper = new ObjectMapper();
@@ -176,6 +176,6 @@ class PickUpTest {
         assertNotNull(deserialize.getLoadingUnit().getOperator());
         assertEquals("2018-05-14T11:00:00Z", deserialize.getEarliest().toString());
         assertEquals("2018-05-14T11:30:00Z", deserialize.getLatest().toString());
-        assertNotNull(deserialize.getMot());
+        assertNotNull(deserialize.getMeansOfTransport());
     }
 }

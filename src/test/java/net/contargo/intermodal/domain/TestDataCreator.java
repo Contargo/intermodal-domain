@@ -81,6 +81,20 @@ public class TestDataCreator {
 
 
     /**
+     * Creates truck chassis combination with only minimum requirements.
+     *
+     * @return  simple {@link TruckChassisCombination} with minimum requirements
+     */
+    public static TruckChassisCombination createTruckChassisCombination() {
+
+        return TruckChassisCombination.newBuilder()
+            .withTruck(Truck.newBuilder().withCountryCode("DE").buildAndValidate())
+            .withChassis(Chassis.newBuilder().withEuAuthorization(true).buildAndValidate())
+            .buildAndValidate();
+    }
+
+
+    /**
      * Creates truck with only minimum requirements.
      *
      * @return  simple {@link Truck} with minimum requirements

@@ -30,7 +30,7 @@ import static tec.units.ri.unit.Units.KILOGRAM;
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
-public class Truck implements MeansOfTransport {
+public class Truck {
 
     /**
      * Format: spaces included e.g. in Germany: DU CO 1782
