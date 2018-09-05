@@ -118,10 +118,10 @@ public class Destination {
         }
 
 
-        public Builder withCountryCode(String code) {
+        public Builder withCountryCode(String unLocode) {
 
             this.country = new Country();
-            this.country.setCode(code);
+            this.country.setCode(unLocode);
 
             return this;
         }

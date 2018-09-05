@@ -48,14 +48,16 @@ class Country {
 
     public void setCode(String code) {
 
-        if (code != null && code.length() != 2) {
-            throw new IllegalArgumentException(String.format(
-                    "Wrong length of country code \'%s\'. Please use 2 characters LOCODE.", code));
-        }
+        if (code != null) {
+            if (code.length() != 2) {
+                throw new IllegalArgumentException(String.format(
+                        "Wrong length of country code \'%s\'. Please use 2 characters LOCODE.", code));
+            }
 
-        if (code != null && Arrays.stream(Locale.getISOCountries()).noneMatch(country -> country.equals(code))) {
-            throw new IllegalArgumentException(String.format(
-                    "Invalid country code \'%s\': Was not found in Locale.getISOCountries().", code));
+            if (Arrays.stream(Locale.getISOCountries()).noneMatch(country -> country.equals(code))) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid country code \'%s\': Was not found in Locale.getISOCountries().", code));
+            }
         }
 
         this.code = code;

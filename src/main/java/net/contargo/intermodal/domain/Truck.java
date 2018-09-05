@@ -245,13 +245,13 @@ public class Truck implements MeansOfTransport {
 
 
         /**
-         * @param  countryCode  2 characters (UN/LOCODE).
+         * @param  unLocode  2 characters (UN/LOCODE).
          *
          * @return  this
          */
-        public Builder withCountryCode(String countryCode) {
+        public Builder withCountryCode(String unLocode) {
 
-            this.countryCode = countryCode;
+            this.countryCode = unLocode;
 
             return this;
         }
