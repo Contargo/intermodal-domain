@@ -20,7 +20,7 @@ class TrailerTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(14082.331, MassUnit.KILOGRAM)
                 .withWeightNettoMax(10000.0, MassUnit.KILOGRAM)
                 .withWeightTare(4082.331, MassUnit.KILOGRAM)
@@ -53,7 +53,7 @@ class TrailerTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         Trailer.newBuilder()
-            .withNumberAndIdentification("MSKU1806510")
+            .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
             .isReefer(false)
             .withType("XL")
             .withSize(15.5, LengthUnit.METRE)
@@ -66,7 +66,7 @@ class TrailerTest {
     void ensureConditionCanBeSetAsLoadingUnitCondition() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("XL")
                 .withSize(15.5, LengthUnit.METRE)
@@ -82,7 +82,7 @@ class TrailerTest {
     void ensureCanBeCopied() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(14082.331, MassUnit.KILOGRAM)
                 .withWeightNettoMax(10000.0, MassUnit.KILOGRAM)
                 .withWeightTare(4082.331, MassUnit.KILOGRAM)
@@ -117,7 +117,7 @@ class TrailerTest {
     void ensureSpecialCharactersInNumberAreIgnored() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumberAndIdentification("MSKU 180651-0")
+                .withNumberAndIdentification("MSKU 180651-0", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("XL")
                 .withSize(15.5, LengthUnit.METRE)
@@ -133,7 +133,7 @@ class TrailerTest {
     void ensureSizeCanBeSetInFoot() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("XL")
                 .isCraneable(true)
@@ -149,7 +149,7 @@ class TrailerTest {
     void ensureWeightCanBeSetInTons() {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("XL")
                 .isCraneable(true)
@@ -184,7 +184,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
-                    .withNumberAndIdentification("MSKU1806510")
+                    .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                     .isReefer(false)
                     .withSize(15.5, LengthUnit.METRE)
                     .isCraneable(true)
@@ -193,7 +193,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
-                    .withNumberAndIdentification("MSKU1806510")
+                    .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                     .isReefer(false)
                     .withType("XL")
                     .isCraneable(true)
@@ -202,7 +202,7 @@ class TrailerTest {
         assertThrows(IllegalStateException.class,
             () ->
                 Trailer.newBuilder()
-                    .withNumberAndIdentification("MSKU1806510")
+                    .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                     .isReefer(false)
                     .withType("XL")
                     .withSize(15.5, LengthUnit.METRE)
@@ -214,7 +214,7 @@ class TrailerTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         Trailer trailer = Trailer.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(70.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(65.0, MassUnit.KILOGRAM)
                 .withWeightTare(70.0, MassUnit.KILOGRAM)

@@ -20,7 +20,7 @@ class SwapBodyTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         SwapBody swapBody = SwapBody.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
                 .withWeightTare(2400.0, MassUnit.KILOGRAM)
@@ -52,7 +52,7 @@ class SwapBodyTest {
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         SwapBody.newBuilder()
-            .withNumberAndIdentification("MSKU1806510")
+            .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
             .isReefer(false)
             .withType("Open Top")
             .withSize(21.58, LengthUnit.FOOT)
@@ -65,7 +65,7 @@ class SwapBodyTest {
     void ensureConditionCanBeSetAsLoadingUnitCondition() {
 
         SwapBody swapBody = SwapBody.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("Open Top")
                 .withSize(21.58, LengthUnit.FOOT)
@@ -81,7 +81,7 @@ class SwapBodyTest {
     void ensureCanBeCopied() {
 
         SwapBody swapBody = SwapBody.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
                 .withWeightTare(2400.0, MassUnit.KILOGRAM)
@@ -115,7 +115,7 @@ class SwapBodyTest {
     void ensureSpecialCharactersInNumberAreIgnored() {
 
         SwapBody swapBody = SwapBody.newBuilder()
-                .withNumberAndIdentification("MSKU 180651-0")
+                .withNumberAndIdentification("MSKU 180651-0", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("Open Top")
                 .withSize(21.58, LengthUnit.FOOT)
@@ -131,7 +131,7 @@ class SwapBodyTest {
     void ensureSizeCanBeSetInMetre() {
 
         SwapBody swapBody = SwapBody.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("Open Top")
                 .withSize(6.58, LengthUnit.METRE)
@@ -147,7 +147,7 @@ class SwapBodyTest {
     void ensureWeightCanBeSetInTons() {
 
         SwapBody swapBody = SwapBody.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .isReefer(false)
                 .withType("Open Top")
                 .withSize(6.58, LengthUnit.METRE)
@@ -182,7 +182,7 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.newBuilder()
-                    .withNumberAndIdentification("MSKU1806510")
+                    .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                     .isReefer(false)
                     .withSize(21.58, LengthUnit.FOOT)
                     .isStackable(true)
@@ -191,7 +191,7 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.newBuilder()
-                    .withNumberAndIdentification("MSKU1806510")
+                    .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                     .isReefer(false)
                     .withType("Open Top")
                     .isStackable(true)
@@ -200,7 +200,7 @@ class SwapBodyTest {
         assertThrows(IllegalStateException.class,
             () ->
                 SwapBody.newBuilder()
-                    .withNumberAndIdentification("MSKU1806510")
+                    .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                     .isReefer(false)
                     .withType("Open Top")
                     .withSize(21.58, LengthUnit.FOOT)
@@ -209,10 +209,31 @@ class SwapBodyTest {
 
 
     @Test
+    void ensureIdentificationCanBeSetInMultipleWays() {
+
+        SwapBody swapBodyWithBic = SwapBody.newBuilder()
+                .withNumberAndIdentification("ABC U 123456 7", LoadingUnitIdentification.BIC)
+                .build();
+
+        SwapBody swapBodyWithIlu = SwapBody.newBuilder()
+                .withNumberAndIdentification("ABCD-123456 2", LoadingUnitIdentification.ILU)
+                .build();
+
+        SwapBody swapBodyWithSoc = SwapBody.newBuilder()
+                .withNumberAndIdentification("XXX U 123456 7", LoadingUnitIdentification.SOC)
+                .build();
+
+        assertEquals("ABCU1234567", swapBodyWithBic.getNumber());
+        assertEquals("ABCD1234562", swapBodyWithIlu.getNumber());
+        assertEquals("U1234567", swapBodyWithSoc.getNumber());
+    }
+
+
+    @Test
     void ensureCanBeParsedToJson() throws IOException {
 
         SwapBody swapBody = SwapBody.newBuilder()
-                .withNumberAndIdentification("MSKU1806510")
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
                 .withWeightTare(2400.0, MassUnit.KILOGRAM)

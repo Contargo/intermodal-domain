@@ -143,14 +143,19 @@ public class Container extends LoadingUnit {
         private Builder() {
         }
 
-        public Builder withNumberAndIdentification(String number) {
+        public Builder withNumberAndIdentification(String number,
+            LoadingUnitIdentification loadingUnitIdentification) {
 
-            number = number.replaceAll("[^A-Za-z0-9]", "");
+            number = checkIdentification(number, loadingUnitIdentification);
 
-            if (!LoadingUnitNumber.isValidBIC(number)) {
-                throw new IllegalArgumentException(String.format(
-                        "Invalid number/identification for LoadingUnit: \'%s\' is not a valid BIC/ILU.", number));
-            }
+            this.number = number;
+            this.identification = number;
+
+            return this;
+        }
+
+
+        Builder withNumberAndIdentification(String number) {
 
             this.number = number;
             this.identification = number;

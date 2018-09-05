@@ -155,7 +155,19 @@ public class SwapBody extends LoadingUnit {
         }
 
 
-        public Builder withNumberAndIdentification(String number) {
+        public Builder withNumberAndIdentification(String number,
+            LoadingUnitIdentification loadingUnitIdentification) {
+
+            number = checkIdentification(number, loadingUnitIdentification);
+
+            this.number = number;
+            this.identification = number;
+
+            return this;
+        }
+
+
+        Builder withNumberAndIdentification(String number) {
 
             number = number.replaceAll("[^A-Za-z0-9]", "");
 

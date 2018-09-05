@@ -78,6 +78,41 @@ public abstract class LoadingUnit {
      */
     private String operator;
 
+    static String checkIdentification(String number, LoadingUnitIdentification loadingUnitIdentification) {
+
+        final int BIC_LENGTH = 11;
+
+        if (loadingUnitIdentification.equals(LoadingUnitIdentification.BIC)) {
+            number = number.replaceAll("[^A-Za-z0-9]", "");
+
+            if (!LoadingUnitNumber.isValidBIC(number)) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid number/identification for LoadingUnit: \'%s\' is not a valid BIC.", number));
+            }
+        } else if (loadingUnitIdentification.equals(LoadingUnitIdentification.SOC)) {
+            number = number.replaceAll("[^A-Za-z0-9]", "");
+
+            if (!LoadingUnitNumber.isSOC(number)) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid number/identification for LoadingUnit: \'%s\' is not a SOC id.", number));
+            }
+
+            if (number.length() == BIC_LENGTH) {
+                number = number.substring(3);
+            }
+        } else if (loadingUnitIdentification.equals(LoadingUnitIdentification.ILU)) {
+            number = number.replaceAll("[^A-Za-z0-9]", "");
+
+            if (!LoadingUnitNumber.isValidILU(number)) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid number/identification for LoadingUnit: \'%s\' is not a valid ILU.", number));
+            }
+        }
+
+        return number;
+    }
+
+
     void setIdentification(String identification) {
 
         this.identification = identification;
