@@ -65,8 +65,7 @@ public class ProcessingBarge {
      * intérieure sur le Rhin): european treaty for transport of dangerous goods on the Rhine. (Format: DateTime ISO
      * 8601 inclusive) UTC.
      */
-    @JsonDeserialize(using = InstantJsonDeserializer.class)
-    private Instant adnr;
+    private Boolean adnr;
 
     private List<LoadingListElement> loadingList;
 
@@ -151,8 +150,7 @@ public class ProcessingBarge {
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getAdnr() {
+    public Boolean getAdnr() {
 
         return adnr;
     }
@@ -223,7 +221,7 @@ public class ProcessingBarge {
         private List<Person> passenger = new ArrayList<>();
         private Integer reeferConnections;
         private Cone cone;
-        private Instant adnr;
+        private Boolean adnr;
         private List<LoadingListElement> loadingList;
 
         private Builder() {
@@ -293,9 +291,9 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withAdnr(Instant instant) {
+        public Builder withAdnr(Boolean adnr) {
 
-            this.adnr = instant;
+            this.adnr = adnr;
 
             return this;
         }

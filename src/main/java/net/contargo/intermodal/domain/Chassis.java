@@ -38,7 +38,7 @@ public class Chassis {
     private String numberPlate;
 
     /**
-     * Format: DateTime ISO 8601
+     * Validity Date in DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      *
      * @name_english  Ministry of Transport Test
      * @name_german  Hauptuntersuchung
@@ -261,9 +261,9 @@ public class Chassis {
         }
 
 
-        public Builder withMinistryOfTransportTest(Instant instant) {
+        public Builder withMinistryOfTransportTest(Instant validityDate) {
 
-            this.mot = instant;
+            this.mot = validityDate;
 
             return this;
         }

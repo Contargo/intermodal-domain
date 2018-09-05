@@ -31,6 +31,8 @@ public class Driver extends Person {
     private String id;
 
     /**
+     * Validity Date in DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     *
      * @definition_german  ADR-Schulungsbescheinigung (Format: DateTime ISO 8601 inclusive UTC) ist ein europäischer
      *                     Gefahrgutführerschein für internationale Beförderung gefährlicher Güter auf der Straße.
      * @definition_english  ADR (Format: DateTime ISO 8601 inclusive UTC) is a European certificate needed for the
@@ -40,7 +42,7 @@ public class Driver extends Person {
     private Instant adr;
 
     /**
-     * DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     * Validity Date in DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
     private Instant moduleEntry95;
@@ -125,7 +127,7 @@ public class Driver extends Person {
     public static class License {
 
         /**
-         * format: DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+         * Validity Date in DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
          */
         @JsonDeserialize(using = InstantJsonDeserializer.class)
         private Instant validity;
@@ -187,10 +189,10 @@ public class Driver extends Person {
         }
 
 
-        public Builder withLicense(String number, Instant validity) {
+        public Builder withLicense(String number, Instant validityDate) {
 
             License license = new License();
-            license.validity = validity;
+            license.validity = validityDate;
             license.number = number;
             this.license = license;
 
@@ -246,17 +248,17 @@ public class Driver extends Person {
         }
 
 
-        public Builder withAdr(Instant instant) {
+        public Builder withAdr(Instant validityDate) {
 
-            this.adr = instant;
+            this.adr = validityDate;
 
             return this;
         }
 
 
-        public Builder withModuleEntry95(Instant instant) {
+        public Builder withModuleEntry95(Instant validityDate) {
 
-            this.moduleEntry95 = instant;
+            this.moduleEntry95 = validityDate;
 
             return this;
         }

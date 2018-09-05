@@ -21,6 +21,8 @@ import java.time.LocalDate;
 public class TrainDriver extends Person {
 
     /**
+     * Validity Date in DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     *
      * @definition_german  RID-Schulungsbescheinigung (Format: DateTime ISO 8601 inclusive UTC) ist ein europäischer
      *                     Gefahrgutführerschein für internationale Beförderung gefährlicher Güter per Schienenverkehr.
      * @definition_english  RID (Format: DateTime ISO 8601 inclusive UTC) is a European certificate needed for the

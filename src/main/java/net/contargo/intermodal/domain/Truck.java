@@ -40,7 +40,7 @@ public class Truck {
     private Country country;
 
     /**
-     * Format: DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     * Validity Date in DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
      *
      * @name_english  Ministry of Transport test
      * @name_german  Hauptuntersuchung
@@ -257,9 +257,9 @@ public class Truck {
         }
 
 
-        public Builder withMinistryOfTransportTest(Instant instant) {
+        public Builder withMinistryOfTransportTest(Instant validityDate) {
 
-            this.mot = instant;
+            this.mot = validityDate;
 
             return this;
         }

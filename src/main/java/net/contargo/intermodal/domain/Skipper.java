@@ -21,6 +21,8 @@ import java.time.LocalDate;
 public class Skipper extends Person {
 
     /**
+     * Validity Date in DateTime ISO 8601 inclusive UTC (yyyy-MM-dd'T'HH:mm:ss.SSSX).
+     *
      * @definition_german  ADNR-Schulungsbescheinigung (Format: DateTime ISO 8601 inclusive UTC) ist ein
      *                     Gefahrgutführerschein für internationale Beförderung gefährlicher Güter auf Wasserstraßen.
      *                     Das ADNR gilt nicht für Seeschiffe auf Seeschifffahrtsstraßen.
@@ -156,9 +158,9 @@ public class Skipper extends Person {
         }
 
 
-        public Builder withAdnr(Instant instant) {
+        public Builder withAdnr(Instant validityDate) {
 
-            this.adnr = instant;
+            this.adnr = validityDate;
 
             return this;
         }

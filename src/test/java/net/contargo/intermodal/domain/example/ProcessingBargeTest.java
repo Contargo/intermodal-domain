@@ -31,7 +31,7 @@ class ProcessingBargeTest {
                 .withPassengers(Arrays.asList(TestDataCreator.createPassenger(), TestDataCreator.createPassenger()))
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
-                .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
+                .withAdnr(true)
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010302")
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010304")
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010306")
@@ -44,7 +44,7 @@ class ProcessingBargeTest {
         assertEquals(2, processingBarge.getPassenger().size());
         assertEquals(12, processingBarge.getReeferConnections().intValue());
         assertEquals(Cone.ONE, processingBarge.getCone());
-        assertEquals("2020-06-01T12:00:00Z", processingBarge.getAdnr().toString());
+        assertTrue(processingBarge.getAdnr());
         assertEquals(3, processingBarge.getLoadingList().size());
         assertEquals("0010302", processingBarge.getLoadingList().get(0).getStoragePosition());
         assertNotNull(processingBarge.getLoadingList().get(0).getLuOrder());
@@ -62,7 +62,7 @@ class ProcessingBargeTest {
                 .withPassengers(Arrays.asList(TestDataCreator.createPassenger(), TestDataCreator.createPassenger()))
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
-                .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
+                .withAdnr(true)
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010302")
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010304")
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010306")
@@ -77,7 +77,7 @@ class ProcessingBargeTest {
         assertEquals(2, copiedProcessingBarge.getPassenger().size());
         assertEquals(12, copiedProcessingBarge.getReeferConnections().intValue());
         assertEquals(Cone.ONE, copiedProcessingBarge.getCone());
-        assertEquals("2020-06-01T12:00:00Z", copiedProcessingBarge.getAdnr().toString());
+        assertTrue(copiedProcessingBarge.getAdnr());
         assertEquals(3, copiedProcessingBarge.getLoadingList().size());
         assertEquals("0010302", copiedProcessingBarge.getLoadingList().get(0).getStoragePosition());
         assertNotNull(copiedProcessingBarge.getLoadingList().get(0).getLuOrder());
@@ -95,7 +95,7 @@ class ProcessingBargeTest {
                 .withPassengers(Arrays.asList(TestDataCreator.createSkipper(), TestDataCreator.createSkipper()))
                 .withReeferConnections(12)
                 .withCone(Cone.ONE)
-                .withAdnr(Instant.parse("2020-06-01T12:00:00Z"))
+                .withAdnr(true)
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010302")
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010304")
                 .withLuOrder(TestDataCreator.createLUOrder(), "0010306")
@@ -114,7 +114,7 @@ class ProcessingBargeTest {
         assertEquals(2, deserialize.getPassenger().size());
         assertEquals(12, deserialize.getReeferConnections().intValue());
         assertEquals(Cone.ONE, deserialize.getCone());
-        assertEquals("2020-06-01T12:00:00Z", deserialize.getAdnr().toString());
+        assertTrue(deserialize.getAdnr());
         assertEquals(3, deserialize.getLoadingList().size());
         assertEquals("0010302", deserialize.getLoadingList().get(0).getStoragePosition());
         assertNotNull(deserialize.getLoadingList().get(0).getLuOrder());
