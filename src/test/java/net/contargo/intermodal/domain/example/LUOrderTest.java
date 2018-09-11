@@ -126,20 +126,6 @@ class LUOrderTest {
 
 
     @Test
-    void ensureCanBeCreatedWithMinimumRequirementsWithStepBuilder() {
-
-        LUOrder.newStepBuilder()
-            .withLoadingUnit(TestDataCreator.createContainer())
-            .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
-            .withWeightNetto(21000.0, MassUnit.KILOGRAM)
-            .withWeightTare(2300.0, MassUnit.KILOGRAM)
-            .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
-            .withWasteIndication(TestDataCreator.createWaste())
-            .buildAndValidate();
-    }
-
-
-    @Test
     void ensureCanBeCopied() {
 
         List<Seal> seals = new ArrayList<>();

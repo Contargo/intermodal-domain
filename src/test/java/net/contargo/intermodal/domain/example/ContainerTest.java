@@ -81,19 +81,6 @@ class ContainerTest {
 
 
     @Test
-    void ensureCanBeCreatedWithMinimumRequirements() {
-
-        Container.newBuilder()
-            .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
-            .isReefer(false)
-            .withSizeType("45G0")
-            .withType("General purpose container (without ventilation)")
-            .withSize(40.0, LengthUnit.FOOT)
-            .buildAndValidate();
-    }
-
-
-    @Test
     void ensureCanBeCreatedWithMinimumRequirementsWithStepBuilder() {
 
         Container.newStepBuilder()

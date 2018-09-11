@@ -23,13 +23,45 @@ class SwapBodyTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
                 .withType("Open Top")
                 .withSize(21.58, LengthUnit.FOOT)
                 .isStackable(true)
+                .buildAndValidate();
+
+        assertEquals("MSKU1806510", swapBody.getIdentification());
+        assertEquals("MSKU1806510", swapBody.getNumber());
+        assertEquals(LoadingUnitCategory.SWAP_BODY, swapBody.getCategory());
+        assertNotNull(swapBody.getWeight());
+        assertEquals(30480.0, swapBody.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(28080.0, swapBody.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(2400.0, swapBody.getWeightTare().getValue().doubleValue());
+        assertEquals("i.O.", swapBody.getCondition());
+        assertFalse(swapBody.isReefer());
+        assertEquals("Contargo", swapBody.getOperator());
+        assertEquals("Open Top", swapBody.getType());
+        assertEquals(21.58, swapBody.getSize().getValue().doubleValue());
+        assertTrue(swapBody.isStackable());
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        SwapBody swapBody = SwapBody.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("Open Top")
+                .withSize(21.58, LengthUnit.FOOT)
+                .isStackable(true)
+                .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withCondition("i.O.")
+                .withOperator("Contargo")
                 .buildAndValidate();
 
         assertEquals("MSKU1806510", swapBody.getIdentification());
@@ -74,6 +106,17 @@ class SwapBodyTest {
                 .buildAndValidate();
 
         assertEquals("UNCHECKED", swapBody.getCondition());
+
+        SwapBody swapBodyStep = SwapBody.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("Open Top")
+                .withSize(21.58, LengthUnit.FOOT)
+                .isStackable(true)
+                .withCondition(LoadingUnitCondition.UNCHECKED)
+                .buildAndValidate();
+
+        assertEquals("UNCHECKED", swapBodyStep.getCondition());
     }
 
 
@@ -84,7 +127,7 @@ class SwapBodyTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -140,6 +183,17 @@ class SwapBodyTest {
 
         assertEquals(21.58, swapBody.getSize().getValue().doubleValue(), 0.1);
         assertEquals("ft", swapBody.getSize().getUnit().toString());
+
+        SwapBody swapBodyStep = SwapBody.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("Open Top")
+                .withSize(6.58, LengthUnit.METRE)
+                .isStackable(true)
+                .buildAndValidate();
+
+        assertEquals(21.58, swapBodyStep.getSize().getValue().doubleValue(), 0.1);
+        assertEquals("ft", swapBodyStep.getSize().getUnit().toString());
     }
 
 
@@ -154,7 +208,7 @@ class SwapBodyTest {
                 .isStackable(true)
                 .withWeightBruttoMax(30.480, MassUnit.TON)
                 .withWeightNettoMax(28.080, MassUnit.TON)
-                .withWeightTare(2.400, MassUnit.TON)
+                .withWeightTara(2.400, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(30480.0, swapBody.getWeightBruttoMax().getValue().doubleValue(), 0.1);
@@ -164,6 +218,25 @@ class SwapBodyTest {
         assertEquals("kg", swapBody.getWeightBruttoMax().getUnit().toString());
         assertEquals("kg", swapBody.getWeightNettoMax().getUnit().toString());
         assertEquals("kg", swapBody.getWeightTare().getUnit().toString());
+
+        SwapBody swapBodyStep = SwapBody.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("Open Top")
+                .withSize(6.58, LengthUnit.METRE)
+                .isStackable(true)
+                .withWeightBruttoMax(30.480, MassUnit.TON)
+                .withWeightNettoMax(28.080, MassUnit.TON)
+                .withWeightTara(2.400, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(30480.0, swapBodyStep.getWeightBruttoMax().getValue().doubleValue(), 0.1);
+        assertEquals(28080.0, swapBodyStep.getWeightNettoMax().getValue().doubleValue(), 0.1);
+        assertEquals(2400.0, swapBodyStep.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", swapBodyStep.getWeightBruttoMax().getUnit().toString());
+        assertEquals("kg", swapBodyStep.getWeightNettoMax().getUnit().toString());
+        assertEquals("kg", swapBodyStep.getWeightTare().getUnit().toString());
     }
 
 
@@ -236,7 +309,7 @@ class SwapBodyTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
