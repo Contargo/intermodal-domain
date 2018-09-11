@@ -88,6 +88,19 @@ public class RegistrationVehicle {
     }
 
 
+    /**
+     * Starts a new step builder pattern for {@link RegistrationVehicle}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  ITruck
+     */
+    public static ITruck newStepBuilder() {
+
+        return new StepBuilder();
+    }
+
+
     public Truck getTruck() {
 
         return truck;
@@ -141,6 +154,47 @@ public class RegistrationVehicle {
         }
 
         return "";
+    }
+
+    public interface IBuild {
+
+        RegistrationVehicle build();
+
+
+        RegistrationVehicle buildAndValidate();
+
+
+        IBuild withChassis(Chassis chassis);
+    }
+
+    public interface ILuOrder {
+
+        IBuild withLuOrder(LUOrder luOrder);
+    }
+
+    public interface IDeliveryTime {
+
+        ILuOrder withDeliveryTime(Instant deliveryTime);
+    }
+
+    public interface IHaulierRealizing {
+
+        IDeliveryTime withHaulierRealizing(String haulierRealizing);
+    }
+
+    public interface IHaulierClient {
+
+        IHaulierRealizing withHaulierClient(String haulierClient);
+    }
+
+    public interface IDriver {
+
+        IHaulierClient withDriver(Driver driver);
+    }
+
+    public interface ITruck {
+
+        IDriver withTruck(Truck truck);
     }
 
     public static final class Builder {
@@ -238,6 +292,127 @@ public class RegistrationVehicle {
          *
          * @return  new {@link RegistrationVehicle} with attributes specified in {@link Builder}
          */
+        public RegistrationVehicle buildAndValidate() {
+
+            RegistrationVehicle registrationVehicle = this.build();
+
+            MinimumRequirementValidator.validate(registrationVehicle);
+
+            return registrationVehicle;
+        }
+    }
+
+    public static final class StepBuilder implements ILuOrder, IDeliveryTime, IHaulierRealizing, IHaulierClient,
+        IDriver, ITruck, IBuild {
+
+        @NotNull(message = "luOrder is part of minimum requirement and must not be null")
+        private LUOrder luOrder;
+        @NotNull(message = "deliveryTime is part of minimum requirement and must not be null")
+        private Instant deliveryTime;
+        @NotNull(message = "haulierRealizing is part of minimum requirement and must not be null")
+        private String haulierRealizing;
+        @NotNull(message = "haulierClient is part of minimum requirement and must not be null")
+        private String haulierClient;
+        @NotNull(message = "driver is part of minimum requirement and must not be null")
+        private Driver driver;
+        private Chassis chassis;
+        @NotNull(message = "truck is part of minimum requirement and must not be null")
+        private Truck truck;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild withLuOrder(LUOrder val) {
+
+            luOrder = val;
+
+            return this;
+        }
+
+
+        @Override
+        public ILuOrder withDeliveryTime(Instant val) {
+
+            deliveryTime = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IDeliveryTime withHaulierRealizing(String val) {
+
+            haulierRealizing = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IHaulierRealizing withHaulierClient(String val) {
+
+            haulierClient = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IHaulierClient withDriver(Driver val) {
+
+            driver = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withChassis(Chassis val) {
+
+            chassis = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IDriver withTruck(Truck val) {
+
+            truck = val;
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link RegistrationVehicle} without input validation.
+         *
+         * @return  new {@link RegistrationVehicle} with attributes specified in {@link Builder}
+         */
+        @Override
+        public RegistrationVehicle build() {
+
+            RegistrationVehicle registrationVehicle = new RegistrationVehicle();
+            registrationVehicle.haulierClient = this.haulierClient;
+            registrationVehicle.chassis = this.chassis;
+            registrationVehicle.deliveryTime = this.deliveryTime;
+            registrationVehicle.truck = this.truck;
+            registrationVehicle.luOrder = this.luOrder;
+            registrationVehicle.haulierRealizing = this.haulierRealizing;
+            registrationVehicle.driver = this.driver;
+
+            return registrationVehicle;
+        }
+
+
+        /**
+         * Validates the input and builds {@link RegistrationVehicle}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link RegistrationVehicle}.
+         *
+         * @return  new {@link RegistrationVehicle} with attributes specified in {@link Builder}
+         */
+        @Override
         public RegistrationVehicle buildAndValidate() {
 
             RegistrationVehicle registrationVehicle = this.build();

@@ -42,6 +42,29 @@ class RegistrationVehicleTest {
 
 
     @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        RegistrationVehicle registrationVehicle = RegistrationVehicle.newStepBuilder()
+                .withTruck(TestDataCreator.createTruck())
+                .withDriver(TestDataCreator.createDriver())
+                .withHaulierClient("haulier client")
+                .withHaulierRealizing("haulier realizing")
+                .withDeliveryTime(Instant.parse("2018-05-14T12:30:00Z"))
+                .withLuOrder(TestDataCreator.createLUOrder())
+                .withChassis(TestDataCreator.createChassis())
+                .buildAndValidate();
+
+        assertNotNull(registrationVehicle.getTruck());
+        assertNotNull(registrationVehicle.getChassis());
+        assertNotNull(registrationVehicle.getDriver());
+        assertEquals("haulier client", registrationVehicle.getHaulierClient());
+        assertEquals("haulier realizing", registrationVehicle.getHaulierRealizing());
+        assertEquals("2018-05-14T12:30:00Z", registrationVehicle.getDeliveryTime().toString());
+        assertNotNull(registrationVehicle.getLuOrder());
+    }
+
+
+    @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         RegistrationVehicle.newBuilder()
