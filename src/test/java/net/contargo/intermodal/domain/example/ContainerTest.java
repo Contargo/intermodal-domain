@@ -23,7 +23,7 @@ class ContainerTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -59,7 +59,7 @@ class ContainerTest {
                 .withSize(40.0, LengthUnit.FOOT)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .withOperator("Contargo")
                 .buildAndValidate();
@@ -127,7 +127,7 @@ class ContainerTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -195,7 +195,7 @@ class ContainerTest {
                 .withSize(6.58, LengthUnit.METRE)
                 .withWeightBruttoMax(30.48, MassUnit.TON)
                 .withWeightNettoMax(28.08, MassUnit.TON)
-                .withWeightTara(2.4, MassUnit.TON)
+                .withWeightTare(2.4, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(30480.0, container.getWeightBruttoMax().getValue().doubleValue(), 0.1);
@@ -214,7 +214,7 @@ class ContainerTest {
                 .withSize(6.58, LengthUnit.METRE)
                 .withWeightBruttoMax(30.48, MassUnit.TON)
                 .withWeightNettoMax(28.08, MassUnit.TON)
-                .withWeightTara(2.4, MassUnit.TON)
+                .withWeightTare(2.4, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(30480.0, containerStep.getWeightBruttoMax().getValue().doubleValue(), 0.1);
@@ -314,7 +314,7 @@ class ContainerTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")

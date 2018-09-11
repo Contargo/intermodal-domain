@@ -160,7 +160,7 @@ public class SwapBody extends LoadingUnit {
         IBuild withWeightNettoMax(Double weightNettoMax, MassUnit unit);
 
 
-        IBuild withWeightTara(Double weightTara, MassUnit unit);
+        IBuild withWeightTare(Double weightTare, MassUnit unit);
 
 
         /**
@@ -285,7 +285,7 @@ public class SwapBody extends LoadingUnit {
         }
 
 
-        public Builder withWeightTara(Double weightTare, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
@@ -521,7 +521,7 @@ public class SwapBody extends LoadingUnit {
 
 
         @Override
-        public IBuild withWeightTara(Double weightTare, MassUnit unit) {
+        public IBuild withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);

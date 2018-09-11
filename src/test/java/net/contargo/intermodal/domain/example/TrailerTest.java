@@ -50,6 +50,39 @@ class TrailerTest {
 
 
     @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        Trailer trailer = Trailer.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("XL")
+                .withSize(15.5, LengthUnit.METRE)
+                .isCraneable(true)
+                .withWeightBruttoMax(14082.331, MassUnit.KILOGRAM)
+                .withWeightNettoMax(10000.0, MassUnit.KILOGRAM)
+                .withWeightTare(4082.331, MassUnit.KILOGRAM)
+                .withCondition("i.O.")
+                .withOperator("Contargo")
+                .buildAndValidate();
+
+        assertEquals("MSKU1806510", trailer.getIdentification());
+        assertEquals("MSKU1806510", trailer.getNumber());
+        assertEquals(LoadingUnitCategory.TRAILER, trailer.getCategory());
+        assertNotNull(trailer.getWeight());
+        assertEquals(14082.331, trailer.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(10000.0, trailer.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(4082.331, trailer.getWeightTare().getValue().doubleValue());
+        assertEquals("i.O.", trailer.getCondition());
+        assertFalse(trailer.isReefer());
+        assertEquals("Contargo", trailer.getOperator());
+        assertEquals("XL", trailer.getType());
+
+        assertEquals(15.5, trailer.getSize().getValue().doubleValue());
+        assertTrue(trailer.isCraneable());
+    }
+
+
+    @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         Trailer.newBuilder()
@@ -75,6 +108,17 @@ class TrailerTest {
                 .buildAndValidate();
 
         assertEquals("OK", trailer.getCondition());
+
+        Trailer trailerStep = Trailer.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("XL")
+                .withSize(15.5, LengthUnit.METRE)
+                .isCraneable(true)
+                .withCondition(LoadingUnitCondition.OK)
+                .buildAndValidate();
+
+        assertEquals("OK", trailerStep.getCondition());
     }
 
 
@@ -126,6 +170,17 @@ class TrailerTest {
 
         assertEquals("MSKU1806510", trailer.getNumber());
         assertEquals("MSKU1806510", trailer.getIdentification());
+
+        Trailer trailerStep = Trailer.newStepBuilder()
+                .withNumberAndIdentification("MSKU 180651-0", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("XL")
+                .withSize(15.5, LengthUnit.METRE)
+                .isCraneable(true)
+                .buildAndValidate();
+
+        assertEquals("MSKU1806510", trailerStep.getNumber());
+        assertEquals("MSKU1806510", trailerStep.getIdentification());
     }
 
 
@@ -142,6 +197,17 @@ class TrailerTest {
 
         assertEquals(15.5, trailer.getSize().getValue().doubleValue(), 0.1);
         assertEquals("m", trailer.getSize().getUnit().toString());
+
+        Trailer trailerStep = Trailer.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("XL")
+                .withSize(50.853, LengthUnit.FOOT)
+                .isCraneable(true)
+                .buildAndValidate();
+
+        assertEquals(15.5, trailerStep.getSize().getValue().doubleValue(), 0.1);
+        assertEquals("m", trailerStep.getSize().getUnit().toString());
     }
 
 
@@ -166,6 +232,25 @@ class TrailerTest {
         assertEquals("kg", trailer.getWeightBruttoMax().getUnit().toString());
         assertEquals("kg", trailer.getWeightNettoMax().getUnit().toString());
         assertEquals("kg", trailer.getWeightTare().getUnit().toString());
+
+        Trailer trailerStep = Trailer.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withType("XL")
+                .withSize(15.5, LengthUnit.METRE)
+                .isCraneable(true)
+                .withWeightBruttoMax(14.082, MassUnit.TON)
+                .withWeightNettoMax(10.000, MassUnit.TON)
+                .withWeightTare(4.082, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(14082.0, trailerStep.getWeightBruttoMax().getValue().doubleValue(), 0.1);
+        assertEquals(10000.0, trailerStep.getWeightNettoMax().getValue().doubleValue(), 0.1);
+        assertEquals(4082.0, trailerStep.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", trailerStep.getWeightBruttoMax().getUnit().toString());
+        assertEquals("kg", trailerStep.getWeightNettoMax().getUnit().toString());
+        assertEquals("kg", trailerStep.getWeightTare().getUnit().toString());
     }
 
 

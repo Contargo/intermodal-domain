@@ -58,6 +58,14 @@ public class Trailer extends LoadingUnit {
         // OK
     }
 
+
+    private Trailer(StepBuilder stepBuilder) {
+
+        type = stepBuilder.type;
+        size = stepBuilder.size;
+        craneable = stepBuilder.craneable;
+    }
+
     /**
      * Creates a new builder for {@link Trailer}.
      *
@@ -86,6 +94,19 @@ public class Trailer extends LoadingUnit {
             .withSize(trailer.getSize())
             .isCraneable(trailer.isCraneable())
             .withWeight(trailer.getWeight());
+    }
+
+
+    /**
+     * Starts a new step builder pattern for {@link Trailer}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  INumber
+     */
+    public static INumber newStepBuilder() {
+
+        return new StepBuilder();
     }
 
 
@@ -126,6 +147,71 @@ public class Trailer extends LoadingUnit {
         }
 
         return "";
+    }
+
+    public interface IBuild {
+
+        IBuild withCondition(String condition);
+
+
+        IBuild withCondition(LoadingUnitCondition loadingUnitCondition);
+
+
+        IBuild withOperator(String operatorName);
+
+
+        IBuild withWeightBruttoMax(Double weightBruttoMax, MassUnit unit);
+
+
+        IBuild withWeightNettoMax(Double weightNettoMax, MassUnit unit);
+
+
+        IBuild withWeightTare(Double weightTare, MassUnit unit);
+
+
+        /**
+         * Builds {@link Trailer} without input validation.
+         *
+         * @return  new {@link Trailer} with attributes specified in {@link StepBuilder}
+         */
+        Trailer build();
+
+
+        /**
+         * Validates the input and builds {@link Trailer}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Trailer}.
+         *
+         * @return  new {@link Trailer} with attributes specified in {@link Trailer}
+         */
+        Trailer buildAndValidate();
+    }
+
+    public interface INumber {
+
+        IReefer withNumberAndIdentification(String number);
+
+
+        IReefer withNumberAndIdentification(String number, LoadingUnitIdentification loadingUnitIdentification);
+    }
+
+    public interface IReefer {
+
+        IType isReefer(Boolean isReefer);
+    }
+
+    public interface ICraneable {
+
+        IBuild isCraneable(Boolean craneable);
+    }
+
+    public interface ISize {
+
+        ICraneable withSize(Double size, LengthUnit unit);
+    }
+
+    public interface IType {
+
+        ISize withType(String val);
     }
 
     public static final class Builder {
@@ -333,6 +419,211 @@ public class Trailer extends LoadingUnit {
             MinimumRequirementValidator.validate(trailer);
 
             return trailer;
+        }
+    }
+
+    public static final class StepBuilder implements INumber, IReefer, ICraneable, ISize, IType, IBuild {
+
+        private String identification;
+        private String number;
+        private Quantity<Mass> weightBruttoMax;
+        private Quantity<Mass> weightNettoMax;
+        private Quantity<Mass> weightTare;
+        private String condition;
+        private boolean reefer;
+        private String operator;
+        @NotNull(message = "craneable is part of minimum requirement and must not be null")
+        private Boolean craneable;
+        @NotNull(message = "size is part of minimum requirement and must not be null")
+        private Quantity<Length> size;
+        @NotNull(message = "type is part of minimum requirement and must not be null")
+        private String type;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild isCraneable(Boolean craneable) {
+
+            this.craneable = craneable;
+
+            return this;
+        }
+
+
+        @Override
+        public ICraneable withSize(Double size, LengthUnit unit) {
+
+            if (unit.equals(LengthUnit.METRE)) {
+                this.size = Quantities.getQuantity(size, METRE);
+            } else if (unit.equals(LengthUnit.FOOT)) {
+                this.size = UnitConverter.footToMetre(size);
+            }
+
+            return this;
+        }
+
+
+        @Override
+        public ISize withType(String type) {
+
+            this.type = type;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withCondition(String condition) {
+
+            this.condition = condition;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withCondition(LoadingUnitCondition loadingUnitCondition) {
+
+            this.condition = loadingUnitCondition.name();
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withOperator(String operatorName) {
+
+            this.operator = operatorName;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withWeightBruttoMax(Double weightBruttoMax, MassUnit unit) {
+
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightBruttoMax = Quantities.getQuantity(weightBruttoMax, KILOGRAM);
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightBruttoMax = UnitConverter.tonToKilogram(weightBruttoMax);
+            }
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withWeightNettoMax(Double weightNettoMax, MassUnit unit) {
+
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightNettoMax = Quantities.getQuantity(weightNettoMax, KILOGRAM);
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightNettoMax = UnitConverter.tonToKilogram(weightNettoMax);
+            }
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withWeightTare(Double weightTare, MassUnit unit) {
+
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightTare = UnitConverter.tonToKilogram(weightTare);
+            }
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link Trailer} without input validation.
+         *
+         * @return  new {@link Trailer} with attributes specified in {@link Builder}
+         */
+        @Override
+        public Trailer build() {
+
+            Trailer trailer = new Trailer();
+            trailer.setIdentification(identification);
+            trailer.setNumber(number);
+            trailer.setCondition(condition);
+            trailer.setReefer(reefer);
+            trailer.setOperator(operator);
+            trailer.type = this.type;
+            trailer.size = this.size;
+            trailer.craneable = this.craneable;
+
+            if (weightBruttoMax != null || weightNettoMax != null) {
+                Weight weight = new Weight();
+                weight.setBruttoMax(weightBruttoMax);
+                weight.setNettoMax(weightNettoMax);
+                weight.setTare(weightTare);
+                trailer.setWeight(weight);
+            }
+
+            trailer.setCategory(LoadingUnitCategory.TRAILER);
+
+            return trailer;
+        }
+
+
+        /**
+         * Validates the input and builds {@link Trailer}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Trailer}.
+         *
+         * @return  new {@link Trailer} with attributes specified in {@link Builder}
+         */
+        @Override
+        public Trailer buildAndValidate() {
+
+            Trailer trailer = this.build();
+
+            MinimumRequirementValidator.validate(trailer);
+
+            return trailer;
+        }
+
+
+        @Override
+        public IReefer withNumberAndIdentification(String number) {
+
+            number = number.replaceAll("[^A-Za-z0-9]", "");
+
+            if (!LoadingUnitNumber.isValidBIC(number)) {
+                throw new IllegalArgumentException(String.format(
+                        "Invalid number/identification for LoadingUnit: \'%s\' is not a valid BIC/ILU.", number));
+            }
+
+            this.number = number;
+            this.identification = number;
+
+            return this;
+        }
+
+
+        @Override
+        public IReefer withNumberAndIdentification(String number,
+            LoadingUnitIdentification loadingUnitIdentification) {
+
+            number = checkIdentification(number, loadingUnitIdentification);
+
+            this.number = number;
+            this.identification = number;
+
+            return this;
+        }
+
+
+        @Override
+        public IType isReefer(Boolean isReefer) {
+
+            this.reefer = isReefer;
+
+            return this;
         }
     }
 }

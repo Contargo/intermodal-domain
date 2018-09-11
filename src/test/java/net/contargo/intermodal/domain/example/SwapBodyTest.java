@@ -23,7 +23,7 @@ class SwapBodyTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -59,7 +59,7 @@ class SwapBodyTest {
                 .isStackable(true)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .withOperator("Contargo")
                 .buildAndValidate();
@@ -127,7 +127,7 @@ class SwapBodyTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -208,7 +208,7 @@ class SwapBodyTest {
                 .isStackable(true)
                 .withWeightBruttoMax(30.480, MassUnit.TON)
                 .withWeightNettoMax(28.080, MassUnit.TON)
-                .withWeightTara(2.400, MassUnit.TON)
+                .withWeightTare(2.400, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(30480.0, swapBody.getWeightBruttoMax().getValue().doubleValue(), 0.1);
@@ -227,7 +227,7 @@ class SwapBodyTest {
                 .isStackable(true)
                 .withWeightBruttoMax(30.480, MassUnit.TON)
                 .withWeightNettoMax(28.080, MassUnit.TON)
-                .withWeightTara(2.400, MassUnit.TON)
+                .withWeightTare(2.400, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(30480.0, swapBodyStep.getWeightBruttoMax().getValue().doubleValue(), 0.1);
@@ -309,7 +309,7 @@ class SwapBodyTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withWeightTare(2400.0, MassUnit.KILOGRAM)
                 .withCondition("i.O.")
                 .isReefer(false)
                 .withOperator("Contargo")

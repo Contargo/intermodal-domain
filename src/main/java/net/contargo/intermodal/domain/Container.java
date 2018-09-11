@@ -156,7 +156,7 @@ public class Container extends LoadingUnit {
         IBuild withWeightNettoMax(Double weightNettoMax, MassUnit unit);
 
 
-        IBuild withWeightTara(Double weightTara, MassUnit unit);
+        IBuild withWeightTare(Double weightTare, MassUnit unit);
 
 
         /**
@@ -294,7 +294,7 @@ public class Container extends LoadingUnit {
         }
 
 
-        public Builder withWeightTara(Double weightTare, MassUnit unit) {
+        public Builder withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
                 this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
@@ -439,7 +439,7 @@ public class Container extends LoadingUnit {
         private String number;
         private Quantity<Mass> weightBruttoMax;
         private Quantity<Mass> weightNettoMax;
-        private Quantity<Mass> weightTara;
+        private Quantity<Mass> weightTare;
         private String condition;
         private String operator;
 
@@ -538,12 +538,12 @@ public class Container extends LoadingUnit {
 
 
         @Override
-        public IBuild withWeightTara(Double weightTara, MassUnit unit) {
+        public IBuild withWeightTare(Double weightTare, MassUnit unit) {
 
             if (unit.equals(MassUnit.KILOGRAM)) {
-                this.weightTara = Quantities.getQuantity(weightTara, KILOGRAM);
+                this.weightTare = Quantities.getQuantity(weightTare, KILOGRAM);
             } else if (unit.equals(MassUnit.TON)) {
-                this.weightTara = UnitConverter.tonToKilogram(weightTara);
+                this.weightTare = UnitConverter.tonToKilogram(weightTare);
             }
 
             return this;
@@ -570,7 +570,7 @@ public class Container extends LoadingUnit {
                 Weight weight = new Weight();
                 weight.setBruttoMax(weightBruttoMax);
                 weight.setNettoMax(weightNettoMax);
-                weight.setTare(weightTara);
+                weight.setTare(weightTare);
                 container.setWeight(weight);
             }
 
