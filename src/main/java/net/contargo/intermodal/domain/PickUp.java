@@ -81,6 +81,12 @@ public class PickUp {
     }
 
 
+    public static ILocation newStepBuilder() {
+
+        return new StepBuilder();
+    }
+
+
     public String getBillingReference() {
 
         return billingReference;
@@ -130,6 +136,41 @@ public class PickUp {
         }
 
         return "";
+    }
+
+    public interface IBuild {
+
+        PickUp build();
+
+
+        PickUp buildAndValidate();
+
+
+        IBuild withLatest(Instant latest);
+
+
+        IBuild withBillingReference(String billingReference);
+
+
+        IBuild withLoadingUnit(String reference, Boolean isEmpty);
+
+
+        IBuild withLoadingUnitOperator(Operator operator);
+    }
+
+    public interface IMot {
+
+        IBuild withMeansOfTransport(MeansOfTransport meansOfTransport);
+    }
+
+    public interface IEarliest {
+
+        IMot withEarliest(Instant earliest);
+    }
+
+    public interface ILocation {
+
+        IEarliest withLocation(Location location);
     }
 
     public static final class Builder {
@@ -234,6 +275,122 @@ public class PickUp {
          *
          * @return  new {@link PickUp} with attributes specified in {@link Builder}
          */
+        public PickUp buildAndValidate() {
+
+            PickUp pickUp = this.build();
+
+            MinimumRequirementValidator.validate(pickUp);
+
+            return pickUp;
+        }
+    }
+
+    public static final class StepBuilder implements IMot, IEarliest, ILocation, IBuild {
+
+        @NotNull(message = "mot is part of minimum requirement and must not be null")
+        private MeansOfTransport mot;
+        private Instant latest;
+        @NotNull(message = "earliest is part of minimum requirement and must not be null")
+        private Instant earliest;
+        private String billingReference;
+        private Transport.LoadingUnit loadingUnit = new Transport.LoadingUnit();
+        @NotNull(message = "location is part of minimum requirement and must not be null")
+        private Location location;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild withMeansOfTransport(MeansOfTransport meansOfTransport) {
+
+            mot = meansOfTransport;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withLatest(Instant latest) {
+
+            this.latest = latest;
+
+            return this;
+        }
+
+
+        @Override
+        public IMot withEarliest(Instant earliest) {
+
+            this.earliest = earliest;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withBillingReference(String billingReference) {
+
+            this.billingReference = billingReference;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withLoadingUnit(String reference, Boolean isEmpty) {
+
+            this.loadingUnit.setEmpty(isEmpty);
+            this.loadingUnit.setReference(reference);
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withLoadingUnitOperator(Operator operator) {
+
+            this.loadingUnit.setOperator(operator);
+
+            return this;
+        }
+
+
+        @Override
+        public IEarliest withLocation(Location location) {
+
+            this.location = location;
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link PickUp} without input validation.
+         *
+         * @return  new {@link PickUp} with attributes specified in {@link Builder}
+         */
+        @Override
+        public PickUp build() {
+
+            PickUp pickUp = new PickUp();
+            pickUp.location = this.location;
+            pickUp.loadingUnit = this.loadingUnit;
+            pickUp.billingReference = this.billingReference;
+            pickUp.earliest = this.earliest;
+            pickUp.latest = this.latest;
+            pickUp.mot = this.mot;
+
+            return pickUp;
+        }
+
+
+        /**
+         * Validates the input and builds {@link PickUp}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link PickUp}.
+         *
+         * @return  new {@link PickUp} with attributes specified in {@link Builder}
+         */
+        @Override
         public PickUp buildAndValidate() {
 
             PickUp pickUp = this.build();

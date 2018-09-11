@@ -49,6 +49,36 @@ class PickUpTest {
 
 
     @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        PickUp pickUp = PickUp.newStepBuilder()
+                .withLocation(Location.newBuilder()
+                        .withCity("Ludwigshafen")
+                        .withDesignation("Terminal Ludwigshafen")
+                        .withType("hinterland terminal")
+                        .buildAndValidate())
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withMeansOfTransport(TestDataCreator.createTruckChassisCombination())
+                .withLoadingUnit("12345", false)
+                .withBillingReference("20568097")
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
+                .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
+                .buildAndValidate();
+
+        assertEquals("Ludwigshafen", pickUp.getLocation().getCity());
+        assertEquals("Terminal Ludwigshafen", pickUp.getLocation().getDesignation());
+        assertEquals("hinterland terminal", pickUp.getLocation().getType());
+        assertEquals("12345", pickUp.getLoadingUnit().getReference());
+        assertFalse(pickUp.getLoadingUnit().getEmpty());
+        assertEquals("20568097", pickUp.getBillingReference());
+        assertNotNull(pickUp.getLoadingUnit().getOperator());
+        assertEquals("2018-05-14T11:00:00Z", pickUp.getEarliest().toString());
+        assertEquals("2018-05-14T11:30:00Z", pickUp.getLatest().toString());
+        assertNotNull(pickUp.getMeansOfTransport());
+    }
+
+
+    @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         PickUp.newBuilder()

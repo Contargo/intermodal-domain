@@ -51,6 +51,17 @@ public class DropOff {
         // OK
     }
 
+
+    private DropOff(StepBuilder builder) {
+
+        location = builder.location;
+        loadingUnit = builder.loadingUnit;
+        billingReference = builder.billingReference;
+        earliest = builder.earliest;
+        latest = builder.latest;
+        mot = builder.mot;
+    }
+
     /**
      * Creates a new builder for {@link DropOff}.
      *
@@ -77,6 +88,19 @@ public class DropOff {
             .withEarliest(dropOff.getEarliest())
             .withLatest(dropOff.getLatest())
             .withMeansOfTransport(dropOff.getMot());
+    }
+
+
+    /**
+     * Starts a new step builder pattern for {@link DropOff}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  ILoadingUnit
+     */
+    public static ILocation newStepBuilder() {
+
+        return new StepBuilder();
     }
 
 
@@ -128,6 +152,39 @@ public class DropOff {
         }
 
         return "";
+    }
+
+    public interface IBuild {
+
+        DropOff build();
+
+
+        DropOff buildAndValidate();
+
+
+        IBuild withLatest(Instant latest);
+
+
+        IBuild withEarliest(Instant earliest);
+
+
+        IBuild withBillingReference(String billingReference);
+
+
+        IBuild withLoadingUnit(String reference, Boolean isEmpty);
+
+
+        IBuild withLoadingUnitOperator(Operator operator);
+    }
+
+    public interface ILocation {
+
+        IMot withLocation(Location location);
+    }
+
+    public interface IMot {
+
+        IBuild withMeansOfTransport(MeansOfTransport meansOfTransport);
     }
 
     public static final class Builder {
@@ -232,6 +289,115 @@ public class DropOff {
          *
          * @return  new {@link DropOff} with attributes specified in {@link Builder}
          */
+        public DropOff buildAndValidate() {
+
+            DropOff dropOff = this.build();
+
+            MinimumRequirementValidator.validate(dropOff);
+
+            return dropOff;
+        }
+    }
+
+    public static final class StepBuilder implements IMot, ILocation, IBuild {
+
+        @NotNull(message = "mot is part of minimum requirement and must not be null")
+        private MeansOfTransport mot;
+        private Instant latest;
+        private Instant earliest;
+        private String billingReference;
+        private Transport.LoadingUnit loadingUnit = new Transport.LoadingUnit();
+
+        @NotNull(message = "location is part of minimum requirement and must not be null")
+        @LocationConstraint(message = "location city and designation are part of the minimum requirement of dropOff")
+        private Location location;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild withMeansOfTransport(MeansOfTransport meansOfTransport) {
+
+            mot = meansOfTransport;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withLatest(Instant latest) {
+
+            this.latest = latest;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withEarliest(Instant earliest) {
+
+            this.earliest = earliest;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withBillingReference(String billingReference) {
+
+            this.billingReference = billingReference;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withLoadingUnit(String reference, Boolean isEmpty) {
+
+            this.loadingUnit.setEmpty(isEmpty);
+            this.loadingUnit.setReference(reference);
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withLoadingUnitOperator(Operator operator) {
+
+            this.loadingUnit.setOperator(operator);
+
+            return this;
+        }
+
+
+        @Override
+        public IMot withLocation(Location location) {
+
+            this.location = location;
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link DropOff} without input validation.
+         *
+         * @return  new {@link DropOff} with attributes specified in {@link Builder}
+         */
+        @Override
+        public DropOff build() {
+
+            return new DropOff(this);
+        }
+
+
+        /**
+         * Validates the input and builds {@link DropOff}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link DropOff}.
+         *
+         * @return  new {@link DropOff} with attributes specified in {@link Builder}
+         */
+        @Override
         public DropOff buildAndValidate() {
 
             DropOff dropOff = this.build();

@@ -49,6 +49,36 @@ class DropOffTest {
 
 
     @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        DropOff dropOff = DropOff.newStepBuilder()
+                .withLocation(Location.newBuilder()
+                        .withCity("Duisburg")
+                        .withDesignation("Terminal Duisburg")
+                        .withType("terminal")
+                        .buildAndValidate())
+                .withMeansOfTransport(TestDataCreator.createBarge())
+                .withLoadingUnit("63876846", false)
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
+                .withBillingReference("98690")
+                .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
+                .buildAndValidate();
+
+        assertEquals("Duisburg", dropOff.getLocation().getCity());
+        assertEquals("Terminal Duisburg", dropOff.getLocation().getDesignation());
+        assertEquals("terminal", dropOff.getLocation().getType());
+        assertEquals("63876846", dropOff.getLoadingUnit().getReference());
+        assertFalse(dropOff.getLoadingUnit().getEmpty());
+        assertEquals("98690", dropOff.getBillingReference());
+        assertNotNull(dropOff.getLoadingUnit().getOperator());
+        assertEquals("2018-05-14T14:00:00Z", dropOff.getEarliest().toString());
+        assertEquals("2018-05-14T14:15:00Z", dropOff.getLatest().toString());
+        assertNotNull(dropOff.getMot());
+    }
+
+
+    @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         DropOff.newBuilder()
