@@ -91,7 +91,7 @@ public class DangerousGoods {
      */
     public static Builder newBuilder(DangerousGoods dangerousGoods) {
 
-        return new Builder().hasDangerNote(dangerousGoods.getDangerNote())
+        return new Builder().withDangerNote(dangerousGoods.getDangerNote())
             .withPackagingGroup(dangerousGoods.getPackagingGroup())
             .withMaterial(dangerousGoods.getMaterial())
             .withTunnelRestrictionCode(dangerousGoods.getTunnelRestrictionCode())
@@ -101,6 +101,19 @@ public class DangerousGoods {
             .withLimitedQuantity(dangerousGoods.getLimitedQuantity())
             .withMarinePollutants(dangerousGoods.getMarinePollutants())
             .withMandatoryRouting(dangerousGoods.getMandatoryRouting());
+    }
+
+
+    /**
+     * Starts a new step builder pattern for {@link DangerousGoods}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  IUnNumber
+     */
+    public static IUnNumber newStepBuilder() {
+
+        return new StepBuilder();
     }
 
 
@@ -176,6 +189,46 @@ public class DangerousGoods {
         return "";
     }
 
+    public interface IBuild {
+
+        DangerousGoods build();
+
+
+        DangerousGoods buildAndValidate();
+
+
+        IBuild withMarinePollutants(Boolean val);
+
+
+        IBuild withLimitedQuantity(Boolean limitedQuantity);
+
+
+        IBuild withMandatoryRouting(String mandatoryRouting);
+
+
+        IBuild withTunnelRestrictionCode(TunnelRestrictionCode tunnelRestrictionCode);
+
+
+        IBuild withTotalQuantity(String totalQuantity);
+
+
+        IBuild withPackages(Integer packages);
+
+
+        IBuild withPackagingGroup(String packagingGroup);
+
+
+        IBuild withDangerNote(Boolean dangerNote);
+
+
+        IBuild withMaterial(String material);
+    }
+
+    public interface IUnNumber {
+
+        IBuild withUnNumber(String val);
+    }
+
     public static final class Builder {
 
         private String unNumber;
@@ -208,7 +261,7 @@ public class DangerousGoods {
         }
 
 
-        public Builder hasDangerNote(Boolean dangerNote) {
+        public Builder withDangerNote(Boolean dangerNote) {
 
             this.dangerNote = dangerNote;
 
@@ -301,6 +354,154 @@ public class DangerousGoods {
          *
          * @return  new {@link DangerousGoods} with attributes specified in {@link Builder}
          */
+        public DangerousGoods buildAndValidate() {
+
+            DangerousGoods dangerousGoods = this.build();
+
+            MinimumRequirementValidator.validate(dangerousGoods);
+
+            return dangerousGoods;
+        }
+    }
+
+    public static final class StepBuilder implements IUnNumber, IBuild {
+
+        private Boolean marinePollutants;
+        private Boolean limitedQuantity;
+        private String mandatoryRouting;
+        private TunnelRestrictionCode tunnelRestrictionCode;
+        private String totalQuantity;
+        private Integer packages;
+        private String packagingGroup;
+        private Boolean dangerNote;
+        private String material;
+        @NotNull(message = "unNumber is part of minimum requirement and must not be null")
+        private String unNumber;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild withMarinePollutants(Boolean val) {
+
+            marinePollutants = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withLimitedQuantity(Boolean val) {
+
+            limitedQuantity = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withMandatoryRouting(String val) {
+
+            mandatoryRouting = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withTunnelRestrictionCode(TunnelRestrictionCode val) {
+
+            tunnelRestrictionCode = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withTotalQuantity(String val) {
+
+            totalQuantity = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withPackages(Integer val) {
+
+            packages = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withPackagingGroup(String val) {
+
+            packagingGroup = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withDangerNote(Boolean val) {
+
+            dangerNote = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withMaterial(String val) {
+
+            material = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withUnNumber(String val) {
+
+            unNumber = val;
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link DangerousGoods} without input validation.
+         *
+         * @return  new {@link DangerousGoods} with attributes specified in {@link Builder}
+         */
+        @Override
+        public DangerousGoods build() {
+
+            DangerousGoods dangerousGoods = new DangerousGoods();
+            dangerousGoods.dangerNote = this.dangerNote;
+            dangerousGoods.packagingGroup = this.packagingGroup;
+            dangerousGoods.material = this.material;
+            dangerousGoods.tunnelRestrictionCode = this.tunnelRestrictionCode;
+            dangerousGoods.unNumber = this.unNumber;
+            dangerousGoods.totalQuantity = this.totalQuantity;
+            dangerousGoods.packages = this.packages;
+            dangerousGoods.limitedQuantity = this.limitedQuantity;
+            dangerousGoods.marinePollutants = this.marinePollutants;
+            dangerousGoods.mandatoryRouting = this.mandatoryRouting;
+
+            return dangerousGoods;
+        }
+
+
+        /**
+         * Validates the input and builds {@link DangerousGoods}. Throws IllegalStateException if input doesn't fulfill
+         * the minimum requirement of {@link DangerousGoods}.
+         *
+         * @return  new {@link DangerousGoods} with attributes specified in {@link Builder}
+         */
+        @Override
         public DangerousGoods buildAndValidate() {
 
             DangerousGoods dangerousGoods = this.build();

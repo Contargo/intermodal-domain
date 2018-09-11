@@ -2,7 +2,6 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Customs;
 import net.contargo.intermodal.domain.DangerousGoods;
 import net.contargo.intermodal.domain.TunnelRestrictionCode;
 
@@ -24,7 +23,35 @@ class DangerousGoodsTest {
         DangerousGoods dangerousGoods = DangerousGoods.newBuilder()
                 .withUnNumber("1005")
                 .withMaterial("Ammoniak")
-                .hasDangerNote(true)
+                .withDangerNote(true)
+                .withPackagingGroup("VG II")
+                .withPackages(8)
+                .withTotalQuantity("1000 l")
+                .withTunnelRestrictionCode(TunnelRestrictionCode.NONE)
+                .withMandatoryRouting("Mandatory Routing?")
+                .withLimitedQuantity(false)
+                .withMarinePollutants(true)
+                .buildAndValidate();
+
+        assertEquals("1005", dangerousGoods.getUnNumber());
+        assertEquals("Ammoniak", dangerousGoods.getMaterial());
+        assertTrue(dangerousGoods.getDangerNote());
+        assertEquals("VG II", dangerousGoods.getPackagingGroup());
+        assertEquals("1000 l", dangerousGoods.getTotalQuantity());
+        assertEquals(TunnelRestrictionCode.NONE, dangerousGoods.getTunnelRestrictionCode());
+        assertEquals("Mandatory Routing?", dangerousGoods.getMandatoryRouting());
+        assertFalse(dangerousGoods.getLimitedQuantity());
+        assertTrue(dangerousGoods.getMarinePollutants());
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        DangerousGoods dangerousGoods = DangerousGoods.newStepBuilder()
+                .withUnNumber("1005")
+                .withMaterial("Ammoniak")
+                .withDangerNote(true)
                 .withPackagingGroup("VG II")
                 .withPackages(8)
                 .withTotalQuantity("1000 l")
@@ -59,7 +86,7 @@ class DangerousGoodsTest {
         DangerousGoods dangerousGoods = DangerousGoods.newBuilder()
                 .withUnNumber("1005")
                 .withMaterial("Ammoniak")
-                .hasDangerNote(true)
+                .withDangerNote(true)
                 .withPackagingGroup("VG II")
                 .withPackages(8)
                 .withTotalQuantity("1000 l")
@@ -96,7 +123,7 @@ class DangerousGoodsTest {
         DangerousGoods dangerousGoods = DangerousGoods.newBuilder()
                 .withUnNumber("1005")
                 .withMaterial("Ammoniak")
-                .hasDangerNote(true)
+                .withDangerNote(true)
                 .withPackagingGroup("VG II")
                 .withPackages(8)
                 .withTotalQuantity("1000 l")
