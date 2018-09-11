@@ -99,6 +99,19 @@ public class Order {
     }
 
 
+    /**
+     * Starts a new step builder pattern for {@link Order}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  IReference
+     */
+    public static IReference newStepBuilder() {
+
+        return new StepBuilder();
+    }
+
+
     public String getReference() {
 
         return reference;
@@ -189,6 +202,53 @@ public class Order {
         }
 
         return "";
+    }
+
+    public interface IBuild {
+
+        Order build();
+
+
+        Order buildAndValidate();
+
+
+        IBuild withBillRecipient(Operator billRecipient);
+
+
+        IBuild withClient(Operator client);
+
+
+        IBuild withTransportDirection(Direction direction);
+    }
+
+    public interface IDestination {
+
+        IBuild withDestination(Destination destination);
+    }
+
+    public interface ITransportPickUp {
+
+        ITransportDropOff withTransportPickUp(PickUp pickUp);
+    }
+
+    public interface ITransportDropOff {
+
+        ITransportStop withTransportDropOff(DropOff dropOff);
+    }
+
+    public interface ITransportStop {
+
+        IDestination withTransportStops(List<Stop> stops);
+    }
+
+    public interface ILuOrder {
+
+        ITransportPickUp withOrdersForLoadingUnit(List<LUOrder> luOrders);
+    }
+
+    public interface IReference {
+
+        ILuOrder withReference(String reference);
     }
 
     public static final class Builder {
@@ -331,6 +391,142 @@ public class Order {
             MinimumRequirementValidator.validate(order);
 
             return order;
+        }
+    }
+
+    public static final class StepBuilder implements IDestination, ITransportPickUp, ITransportDropOff, ITransportStop,
+        ILuOrder, IReference, IBuild {
+
+        @NotNull(message = "destination is part of minimum requirement and must not be null")
+        private Destination destination;
+        @NotNull(message = "transport is part of minimum requirement and must not be null")
+        private Transport transport = new Transport();
+        @NotNull(message = "luOrder is part of minimum requirement and must not be null")
+        @NotEmpty(message = "luOrder is part of minimum requirement and must not be empty")
+        private List<LUOrder> luOrder = new ArrayList<>();
+        private Operator billRecipient;
+        private Operator client;
+        @NotNull(message = "reference is part of minimum requirement and must not be null")
+        private String reference;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild withDestination(Destination destination) {
+
+            this.destination = destination;
+
+            return this;
+        }
+
+
+        @Override
+        public ITransportPickUp withOrdersForLoadingUnit(List<LUOrder> luOrders) {
+
+            luOrder.addAll(luOrders);
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withBillRecipient(Operator billRecipient) {
+
+            this.billRecipient = billRecipient;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withClient(Operator client) {
+
+            this.client = client;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withTransportDirection(Direction direction) {
+
+            this.transport.setDirection(direction);
+
+            return this;
+        }
+
+
+        @Override
+        public ILuOrder withReference(String reference) {
+
+            this.reference = reference;
+
+            return this;
+        }
+
+
+        /**
+         * * Builds {@link Order} without input validation.
+         *
+         * @return  new {@link Order} with attributes specified in {@link Builder}
+         */
+        @Override
+        public Order build() {
+
+            Order order = new Order();
+            order.billRecipient = this.billRecipient;
+            order.luOrder = this.luOrder;
+            order.client = this.client;
+            order.transport = this.transport;
+            order.reference = this.reference;
+            order.destination = this.destination;
+
+            return order;
+        }
+
+
+        /**
+         * Validates the input and builds {@link Order}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Order}.
+         *
+         * @return  new {@link Order} with attributes specified in {@link Container.Builder}
+         */
+        @Override
+        public Order buildAndValidate() {
+
+            Order order = this.build();
+
+            MinimumRequirementValidator.validate(order);
+
+            return order;
+        }
+
+
+        @Override
+        public ITransportDropOff withTransportPickUp(PickUp pickUp) {
+
+            this.transport.setPickUp(pickUp);
+
+            return this;
+        }
+
+
+        @Override
+        public ITransportStop withTransportDropOff(DropOff dropOff) {
+
+            this.transport.setDropOff(dropOff);
+
+            return this;
+        }
+
+
+        @Override
+        public IDestination withTransportStops(List<Stop> stops) {
+
+            stops.forEach(stop -> this.transport.addStop(stop));
+
+            return this;
         }
     }
 }

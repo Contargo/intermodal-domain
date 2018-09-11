@@ -142,6 +142,98 @@ class OrderTest {
 
 
     @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        List<Stop> stops = new ArrayList<>();
+        stops.add(Stop.newBuilder().withLocation(terminalKoblenz).buildAndValidate());
+        stops.add(Stop.newBuilder()
+            .withLocation(
+                    Location.newBuilder()
+                        .withCity("Ludwigshafen")
+                        .withDesignation("Terminal Ludwigshafen")
+                        .buildAndValidate())
+            .buildAndValidate());
+
+        PickUp pickUp = PickUp.newBuilder()
+                .withLocation(terminalLudwigshafen)
+                .withLoadingUnit("12345", false)
+                .withBillingReference("20568097")
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
+                .withEarliest(Instant.parse("2018-05-14T11:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T11:30:00Z"))
+                .withMeansOfTransport(TestDataCreator.createBarge())
+                .buildAndValidate();
+
+        DropOff dropOff = DropOff.newBuilder()
+                .withLocation(terminalDuisburg)
+                .withLoadingUnit("63876846", false)
+                .withLoadingUnitOperator(TestDataCreator.createOperator())
+                .withBillingReference("98690")
+                .withEarliest(Instant.parse("2018-05-14T14:00:00Z"))
+                .withLatest(Instant.parse("2018-05-14T14:15:00Z"))
+                .withMeansOfTransport(TestDataCreator.createBarge())
+                .buildAndValidate();
+
+        Destination destination = Destination.newBuilder()
+                .withVessel(TestDataCreator.createVessel())
+                .withCountryCode("DE")
+                .withLocation(terminalDuisburg)
+                .withSeaport(TestDataCreator.createSeaport())
+                .buildAndValidate();
+
+        Order order = Order.newStepBuilder()
+                .withReference("54642887")
+                .withOrdersForLoadingUnit(Arrays.asList(TestDataCreator.createLUOrder()))
+                .withTransportPickUp(pickUp)
+                .withTransportDropOff(dropOff)
+                .withTransportStops(stops)
+                .withDestination(destination)
+                .withTransportDirection(Direction.EXPORT)
+                .withClient(TestDataCreator.createOperator())
+                .withBillRecipient(TestDataCreator.createOperator())
+                .buildAndValidate();
+
+        assertEquals("54642887", order.getReference());
+        assertNotNull(order.getClient());
+        assertNotNull(order.getBillRecipient());
+        assertNotNull(order.getLuOrder());
+        assertEquals(Direction.EXPORT, order.getTransportDirection());
+
+        // Pick Up
+        assertEquals("Ludwigshafen", order.getPickUp().getLocation().getCity());
+        assertEquals("terminal", order.getPickUp().getLocation().getType());
+        assertEquals("Terminal Ludwigshafen", order.getPickUp().getLocation().getDesignation());
+        assertEquals("12345", order.getPickUp().getLoadingUnit().getReference());
+        assertFalse(order.getPickUp().getLoadingUnit().isEmpty());
+        assertEquals("20568097", order.getPickUp().getBillingReference());
+        assertNotNull(order.getPickUp().getLoadingUnit().getOperator());
+
+        assertEquals("2018-05-14T11:00:00Z", order.getPickUp().getEarliest().toString());
+        assertEquals("2018-05-14T11:30:00Z", order.getPickUp().getLatest().toString());
+        assertNotNull(order.getPickUp().getMeansOfTransport());
+
+        // Drop Off
+        assertEquals("Duisburg", order.getDropOff().getLocation().getCity());
+        assertEquals("terminal", order.getDropOff().getLocation().getType());
+        assertEquals("Terminal Duisburg", order.getDropOff().getLocation().getDesignation());
+        assertEquals("63876846", order.getDropOff().getLoadingUnit().getReference());
+        assertFalse(order.getDropOff().getLoadingUnit().isEmpty());
+        assertEquals("98690", order.getDropOff().getBillingReference());
+
+        assertEquals("2018-05-14T14:00:00Z", order.getDropOff().getEarliest().toString());
+        assertEquals("2018-05-14T14:15:00Z", order.getDropOff().getLatest().toString());
+        assertNotNull(order.getDropOff().getMot());
+
+        assertEquals(2, order.getStops().size());
+        assertNotNull(order.getDestination().getVessel());
+        assertEquals("DE", order.getDestination().getCountryCode());
+        assertEquals("Duisburg", order.getDestination().getLocation().getCity());
+        assertEquals("Terminal Duisburg", order.getDestination().getLocation().getDesignation());
+        assertEquals("DEDUI", order.getDestination().getSeaportName());
+    }
+
+
+    @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         PickUp pickUp = PickUp.newBuilder()
