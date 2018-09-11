@@ -88,6 +88,19 @@ public class Waste {
     }
 
 
+    /**
+     * Starts a new step builder pattern for {@link Waste}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  IKeyID
+     */
+    public static IKeyID newStepBuilder() {
+
+        return new StepBuilder();
+    }
+
+
     public Integer getPosition() {
 
         return position;
@@ -139,6 +152,31 @@ public class Waste {
         }
 
         return "";
+    }
+
+    public interface IBuild {
+
+        Waste build();
+
+
+        Waste buildAndValidate();
+
+
+        IBuild withWeightNetto(Double weight, MassUnit unit);
+
+
+        IBuild withReceiptNumber(String receiptNumber);
+
+
+        IBuild withPosition(Integer position);
+
+
+        IBuild withWasteRegulationNumber(String wasteRegulationNumber);
+    }
+
+    public interface IKeyID {
+
+        IBuild withKeyID(String keyID);
     }
 
     public static final class Builder {
@@ -233,6 +271,106 @@ public class Waste {
          *
          * @return  new {@link Waste} with attributes specified in {@link Builder}
          */
+        public Waste buildAndValidate() {
+
+            Waste waste = this.build();
+
+            MinimumRequirementValidator.validate(waste);
+
+            return waste;
+        }
+    }
+
+    public static final class StepBuilder implements IKeyID, IBuild {
+
+        private Quantity<Mass> weightNetto;
+        private String receiptNumber;
+        private String wasteRegulationNumber;
+        @NotNull(message = "keyID is part of minimum requirement and must not be null")
+        private String keyID;
+        private Integer position;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild withWeightNetto(Double weightNetto, MassUnit unit) {
+
+            if (unit.equals(MassUnit.KILOGRAM)) {
+                this.weightNetto = Quantities.getQuantity(weightNetto, KILOGRAM);
+            } else if (unit.equals(MassUnit.TON)) {
+                this.weightNetto = UnitConverter.tonToKilogram(weightNetto);
+            }
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withReceiptNumber(String receiptNumber) {
+
+            this.receiptNumber = receiptNumber;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withWasteRegulationNumber(String wasteRegulationNumber) {
+
+            this.wasteRegulationNumber = wasteRegulationNumber;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withKeyID(String keyID) {
+
+            this.keyID = keyID;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withPosition(Integer position) {
+
+            this.position = position;
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link Waste} without input validation.
+         *
+         * @return  new {@link Waste} with attributes specified in {@link Builder}
+         */
+        @Override
+        public Waste build() {
+
+            Waste waste = new Waste();
+            waste.receiptNumber = this.receiptNumber;
+            waste.keyID = this.keyID;
+            waste.wasteRegulationNumber = this.wasteRegulationNumber;
+            waste.position = this.position;
+
+            Weight weight = new Weight();
+            weight.setNetto(this.weightNetto);
+            waste.weight = weight;
+
+            return waste;
+        }
+
+
+        /**
+         * Validates the input and builds {@link Waste}. Throws IllegalStateException if input doesn't fulfill the
+         * minimum requirement of {@link Waste}.
+         *
+         * @return  new {@link Waste} with attributes specified in {@link Builder}
+         */
+        @Override
         public Waste buildAndValidate() {
 
             Waste waste = this.build();

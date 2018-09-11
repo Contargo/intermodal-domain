@@ -2,7 +2,6 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Container;
 import net.contargo.intermodal.domain.MassUnit;
 import net.contargo.intermodal.domain.Waste;
 
@@ -26,6 +25,26 @@ class WasteTest {
         Waste waste = Waste.newBuilder()
                 .withPosition(1)
                 .withKeyID("03 03 01")
+                .withWasteRegulationNumber("02")
+                .withReceiptNumber("65478")
+                .withWeightNetto(75.0, MassUnit.KILOGRAM)
+                .buildAndValidate();
+
+        assertEquals(1, waste.getPosition().intValue());
+        assertEquals("03 03 01", waste.getKeyID());
+        assertEquals("02", waste.getWasteRegulationNumber());
+        assertEquals("65478", waste.getReceiptNumber());
+        assertNotNull(waste.getWeight());
+        assertEquals(75.0, waste.getWeightNetto().getValue().doubleValue());
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        Waste waste = Waste.newStepBuilder()
+                .withKeyID("03 03 01")
+                .withPosition(1)
                 .withWasteRegulationNumber("02")
                 .withReceiptNumber("65478")
                 .withWeightNetto(75.0, MassUnit.KILOGRAM)
@@ -83,6 +102,14 @@ class WasteTest {
 
         assertEquals(500.0, waste.getWeightNetto().getValue().doubleValue(), 0.1);
         assertEquals("kg", waste.getWeightNetto().getUnit().toString());
+
+        Waste wasteStep = Waste.newStepBuilder()
+                .withKeyID("03 03 01")
+                .withWeightNetto(0.5, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(500.0, wasteStep.getWeightNetto().getValue().doubleValue(), 0.1);
+        assertEquals("kg", wasteStep.getWeightNetto().getUnit().toString());
     }
 
 
