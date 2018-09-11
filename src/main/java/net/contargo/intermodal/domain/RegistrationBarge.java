@@ -11,17 +11,17 @@ import javax.validation.constraints.NotNull;
 
 
 /**
- * Contains data for registration of {@link net.contargo.intermodal.domain.Barge barges} on handling points by
- * connecting barge, schedule and quantity information.
+ * Contains data for registration of {@link Barge barges} on handling points by connecting barge, schedule and quantity
+ * information.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
  * @name_german  Anmeldung Binnenschiff
  * @name_english  registration barge
- * @definition_german  Enthält Daten für die Anmeldung von {@link net.contargo.intermodal.domain.Barge Binnenschiffen}
- *                     an Umschlagpunkten durch die Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.
- * @definition_english  Contains data for registration of {@link net.contargo.intermodal.domain.Barge barges} on
- *                      handling points by connecting barge, schedule and quantity information.
+ * @definition_german  Enthält Daten für die Anmeldung von {@link Barge Binnenschiffen} an Umschlagpunkten durch die
+ *                     Verknüpfung der Binnenschiffdaten mit Zeitplänen und Mengen.
+ * @definition_english  Contains data for registration of {@link Barge barges} on handling points by connecting barge,
+ *                      schedule and quantity information.
  * @minimum_requirement  barge, eta, etd, dangerousGoodsIndication, volume
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
@@ -91,6 +91,19 @@ public class RegistrationBarge {
     }
 
 
+    /**
+     * Starts a new step builder pattern for {@link RegistrationBarge}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  IBarge
+     */
+    public static IBarge newStepBuilder() {
+
+        return new StepBuilder();
+    }
+
+
     public Barge getBarge() {
 
         return barge;
@@ -155,6 +168,44 @@ public class RegistrationBarge {
         }
 
         return "";
+    }
+
+    public interface IBuild {
+
+        RegistrationBarge build();
+
+
+        RegistrationBarge buildAndValidate();
+    }
+
+    public interface IVolumeToDischarge {
+
+        IVolumeToLoad withVolumeToDischarge(Integer volumeToDischarge);
+    }
+
+    public interface IVolumeToLoad {
+
+        IBuild withVolumeToLoad(Integer volumeToLoad);
+    }
+
+    public interface IDangerousGoodsIndication {
+
+        IVolumeToDischarge withDangerousGoodsIndication(DangerousGoods dangerousGoods);
+    }
+
+    public interface IEtd {
+
+        IDangerousGoodsIndication withEtd(Instant etd);
+    }
+
+    public interface IEta {
+
+        IEtd withEta(Instant eta);
+    }
+
+    public interface IBarge {
+
+        IEta withBarge(Barge barge);
     }
 
     public static final class Builder {
@@ -257,6 +308,120 @@ public class RegistrationBarge {
          *
          * @return  new {@link RegistrationBarge} with attributes specified in {@link Builder}
          */
+        public RegistrationBarge buildAndValidate() {
+
+            RegistrationBarge registrationBarge = this.build();
+
+            MinimumRequirementValidator.validate(registrationBarge);
+
+            return registrationBarge;
+        }
+    }
+
+    public static final class StepBuilder implements IVolumeToLoad, IVolumeToDischarge, IDangerousGoodsIndication,
+        IEtd, IEta, IBarge, IBuild {
+
+        @NotNull(message = "volume to discharge is part of minimum requirement and must not be null")
+        private Integer volumeToDischarge;
+        @NotNull(message = "volume to load is part of minimum requirement and must not be null")
+        private Integer volumeToLoad;
+        @NotNull(message = "dangerousGoodsIndication is part of minimum requirement and must not be null")
+        private DangerousGoods dangerousGoodsIndication;
+        @NotNull(message = "etd is part of minimum requirement and must not be null")
+        private Instant etd;
+        @NotNull(message = "eta is part of minimum requirement and must not be null")
+        private Instant eta;
+        @NotNull(message = "barge is part of minimum requirement and must not be null")
+        private Barge barge;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IVolumeToLoad withVolumeToDischarge(Integer volumeToDischarge) {
+
+            this.volumeToDischarge = volumeToDischarge;
+
+            return this;
+        }
+
+
+        @Override
+        public IBuild withVolumeToLoad(Integer volumeToLoad) {
+
+            this.volumeToLoad = volumeToLoad;
+
+            return this;
+        }
+
+
+        @Override
+        public IVolumeToDischarge withDangerousGoodsIndication(DangerousGoods dangerousGoods) {
+
+            dangerousGoodsIndication = dangerousGoods;
+
+            return this;
+        }
+
+
+        @Override
+        public IDangerousGoodsIndication withEtd(Instant etd) {
+
+            this.etd = etd;
+
+            return this;
+        }
+
+
+        @Override
+        public IEtd withEta(Instant eta) {
+
+            this.eta = eta;
+
+            return this;
+        }
+
+
+        @Override
+        public IEta withBarge(Barge barge) {
+
+            this.barge = barge;
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link RegistrationBarge} without input validation.
+         *
+         * @return  new {@link RegistrationBarge} with attributes specified in {@link Builder}
+         */
+        @Override
+        public RegistrationBarge build() {
+
+            RegistrationBarge registrationBarge = new RegistrationBarge();
+            registrationBarge.barge = this.barge;
+
+            Volume volume = new Volume();
+            volume.setToDischarge(this.volumeToDischarge);
+            volume.setToLoad(this.volumeToLoad);
+            registrationBarge.volume = volume;
+
+            registrationBarge.eta = this.eta;
+            registrationBarge.etd = this.etd;
+            registrationBarge.dangerousGoodsIndication = this.dangerousGoodsIndication;
+
+            return registrationBarge;
+        }
+
+
+        /**
+         * Validates the input and builds {@link RegistrationBarge}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link RegistrationBarge}.
+         *
+         * @return  new {@link RegistrationBarge} with attributes specified in {@link Builder}
+         */
+        @Override
         public RegistrationBarge buildAndValidate() {
 
             RegistrationBarge registrationBarge = this.build();

@@ -2,8 +2,6 @@ package net.contargo.intermodal.domain.example;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.contargo.intermodal.domain.Barge;
-import net.contargo.intermodal.domain.DangerousGoods;
 import net.contargo.intermodal.domain.RegistrationBarge;
 import net.contargo.intermodal.domain.TestDataCreator;
 
@@ -25,6 +23,27 @@ class RegistrationBargeTest {
     void ensureCanBeCreatedWithAllInformation() {
 
         RegistrationBarge registrationBarge = RegistrationBarge.newBuilder()
+                .withBarge(TestDataCreator.createBarge())
+                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withVolumeToDischarge(24)
+                .withVolumeToLoad(24)
+                .buildAndValidate();
+
+        assertNotNull(registrationBarge.getBarge());
+        assertEquals("2018-05-14T11:00:00Z", registrationBarge.getEta().toString());
+        assertEquals("2018-05-14T12:00:00Z", registrationBarge.getEtd().toString());
+        assertNotNull(registrationBarge.getDangerousGoodsIndication());
+        assertEquals(24, registrationBarge.getVolumeToLoad().intValue());
+        assertEquals(24, registrationBarge.getVolumeToDischarge().intValue());
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        RegistrationBarge registrationBarge = RegistrationBarge.newStepBuilder()
                 .withBarge(TestDataCreator.createBarge())
                 .withEta(Instant.parse("2018-05-14T11:00:00Z"))
                 .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
