@@ -54,6 +54,41 @@ class RegistrationTrainTest {
 
 
     @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        RegistrationTrain registrationTrain = RegistrationTrain.newStepBuilder()
+                .withTrainTitle("My Train")
+                .withRailwayOperator(TestDataCreator.createOperator())
+                .withOperator(TestDataCreator.createOperator())
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
+                .withShunter("a shunter")
+                .withTotalLength(120.0, LengthUnit.METRE)
+                .withWaggonQuantity(10)
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withVolumeToDischarge(10)
+                .withVolumeToLoad(8)
+                .withTrainPaths("12345")
+                .buildAndValidate();
+
+        assertEquals("My Train", registrationTrain.getTrainTitle());
+        assertNotNull(registrationTrain.getRailwayOperator());
+        assertNotNull(registrationTrain.getOperator());
+        assertEquals("2018-05-14T11:00:00Z", registrationTrain.getTerminalEta().toString());
+        assertEquals("2018-05-14T13:00:00Z", registrationTrain.getTerminalEtd().toString());
+        assertEquals("2018-05-14T12:00:00Z", registrationTrain.getShuntingYardEta().toString());
+        assertEquals("a shunter", registrationTrain.getShunter());
+        assertEquals(120.0, registrationTrain.getTotalLength().getValue().doubleValue());
+        assertEquals(10, registrationTrain.getWaggonQuantity().intValue());
+        assertNotNull(registrationTrain.getDangerousGoodsIndication());
+        assertEquals(10, registrationTrain.getVolumeToDischarge().intValue());
+        assertEquals(8, registrationTrain.getVolumeToLoad().intValue());
+        assertEquals("12345", registrationTrain.getTrainPaths());
+    }
+
+
+    @Test
     void ensureCanBeCreatedWithMinimumRequirements() {
 
         RegistrationTrain.newBuilder()
@@ -314,6 +349,25 @@ class RegistrationTrainTest {
 
         assertEquals(120, registrationTrain.getTotalLength().getValue().doubleValue(), 0.1);
         assertEquals("m", registrationTrain.getTotalLength().getUnit().toString());
+
+        RegistrationTrain registrationTrainStep = RegistrationTrain.newStepBuilder()
+                .withTrainTitle("My Train")
+                .withRailwayOperator(TestDataCreator.createOperator())
+                .withOperator(TestDataCreator.createOperator())
+                .withTerminalEta(Instant.parse("2018-05-14T11:00:00Z"))
+                .withTerminalEtd(Instant.parse("2018-05-14T13:00:00Z"))
+                .withShuntingYardEta(Instant.parse("2018-05-14T12:00:00Z"))
+                .withShunter("a shunter")
+                .withTotalLength(393.70, LengthUnit.FOOT)
+                .withWaggonQuantity(10)
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withVolumeToDischarge(10)
+                .withVolumeToLoad(8)
+                .withTrainPaths("12345")
+                .buildAndValidate();
+
+        assertEquals(120, registrationTrainStep.getTotalLength().getValue().doubleValue(), 0.1);
+        assertEquals("m", registrationTrainStep.getTotalLength().getUnit().toString());
     }
 
 

@@ -32,7 +32,8 @@ import static tec.units.ri.unit.Units.METRE;
  *                      schedules and shunting information. The train title in combination with the train paths is used
  *                      for clear identification.
  * @minimum_requirement  trainTitle, railwayOperator, terminalEta, terminalEtd, shuntingYardEta, shunter, totalLength,
- *                       waggonQuantity, volume to discharge and to load, trainPaths
+ *                       waggonQuantity, volume to discharge and to load, trainPaths, operator,
+ *                       dangerousGoodsIndication
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
@@ -55,6 +56,7 @@ public class RegistrationTrain {
     /**
      * @note_english  only set this attribute if its value differs from railwayOperator
      */
+    @NotNull(message = "operator is part of minimum requirement and must not be null")
     private Operator operator;
 
     /**
@@ -91,6 +93,7 @@ public class RegistrationTrain {
     @NotNull(message = "waggonQuantity is part of minimum requirement and must not be null")
     private Integer waggonQuantity;
 
+    @NotNull(message = "dangerousGoodsIndication is part of minimum requirement and must not be null")
     private DangerousGoods dangerousGoodsIndication;
 
     /**
@@ -143,6 +146,19 @@ public class RegistrationTrain {
             .withShunter(registrationTrain.getShunter())
             .withTrainPaths(registrationTrain.getTrainPaths())
             .withVolume(registrationTrain.getVolume());
+    }
+
+
+    /**
+     * Starts a new step builder pattern for {@link RegistrationTrain}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  ITrainTitle
+     */
+    public static ITrainTitle newStepBuilder() {
+
+        return new StepBuilder();
     }
 
 
@@ -256,6 +272,79 @@ public class RegistrationTrain {
         return "";
     }
 
+    public interface IBuild {
+
+        RegistrationTrain build();
+
+
+        RegistrationTrain buildAndValidate();
+    }
+
+    public interface ITrainPaths {
+
+        IBuild withTrainPaths(String trainPaths);
+    }
+
+    public interface IVolumeToDischarge {
+
+        IVolumeToLoad withVolumeToDischarge(Integer numberOfLUs);
+    }
+
+    public interface IVolumeToLoad {
+
+        ITrainPaths withVolumeToLoad(Integer numberOfLUs);
+    }
+
+    public interface IDangerousGoodsIndication {
+
+        IVolumeToDischarge withDangerousGoodsIndication(DangerousGoods dangerousGoods);
+    }
+
+    public interface IWaggonQuantity {
+
+        IDangerousGoodsIndication withWaggonQuantity(Integer val);
+    }
+
+    public interface ITotalLength {
+
+        IWaggonQuantity withTotalLength(Double length, LengthUnit unit);
+    }
+
+    public interface IShunter {
+
+        ITotalLength withShunter(String shunterName);
+    }
+
+    public interface IShuntingYardEta {
+
+        IShunter withShuntingYardEta(Instant shuntingYardEta);
+    }
+
+    public interface ITerminalEtd {
+
+        IShuntingYardEta withTerminalEtd(Instant terminalEtd);
+    }
+
+    public interface ITerminalEta {
+
+        ITerminalEtd withTerminalEta(Instant terminalEta);
+    }
+
+    public interface IOperator {
+
+        ITerminalEta withOperator(Operator operator);
+    }
+
+    public interface IRailwayOperator {
+
+        IOperator withRailwayOperator(Operator railwayOperator);
+    }
+
+    public interface ITrainTitle {
+
+        IRailwayOperator withTrainTitle(String trainTitle);
+    }
+
     public static final class Builder {
 
         private String trainTitle;
@@ -367,17 +456,17 @@ public class RegistrationTrain {
         }
 
 
-        public Builder withVolumeToDischarge(Integer volumeToDischarge) {
+        public Builder withVolumeToDischarge(Integer numberOfLUs) {
 
-            this.volumeToDischarge = volumeToDischarge;
+            this.volumeToDischarge = numberOfLUs;
 
             return this;
         }
 
 
-        public Builder withVolumeToLoad(Integer volumeToLoad) {
+        public Builder withVolumeToLoad(Integer numberOfLUs) {
 
-            this.volumeToLoad = volumeToLoad;
+            this.volumeToLoad = numberOfLUs;
 
             return this;
         }
@@ -437,6 +526,219 @@ public class RegistrationTrain {
          *
          * @return  new {@link RegistrationTrain} with attributes specified in {@link Builder}
          */
+        public RegistrationTrain buildAndValidate() {
+
+            RegistrationTrain registrationBarge = this.build();
+
+            MinimumRequirementValidator.validate(registrationBarge);
+
+            return registrationBarge;
+        }
+    }
+
+    public static final class StepBuilder implements ITrainPaths, IVolumeToDischarge, IVolumeToLoad,
+        IDangerousGoodsIndication, IWaggonQuantity, ITotalLength, IShunter, IShuntingYardEta, ITerminalEtd,
+        ITerminalEta, IOperator, IRailwayOperator, ITrainTitle, IBuild {
+
+        @NotNull(message = "trainPaths is part of minimum requirement and must not be null")
+        private String trainPaths;
+
+        @NotNull(message = "volumeToDischarge is part of minimum requirement and must not be null")
+        private Integer volumeToDischarge;
+        @NotNull(message = "volumeToLoad is part of minimum requirement and must not be null")
+        private Integer volumeToLoad;
+
+        @NotNull(message = "dangerousGoodsIndication is part of minimum requirement and must not be null")
+        private DangerousGoods dangerousGoodsIndication;
+
+        @NotNull(message = "waggonQuantity is part of minimum requirement and must not be null")
+        private Integer waggonQuantity;
+
+        @NotNull(message = "totalLength is part of minimum requirement and must not be null")
+        private Quantity<Length> totalLength;
+
+        @NotNull(message = "shunter is part of minimum requirement and must not be null")
+        private String shunter;
+
+        @NotNull(message = "shuntingYardEta is part of minimum requirement and must not be null")
+        private Instant shuntingYardEta;
+
+        @NotNull(message = "terminalEtd is part of minimum requirement and must not be null")
+        private Instant terminalEtd;
+
+        @NotNull(message = "terminalEta is part of minimum requirement and must not be null")
+        private Instant terminalEta;
+
+        @NotNull(message = "operator is part of minimum requirement and must not be null")
+        private Operator operator;
+
+        @NotNull(message = "railwayOperator is part of minimum requirement and must not be null")
+        private Operator railwayOperator;
+
+        @NotNull(message = "trainTitle is part of minimum requirement and must not be null")
+        private String trainTitle;
+
+        private StepBuilder() {
+        }
+
+        @Override
+        public IBuild withTrainPaths(String trainPaths) {
+
+            this.trainPaths = trainPaths;
+
+            return this;
+        }
+
+
+        @Override
+        public IVolumeToLoad withVolumeToDischarge(Integer volumeToDischarge) {
+
+            this.volumeToDischarge = volumeToDischarge;
+
+            return this;
+        }
+
+
+        @Override
+        public ITrainPaths withVolumeToLoad(Integer volumeToLoad) {
+
+            this.volumeToLoad = volumeToLoad;
+
+            return this;
+        }
+
+
+        @Override
+        public IVolumeToDischarge withDangerousGoodsIndication(DangerousGoods dangerousGoods) {
+
+            dangerousGoodsIndication = dangerousGoods;
+
+            return this;
+        }
+
+
+        @Override
+        public IDangerousGoodsIndication withWaggonQuantity(Integer val) {
+
+            waggonQuantity = val;
+
+            return this;
+        }
+
+
+        @Override
+        public IWaggonQuantity withTotalLength(Double totalLength, LengthUnit unit) {
+
+            if (unit.equals(LengthUnit.METRE)) {
+                this.totalLength = Quantities.getQuantity(totalLength, METRE);
+            } else if (unit.equals(LengthUnit.FOOT)) {
+                this.totalLength = UnitConverter.footToMetre(totalLength);
+            }
+
+            return this;
+        }
+
+
+        @Override
+        public ITotalLength withShunter(String shunterName) {
+
+            shunter = shunterName;
+
+            return this;
+        }
+
+
+        @Override
+        public IShunter withShuntingYardEta(Instant shuntingYardEta) {
+
+            this.shuntingYardEta = shuntingYardEta;
+
+            return this;
+        }
+
+
+        @Override
+        public IShuntingYardEta withTerminalEtd(Instant terminalEtd) {
+
+            this.terminalEtd = terminalEtd;
+
+            return this;
+        }
+
+
+        @Override
+        public ITerminalEtd withTerminalEta(Instant terminalEta) {
+
+            this.terminalEta = terminalEta;
+
+            return this;
+        }
+
+
+        @Override
+        public ITerminalEta withOperator(Operator operator) {
+
+            this.operator = operator;
+
+            return this;
+        }
+
+
+        @Override
+        public IOperator withRailwayOperator(Operator railwayOperator) {
+
+            this.railwayOperator = railwayOperator;
+
+            return this;
+        }
+
+
+        @Override
+        public IRailwayOperator withTrainTitle(String trainTitle) {
+
+            this.trainTitle = trainTitle;
+
+            return this;
+        }
+
+
+        /**
+         * Builds {@link RegistrationTrain} without input validation.
+         *
+         * @return  new {@link RegistrationTrain} with attributes specified in {@link Builder}
+         */
+        @Override
+        public RegistrationTrain build() {
+
+            RegistrationTrain registrationTrain = new RegistrationTrain();
+            registrationTrain.totalLength = this.totalLength;
+            registrationTrain.railwayOperator = this.railwayOperator;
+            registrationTrain.operator = this.operator;
+            registrationTrain.trainTitle = this.trainTitle;
+            registrationTrain.shuntingYardEta = this.shuntingYardEta;
+            registrationTrain.waggonQuantity = this.waggonQuantity;
+            registrationTrain.dangerousGoodsIndication = this.dangerousGoodsIndication;
+            registrationTrain.terminalEtd = this.terminalEtd;
+            registrationTrain.terminalEta = this.terminalEta;
+            registrationTrain.shunter = this.shunter;
+            registrationTrain.trainPaths = this.trainPaths;
+
+            Volume volume = new Volume();
+            volume.setToDischarge(this.volumeToDischarge);
+            volume.setToLoad(this.volumeToLoad);
+            registrationTrain.volume = volume;
+
+            return registrationTrain;
+        }
+
+
+        /**
+         * Validates the input and builds {@link RegistrationTrain}. Throws IllegalStateException if input doesn't
+         * fulfill the minimum requirement of {@link RegistrationTrain}.
+         *
+         * @return  new {@link RegistrationTrain} with attributes specified in {@link Builder}
+         */
+        @Override
         public RegistrationTrain buildAndValidate() {
 
             RegistrationTrain registrationBarge = this.build();
