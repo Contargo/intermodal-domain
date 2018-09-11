@@ -121,29 +121,13 @@ public class LUOrder {
     }
 
 
-    public static StepBuilder newStepBuilder(LUOrder copy) {
-
-        StepBuilder stepBuilder = new StepBuilder();
-        stepBuilder.reference = copy.reference;
-        stepBuilder.setTemperature = copy.setTemperature;
-        stepBuilder.operator = copy.operator;
-        stepBuilder.client = copy.client;
-        stepBuilder.direction = copy.direction;
-        stepBuilder.customs = copy.customs;
-        stepBuilder.goods = copy.goods;
-        stepBuilder.empty = copy.empty;
-        stepBuilder.seal = copy.seal;
-        stepBuilder.wasteIndication = copy.wasteIndication;
-        stepBuilder.dangerousGoodsIndication = copy.dangerousGoodsIndication;
-        stepBuilder.weightBrutto = copy.getWeightBrutto();
-        stepBuilder.weightNetto = copy.getWeightNetto();
-        stepBuilder.weightTare = copy.getWeightTare();
-        stepBuilder.loadingUnit = copy.loadingUnit;
-
-        return stepBuilder;
-    }
-
-
+    /**
+     * Starts a new step builder pattern for {@link LUOrder}. Other than the normal {@link Builder} the
+     * {@link StepBuilder} will enforce the order in which fields are set to make sure the minimum requirements are
+     * fulfilled.
+     *
+     * @return  ILoadingUnit
+     */
     public static ILoadingUnit newStepBuilder() {
 
         return new StepBuilder();
@@ -773,7 +757,7 @@ public class LUOrder {
         /**
          * Builds {@link LUOrder} without input validation.
          *
-         * @return  new {@link LUOrder} with attributes specified in {@link Builder}
+         * @return  new {@link LUOrder} with attributes specified in {@link StepBuilder}
          */
         @Override
         public LUOrder build() {
@@ -806,7 +790,7 @@ public class LUOrder {
          * Validates the input and builds {@link LUOrder}. Throws IllegalStateException if input doesn't fulfill the
          * minimum requirement of {@link LUOrder}.
          *
-         * @return  new {@link LUOrder} with attributes specified in {@link Builder}
+         * @return  new {@link LUOrder} with attributes specified in {@link StepBuilder}
          */
         @Override
         public LUOrder buildAndValidate() {

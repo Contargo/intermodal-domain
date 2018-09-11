@@ -23,13 +23,45 @@ class ContainerTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")
                 .withSizeType("45G0")
                 .withSize(40.0, LengthUnit.FOOT)
                 .withType("General purpose container (without ventilation)")
+                .buildAndValidate();
+
+        assertEquals("MSKU1806510", container.getIdentification());
+        assertEquals("MSKU1806510", container.getNumber());
+        assertEquals(LoadingUnitCategory.CONTAINER, container.getCategory());
+        assertNotNull(container.getWeight());
+        assertEquals(30480., container.getWeightBruttoMax().getValue().doubleValue());
+        assertEquals(28080.0, container.getWeightNettoMax().getValue().doubleValue());
+        assertEquals(2400.0, container.getWeightTare().getValue().doubleValue());
+        assertEquals("schadhaft", container.getCondition());
+        assertFalse(container.isReefer());
+        assertEquals("Contargo", container.getOperator());
+        assertEquals("45G0", container.getSizeType());
+        assertEquals("General purpose container (without ventilation)", container.getType());
+        assertEquals(40.0, container.getSize().getValue().doubleValue());
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        Container container = Container.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("General purpose container (without ventilation)")
+                .withSize(40.0, LengthUnit.FOOT)
+                .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
+                .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
+                .withCondition("schadhaft")
+                .withOperator("Contargo")
                 .buildAndValidate();
 
         assertEquals("MSKU1806510", container.getIdentification());
@@ -62,6 +94,19 @@ class ContainerTest {
 
 
     @Test
+    void ensureCanBeCreatedWithMinimumRequirementsWithStepBuilder() {
+
+        Container.newStepBuilder()
+            .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+            .isReefer(false)
+            .withSizeType("45G0")
+            .withType("General purpose container (without ventilation)")
+            .withSize(40.0, LengthUnit.FOOT)
+            .buildAndValidate();
+    }
+
+
+    @Test
     void ensureConditionCanBeSetAsLoadingUnitCondition() {
 
         Container container = Container.newBuilder()
@@ -74,6 +119,17 @@ class ContainerTest {
                 .buildAndValidate();
 
         assertEquals("DAMAGED", container.getCondition());
+
+        Container containerStep = Container.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("General purpose container (without ventilation)")
+                .withSize(40.0, LengthUnit.FOOT)
+                .withCondition(LoadingUnitCondition.DAMAGED)
+                .buildAndValidate();
+
+        assertEquals("DAMAGED", containerStep.getCondition());
     }
 
 
@@ -84,7 +140,7 @@ class ContainerTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")
@@ -152,7 +208,7 @@ class ContainerTest {
                 .withSize(6.58, LengthUnit.METRE)
                 .withWeightBruttoMax(30.48, MassUnit.TON)
                 .withWeightNettoMax(28.08, MassUnit.TON)
-                .withWeightTare(2.4, MassUnit.TON)
+                .withWeightTara(2.4, MassUnit.TON)
                 .buildAndValidate();
 
         assertEquals(30480.0, container.getWeightBruttoMax().getValue().doubleValue(), 0.1);
@@ -162,6 +218,25 @@ class ContainerTest {
         assertEquals("kg", container.getWeightBruttoMax().getUnit().toString());
         assertEquals("kg", container.getWeightNettoMax().getUnit().toString());
         assertEquals("kg", container.getWeightTare().getUnit().toString());
+
+        Container containerStep = Container.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("General purpose container (without ventilation)")
+                .withSize(6.58, LengthUnit.METRE)
+                .withWeightBruttoMax(30.48, MassUnit.TON)
+                .withWeightNettoMax(28.08, MassUnit.TON)
+                .withWeightTara(2.4, MassUnit.TON)
+                .buildAndValidate();
+
+        assertEquals(30480.0, containerStep.getWeightBruttoMax().getValue().doubleValue(), 0.1);
+        assertEquals(28080.0, containerStep.getWeightNettoMax().getValue().doubleValue(), 0.1);
+        assertEquals(2400.0, containerStep.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", containerStep.getWeightBruttoMax().getUnit().toString());
+        assertEquals("kg", containerStep.getWeightNettoMax().getUnit().toString());
+        assertEquals("kg", containerStep.getWeightTare().getUnit().toString());
     }
 
 
@@ -178,6 +253,17 @@ class ContainerTest {
 
         assertEquals(40.0, container.getSize().getValue().doubleValue(), 0.1);
         assertEquals("ft", container.getSize().getUnit().toString());
+
+        Container containerStep = Container.newStepBuilder()
+                .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
+                .isReefer(false)
+                .withSizeType("45G0")
+                .withType("General purpose container (without ventilation)")
+                .withSize(12.192, LengthUnit.METRE)
+                .buildAndValidate();
+
+        assertEquals(40.0, containerStep.getSize().getValue().doubleValue(), 0.1);
+        assertEquals("ft", containerStep.getSize().getUnit().toString());
     }
 
 
@@ -241,7 +327,7 @@ class ContainerTest {
                 .withNumberAndIdentification("MSKU1806510", LoadingUnitIdentification.BIC)
                 .withWeightBruttoMax(30480.0, MassUnit.KILOGRAM)
                 .withWeightNettoMax(28080.0, MassUnit.KILOGRAM)
-                .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                .withWeightTara(2400.0, MassUnit.KILOGRAM)
                 .withCondition("schadhaft")
                 .isReefer(false)
                 .withOperator("Contargo")

@@ -188,54 +188,6 @@ class LUOrderTest {
 
 
     @Test
-    void ensureCanBeCopiedWithStepBuilder() {
-
-        List<Seal> seals = new ArrayList<>();
-        seals.add(Seal.newBuilder().withNumber("01234").withType("some seal type").build());
-        seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
-
-        LUOrder loadingUnitLUOrder = LUOrder.newStepBuilder()
-                .withLoadingUnit(TestDataCreator.createContainer())
-                .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
-                .withWeightNetto(21000.0, MassUnit.KILOGRAM)
-                .withWeightTare(2300.0, MassUnit.KILOGRAM)
-                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
-                .withWasteIndication(TestDataCreator.createWaste())
-                .withReference("1658583")
-                .withSetTemperature(-5, TemperatureUnit.CELSIUS)
-                .withOperator(TestDataCreator.createOperator())
-                .withClient(TestDataCreator.createOperator())
-                .withDirection(Direction.EXPORT)
-                .withCustoms(TestDataCreator.createCustoms())
-                .withGoods("food")
-                .isEmpty(false)
-                .withSeals(seals)
-                .buildAndValidate();
-
-        LUOrder copiedLuOrder = LUOrder.newStepBuilder(loadingUnitLUOrder).buildAndValidate();
-
-        assertNotNull(loadingUnitLUOrder.getLoadingUnit());
-        assertEquals("1658583", loadingUnitLUOrder.getReference());
-        assertEquals(23300.0, loadingUnitLUOrder.getWeightBrutto().getValue().doubleValue());
-        assertEquals(21000.0, loadingUnitLUOrder.getWeightNetto().getValue().doubleValue());
-        assertEquals(2300.0, loadingUnitLUOrder.getWeightTare().getValue().doubleValue());
-        assertNotNull(loadingUnitLUOrder.getDangerousGoodsIndication());
-        assertNotNull(loadingUnitLUOrder.getWasteIndication());
-        assertEquals(-5, loadingUnitLUOrder.getSetTemperature().getValue().doubleValue());
-        assertNotNull(loadingUnitLUOrder.getOperator());
-        assertNotNull(loadingUnitLUOrder.getClient());
-        assertEquals(Direction.EXPORT, loadingUnitLUOrder.getDirection());
-        assertNotNull(loadingUnitLUOrder.getCustoms());
-        assertEquals("food", loadingUnitLUOrder.getGoods());
-        assertFalse(loadingUnitLUOrder.isEmpty());
-        assertNotNull(loadingUnitLUOrder.getSeals());
-        assertEquals(2, loadingUnitLUOrder.getSeals().size());
-        assertEquals("some seal type", loadingUnitLUOrder.getSeals().get(0).getType());
-        assertEquals("01234", loadingUnitLUOrder.getSeals().get(0).getNumber());
-    }
-
-
-    @Test
     void ensureWeightCanBeSetInTons() {
 
         LUOrder luOrder = LUOrder.newBuilder()
