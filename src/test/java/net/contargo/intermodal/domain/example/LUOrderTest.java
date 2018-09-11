@@ -29,12 +29,12 @@ class LUOrderTest {
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
                 .withLoadingUnit(TestDataCreator.createContainer())
                 .withReference("1658583")
-                .withWeightBrutto(16.0, MassUnit.KILOGRAM)
-                .withWeightNetto(14.0, MassUnit.KILOGRAM)
-                .withWeightTare(16.0, MassUnit.KILOGRAM)
+                .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                .withWeightTare(2300.0, MassUnit.KILOGRAM)
                 .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                 .withWasteIndication(TestDataCreator.createWaste())
-                .withSetTemperature(32, TemperatureUnit.CELSIUS)
+                .withSetTemperature(-5, TemperatureUnit.CELSIUS)
                 .withOperator(TestDataCreator.createOperator())
                 .withClient(TestDataCreator.createOperator())
                 .withDirection(Direction.EXPORT)
@@ -46,12 +46,58 @@ class LUOrderTest {
 
         assertNotNull(loadingUnitLUOrder.getLoadingUnit());
         assertEquals("1658583", loadingUnitLUOrder.getReference());
-        assertEquals(16, loadingUnitLUOrder.getWeightBrutto().getValue().doubleValue());
-        assertEquals(14, loadingUnitLUOrder.getWeightNetto().getValue().doubleValue());
-        assertEquals(16, loadingUnitLUOrder.getWeightTare().getValue().doubleValue());
+        assertEquals(23300.0, loadingUnitLUOrder.getWeightBrutto().getValue().doubleValue());
+        assertEquals(21000.0, loadingUnitLUOrder.getWeightNetto().getValue().doubleValue());
+        assertEquals(2300.0, loadingUnitLUOrder.getWeightTare().getValue().doubleValue());
         assertNotNull(loadingUnitLUOrder.getDangerousGoodsIndication());
         assertNotNull(loadingUnitLUOrder.getWasteIndication());
-        assertEquals(32, loadingUnitLUOrder.getSetTemperature().getValue().doubleValue());
+        assertEquals(-5, loadingUnitLUOrder.getSetTemperature().getValue().doubleValue());
+        assertNotNull(loadingUnitLUOrder.getOperator());
+        assertNotNull(loadingUnitLUOrder.getClient());
+        assertEquals(Direction.EXPORT, loadingUnitLUOrder.getDirection());
+        assertNotNull(loadingUnitLUOrder.getCustoms());
+        assertEquals("food", loadingUnitLUOrder.getGoods());
+        assertFalse(loadingUnitLUOrder.isEmpty());
+        assertNotNull(loadingUnitLUOrder.getSeals());
+        assertEquals(2, loadingUnitLUOrder.getSeals().size());
+        assertEquals("some seal type", loadingUnitLUOrder.getSeals().get(0).getType());
+        assertEquals("01234", loadingUnitLUOrder.getSeals().get(0).getNumber());
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithAllInformationWithStepBuilder() {
+
+        List<Seal> seals = new ArrayList<>();
+        seals.add(Seal.newBuilder().withNumber("01234").withType("some seal type").build());
+        seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
+
+        LUOrder loadingUnitLUOrder = LUOrder.newStepBuilder()
+                .withLoadingUnit(TestDataCreator.createContainer())
+                .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                .withWeightTare(2300.0, MassUnit.KILOGRAM)
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withWasteIndication(TestDataCreator.createWaste())
+                .withReference("1658583")
+                .withSetTemperature(-5, TemperatureUnit.CELSIUS)
+                .withOperator(TestDataCreator.createOperator())
+                .withClient(TestDataCreator.createOperator())
+                .withDirection(Direction.EXPORT)
+                .withCustoms(TestDataCreator.createCustoms())
+                .withGoods("food")
+                .isEmpty(false)
+                .withSeals(seals)
+                .buildAndValidate();
+
+        assertNotNull(loadingUnitLUOrder.getLoadingUnit());
+        assertEquals("1658583", loadingUnitLUOrder.getReference());
+        assertEquals(23300.0, loadingUnitLUOrder.getWeightBrutto().getValue().doubleValue());
+        assertEquals(21000.0, loadingUnitLUOrder.getWeightNetto().getValue().doubleValue());
+        assertEquals(2300.0, loadingUnitLUOrder.getWeightTare().getValue().doubleValue());
+        assertNotNull(loadingUnitLUOrder.getDangerousGoodsIndication());
+        assertNotNull(loadingUnitLUOrder.getWasteIndication());
+        assertEquals(-5, loadingUnitLUOrder.getSetTemperature().getValue().doubleValue());
         assertNotNull(loadingUnitLUOrder.getOperator());
         assertNotNull(loadingUnitLUOrder.getClient());
         assertEquals(Direction.EXPORT, loadingUnitLUOrder.getDirection());
@@ -70,9 +116,23 @@ class LUOrderTest {
 
         LUOrder.newBuilder()
             .withLoadingUnit(TestDataCreator.createContainer())
-            .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
-            .withWeightNetto(28080.0, MassUnit.KILOGRAM)
-            .withWeightTare(2400.0, MassUnit.KILOGRAM)
+            .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+            .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+            .withWeightTare(2300.0, MassUnit.KILOGRAM)
+            .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+            .withWasteIndication(TestDataCreator.createWaste())
+            .buildAndValidate();
+    }
+
+
+    @Test
+    void ensureCanBeCreatedWithMinimumRequirementsWithStepBuilder() {
+
+        LUOrder.newStepBuilder()
+            .withLoadingUnit(TestDataCreator.createContainer())
+            .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+            .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+            .withWeightTare(2300.0, MassUnit.KILOGRAM)
             .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
             .withWasteIndication(TestDataCreator.createWaste())
             .buildAndValidate();
@@ -89,12 +149,12 @@ class LUOrderTest {
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
                 .withLoadingUnit(TestDataCreator.createContainer())
                 .withReference("1658583")
-                .withWeightBrutto(16.0, MassUnit.KILOGRAM)
-                .withWeightNetto(14.0, MassUnit.KILOGRAM)
-                .withWeightTare(16.0, MassUnit.KILOGRAM)
+                .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                .withWeightTare(2300.0, MassUnit.KILOGRAM)
                 .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                 .withWasteIndication(TestDataCreator.createWaste())
-                .withSetTemperature(32, TemperatureUnit.CELSIUS)
+                .withSetTemperature(-5, TemperatureUnit.CELSIUS)
                 .withOperator(TestDataCreator.createOperator())
                 .withClient(TestDataCreator.createOperator())
                 .withDirection(Direction.EXPORT)
@@ -108,12 +168,12 @@ class LUOrderTest {
 
         assertNotNull(copiedLuOrder.getLoadingUnit());
         assertEquals("1658583", copiedLuOrder.getReference());
-        assertEquals(16, copiedLuOrder.getWeightBrutto().getValue().doubleValue());
-        assertEquals(14, copiedLuOrder.getWeightNetto().getValue().doubleValue());
-        assertEquals(16, copiedLuOrder.getWeightTare().getValue().doubleValue());
+        assertEquals(23300.0, copiedLuOrder.getWeightBrutto().getValue().doubleValue());
+        assertEquals(21000.0, copiedLuOrder.getWeightNetto().getValue().doubleValue());
+        assertEquals(2300.0, copiedLuOrder.getWeightTare().getValue().doubleValue());
         assertNotNull(copiedLuOrder.getDangerousGoodsIndication());
         assertNotNull(copiedLuOrder.getWasteIndication());
-        assertEquals(32, copiedLuOrder.getSetTemperature().getValue().doubleValue());
+        assertEquals(-5, copiedLuOrder.getSetTemperature().getValue().doubleValue());
         assertNotNull(copiedLuOrder.getOperator());
         assertNotNull(copiedLuOrder.getClient());
         assertEquals(Direction.EXPORT, copiedLuOrder.getDirection());
@@ -128,24 +188,89 @@ class LUOrderTest {
 
 
     @Test
+    void ensureCanBeCopiedWithStepBuilder() {
+
+        List<Seal> seals = new ArrayList<>();
+        seals.add(Seal.newBuilder().withNumber("01234").withType("some seal type").build());
+        seals.add(Seal.newBuilder().withNumber("46789").withType("another seal type").build());
+
+        LUOrder loadingUnitLUOrder = LUOrder.newStepBuilder()
+                .withLoadingUnit(TestDataCreator.createContainer())
+                .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                .withWeightTare(2300.0, MassUnit.KILOGRAM)
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withWasteIndication(TestDataCreator.createWaste())
+                .withReference("1658583")
+                .withSetTemperature(-5, TemperatureUnit.CELSIUS)
+                .withOperator(TestDataCreator.createOperator())
+                .withClient(TestDataCreator.createOperator())
+                .withDirection(Direction.EXPORT)
+                .withCustoms(TestDataCreator.createCustoms())
+                .withGoods("food")
+                .isEmpty(false)
+                .withSeals(seals)
+                .buildAndValidate();
+
+        LUOrder copiedLuOrder = LUOrder.newStepBuilder(loadingUnitLUOrder).buildAndValidate();
+
+        assertNotNull(loadingUnitLUOrder.getLoadingUnit());
+        assertEquals("1658583", loadingUnitLUOrder.getReference());
+        assertEquals(23300.0, loadingUnitLUOrder.getWeightBrutto().getValue().doubleValue());
+        assertEquals(21000.0, loadingUnitLUOrder.getWeightNetto().getValue().doubleValue());
+        assertEquals(2300.0, loadingUnitLUOrder.getWeightTare().getValue().doubleValue());
+        assertNotNull(loadingUnitLUOrder.getDangerousGoodsIndication());
+        assertNotNull(loadingUnitLUOrder.getWasteIndication());
+        assertEquals(-5, loadingUnitLUOrder.getSetTemperature().getValue().doubleValue());
+        assertNotNull(loadingUnitLUOrder.getOperator());
+        assertNotNull(loadingUnitLUOrder.getClient());
+        assertEquals(Direction.EXPORT, loadingUnitLUOrder.getDirection());
+        assertNotNull(loadingUnitLUOrder.getCustoms());
+        assertEquals("food", loadingUnitLUOrder.getGoods());
+        assertFalse(loadingUnitLUOrder.isEmpty());
+        assertNotNull(loadingUnitLUOrder.getSeals());
+        assertEquals(2, loadingUnitLUOrder.getSeals().size());
+        assertEquals("some seal type", loadingUnitLUOrder.getSeals().get(0).getType());
+        assertEquals("01234", loadingUnitLUOrder.getSeals().get(0).getNumber());
+    }
+
+
+    @Test
     void ensureWeightCanBeSetInTons() {
 
         LUOrder luOrder = LUOrder.newBuilder()
                 .withLoadingUnit(TestDataCreator.createContainer())
-                .withWeightBrutto(30.48, MassUnit.TON)
-                .withWeightNetto(28.08, MassUnit.TON)
-                .withWeightTare(2.4, MassUnit.TON)
+                .withWeightBrutto(23.3, MassUnit.TON)
+                .withWeightNetto(21.0, MassUnit.TON)
+                .withWeightTare(2.3, MassUnit.TON)
                 .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                 .withWasteIndication(TestDataCreator.createWaste())
                 .buildAndValidate();
 
-        assertEquals(30480.0, luOrder.getWeightBrutto().getValue().doubleValue(), 0.1);
-        assertEquals(28080.0, luOrder.getWeightNetto().getValue().doubleValue(), 0.1);
-        assertEquals(2400.0, luOrder.getWeightTare().getValue().doubleValue(), 0.1);
+        assertEquals(23300.0, luOrder.getWeightBrutto().getValue().doubleValue(), 0.1);
+        assertEquals(21000.0, luOrder.getWeightNetto().getValue().doubleValue(), 0.1);
+        assertEquals(2300.0, luOrder.getWeightTare().getValue().doubleValue(), 0.1);
 
         assertEquals("kg", luOrder.getWeightBrutto().getUnit().toString());
         assertEquals("kg", luOrder.getWeightNetto().getUnit().toString());
         assertEquals("kg", luOrder.getWeightTare().getUnit().toString());
+
+        LUOrder luOrderStep = LUOrder.newStepBuilder()
+                .withLoadingUnit(TestDataCreator.createContainer())
+                .withWeightBrutto(23.3, MassUnit.TON)
+                .withWeightNetto(21.0, MassUnit.TON)
+                .withWeightTare(2.3, MassUnit.TON)
+                .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
+                .withWasteIndication(TestDataCreator.createWaste())
+                .buildAndValidate();
+
+        assertEquals(23300.0, luOrderStep.getWeightBrutto().getValue().doubleValue(), 0.1);
+        assertEquals(21000.0, luOrderStep.getWeightNetto().getValue().doubleValue(), 0.1);
+        assertEquals(2300.0, luOrderStep.getWeightTare().getValue().doubleValue(), 0.1);
+
+        assertEquals("kg", luOrderStep.getWeightBrutto().getUnit().toString());
+        assertEquals("kg", luOrderStep.getWeightNetto().getUnit().toString());
+        assertEquals("kg", luOrderStep.getWeightTare().getUnit().toString());
     }
 
 
@@ -156,9 +281,9 @@ class LUOrderTest {
             () ->
                 LUOrder.newBuilder()
                     .withReference("1658583")
-                    .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
-                    .withWeightNetto(28080.0, MassUnit.KILOGRAM)
-                    .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                    .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                    .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                    .withWeightTare(2300.0, MassUnit.KILOGRAM)
                     .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
@@ -168,8 +293,8 @@ class LUOrderTest {
                 LUOrder.newBuilder()
                     .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
-                    .withWeightNetto(28080.0, MassUnit.KILOGRAM)
-                    .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                    .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                    .withWeightTare(2300.0, MassUnit.KILOGRAM)
                     .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
@@ -178,8 +303,8 @@ class LUOrderTest {
                 LUOrder.newBuilder()
                     .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
-                    .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
-                    .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                    .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                    .withWeightTare(2300.0, MassUnit.KILOGRAM)
                     .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
@@ -188,8 +313,8 @@ class LUOrderTest {
                 LUOrder.newBuilder()
                     .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
-                    .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
-                    .withWeightNetto(28080.0, MassUnit.KILOGRAM)
+                    .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                    .withWeightNetto(21000.0, MassUnit.KILOGRAM)
                     .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
@@ -198,9 +323,9 @@ class LUOrderTest {
                 LUOrder.newBuilder()
                     .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
-                    .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
-                    .withWeightNetto(28080.0, MassUnit.KILOGRAM)
-                    .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                    .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                    .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                    .withWeightTare(2300.0, MassUnit.KILOGRAM)
                     .withWasteIndication(TestDataCreator.createWaste())
                     .buildAndValidate());
         assertThrows(IllegalStateException.class,
@@ -208,9 +333,9 @@ class LUOrderTest {
                 LUOrder.newBuilder()
                     .withLoadingUnit(TestDataCreator.createContainer())
                     .withReference("1658583")
-                    .withWeightBrutto(30480.0, MassUnit.KILOGRAM)
-                    .withWeightNetto(28080.0, MassUnit.KILOGRAM)
-                    .withWeightTare(2400.0, MassUnit.KILOGRAM)
+                    .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                    .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                    .withWeightTare(2300.0, MassUnit.KILOGRAM)
                     .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                     .buildAndValidate());
     }
@@ -226,12 +351,12 @@ class LUOrderTest {
         LUOrder loadingUnitLUOrder = LUOrder.newBuilder()
                 .withLoadingUnit(TestDataCreator.createContainer())
                 .withReference("1658583")
-                .withWeightBrutto(16.0, MassUnit.KILOGRAM)
-                .withWeightNetto(14.0, MassUnit.KILOGRAM)
-                .withWeightTare(16.0, MassUnit.KILOGRAM)
+                .withWeightBrutto(23300.0, MassUnit.KILOGRAM)
+                .withWeightNetto(21000.0, MassUnit.KILOGRAM)
+                .withWeightTare(2300.0, MassUnit.KILOGRAM)
                 .withDangerousGoodsIndication(TestDataCreator.createDangerousGoods())
                 .withWasteIndication(TestDataCreator.createWaste())
-                .withSetTemperature(32, TemperatureUnit.CELSIUS)
+                .withSetTemperature(-5, TemperatureUnit.CELSIUS)
                 .withOperator(TestDataCreator.createOperator())
                 .withClient(TestDataCreator.createOperator())
                 .withDirection(Direction.EXPORT)
@@ -249,12 +374,12 @@ class LUOrderTest {
 
         assertNotNull(deserialize.getLoadingUnit());
         assertEquals("1658583", deserialize.getReference());
-        assertEquals(16, deserialize.getWeightBrutto().getValue().doubleValue());
-        assertEquals(14, deserialize.getWeightNetto().getValue().doubleValue());
-        assertEquals(16, deserialize.getWeightTare().getValue().doubleValue());
+        assertEquals(23300.0, deserialize.getWeightBrutto().getValue().doubleValue());
+        assertEquals(21000.0, deserialize.getWeightNetto().getValue().doubleValue());
+        assertEquals(2300.0, deserialize.getWeightTare().getValue().doubleValue());
         assertNotNull(deserialize.getDangerousGoodsIndication());
         assertNotNull(deserialize.getWasteIndication());
-        assertEquals(32, deserialize.getSetTemperature().getValue().doubleValue());
+        assertEquals(-5, deserialize.getSetTemperature().getValue().doubleValue());
         assertNotNull(deserialize.getOperator());
         assertNotNull(deserialize.getClient());
         assertEquals(Direction.EXPORT, deserialize.getDirection());
