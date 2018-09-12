@@ -25,8 +25,8 @@ class ProcessingBargeTest {
 
         ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
                 .withBarge(TestDataCreator.createBarge())
-                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
-                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
+                .withEstimatedTimeOfArrival(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEstimatedTimeOfDeparture(Instant.parse("2018-05-14T12:00:00Z"))
                 .withSkipper(TestDataCreator.createSkipper())
                 .withPassengers(Arrays.asList(TestDataCreator.createPassenger(), TestDataCreator.createPassenger()))
                 .withReeferConnections(12)
@@ -38,8 +38,8 @@ class ProcessingBargeTest {
                 .buildAndValidate();
 
         assertNotNull(processingBarge.getBarge());
-        assertEquals("2018-05-14T11:00:00Z", processingBarge.getEta().toString());
-        assertEquals("2018-05-14T12:00:00Z", processingBarge.getEtd().toString());
+        assertEquals("2018-05-14T11:00:00Z", processingBarge.getEstimatedTimeOfArrival().toString());
+        assertEquals("2018-05-14T12:00:00Z", processingBarge.getEstimatedTimeOfDepature().toString());
         assertNotNull(processingBarge.getSkipper());
         assertEquals(2, processingBarge.getPassenger().size());
         assertEquals(12, processingBarge.getReeferConnections().intValue());
@@ -56,8 +56,8 @@ class ProcessingBargeTest {
 
         ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
                 .withBarge(TestDataCreator.createBarge())
-                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
-                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
+                .withEstimatedTimeOfArrival(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEstimatedTimeOfDeparture(Instant.parse("2018-05-14T12:00:00Z"))
                 .withSkipper(TestDataCreator.createSkipper())
                 .withPassengers(Arrays.asList(TestDataCreator.createPassenger(), TestDataCreator.createPassenger()))
                 .withReeferConnections(12)
@@ -71,8 +71,8 @@ class ProcessingBargeTest {
         ProcessingBarge copiedProcessingBarge = ProcessingBarge.newBuilder(processingBarge).buildAndValidate();
 
         assertNotNull(copiedProcessingBarge.getBarge());
-        assertEquals("2018-05-14T11:00:00Z", copiedProcessingBarge.getEta().toString());
-        assertEquals("2018-05-14T12:00:00Z", copiedProcessingBarge.getEtd().toString());
+        assertEquals("2018-05-14T11:00:00Z", copiedProcessingBarge.getEstimatedTimeOfArrival().toString());
+        assertEquals("2018-05-14T12:00:00Z", copiedProcessingBarge.getEstimatedTimeOfDepature().toString());
         assertNotNull(copiedProcessingBarge.getSkipper());
         assertEquals(2, copiedProcessingBarge.getPassenger().size());
         assertEquals(12, copiedProcessingBarge.getReeferConnections().intValue());
@@ -89,8 +89,8 @@ class ProcessingBargeTest {
 
         ProcessingBarge processingBarge = ProcessingBarge.newBuilder()
                 .withBarge(TestDataCreator.createBarge())
-                .withEta(Instant.parse("2018-05-14T11:00:00Z"))
-                .withEtd(Instant.parse("2018-05-14T12:00:00Z"))
+                .withEstimatedTimeOfArrival(Instant.parse("2018-05-14T11:00:00Z"))
+                .withEstimatedTimeOfDeparture(Instant.parse("2018-05-14T12:00:00Z"))
                 .withSkipper(TestDataCreator.createSkipper())
                 .withPassengers(Arrays.asList(TestDataCreator.createSkipper(), TestDataCreator.createSkipper()))
                 .withReeferConnections(12)
@@ -108,8 +108,8 @@ class ProcessingBargeTest {
         ProcessingBarge deserialize = mapper.readValue(jsonString, ProcessingBarge.class);
 
         assertNotNull(deserialize.getBarge());
-        assertEquals("2018-05-14T11:00:00Z", deserialize.getEta().toString());
-        assertEquals("2018-05-14T12:00:00Z", deserialize.getEtd().toString());
+        assertEquals("2018-05-14T11:00:00Z", deserialize.getEstimatedTimeOfArrival().toString());
+        assertEquals("2018-05-14T12:00:00Z", deserialize.getEstimatedTimeOfDepature().toString());
         assertNotNull(deserialize.getSkipper());
         assertEquals(2, deserialize.getPassenger().size());
         assertEquals(12, deserialize.getReeferConnections().intValue());

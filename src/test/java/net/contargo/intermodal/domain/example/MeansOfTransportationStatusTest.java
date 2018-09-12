@@ -22,17 +22,17 @@ class MeansOfTransportationStatusTest {
     void ensureCanBeCreated() {
 
         MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.newBuilder()
-                .withAtd(Instant.parse("2018-05-11T06:00:00Z"))
-                .withEta(Instant.parse("2018-05-11T12:30:00Z"))
-                .withAta(Instant.parse("2018-05-11T06:05:00Z"))
+                .withActualTimeOfDeparture(Instant.parse("2018-05-11T06:00:00Z"))
+                .withEstimatedTimeOfArrival(Instant.parse("2018-05-11T12:30:00Z"))
+                .withActualTimeOfArrival(Instant.parse("2018-05-11T06:05:00Z"))
                 .withHandlingStart(Instant.parse("2018-05-11T06:30:00Z"))
                 .withHandlingEnd(Instant.parse("2018-05-11T06:35:00Z"))
                 .withWaggonTechnicalInspection(1)
                 .buildAndValidate();
 
-        assertEquals("2018-05-11T06:00:00Z", meansOfTransportationStatus.getAtd().toString());
-        assertEquals("2018-05-11T12:30:00Z", meansOfTransportationStatus.getEta().toString());
-        assertEquals("2018-05-11T06:05:00Z", meansOfTransportationStatus.getAta().toString());
+        assertEquals("2018-05-11T06:00:00Z", meansOfTransportationStatus.getActualTimeOfDeparture().toString());
+        assertEquals("2018-05-11T12:30:00Z", meansOfTransportationStatus.getEstimatedTimeOfArrival().toString());
+        assertEquals("2018-05-11T06:05:00Z", meansOfTransportationStatus.getActualTimeOfArrival().toString());
         assertEquals("2018-05-11T06:30:00Z", meansOfTransportationStatus.getHandlingStart().toString());
         assertEquals("2018-05-11T06:35:00Z", meansOfTransportationStatus.getHandlingEnd().toString());
         assertEquals(1, meansOfTransportationStatus.getWaggonTechnicalInspection().intValue());
@@ -43,9 +43,9 @@ class MeansOfTransportationStatusTest {
     void ensureCanBeCopied() {
 
         MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.newBuilder()
-                .withAtd(Instant.parse("2018-05-11T06:00:00Z"))
-                .withEta(Instant.parse("2018-05-11T12:30:00Z"))
-                .withAta(Instant.parse("2018-05-11T06:05:00Z"))
+                .withActualTimeOfDeparture(Instant.parse("2018-05-11T06:00:00Z"))
+                .withEstimatedTimeOfArrival(Instant.parse("2018-05-11T12:30:00Z"))
+                .withActualTimeOfArrival(Instant.parse("2018-05-11T06:05:00Z"))
                 .withHandlingStart(Instant.parse("2018-05-11T06:30:00Z"))
                 .withHandlingEnd(Instant.parse("2018-05-11T06:35:00Z"))
                 .withWaggonTechnicalInspection(1)
@@ -55,9 +55,9 @@ class MeansOfTransportationStatusTest {
                 meansOfTransportationStatus)
                 .buildAndValidate();
 
-        assertEquals("2018-05-11T06:00:00Z", copiedMeansOfTransportationStatus.getAtd().toString());
-        assertEquals("2018-05-11T12:30:00Z", copiedMeansOfTransportationStatus.getEta().toString());
-        assertEquals("2018-05-11T06:05:00Z", copiedMeansOfTransportationStatus.getAta().toString());
+        assertEquals("2018-05-11T06:00:00Z", copiedMeansOfTransportationStatus.getActualTimeOfDeparture().toString());
+        assertEquals("2018-05-11T12:30:00Z", copiedMeansOfTransportationStatus.getEstimatedTimeOfArrival().toString());
+        assertEquals("2018-05-11T06:05:00Z", copiedMeansOfTransportationStatus.getActualTimeOfArrival().toString());
         assertEquals("2018-05-11T06:30:00Z", copiedMeansOfTransportationStatus.getHandlingStart().toString());
         assertEquals("2018-05-11T06:35:00Z", copiedMeansOfTransportationStatus.getHandlingEnd().toString());
         assertEquals(1, copiedMeansOfTransportationStatus.getWaggonTechnicalInspection().intValue());
@@ -68,9 +68,9 @@ class MeansOfTransportationStatusTest {
     void ensureCanBeParsedToJson() throws IOException {
 
         MeansOfTransportationStatus meansOfTransportationStatus = MeansOfTransportationStatus.newBuilder()
-                .withAtd(Instant.parse("2018-05-11T06:00:00Z"))
-                .withEta(Instant.parse("2018-05-11T12:30:00Z"))
-                .withAta(Instant.parse("2018-05-11T06:05:00Z"))
+                .withActualTimeOfDeparture(Instant.parse("2018-05-11T06:00:00Z"))
+                .withEstimatedTimeOfArrival(Instant.parse("2018-05-11T12:30:00Z"))
+                .withActualTimeOfArrival(Instant.parse("2018-05-11T06:05:00Z"))
                 .withHandlingStart(Instant.parse("2018-05-11T06:30:00Z"))
                 .withHandlingEnd(Instant.parse("2018-05-11T06:35:00Z"))
                 .withWaggonTechnicalInspection(1)
@@ -82,9 +82,9 @@ class MeansOfTransportationStatusTest {
 
         MeansOfTransportationStatus deserialize = mapper.readValue(jsonString, MeansOfTransportationStatus.class);
 
-        assertEquals("2018-05-11T06:00:00Z", deserialize.getAtd().toString());
-        assertEquals("2018-05-11T12:30:00Z", deserialize.getEta().toString());
-        assertEquals("2018-05-11T06:05:00Z", deserialize.getAta().toString());
+        assertEquals("2018-05-11T06:00:00Z", deserialize.getActualTimeOfDeparture().toString());
+        assertEquals("2018-05-11T12:30:00Z", deserialize.getEstimatedTimeOfArrival().toString());
+        assertEquals("2018-05-11T06:05:00Z", deserialize.getActualTimeOfArrival().toString());
         assertEquals("2018-05-11T06:30:00Z", deserialize.getHandlingStart().toString());
         assertEquals("2018-05-11T06:35:00Z", deserialize.getHandlingEnd().toString());
         assertEquals(1, deserialize.getWaggonTechnicalInspection().intValue());

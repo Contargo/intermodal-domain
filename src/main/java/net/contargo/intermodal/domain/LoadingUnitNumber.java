@@ -42,6 +42,11 @@ final class LoadingUnitNumber {
     }
 
 
+    /**
+     * Checks if number is valid Intermodal Loading Unit Number (four letters followed by 7 digits).
+     *
+     * @return  true if number is valid ILU
+     */
     static boolean isValidILU(String value) {
 
         if (value.length() == ILU_LENGTH) {
@@ -59,6 +64,11 @@ final class LoadingUnitNumber {
     }
 
 
+    /**
+     * Checks if number is shipper owned container (SOC). Accepted prefixes are XXXU or NONU.
+     *
+     * @return  true if number is SOC
+     */
     static boolean isSOC(String value) {
 
         if (value.length() == BIC_LENGTH) {

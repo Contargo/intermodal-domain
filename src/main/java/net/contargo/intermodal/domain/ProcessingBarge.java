@@ -1,5 +1,6 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -41,12 +42,16 @@ public class ProcessingBarge {
      * Estimated Time of Arrival (Format: ISO 8601 inclusive UTC)
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
+    @JsonProperty("eta")
+    @JsonSerialize(using = InstantJsonSerializer.class)
     private Instant eta;
 
     /**
      * Estimated Time of Departure (Format: ISO 8601 inclusive UTC)
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
+    @JsonProperty("etd")
+    @JsonSerialize(using = InstantJsonSerializer.class)
     private Instant etd;
 
     private Skipper skipper;
@@ -96,8 +101,8 @@ public class ProcessingBarge {
 
         return new Builder().withBarge(processingBarge.getBarge())
             .withReeferConnections(processingBarge.getReeferConnections())
-            .withEta(processingBarge.getEta())
-            .withEtd(processingBarge.getEtd())
+            .withEstimatedTimeOfArrival(processingBarge.getEstimatedTimeOfArrival())
+            .withEstimatedTimeOfDeparture(processingBarge.getEstimatedTimeOfDepature())
             .withPassengers(processingBarge.getPassenger())
             .withCone(processingBarge.getCone())
             .withSkipper(processingBarge.getSkipper())
@@ -112,15 +117,15 @@ public class ProcessingBarge {
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getEta() {
+    @JsonIgnore
+    public Instant getEstimatedTimeOfArrival() {
 
         return eta;
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getEtd() {
+    @JsonIgnore
+    public Instant getEstimatedTimeOfDepature() {
 
         return etd;
     }
@@ -235,7 +240,7 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withEta(Instant instant) {
+        public Builder withEstimatedTimeOfArrival(Instant instant) {
 
             this.eta = instant;
 
@@ -243,7 +248,7 @@ public class ProcessingBarge {
         }
 
 
-        public Builder withEtd(Instant instant) {
+        public Builder withEstimatedTimeOfDeparture(Instant instant) {
 
             this.etd = instant;
 

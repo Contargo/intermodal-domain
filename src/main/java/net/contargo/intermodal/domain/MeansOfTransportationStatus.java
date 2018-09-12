@@ -1,5 +1,7 @@
 package net.contargo.intermodal.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -40,6 +42,8 @@ public class MeansOfTransportationStatus {
      * @definition_german  Tatsächliche Abfahrt des {@link MeansOfTransport VM} beim Verlassen des Umschlagpunktes.
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
+    @JsonProperty("atd")
+    @JsonSerialize(using = InstantJsonSerializer.class)
     private Instant atd;
 
     /**
@@ -50,6 +54,8 @@ public class MeansOfTransportationStatus {
      * @definition_german  Geplante Ankunft des {@link MeansOfTransport VM} am Umschlagpunkt.
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
+    @JsonProperty("eta")
+    @JsonSerialize(using = InstantJsonSerializer.class)
     private Instant eta;
 
     /**
@@ -60,6 +66,8 @@ public class MeansOfTransportationStatus {
      * @definition_german  Tatsächliche Ankunft des {@link MeansOfTransport VM} am Umschlagpunkt.
      */
     @JsonDeserialize(using = InstantJsonDeserializer.class)
+    @JsonSerialize(using = InstantJsonSerializer.class)
+    @JsonProperty("ata")
     private Instant ata;
 
     /**
@@ -120,31 +128,31 @@ public class MeansOfTransportationStatus {
      */
     public static Builder newBuilder(MeansOfTransportationStatus meansOfTransportationStatus) {
 
-        return new Builder().withAtd(meansOfTransportationStatus.getAtd())
-            .withEta(meansOfTransportationStatus.getEta())
-            .withAta(meansOfTransportationStatus.getAta())
+        return new Builder().withActualTimeOfDeparture(meansOfTransportationStatus.getActualTimeOfDeparture())
+            .withEstimatedTimeOfArrival(meansOfTransportationStatus.getEstimatedTimeOfArrival())
+            .withActualTimeOfArrival(meansOfTransportationStatus.getActualTimeOfArrival())
             .withWaggonTechnicalInspection(meansOfTransportationStatus.getWaggonTechnicalInspection())
             .withHandlingStart(meansOfTransportationStatus.getHandlingStart())
             .withHandlingEnd(meansOfTransportationStatus.getHandlingEnd());
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getAtd() {
+    @JsonIgnore
+    public Instant getActualTimeOfDeparture() {
 
         return atd;
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getEta() {
+    @JsonIgnore
+    public Instant getEstimatedTimeOfArrival() {
 
         return eta;
     }
 
 
-    @JsonSerialize(using = InstantJsonSerializer.class)
-    public Instant getAta() {
+    @JsonIgnore
+    public Instant getActualTimeOfArrival() {
 
         return ata;
     }
@@ -194,7 +202,7 @@ public class MeansOfTransportationStatus {
         private Builder() {
         }
 
-        public Builder withAtd(Instant instant) {
+        public Builder withActualTimeOfDeparture(Instant instant) {
 
             this.atd = instant;
 
@@ -202,7 +210,7 @@ public class MeansOfTransportationStatus {
         }
 
 
-        public Builder withEta(Instant instant) {
+        public Builder withEstimatedTimeOfArrival(Instant instant) {
 
             this.eta = instant;
 
@@ -210,7 +218,7 @@ public class MeansOfTransportationStatus {
         }
 
 
-        public Builder withAta(Instant instant) {
+        public Builder withActualTimeOfArrival(Instant instant) {
 
             this.ata = instant;
 
