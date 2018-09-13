@@ -1,29 +1,11 @@
-Contargo Business Domain
+Intermodal Domain
 ========================
-
 [![Build Status](https://travis-ci.org/Contargo/contargo-domain.svg?branch=master)](https://travis-ci.org/Contargo/contargo-domain)
 [![](https://jitpack.io/v/Contargo/contargo-domain.svg)](https://jitpack.io/#Contargo/contargo-domain)
 
-This is a small project aimed at defining the Contargo and COLA business
-domain, in a structured way. The goal is to provide a business language
-(primarily to use for writing/speaking) in a format that is both
-familiar and useful to Java developers - **a Java library, with a `jar`
-artifact**.
+This project includes part of the old Contargo Business Domain 
+as well as an API of DIN SPEC 91073 also known as DIGIT. 
 
-## This is not...
-
-* A central implementation of any kind of functionality
-* Common utilities library
-* Collection of re-usable objects or classes
-
-## This should be used for...
-
-* Tagging local Java solutions, to create correlation between projects
-* Referencing actual Java-types and documentation
-* Defining the business domain, with revision control
-* Sharing information about the business domain
-
-And more. It's up to you, so join in on the fun!
 
 ## Getting started
 
@@ -39,6 +21,83 @@ simply including it as a Maven dependency. We recommend using
   <version>${SOME-TAG}</version>
 </dependency>
 ```
+
+### How To Find The Right Class
+If you are looking for a certain class you can use the text search 
+and enter possible synonyms in English or German. Some classes contain 
+synonyms e.g. a swap body is called Wechselbrücke in German but possible 
+synonyms are Wechselbehälter and Wechselaufbau which are tagged as 
+`@synonym_german` in the `SwapBody` class. 
+
+Every class contains information about its affiliation tagged with 
+`@source`. This can either be DIGIT, Contargo Domain or Contargo 
+specific for additional enhancements which are not an official part 
+of DIN SPEC 91073.
+
+### How To Create An Object
+
+To create an object you have to use the specific `Builder` of that 
+object. Every builder is located in the corresponding class. Some 
+classes that have mandatory fields contain an additional `StepBuilder`. 
+Other than the normal `Builder` the `StepBuilder` will enforce the order 
+in which fields are set until all fields that are part of the minimum 
+requirements are set. Afterwards optional fields can be set in any order.
+
+A new builder object can be created with the `newBuilder()` or 
+`newStepBuilder()` method. The example below shows how a barge object 
+is created with all of its possible information. If you are unsure on 
+how to build a certain object or which fields exist and how they can 
+be set you can take a look at its test class for more examples.
+
+```java 
+Barge barge = Barge.newBuilder()
+                .withName("My Barge")
+                .withMmsi("021112345")
+                .withEni("050XXXXX")
+                .withOperator(new Operator())
+                .withLength(91.4, METRE)
+                .withWidth(27.4, METRE)
+                .withDraught(5.5, METRE)
+                .withNumberOfBays(4)
+                .withNumberOfRows(8)
+                .withNumberOfTiers(2)
+                .isSuitableForDangerousGoods(true)
+                .withCapacityInTeu(200.0)
+                .withCapacityInTons(3400.0)
+                .buildAndValidate();
+```
+
+### How To Check Validity
+The validity of an object can be checked with the `buildAndValidate()` 
+method. This is done to make sure all the minimum requirements of an 
+object as specified in the DIGIT are set. If you do not want to check 
+the validity of the object before you built it you can use the `build()` 
+method instead. The minimum requirements of each class are document in 
+the javadoc with the tag `@minimum_requirement`.
+
+### How To Copy An Object
+
+If you want to copy an object you can do so by adding it as an argument 
+to the `newBuilder` method. This will create a new builder object which 
+can be altered before building.
+```java 
+Barge copiedBarge = Barge.newBuilder(barge).buildAndValidate();
+```
+
+### How To Use Units And Unit Conversion
+In some cases an information might be in a certain unit as shown above 
+with the measurements of a barge. Since the DIGIT specifies the required 
+unit the value will be converted if necessary. This means you can set your 
+value in a different unit supported by the API as shown in the example below.
+
+```java 
+Barge.newBuilder()
+.withLength(300.0, FOOT) // <-- will be converted to metres automatically
+.buildAndValidate();
+```
+
+### How To Map Objects To JSON
+The API uses [Jackson Annotations](https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations) to ensure the correct serialization/deserialization of its objects. To map objects to json and vice versa please use [Jackson Databind](https://github.com/FasterXML/jackson-databind).
 
 Now you should be good to go for tagging types or linking to the
 domain definitions (interfaces) from your source code.
