@@ -43,27 +43,23 @@ Other than the normal `Builder` the `StepBuilder` will enforce the order
 in which fields are set until all fields that are part of the minimum 
 requirements are set. Afterwards optional fields can be set in any order.
 
-A new builder object can be created with the `newBuilder()` or 
-`newStepBuilder()` method. The example below shows how a barge object 
-is created with all of its possible information. If you are unsure on 
-how to build a certain object or which fields exist and how they can 
-be set you can take a look at its test class for more examples.
+A new builder object is usually created with `newStepBuilder()` when mandatory 
+fields are available. If a class does not have any minimal requirements 
+the `newBuilder()` method is used instead. The example below shows how 
+a `RegistrationVehicle` object is created with all of its possible 
+information. If you are unsure on how to build a certain object 
+or which fields exist and how they can be set you can take a look 
+at its test class for more examples.
 
 ```java 
-Barge barge = Barge.newBuilder()
-                .withName("My Barge")
-                .withMmsi("021112345")
-                .withEni("050XXXXX")
-                .withOperator(new Operator())
-                .withLength(91.4, METRE)
-                .withWidth(27.4, METRE)
-                .withDraught(5.5, METRE)
-                .withNumberOfBays(4)
-                .withNumberOfRows(8)
-                .withNumberOfTiers(2)
-                .isSuitableForDangerousGoods(true)
-                .withCapacityInTeu(200.0)
-                .withCapacityInTons(3400.0)
+RegistrationVehicle registrationVehicle = RegistrationVehicle.newStepBuilder()
+                .withTruck(...)
+                .withDriver(...)
+                .withHaulierClient(...)
+                .withHaulierRealizing(...)
+                .withDeliveryTime(...)
+                .withLuOrder(...)
+                .withChassis(...)
                 .buildAndValidate();
 ```
 
