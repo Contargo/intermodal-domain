@@ -3,7 +3,8 @@ Intermodal Domain
 [![Build Status](https://travis-ci.org/Contargo/contargo-domain.svg?branch=master)](https://travis-ci.org/Contargo/contargo-domain)
 [![](https://jitpack.io/v/Contargo/contargo-domain.svg)](https://jitpack.io/#Contargo/contargo-domain)
 
-This project includes part of the old Contargo Domain as well as an API of DIN SPEC 91073 also known as DIGIT. 
+This project includes part of the old Contargo Business Domain 
+as well as an API of DIN SPEC 91073 also known as DIGIT. 
 
 
 ## Getting started
@@ -43,7 +44,7 @@ in which fields are set until all fields that are part of the minimum
 requirements are set. Afterwards optional fields can be set in any order.
 
 A new builder object can be created with the `newBuilder()` or 
-`newStepBuilder()` methode. The example below shows how a barge object 
+`newStepBuilder()` method. The example below shows how a barge object 
 is created with all of its possible information. If you are unsure on 
 how to build a certain object or which fields exist and how they can 
 be set you can take a look at its test class for more examples.
@@ -91,7 +92,7 @@ value in a different unit supported by the API as shown in the example below.
 
 ```java 
 Barge.newBuilder()
-.withLength(300.0, FOOT) // <-- will be converted to meter automatically
+.withLength(300.0, FOOT) // <-- will be converted to metres automatically
 .buildAndValidate();
 ```
 
