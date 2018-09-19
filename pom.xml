@@ -3,7 +3,7 @@
 
     <groupId>net.contargo</groupId>
     <artifactId>intermodal-domain</artifactId>
-    <version>0.3.1-SNAPSHOT</version>
+    <version>0.4.0</version>
     <packaging>jar</packaging>
 
     <name>Intermodal Domain</name>
@@ -18,7 +18,8 @@
     <scm>
         <connection>scm:git:ssh://git@github.com/Contargo/intermodal-domain.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/Contargo/intermodal-domain.git</developerConnection>
-    </scm>
+      <tag>v0.4.0</tag>
+  </scm>
 
     <dependencies>
         <dependency>
