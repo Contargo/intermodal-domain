@@ -1,7 +1,7 @@
 Intermodal Domain
 ========================
-[![Build Status](https://travis-ci.org/Contargo/contargo-domain.svg?branch=master)](https://travis-ci.org/Contargo/contargo-domain)
-[![](https://jitpack.io/v/Contargo/contargo-domain.svg)](https://jitpack.io/#Contargo/contargo-domain)
+[![Build Status](https://travis-ci.org/Contargo/intermodal-domain.svg?branch=master)](https://travis-ci.org/Contargo/intermodal-domain)
+[![](https://jitpack.io/v/Contargo/intermodal-domain.svg)](https://jitpack.io/#Contargo/intermodal-domain)
 
 This project includes part of the old Contargo Business Domain 
 as well as an API of DIN SPEC 91073 also known as DIGIT. 
@@ -9,7 +9,7 @@ as well as an API of DIN SPEC 91073 also known as DIGIT.
 
 ## Getting started
 
-Using the `contargo-domain` as a library in your project, means
+Using the `intermodal-domain` as a library in your project, means
 simply including it as a Maven dependency. We recommend using
 [Jitpack](https://jitpack.io) to resolve the dependency:
 
@@ -17,7 +17,7 @@ simply including it as a Maven dependency. We recommend using
 <dependency>
   <!-- From Jitpack-repo -->
   <groupId>com.github.Contargo</groupId>
-  <artifactId>contargo-domain</artifactId>
+  <artifactId>intermodal-domain</artifactId>
   <version>${SOME-TAG}</version>
 </dependency>
 ```
