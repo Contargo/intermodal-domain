@@ -2,11 +2,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>net.contargo</groupId>
-    <artifactId>contargo-domain</artifactId>
+    <artifactId>intermodal-domain</artifactId>
     <version>0.3.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Contargo Business Domain</name>
+    <name>Intermodal Domain</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,8 +16,8 @@
     </properties>
 
     <scm>
-        <connection>scm:git:ssh://git@github.com/Contargo/contargo-domain.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/Contargo/contargo-domain.git</developerConnection>
+        <connection>scm:git:ssh://git@github.com/Contargo/intermodal-domain.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/Contargo/intermodal-domain.git</developerConnection>
     </scm>
 
     <dependencies>
