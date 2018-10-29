@@ -92,6 +92,16 @@ Barge.newBuilder()
 .buildAndValidate();
 ```
 
+### How To Use Container Size Type Information
+If you are building an ``Container`` object its ``size`` and ``type`` 
+ will be calculated by its ``sizeType`` automatically. 
+ 
+ ```java 
+ Container.newBuilder()
+ .withSizeType("45G0")
+ ...
+ ```
+
 ### How To Map Objects To JSON
 The API uses [Jackson Annotations](https://github.com/FasterXML/jackson-annotations/wiki/Jackson-Annotations) to ensure the correct serialization/deserialization of its objects. To map objects to json and vice versa please use [Jackson Databind](https://github.com/FasterXML/jackson-databind).
 

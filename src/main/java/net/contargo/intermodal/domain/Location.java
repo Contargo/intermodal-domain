@@ -2,8 +2,6 @@ package net.contargo.intermodal.domain;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import javax.validation.constraints.NotNull;
-
 
 /**
  * A location used in drop off, pick up and stops of an {@link Transport}. Also used to specify the city of birth of a
@@ -11,6 +9,8 @@ import javax.validation.constraints.NotNull;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
+ * @name_german  Ort
+ * @name_english  location
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

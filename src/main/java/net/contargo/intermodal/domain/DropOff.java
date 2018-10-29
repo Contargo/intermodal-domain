@@ -13,6 +13,9 @@ import javax.validation.constraints.NotNull;
  * Drop off of an {@link Transport}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
+ * @name_german  Anlieferung
+ * @name_english  drop off
  * @minimum_requirement  location with city and designation, mot
  */
 public class DropOff {
