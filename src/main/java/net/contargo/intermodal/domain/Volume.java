@@ -6,6 +6,8 @@ package net.contargo.intermodal.domain;
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  * @version  2018-04
+ * @name_german  Umschlagmenge
+ * @name_english  volume
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */

@@ -15,6 +15,9 @@ import javax.validation.constraints.NotNull;
  * Pick up of an {@link Transport}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
+ * @version  2018-04
+ * @name_german  Abholung
+ * @name_english  pick up
  * @minimum_requirement  location with city and designation, earliest, mot
  */
 public class PickUp {

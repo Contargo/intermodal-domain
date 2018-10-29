@@ -12,9 +12,9 @@ import javax.validation.constraints.NotEmpty;
  * Contains information about pick ups, drop offs and stops of an {@link Order}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
- * @author  Isabell Dürlich - duerlich@synyx.de
- * @version  2018-04 /** Contains information about pick ups, drop offs and stops of an {@link Order}.
  * @version  2018-04
+ * @name_german  Transport
+ * @name_english  transport
  * @minimum_requirement  stop
  * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
  *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
