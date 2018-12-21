@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
  * @name_german  Anlieferung
  * @name_english  drop off
  * @minimum_requirement  location with city and designation, mot
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class DropOff {
 

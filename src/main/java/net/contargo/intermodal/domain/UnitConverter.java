@@ -17,7 +17,7 @@ import static tec.units.ri.unit.Units.METRE;
 
 
 /**
- * For conversion between different units.
+ * For conversion between different {@link Unit Units}.
  *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */

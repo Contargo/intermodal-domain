@@ -19,6 +19,8 @@ import javax.validation.constraints.NotNull;
  * @name_german  Abholung
  * @name_english  pick up
  * @minimum_requirement  location with city and designation, earliest, mot
+ * @source  DIGIT - Standardisierung des Datenaustauschs für alle Akteure der intermodalen Kette zur Gewährleistung
+ *          eines effizienten Informationsflusses und einer zukunftsfähigen digitalen Kommunikation
  */
 public class PickUp {
 

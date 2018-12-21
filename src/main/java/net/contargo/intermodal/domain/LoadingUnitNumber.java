@@ -4,6 +4,8 @@ import java.util.Optional;
 
 
 /**
+ * Validator for numbers of a {@link LoadingUnit}.
+ *
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 final class LoadingUnitNumber {

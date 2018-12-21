@@ -153,11 +153,6 @@
                             <head>Synonym German:</head>
                         </tag>
                         <tag>
-                            <name>synonym_english</name>
-                            <placement>tmf</placement>
-                            <head>Synonym English:</head>
-                        </tag>
-                        <tag>
                             <name>abbreviation_german</name>
                             <placement>tmf</placement>
                             <head>Abbreviation German:</head>
