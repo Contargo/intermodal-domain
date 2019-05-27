@@ -13,7 +13,7 @@ public class ISO6346SizeTypeConverter {
     /**
      * Returns the length of a {@link Container} as indicated by the first character of its sizeType.
      *
-     * @param  sizeType
+     * @param  sizeType  in ISO 6346 size/type code
      *
      * @return  Optional of length in foot if code is valid
      */
@@ -34,7 +34,7 @@ public class ISO6346SizeTypeConverter {
      * Returns the type designation of a {@link Container} as indicated by the third and fourth character of its
      * sizeType.
      *
-     * @param  sizeType
+     * @param  sizeType  in ISO 6346 size/type code
      *
      * @return  Optional of type designation if code is valid
      */

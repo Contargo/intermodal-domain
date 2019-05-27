@@ -21,6 +21,8 @@ final class LoadingUnitNumber {
     /**
      * Checks if number is valid ISO 6364 BIC (four letters followed by 7 digits).
      *
+     * @param  value  to check for BIC
+     *
      * @return  true if number is valid BIC
      */
     static boolean isValidBIC(String value) {
@@ -47,6 +49,8 @@ final class LoadingUnitNumber {
     /**
      * Checks if number is valid Intermodal Loading Unit Number (four letters followed by 7 digits).
      *
+     * @param  value  to test for valid ILU
+     *
      * @return  true if number is valid ILU
      */
     static boolean isValidILU(String value) {
@@ -68,6 +72,8 @@ final class LoadingUnitNumber {
 
     /**
      * Checks if number is shipper owned container (SOC). Accepted prefixes are XXXU or NONU.
+     *
+     * @param  value  to test for SOC
      *
      * @return  true if number is SOC
      */

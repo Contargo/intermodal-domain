@@ -18,7 +18,7 @@ class MinimumRequirementValidator {
      * Checks if an object fulfills its minimum requirement as specified by DIGIT. Throws IllegalStateException if
      * object is invalid.
      *
-     * @param  object
+     * @param  object  to validate
      */
     static void validate(Object object) {
 
