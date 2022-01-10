@@ -1,6 +1,6 @@
 Intermodal Domain
 ========================
-[![Build Status](https://travis-ci.org/Contargo/intermodal-domain.svg?branch=master)](https://travis-ci.org/Contargo/intermodal-domain)
+
 [![](https://jitpack.io/v/Contargo/intermodal-domain.svg)](https://jitpack.io/#Contargo/intermodal-domain)
 
 This project includes part of the old Contargo Business Domain 
@@ -123,6 +123,6 @@ document in any web browser.
 ## License
 
 This project is distributed under the Apache 2.0 License. The full set of
-terms and conditions can be seen in the [LICENSE](LICENSE.txt) file.
+terms and conditions can be seen in the [LICENSE](LICENSE) file.
 
 Happy hacking!
