@@ -1,6 +1,10 @@
 package net.contargo.intermodal.domain;
 
-import java.lang.annotation.*;
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 import java.util.List;
 
@@ -16,7 +20,7 @@ import javax.validation.Payload;
  * @author  Isabell Dürlich - duerlich@synyx.de
  */
 
-public class StopLocationValidator implements ConstraintValidator<TransportConstraint, List<Location>> {
+public class StopLocationValidator implements ConstraintValidator<StopLocationConstraint, List<Location>> {
 
     @Override
     public boolean isValid(List<Location> value, ConstraintValidatorContext context) {
