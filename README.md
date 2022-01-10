@@ -1,6 +1,6 @@
 Intermodal Domain
 ========================
-[![Build Status](https://travis-ci.org/Contargo/intermodal-domain.svg?branch=master)](https://travis-ci.org/Contargo/intermodal-domain)
+
 [![](https://jitpack.io/v/Contargo/intermodal-domain.svg)](https://jitpack.io/#Contargo/intermodal-domain)
 
 This project includes part of the old Contargo Business Domain 
