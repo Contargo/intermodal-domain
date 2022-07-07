@@ -1,6 +1,8 @@
 Intermodal Domain
 ========================
 
+**Note: As of 07.07.2022 this project is no longer actively maintained and therefore archived.**
+
 [![](https://jitpack.io/v/Contargo/intermodal-domain.svg)](https://jitpack.io/#Contargo/intermodal-domain)
 
 This project includes part of the old Contargo Business Domain 
